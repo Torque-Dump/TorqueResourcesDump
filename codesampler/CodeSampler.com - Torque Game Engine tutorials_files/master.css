@@ -1,0 +1,172 @@
+body {
+
+font-family: Verdana,Arial,Helvetica,Sans-Serif;
+font-size: 12px;
+background-image: url(../images/blue_circuit.jpg);
+
+}
+
+p, td, li, ul, table {
+
+font-family: Verdana,Arial,Helvetica,Sans-Serif;
+font-size: 12px;
+
+}
+
+li {
+
+list-style-image : url('../images/bullet.gif');
+
+}
+
+a:link {
+
+color: blue;
+font-weight: normal;
+text-decoration: none;
+
+}
+
+a:visited {
+
+color: purple;
+font-weight: normal;
+text-decoration: none;
+
+}
+
+a:hover {
+
+color: blue;
+font-weight: normal;
+text-decoration: underline;
+
+}
+
+a:active {
+
+color: blue;
+font-weight: normal;
+text-decoration: underline;
+
+}
+
+h1 {
+	
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 18px;
+color: #DD3937;
+text-align: left;
+
+}
+
+h2 {
+	
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 16px;
+color: #006ABE;
+text-align: left;
+
+}
+
+h3 {
+	
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 14px;
+color: #FFAA01;
+text-align: left;
+
+}
+
+.topadrow {
+
+text-align: center;
+background: #006ABE;
+padding: 5px;
+
+}
+
+.header {
+
+}
+
+.topnav {
+
+color: #B70002;
+background: #B70002;
+padding: 2px;
+border-right: 1px solid #B70002;
+border-bottom: 1px solid #B70002;
+border-left: 1px solid #B70002;
+
+}
+
+.maintable {
+
+background: white;
+border-right: 1px solid #52813c;
+
+}
+
+.leftside {
+
+text-align: center;
+background-color: white;
+border-left: 1px solid #52813c;
+
+}
+
+.textarea {
+
+font-family: Verdana,Arial,Helvetica,Sans-Serif;
+font-size: 12px;
+text-align: left;
+background: white;
+padding: 10px;
+
+}
+
+.mouseovernav {
+
+padding-top: 5px;
+padding-right: 5px;
+padding-bottom: 5px;
+padding-left: 25px;
+
+}
+
+.leftadcolumn {
+
+text-align: left;
+font-size: 11px;
+color: #333333;
+line-height: 15px;
+padding-left: 5px;
+padding-right: 5px;
+padding-top: 5px;
+padding-bottom: 5px;
+
+}
+
+.textlinks {
+
+font-family: Verdana,Arial,Helvetica,Sans-Serif;
+font-size: 10px;
+text-align: center;
+line-height: 12px;
+background: white;
+margin: 14px;
+padding: 10px;
+
+}
+
+.copyright {
+
+font-family: Verdana,Arial,Helvetica,Sans-Serif;
+font-size: 12px;
+text-align: right;
+letter-spacing: 0em;
+background: #FCD701;
+padding: 5px;
+
+}

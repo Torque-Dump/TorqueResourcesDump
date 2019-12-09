@@ -1,0 +1,2670 @@
+Content-Type: multipart/related; start=<op.mhtml.1258399186281.a998e572384c6689@192.168.2.101>; boundary=----------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Location: http://tdn.garagegames.com/wiki/Code/How_do_I_make_a_collidable_object?
+Subject: =?utf-8?Q?Code/How=20do=20I=20make=20a=20collidable=20object=3F=20-=20TDN?=
+MIME-Version: 1.0
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename="How_do_I_make_a_collidable_object?.htm"
+Content-Type: text/html; charset=utf-8; name="How_do_I_make_a_collidable_object?.htm"
+Content-Id: <op.mhtml.1258399186281.a998e572384c6689@192.168.2.101>
+Content-Location: http://tdn.garagegames.com/wiki/Code/How_do_I_make_a_collidable_object?
+Content-Transfer-Encoding: 8bit
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="KEYWORDS" content="Code/How do I make a collidable object?" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>Code/How do I make a collidable object? - TDN</title>
+
+<link rel="STYLESHEET" type="text/css" href="/wiki/skins/tdntheme/css/container.css"/>
+<link rel="STYLESHEET" type="text/css" href="/wiki/skins/tdntheme/css/navelements.css"/>
+<link rel="STYLESHEET" type="text/css" href="/wiki/skins/tdntheme/css/sidebar.css"/>
+<link rel="STYLESHEET" type="text/css" href="/wiki/skins/tdntheme/css/content.css"/>
+<link rel="stylesheet" type="text/css" media="print" href="/wiki/skins/common/commonPrint.css" />
+
+<script type="text/javascript" src="/wiki/skins/common/wikibits.js"> </script>
+</head>
+<body >
+
+
+
+<div id="headerTop"   ><a href="/wiki/TDN_Home"><img class="left" src="/wiki/skins/tdntheme/images/header_01.png" alt=""/></a>
+	<div id="navlogin">
+		   	   <a
+		href="/wiki/User:Bloodknight"
+		class="new"	   >
+	   Bloodknight	   </a>
+		   /	   <a
+		href="/wiki/User_talk:Bloodknight"
+		class="new"	   >
+	   My talk	   </a>
+		   /	   <a
+		href="/wiki/Special:Preferences"
+			   >
+	   Preferences	   </a>
+		   /	   <a
+		href="/wiki/Special:Watchlist"
+			   >
+	   My watchlist	   </a>
+		   /	   <a
+		href="/wiki/Special:Contributions/Bloodknight"
+			   >
+	   My contributions	   </a>
+		   /	   <a
+		href="/wiki/index.php?title=Special:Userlogout&amp;returnto=Code/How_do_I_make_a_collidable_object%3F"
+			   >
+	   Log out	   </a>
+		</div>
+<img class="right" src="/wiki/skins/tdntheme/images/header_05.png" alt=""/></div>
+
+<div id="headerBottom"><a href="/wiki/TDN_Home"><img class="left" src="/wiki/skins/tdntheme/images/header_06.png" alt=""/></a>
+          <ul>
+            <li id="ca-nstab-main"
+               class="selected"               ><a href="/wiki/Code/How_do_I_make_a_collidable_object%3F">Article</a></li><li id="ca-talk"
+               class="new"               ><a href="/wiki/index.php?title=Talk:Code/How_do_I_make_a_collidable_object%3F&amp;action=edit">Discussion</a></li><li id="ca-edit"
+                              ><a href="/wiki/index.php?title=Code/How_do_I_make_a_collidable_object%3F&amp;action=edit">Edit</a></li><li id="ca-history"
+                              ><a href="/wiki/index.php?title=Code/How_do_I_make_a_collidable_object%3F&amp;action=history">History</a></li><li id="ca-move"
+                              ><a href="/wiki/Special:Movepage/Code/How_do_I_make_a_collidable_object%3F">Move</a></li><li id="ca-watch"
+                              ><a href="/wiki/index.php?title=Code/How_do_I_make_a_collidable_object%3F&amp;action=watch">Watch</a></li>          </ul>
+          <img class="right" src="/wiki/skins/tdntheme/images/header_09.png" alt=""/>
+</div>
+
+<div id="content"><div id="sidebar"><div>
+
+		<div class='sideNav'>
+	  <h1>TDN Core</h1>
+	  <div>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="/wiki/TDN_Home">TDN Home</a></li>
+	     	      <li id="n-metapage"><a href="/wiki/Meta">TDN Meta</a></li>
+	     	      <li id="n-currentevents"><a href="/wiki/Current_events">Current events</a></li>
+	     	      <li id="n-recentchanges"><a href="/wiki/Special:Recentchanges">Recent changes</a></li>
+	     	      <li id="n-randompage"><a href="/wiki/Special:Random">Random page</a></li>
+	     	      <li id="n-help"><a href="/wiki/Help:Contents">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='sideNav'>
+	  <h1>Navigation</h1>
+	  <div>
+	    <ul>
+	    	      <li id="n-torquegameenginepage"><a href="/wiki/TorqueGameEngine">TGE Home</a></li>
+	     	      <li id="n-torqueshaderenginepage"><a href="/wiki/TorqueShaderEngine">TGEA Home</a></li>
+	     	      <li id="n-torque2dpage"><a href="/wiki/Torque_Game_Builder">TGB Home</a></li>
+	     	      <li id="n-torquexpage"><a href="/wiki/TorqueX">TorqueX Home</a></li>
+	     	      <li id="n-tnlpage"><a href="/wiki/TorqueNetworkLibrary">TNL Home</a></li>
+	     	      <li id="n-rtsskpage"><a href="/wiki/RTSStarterKit">RTS-SK Home</a></li>
+	     	      <li id="n-recentchanges"><a href="/wiki/Special:Recentchanges">Recent changes</a></li>
+	     	      <li id="n-randompage"><a href="/wiki/Special:Random">Random page</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+	
+        <div class="sideNav">
+          <h1><label for="searchInput">Search</label></h1>
+          <div class="simpleSearch">
+            <form name="searchform" action="/wiki/Special:Search">
+              <input name="search" type="text" id="searchInput"
+                accesskey="f" value="" />
+              <input type='submit' name="go" class="searchButton"
+                value="Go"
+                />&nbsp;<input type='submit' name="fulltext"
+                value="Search" />
+            </form>
+          </div>
+          <p>&nbsp;</p>
+        </div>
+        <div class="sideNav">
+          <h1>Toolbox</h1>
+          <div>
+            <ul>
+
+		  		  <li id="t-whatlinkshere"><a href="/wiki/Special:Whatlinkshere/Code/How_do_I_make_a_collidable_object%3F">What links here</a></li>
+		  		  <li id="t-recentchangeslinked"><a href="/wiki/Special:Recentchangeslinked/Code/How_do_I_make_a_collidable_object%3F">Related changes</a></li>
+		                	      	      	      	      	      	      	      <li id="t-upload"><a href="/wiki/Special:Upload">Upload file</a></li>	      	      <li id="t-specialpages"><a href="/wiki/Special:Specialpages">Special pages</a></li>	      	      	      <li id="t-print"><a href="/wiki/index.php?title=Code/How_do_I_make_a_collidable_object%3F&amp;printable=yes">Printable version</a></li>
+	                  </ul>
+          </div>
+        </div>
+        
+
+</div></div>
+
+<div id="main"><div id="main-content">
+
+
+          <h1 class="firstHeading">Code/How do I make a collidable object?</h1>
+                              <div id="bodyContent">
+            <h3 id="siteSub">From TDN</h3>
+            <div id="contentSub"></div>
+                                    <!-- start content -->
+                        <p>In order to make your object Collidable by the Player, you need to add your new mask type to sCollisionMask in the player.cc:
+</p>
+<pre>static U32 sCollisionMoveMask = (TerrainObjectType      | InteriorObjectType   |
+                                 WaterObjectType        | PlayerObjectType     |
+                                 StaticShapeObjectType  | VehicleObjectType    |
+                                 ForceFieldObjectType |
+                                 PhysicalZoneObjectType | StaticTSObjectType);</pre>
+<p>Reference: <a href="http://www.garagegames.com/mg/forums/result.thread.php?qt=5999" class='external text' title="http://www.garagegames.com/mg/forums/result.thread.php?qt=5999" rel="nofollow">GarageGames Forums - Ron Yacketta</a>
+</p>
+<!-- Saved in parser cache with key tdnmw:pcache:idhash:4185-0!1!0!0!!en!2 and timestamp 20091116173139 -->
+<div class="printfooter">
+Retrieved from "<a href="http://tdn.garagegames.com/wiki/Code/How_do_I_make_a_collidable_object%3F">http://tdn.garagegames.com/wiki/Code/How_do_I_make_a_collidable_object%3F</a>"</div>
+                                    <!-- end content -->
+            <div class="visualClear"></div>
+          </div>
+
+
+</div></div>
+
+<hr class="cleaner" />
+
+</div>
+
+<div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/wiki/skins/common/images/poweredby_mediawiki_88x31.png" alt="MediaWiki" /></a></div>        <ul id="f-list">
+              <li id="f-viewcount">This page has been accessed 2,771 times.</li>       <li id="f-credits">This page was last modified 00:23, 15 December 2006 by <a href="/wiki/index.php?title=User:Mincetro&amp;action=edit" class="new" title="User:Mincetro">Mincetro</a>.</li>              <li id="f-about"><a href="/wiki/TDN:About" title="TDN:About">About TDN</a></li>       <li id="f-disclaimer"><a href="/wiki/TDN:General_disclaimer" title="TDN:General disclaimer">Disclaimers</a></li>     </ul>
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script><script type="text/javascript">
+_uacct = "UA-30217-4";
+urchinTracker();
+</script>
+</body>
+</html>
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=favicon.gif
+Content-Type: image/gif; name=favicon.gif
+Content-Location: http://tdn.garagegames.com/favicon.ico
+Content-Transfer-Encoding: Base64
+
+R0lGODlhIAAgAOZ/ANUAAMcBAYwBAZ4HB4gBAbwAAIIBAYcBAb0AAIYBAbsAAJEB
+AYQBAbUBAZ8BAYoBAYwHB5oBAacBAa4AAK8AAPYAAJIBAb4AANEAAP4AAKwBAdsA
+ALAAAJkBAfsAAKsBAZABAesAAOwAAMIBAaIBAc8AAJYBAYABAb8BAfQAAPwAAPoA
+ALYBAdcBAf0AAKUBAYUBAfkAAJcBAY8BAYEBAc4AAMgBAaABAaEAAJMBAYMBAfUA
+AJgBAY4BAZ0BAboBAa8BAbIHB54BAegBAeIAAIkHB6QHB+UAAJ0AANIBAbsBAaEB
+AakBAeEBAeMBAeYBAawHB/cBAc4BAZYHB74BAekAANwAAJQMDJUAAKoAAKsAALMB
+AbYAAMMBAawAAKgGBvABAbwBAfEBAcoAAOkBAeMAAPIAALEBAbcAAKQBAfcAAKUA
+AKcAAO0AALQBAeAAAK0BAcwBAc0AALgBAbkAAIsBAdIAAKgAANsBAaMBAcAAAMAB
+AboAAIkBAf8AAP///yH5BAEAAH8ALAAAAAAgACAAAAf/gH+Cg4SFhoeIiUIYIImO
+iQ0rYjOPlYMLdhl+T3UHlpVWfh4laQuen44VIUA4fBQHBKiISzYOFAgKBTIJsoc9
+d7l8fAgTsL2GXhfCwrq8x4QMH8rMr7HPglQaEwjLBR0wfc8sbX4pLxwKwggUBNao
+cEN+5TUkE+nqPM6WJG8uflFdXqxBU4BPgXQFOLT7ZEaenzg0OOgpgKAAl3sIIuhz
+xKLJiBV+lJwQoIEOEx4CJFygqGVjog4+PvjJIMEAgQc9CGVhQ+JMhE8WpPipYIJB
+n3CEQMip4mfEiU9k/IR4kOCoIQ/yWuiwFEGFnw06CFgtBEaeCAaCJIwIg2iOvAA0
+r44iJRTPj4oWR7D6iZHjEAB5bgzI7RPLQYMSMRwqltfgUAh5DsDJNTBmsWV5Gwzl
+8bfDlFwCBjBctpxiQCEU8pzAOkoggYG/8jJUMCPiyAYMAX5smTClEB55SQQTtoDl
+QIMaexoAkeAggokcCxaAmLHAkBp5KIQTsIDjxg0kDx7MrSRTngbh45/ZkLejg9Gx
+1/6UMSugKvxnAyrII8JA7P1jV3wBRRBGFAHBgRDEFwgAOw==
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=header_03.png
+Content-Type: image/png; name=header_03.png
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_03.png
+Content-Transfer-Encoding: Base64
+
+iVBORw0KGgoAAAANSUhEUgAAAAQAAAAyCAMAAABMDIr8AAAABGdBTUEAAK/INwWK
+6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABXUExURf//
+/9XV1dTU1Nra2t7e3tjY2N3d3dfX19vb2+zs7Nzc3OLi4t/f3+Xl5eTk5O7u7vLy
+8tnZ2evr6+3t7enp6ePj49bW1ujo6PX19czMzO/v7+rq6ubm5opA0HMAAAELSURB
+VHjaYmAAAoAAAiOAAAIjgAACI4AAAiOAAAIjgAACI4AAAiOAAAIjgAACI4AAAiOA
+AGKQBAKAAGKQAAKAAGIQAAKAAGKQAgKAAGLgBwKAAGIQBgKAAGLgBAKAAGIQAgKA
+AGKQBgKAAGIQAQKAAGIQBwKAAGKQAQKAAGLgBQKAAGLgAwKAAGIQBQKAAGLgBgKA
+AGLgAQKAAGJgAQKAAAITAAHEwAYEAAEEJgACiIELCAACiIEDCAACCEwABBADMxAA
+BBCYAAggBkEgAAggBlYgAAggMAEQQAzsQAAQQGACIIAYxIAAIIAYGIEAIIDABEAA
+gQmAAAITAAHEwAQEAAEEJgACCEwABBgAhScG+cxdvsYAAAAASUVORK5CYII=
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=container.css
+Content-Type: text/css; charset=utf-8; name=container.css
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/css/container.css
+Content-Transfer-Encoding: 8bit
+
+body {
+	margin:0; 
+	padding:0;
+	text-align:center;
+	}
+
+#body-with-lockmark {
+	/* A watermark. */
+	background-image: url('../images/background_lock.png');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: bottom right; 
+	}
+
+#content {
+	width: 100%;
+	margin:1em auto;
+	text-align:left;
+	min-width: 550px;
+	}
+
+#sidebar {
+	position:absolute;
+	top: 98px;
+	left:5px;
+	width:159px;
+	}
+
+#sidebar-content {
+	margin:0; 
+	padding: 0.5em 1em;
+	font-size: 70%;
+	}
+
+#main {
+	margin:0 0 0 160px;
+	padding: 5px;
+}
+
+#main-content 
+{
+	margin: -22px 0; 
+        padding: 0.25em 0.5em;
+	font-size: 100%;
+}
+
+hr.cleaner {
+	clear:both;
+	height:1px;
+	margin: -1px 0 0 0; padding:0;
+	border:none;
+	visibility: hidden;
+	}
+
+#headerTop {
+	height:56px;
+	width: 100%;
+	background: #FFFFFF url('../images/header_03.png') repeat-x;
+	background-position: 0px 6px;
+}
+
+#headerTop img.left {
+	position: absolute; top: 6px; left: 0px;
+	border:0;
+	z-index: 4;
+}
+
+#headerTop img.right {
+	position: absolute; top: 6px; right: 0px;
+	border:0;
+}
+
+/*printer styles*/
+.printfooter
+{
+  display: none;
+}
+
+@media print {
+	/*hide the left column when printing*/
+	#leftcol{display:none;} 
+	#navlogin{display:none;}
+}
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=header_07.png
+Content-Type: image/png; name=header_07.png
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_07.png
+Content-Transfer-Encoding: Base64
+
+iVBORw0KGgoAAAANSUhEUgAAAAQAAAAeCAMAAAA8Yk+xAAAABGdBTUEAAK/INwWK
+6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAtUExURdka
+Gvj4+P///9gZGdIYGNYZGc8YGNQZGdAYGOiKiqwTE8MWFsQWFtMYGNcZGepIbVMA
+AACgSURBVHjaYmAAAoAAAiOAAAIjgAACI4AAAiOAAAIjgAACI4AAYmAGAoAAAhMA
+AcTAysrKBxBAIIIVIIAY2IEAIIAYWFhYeAECCESwAAQQAwcQAAQQAxsQAAQQAw8P
+NzdAADFwAQFAADFwAgFAADEwAgFAAIEJgAACEwABBCYAAghMAAQQmAAIIAYmIAAI
+IDABEEBgAiCAwARAAIEJgAADAGoEAYE0UTcsAAAAAElFTkSuQmCC
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=navelements.css
+Content-Type: text/css; charset=utf-8; name=navelements.css
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/css/navelements.css
+Content-Transfer-Encoding: 8bit
+
+/* --- red bar --- 
+     page-related actions: page/take, edit, etc */
+
+#headerBottom
+{
+    background: url('../images/header_07.png') repeat-x;
+    width: 99.999%;
+    height: 30px;
+}
+
+#headerBottom img.left {
+	position: absolute; top: 56px; left: 0px;
+	border:0;
+}
+
+#headerBottom img.right {
+	position: absolute; top: 56px; right: 0px;
+	border:0;
+}
+
+#headerBottom ul {
+    margin: 0px;
+    padding: 0px;
+    padding-right: 15px;
+    float: right;
+    list-style: none;
+}
+#headerBottom li {
+    display: inline;
+    width: 99.999%
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+}
+#headerBottom li a {
+    color: #ffffff;
+    font-size: 7pt;
+    background: none;
+    text-decoration: none;
+    padding-bottom: 5px;
+}
+#headerBottom li img {
+    color: #ffffff;
+    font-size: 7pt;
+    background: none;
+    text-decoration: none;
+    padding-bottom: 5px;
+}
+#headerBottom .selected a { 
+    font-weight: bold; 
+}
+#headerBottom .new a { 
+     color:#ffffff; 
+     font-weight: italic; 
+}
+#headerBottom li a:hover {
+    text-decoration: underline;
+    color: #0000dd;
+    background: white;
+}
+#headerBottom li.istalk {
+    margin-right: 0; 
+}
+#headerBottom li.istalk a { 
+    padding-right: 0.5em; 
+}
+#headerBottom #ca-addsection a {
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+}
+/* offsets to distinguish the tab groups */
+li#ca-talk { 
+    margin-right: 1.6em; 
+}
+li#ca-watch, li#ca-watch, li#ca-varlang-0 { 
+    margin-left: 1.6em; 
+}
+
+/* --- login --- */
+#navlogin
+{
+	z-index: 2;
+	position: absolute; 
+	top: 1px; 
+	right: 10px;
+	font-size: 7pt;
+}
+
+#navlogin a 	{ font-weight: bold; color: #000 }
+#navlogin a:hover 	{ text-decoration: none }
+
+#privateNotice
+{
+    background: #D41919;
+    width: 100%;
+    color: white;
+}
+
+#privateNotice a
+{
+    text-decoration: none;
+    color: white;
+}
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=sidenavbg.png
+Content-Type: image/png; name=sidenavbg.png
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/sidenavbg.png
+Content-Transfer-Encoding: Base64
+
+iVBORw0KGgoAAAANSUhEUgAAAJ8AAAATCAMAAAC5ty9xAAAABGdBTUEAAK/INwWK
+6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAwUExUReyN
+jeqjo8MWFvbS0tlHR8QWFuiKitIYGKwTE88YGNYZGdAYGNQZGdgZGf///9kaGh0T
+DQIAAACySURBVHjazJbLDsMgDATt8ipJY/7/b1NFjWxolJjbzhGW1UhIYBKRQLHB
+ECmIgUQYyO4w5M6PGxxGkELE84t6xUQNEFK/iOgX1a9B4vLbDM7eieBtt/ptkDj8
+lgFH62Twplv9FkjU7wOJ+pWT/1ApF5uXi2bXmXzoNu/fubT+KH7cJ2a7zfuXV0Cy
+/X8rHPb/Fa7piVePO5nSbPVxpPIw/72hGOa/7/wcOKNAHLr5eRdgAHCriqsCIW/s
+AAAAAElFTkSuQmCC
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=sidebar.css
+Content-Type: text/css; charset=utf-8; name=sidebar.css
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/css/sidebar.css
+Content-Transfer-Encoding: 8bit
+
+input.searchButton {
+    margin-top:1px;
+    font-size: 95%;
+}
+#searchGoButton {
+    padding-left: .5em;
+    padding-right: .5em;
+    font-weight: bold;
+}
+#searchInput {
+    width:10.9em;
+    margin: 0;
+    font-size: 95%;
+}
+
+/*----------------------------------------------------------------------*/
+
+.sideNavHeader
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: D62626;
+	text-decoration: none;
+}
+
+/*---------*/
+.sideNav {
+	margin:0;
+	padding:0;
+}
+
+.sideNav a 			
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: normal;
+	padding-left: 5px;
+	color: #444;
+	display:block; 
+}
+	
+.sideNav a:hover 	
+{
+	display:block;
+	background-color: #E6E6E6;
+}
+
+.sideNav h1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: uppercase;
+	color: white;
+	text-decoration: none;
+	margin: 0;
+	padding-left: 0.7em;
+	background:url(http://tdn.garagegames.com/wiki/skins/tdntheme/images/sidenavbg.png) no-repeat left top;
+	height: 19px;
+	width: 159px;
+	padding-top: 2px;
+	vertical-align: middle;
+	border: none;
+}
+
+.sideNav h1 a:hover:after
+{
+	content: "\00BB"
+}
+
+
+.sideNav ul {
+	padding:0;
+	margin: 0.25em 0 1em .4em;
+	list-style: none; 
+}
+
+.sideNav li
+{
+   display: inline;
+   width: 99.99%;
+   /*display:block; */
+	white-space: nowrap; 
+}
+
+.sideNav li a
+{
+    	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: normal;
+	padding-left: 5px;
+	color: #444;
+	display:block;
+}
+
+.sideNav li a:hover
+{
+	display:block;
+	background-color: #E6E6E6;
+}
+
+
+.simpleSearch 
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: normal;
+	padding-left: 5px;
+	padding-top: 5px;
+	color: #444;
+	display:block;
+	width: 120px;
+	height: 30px;
+	padding-left: 10px;
+	line-height: 24px;
+}
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=bullet.gif
+Content-Type: image/gif; name=bullet.gif
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/bullet.gif
+Content-Transfer-Encoding: Base64
+
+R0lGODlhBQANAIAAAGOMnP///yH5BAEAAAEALAAAAAAFAA0AAAIJjI+pu+APo4Sp
+ADs=
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=content.css
+Content-Type: text/css; charset=utf-8; name=content.css
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/css/content.css
+Content-Transfer-Encoding: 8bit
+
+body, p, h1, h2, h3, table, td, th, ul, ol, textarea, input, select {
+    font-family: Geneva, verdana, arial, helvetica, sans-serif;
+    font-size: 9pt;
+    color:#222;
+}
+
+/* new link highlighting */
+a.new,
+#p-personal a.new { color:#ba0000; }
+a.new:visited,
+#p-personal a.new:visited { color:#a55858; }
+
+table {
+    font-size: 100%;
+}
+img {
+    border: none;
+    vertical-align: middle;
+}
+p {
+    margin: 0.4em 0em 0.5em 0em;
+    line-height: 1.2em;
+}
+
+p img { margin: 0; }
+
+hr {
+    height: 1px;
+    color: #aaaaaa;
+    background-color: #aaaaaa;
+    border: 0;
+    margin: 0.2em 0 0.2em 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: Black;
+    background: none;
+    font-weight: normal;
+    margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.17em;
+    border-bottom: 1px solid #aaaaaa;
+}
+h1 { font-size: 188%; }
+h2 { font-size: 150%; }
+h3, h4, h5, h6 {
+    border-bottom: none;
+    font-weight: bold;
+}
+h3 { font-size: 132%; }
+h4 { font-size: 116%; }
+h5 { font-size: 100%; }
+h6 { font-size: 80%;  }
+
+ul {
+    line-height: 1.5em;
+    list-style-type: square;
+    margin: 0.3em 0 0 1.5em;
+    padding:0;
+    list-style-image: url("../images/bullet.gif");
+}
+ol {
+    line-height: 1.5em;
+    margin: 0.3em 0 0 3.2em;
+    padding:0;
+    list-style-image: none;
+}
+li { margin-bottom: 0.1em; }
+dt {
+    font-weight: bold;
+    margin-bottom: 0.1em;
+}
+dl{
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;
+}
+dd {
+    line-height: 1.5em;
+    margin-left: 2em;
+    margin-bottom: 0.1em;
+}
+
+fieldset {
+    border: 1px solid #2f6fab;
+    margin: 1em 0em 1em 0em;
+    padding: 0em 1em 1em 1em;
+    line-height: 1.5em;
+}
+legend {
+    background: White;
+    padding: 0.5em;
+    font-size: 95%;
+}
+form {
+    border: none;
+    margin: 0;
+}
+
+textarea {
+    width: 100%;
+    padding: 0.1em;
+}
+select {
+	vertical-align: top;
+}
+abbr, acronym, .explain {
+    border-bottom: 1px dotted Black;
+    color: Black;
+    background: none;
+    cursor: help;
+}
+q {
+    font-family: Times, "Times New Roman", serif;
+    font-style: italic;
+}
+code { background-color: #f9f9f9; }
+pre {
+    padding: 1em;
+    border: 1px dashed #2f6fab;
+    color: Black;
+    background-color: #f9f9f9;
+    line-height: 1.1em;
+}
+
+
+
+/* -- Useful classes
+      We keep these around as they're generally useful. */
+/* user notification thing */
+.usermessage {
+    background-color: #ffce7b;
+    border: 1px solid #ffa500;
+    color: Black;
+    font-weight: bold;
+    margin: 2em 0em 1em 0em;
+    padding: 0.5em 1em;
+    vertical-align: middle;
+}
+#siteNotice {
+    text-align: center;
+    font-size: 95%;
+    padding: 0 0.9em 0 0.9em;
+}
+#siteNotice p {
+    margin: 0;
+    padding: 0;
+}
+.error {
+    color: red;
+    font-size: larger;
+}
+
+#catlinks {
+    border:1px solid #aaaaaa;
+    background-color:#f9f9f9;
+    padding:5px;
+    margin-top: 1em;
+    clear: both;
+}
+
+.documentByLine {
+    text-align: right;
+    font-size: 90%;
+    clear: both;
+    font-weight: normal;
+    color: #76797c;
+}
+
+#siteSub { display: none; }
+
+/* emulate center */
+.center {
+    width: 100%;
+    text-align: center;
+}
+*.center * {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* small for tables and similar */
+.small, .small * { font-size: 94%; }
+table.small { font-size: 100% }
+
+/* -- TOC -- */
+#toc {
+    /*border:1px solid #2f6fab;*/
+    border:1px solid #aaaaaa;
+    background-color:#f9f9f9;
+    padding:5px;
+    font-size: 95%;
+}
+#toc .tocindent { margin-left: 2em; }
+#toc .tocline { margin-bottom: 0px; }
+#toc p { margin: 0 }
+#toc .toctoggle { font-size: 94%; }
+#toc .editsection {
+    margin-top: 0.7em;
+    font-size: 94%;
+}
+
+/* -- images -- */
+div.floatright, table.floatright {
+    clear: right;
+    float: right;
+    position: relative;
+    margin: 0 0 0.5em 0.5em;
+    border: 0
+}
+div.floatright p { font-style: italic; }
+div.floatleft, table.floatleft {
+    float: left;
+    position: relative;
+    margin: 0 0.5em 0.5em 0;
+    border: 0
+}
+div.floatleft p { font-style: italic; }
+
+/* -- thumbnails -- */
+div.thumb {
+    margin-bottom: 0.5em;
+    border-style: solid; border-color: White;
+    width: auto;
+}
+div.thumb div {
+    border:1px solid #cccccc;
+    padding: 3px !important;
+    background-color:#f9f9f9;
+    font-size: 94%;
+    text-align: center;
+    overflow: hidden;
+}
+div.thumb div a img {
+    border:1px solid #cccccc;
+}
+div.thumb div div.thumbcaption {
+    border: none;
+    text-align: left;
+    line-height: 1.4em;
+    padding: 0.3em 0 0.1em 0;
+}
+div.magnify {
+    float: right;
+    border: none !important;
+    background: none !important;
+}
+div.magnify a, div.magnify img {
+    display: block;
+    border: none !important;
+    background: none !important;
+}
+div.tright {
+    clear: right;
+    float: right;
+    border-width: 0.5em 0 0.8em 1.4em;
+}
+div.tleft {
+    float: left;
+    margin-right:0.5em;
+    border-width: 0.5em 1.4em 0.8em 0;
+}
+.urlexpansion,
+.hiddenStructure {
+    display: none;
+}
+img.tex { vertical-align: middle; }
+span.texhtml { font-family: serif; }
+
+/* Page history styling */
+/* the auto-generated edit comments */
+.autocomment { color: gray; }
+#pagehistory span.user {
+    margin-left: 1.4em;
+    margin-right: 0.4em;
+}
+#pagehistory span.minor { font-weight: bold; }
+#pagehistory li { border: 1px solid White; }
+#pagehistory li.selected {
+    background-color:#f9f9f9;
+    border:1px dashed #aaaaaa;
+}
+/*
+** Diff rendering
+*/
+table.diff { background:white; }
+td.diff-otitle { background:#ffffff; }
+td.diff-ntitle { background:#ffffff; }
+td.diff-addedline {
+    background:#ccffcc;
+    font-size: smaller;
+}
+td.diff-deletedline {
+    background:#ffffaa;
+    font-size: smaller;
+}
+td.diff-context {
+    background:#eeeeee;
+    font-size: smaller;
+}
+span.diffchange { color: red; font-weight: bold; }
+
+/*
+** footer
+*/
+
+#footer {
+	margin:180px 10px 10px 180px;	
+	padding:5px;
+	text-align: center;
+	background: #eeeeee;
+}
+#footer li {
+    display: inline;
+    margin: 0 1.3em;
+    font-size: 70%;
+}
+
+/* hide from incapable browsers */
+head:first-child+body #footer li { white-space: nowrap; }
+#f-poweredbyico, #f-copyrightico {
+    margin: 0 10px;
+    position: relative;
+    top: -2px; /* Bump it up just a tad */
+}
+#f-poweredbyico {
+    float: right;
+    height: 1%;
+}
+#f-copyrightico {
+    float: left;
+    height: 1%;
+}
+
+/* js pref toc */
+#preftoc {
+    float: left;
+    margin: 1em 1em 1em 1em;
+    width: 13em;
+}
+#preftoc li { border: 1px solid White; }
+#preftoc li.selected {
+    background-color:#f9f9f9;
+    border:1px dashed #aaaaaa;
+}
+#preftoc a,
+#preftoc a:active {
+    display: block;
+    color: #0014a6;
+}
+#prefcontrol {
+    clear: both;
+    float: left;
+    margin-top: 1em;
+}
+div.prefsectiontip {
+    font-size: 95%;
+    margin-top: 1em;
+}
+fieldset.operaprefsection { margin-left: 15em }
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=commonPrint.css
+Content-Type: text/css; charset=utf-8; name=commonPrint.css
+Content-Location: http://tdn.garagegames.com/wiki/skins/common/commonPrint.css
+Content-Transfer-Encoding: 8bit
+
+/*
+** MediaWiki Print style sheet for CSS2-capable browsers.
+** Copyright Gabriel Wicke, http://www.aulinx.de/
+**
+** Derived from the plone (http://plone.org/) styles
+** Copyright Alexander Limi
+*/
+
+/* Thanks to A List Apart (http://alistapart.com/) for useful extras */
+a.stub,
+a.new{ color:#ba0000; text-decoration:none; }
+
+#toc { 
+    /*border:1px solid #2f6fab;*/
+    border:1px solid #aaaaaa;
+    background-color:#f9f9f9;
+    padding:5px;
+}
+.tocindent {
+	margin-left: 2em;
+}
+.tocline {
+	margin-bottom: 0px;
+}
+.toctoggle, .editsection {
+	font-size: smaller;
+}
+
+/* images */
+div.floatright { 
+    float: right; 
+    margin: 0;
+    position:relative;
+    border: 0.5em solid White;
+    border-width: 0.5em 0 0.8em 1.4em;
+}
+div.floatright p { font-style: italic;} 
+div.floatleft { 
+    float: left; 
+    margin: 0.3em 0.5em 0.5em 0;
+    position:relative;
+    border: 0.5em solid White;
+    border-width: 0.5em 1.4em 0.8em 0;
+}
+div.floatleft p { font-style: italic; } 
+/* thumbnails */
+div.thumb {
+    margin-bottom: 0.5em;
+    border-style: solid; border-color: White;
+    width: auto;
+    overflow: hidden;
+}
+div.thumb div {
+    border:1px solid #cccccc;
+    padding: 3px !important;
+    background-color:#f9f9f9;
+    font-size: 94%;
+    text-align: center;
+}
+div.thumb div a img {
+    border:1px solid #cccccc;
+}
+div.thumb div div.thumbcaption {
+    border: none;
+    padding: 0.3em 0 0.1em 0;
+}
+div.magnify { display: none; }
+div.tright {
+    float: right;
+    border-width: 0.5em 0 0.8em 1.4em;
+}
+div.tleft {
+    float: left;
+    margin-right:0.5em;
+    border-width: 0.5em 1.4em 0.8em 0;
+}
+
+/* table standards */
+table.rimage {
+    float:right; 
+    width:1pt; 
+    position:relative;
+    margin-left:1em; 
+    margin-bottom:1em;
+    text-align:center;
+}
+
+body {
+    background: White;
+    /*font-size: 11pt !important;*/
+    color: Black;
+    margin: 0;
+    padding: 0;
+}
+
+.noprint,
+div.top,
+div#column-one,
+#colophon,
+.editsection,
+.toctoggle,
+.tochidden,
+div#f-poweredbyico,
+div#f-copyrightico,
+li#f-viewcount,
+li#f-about,
+#sidebar,
+#headerTop,
+#headerBottom,
+li#f-disclaimer {
+    /* Hides all the elements irrelevant for printing */
+    display: none;
+}
+
+ul { 
+    list-style-type: square;
+}
+
+#content {
+    background: none;
+    border: none ! important;
+    font-size: 11pt;
+    padding: 0 ! important;
+    margin: 0 ! important;
+}
+#footer {
+    border-top: 1px solid black;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-weight: bold;
+}
+
+p, .documentDescription {
+    margin: 1em 0 ! important;
+    line-height: 1.2em;    
+}
+
+.tocindent p {
+	margin: 0 0 0 0 ! important;
+}
+
+pre {
+    border: 1pt dashed black;
+    white-space: pre;
+    font-size: 8pt;
+    overflow: auto;
+    padding: 1em 0;
+}
+
+table.listing,
+table.listing td {
+    border: 1pt solid black;
+    border-collapse: collapse;
+}
+
+a {
+    color: Black !important;
+    padding: 0 !important
+}
+
+a:link, a:visited {
+    color: #520;
+    background: transparent;
+    text-decoration: underline;
+}
+
+#content a.external.text:after, #content a.external.autonumber:after {
+    /* Expand URLs for printing */
+    content: " (" attr(href) ") ";
+}
+
+#globalWrapper {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+#column-content {
+    margin: 0 !important;
+}
+
+#column-content #content {
+    padding: 1em;
+    margin: 0 !important;
+}
+/* MSIE/Win doesn't understand 'inherit' */
+a, a.external, a.new, a.stub {
+	color: black ! important;
+	text-decoration: none ! important;
+}
+
+/* Continue ... */
+a, a.external, a.new, a.stub {
+	color: inherit ! important;
+	text-decoration: inherit ! important;
+}
+
+img { border: none; }
+img.tex { vertical-align: middle; }
+span.texhtml { font-family: serif; }
+
+div.townBox {
+    position:relative;
+    float:right;
+    background:White;
+    margin-left:1em;
+    border: 1px solid gray;
+    padding:0.3em;
+    width: 200px;
+    overflow: hidden;
+    clear: right;
+}
+div.townBox dl {
+    padding: 0;
+    margin: 0 0 0.3em 0; 
+    font-size: 96%;
+}
+div.townBox dl dt {
+    background: none;
+    margin: 0.4em 0 0 0;
+}
+div.townBox dl dd {
+    margin: 0.1em 0 0 1.1em;
+    background-color: #f3f3f3;
+}
+
+#siteNotice { display: none; }
+
+table.gallery {
+        border:  1px solid #cccccc;
+        margin:  2px;
+        padding: 2px;
+        background-color:#ffffff;
+}
+
+table.gallery tr { 
+        vertical-align:top;
+}
+
+div.gallerybox {
+        border: 1px solid #cccccc;
+        margin: 2px;
+        background-color:#f9f9f9;
+        width:  150px;
+}
+
+div.gallerybox div.thumb {
+        text-align: center;
+        border: 1px solid #cccccc;
+        margin: 2px;
+}       
+
+div.gallerytext {
+        font-size: 94%;
+        padding: 2px 4px;
+}       
+
+/*
+** Diff rendering
+*/
+table.diff { background:white; }
+td.diff-otitle { background:#ffffff; }
+td.diff-ntitle { background:#ffffff; }
+td.diff-addedline {
+    background:#ccffcc;
+    font-size: smaller;
+    border: solid 2px black;
+}
+td.diff-deletedline {
+    background:#ffffaa;
+    font-size: smaller;
+    border: dotted 2px black;
+}
+td.diff-context {
+    background:#eeeeee;
+    font-size: smaller;
+}
+span.diffchange { color: silver; font-weight: bold; text-decoration: underline; }
+
+/* Final content area overrides. */
+#content, #main, #main-content, #bodyContent {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 99%;
+}
+
+		
+#footer {
+	margin:5px 10px 10px 5px;
+	padding:5px;
+	text-align: center;
+	background: #eeeeee;
+}
+#footer li {
+    display: inline;
+    margin: 0 1.3em;
+    font-size: 70%;
+}
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=wikibits.js
+Content-Type: application/x-javascript; charset=utf-8; name=wikibits.js
+Content-Location: http://tdn.garagegames.com/wiki/skins/common/wikibits.js
+Content-Transfer-Encoding: Base64
+
+Ly8gV2lraXBlZGlhIEphdmFTY3JpcHQgc3VwcG9ydCBmdW5jdGlvbnMNCi8vIGlm
+IHRoaXMgaXMgdHJ1ZSwgdGhlIHRvb2xiYXIgd2lsbCBubyBsb25nZXIgb3Zlcndy
+aXRlIHRoZSBpbmZvYm94IHdoZW4geW91IG1vdmUgdGhlIG1vdXNlIG92ZXIgaW5k
+aXZpZHVhbCBpdGVtcw0KdmFyIG5vT3ZlcndyaXRlPWZhbHNlOw0KdmFyIGFsZXJ0
+VGV4dDsNCnZhciBjbGllbnRQQyA9IG5hdmlnYXRvci51c2VyQWdlbnQudG9Mb3dl
+ckNhc2UoKTsgLy8gR2V0IGNsaWVudCBpbmZvDQp2YXIgaXNfZ2Vja28gPSAoKGNs
+aWVudFBDLmluZGV4T2YoJ2dlY2tvJykhPS0xKSAmJiAoY2xpZW50UEMuaW5kZXhP
+Zignc3Bvb2ZlcicpPT0tMSkNCiAgICAgICAgICAgICAgICAmJiAoY2xpZW50UEMu
+aW5kZXhPZigna2h0bWwnKSA9PSAtMSkgJiYgKGNsaWVudFBDLmluZGV4T2YoJ25l
+dHNjYXBlLzcuMCcpPT0tMSkpOw0KdmFyIGlzX3NhZmFyaSA9ICgoY2xpZW50UEMu
+aW5kZXhPZignQXBwbGVXZWJLaXQnKSE9LTEpICYmIChjbGllbnRQQy5pbmRleE9m
+KCdzcG9vZmVyJyk9PS0xKSk7DQp2YXIgaXNfa2h0bWwgPSAobmF2aWdhdG9yLnZl
+bmRvciA9PSAnS0RFJyB8fCAoIGRvY3VtZW50LmNoaWxkTm9kZXMgJiYgIWRvY3Vt
+ZW50LmFsbCAmJiAhbmF2aWdhdG9yLnRhaW50RW5hYmxlZCApKTsNCmlmIChjbGll
+bnRQQy5pbmRleE9mKCdvcGVyYScpIT0tMSkgew0KICAgIHZhciBpc19vcGVyYSA9
+IHRydWU7DQogICAgdmFyIGlzX29wZXJhX3ByZXNldmVuID0gKHdpbmRvdy5vcGVy
+YSAmJiAhZG9jdW1lbnQuY2hpbGROb2Rlcyk7DQogICAgdmFyIGlzX29wZXJhX3Nl
+dmVuID0gKHdpbmRvdy5vcGVyYSAmJiBkb2N1bWVudC5jaGlsZE5vZGVzKTsNCn0N
+Cg0KLy8gYWRkIGFueSBvbmxvYWQgZnVuY3Rpb25zIGluIHRoaXMgaG9vayAocGxl
+YXNlIGRvbid0IGhhcmQtY29kZSBhbnkgZXZlbnRzIGluIHRoZSB4aHRtbCBzb3Vy
+Y2UpDQpmdW5jdGlvbiBvbmxvYWRob29rICgpIHsNCiAgICAvLyBkb24ndCBydW4g
+YW55dGhpbmcgYmVsb3cgdGhpcyBmb3Igbm9uLWRvbSBicm93c2Vycw0KICAgIGlm
+KCEoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQgJiYgZG9jdW1lbnQuZ2V0RWxlbWVu
+dHNCeVRhZ05hbWUpKSByZXR1cm47DQogICAgaGlzdHJvd2luaXQoKTsNCiAgICB1
+bmhpZGV0emJ1dHRvbigpOw0KICAgIHRhYmJlZHByZWZzKCk7DQogICAgYWtleXR0
+KCk7DQp9DQppZiAod2luZG93LmFkZEV2ZW50TGlzdGVuZXIpIHdpbmRvdy5hZGRF
+dmVudExpc3RlbmVyKCJsb2FkIixvbmxvYWRob29rLGZhbHNlKTsNCmVsc2UgaWYg
+KHdpbmRvdy5hdHRhY2hFdmVudCkgd2luZG93LmF0dGFjaEV2ZW50KCJvbmxvYWQi
+LG9ubG9hZGhvb2spOw0KDQoNCi8vIGRvY3VtZW50LndyaXRlIHNwZWNpYWwgc3R5
+bGVzaGVldCBsaW5rcw0KaWYodHlwZW9mIHN0eWxlcGF0aCAhPSAndW5kZWZpbmVk
+JyAmJiB0eXBlb2Ygc2tpbiAhPSAndW5kZWZpbmVkJykgew0KICAgIGlmIChpc19v
+cGVyYV9wcmVzZXZlbikgew0KICAgICAgICBkb2N1bWVudC53cml0ZSgnPGxpbmsg
+cmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgaHJlZj0iJytzdHlsZXBh
+dGgrJy8nK3NraW4rJy9PcGVyYTZGaXhlcy5jc3MiPicpOw0KICAgIH0gZWxzZSBp
+ZiAoaXNfb3BlcmFfc2V2ZW4pIHsNCiAgICAgICAgZG9jdW1lbnQud3JpdGUoJzxs
+aW5rIHJlbD0ic3R5bGVzaGVldCIgdHlwZT0idGV4dC9jc3MiIGhyZWY9Iicrc3R5
+bGVwYXRoKycvJytza2luKycvT3BlcmE3Rml4ZXMuY3NzIj4nKTsNCiAgICB9IGVs
+c2UgaWYgKGlzX2todG1sKSB7DQogICAgICAgIGRvY3VtZW50LndyaXRlKCc8bGlu
+ayByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiBocmVmPSInK3N0eWxl
+cGF0aCsnLycrc2tpbisnL0tIVE1MRml4ZXMuY3NzIj4nKTsNCiAgICB9DQp9DQov
+LyBVbi10cmFwIHVzIGZyb20gZnJhbWVzZXRzDQppZiggd2luZG93LnRvcCAhPSB3
+aW5kb3cgKSB3aW5kb3cudG9wLmxvY2F0aW9uID0gd2luZG93LmxvY2F0aW9uOw0K
+DQovLyBmb3IgZW5oYW5jZWQgUmVjZW50Q2hhbmdlcw0KZnVuY3Rpb24gdG9nZ2xl
+VmlzaWJpbGl0eSggX2xldmVsSWQsIF9vdGhlcklkLCBfbGlua0lkKSB7DQoJdmFy
+IHRoaXNMZXZlbCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCBfbGV2ZWxJZCAp
+Ow0KCXZhciBvdGhlckxldmVsID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoIF9v
+dGhlcklkICk7DQoJdmFyIGxpbmtMZXZlbCA9IGRvY3VtZW50LmdldEVsZW1lbnRC
+eUlkKCBfbGlua0lkICk7DQoJaWYgKCB0aGlzTGV2ZWwuc3R5bGUuZGlzcGxheSA9
+PSAnbm9uZScgKSB7DQoJCXRoaXNMZXZlbC5zdHlsZS5kaXNwbGF5ID0gJ2Jsb2Nr
+JzsNCgkJb3RoZXJMZXZlbC5zdHlsZS5kaXNwbGF5ID0gJ25vbmUnOw0KCQlsaW5r
+TGV2ZWwuc3R5bGUuZGlzcGxheSA9ICdpbmxpbmUnOw0KCX0gZWxzZSB7DQoJCXRo
+aXNMZXZlbC5zdHlsZS5kaXNwbGF5ID0gJ25vbmUnOw0KCQlvdGhlckxldmVsLnN0
+eWxlLmRpc3BsYXkgPSAnaW5saW5lJzsNCgkJbGlua0xldmVsLnN0eWxlLmRpc3Bs
+YXkgPSAnbm9uZSc7DQoJCX0NCn0NCg0KLy8gcGFnZSBoaXN0b3J5IHN0dWZmDQov
+LyBhdHRhY2ggZXZlbnQgaGFuZGxlcnMgdG8gdGhlIGlucHV0IGVsZW1lbnRzIG9u
+IGhpc3RvcnkgcGFnZQ0KZnVuY3Rpb24gaGlzdHJvd2luaXQgKCkgew0KICAgIGhm
+ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BhZ2VoaXN0b3J5Jyk7DQogICAg
+aWYoIWhmKSByZXR1cm47DQogICAgbGlzID0gaGYuZ2V0RWxlbWVudHNCeVRhZ05h
+bWUoJ2xpJyk7DQogICAgZm9yIChpPTA7aTxsaXMubGVuZ3RoO2krKykgew0KICAg
+ICAgICBpbnB1dHM9bGlzW2ldLmdldEVsZW1lbnRzQnlUYWdOYW1lKCdpbnB1dCcp
+Ow0KICAgICAgICBpZihpbnB1dHNbMF0gJiYgaW5wdXRzWzFdKSB7DQogICAgICAg
+ICAgICAgICAgaW5wdXRzWzBdLm9uY2xpY2sgPSBkaWZmY2hlY2s7DQogICAgICAg
+ICAgICAgICAgaW5wdXRzWzFdLm9uY2xpY2sgPSBkaWZmY2hlY2s7DQogICAgICAg
+IH0NCiAgICB9DQogICAgZGlmZmNoZWNrKCk7DQp9DQovLyBjaGVjayBzZWxlY3Rp
+b24gYW5kIHR3ZWFrIHZpc2liaWxpdHkvY2xhc3Mgb25jbGljaw0KZnVuY3Rpb24g
+ZGlmZmNoZWNrKCkgeyANCiAgICB2YXIgZGxpID0gZmFsc2U7IC8vIHRoZSBsaSB3
+aGVyZSB0aGUgZGlmZiByYWRpbyBpcyBjaGVja2VkDQogICAgdmFyIG9saSA9IGZh
+bHNlOyAvLyB0aGUgbGkgd2hlcmUgdGhlIG9sZGlkIHJhZGlvIGlzIGNoZWNrZWQN
+CiAgICBoZiA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdwYWdlaGlzdG9yeScp
+Ow0KICAgIGlmKCFoZikgcmV0dXJuOw0KICAgIGxpcyA9IGhmLmdldEVsZW1lbnRz
+QnlUYWdOYW1lKCdsaScpOw0KICAgIGZvciAoaT0wO2k8bGlzLmxlbmd0aDtpKysp
+IHsNCiAgICAgICAgaW5wdXRzPWxpc1tpXS5nZXRFbGVtZW50c0J5VGFnTmFtZSgn
+aW5wdXQnKTsNCiAgICAgICAgaWYoaW5wdXRzWzFdICYmIGlucHV0c1swXSkgew0K
+ICAgICAgICAgICAgaWYoaW5wdXRzWzFdLmNoZWNrZWQgfHwgaW5wdXRzWzBdLmNo
+ZWNrZWQpIHsgLy8gdGhpcyByb3cgaGFzIGEgY2hlY2tlZCByYWRpbyBidXR0b24N
+CiAgICAgICAgICAgICAgICBpZihpbnB1dHNbMV0uY2hlY2tlZCAmJiBpbnB1dHNb
+MF0uY2hlY2tlZCAmJiBpbnB1dHNbMF0udmFsdWUgPT0gaW5wdXRzWzFdLnZhbHVl
+KSByZXR1cm4gZmFsc2U7DQogICAgICAgICAgICAgICAgaWYob2xpKSB7IC8vIGl0
+J3MgdGhlIHNlY29uZCBjaGVja2VkIHJhZGlvDQogICAgICAgICAgICAgICAgICAg
+IGlmKGlucHV0c1sxXS5jaGVja2VkKSB7DQogICAgICAgICAgICAgICAgICAgIG9s
+aS5jbGFzc05hbWUgPSAic2VsZWN0ZWQiOw0KICAgICAgICAgICAgICAgICAgICBy
+ZXR1cm4gZmFsc2UgDQogICAgICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAg
+ICAgICB9IGVsc2UgaWYgKGlucHV0c1swXS5jaGVja2VkKSB7DQogICAgICAgICAg
+ICAgICAgICAgIHJldHVybiBmYWxzZTsNCiAgICAgICAgICAgICAgICB9DQogICAg
+ICAgICAgICAgICAgaWYoaW5wdXRzWzBdLmNoZWNrZWQpIGRsaSA9IGxpc1tpXTsN
+CiAgICAgICAgICAgICAgICBpZighb2xpKSBpbnB1dHNbMF0uc3R5bGUudmlzaWJp
+bGl0eSA9ICdoaWRkZW4nOw0KICAgICAgICAgICAgICAgIGlmKGRsaSkgaW5wdXRz
+WzFdLnN0eWxlLnZpc2liaWxpdHkgPSAnaGlkZGVuJzsNCiAgICAgICAgICAgICAg
+ICBsaXNbaV0uY2xhc3NOYW1lID0gInNlbGVjdGVkIjsNCiAgICAgICAgICAgICAg
+ICBvbGkgPSBsaXNbaV07DQogICAgICAgICAgICB9ICBlbHNlIHsgLy8gbm8gcmFk
+aW8gaXMgY2hlY2tlZCBpbiB0aGlzIHJvdw0KICAgICAgICAgICAgICAgIGlmKCFv
+bGkpIGlucHV0c1swXS5zdHlsZS52aXNpYmlsaXR5ID0gJ2hpZGRlbic7DQogICAg
+ICAgICAgICAgICAgZWxzZSBpbnB1dHNbMF0uc3R5bGUudmlzaWJpbGl0eSA9ICd2
+aXNpYmxlJzsNCiAgICAgICAgICAgICAgICBpZihkbGkpIGlucHV0c1sxXS5zdHls
+ZS52aXNpYmlsaXR5ID0gJ2hpZGRlbic7DQogICAgICAgICAgICAgICAgZWxzZSBp
+bnB1dHNbMV0uc3R5bGUudmlzaWJpbGl0eSA9ICd2aXNpYmxlJzsNCiAgICAgICAg
+ICAgICAgICBsaXNbaV0uY2xhc3NOYW1lID0gIiI7DQogICAgICAgICAgICB9DQog
+ICAgICAgIH0NCiAgICB9DQp9DQoNCi8vIGdlbmVyYXRlIHRvYyBmcm9tIHByZWZz
+IGZvcm0sIGZvbGQgc2VjdGlvbnMNCi8vIFhYWDogbmVlZHMgdGVzdGluZyBvbiBJ
+RS9NYWMgYW5kIHNhZmFyaQ0KLy8gbW9yZSBjb21tZW50cyB0byBmb2xsb3cNCmZ1
+bmN0aW9uIHRhYmJlZHByZWZzKCkgew0KICAgIHByZWZmb3JtID0gZG9jdW1lbnQu
+Z2V0RWxlbWVudEJ5SWQoJ3ByZWZlcmVuY2VzJyk7DQogICAgaWYoIXByZWZmb3Jt
+IHx8ICFkb2N1bWVudC5jcmVhdGVFbGVtZW50KSByZXR1cm47DQogICAgaWYocHJl
+ZmZvcm0ubm9kZU5hbWUudG9Mb3dlckNhc2UoKSA9PSAnYScpIHJldHVybjsgLy8g
+T2NjYXNpb25hbCBJRSBwcm9ibGVtDQogICAgcHJlZmZvcm0uY2xhc3NOYW1lID0g
+cHJlZmZvcm0uY2xhc3NOYW1lICsgJ2pzcHJlZnMnOw0KICAgIHZhciBzZWN0aW9u
+cyA9IG5ldyBBcnJheSgpOw0KICAgIGNoaWxkcmVuID0gcHJlZmZvcm0uY2hpbGRO
+b2RlczsNCiAgICB2YXIgc2VjaSA9IDA7DQogICAgZm9yKGk9MDtpPGNoaWxkcmVu
+Lmxlbmd0aDtpKyspIHsNCiAgICAgICAgaWYoY2hpbGRyZW5baV0ubm9kZU5hbWUu
+dG9Mb3dlckNhc2UoKS5pbmRleE9mKCdmaWVsZHNldCcpICE9IC0xKSB7DQogICAg
+ICAgICAgICBjaGlsZHJlbltpXS5pZCA9ICdwcmVmc2VjdGlvbi0nICsgc2VjaTsN
+CiAgICAgICAgICAgIGNoaWxkcmVuW2ldLmNsYXNzTmFtZSA9ICdwcmVmc2VjdGlv
+bic7DQogICAgICAgICAgICBpZihpc19vcGVyYSB8fCBpc19raHRtbCkgY2hpbGRy
+ZW5baV0uY2xhc3NOYW1lID0gJ3ByZWZzZWN0aW9uIG9wZXJhcHJlZnNlY3Rpb24n
+Ow0KICAgICAgICAgICAgbGVnZW5kcyA9IGNoaWxkcmVuW2ldLmdldEVsZW1lbnRz
+QnlUYWdOYW1lKCdsZWdlbmQnKTsNCiAgICAgICAgICAgIHNlY3Rpb25zW3NlY2ld
+ID0gbmV3IE9iamVjdCgpOw0KICAgICAgICAgICAgaWYobGVnZW5kc1swXSAmJiBs
+ZWdlbmRzWzBdLmZpcnN0Q2hpbGQubm9kZVZhbHVlKQ0KICAgICAgICAgICAgICAg
+IHNlY3Rpb25zW3NlY2ldLnRleHQgPSBsZWdlbmRzWzBdLmZpcnN0Q2hpbGQubm9k
+ZVZhbHVlOw0KICAgICAgICAgICAgZWxzZQ0KICAgICAgICAgICAgICAgIHNlY3Rp
+b25zW3NlY2ldLnRleHQgPSAnIyAnICsgc2VjaTsNCiAgICAgICAgICAgIHNlY3Rp
+b25zW3NlY2ldLnNlY2lkID0gY2hpbGRyZW5baV0uaWQ7DQogICAgICAgICAgICBz
+ZWNpKys7DQogICAgICAgICAgICBpZihzZWN0aW9ucy5sZW5ndGggIT0gMSkgY2hp
+bGRyZW5baV0uc3R5bGUuZGlzcGxheSA9ICdub25lJzsNCiAgICAgICAgICAgIGVs
+c2UgdmFyIHNlbGVjdGVkaWQgPSBjaGlsZHJlbltpXS5pZDsNCiAgICAgICAgfQ0K
+ICAgIH0NCiAgICB2YXIgdG9jID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgndWwn
+KTsNCiAgICB0b2MuaWQgPSAncHJlZnRvYyc7DQogICAgdG9jLnNlbGVjdGVkaWQg
+PSBzZWxlY3RlZGlkOw0KICAgIGZvcihpPTA7aTxzZWN0aW9ucy5sZW5ndGg7aSsr
+KSB7DQogICAgICAgIHZhciBsaSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2xp
+Jyk7DQogICAgICAgIGlmKGkgPT0gMCkgbGkuY2xhc3NOYW1lID0gJ3NlbGVjdGVk
+JzsNCiAgICAgICAgdmFyIGEgPSAgZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnYScp
+Ow0KICAgICAgICBhLmhyZWYgPSAnIycgKyBzZWN0aW9uc1tpXS5zZWNpZDsNCiAg
+ICAgICAgYS5vbmNsaWNrID0gdW5jb3ZlcnNlY3Rpb247DQogICAgICAgIGEuYXBw
+ZW5kQ2hpbGQoZG9jdW1lbnQuY3JlYXRlVGV4dE5vZGUoc2VjdGlvbnNbaV0udGV4
+dCkpOw0KICAgICAgICBhLnNlY2lkID0gc2VjdGlvbnNbaV0uc2VjaWQ7DQogICAg
+ICAgIGxpLmFwcGVuZENoaWxkKGEpOw0KICAgICAgICB0b2MuYXBwZW5kQ2hpbGQo
+bGkpOw0KICAgIH0NCiAgICBwcmVmZm9ybS5pbnNlcnRCZWZvcmUodG9jLCBjaGls
+ZHJlblswXSk7DQogICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3ByZWZzdWJt
+aXQnKS5pZCA9ICdwcmVmY29udHJvbCc7DQp9DQpmdW5jdGlvbiB1bmNvdmVyc2Vj
+dGlvbigpIHsNCiAgICBvbGRzZWNpZCA9IHRoaXMucGFyZW50Tm9kZS5wYXJlbnRO
+b2RlLnNlbGVjdGVkaWQ7DQogICAgbmV3c2VjID0gZG9jdW1lbnQuZ2V0RWxlbWVu
+dEJ5SWQodGhpcy5zZWNpZCk7DQogICAgaWYob2xkc2VjaWQgIT0gdGhpcy5zZWNp
+ZCkgew0KICAgICAgICB1bCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdwcmVm
+dG9jJyk7DQogICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKG9sZHNlY2lk
+KS5zdHlsZS5kaXNwbGF5ID0gJ25vbmUnOw0KICAgICAgICBuZXdzZWMuc3R5bGUu
+ZGlzcGxheSA9ICdibG9jayc7DQogICAgICAgIHVsLnNlbGVjdGVkaWQgPSB0aGlz
+LnNlY2lkOw0KICAgICAgICBsaXMgPSB1bC5nZXRFbGVtZW50c0J5VGFnTmFtZSgn
+bGknKTsNCiAgICAgICAgZm9yKGk9MDtpPCBsaXMubGVuZ3RoO2krKykgew0KICAg
+ICAgICAgICAgbGlzW2ldLmNsYXNzTmFtZSA9ICcnOw0KICAgICAgICB9DQogICAg
+ICAgIHRoaXMucGFyZW50Tm9kZS5jbGFzc05hbWUgPSAnc2VsZWN0ZWQnOw0KICAg
+IH0NCiAgICByZXR1cm4gZmFsc2U7DQp9DQoNCi8vIFRpbWV6b25lIHN0dWZmDQov
+LyB0eiBpbiBmb3JtYXQgWystXUhITU0NCmZ1bmN0aW9uIGNoZWNrVGltZXpvbmUo
+IHR6LCBtc2cgKSB7DQoJdmFyIGxvY2FsY2xvY2sgPSBuZXcgRGF0ZSgpOw0KCS8v
+IHJldHVybnMgbmVnYXRpdmUgb2Zmc2V0IGZyb20gR01UIGluIG1pbnV0ZXMNCgl2
+YXIgdHpSYXcgPSBsb2NhbGNsb2NrLmdldFRpbWV6b25lT2Zmc2V0KCk7DQoJdmFy
+IHR6SG91ciA9IE1hdGguZmxvb3IoIE1hdGguYWJzKHR6UmF3KSAvIDYwKTsNCgl2
+YXIgdHpNaW4gPSBNYXRoLmFicyh0elJhdykgJSA2MDsNCgl2YXIgdHpTdHJpbmcg
+PSAoKHR6UmF3ID49IDApID8gIi0iIDogIisiKSArICgodHpIb3VyIDwgMTApID8g
+IjAiIDogIiIpICsgdHpIb3VyICsgKCh0ek1pbiA8IDEwKSA/ICIwIiA6ICIiKSAr
+IHR6TWluOw0KCWlmKCB0eiAhPSB0elN0cmluZyApIHsNCgkJdmFyIGp1bmsgPSBt
+c2cuc3BsaXQoICckMScgKTsNCgkJZG9jdW1lbnQud3JpdGUoIGp1bmtbMF0gKyAi
+VVRDIiArIHR6U3RyaW5nICsganVua1sxXSApOw0KCX0NCn0NCmZ1bmN0aW9uIHVu
+aGlkZXR6YnV0dG9uKCkgew0KICAgIHR6YiA9IGRvY3VtZW50LmdldEVsZW1lbnRC
+eUlkKCdndWVzc3RpbWV6b25lYnV0dG9uJykNCiAgICBpZih0emIpIHR6Yi5zdHls
+ZS5kaXNwbGF5ID0gJ2lubGluZSc7DQp9DQoNCi8vIGluIFstXUhIOk1NIGZvcm1h
+dC4uLg0KLy8gd29uJ3QgeWV0IHdvcmsgd2l0aCBub24tZXZlbiB0enMNCmZ1bmN0
+aW9uIGZldGNoVGltZXpvbmUoKSB7DQoJLy8gRklYTUU6IHdvcmsgYXJvdW5kIFNh
+ZmFyaSBidWcNCgl2YXIgbG9jYWxjbG9jayA9IG5ldyBEYXRlKCk7DQoJLy8gcmV0
+dXJucyBuZWdhdGl2ZSBvZmZzZXQgZnJvbSBHTVQgaW4gbWludXRlcw0KCXZhciB0
+elJhdyA9IGxvY2FsY2xvY2suZ2V0VGltZXpvbmVPZmZzZXQoKTsNCgl2YXIgdHpI
+b3VyID0gTWF0aC5mbG9vciggTWF0aC5hYnModHpSYXcpIC8gNjApOw0KCXZhciB0
+ek1pbiA9IE1hdGguYWJzKHR6UmF3KSAlIDYwOw0KCXZhciB0elN0cmluZyA9ICgo
+dHpSYXcgPj0gMCkgPyAiLSIgOiAiIikgKyAoKHR6SG91ciA8IDEwKSA/ICIwIiA6
+ICIiKSArIHR6SG91ciArDQoJCSI6IiArICgodHpNaW4gPCAxMCkgPyAiMCIgOiAi
+IikgKyB0ek1pbjsNCglyZXR1cm4gdHpTdHJpbmc7DQp9DQoNCmZ1bmN0aW9uIGd1
+ZXNzVGltZXpvbmUoYm94KSB7DQoJZG9jdW1lbnQucHJlZmVyZW5jZXMud3BIb3Vy
+RGlmZi52YWx1ZSA9IGZldGNoVGltZXpvbmUoKTsNCn0NCg0KZnVuY3Rpb24gc2hv
+d1RvY1RvZ2dsZSgpIHsNCiAgaWYgKGRvY3VtZW50LmNyZWF0ZVRleHROb2RlKSB7
+DQogICAgLy8gVXNlcyBET00gY2FsbHMgdG8gYXZvaWQgZG9jdW1lbnQud3JpdGUg
+KyBYSFRNTCBpc3N1ZXMNCg0KICAgIHZhciBsaW5rSG9sZGVyID0gZG9jdW1lbnQu
+Z2V0RWxlbWVudEJ5SWQoJ3RvY3RpdGxlJykNCiAgICBpZiAoIWxpbmtIb2xkZXIp
+IHJldHVybjsNCg0KICAgIHZhciBvdXRlclNwYW4gPSBkb2N1bWVudC5jcmVhdGVF
+bGVtZW50KCdzcGFuJyk7DQogICAgb3V0ZXJTcGFuLmNsYXNzTmFtZSA9ICd0b2N0
+b2dnbGUnOw0KDQogICAgdmFyIHRvZ2dsZUxpbmsgPSBkb2N1bWVudC5jcmVhdGVF
+bGVtZW50KCdhJyk7DQogICAgdG9nZ2xlTGluay5pZCA9ICd0b2dnbGVsaW5rJzsN
+CiAgICB0b2dnbGVMaW5rLmNsYXNzTmFtZSA9ICdpbnRlcm5hbCc7DQogICAgdG9n
+Z2xlTGluay5ocmVmID0gJ2phdmFzY3JpcHQ6dG9nZ2xlVG9jKCknOw0KICAgIHRv
+Z2dsZUxpbmsuYXBwZW5kQ2hpbGQoZG9jdW1lbnQuY3JlYXRlVGV4dE5vZGUodG9j
+SGlkZVRleHQpKTsNCg0KICAgIG91dGVyU3Bhbi5hcHBlbmRDaGlsZChkb2N1bWVu
+dC5jcmVhdGVUZXh0Tm9kZSgnWycpKTsNCiAgICBvdXRlclNwYW4uYXBwZW5kQ2hp
+bGQodG9nZ2xlTGluayk7DQogICAgb3V0ZXJTcGFuLmFwcGVuZENoaWxkKGRvY3Vt
+ZW50LmNyZWF0ZVRleHROb2RlKCddJykpOw0KDQogICAgbGlua0hvbGRlci5hcHBl
+bmRDaGlsZChkb2N1bWVudC5jcmVhdGVUZXh0Tm9kZSgnICcpKTsNCiAgICBsaW5r
+SG9sZGVyLmFwcGVuZENoaWxkKG91dGVyU3Bhbik7DQoNCiAgICB2YXIgY29va2ll
+UG9zID0gZG9jdW1lbnQuY29va2llLmluZGV4T2YoImhpZGV0b2M9Iik7DQogICAg
+aWYgKGNvb2tpZVBvcyA+IC0xICYmIGRvY3VtZW50LmNvb2tpZS5jaGFyQXQoY29v
+a2llUG9zICsgOCkgPT0gMSkNCiAgICAgdG9nZ2xlVG9jKCk7DQogIH0NCn0NCg0K
+ZnVuY3Rpb24gY2hhbmdlVGV4dChlbCwgbmV3VGV4dCkgew0KICAvLyBTYWZhcmkg
+d29yayBhcm91bmQNCiAgaWYgKGVsLmlubmVyVGV4dCkNCiAgICBlbC5pbm5lclRl
+eHQgPSBuZXdUZXh0Ow0KICBlbHNlIGlmIChlbC5maXJzdENoaWxkICYmIGVsLmZp
+cnN0Q2hpbGQubm9kZVZhbHVlKQ0KICAgIGVsLmZpcnN0Q2hpbGQubm9kZVZhbHVl
+ID0gbmV3VGV4dDsNCn0NCiAgDQpmdW5jdGlvbiB0b2dnbGVUb2MoKSB7DQogCXZh
+ciB0b2MgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgndG9jJykuZ2V0RWxlbWVu
+dHNCeVRhZ05hbWUoJ3VsJylbMF07DQogIHZhciB0b2dnbGVMaW5rID0gZG9jdW1l
+bnQuZ2V0RWxlbWVudEJ5SWQoJ3RvZ2dsZWxpbmsnKQ0KICANCiAJaWYodG9jICYm
+IHRvZ2dsZUxpbmsgJiYgdG9jLnN0eWxlLmRpc3BsYXkgPT0gJ25vbmUnKSB7DQog
+ICAgIGNoYW5nZVRleHQodG9nZ2xlTGluaywgdG9jSGlkZVRleHQpOw0KIAkJdG9j
+LnN0eWxlLmRpc3BsYXkgPSAnYmxvY2snOw0KICAgICBkb2N1bWVudC5jb29raWUg
+PSAiaGlkZXRvYz0wIjsNCgl9IGVsc2Ugew0KICAgIGNoYW5nZVRleHQodG9nZ2xl
+TGluaywgdG9jU2hvd1RleHQpOw0KCQl0b2Muc3R5bGUuZGlzcGxheSA9ICdub25l
+JzsNCiAgICBkb2N1bWVudC5jb29raWUgPSAiaGlkZXRvYz0xIjsNCgl9DQp9DQoN
+Ci8vIHRoaXMgZnVuY3Rpb24gZ2VuZXJhdGVzIHRoZSBhY3R1YWwgdG9vbGJhciBi
+dXR0b25zIHdpdGggbG9jYWxpemVkIHRleHQNCi8vIHdlIHVzZSBpdCB0byBhdm9p
+ZCBjcmVhdGluZyB0aGUgdG9vbGJhciB3aGVyZSBqYXZhc2NyaXB0IGlzIG5vdCBl
+bmFibGVkDQpmdW5jdGlvbiBhZGRCdXR0b24oaW1hZ2VGaWxlLCBzcGVlZFRpcCwg
+dGFnT3BlbiwgdGFnQ2xvc2UsIHNhbXBsZVRleHQpIHsNCg0KCWltYWdlRmlsZT1l
+c2NhcGVRdW90ZXNIVE1MKGltYWdlRmlsZSk7DQoJc3BlZWRUaXA9ZXNjYXBlUXVv
+dGVzSFRNTChzcGVlZFRpcCk7DQoJdGFnT3Blbj1lc2NhcGVRdW90ZXModGFnT3Bl
+bik7DQoJdGFnQ2xvc2U9ZXNjYXBlUXVvdGVzKHRhZ0Nsb3NlKTsNCglzYW1wbGVU
+ZXh0PWVzY2FwZVF1b3RlcyhzYW1wbGVUZXh0KTsNCgl2YXIgbW91c2VPdmVyPSIi
+Ow0KDQoJLy8gd2UgY2FuJ3QgY2hhbmdlIHRoZSBzZWxlY3Rpb24sIHNvIHdlIHNo
+b3cgZXhhbXBsZSB0ZXh0cw0KCS8vIHdoZW4gbW92aW5nIHRoZSBtb3VzZSBpbnN0
+ZWFkLCB1bnRpbCB0aGUgZmlyc3QgYnV0dG9uIGlzIGNsaWNrZWQNCglpZighZG9j
+dW1lbnQuc2VsZWN0aW9uICYmICFpc19nZWNrbykgew0KCQkvLyBmaWx0ZXIgYmFj
+a3NsYXNoZXMgc28gaXQgY2FuIGJlIHNob3duIGluIHRoZSBpbmZvYm94DQoJCXZh
+ciByZT1uZXcgUmVnRXhwKCJcXFxcbiIsImciKTsNCgkJdGFnT3Blbj10YWdPcGVu
+LnJlcGxhY2UocmUsIiIpOw0KCQl0YWdDbG9zZT10YWdDbG9zZS5yZXBsYWNlKHJl
+LCIiKTsNCgkJbW91c2VPdmVyID0gIm9uTW91c2VvdmVyPVwiaWYoIW5vT3Zlcndy
+aXRlKXtkb2N1bWVudC5pbmZvZm9ybS5pbmZvYm94LnZhbHVlPSciK3RhZ09wZW4r
+c2FtcGxlVGV4dCt0YWdDbG9zZSsiJ307XCIiOw0KCX0NCg0KCWRvY3VtZW50Lndy
+aXRlKCI8YSBocmVmPVwiamF2YXNjcmlwdDppbnNlcnRUYWdzIik7DQoJZG9jdW1l
+bnQud3JpdGUoIignIit0YWdPcGVuKyInLCciK3RhZ0Nsb3NlKyInLCciK3NhbXBs
+ZVRleHQrIicpO1wiPiIpOw0KDQoJZG9jdW1lbnQud3JpdGUoIjxpbWcgd2lkdGg9
+XCIyM1wiIGhlaWdodD1cIjIyXCIgc3JjPVwiIitpbWFnZUZpbGUrIlwiIGJvcmRl
+cj1cIjBcIiBhbHQ9XCIiK3NwZWVkVGlwKyJcIiB0aXRsZT1cIiIrc3BlZWRUaXAr
+IlwiIittb3VzZU92ZXIrIj4iKTsNCglkb2N1bWVudC53cml0ZSgiPC9hPiIpOw0K
+CXJldHVybjsNCn0NCg0KZnVuY3Rpb24gYWRkSW5mb2JveChpbmZvVGV4dCx0ZXh0
+X2FsZXJ0KSB7DQoJYWxlcnRUZXh0PXRleHRfYWxlcnQ7DQoJdmFyIGNsaWVudFBD
+ID0gbmF2aWdhdG9yLnVzZXJBZ2VudC50b0xvd2VyQ2FzZSgpOyAvLyBHZXQgY2xp
+ZW50IGluZm8NCg0KCXZhciByZT1uZXcgUmVnRXhwKCJcXFxcbiIsImciKTsNCglh
+bGVydFRleHQ9YWxlcnRUZXh0LnJlcGxhY2UocmUsIlxuIik7DQoNCgkvLyBpZiBu
+byBzdXBwb3J0IGZvciBjaGFuZ2luZyBzZWxlY3Rpb24sIGFkZCBhIHNtYWxsIGNv
+cHkgJiBwYXN0ZSBmaWVsZA0KCS8vIGRvY3VtZW50LnNlbGVjdGlvbiBpcyBhbiBJ
+RS1vbmx5IHByb3BlcnR5LiBUaGUgZnVsbCB0b29sYmFyIHdvcmtzIGluIElFIGFu
+ZA0KCS8vIEdlY2tvLWJhc2VkIGJyb3dzZXJzLg0KCWlmKCFkb2N1bWVudC5zZWxl
+Y3Rpb24gJiYgIWlzX2dlY2tvKSB7DQogCQlpbmZvVGV4dD1lc2NhcGVRdW90ZXNI
+VE1MKGluZm9UZXh0KTsNCgkgCWRvY3VtZW50LndyaXRlKCI8Zm9ybSBuYW1lPSdp
+bmZvZm9ybScgaWQ9J2luZm9mb3JtJz4iKw0KCQkJIjxpbnB1dCBzaXplPTgwIGlk
+PSdpbmZvYm94JyBuYW1lPSdpbmZvYm94JyB2YWx1ZT1cIiIrDQoJCQlpbmZvVGV4
+dCsiXCIgcmVhZG9ubHk9J3JlYWRvbmx5Jz48L2Zvcm0+Iik7DQogCX0NCg0KfQ0K
+DQpmdW5jdGlvbiBlc2NhcGVRdW90ZXModGV4dCkgew0KCXZhciByZT1uZXcgUmVn
+RXhwKCInIiwiZyIpOw0KCXRleHQ9dGV4dC5yZXBsYWNlKHJlLCJcXCciKTsNCgly
+ZT1uZXcgUmVnRXhwKCJcXG4iLCJnIik7DQoJdGV4dD10ZXh0LnJlcGxhY2UocmUs
+IlxcbiIpOw0KCXJldHVybiBlc2NhcGVRdW90ZXNIVE1MKHRleHQpOw0KfQ0KDQpm
+dW5jdGlvbiBlc2NhcGVRdW90ZXNIVE1MKHRleHQpIHsNCgl2YXIgcmU9bmV3IFJl
+Z0V4cCgnJicsImciKTsNCgl0ZXh0PXRleHQucmVwbGFjZShyZSwiJmFtcDsiKTsN
+Cgl2YXIgcmU9bmV3IFJlZ0V4cCgnIicsImciKTsNCgl0ZXh0PXRleHQucmVwbGFj
+ZShyZSwiJnF1b3Q7Iik7DQoJdmFyIHJlPW5ldyBSZWdFeHAoJzwnLCJnIik7DQoJ
+dGV4dD10ZXh0LnJlcGxhY2UocmUsIiZsdDsiKTsNCgl2YXIgcmU9bmV3IFJlZ0V4
+cCgnPicsImciKTsNCgl0ZXh0PXRleHQucmVwbGFjZShyZSwiJmd0OyIpOw0KCXJl
+dHVybiB0ZXh0Ow0KfQ0KDQovLyBhcHBseSB0YWdPcGVuL3RhZ0Nsb3NlIHRvIHNl
+bGVjdGlvbiBpbiB0ZXh0YXJlYSwNCi8vIHVzZSBzYW1wbGVUZXh0IGluc3RlYWQg
+b2Ygc2VsZWN0aW9uIGlmIHRoZXJlIGlzIG5vbmUNCi8vIGNvcGllZCBhbmQgYWRh
+cHRlZCBmcm9tIHBocEJCDQpmdW5jdGlvbiBpbnNlcnRUYWdzKHRhZ09wZW4sIHRh
+Z0Nsb3NlLCBzYW1wbGVUZXh0KSB7DQoNCgl2YXIgdHh0YXJlYSA9IGRvY3VtZW50
+LmVkaXRmb3JtLndwVGV4dGJveDE7DQoJLy8gSUUNCglpZihkb2N1bWVudC5zZWxl
+Y3Rpb24gICYmICFpc19nZWNrbykgew0KCQl2YXIgdGhlU2VsZWN0aW9uID0gZG9j
+dW1lbnQuc2VsZWN0aW9uLmNyZWF0ZVJhbmdlKCkudGV4dDsNCgkJaWYoIXRoZVNl
+bGVjdGlvbikgeyB0aGVTZWxlY3Rpb249c2FtcGxlVGV4dDt9DQoJCXR4dGFyZWEu
+Zm9jdXMoKTsNCgkJaWYodGhlU2VsZWN0aW9uLmNoYXJBdCh0aGVTZWxlY3Rpb24u
+bGVuZ3RoIC0gMSkgPT0gIiAiKXsvLyBleGNsdWRlIGVuZGluZyBzcGFjZSBjaGFy
+LCBpZiBhbnkNCgkJCXRoZVNlbGVjdGlvbiA9IHRoZVNlbGVjdGlvbi5zdWJzdHJp
+bmcoMCwgdGhlU2VsZWN0aW9uLmxlbmd0aCAtIDEpOw0KCQkJZG9jdW1lbnQuc2Vs
+ZWN0aW9uLmNyZWF0ZVJhbmdlKCkudGV4dCA9IHRhZ09wZW4gKyB0aGVTZWxlY3Rp
+b24gKyB0YWdDbG9zZSArICIgIjsNCgkJfSBlbHNlIHsNCgkJCWRvY3VtZW50LnNl
+bGVjdGlvbi5jcmVhdGVSYW5nZSgpLnRleHQgPSB0YWdPcGVuICsgdGhlU2VsZWN0
+aW9uICsgdGFnQ2xvc2U7DQoJCX0NCg0KCS8vIE1vemlsbGENCgl9IGVsc2UgaWYo
+dHh0YXJlYS5zZWxlY3Rpb25TdGFydCB8fCB0eHRhcmVhLnNlbGVjdGlvblN0YXJ0
+ID09ICcwJykgew0KIAkJdmFyIHN0YXJ0UG9zID0gdHh0YXJlYS5zZWxlY3Rpb25T
+dGFydDsNCgkJdmFyIGVuZFBvcyA9IHR4dGFyZWEuc2VsZWN0aW9uRW5kOw0KCQl2
+YXIgc2Nyb2xsVG9wPXR4dGFyZWEuc2Nyb2xsVG9wOw0KCQl2YXIgbXlUZXh0ID0g
+KHR4dGFyZWEudmFsdWUpLnN1YnN0cmluZyhzdGFydFBvcywgZW5kUG9zKTsNCgkJ
+aWYoIW15VGV4dCkgeyBteVRleHQ9c2FtcGxlVGV4dDt9DQoJCWlmKG15VGV4dC5j
+aGFyQXQobXlUZXh0Lmxlbmd0aCAtIDEpID09ICIgIil7IC8vIGV4Y2x1ZGUgZW5k
+aW5nIHNwYWNlIGNoYXIsIGlmIGFueQ0KCQkJc3Vic3QgPSB0YWdPcGVuICsgbXlU
+ZXh0LnN1YnN0cmluZygwLCAobXlUZXh0Lmxlbmd0aCAtIDEpKSArIHRhZ0Nsb3Nl
+ICsgIiAiOw0KCQl9IGVsc2Ugew0KCQkJc3Vic3QgPSB0YWdPcGVuICsgbXlUZXh0
+ICsgdGFnQ2xvc2U7DQoJCX0NCgkJdHh0YXJlYS52YWx1ZSA9IHR4dGFyZWEudmFs
+dWUuc3Vic3RyaW5nKDAsIHN0YXJ0UG9zKSArIHN1YnN0ICsNCgkJICB0eHRhcmVh
+LnZhbHVlLnN1YnN0cmluZyhlbmRQb3MsIHR4dGFyZWEudmFsdWUubGVuZ3RoKTsN
+CgkJdHh0YXJlYS5mb2N1cygpOw0KDQoJCXZhciBjUG9zPXN0YXJ0UG9zKyh0YWdP
+cGVuLmxlbmd0aCtteVRleHQubGVuZ3RoK3RhZ0Nsb3NlLmxlbmd0aCk7DQoJCXR4
+dGFyZWEuc2VsZWN0aW9uU3RhcnQ9Y1BvczsNCgkJdHh0YXJlYS5zZWxlY3Rpb25F
+bmQ9Y1BvczsNCgkJdHh0YXJlYS5zY3JvbGxUb3A9c2Nyb2xsVG9wOw0KDQoJLy8g
+QWxsIG90aGVycw0KCX0gZWxzZSB7DQoJCXZhciBjb3B5X2FsZXJ0VGV4dD1hbGVy
+dFRleHQ7DQoJCXZhciByZTE9bmV3IFJlZ0V4cCgiXFwkMSIsImciKTsNCgkJdmFy
+IHJlMj1uZXcgUmVnRXhwKCJcXCQyIiwiZyIpOw0KCQljb3B5X2FsZXJ0VGV4dD1j
+b3B5X2FsZXJ0VGV4dC5yZXBsYWNlKHJlMSxzYW1wbGVUZXh0KTsNCgkJY29weV9h
+bGVydFRleHQ9Y29weV9hbGVydFRleHQucmVwbGFjZShyZTIsdGFnT3BlbitzYW1w
+bGVUZXh0K3RhZ0Nsb3NlKTsNCgkJdmFyIHRleHQ7DQoJCWlmIChzYW1wbGVUZXh0
+KSB7DQoJCQl0ZXh0PXByb21wdChjb3B5X2FsZXJ0VGV4dCk7DQoJCX0gZWxzZSB7
+DQoJCQl0ZXh0PSIiOw0KCQl9DQoJCWlmKCF0ZXh0KSB7IHRleHQ9c2FtcGxlVGV4
+dDt9DQoJCXRleHQ9dGFnT3Blbit0ZXh0K3RhZ0Nsb3NlOw0KCQlkb2N1bWVudC5p
+bmZvZm9ybS5pbmZvYm94LnZhbHVlPXRleHQ7DQoJCS8vIGluIFNhZmFyaSB0aGlz
+IGNhdXNlcyBzY3JvbGxpbmcNCgkJaWYoIWlzX3NhZmFyaSkgew0KCQkJdHh0YXJl
+YS5mb2N1cygpOw0KCQl9DQoJCW5vT3ZlcndyaXRlPXRydWU7DQoJfQ0KCS8vIHJl
+cG9zaXRpb24gY3Vyc29yIGlmIHBvc3NpYmxlDQoJaWYgKHR4dGFyZWEuY3JlYXRl
+VGV4dFJhbmdlKSB0eHRhcmVhLmNhcmV0UG9zID0gZG9jdW1lbnQuc2VsZWN0aW9u
+LmNyZWF0ZVJhbmdlKCkuZHVwbGljYXRlKCk7DQp9DQoNCmZ1bmN0aW9uIGFrZXl0
+dCgpIHsNCiAgICBpZih0eXBlb2YgdGEgPT0gInVuZGVmaW5lZCIgfHwgIXRhKSBy
+ZXR1cm47DQogICAgcHJlZiA9ICdhbHQtJzsNCiAgICBpZihpc19zYWZhcmkgfHwg
+bmF2aWdhdG9yLnVzZXJBZ2VudC50b0xvd2VyQ2FzZSgpLmluZGV4T2YoICdtYWMn
+ICkgKyAxICkgcHJlZiA9ICdjb250cm9sLSc7DQogICAgaWYoaXNfb3BlcmEpIHBy
+ZWYgPSAnc2hpZnQtZXNjLSc7DQogICAgZm9yKGlkIGluIHRhKSB7DQogICAgICAg
+IG4gPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChpZCk7DQogICAgICAgIGlmKG4p
+ew0KICAgICAgICAgICAgYSA9IG4uY2hpbGROb2Rlc1swXTsNCiAgICAgICAgICAg
+IGlmKGEpew0KICAgICAgICAgICAgICAgIGlmKHRhW2lkXVswXS5sZW5ndGggPiAw
+KSB7DQogICAgICAgICAgICAgICAgICAgIGEuYWNjZXNzS2V5ID0gdGFbaWRdWzBd
+Ow0KICAgICAgICAgICAgICAgICAgICBhayA9ICcgWycrcHJlZit0YVtpZF1bMF0r
+J10nOw0KICAgICAgICAgICAgICAgIH0gZWxzZSB7DQogICAgICAgICAgICAgICAg
+ICAgIGFrID0gJyc7DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAg
+IGEudGl0bGUgPSB0YVtpZF1bMV0rYWs7DQogICAgICAgICAgICB9IGVsc2Ugew0K
+ICAgICAgICAgICAgICAgIGlmKHRhW2lkXVswXS5sZW5ndGggPiAwKSB7DQogICAg
+ICAgICAgICAgICAgICAgIG4uYWNjZXNzS2V5ID0gdGFbaWRdWzBdOw0KICAgICAg
+ICAgICAgICAgICAgICBhayA9ICcgWycrcHJlZit0YVtpZF1bMF0rJ10nOw0KICAg
+ICAgICAgICAgICAgIH0gZWxzZSB7DQogICAgICAgICAgICAgICAgICAgIGFrID0g
+Jyc7DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgIG4udGl0bGUg
+PSB0YVtpZF1bMV0rYWs7DQogICAgICAgICAgICB9DQogICAgICAgIH0NCiAgICB9
+DQp9DQoNCmZ1bmN0aW9uIHNldHVwUmlnaHRDbGlja0VkaXQoKSB7DQoJaWYoIGRv
+Y3VtZW50LmdldEVsZW1lbnRzQnlUYWdOYW1lICkgew0KCQl2YXIgZGl2cyA9IGRv
+Y3VtZW50LmdldEVsZW1lbnRzQnlUYWdOYW1lKCAnZGl2JyApOw0KCQlmb3IoIHZh
+ciBpID0gMDsgaSA8IGRpdnMubGVuZ3RoOyBpKysgKSB7DQoJCQl2YXIgZWwgPSBk
+aXZzW2ldOw0KCQkJaWYoIGVsLmNsYXNzTmFtZSA9PSAnZWRpdHNlY3Rpb24nICkg
+ew0KCQkJCWFkZFJpZ2h0Q2xpY2tFZGl0SGFuZGxlciggZWwgKTsNCgkJCX0NCgkJ
+fQ0KCX0NCn0NCg0KZnVuY3Rpb24gYWRkUmlnaHRDbGlja0VkaXRIYW5kbGVyKCBl
+bCApIHsNCglmb3IoIHZhciBpID0gMDsgaSA8IGVsLmNoaWxkTm9kZXMubGVuZ3Ro
+OyBpKysgKSB7DQoJCXZhciBsaW5rID0gZWwuY2hpbGROb2Rlc1tpXTsNCgkJaWYo
+IGxpbmsubm9kZVR5cGUgPT0gMSAmJiBsaW5rLm5vZGVOYW1lLnRvTG93ZXJDYXNl
+KCkgPT0gJ2EnICkgew0KCQkJdmFyIGVkaXRIcmVmID0gbGluay5nZXRBdHRyaWJ1
+dGUoICdocmVmJyApOw0KCQkJDQoJCQkvLyBmaW5kIHRoZSBmb2xsb3dpbmcgYQ0K
+CQkJdmFyIG5leHQgPSBlbC5uZXh0U2libGluZzsNCgkJCXdoaWxlKCBuZXh0Lm5v
+ZGVUeXBlICE9IDEgKQ0KCQkJCW5leHQgPSBuZXh0Lm5leHRTaWJsaW5nOw0KCQkJ
+DQoJCQkvLyBmaW5kIHRoZSBmb2xsb3dpbmcgaGVhZGVyDQoJCQluZXh0ID0gbmV4
+dC5uZXh0U2libGluZzsNCgkJCXdoaWxlKCBuZXh0Lm5vZGVUeXBlICE9IDEgKQ0K
+CQkJCW5leHQgPSBuZXh0Lm5leHRTaWJsaW5nOw0KCQkJDQoJCQlpZiggbmV4dCAm
+JiBuZXh0Lm5vZGVUeXBlID09IDEgJiYNCgkJCQluZXh0Lm5vZGVOYW1lLm1hdGNo
+KCAvXltIaF1bMS02XSQvICkgKSB7DQoJCQkJbmV4dC5vbmNvbnRleHRtZW51ID0g
+ZnVuY3Rpb24oKSB7DQoJCQkJCWRvY3VtZW50LmxvY2F0aW9uID0gZWRpdEhyZWY7
+DQoJCQkJCXJldHVybiBmYWxzZTsNCgkJCQl9DQoJCQl9DQoJCX0NCgl9DQp9DQoN
+CmZ1bmN0aW9uIGZpbGxEZXN0RmlsZW5hbWUoKSB7DQoJaWYgKCFkb2N1bWVudC5n
+ZXRFbGVtZW50QnlJZCkgcmV0dXJuOw0KCXZhciBwYXRoID0gZG9jdW1lbnQuZ2V0
+RWxlbWVudEJ5SWQoJ3dwVXBsb2FkRmlsZScpLnZhbHVlOw0KCS8vIEZpbmQgdHJh
+aWxpbmcgcGFydA0KCXZhciBzbGFzaCA9IHBhdGgubGFzdEluZGV4T2YoICcvJyAp
+Ow0KCXZhciBiYWNrc2xhc2ggPSBwYXRoLmxhc3RJbmRleE9mKCAnXFwnICk7DQoJ
+dmFyIGZuYW1lOw0KCWlmICggc2xhc2ggPT0gLTEgJiYgYmFja3NsYXNoID09IC0x
+ICkgew0KCQlmbmFtZSA9IHBhdGg7DQoJfSBlbHNlIGlmICggc2xhc2ggPiBiYWNr
+c2xhc2ggKSB7DQoJCWZuYW1lID0gcGF0aC5zdWJzdHJpbmcoIHNsYXNoKzEsIDEw
+MDAwICk7DQoJfSBlbHNlIHsNCgkJZm5hbWUgPSBwYXRoLnN1YnN0cmluZyggYmFj
+a3NsYXNoKzEsIDEwMDAwICk7DQoJfQ0KDQoJLy8gQ2FwaXRhbGlzZSBmaXJzdCBs
+ZXR0ZXIgYW5kIHJlcGxhY2Ugc3BhY2VzIGJ5IHVuZGVyc2NvcmVzDQoJZm5hbWUg
+PSBmbmFtZS5jaGFyQXQoMCkudG9VcHBlckNhc2UoKS5jb25jYXQoZm5hbWUuc3Vi
+c3RyaW5nKDEsMTAwMDApKS5yZXBsYWNlKCAvIC9nLCAnXycgKTsNCg0KCS8vIE91
+dHB1dCByZXN1bHQNCgl2YXIgZGVzdEZpbGUgPSBkb2N1bWVudC5nZXRFbGVtZW50
+QnlJZCgnd3BEZXN0RmlsZScpOw0KCWlmIChkZXN0RmlsZSkgZGVzdEZpbGUudmFs
+dWUgPSBmbmFtZTsNCn0NCgkNCg0KZnVuY3Rpb24gY29uc2lkZXJDaGFuZ2luZ0V4
+cGlyeUZvY3VzKCkgew0KCWlmICghZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQpIHJl
+dHVybjsNCgl2YXIgZHJvcCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd3cEJs
+b2NrRXhwaXJ5Jyk7DQoJaWYgKCFkcm9wKSByZXR1cm47DQoJdmFyIGZpZWxkID0g
+ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3dwQmxvY2tPdGhlcicpOw0KCWlmICgh
+ZmllbGQpIHJldHVybjsNCgl2YXIgb3B0ID0gZHJvcC52YWx1ZTsNCglpZiAob3B0
+ID09ICdvdGhlcicpDQoJCWZpZWxkLnN0eWxlLmRpc3BsYXkgPSAnJzsNCgllbHNl
+DQoJCWZpZWxkLnN0eWxlLmRpc3BsYXkgPSAnbm9uZSc7DQp9DQo=
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=header_01.png
+Content-Type: image/png; name=header_01.png
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_01.png
+Content-Transfer-Encoding: Base64
+
+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
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=header_05.png
+Content-Type: image/png; name=header_05.png
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_05.png
+Content-Transfer-Encoding: Base64
+
+iVBORw0KGgoAAAANSUhEUgAAAnwAAAAyCAMAAADx/vZRAAAABGdBTUEAAK/INwWK
+6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGAUExURdDQ
+0ElJSaqqqlxcXBYVFXJycmpqas7OzsLCwq6uruHh4bKysiQkJLi4uLW1tYyMjDw8
+PPsEAnV1dW5ubpiYmENDQ6WlpWJiYqEND1lZWZWVldPT06NjZzMzM1RUVJGRkZ6e
+nsrKyoGBgWVlZaGhoXx8fLy8vMjIyNNbX3l5ecbGxsURFAAAAImJiW4XEIWFhcTE
+xAoKCt2lp7+/vwQEBMi7utvOzd3V1ewGCNi4t7eoqD8GBOkHFN3Z2dUcIf///xUB
+ANTU1NXV1dbW1t7e3tra2t3d3djY2MzMzNvb2+3t7e7u7vLy8vX19erq6uzs7O/v
+7+vr69fX1+bm5unp6d/f3+jo6NnZ2dzc3Ofn5+Xl5QYAAeTk5OPj4+Li4s3NzYaG
+g1FRUcHAvdCjo83Ew/wCDQICAt8PFMTJyD9FRF5eXvgXHcXFxTw4NsDAwMPGxbko
+LsbCwOWpqusZJIk/OCY5M+PBwYeHiDc3Nzk5OcnIxDQ4OJubm05OTsnLytCTmJD5
+IfsAABfwSURBVHjaYrAfBaNggABAADGMBsEoGCgAEECjiW8UDBgACKDRxDcKBgwA
+BNBo4hsFAwYAAmg08Y2CAQMAATSa+EbBgAGAABpNfKNgwABAAI0mvlEwYAAggEYT
+3ygYMAAQQKOJbxQMGAAIIAaPUTAK6AvcAqCJDyCAGHxHwSigL+BS9IAkPoAAYvAZ
+BaOAziAQmvoAAoghYBSMAhKAtzeRwt4QDEGoIDDcGFzzAgQQg/coGAV0BoHhBuCO
+LkAAMXiNglFAZ+AfrgZOfAABxOA/CkYBDgBMJhAI5cIEIWJeXhAKKuTlhawWIeyP
+rAiiC5b4AAKIIXAUjAJ8wB8OA6FkIBIJloFJArE/VApC+4MZ/jANIHGwKDTxAQQQ
+g98oGAUEQSAqM5Ay00KgiQ8ggBjC4CCEOBBGiY5RSwafJUSoDQErCgMzcagJgSgK
+Q9UHFYDaAuOHOfGBEx9AADFEYoIwbCASL6CODrpYEjnwlgylAKYE4DIwEpr4AAKI
+IThcnA0dKPMHI4MIZxVNYWGwDKuQmKsLiqQiUDlCJ1CZkJiTWzAGiHX3kBeCKhKS
+V/SMQZGNU2JjE4tF1cGrrKzkCONEiSgjO1BcmE1YPXgUDGoQGQmlMSSioIkPIADb
+VNfSMBAEG3HPNEYKu6EBRWsvXspCgpT+Atsi+BoolSPV9/yG/njXNOby4bztTnZm
+drlM7DIb49E67Pwq7HJhvHnr0Ffj6fDJP9k+PsHrilx7eOzSwTrL4qA/cpYYk7+i
+9IYm66kdAhCZGRUh8GJ+4zIUQIYMQgsWr4OiWI807K2CJLX2gZL2e8UEyKWQ8u6P
+9n98bM761wKNfvHdKisEal2BMEr3DbNHEAvFjn+X7hfJDrIIipSR2LPn1WHglL72
+M5zkT7xcUQahA9KFdI00sRaUuwARokptAJWmsp6aSYjlwGJbaZW76m6hRZqJ8/m3
+u+q9tBKDtbosp/Np4TKppJG/lFGsdNSWZfP4fgRgmwpWG4ZhaClplgYGZRkNrIey
+0jEKOszwfmCjywcMRktRCrvo4B9YBvv42VrcON5E4siSLD/pKRN+DHTKwGzHFzms
+O4LAW3Vx6+KuGfxzMzrpNiDJNiVHci5ytUchtLiPAsqMKB8dYb4FfU3Cpv1IZk+y
+OafSAZrcQLFW29fesZJ0dP1dUwDXaY73DcnNmfmKzBCtyJ2Ra+CN/5OnmYuX0EdU
+DyGs8Fh6IY8M+W6vnubPT+vhloiL1Nd+Po/u2qEu4n3p6Gm9slescYIXZ4VvyYU/
+VabMS6f8Fn+0gllSTmXIHt335Am2kIh9+x3IX/uxkIhUSL0MjIOMYjr5p3FNrbaa
+TW1tP3w/ApBRLasNw0BQBNdtTEihOfRUSlriEFgIC/6BUlPIBwR6kXrTwYeee8jH
+Z2Zl2Y47GKzHalczGsl5p0UC9Ukt3fiM03shVC0HmcTFUzsELHBI/bIcwaft9duP
+2L/YkYw5BKewWo4BZzOfvwHNd587geabVilWD36Ov6n0VGXXr3d8KaFNDxBirapT
+2bSzHMcmdg7/HxnCo10b5ZJO5NP/Rzg2FCkmj0Uq8LxIU/XsahKHD860lASbUc1l
+TtyUOYRZSEXVburdelqMDpiSPyMmWAMuoccHnpGbLSE8y9A95mYVKF+VIJoUv2D4
+94ZPjdBHqxXaUrOlI0kiQ7nFOL43U1Xy5WJPdPfFKdJoqhAsRXAH6FFzPMMl810F
+oNLqWhqGoWhXnCXpvnCuw8q02cbGJDKH/QOaErrXgrRPzZsPwXctuP/uSfoxdwqF
+3o/cc3NP8lSnpCIDROFAAHOZCSEykbRRSbhAQzp0jrKQUib5V3h3iA+LyHopYMQ3
+LhL4EryA96h/xT8HHu2Qn7DGok+yJuKeLAfgOsubIpRKI77knAHepRGfaopQCvH9
+ZLnMGgj5P7rJgPj2I5+Qoev60bQX4/iyulfOq61S3T89XmpTtprH32XXiTVhjdAY
+0pivunjFlHKMG+J7Ky8zTGVcFLx62LsNdr0JRhVYJ8TXIx1893FVcX5j2B4xtVel
+GNu2ZUy8xHxviY/HRLtkPdagpJ/Og6NGDHp4rv9hbnI7LMhtgxUb0oAxex5jLPUc
+cP9NHXykaQHSIygpqGes+UG3e2gr4FRqaS1yBZaT+T7wiUtIEE0rU/zF+p6xRZZn
+3XWw3s3gXNacMPGW3waVr9OLYTm+Fd+fAHxW/wqCMBAWZpZEGZEKiVghBXEgg3sE
+tfw3EHuCPYOBvXu3kT+W1f119213fpvfbjPK1i70KJuUH7YPEfm2GEJBxAWG0zaU
+4ov1pNShA5KkbVg5dCbcnTZlWcsO0IWFFN9dr7Il8e27kk8Sa17+twfwWR9VTc0F
+u0nXQEi+JRwQ2EljzgRniseZAxsn+ADBGHXkDzkPEY/orhRyFPDUZ89ImRvJD8Ec
+1yqotXys06DnhJX2HGULQ2Z3AN3fqIZJzmb6c3fWyK/6WpBlyrOpgDcYmVNsdzvk
++tWQX0wKYxfpRoCN/on84Aq+UB6+OZFAfAQr0wXyFt9LAD6rYAdBGIaiRC6iJkZi
+1ARFExLJPCzuDxgkfoCRm7d9AyZ8vK+DCQxiOdA+2o2tb+0caeRA5JOWzJTi+7yP
+pWtQZWUsIt/Jioq4YrvMWIsSPbayXGJfKf9urIzI9+h7gHxlZIwc2Zxk8r8ETCRd
+e1pynAEIKt9lLODlMu51V1dRNdJagtQMA7ZKHQZg6nIxKfqYg6l1PDpYaPnfhf6U
+EmcGQuSzNkIuA6baPFFesefX+S8EgF5ExsdGNOIK9u4lCUdmU494YdxtJy3g6TW/
+SqVMa2BM84o/grCnvKFJEKQfrUgZ4q5DXjX5CDyiZZ1rtRnhKfOGfF8BhD/xxQN9
+yYMR3Bw8oI4oUuJTQVPgypKmwwyPVE5g4SmPERZSwPSmS1riiyCQ+IClqQFq1gH2
+OoJASQES3ZiACViIMCG4TswmJvqwqEkTx5L4dHQYMASBKbYCI4y4K9J01EGJL81E
+DjOTGDoCE58J1sQHbLdhZDJgSjZGSXxAAR1mPlhiSYMmPmBZqoMn8enoKKIIqALz
+lzOkJAA21hBxKKZjUqkOYbLpGNa6oSU+F1B16w5MSvwmOvLoiU8F1HxCSnwRrEBL
+QOU81sQHEIDOKlhhEIahok52cRORwfTgZDAZFIbgFwxbt+su9gt62ifUf9+rWp3t
+lktMaJr4+trEYVoU+WK2lgMGypgaTtbiDCp3MhT5pLEgA5eOT20Fgvhbcw9WIF2k
+jU6Rz8ijyFdqg/cYI6VMZT5KkiZva0uQb52HosOF0A8hPPZTzsCmna0YVdyn8tQA
+bAkO0LGdgqT2UnS1PVRISG/VKeoXUMTLZ4dRzHyd6YxIfZoNDvAprknl7aYQDJh8
+QFG17L+C6a1cORz8zVUXK2YYKK7NZsFvSNJ8x3HgfIG+CZKbSVyfeBzLOciHmjKk
+CNwlvBk/eTGS7yMAH+bzgiAMxXEaQV5Whw5CEFnLBSHI0H+gQsX/YNcuo5O36N/v
+u82pbZUeHOKb78fnve3tP3wbpEQX2pHA/mQC39GDM0VnxAaWZqiTIXyPJ4qqdAYD
+PubBt/PgM2cowh1biDn5Al8Z+QQY/yxQJygveH8VtB0DoEajCdZtN+sJIu57Dlkq
+f8FX4bdhImj1mYFP3X0BsIRIX3UGUx5pfXjHi6WxvwJAVSAgsm4KH1i7rZE2xMFX
+Gu0aRIsMVkLtxvPFJ3x1LrL4bN2AfWTavz2oLL7YIfy2bW2M5OQBVHP0ny+bXtLc
+ZlDXK1WaNNfdlJQcCzjbOzE3gxzgewvAhhWrMAgD0dJJaIdSqAGFUukghUAJBDo7
+SHB1STbpEujS1cX22/tOjRrTQ4xeLsmded5dbmMcbSjsGp9imBOZgJCRim4W4Ret
+y/5SStVp1O4Bjq0TLpGhnprl8Afdvi+kx3rkkOe7Kn+RHnzupfq4QtNUp44DtQh8
+PucuLUPTcLss2yHqTRKImSwblYAbZI6fc7/MJ2riEvjWq1LupsNv9Ob2gAbgO696
+EmRYwzgqUoixEiNlrwZ5Lx0M4HLWGPtKEumRC9Z/ZA00VvSg5KoOny1nwZkz9+dV
++PPGHRdWsMEy8ofdZANynZASOh0a0yLsrnqKJx94GvboHbB3K/5M4MD3E4ANq+dB
+GASi2lrbyRiNXYzRLmoMiR9hcXDBmIbVxdmFoYNzHfzvvjspLa23AMfx/e6A19OV
+MPi0Lykm9dIdCSjyORO4xzQioptZ9WFYDoyUk4ezRuR7H+rGl9P2jCSb0RfC6nKi
+ea7+ICv8djdV4fbh3STmy4oIOtMi8LX6OOIpibFwPEbU/JecO4scGxT+sngah3Gl
+34nanrksRVocTNweVeGG6W6RBnpLJLh2n54+X44Nz105TtJS+BlXU+Tz+48WA7Gv
+yxToyELhkVCkyBD4uEnOjtLg+TbNfgC+Xft44ZRrysTkARPWRXCNu61PhOz/WVpq
+TIFkD5T6FaMPGjOi8PcRQ+L9Ev1PLPi+AjBmfq8Jw0Acd3YTyqYttZ14QzozfyCk
+D2Ie9jKhG6Hmz/DFh7GnPcwX//h9r7FtFNw8QrlALknTz+Wu3N/w3SPMkT43LRaA
+YObAdybwZ5E3VrjCbrsNez/r1/X3m+Gcb18fKDrD/HSVjKsgLnwP7cdel2Irh9X7
+FfAJ/JbzqwGwCYngKOmzwznokKUjjUFWbBz4vGp8kAXppLgEH769A3MtPtCw0ydN
+ee2us01A2pQP5wkLH2LMTZzEEtGmgs/jOph15mgYhmAzyk/hKz077yg5IAe+D+C8
+z1Kqtk2tf+DTn0rxJs2UndP7gjYbSenXjCiEXaMhjo02YqkEFETtJIr43lnw82Ub
+3nAqwMN1IXfLojVQsj832mhrZxvrY7+E71cAwqxYhUEYiEotgkMFW2pnay0dlFII
+dDYS3F0ydihYKNK5S/6976IGNUhvCfe4nAn3PO4ujhhEk09M5YH09I1noIhRcSa8
+Vwz5hkE+MoVKnZH5hkoRo90vYRi+ntVpnTW5QdGXqnL6lT2Rb1AkzfnEHwH5PlNE
+ZcynA6PrXdy1bW5ugRWVzKEyaAsO2LZEPhtsWGCboiI6YjlPHji6579rTQYFQ+Ng
+Sd1oK52ozbaUjyyI7NqB4Al+qgiBRo9CeoniQi7eE+Rr51gAXwgNMhzVJW8gHk3/
+BuEu+njbk2IZXTjXJ2R97Ls8vov6QyIDS1EirJ5vO5DxSpPvJ4DwJz5XYI+DRT4I
+VUxaicXEUN4VKfEZ8sAAC8ghcgwo6rWABvOow3hmBanA1JetUZKWZohI1sBiThY1
+kasBEyebO0ricyQ18eUJmMg6ghNfGjNOXcAemQkwaQKbEswcruQkPl1sSVtaDtgl
+BCc+REMMNDVpIsDMCUkgDKACC2vi04GmPBPQ7JWJibgxSooKB7X5oIqzgGWfCAMs
+8TkZYjMRX+IDpzV3V1WgXaB1H3yuoO4jUiiAhp4w9GgByx5QqOqC5xERKdDQUFwe
+llShGSJcSllHXAln4gMIIIZwGGAHJb5wNJADbLDxiLEjCzGUAxUyKsK4oMSnpKiu
+qK6unqOobgwsedPEGVANEWMx0anlDYJwgpK1LYCpz0bC2iEBoYQXmGqZ1ZH0KCoB
+kz0vnOsOGucLCscPgInPGJkfBGrwgg0DJj7c2kDrctSkgXGjjyRoAHQPplJg4ovH
+EGTI0pHlRBfkBzZi3UEeM9Fh40YAYw542ICqXUwbgKWXTg1QIR8Q8orpg5pN0qgq
+3IFisJAIYksDt4TTQFaFA1ufOri9CfSgQTiW+DWRZdQxlOUIF9cxlFQU1wG21hGA
+E1QmgBiuSC5UBnYqQIxyYP3Hzc3EzQea0mRiA3pHCuFIYK4Bu0lM0lCn3AnNVndo
+4gMIIAZ3GIgHJT53dCDGkqbDIiTCzZGTw5GjrmXMzafMYpLGIoJQAPQ7J0K9OjAF
+sNTmoZjhCOzls8iKMPFq5XDk5ReWaKcKWgim2uhVIZQ4s7GY8DAyqeWwOzpLM3Bw
+8DECjWWMh8sHgearpN2dEcDJGcOtssDEh8wXBiaAHBBDEdSXxg0kQXUGsAZzQhLj
+ADZCsanU8cAUZTXUEeBFFQJ2onXEQAxuYIMNu62OwAIDU9QJmJqQuPLApMUWhKIi
+CJjc4H53ZINU5UFQEw1x+xKYcQwwRcH6gRnE3V1NEjwiIKmILA1sFAqoA+lwhPXA
+fo44B4gFzBlIvlYHpj5xbnh8gtoGYFaepIkOazyqpUEekMQHEIBQO2hBEAbDAOxs
+gdCQHTIzmKcSol1WOwSdqkOd+wPeCoK65qgf3+ey9MNV3pzDue3x1cH+4bP6lGKF
+4UVhjGDl7gjq7xC+QaN+lkLOGYRgdz0DWEWZMcWdX+hqeILsW87mjSoLAv/VlAlO
+CIkEgwUzmlDAd1RRSuojyVqPyiUNPxO17xMuxfg1MJBqP/AFVp/soTKpXfiUDhxg
+JhAdnWz9Pvf8SKiqRVhwTN2tQvLRQ5ukRvis4u4W49OyLoA1b6nvzVltvvYyduLz
+Eg0zmuTWYYlvhC7nkIfiln3umj/KjZWv6b/hIfPgA9zx6zdEVp3zIJ3jEOOrku8p
+AJtWsJswDEMrRKtJE7QigixU3mCZhCZlEogcmDiVHrpzrhx244B226WX/ftsp9Bk
+w4e2sh3LfbUb20pyOSfiPij43D9K8mE8YrMnmNe9nIJvEC5YT/ElYBUZ2WZcDJrj
+kauE/cMOC7/d93ugMpJDGxTm1j6GVusf83eIReK78XJ7mJWdUkEHGABg2gIUnMUL
+L8CuzaRanTtSMisj954p+0XEwm2319dKKXFALv754PXKz6SesfLnhDqEFlomoMMY
+5s1jNDKnibtJJQIipDprebGXMBe/Wkg5tp9pFUKBGgH+FY0ePKPCFMq00le/02Ww
+Dn3/uuHGnOB+YpQUeiRjZBwlpke1LfDKI8+XuulQu3eu6SMFd1jJnMbVlnxCGUaa
+Exsjcn5iwvvKB9+vAGRazQ6CMAz2MCJEo9GEGEIIGIxERQXDC0AvnnkBbpx4AA88
+vO1+oAsEQmBdu5ZvlI5vBt+ZfnHJjMYcpfzmOYItpwhx81grJDQTrC67E7GZB66n
+vY6R0AoQgJV4PQ708vtMagDceCuMTFn6T5cZgcZfrOckeDu8Z3s37kx4q0pTzxS7
+LDXwHfKytzmajRXhGh9MsALufGEBnWaDAh9XhEZi1SN8cxJnP8MewTfNaPbN0GqY
+qXU5s3UaQFb4IY763GGQaFCyZmMFzIOBckMWyby8zphh9LGAJfjom0j7TgS9Czfd
+ovzaYRRVOh1HasYDy5SNGYOU/mJm/3l6KDLG1Ix7klLFTldSJ8CgwPcXQAzwAGFQ
+rq0VccYGpDlrhOVqwUBOU4XTCUWSVy5RPAdVvZY4UKUSA6qguoJSViJQPDGxNqu8
+xqreDtjtSNU2RVaSo6AiJJlYmygnLqZggOYGJZDtibUwkFjLzAtymbqivJwIzCZJ
+cPCkQeJfUlVBGm63CaTniEg20qimG0tK8qKKGBiaIHdTQbMiQFFwHWeIlgPAwINf
+EqbBRFKoBu55NUNDIayB6swATtLI5TlIk7ShiTiaQgVgTceKcLCTalqiI7K8kxKw
+YgbHE2SMFZEJDNWRlAkZGmphcwcvKxsfhOUopKOERUGeJjN8KFxSWQxuNz+wzYfm
+JXC7D2yUsAmLEyK7MQFTn3g8wsVakMQHEIDxKsZhGAaBbEx9wXXxFKl7H2D8kEh9
+Qf8/FYidEIdIvcGyDuPjwItJBoKbhAvkJaq7E+kBoN1nKN5f/XM8P3+LpHWBirx2
+lhzsKyRkVFqV3gIbZpGyTCKVZhwKAQhljRSXjuSNkzVTEObLSMwTDlJPTg0ZKWnN
+4xpmlrTBy+4dj3qSFh+tLoA1FmZNfN52kXK119BPN3NbWiyyvwfP950RtT++nwCi
+RuIjXguypGmJdkkhrS2hi0+oY4kTlS2hyFloiQ8sAGYgJT44A5H4YJogSc4Jkfig
+gmiJDyCAGJwGDKTIWDmNgpEIYIkPIIAQic8RDpywiDliM4NkLY6jluDU4kRlSyhy
+FkTUCSgCJsACYIYjiAHGCAZcNVwTRM4JKuiEEISq0mKSBiU+gABicBwFo4AS4ESS
+MBhIQ0s+gAAaTXyjgO4AmPi0QIkPIIBGE98oGIjEZwxKfAABBgDeLBczZu0JHAAA
+AABJRU5ErkJggg==
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=header_06.png
+Content-Type: image/png; name=header_06.png
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_06.png
+Content-Transfer-Encoding: Base64
+
+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
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=header_09.png
+Content-Type: image/png; name=header_09.png
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_09.png
+Content-Transfer-Encoding: Base64
+
+iVBORw0KGgoAAAANSUhEUgAAAA4AAAAeCAMAAAArQN94AAAABGdBTUEAAK/INwWK
+6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABIUExURfj4
++P///9ITE9QTE8IREdUTE+yRkaoODtcTE+uIiNkUFLAPD8cREakODswSEqENDfLG
+xrcQENsUFPC2tt4aGuhwcOp/f+2amkXjiVUAAADhSURBVHjaYhAS4uLi4GDlYWdj
+AAKAAGLgAvJYWZmhXIAAYgBJAbksEC5AADFAeDAuQAAxgDnMTFAuQAAxgDgILkAA
+MUB4MC5AADGAOXAuQAAxgDlwLkAAMTChcAECCM7lBXMBAghNFiCA0GQBAgjK5RPk
+5wTxAAIIwuVjYRcRBvEAAogBwuPmFwPzAAKIgYeHh0WQm1dUAMwDCCAGbiDgFRGH
+8gACiIETBIShHAaAAEJDAAGEhgACCA0BBBAaAgggNAQQQGgIIIAYGFEAQAChcQEC
+CI0LEEBoXIAAQuMCBBgAL0QErbxRX1kAAAAASUVORK5CYII=
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=poweredby_mediawiki_88x31.png
+Content-Type: image/png; name=poweredby_mediawiki_88x31.png
+Content-Location: http://tdn.garagegames.com/wiki/skins/common/images/poweredby_mediawiki_88x31.png
+Content-Transfer-Encoding: Base64
+
+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
+NgAAAABJRU5ErkJggg==
+
+------------UhZ3Dz1SCUs0H8l46Sgpde
+Content-Disposition: inline; filename=urchin.js
+Content-Type: text/javascript; name=urchin.js
+Content-Location: http://www.google-analytics.com/urchin.js
+Content-Transfer-Encoding: 8bit
+
+//-- Google Analytics Urchin Module
+//-- Copyright 2007 Google, All Rights Reserved.
+
+//-- Urchin On Demand Settings ONLY
+var _uacct="";			// set up the Urchin Account
+var _userv=1;			// service mode (0=local,1=remote,2=both)
+
+//-- UTM User Settings
+var _ufsc=1;			// set client info flag (1=on|0=off)
+var _udn="auto";		// (auto|none|domain) set the domain name for cookies
+var _uhash="on";		// (on|off) unique domain hash for cookies
+var _utimeout="1800";   	// set the inactive session timeout in seconds
+var _ugifpath="/__utm.gif";	// set the web path to the __utm.gif file
+var _utsp="|";			// transaction field separator
+var _uflash=1;			// set flash version detect option (1=on|0=off)
+var _utitle=1;			// set the document title detect option (1=on|0=off)
+var _ulink=0;			// enable linker functionality (1=on|0=off)
+var _uanchor=0;			// enable use of anchors for campaign (1=on|0=off)
+var _utcp="/";			// the cookie path for tracking
+var _usample=100;		// The sampling % of visitors to track (1-100).
+
+//-- UTM Campaign Tracking Settings
+var _uctm=1;			// set campaign tracking module (1=on|0=off)
+var _ucto="15768000";		// set timeout in seconds (6 month default)
+var _uccn="utm_campaign";	// name
+var _ucmd="utm_medium";		// medium (cpc|cpm|link|email|organic)
+var _ucsr="utm_source";		// source
+var _uctr="utm_term";		// term/keyword
+var _ucct="utm_content";	// content
+var _ucid="utm_id";		// id number
+var _ucno="utm_nooverride";	// don't override
+
+//-- Auto/Organic Sources and Keywords
+var _uOsr=new Array();
+var _uOkw=new Array();
+_uOsr[0]="google";	_uOkw[0]="q";
+_uOsr[1]="yahoo";	_uOkw[1]="p";
+_uOsr[2]="msn";		_uOkw[2]="q";
+_uOsr[3]="aol";		_uOkw[3]="query";
+_uOsr[4]="aol";		_uOkw[4]="encquery";
+_uOsr[5]="lycos";	_uOkw[5]="query";
+_uOsr[6]="ask";		_uOkw[6]="q";
+_uOsr[7]="altavista";	_uOkw[7]="q";
+_uOsr[8]="netscape";	_uOkw[8]="query";
+_uOsr[9]="cnn";	_uOkw[9]="query";
+_uOsr[10]="looksmart";	_uOkw[10]="qt";
+_uOsr[11]="about";	_uOkw[11]="terms";
+_uOsr[12]="mamma";	_uOkw[12]="query";
+_uOsr[13]="alltheweb";	_uOkw[13]="q";
+_uOsr[14]="gigablast";	_uOkw[14]="q";
+_uOsr[15]="voila";	_uOkw[15]="rdata";
+_uOsr[16]="virgilio";	_uOkw[16]="qs";
+_uOsr[17]="live";	_uOkw[17]="q";
+_uOsr[18]="baidu";	_uOkw[18]="wd";
+_uOsr[19]="alice";	_uOkw[19]="qs";
+_uOsr[20]="yandex";	_uOkw[20]="text";
+_uOsr[21]="najdi";	_uOkw[21]="q";
+_uOsr[22]="aol";	_uOkw[22]="q";
+_uOsr[23]="club-internet"; _uOkw[23]="query";
+_uOsr[24]="mama";	_uOkw[24]="query";
+_uOsr[25]="seznam";	_uOkw[25]="q";
+_uOsr[26]="search";	_uOkw[26]="q";
+_uOsr[27]="wp";	_uOkw[27]="szukaj";
+_uOsr[28]="onet";	_uOkw[28]="qt";
+_uOsr[29]="netsprint";	_uOkw[29]="q";
+_uOsr[30]="google.interia";	_uOkw[30]="q";
+_uOsr[31]="szukacz";	_uOkw[31]="q";
+_uOsr[32]="yam";	_uOkw[32]="k";
+_uOsr[33]="pchome";	_uOkw[33]="q";
+_uOsr[34]="kvasir";	_uOkw[34]="searchExpr";
+_uOsr[35]="sesam";	_uOkw[35]="q";
+_uOsr[36]="ozu"; _uOkw[36]="q";
+_uOsr[37]="terra"; _uOkw[37]="query";
+_uOsr[38]="nostrum"; _uOkw[38]="query";
+_uOsr[39]="mynet"; _uOkw[39]="q";
+_uOsr[40]="ekolay"; _uOkw[40]="q";
+_uOsr[41]="search.ilse"; _uOkw[41]="search_for";
+_uOsr[42]="bing"; _uOkw[42]="q";
+
+//-- Auto/Organic Keywords to Ignore
+var _uOno=new Array();
+//_uOno[0]="urchin";
+//_uOno[1]="urchin.com";
+//_uOno[2]="www.urchin.com";
+
+//-- Referral domains to Ignore
+var _uRno=new Array();
+//_uRno[0]=".urchin.com";
+
+//-- **** Don't modify below this point ***
+var _uff,_udh,_udt,_ubl=0,_udo="",_uu,_ufns=0,_uns=0,_ur="-",_ufno=0,_ust=0,_ubd=document,_udl=_ubd.location,_udlh="",_uwv="1.3";
+var _ugifpath2="http://www.google-analytics.com/__utm.gif";
+if (_udl.hash) _udlh=_udl.href.substring(_udl.href.indexOf('#'));
+if (_udl.protocol=="https:") _ugifpath2="https://ssl.google-analytics.com/__utm.gif";
+if (!_utcp || _utcp=="") _utcp="/";
+function urchinTracker(page) {
+ if (_udl.protocol=="file:") return;
+ if (_uff && (!page || page=="")) return;
+ var a,b,c,xx,v,z,k,x="",s="",f=0,nv=0;
+ var nx=" expires="+_uNx()+";";
+ var dc=_ubd.cookie;
+ _udh=_uDomain();
+ if (!_uVG()) return;
+ _uu=Math.round(Math.random()*2147483647);
+ _udt=new Date();
+ _ust=Math.round(_udt.getTime()/1000);
+ a=dc.indexOf("__utma="+_udh+".");
+ b=dc.indexOf("__utmb="+_udh);
+ c=dc.indexOf("__utmc="+_udh);
+ if (_udn && _udn!="") { _udo=" domain="+_udn+";"; }
+ if (_utimeout && _utimeout!="") {
+  x=new Date(_udt.getTime()+(_utimeout*1000));
+  x=" expires="+x.toGMTString()+";";
+ }
+ if (_ulink) {
+  if (_uanchor && _udlh && _udlh!="") s=_udlh+"&";
+  s+=_udl.search;
+  if(s && s!="" && s.indexOf("__utma=")>=0) {
+   if (!(_uIN(a=_uGC(s,"__utma=","&")))) a="-";
+   if (!(_uIN(b=_uGC(s,"__utmb=","&")))) b="-";
+   if (!(_uIN(c=_uGC(s,"__utmc=","&")))) c="-";
+   v=_uGC(s,"__utmv=","&");
+   z=_uGC(s,"__utmz=","&");
+   k=_uGC(s,"__utmk=","&");
+   xx=_uGC(s,"__utmx=","&");
+   if ((k*1) != ((_uHash(a+b+c+xx+z+v)*1)+(_udh*1))) {_ubl=1;a="-";b="-";c="-";xx="-";z="-";v="-";}
+   if (a!="-" && b!="-" && c!="-") f=1;
+   else if(a!="-") f=2;
+  }
+ }
+ if(f==1) {
+  _ubd.cookie="__utma="+a+"; path="+_utcp+";"+nx+_udo;
+  _ubd.cookie="__utmb="+b+"; path="+_utcp+";"+x+_udo;
+  _ubd.cookie="__utmc="+c+"; path="+_utcp+";"+_udo;
+ } else if (f==2) {
+  a=_uFixA(s,"&",_ust);
+  _ubd.cookie="__utma="+a+"; path="+_utcp+";"+nx+_udo;
+  _ubd.cookie="__utmb="+_udh+"; path="+_utcp+";"+x+_udo;
+  _ubd.cookie="__utmc="+_udh+"; path="+_utcp+";"+_udo;
+  _ufns=1;
+ } else if (a>=0 && b>=0 && c>=0) {
+   b = _uGC(dc,"__utmb="+_udh,";");
+   b = ("-" == b) ? _udh : b;  
+  _ubd.cookie="__utmb="+b+"; path="+_utcp+";"+x+_udo;
+ } else {
+  if (a>=0) a=_uFixA(_ubd.cookie,";",_ust);
+  else {
+   a=_udh+"."+_uu+"."+_ust+"."+_ust+"."+_ust+".1";
+   nv=1;
+  }
+  _ubd.cookie="__utma="+a+"; path="+_utcp+";"+nx+_udo;
+  _ubd.cookie="__utmb="+_udh+"; path="+_utcp+";"+x+_udo;
+  _ubd.cookie="__utmc="+_udh+"; path="+_utcp+";"+_udo;
+  _ufns=1;
+ }
+ if (_ulink && xx && xx!="" && xx!="-") {
+   xx=_uUES(xx);
+   if (xx.indexOf(";")==-1) _ubd.cookie="__utmx="+xx+"; path="+_utcp+";"+nx+_udo;
+ }
+ if (_ulink && v && v!="" && v!="-") {
+  v=_uUES(v);
+  if (v.indexOf(";")==-1) _ubd.cookie="__utmv="+v+"; path="+_utcp+";"+nx+_udo;
+ }
+ var wc=window;
+ var c=_ubd.cookie;
+ if(wc && wc.gaGlobal && wc.gaGlobal.dh==_udh){
+  var g=wc.gaGlobal;
+  var ua=c.split("__utma="+_udh+".")[1].split(";")[0].split(".");
+  if(g.sid)ua[3]=g.sid;
+  if(nv>0){
+   ua[2]=ua[3];
+   if(g.vid){
+    var v=g.vid.split(".");
+    ua[0]=v[0];
+    ua[1]=v[1];
+   }
+  }
+  _ubd.cookie="__utma="+_udh+"."+ua.join(".")+"; path="+_utcp+";"+nx+_udo;
+ }
+ _uInfo(page);
+ _ufns=0;
+ _ufno=0;
+ if (!page || page=="") _uff=1;
+}
+function _uGH() {
+ var hid;
+ var wc=window;
+ if (wc && wc.gaGlobal && wc.gaGlobal.hid) {
+  hid=wc.gaGlobal.hid;
+ } else {
+  hid=Math.round(Math.random()*0x7fffffff);
+  if (!wc.gaGlobal) wc.gaGlobal={};
+  wc.gaGlobal.hid=hid;
+ }
+ return hid;
+}
+function _uInfo(page) {
+ var p,s="",dm="",pg=_udl.pathname+_udl.search;
+ if (page && page!="") pg=_uES(page,1);
+ _ur=_ubd.referrer;
+ if (!_ur || _ur=="") { _ur="-"; }
+ else {
+  dm=_ubd.domain;
+  if(_utcp && _utcp!="/") dm+=_utcp;
+  p=_ur.indexOf(dm);
+  if ((p>=0) && (p<=8)) { _ur="0"; }
+  if (_ur.indexOf("[")==0 && _ur.lastIndexOf("]")==(_ur.length-1)) { _ur="-"; }
+ }
+ s+="&utmn="+_uu;
+ if (_ufsc) s+=_uBInfo();
+ if (_uctm) s+=_uCInfo();
+ if (_utitle && _ubd.title && _ubd.title!="") s+="&utmdt="+_uES(_ubd.title);
+ if (_udl.hostname && _udl.hostname!="") s+="&utmhn="+_uES(_udl.hostname);
+ if (_usample && _usample != 100) s+="&utmsp="+_uES(_usample);
+ s+="&utmhid="+_uGH();
+ s+="&utmr="+_ur;
+ s+="&utmp="+pg;
+ if ((_userv==0 || _userv==2) && _uSP()) {
+  var i=new Image(1,1);
+  i.src=_ugifpath+"?"+"utmwv="+_uwv+s;
+  i.onload=function() { _uVoid(); }
+ }
+ if ((_userv==1 || _userv==2) && _uSP()) {
+  var i2=new Image(1,1);
+  i2.src=_ugifpath2+"?"+"utmwv="+_uwv+s+"&utmac="+_uacct+"&utmcc="+_uGCS();
+  i2.onload=function() { _uVoid(); }
+ }
+ return;
+}
+function _uVoid() { return; }
+function _uCInfo() {
+ if (!_ucto || _ucto=="") { _ucto="15768000"; }
+ if (!_uVG()) return;
+ var c="",t="-",t2="-",t3="-",o=0,cs=0,cn=0,i=0,z="-",s="";
+ if (_uanchor && _udlh && _udlh!="") s=_udlh+"&";
+ s+=_udl.search;
+ var x=new Date(_udt.getTime()+(_ucto*1000));
+ var dc=_ubd.cookie;
+ x=" expires="+x.toGMTString()+";";
+ if (_ulink && !_ubl) {
+  z=_uUES(_uGC(s,"__utmz=","&"));
+  if (z!="-" && z.indexOf(";")==-1) { _ubd.cookie="__utmz="+z+"; path="+_utcp+";"+x+_udo; return ""; }
+ }
+ z=dc.indexOf("__utmz="+_udh+".");
+ if (z>-1) { z=_uGC(dc,"__utmz="+_udh+".",";"); }
+ else { z="-"; }
+ t=_uGC(s,_ucid+"=","&");
+ t2=_uGC(s,_ucsr+"=","&");
+ t3=_uGC(s,"gclid=","&");
+ if ((t!="-" && t!="") || (t2!="-" && t2!="") || (t3!="-" && t3!="")) {
+  if (t!="-" && t!="") c+="utmcid="+_uEC(t);
+  if (t2!="-" && t2!="") { if (c != "") c+="|"; c+="utmcsr="+_uEC(t2); }
+  if (t3!="-" && t3!="") { if (c != "") c+="|"; c+="utmgclid="+_uEC(t3); }
+  t=_uGC(s,_uccn+"=","&");
+  if (t!="-" && t!="") c+="|utmccn="+_uEC(t);
+  else c+="|utmccn=(not+set)";
+  t=_uGC(s,_ucmd+"=","&");
+  if (t!="-" && t!="") c+="|utmcmd="+_uEC(t);
+  else  c+="|utmcmd=(not+set)";
+  t=_uGC(s,_uctr+"=","&");
+  if (t!="-" && t!="") c+="|utmctr="+_uEC(t);
+  else { t=_uOrg(1); if (t!="-" && t!="") c+="|utmctr="+_uEC(t); }
+  t=_uGC(s,_ucct+"=","&");
+  if (t!="-" && t!="") c+="|utmcct="+_uEC(t);
+  t=_uGC(s,_ucno+"=","&");
+  if (t=="1") o=1;
+  if (z!="-" && o==1) return "";
+ }
+ if (c=="-" || c=="") { c=_uOrg(); if (z!="-" && _ufno==1)  return ""; }
+ if (c=="-" || c=="") { if (_ufns==1)  c=_uRef(); if (z!="-" && _ufno==1)  return ""; }
+ if (c=="-" || c=="") {
+  if (z=="-" && _ufns==1) { c="utmccn=(direct)|utmcsr=(direct)|utmcmd=(none)"; }
+  if (c=="-" || c=="") return "";
+ }
+ if (z!="-") {
+  i=z.indexOf(".");
+  if (i>-1) i=z.indexOf(".",i+1);
+  if (i>-1) i=z.indexOf(".",i+1);
+  if (i>-1) i=z.indexOf(".",i+1);
+  t=z.substring(i+1,z.length);
+  if (t.toLowerCase()==c.toLowerCase()) cs=1;
+  t=z.substring(0,i);
+  if ((i=t.lastIndexOf(".")) > -1) {
+   t=t.substring(i+1,t.length);
+   cn=(t*1);
+  }
+ }
+ if (cs==0 || _ufns==1) {
+  t=_uGC(dc,"__utma="+_udh+".",";");
+  if ((i=t.lastIndexOf(".")) > 9) {
+   _uns=t.substring(i+1,t.length);
+   _uns=(_uns*1);
+  }
+  cn++;
+  if (_uns==0) _uns=1;
+  _ubd.cookie="__utmz="+_udh+"."+_ust+"."+_uns+"."+cn+"."+c+"; path="+_utcp+"; "+x+_udo;
+ }
+ if (cs==0 || _ufns==1) return "&utmcn=1";
+ else return "&utmcr=1";
+}
+function _uRef() {
+ if (_ur=="0" || _ur=="" || _ur=="-") return "";
+ var i=0,h,k,n;
+ if ((i=_ur.indexOf("://"))<0 || _uGCse()) return "";
+ h=_ur.substring(i+3,_ur.length);
+ if (h.indexOf("/") > -1) {
+  k=h.substring(h.indexOf("/"),h.length);
+  if (k.indexOf("?") > -1) k=k.substring(0,k.indexOf("?"));
+  h=h.substring(0,h.indexOf("/"));
+ }
+ h=h.toLowerCase();
+ n=h;
+ if ((i=n.indexOf(":")) > -1) n=n.substring(0,i);
+ for (var ii=0;ii<_uRno.length;ii++) {
+  if ((i=n.indexOf(_uRno[ii].toLowerCase())) > -1 && n.length==(i+_uRno[ii].length)) { _ufno=1; break; }
+ }
+ if (h.indexOf("www.")==0) h=h.substring(4,h.length);
+ return "utmccn=(referral)|utmcsr="+_uEC(h)+"|"+"utmcct="+_uEC(k)+"|utmcmd=referral";
+}
+function _uOrg(t) {
+ if (_ur=="0" || _ur=="" || _ur=="-") return "";
+ var i=0,h,k;
+ if ((i=_ur.indexOf("://"))<0 || _uGCse()) return "";
+ h=_ur.substring(i+3,_ur.length);
+ if (h.indexOf("/") > -1) {
+  h=h.substring(0,h.indexOf("/"));
+ }
+ for (var ii=0;ii<_uOsr.length;ii++) {
+  if (h.toLowerCase().indexOf(_uOsr[ii].toLowerCase()) > -1) {
+   if ((i=_ur.indexOf("?"+_uOkw[ii]+"=")) > -1 || (i=_ur.indexOf("&"+_uOkw[ii]+"=")) > -1) {
+    k=_ur.substring(i+_uOkw[ii].length+2,_ur.length);
+    if ((i=k.indexOf("&")) > -1) k=k.substring(0,i);
+    for (var yy=0;yy<_uOno.length;yy++) {
+     if (_uOno[yy].toLowerCase()==k.toLowerCase()) { _ufno=1; break; }
+    }
+    if (t) return _uEC(k);
+    else return "utmccn=(organic)|utmcsr="+_uEC(_uOsr[ii])+"|"+"utmctr="+_uEC(k)+"|utmcmd=organic";
+   }
+  }
+ }
+ return "";
+}
+function _uGCse() {
+ var h,p;
+ h=p=_ur.split("://")[1];
+ if(h.indexOf("/")>-1) {
+  h=h.split("/")[0];
+  p=p.substring(p.indexOf("/")+1,p.length);
+ }
+ if(p.indexOf("?")>-1) {
+  p=p.split("?")[0];
+ }
+ if(h.toLowerCase().indexOf("google")>-1) {
+  if(_ur.indexOf("?q=")>-1 || _ur.indexOf("&q=")>-1) {
+   if (p.toLowerCase().indexOf("cse")>-1) {
+    return true;
+   }
+  }
+ }
+}
+function _uBInfo() {
+ var sr="-",sc="-",ul="-",fl="-",cs="-",je=1;
+ var n=navigator;
+ if (self.screen) {
+  sr=screen.width+"x"+screen.height;
+  sc=screen.colorDepth+"-bit";
+ } else if (self.java) {
+  var j=java.awt.Toolkit.getDefaultToolkit();
+  var s=j.getScreenSize();
+  sr=s.width+"x"+s.height;
+ }
+ if (n.language) { ul=n.language.toLowerCase(); }
+ else if (n.browserLanguage) { ul=n.browserLanguage.toLowerCase(); }
+ je=n.javaEnabled()?1:0;
+ if (_uflash) fl=_uFlash();
+ if (_ubd.characterSet) cs=_uES(_ubd.characterSet);
+ else if (_ubd.charset) cs=_uES(_ubd.charset);
+ return "&utmcs="+cs+"&utmsr="+sr+"&utmsc="+sc+"&utmul="+ul+"&utmje="+je+"&utmfl="+fl;
+}
+function __utmSetTrans() {
+ var e;
+ if (_ubd.getElementById) e=_ubd.getElementById("utmtrans");
+ else if (_ubd.utmform && _ubd.utmform.utmtrans) e=_ubd.utmform.utmtrans;
+ if (!e) return;
+ var l=e.value.split("UTM:");
+ var i,i2,c;
+ if (_userv==0 || _userv==2) i=new Array();
+ if (_userv==1 || _userv==2) { i2=new Array(); c=_uGCS(); }
+
+ for (var ii=0;ii<l.length;ii++) {
+  l[ii]=_uTrim(l[ii]);
+  if (l[ii].charAt(0)!='T' && l[ii].charAt(0)!='I') continue;
+  var r=Math.round(Math.random()*2147483647);
+  if (!_utsp || _utsp=="") _utsp="|";
+  var f=l[ii].split(_utsp),s="";
+  if (f[0].charAt(0)=='T') {
+   s="&utmt=tran"+"&utmn="+r;
+   f[1]=_uTrim(f[1]); if(f[1]&&f[1]!="") s+="&utmtid="+_uES(f[1]);
+   f[2]=_uTrim(f[2]); if(f[2]&&f[2]!="") s+="&utmtst="+_uES(f[2]);
+   f[3]=_uTrim(f[3]); if(f[3]&&f[3]!="") s+="&utmtto="+_uES(f[3]);
+   f[4]=_uTrim(f[4]); if(f[4]&&f[4]!="") s+="&utmttx="+_uES(f[4]);
+   f[5]=_uTrim(f[5]); if(f[5]&&f[5]!="") s+="&utmtsp="+_uES(f[5]);
+   f[6]=_uTrim(f[6]); if(f[6]&&f[6]!="") s+="&utmtci="+_uES(f[6]);
+   f[7]=_uTrim(f[7]); if(f[7]&&f[7]!="") s+="&utmtrg="+_uES(f[7]);
+   f[8]=_uTrim(f[8]); if(f[8]&&f[8]!="") s+="&utmtco="+_uES(f[8]);
+  } else {
+   s="&utmt=item"+"&utmn="+r;
+   f[1]=_uTrim(f[1]); if(f[1]&&f[1]!="") s+="&utmtid="+_uES(f[1]);
+   f[2]=_uTrim(f[2]); if(f[2]&&f[2]!="") s+="&utmipc="+_uES(f[2]);
+   f[3]=_uTrim(f[3]); if(f[3]&&f[3]!="") s+="&utmipn="+_uES(f[3]);
+   f[4]=_uTrim(f[4]); if(f[4]&&f[4]!="") s+="&utmiva="+_uES(f[4]);
+   f[5]=_uTrim(f[5]); if(f[5]&&f[5]!="") s+="&utmipr="+_uES(f[5]);
+   f[6]=_uTrim(f[6]); if(f[6]&&f[6]!="") s+="&utmiqt="+_uES(f[6]);
+  }
+  if (_udl.hostname && _udl.hostname!="") s+="&utmhn="+_uES(_udl.hostname);
+  if (_usample && _usample != 100) s+="&utmsp="+_uES(_usample);
+
+  if ((_userv==0 || _userv==2) && _uSP()) {
+   i[ii]=new Image(1,1);
+   i[ii].src=_ugifpath+"?"+"utmwv="+_uwv+s;
+   i[ii].onload=function() { _uVoid(); }
+  }
+  if ((_userv==1 || _userv==2) && _uSP()) {
+   i2[ii]=new Image(1,1);
+   i2[ii].src=_ugifpath2+"?"+"utmwv="+_uwv+s+"&utmac="+_uacct+"&utmcc="+c;
+   i2[ii].onload=function() { _uVoid(); }
+  }
+ }
+ return;
+}
+function _uFlash() {
+ var f="-",n=navigator;
+ if (n.plugins && n.plugins.length) {
+  for (var ii=0;ii<n.plugins.length;ii++) {
+   if (n.plugins[ii].name.indexOf('Shockwave Flash')!=-1) {
+    f=n.plugins[ii].description.split('Shockwave Flash ')[1];
+    break;
+   }
+  }
+ } else {
+  var fl;
+  try {
+   fl = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");
+   f = fl.GetVariable("$version");
+  } catch(e) {}
+  if (f == "-") {
+   try {
+    fl = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6");
+    f = "WIN 6,0,21,0";
+    fl.AllowScriptAccess = "always";
+    f = fl.GetVariable("$version");
+   } catch(e) {}
+  }
+  if (f == "-") {
+   try {
+    fl = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+    f = fl.GetVariable("$version");
+   } catch(e) {}
+  }
+  if (f != "-") {
+   f = f.split(" ")[1].split(",");
+   f = f[0] + "." + f[1] + " r" + f[2];
+  }
+ }
+ return f;
+}
+function __utmLinkerUrl(l,h) {
+ var p,k,a="-",b="-",c="-",x="-",z="-",v="-";
+ var dc=_ubd.cookie;
+ var iq = l.indexOf("?");
+ var ih = l.indexOf("#");
+ var url=l;
+ if (dc) {
+  a=_uES(_uGC(dc,"__utma="+_udh+".",";"));
+  b=_uES(_uGC(dc,"__utmb="+_udh,";"));
+  c=_uES(_uGC(dc,"__utmc="+_udh,";"));
+  x=_uES(_uGC(dc,"__utmx="+_udh,";"));
+  z=_uES(_uGC(dc,"__utmz="+_udh+".",";"));
+  v=_uES(_uGC(dc,"__utmv="+_udh+".",";"));
+  k=(_uHash(a+b+c+x+z+v)*1)+(_udh*1);
+  p="__utma="+a+"&__utmb="+b+"&__utmc="+c+"&__utmx="+x+"&__utmz="+z+"&__utmv="+v+"&__utmk="+k;
+ }
+ if (p) {
+  if (h && ih>-1) return;
+  if (h) { url=l+"#"+p; }
+  else {
+   if (iq==-1 && ih==-1) url=l+"?"+p;
+   else if (ih==-1) url=l+"&"+p;
+   else if (iq==-1) url=l.substring(0,ih-1)+"?"+p+l.substring(ih);
+   else url=l.substring(0,ih-1)+"&"+p+l.substring(ih);
+  }
+ }
+ return url;
+}
+function __utmLinker(l,h) {
+ if (!_ulink || !l || l=="") return;
+ _udl.href=__utmLinkerUrl(l,h);
+}
+function __utmLinkPost(f,h) {
+ if (!_ulink || !f || !f.action) return;
+ f.action=__utmLinkerUrl(f.action, h);
+ return;
+}
+function __utmSetVar(v) {
+ if (!v || v=="") return;
+ if (!_udo || _udo == "") {
+  _udh=_uDomain();
+  if (_udn && _udn!="") { _udo=" domain="+_udn+";"; }
+ }
+ if (!_uVG()) return;
+ var r=Math.round(Math.random() * 2147483647);
+ _ubd.cookie="__utmv="+_udh+"."+_uES(v)+"; path="+_utcp+"; expires="+_uNx()+";"+_udo;
+ var s="&utmt=var&utmn="+r;
+ if (_usample && _usample != 100) s+="&utmsp="+_uES(_usample);
+ if ((_userv==0 || _userv==2) && _uSP()) {
+  var i=new Image(1,1);
+  i.src=_ugifpath+"?"+"utmwv="+_uwv+s;
+  i.onload=function() { _uVoid(); }
+ }
+ if ((_userv==1 || _userv==2) && _uSP()) {
+  var i2=new Image(1,1);
+  i2.src=_ugifpath2+"?"+"utmwv="+_uwv+s+"&utmac="+_uacct+"&utmcc="+_uGCS();
+  i2.onload=function() { _uVoid(); }
+ }
+}
+function _uGCS() {
+ var t,c="",dc=_ubd.cookie;
+ if ((t=_uGC(dc,"__utma="+_udh+".",";"))!="-") c+=_uES("__utma="+t+";+");
+ if ((t=_uGC(dc,"__utmx="+_udh,";"))!="-") c+=_uES("__utmx="+t+";+");
+ if ((t=_uGC(dc,"__utmz="+_udh+".",";"))!="-") c+=_uES("__utmz="+t+";+");
+ if ((t=_uGC(dc,"__utmv="+_udh+".",";"))!="-") c+=_uES("__utmv="+t+";");
+ if (c.charAt(c.length-1)=="+") c=c.substring(0,c.length-1);
+ return c;
+}
+function _uGC(l,n,s) {
+ if (!l || l=="" || !n || n=="" || !s || s=="") return "-";
+ var i,i2,i3,c="-";
+ i=l.indexOf(n);
+ i3=n.indexOf("=")+1;
+ if (i > -1) {
+  i2=l.indexOf(s,i); if (i2 < 0) { i2=l.length; }
+  c=l.substring((i+i3),i2);
+ }
+ return c;
+}
+function _uDomain() {
+ if (!_udn || _udn=="" || _udn=="none") { _udn=""; return 1; }
+ if (_udn=="auto") {
+  var d=_ubd.domain;
+  if (d.substring(0,4)=="www.") {
+   d=d.substring(4,d.length);
+  }
+  _udn=d;
+ }
+ _udn = _udn.toLowerCase(); 
+ if (_uhash=="off") return 1;
+ return _uHash(_udn);
+}
+function _uHash(d) {
+ if (!d || d=="") return 1;
+ var h=0,g=0;
+ for (var i=d.length-1;i>=0;i--) {
+  var c=parseInt(d.charCodeAt(i));
+  h=((h << 6) & 0xfffffff) + c + (c << 14);
+  if ((g=h & 0xfe00000)!=0) h=(h ^ (g >> 21));
+ }
+ return h;
+}
+function _uFixA(c,s,t) {
+ if (!c || c=="" || !s || s=="" || !t || t=="") return "-";
+ var a=_uGC(c,"__utma="+_udh+".",s);
+ var lt=0,i=0;
+ if ((i=a.lastIndexOf(".")) > 9) {
+  _uns=a.substring(i+1,a.length);
+  _uns=(_uns*1)+1;
+  a=a.substring(0,i);
+  if ((i=a.lastIndexOf(".")) > 7) {
+   lt=a.substring(i+1,a.length);
+   a=a.substring(0,i);
+  }
+  if ((i=a.lastIndexOf(".")) > 5) {
+   a=a.substring(0,i);
+  }
+  a+="."+lt+"."+t+"."+_uns;
+ }
+ return a;
+}
+function _uTrim(s) {
+  if (!s || s=="") return "";
+  while ((s.charAt(0)==' ') || (s.charAt(0)=='\n') || (s.charAt(0,1)=='\r')) s=s.substring(1,s.length);
+  while ((s.charAt(s.length-1)==' ') || (s.charAt(s.length-1)=='\n') || (s.charAt(s.length-1)=='\r')) s=s.substring(0,s.length-1);
+  return s;
+}
+function _uEC(s) {
+  var n="";
+  if (!s || s=="") return "";
+  for (var i=0;i<s.length;i++) {if (s.charAt(i)==" ") n+="+"; else n+=s.charAt(i);}
+  return n;
+}
+function __utmVisitorCode(f) {
+ var r=0,t=0,i=0,i2=0,m=31;
+ var a=_uGC(_ubd.cookie,"__utma="+_udh+".",";");
+ if ((i=a.indexOf(".",0))<0) return;
+ if ((i2=a.indexOf(".",i+1))>0) r=a.substring(i+1,i2); else return "";  
+ if ((i=a.indexOf(".",i2+1))>0) t=a.substring(i2+1,i); else return "";  
+ if (f) {
+  return r;
+ } else {
+  var c=new Array('A','B','C','D','E','F','G','H','J','K','L','M','N','P','R','S','T','U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9');
+  return c[r>>28&m]+c[r>>23&m]+c[r>>18&m]+c[r>>13&m]+"-"+c[r>>8&m]+c[r>>3&m]+c[((r&7)<<2)+(t>>30&3)]+c[t>>25&m]+c[t>>20&m]+"-"+c[t>>15&m]+c[t>>10&m]+c[t>>5&m]+c[t&m];
+ }
+}
+function _uIN(n) {
+ if (!n) return false;
+ for (var i=0;i<n.length;i++) {
+  var c=n.charAt(i);
+  if ((c<"0" || c>"9") && (c!=".")) return false;
+ }
+ return true;
+}
+function _uES(s,u) {
+ if (typeof(encodeURIComponent) == 'function') {
+  if (u) return encodeURI(s);
+  else return encodeURIComponent(s);
+ } else {
+  return escape(s);
+ }
+}
+function _uUES(s) {
+ if (typeof(decodeURIComponent) == 'function') {
+  return decodeURIComponent(s);
+ } else {
+  return unescape(s);
+ }
+}
+function _uVG() {
+ if((_udn.indexOf("www.google.") == 0 || _udn.indexOf(".google.") == 0 || _udn.indexOf("google.") == 0) && _utcp=='/' && _udn.indexOf("google.org")==-1) {
+  return false;
+ }
+ return true;
+}
+function _uSP() {
+ var s=100;
+ if (_usample) s=_usample;
+ if(s>=100 || s<=0) return true;
+ return ((__utmVisitorCode(1)%10000)<(s*100));
+}
+function urchinPathCopy(p){
+ var d=document,nx,tx,sx,i,c,cs,t,h,o;
+ cs=new Array("a","b","c","v","x","z");
+ h=_uDomain(); if (_udn && _udn!="") o=" domain="+_udn+";";
+ nx=_uNx()+";";
+ tx=new Date(); tx.setTime(tx.getTime()+(_utimeout*1000));
+ tx=tx.toGMTString()+";";
+ sx=new Date(); sx.setTime(sx.getTime()+(_ucto*1000));
+ sx=sx.toGMTString()+";";
+ for (i=0;i<6;i++){
+  t=" expires=";
+  if (i==1) t+=tx; else if (i==2) t=""; else if (i==5) t+=sx; else t+=nx;
+  c=_uGC(d.cookie,"__utm"+cs[i]+"="+h,";");
+  if (c!="-") d.cookie="__utm"+cs[i]+"="+c+"; path="+p+";"+t+o;
+ }
+}
+function _uCO() {
+ if (!_utk || _utk=="" || _utk.length<10) return;
+ var d='www.google.com';
+ if (_utk.charAt(0)=='!') d='analytics.corp.google.com';
+ _ubd.cookie="GASO="+_utk+"; path="+_utcp+";"+_udo;
+ var sc=document.createElement('script');
+ sc.type='text/javascript';
+ sc.id="_gasojs";
+ sc.src='https://'+d+'/analytics/reporting/overlay_js?gaso='+_utk+'&'+Math.random();
+ document.getElementsByTagName('head')[0].appendChild(sc);  
+}
+function _uGT() {
+ var h=location.hash, a;
+ if (h && h!="" && h.indexOf("#gaso=")==0) {
+  a=_uGC(h,"gaso=","&");
+ } else {
+  a=_uGC(_ubd.cookie,"GASO=",";");
+ }
+ return a;
+}
+var _utk=_uGT();
+if (_utk && _utk!="" && _utk.length>10 && _utk.indexOf("=")==-1) {
+ if (window.addEventListener) {
+  window.addEventListener('load', _uCO, false); 
+ } else if (window.attachEvent) { 
+  window.attachEvent('onload', _uCO);
+ }
+}
+
+function _uNx() {
+  return (new Date((new Date()).getTime()+63072000000)).toGMTString();
+}
+
+------------UhZ3Dz1SCUs0H8l46Sgpde--

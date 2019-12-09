@@ -1,0 +1,633 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0057)http://www.garagegames.com/community/resources/view/21000 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="Valkyria Chronicles style turnbased, 3rd person squad tactics-action hybrid gametype for Torque3D (singleplayer). Part Six">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Tactics-Action Hybrid Game Tutorial Part6: Fix Gui Calls | Steve Acaster | Resources | Community | GarageGames.com</title>		<link href="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/21000#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/21000#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Tactics-Action Hybrid Game Tutorial Part6: Fix Gui Calls</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/101767">Steve Acaster</a>
+			<strong>·</strong>
+			05/08/2011 (1:11 pm)			<strong>·</strong>
+			0 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><a rel="nofollow" href="http://www.garagegames.com/community/resources/view/20999">Back to Part Five: Energy and Turns</a><br>
+<br>
+So, we've got all the basic functionality for our playerObject, and now he needs some team members. Before we start on that though, there are a few things regarding the server-&gt;client-&gt;HUD in stock T3D that needs to be changed. Stock T3D is set up with many clients on different computers in mind, connecting to a main server. Having many "playerObjects" on the same computer will cause the Client's HUD to update anytime an object of the Player or Aiplayer Class requires to update a parameter. <br>
+<br>
+eg: Client shoots an Ai, Ai updates health, Client's own healthHUD GUI is updated, Ai throws ammo, Client's own WeaponHUD AmmoCounter decreases. We're going to stop that and make certain that the only changes to the Client's Head-Up-Display happen with the playerObject directly under his control.<br>
+<br>
+Open up <i>scripts/server/player.cs</i> and make the following alterations:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;Armor::onAdd(%</span><span class="keyword">this</span><span>,&nbsp;%obj)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Vehicle&nbsp;timeout</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%obj.mountVehicle&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Default&nbsp;dynamic&nbsp;armor&nbsp;stats</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%obj.setRechargeRate(0);<span class="comment">//(%this.rechargeRate);//yorks&nbsp;out&nbsp;to&nbsp;prevent&nbsp;auto&nbsp;recharging</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%obj.setRepairRate(0);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Set&nbsp;the&nbsp;numerical&nbsp;Health&nbsp;HUD</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//%obj.updateHealth();</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Calling&nbsp;updateHealth()&nbsp;must&nbsp;be&nbsp;delayed&nbsp;now...&nbsp;for&nbsp;some&nbsp;reason</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;&nbsp;&nbsp;%obj.schedule(50,&nbsp;"updateHealth");//yorks&nbsp;-&nbsp;remember&nbsp;this,&nbsp;we'll&nbsp;disable&nbsp;it&nbsp;later&nbsp;&lt;---&nbsp;DISABLE&nbsp;NOW!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%obj.schedule(50,&nbsp;<span class="string">"restoreEnergy"</span><span>);</span><span class="comment">//yorks</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;Armor::damage(%<span class="keyword">this</span><span>,&nbsp;%obj,&nbsp;%sourceObject,&nbsp;%position,&nbsp;%damage,&nbsp;%damageType)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Update&nbsp;the&nbsp;numerical&nbsp;Health&nbsp;HUD</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(localClientConnection.player&nbsp;==&nbsp;%obj)</span><span class="comment">//yorks&nbsp;in</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.updateHealth();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;Armor::onDisabled(%<span class="keyword">this</span><span>,&nbsp;%obj,&nbsp;%state)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//yorks&nbsp;add&nbsp;at&nbsp;the&nbsp;bottom&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(localClientConnection.player&nbsp;==&nbsp;%obj)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.setEnergyLevel(0);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.updateEnergy();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%obj.setShapeName(<span class="string">""</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;Player::updateHealth(%player)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//this&nbsp;fixes&nbsp;an&nbsp;issue&nbsp;with&nbsp;how&nbsp;healthpacks&nbsp;work&nbsp;on&nbsp;a&nbsp;schedule</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//so&nbsp;it&nbsp;only&nbsp;displays&nbsp;the&nbsp;changes&nbsp;on&nbsp;the&nbsp;healed&nbsp;playerObject&nbsp;when&nbsp;you&nbsp;switch&nbsp;team&nbsp;members</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%player&nbsp;==&nbsp;localClientConnection.player)</span><span class="comment">//&lt;------&nbsp;yorks&nbsp;insert&nbsp;this&nbsp;here!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToClient(localClientConnection,&nbsp;<span class="string">'setNumericalHealthHUD'</span><span>,&nbsp;%curHealth);</span><span class="comment">//&lt;--changed&nbsp;yorks</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;Player::updateEnergy(%player)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%player&nbsp;==&nbsp;localClientConnection.player)</span><span class="comment">//&lt;----&nbsp;yorks&nbsp;add</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToClient(localClientConnection,&nbsp;<span class="string">'setNumericalEnergyHUD'</span><span>,&nbsp;%curEnergy);&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;Player::restoreEnergy(%player)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%maxEnergy&nbsp;=&nbsp;%player.getDatablock().maxEnergy;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%player.setEnergyLevel(%maxEnergy);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%player&nbsp;==&nbsp;localClientConnection.player)</span><span class="comment">//&lt;------&nbsp;yorks&nbsp;insert&nbsp;this&nbsp;here!</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToClient(localClientConnection,&nbsp;<span class="string">'setNumericalEnergyHUD'</span><span>,&nbsp;%maxEnergy);&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function Armor::onAdd(%this, %obj)
+{
+   // Vehicle timeout
+   %obj.mountVehicle = true;
+
+   // Default dynamic armor stats
+   %obj.setRechargeRate(0);//(%this.rechargeRate);//yorks out to prevent auto recharging
+   %obj.setRepairRate(0);
+
+   // Set the numerical Health HUD
+   //%obj.updateHealth();
+
+   // Calling updateHealth() must be delayed now... for some reason
+//   %obj.schedule(50, "updateHealth");//yorks - remember this, we'll disable it later &lt;--- DISABLE NOW!
+   %obj.schedule(50, "restoreEnergy");//yorks
+}
+
+//...
+
+function Armor::damage(%this, %obj, %sourceObject, %position, %damage, %damageType)
+{
+//...
+
+   // Update the numerical Health HUD
+   if(localClientConnection.player == %obj)//yorks in
+		%obj.updateHealth();
+
+//...
+}
+
+//...
+
+function Armor::onDisabled(%this, %obj, %state)
+{
+//...
+//yorks add at the bottom   
+	if(localClientConnection.player == %obj)
+	{
+		%obj.setEnergyLevel(0);
+		%obj.updateEnergy();
+	}
+	
+	%obj.setShapeName("");
+}
+
+//...
+
+function Player::updateHealth(%player)
+{
+//...
+
+//this fixes an issue with how healthpacks work on a schedule
+//so it only displays the changes on the healed playerObject when you switch team members
+   if(%player == localClientConnection.player)//&lt;------ yorks insert this here!
+      commandToClient(localClientConnection, 'setNumericalHealthHUD', %curHealth);//&lt;--changed yorks
+}
+
+//...
+
+function Player::updateEnergy(%player)
+{
+//...
+
+	if(%player == localClientConnection.player)//&lt;---- yorks add
+		commandToClient(localClientConnection, 'setNumericalEnergyHUD', %curEnergy);
+}
+
+//...
+
+function Player::restoreEnergy(%player)
+{
+   %maxEnergy = %player.getDatablock().maxEnergy;
+   %player.setEnergyLevel(%maxEnergy);
+   
+	if(%player == localClientConnection.player)//&lt;------ yorks insert this here!
+		commandToClient(localClientConnection, 'setNumericalEnergyHUD', %maxEnergy);
+}
+
+//...</pre><br>
+Now, if a new playerObject is spawned which is not directly under our Client's control, the on-screen Energy and Health HUD will not update.<br>
+<br>
+Now to sort out the calls to update the weaponHUD. Open <i>scripts/server/weapon.cs</i> and alter the following:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;WeaponImage::onMount(%</span><span class="keyword">this</span><span>,&nbsp;%obj,&nbsp;%slot)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Images&nbsp;assume&nbsp;a&nbsp;false&nbsp;ammo&nbsp;state&nbsp;on&nbsp;load.&nbsp;&nbsp;We&nbsp;need&nbsp;to</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;set&nbsp;the&nbsp;state&nbsp;according&nbsp;to&nbsp;the&nbsp;current&nbsp;inventory.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.ammo&nbsp;!$=&nbsp;</span><span class="string">""</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.getInventory(%</span><span class="keyword">this</span><span>.ammo))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.setImageAmmo(%slot,&nbsp;<span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%currentAmmo&nbsp;=&nbsp;%obj.getInventory(%<span class="keyword">this</span><span>.ammo);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%currentAmmo&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//yorks&nbsp;-&nbsp;changes&nbsp;below&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.client.RefreshWeaponHud(%currentAmmo,&nbsp;%this.item.previewImage,&nbsp;%this.item.reticle,&nbsp;%this.item.zoomReticle);</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(localClientConnection.player&nbsp;==&nbsp;%obj)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToClient(localClientConnection,&nbsp;<span class="string">'RefreshWeaponHud'</span><span>,&nbsp;%currentAmmo,&nbsp;%</span><span class="keyword">this</span><span>.item.previewImage,&nbsp;%</span><span class="keyword">this</span><span>.item.reticle,&nbsp;%</span><span class="keyword">this</span><span>.item.zoomReticle);&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//yorks&nbsp;changes&nbsp;end</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//yorks&nbsp;-&nbsp;whole&nbsp;new&nbsp;function&nbsp;to&nbsp;add&nbsp;here!</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>function&nbsp;WeaponImage::UpdateWeaponHud(%<span class="keyword">this</span><span>,&nbsp;%obj,&nbsp;%slot)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.ammo&nbsp;!$=&nbsp;</span><span class="string">""</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.getInventory(%</span><span class="keyword">this</span><span>.ammo))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.setImageAmmo(%slot,&nbsp;<span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%currentAmmo&nbsp;=&nbsp;%obj.getInventory(%<span class="keyword">this</span><span>.ammo);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%currentAmmo&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToClient(localClientConnection,&nbsp;<span class="string">'RefreshWeaponHud'</span><span>,&nbsp;%currentAmmo,&nbsp;%</span><span class="keyword">this</span><span>.item.previewImage,&nbsp;%</span><span class="keyword">this</span><span>.item.reticle,&nbsp;%</span><span class="keyword">this</span><span>.item.zoomReticle);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;WeaponImage::onUnmount(%<span class="keyword">this</span><span>,&nbsp;%obj,&nbsp;%slot)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//yorks&nbsp;-&nbsp;replace&nbsp;everything&nbsp;inside&nbsp;this&nbsp;function&nbsp;with&nbsp;this</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(localClientConnection.player&nbsp;==&nbsp;%obj)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToClient(localClientConnection,&nbsp;<span class="string">'RefreshWeaponHud'</span><span>,&nbsp;%currentAmmo,&nbsp;%</span><span class="keyword">this</span><span>.item.previewImage,&nbsp;%</span><span class="keyword">this</span><span>.item.reticle,&nbsp;%</span><span class="keyword">this</span><span>.item.zoomReticle);&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;Ammo::onInventory(%<span class="keyword">this</span><span>,&nbsp;%obj,&nbsp;%amount)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;The&nbsp;ammo&nbsp;inventory&nbsp;state&nbsp;has&nbsp;changed,&nbsp;we&nbsp;need&nbsp;to&nbsp;update&nbsp;any</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;mounted&nbsp;images&nbsp;using&nbsp;this&nbsp;ammo&nbsp;to&nbsp;reflect&nbsp;the&nbsp;new&nbsp;state.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>&nbsp;(%i&nbsp;=&nbsp;0;&nbsp;%i&nbsp;&lt;&nbsp;8;&nbsp;%i++)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;((%image&nbsp;=&nbsp;%obj.getMountedImage(%i))&nbsp;&gt;&nbsp;0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(isObject(%image.ammo)&nbsp;&amp;&amp;&nbsp;%image.ammo.getId()&nbsp;==&nbsp;%</span><span class="keyword">this</span><span>.getId())&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.setImageAmmo(%i,&nbsp;%amount&nbsp;!=&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%currentAmmo&nbsp;=&nbsp;%obj.getInventory(%<span class="keyword">this</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;%obj.client.setAmmoAmountHud(%currentAmmo);//yorks&nbsp;out</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//yorks&nbsp;add&nbsp;these&nbsp;2&nbsp;lines&nbsp;below</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(localClientConnection.player&nbsp;==&nbsp;%obj)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToClient(localclientconnection,&nbsp;<span class="string">'SetAmmoAmountHud'</span><span>,&nbsp;%currentAmmo);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function WeaponImage::onMount(%this, %obj, %slot)
+{
+   // Images assume a false ammo state on load.  We need to
+   // set the state according to the current inventory.
+   if(%this.ammo !$= "")
+   {
+      if (%obj.getInventory(%this.ammo))
+      {
+         %obj.setImageAmmo(%slot, true);
+         %currentAmmo = %obj.getInventory(%this.ammo);
+      }
+      else
+         %currentAmmo = 0;
+
+//yorks - changes below		 
+		//		%obj.client.RefreshWeaponHud(%currentAmmo, %this.item.previewImage, %this.item.reticle, %this.item.zoomReticle);
+		if(localClientConnection.player == %obj)
+			commandToClient(localClientConnection, 'RefreshWeaponHud', %currentAmmo, %this.item.previewImage, %this.item.reticle, %this.item.zoomReticle);
+//yorks changes end
+   }
+}
+
+//yorks - whole new function to add here!
+function WeaponImage::UpdateWeaponHud(%this, %obj, %slot)
+{
+   if(%this.ammo !$= "")
+   {
+      if (%obj.getInventory(%this.ammo))
+      {
+         %obj.setImageAmmo(%slot, true);
+         %currentAmmo = %obj.getInventory(%this.ammo);
+      }
+      else
+         %currentAmmo = 0;
+
+		commandToClient(localClientConnection, 'RefreshWeaponHud', %currentAmmo, %this.item.previewImage, %this.item.reticle, %this.item.zoomReticle);
+	}
+}
+
+function WeaponImage::onUnmount(%this, %obj, %slot)
+{
+//yorks - replace everything inside this function with this
+	if(localClientConnection.player == %obj)
+		commandToClient(localClientConnection, 'RefreshWeaponHud', %currentAmmo, %this.item.previewImage, %this.item.reticle, %this.item.zoomReticle);
+}
+
+//...
+
+function Ammo::onInventory(%this, %obj, %amount)
+{
+   // The ammo inventory state has changed, we need to update any
+   // mounted images using this ammo to reflect the new state.
+   for (%i = 0; %i &lt; 8; %i++)
+   {
+      if ((%image = %obj.getMountedImage(%i)) &gt; 0)
+         if (isObject(%image.ammo) &amp;&amp; %image.ammo.getId() == %this.getId())
+         {
+            %obj.setImageAmmo(%i, %amount != 0);
+            %currentAmmo = %obj.getInventory(%this);
+           // %obj.client.setAmmoAmountHud(%currentAmmo);//yorks out
+
+//yorks add these 2 lines below
+			if(localClientConnection.player == %obj)
+				commandToClient(localclientconnection, 'SetAmmoAmountHud', %currentAmmo);
+         }
+   }
+}</pre><br>
+As you might have noticed <i>%obj.client</i> (playerObject's client) will not return anything because we are not controlling the object directly, so we have to make sure the localClientConnection is used.<br>
+<br>
+Now in <i>scripts/server/commands.cs</i> let's finish up the new <i>WeaponImage::UpdateWeaponHud</i> function by adding to our custom <i>serverCmdTurnOver</i> function.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;serverCmdTurnOver(%client)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//yorks&nbsp;add&nbsp;to&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the&nbsp;function</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%wpn&nbsp;=&nbsp;%client.player.getmountedimage(%slot);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%wpn.UpdateWeaponHud(%client.player,&nbsp;%slot);&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function serverCmdTurnOver(%client)
+{
+//...
+
+//yorks add to the bottom of the function
+   %wpn = %client.player.getmountedimage(%slot);
+   %wpn.UpdateWeaponHud(%client.player, %slot);
+}</pre><br>
+In <i>scripts/client/client.cs</i> alter the following:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;clientCmdSetNumericalHealthHUD(%curHealth)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Skip&nbsp;if&nbsp;the&nbsp;hud&nbsp;is&nbsp;missing.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(!isObject(numericalHealthHUD))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;The&nbsp;server&nbsp;has&nbsp;sent&nbsp;us&nbsp;our&nbsp;current&nbsp;health,&nbsp;display&nbsp;it&nbsp;on&nbsp;the&nbsp;HUD</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;numericalHealthHUD.setValue(%curHealth);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//yorks&nbsp;out&nbsp;-&nbsp;always&nbsp;display</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">/*</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;//&nbsp;Ensure&nbsp;the&nbsp;HUD&nbsp;is&nbsp;set&nbsp;to&nbsp;visible&nbsp;while&nbsp;we&nbsp;have&nbsp;health&nbsp;/&nbsp;are&nbsp;alive</span>&nbsp;</span></li><li class="alt"><span><span class="comment">&nbsp;&nbsp;&nbsp;if&nbsp;(%curHealth)</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HealthHUD.setVisible(true);</span>&nbsp;</span></li><li class="alt"><span><span class="comment">&nbsp;&nbsp;&nbsp;else</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HealthHUD.setVisible(false);</span>&nbsp;</span></li><li class="alt"><span><span class="comment">*/</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;clientCmdSetAmmoAmountHud(%amount)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//yorks&nbsp;replace&nbsp;whole&nbsp;function&nbsp;with&nbsp;this</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AmmoAmount.setText(<span class="string">"Ammo:&nbsp;"</span><span>@%amount);&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;clientCmdRefreshWeaponHUD(%amount,&nbsp;%preview,&nbsp;%ret,&nbsp;%zoomRet)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//yorks&nbsp;start&nbsp;edit&nbsp;at&nbsp;top</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;<span class="comment">//&nbsp;&nbsp;if&nbsp;(!%amount)</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;<span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AmmoAmount.setVisible(false);</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;&nbsp;&nbsp;else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;&nbsp;&nbsp;{</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AmmoAmount.setVisible(true);</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AmmoAmount.setText(<span class="string">"Ammo:&nbsp;"</span><span>@&nbsp;%amount);</span><span class="comment">//yorks&nbsp;leave&nbsp;this!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;&nbsp;&nbsp;}</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//yorks&nbsp;end&nbsp;edit,&nbsp;leave&nbsp;rest&nbsp;below&nbsp;as&nbsp;is</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function clientCmdSetNumericalHealthHUD(%curHealth)
+{
+   // Skip if the hud is missing.
+   if (!isObject(numericalHealthHUD))
+      return;
+
+   // The server has sent us our current health, display it on the HUD
+   numericalHealthHUD.setValue(%curHealth);
+
+//yorks out - always display
+/*
+   // Ensure the HUD is set to visible while we have health / are alive
+   if (%curHealth)
+      HealthHUD.setVisible(true);
+   else
+      HealthHUD.setVisible(false);
+*/
+}
+
+//...
+
+function clientCmdSetAmmoAmountHud(%amount)
+{
+//yorks replace whole function with this
+      AmmoAmount.setText("Ammo: "@%amount);
+}
+
+//...
+
+function clientCmdRefreshWeaponHUD(%amount, %preview, %ret, %zoomRet)
+{
+//yorks start edit at top
+ //  if (!%amount)
+ //     AmmoAmount.setVisible(false);
+//   else
+//   {
+//      AmmoAmount.setVisible(true);
+      AmmoAmount.setText("Ammo: "@ %amount);//yorks leave this!
+//   }
+//yorks end edit, leave rest below as is
+
+//...
+}</pre><br>
+That will stop the Healthhud and WeaponHud from vanishing at certain times and instead they will display empty or at zero.<br>
+<br>
+Now we need to change the way items are dealt with when a playerObject is killed and drops them. In the stock game type they disappear quite quickly, but in this slower paced, turnedbased, tactics/action hybrid you really want them to stay - stay but not respawn after use. In <i>scripts/server/item.cs</i> alter:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//yorks&nbsp;-&nbsp;replace&nbsp;this&nbsp;function</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>function&nbsp;Item::respawn(%<span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;This&nbsp;method&nbsp;is&nbsp;used&nbsp;to&nbsp;respawn&nbsp;static&nbsp;ammo&nbsp;and&nbsp;weapon&nbsp;items</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;and&nbsp;is&nbsp;usually&nbsp;called&nbsp;when&nbsp;the&nbsp;item&nbsp;is&nbsp;picked&nbsp;up.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Instant&nbsp;fade...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.startFade(0,&nbsp;0,&nbsp;</span><span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setHidden(</span><span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Shedule&nbsp;a&nbsp;reapearance</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.noRespawn&nbsp;==&nbsp;</span><span class="keyword">true</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule($Item::RespawnTime,&nbsp;</span><span class="string">"delete"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule($Item::RespawnTime,&nbsp;</span><span class="string">"setHidden"</span><span>,&nbsp;</span><span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule($Item::RespawnTime&nbsp;+&nbsp;100,&nbsp;</span><span class="string">"startFade"</span><span>,&nbsp;1000,&nbsp;0,&nbsp;</span><span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;ItemData::onThrow(%<span class="keyword">this</span><span>,&nbsp;%user,&nbsp;%amount)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;MissionGroup.add(%obj);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;<span class="comment">//&nbsp;%obj.schedulePop();//yorks&nbsp;out!&nbsp;we&nbsp;don't&nbsp;want&nbsp;thrown&nbsp;ammo&nbsp;to&nbsp;timeout</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;%obj;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">//yorks - replace this function
+function Item::respawn(%this)
+{
+   // This method is used to respawn static ammo and weapon items
+   // and is usually called when the item is picked up.
+   // Instant fade...
+   %this.startFade(0, 0, true);
+   %this.setHidden(true);
+
+   // Shedule a reapearance
+	if(%this.noRespawn == true)
+	{
+		%this.schedule($Item::RespawnTime, "delete");
+	}
+	else
+	{
+		%this.schedule($Item::RespawnTime, "setHidden", false);
+		%this.schedule($Item::RespawnTime + 100, "startFade", 1000, 0, false);
+	}
+}
+
+//...
+
+function ItemData::onThrow(%this, %user, %amount)
+{
+
+//...
+
+   MissionGroup.add(%obj);
+  // %obj.schedulePop();//yorks out! we don't want thrown ammo to timeout
+   return %obj;
+}</pre><br>
+<br>
+Next, in <i>scripts/server/health.cs</i> edit;<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;ShapeBase::tossPatch(%</span><span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%item.<span class="keyword">static</span><span>&nbsp;=&nbsp;</span><span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%item.noRespawn&nbsp;=&nbsp;1;<span class="comment">//yorks&nbsp;added!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;MissionCleanup.add(%item);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%item.setCollisionTimeout(%<span class="keyword">this</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//serverPlay3D(%item.getDataBlock().throwSound,&nbsp;%item.getTransform());</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;<span class="comment">//&nbsp;&nbsp;%item.schedulePop();//yorks&nbsp;we&nbsp;don't&nbsp;want&nbsp;thrown&nbsp;health&nbsp;packs&nbsp;to&nbsp;timeout</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;%item;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function ShapeBase::tossPatch(%this)
+{
+//...
+
+   %item.static = false;
+   %item.noRespawn = 1;//yorks added!
+   MissionCleanup.add(%item);
+
+//...
+
+   %item.setCollisionTimeout(%this);
+   //serverPlay3D(%item.getDataBlock().throwSound, %item.getTransform());
+ //  %item.schedulePop();//yorks we don't want thrown health packs to timeout
+
+   return %item;
+}</pre><br>
+Now weapons, ammo and health packs will continue to lie around in game after they have been thrown. Thrown items will not attempt to respawn once they have been picked up.<br>
+<br>
+Whilst we are editing things, let's change the welcome message in <i>scripts/server/gameCore.cs</i>. This is not important and just for fun.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21000#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;GameConnection::onConnect(%client,&nbsp;%name)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Inform&nbsp;the&nbsp;client&nbsp;we've&nbsp;joined&nbsp;up</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;messageClient(%client,&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">'MsgClientJoin'</span><span>,&nbsp;</span><span class="string">'\c2Welcome&nbsp;to&nbsp;Torque&nbsp;Chronicles!&nbsp;The&nbsp;T3D&nbsp;Tactics/Action&nbsp;Hybrid&nbsp;Gameplay&nbsp;Tutorial.'</span><span>,</span><span class="comment">//&nbsp;&lt;---&nbsp;yorks&nbsp;changed!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%client.playerName,&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function GameConnection::onConnect(%client, %name)
+   {
+//...
+      // Inform the client we've joined up
+      messageClient(%client,
+         'MsgClientJoin', '\c2Welcome to Torque Chronicles! The T3D Tactics/Action Hybrid Gameplay Tutorial.',// &lt;--- yorks changed!
+         %client.playerName,
+//...
+}</pre><br>
+Now we should have a working logic environment that will not start altering the Client's on-screen GUI values unless it pertains to the playerObject under immediate control. So now we can create our multiple team members, teams, and a specific gameType; "TorqueTactics".<br>
+<br>
+<a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21001">Part Seven: Tactics GameType</a></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/101767.png" alt="Steve Acaster&#39;s profile picture">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				One Bloke ... In His Bedroom ... Trying To Make Computer Games ... eventually ...			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21015">Move Rock - Circumnavigate Rock - Go Off On Tangent</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21013">Tactics-Action Hybrid Game Tutorial Part12: Finale</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21012"> Tactics-Action Hybrid Game Tutorial Part11: Ai Paths</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21005">Tactics-Action Hybrid Game Tutorial Part10: GamePlay Test</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21003">Tactics-Action Hybrid Game Tutorial Part9: Ai Combat</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/21001"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/20999"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/21000#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(21000, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+									<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/21000/0" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/resources/view/21000#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/resources/view/21000#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/21000');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Tactics-Action Hybrid Game Tutorial Part6  Fix Gui Calls   Steve Acaster   Resources   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

@@ -1,0 +1,744 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0057)http://www.garagegames.com/community/resources/view/21002 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="Valkyria Chronicles style turnbased, 3rd person squad tactics-action hybrid gametype for Torque3D (singleplayer). Part Eight">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Tactics-Action Hybrid Game Tutorial Part8: Custom Ai | Steve Acaster | Resources | Community | GarageGames.com</title>		<link href="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/21002#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/21002#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Tactics-Action Hybrid Game Tutorial Part8: Custom Ai</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/101767">Steve Acaster</a>
+			<strong>·</strong>
+			05/08/2011 (5:12 pm)			<strong>·</strong>
+			4 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21001">Back to Part Seven: Tactics GameType</a><br>
+<br>
+Let's create some custom Ai/playerObjects for both Ally team and Enemy team. Enemy team will be somewhat weaker than Ally as the Client is likely to face much more of them in-game. Open up <i>art/datablocks/aiplayer.cs</i> and add the following.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>datablock&nbsp;PlayerData(TacticsPlayerData&nbsp;:&nbsp;DefaultPlayerData)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;maxEnergy&nbsp;=&nbsp;&nbsp;40;<span class="comment">//stock&nbsp;is&nbsp;60,&nbsp;seems&nbsp;a&nbsp;bit&nbsp;much</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;runSurfaceAngle&nbsp;&nbsp;=&nbsp;50;<span class="comment">//yorks&nbsp;was&nbsp;70;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>datablock&nbsp;PlayerData(TacticsAiData&nbsp;:&nbsp;DefaultPlayerData)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;maxDamage&nbsp;=&nbsp;40;<span class="comment">//make&nbsp;enemy&nbsp;Ai&nbsp;weaker&nbsp;against&nbsp;player&nbsp;as&nbsp;there&nbsp;is&nbsp;likely&nbsp;to&nbsp;be&nbsp;more&nbsp;of&nbsp;them</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;maxEnergy&nbsp;=&nbsp;&nbsp;30;<span class="comment">//stock&nbsp;is&nbsp;60,&nbsp;make&nbsp;enemy&nbsp;Ai&nbsp;less&nbsp;fit&nbsp;that&nbsp;players</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;runSurfaceAngle&nbsp;&nbsp;=&nbsp;50;<span class="comment">//yorks&nbsp;was&nbsp;70;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">datablock PlayerData(TacticsPlayerData : DefaultPlayerData)
+{
+	maxEnergy =  40;//stock is 60, seems a bit much
+	runSurfaceAngle  = 50;//yorks was 70;
+};
+
+datablock PlayerData(TacticsAiData : DefaultPlayerData)
+{
+	maxDamage = 40;//make enemy Ai weaker against player as there is likely to be more of them
+	maxEnergy =  30;//stock is 60, make enemy Ai less fit that players
+	runSurfaceAngle  = 50;//yorks was 70;
+};</pre><br>
+In <i>scripts/server/aiplayer.cs</i> we'll add callbacks for these new PlayerData types.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;TacticsPlayerData::onReachDestination(%</span><span class="keyword">this</span><span>,%obj)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;If&nbsp;there&nbsp;was&nbsp;a&nbsp;decal&nbsp;placed,&nbsp;then&nbsp;it&nbsp;was</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;stored&nbsp;in&nbsp;this&nbsp;%obj&nbsp;variable&nbsp;(see&nbsp;playGui.cs)</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Erase&nbsp;the&nbsp;decal&nbsp;using&nbsp;the&nbsp;decal&nbsp;manager</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(&nbsp;%obj.decal&nbsp;&gt;&nbsp;-1&nbsp;)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalManagerRemoveDecal(%obj.decal);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Moves&nbsp;to&nbsp;the&nbsp;next&nbsp;node&nbsp;on&nbsp;the&nbsp;path.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Override&nbsp;for&nbsp;all&nbsp;player.&nbsp;&nbsp;Normally&nbsp;we'd&nbsp;override&nbsp;this&nbsp;for&nbsp;only</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;a&nbsp;specific&nbsp;player&nbsp;datablock&nbsp;or&nbsp;class&nbsp;of&nbsp;players.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.path&nbsp;!$=&nbsp;</span><span class="string">""</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.currentNode&nbsp;==&nbsp;%obj.targetNode)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.onEndOfPath(%obj,%obj.path);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.moveToNextNode();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;TacticsPlayerData::onEndOfPath(%<span class="keyword">this</span><span>,%obj,%path)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%obj.nextTask();&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;TacticsPlayerData::onEndSequence(%<span class="keyword">this</span><span>,%obj,%slot)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;echo(<span class="string">"Sequence&nbsp;Done!"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%obj.stopThread(%slot);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%obj.nextTask();&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;TacticsAiData::onReachDestination(%<span class="keyword">this</span><span>,%obj)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;If&nbsp;there&nbsp;was&nbsp;a&nbsp;decal&nbsp;placed,&nbsp;then&nbsp;it&nbsp;was</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;stored&nbsp;in&nbsp;this&nbsp;%obj&nbsp;variable&nbsp;(see&nbsp;playGui.cs)</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Erase&nbsp;the&nbsp;decal&nbsp;using&nbsp;the&nbsp;decal&nbsp;manager</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(&nbsp;%obj.decal&nbsp;&gt;&nbsp;-1&nbsp;)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalManagerRemoveDecal(%obj.decal);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Moves&nbsp;to&nbsp;the&nbsp;next&nbsp;node&nbsp;on&nbsp;the&nbsp;path.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Override&nbsp;for&nbsp;all&nbsp;player.&nbsp;&nbsp;Normally&nbsp;we'd&nbsp;override&nbsp;this&nbsp;for&nbsp;only</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;a&nbsp;specific&nbsp;player&nbsp;datablock&nbsp;or&nbsp;class&nbsp;of&nbsp;players.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.path&nbsp;!$=&nbsp;</span><span class="string">""</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.currentNode&nbsp;==&nbsp;%obj.targetNode)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.onEndOfPath(%obj,%obj.path);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.moveToNextNode();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;TacticsAiData::onEndOfPath(%<span class="keyword">this</span><span>,%obj,%path)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%obj.nextTask();&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;TacticsAiData::onEndSequence(%<span class="keyword">this</span><span>,%obj,%slot)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;echo(<span class="string">"Sequence&nbsp;Done!"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%obj.stopThread(%slot);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%obj.nextTask();&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function TacticsPlayerData::onReachDestination(%this,%obj)
+{
+      // If there was a decal placed, then it was
+   // stored in this %obj variable (see playGui.cs)
+   // Erase the decal using the decal manager
+   if( %obj.decal &gt; -1 )
+      decalManagerRemoveDecal(%obj.decal);
+
+   // Moves to the next node on the path.
+   // Override for all player.  Normally we'd override this for only
+   // a specific player datablock or class of players.
+   if (%obj.path !$= "")
+   {
+      if (%obj.currentNode == %obj.targetNode)
+         %this.onEndOfPath(%obj,%obj.path);
+      else
+         %obj.moveToNextNode();
+   }
+}
+
+function TacticsPlayerData::onEndOfPath(%this,%obj,%path)
+{
+   %obj.nextTask();
+}
+
+function TacticsPlayerData::onEndSequence(%this,%obj,%slot)
+{
+   echo("Sequence Done!");
+   %obj.stopThread(%slot);
+   %obj.nextTask();
+}
+
+function TacticsAiData::onReachDestination(%this,%obj)
+{
+      // If there was a decal placed, then it was
+   // stored in this %obj variable (see playGui.cs)
+   // Erase the decal using the decal manager
+   if( %obj.decal &gt; -1 )
+      decalManagerRemoveDecal(%obj.decal);
+
+   // Moves to the next node on the path.
+   // Override for all player.  Normally we'd override this for only
+   // a specific player datablock or class of players.
+   if (%obj.path !$= "")
+   {
+      if (%obj.currentNode == %obj.targetNode)
+         %this.onEndOfPath(%obj,%obj.path);
+      else
+         %obj.moveToNextNode();
+   }
+}
+
+function TacticsAiData::onEndOfPath(%this,%obj,%path)
+{
+   %obj.nextTask();
+}
+
+function TacticsAiData::onEndSequence(%this,%obj,%slot)
+{
+   echo("Sequence Done!");
+   %obj.stopThread(%slot);
+   %obj.nextTask();
+}</pre><br>
+And finally, make make the custom spawn function. Team 1 is Ally and under the player's command, any other is in the enemy Ai Team. The player gets the more powerful "TacticsPlayerData" playerType. After the aiPlayerObject is spawned, it is added to the appropriate team array.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;AIPlayer::tacticsSpawn(%name,&nbsp;%spawnPoint,&nbsp;%team)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%team&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%playerType&nbsp;=&nbsp;TacticsPlayerData;<span class="comment">//the&nbsp;human&nbsp;player</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%playerType&nbsp;=&nbsp;TacticsAIData;<span class="comment">//the&nbsp;Ai&nbsp;enemy</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Create&nbsp;the&nbsp;demo&nbsp;player&nbsp;object</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%player&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;AiPlayer(%name)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;dataBlock&nbsp;=&nbsp;%playerType;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;moveStuckTolerance&nbsp;=&nbsp;0;<span class="comment">//yorks&nbsp;emergency&nbsp;addition</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//there&nbsp;is&nbsp;a&nbsp;bug&nbsp;in&nbsp;1.1Preview&nbsp;that&nbsp;prevents&nbsp;Ai&nbsp;from&nbsp;moving</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//you&nbsp;should&nbsp;be&nbsp;able&nbsp;to&nbsp;remove&nbsp;this&nbsp;line&nbsp;as&nbsp;it's&nbsp;fixed&nbsp;in&nbsp;earlier/later&nbsp;editions</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//it&nbsp;should&nbsp;only&nbsp;be&nbsp;an&nbsp;issue&nbsp;with&nbsp;T3D&nbsp;1.1&nbsp;Preview.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;MissionCleanup.add(%player);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%player.setShapeName(%name);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%player.team&nbsp;=&nbsp;%team;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%player.action&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%player.hasFired&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(%spawnpoint))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%player.setTransform(%spawnPoint.getTransform());&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(%spawnpoint&nbsp;@&nbsp;<span class="string">"&nbsp;is&nbsp;not&nbsp;an&nbsp;object&nbsp;for&nbsp;"</span><span>&nbsp;@&nbsp;%name&nbsp;@&nbsp;</span><span class="string">"'s&nbsp;spawnpoint"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%player.setInventory(RocketLauncher,&nbsp;1);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%player.setInventory(RocketLauncherAmmo,&nbsp;%player.maxInventory(RocketLauncherAmmo));&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%player.mountImage(RocketLauncherImage,&nbsp;0);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject($AllyList)&nbsp;&amp;&amp;&nbsp;%team&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$AllyList.add(%player,&nbsp;%playerType);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject($EnemyList)&nbsp;&amp;&amp;&nbsp;%team&nbsp;!=&nbsp;1)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyList.add(%player,&nbsp;%playerType);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;%player;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function AIPlayer::tacticsSpawn(%name, %spawnPoint, %team)
+{
+	if(%team == 1)
+		%playerType = TacticsPlayerData;//the human player
+	else
+		%playerType = TacticsAIData;//the Ai enemy
+
+   // Create the demo player object
+   %player = new AiPlayer(%name)
+   {
+	dataBlock = %playerType;
+	moveStuckTolerance = 0;//yorks emergency addition
+//there is a bug in 1.1Preview that prevents Ai from moving
+//you should be able to remove this line as it's fixed in earlier/later editions
+//it should only be an issue with T3D 1.1 Preview.
+   };
+   MissionCleanup.add(%player);
+   
+   %player.setShapeName(%name);
+   %player.team = %team;
+   %player.action = 0;
+   %player.hasFired = 0;
+   
+	if(isObject(%spawnpoint))
+		%player.setTransform(%spawnPoint.getTransform());
+	else
+		echo(%spawnpoint @ " is not an object for " @ %name @ "'s spawnpoint");
+		
+	%player.setInventory(RocketLauncher, 1);
+	%player.setInventory(RocketLauncherAmmo, %player.maxInventory(RocketLauncherAmmo));
+	%player.mountImage(RocketLauncherImage, 0);
+		
+	if(isObject($AllyList) &amp;&amp; %team == 1)
+		$AllyList.add(%player, %playerType);
+		
+	if(isObject($EnemyList) &amp;&amp; %team != 1)
+		$EnemyList.add(%player, %playerType);
+		
+   return %player;
+}</pre><br>
+<b>N.B.</b> if you're using 1.1 Preview you'll want this bugfix for <a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/125544/1#comment-805007">aiPlayer movement or you won't go anywhere</a>. Expect later/earlier editions of T3D to have this issue resolved.<br>
+<br>
+Now we've got our custom Ai for our custom Teams and custom gameType preparePlayer function, let's go back to <i>art/gui/playGui.gui</i> and make that "Team" button do something when it receives an action (is pressed).<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;tacticsTeam::onAction(%</span><span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%bot&nbsp;=&nbsp;localClientConnection.player;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(%bot))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%bot.getVelocity()&nbsp;!$=</span><span class="string">"0&nbsp;0&nbsp;0"</span><span>)</span><span class="comment">//this&nbsp;does&nbsp;happen&nbsp;sometimes</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%bot.stop();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(&nbsp;%bot.decal&nbsp;&gt;&nbsp;-1&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalManagerRemoveDecal(&nbsp;%bot.decal&nbsp;);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%num&nbsp;=&nbsp;$AllyList.count();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"number&nbsp;of&nbsp;team&nbsp;members&nbsp;=&nbsp;"</span><span>&nbsp;@&nbsp;%num);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%num&nbsp;&gt;&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//reset&nbsp;that&nbsp;playerObject's&nbsp;action&nbsp;to&nbsp;zero&nbsp;when&nbsp;we&nbsp;control&nbsp;another</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%bot.action&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo($AllyList.getCurrent());&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>($AllyList.getCurrent()&nbsp;==&nbsp;%num&nbsp;-1&nbsp;||&nbsp;$AllyList.getCurrent()&nbsp;==&nbsp;%num)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%id&nbsp;=&nbsp;$AllyList.getKey($AllyList.moveFirst());&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%id&nbsp;=&nbsp;$AllyList.getKey($AllyList.moveNext());&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//change&nbsp;the&nbsp;camera&nbsp;FIRST!</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToServer(<span class="string">'tacticsCam'</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localClientConnection.player&nbsp;=&nbsp;%id;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%id.updateEnergy();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%id.updateHealth();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%wpn&nbsp;=&nbsp;%id.getmountedimage(%slot);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%wpn.UpdateWeaponHud(%id,&nbsp;%slot);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%num&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%id&nbsp;=&nbsp;$AllyList.getKey($AllyList.moveFirst());&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(localClientConnection.player&nbsp;!=&nbsp;%id)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//change&nbsp;the&nbsp;camera&nbsp;FIRST!</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToServer(<span class="string">'tacticsCam'</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localClientConnection.player&nbsp;=&nbsp;%id;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%id.updateEnergy();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%id.updateHealth();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%wpn&nbsp;=&nbsp;%id.getmountedimage(%slot);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%wpn.UpdateWeaponHud(%id,&nbsp;%slot);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"No&nbsp;more&nbsp;Ally&nbsp;players&nbsp;to&nbsp;swap&nbsp;control&nbsp;to!"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"No&nbsp;Players&nbsp;left!"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;tacticsMove.setStateOn(<span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;tacticsShoot.setStateOn(<span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;tacticsMove.pressed=0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;tacticsShoot.pressed=0;&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function tacticsTeam::onAction(%this)
+{
+	%bot = localClientConnection.player;
+	if(isObject(%bot))
+	{
+		if(%bot.getVelocity() !$="0 0 0")//this does happen sometimes
+		{
+			%bot.stop();		
+			if( %bot.decal &gt; -1 )
+				decalManagerRemoveDecal( %bot.decal );
+		}
+	}
+
+	%num = $AllyList.count();
+	echo("number of team members = " @ %num);
+	
+	if(%num &gt; 1)
+	{
+		//reset that playerObject's action to zero when we control another
+		%bot.action = 0;
+
+		echo($AllyList.getCurrent());
+	
+		if($AllyList.getCurrent() == %num -1 || $AllyList.getCurrent() == %num)
+			%id = $AllyList.getKey($AllyList.moveFirst());
+		else
+			%id = $AllyList.getKey($AllyList.moveNext());
+
+		//change the camera FIRST!
+		commandToServer('tacticsCam');
+		localClientConnection.player = %id;
+		%id.updateEnergy();
+		%id.updateHealth();
+		%wpn = %id.getmountedimage(%slot);
+		%wpn.UpdateWeaponHud(%id, %slot);
+	}
+	else
+	{
+		if(%num == 1)
+		{
+			%id = $AllyList.getKey($AllyList.moveFirst());	
+			
+			if(localClientConnection.player != %id)
+			{
+			//change the camera FIRST!
+				commandToServer('tacticsCam');
+				localClientConnection.player = %id;
+				%id.updateEnergy();
+				%id.updateHealth();
+				%wpn = %id.getmountedimage(%slot);
+				%wpn.UpdateWeaponHud(%id, %slot);
+			}
+			else
+				echo("No more Ally players to swap control to!");
+		}
+		else
+		{
+			echo("No Players left!");
+		}
+	}
+	
+	tacticsMove.setStateOn(false);
+	tacticsShoot.setStateOn(false);
+	
+	tacticsMove.pressed=0;
+	tacticsShoot.pressed=0;
+}</pre><br>
+Now when "Team" button is pressed, it will reset the others and check for other team members to become the controlled playerObject. As long as there are more than one member of the team, it will cycle through them as controlObjects on each press, and update the on-screen HUD to show the current playerObject's health, energy and ammo.<br>
+<br>
+Now, you should be able to test all of this in-game - but first, let's change the rocketLauncher so it's more like a standard rifle and not so massively overpowered. Open up <i>art/datablocks/weapons/rocketLauncher.cs</i> and find and replace the following datablocks:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>datablock&nbsp;ExplosionData(RocketLauncherExplosion)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;particleEmitter&nbsp;=&nbsp;RocketExpSmokeEmitter;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;particleDensity&nbsp;=&nbsp;10;<span class="comment">//20;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;particleRadius&nbsp;=&nbsp;1;<span class="comment">//2;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>datablock&nbsp;ProjectileData(RocketLauncherProjectile)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;projectileShapeName&nbsp;=&nbsp;<span class="string">"art/shapes/weapons/SwarmGun/rocket.dts"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;directDamage&nbsp;=&nbsp;10;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;radiusDamage&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;damageRadius&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;areaImpulse&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;explosion&nbsp;=&nbsp;RocketLauncherExplosion;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;waterExplosion&nbsp;=&nbsp;RocketLauncherWaterExplosion;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;decal&nbsp;=&nbsp;smallImpactDecal;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;muzzleVelocity&nbsp;=&nbsp;100;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;velInheritFactor&nbsp;=&nbsp;0.3;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;armingDelay&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lifetime&nbsp;=&nbsp;5000;&nbsp;<span class="comment">//(500m&nbsp;/&nbsp;100m/s&nbsp;=&nbsp;5000ms)</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;fadeDelay&nbsp;=&nbsp;4500;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;bounceElasticity&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;bounceFriction&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;isBallistic&nbsp;=&nbsp;<span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;gravityMod&nbsp;=&nbsp;0.80;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;damageType&nbsp;=&nbsp;<span class="string">"RocketDamage"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">//...
+
+datablock ExplosionData(RocketLauncherExplosion)
+{
+   particleEmitter = RocketExpSmokeEmitter;
+   particleDensity = 10;//20;
+   particleRadius = 1;//2;
+};
+
+//...
+
+datablock ProjectileData(RocketLauncherProjectile)
+{
+   projectileShapeName = "art/shapes/weapons/SwarmGun/rocket.dts";
+   directDamage = 10;
+   radiusDamage = 0;
+   damageRadius = 0;
+   areaImpulse = 0;
+
+   explosion = RocketLauncherExplosion;
+   waterExplosion = RocketLauncherWaterExplosion;
+
+ decal = smallImpactDecal;
+
+   muzzleVelocity = 100;
+   velInheritFactor = 0.3;
+
+   armingDelay = 0;
+   lifetime = 5000; //(500m / 100m/s = 5000ms)
+   fadeDelay = 4500;
+
+   bounceElasticity = 0;
+   bounceFriction = 0;
+   isBallistic = false;
+   gravityMod = 0.80;
+
+   damageType = "RocketDamage";
+};
+
+//...</pre><br>
+Open up <i>art/decals/managedDecalData.cs</i> and add:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>datablock&nbsp;DecalData(smallImpactDecal)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;Material&nbsp;=&nbsp;<span class="string">"DECAL_RocketEXP"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;size&nbsp;=&nbsp;<span class="string">"0.5"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lifeSpan&nbsp;=&nbsp;<span class="string">"50000"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;randomize&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;texRows&nbsp;=&nbsp;<span class="string">"2"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;texCols&nbsp;=&nbsp;<span class="string">"2"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;clippingAngle&nbsp;=&nbsp;<span class="string">"60"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">datablock DecalData(smallImpactDecal)
+{
+   Material = "DECAL_RocketEXP";
+   size = "0.5";
+   lifeSpan = "50000";
+   randomize = "1";
+   texRows = "2";
+   texCols = "2";
+   clippingAngle = "60";
+};</pre><br>
+To replicate Valkyria Chronicles gameStyle, we need to increase the amount of damage headshots do and make the player respond with a yelp on any hit. Open up <i>scripts/server/player.cs</i> and edit:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;Armor::onDamage(%</span><span class="keyword">this</span><span>,&nbsp;%obj,&nbsp;%delta)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;If&nbsp;the&nbsp;pain&nbsp;is&nbsp;excessive,&nbsp;let's&nbsp;hear&nbsp;about&nbsp;it.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//if&nbsp;(%delta&nbsp;&gt;&nbsp;10)//&nbsp;&lt;---&nbsp;yorks&nbsp;commented&nbsp;out!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.playPain();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function Armor::onDamage(%this, %obj, %delta)
+{
+//...
+
+      // If the pain is excessive, let's hear about it.
+      //if (%delta &gt; 10)// &lt;--- yorks commented out!
+         %obj.playPain();
+   }
+}</pre><br>
+*NOTE* T3D 1.1 Preview seems to have an issue with bodypart locations ALWAYS returning as headshots - do not uncomment the section below if you are using that version of T3D - bug report filed.<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21002#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//replace&nbsp;the&nbsp;whole&nbsp;function</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>function&nbsp;Armor::damage(%<span class="keyword">this</span><span>,&nbsp;%obj,&nbsp;%sourceObject,&nbsp;%position,&nbsp;%damage,&nbsp;%damageType)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(!isObject(%obj)&nbsp;||&nbsp;%obj.getState()&nbsp;$=&nbsp;</span><span class="string">"Dead"</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%location&nbsp;=&nbsp;%obj.getDamageLocation(%position);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%bodyPart&nbsp;=&nbsp;getWord(%location,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%region&nbsp;=&nbsp;getWord(%location,&nbsp;1);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"\c4DAMAGELOCATION:&nbsp;&nbsp;bodyPart&nbsp;=&nbsp;"</span><span>@&nbsp;%bodyPart&nbsp;@</span><span class="string">"&nbsp;||&nbsp;REGION&nbsp;=&nbsp;"</span><span>@&nbsp;%region);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;BODYPARTS:&nbsp;&nbsp;HEAD&nbsp;|&nbsp;TORSO&nbsp;|&nbsp;LEGS</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;REGION&nbsp;(legs/Torso):&nbsp;&nbsp;front_left&nbsp;|&nbsp;front_right&nbsp;|&nbsp;back_left&nbsp;|&nbsp;back_right</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;REGION&nbsp;(head):&nbsp;&nbsp;left_back&nbsp;&nbsp;&nbsp;|&nbsp;left_middle&nbsp;&nbsp;&nbsp;|&nbsp;left&nbsp;front</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;middle_back&nbsp;|&nbsp;middle_middle&nbsp;|&nbsp;middle_front</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right_back&nbsp;&nbsp;|&nbsp;right_middle&nbsp;&nbsp;|&nbsp;right_front</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;echo(%bodypart&nbsp;SPC&nbsp;%location);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//remove&nbsp;comments&nbsp;to&nbsp;enable&nbsp;headshots</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(%damageType&nbsp;!$=&nbsp;"MissionAreaDamage")</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(%bodyPart&nbsp;$="head")</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%damage=%damage*4;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(%bodyPart&nbsp;$="torso")</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%damage=%damage;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(%bodyPart&nbsp;$="legs")</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%damage=%damage/2;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%obj.applyDamage(%damage);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Update&nbsp;the&nbsp;numerical&nbsp;Health&nbsp;HUD</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(localClientConnection.player&nbsp;==&nbsp;%obj)</span><span class="comment">//yorks&nbsp;in</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.updateHealth();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%obj.getState()&nbsp;$=</span><span class="string">"Dead"</span><span>)</span><span class="comment">//yorks</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;game.GameSpecificDeath(%obj);<span class="comment">//yorks</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">//replace the whole function
+function Armor::damage(%this, %obj, %sourceObject, %position, %damage, %damageType)
+{
+   if (!isObject(%obj) || %obj.getState() $= "Dead")
+      return;
+	  
+   %location = %obj.getDamageLocation(%position);
+   %bodyPart = getWord(%location, 0);
+   %region = getWord(%location, 1);
+      echo("\c4DAMAGELOCATION:  bodyPart = "@ %bodyPart @" || REGION = "@ %region);
+   // BODYPARTS:  HEAD | TORSO | LEGS
+   // REGION (legs/Torso):  front_left | front_right | back_left | back_right
+   // REGION (head):  left_back   | left_middle   | left front
+   //                 middle_back | middle_middle | middle_front
+   //                 right_back  | right_middle  | right_front
+   echo(%bodypart SPC %location);
+
+//remove comments to enable headshots
+//		if (%damageType !$= "MissionAreaDamage")
+//		{
+//			if(%bodyPart $="head")
+//				%damage=%damage*4;
+//			if(%bodyPart $="torso")
+//				%damage=%damage;
+//			if(%bodyPart $="legs")
+//				%damage=%damage/2;
+//		}
+
+   %obj.applyDamage(%damage);
+   
+   // Update the numerical Health HUD
+   if(localClientConnection.player == %obj)//yorks in
+		%obj.updateHealth();
+	  
+	 if(%obj.getState() $="Dead")//yorks
+		game.GameSpecificDeath(%obj);//yorks
+}</pre><br>
+Now let's test.<br>
+<br>
+Upon starting the level, you should see three playerObjects named "Tom", "Dick" and "Harry". Now you should be able to move them, have them shoot, and cycle between them as your selected control object. When you've run out of energy and shots for all of your team members, press "EndTurn" and the turn should cycle - first into the Enemy Team's phase (there isn't one yet), and then returning to Ally Team phase, regiving the Client control and incrementing the number of turns with the Turn Manager.<br>
+<br>
+Next we need some Enemy Team members with some Ai think routines which change between whether they are active (Enemy Move Phase) or whether they are passive (Ally Move Phase).<br>
+<br>
+<a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21003">Part Nine: Ai Combat</a></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/101767.png" alt="Steve Acaster&#39;s profile picture">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				One Bloke ... In His Bedroom ... Trying To Make Computer Games ... eventually ...			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21015">Move Rock - Circumnavigate Rock - Go Off On Tangent</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21013">Tactics-Action Hybrid Game Tutorial Part12: Finale</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21012"> Tactics-Action Hybrid Game Tutorial Part11: Ai Paths</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21005">Tactics-Action Hybrid Game Tutorial Part10: GamePlay Test</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21003">Tactics-Action Hybrid Game Tutorial Part9: Ai Combat</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/21003"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/21001"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/21002#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(21002, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Martin Whittington" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/203813" onclick="return false;">
+	
+	Martin Whittington
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21002/1#comment-175095" name="comment-175095">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/09/2011 (1:42 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Hey Steve,<br>
+<br>
+Gotta say I love your tutorials, what a help!<br>
+<br>
+I'm using T3D and want to pick your brains. Im creating a mini FPS for a uni project and want to add a small hud object that changes colour depending on how close my ai bot is to the player (say from green(safe) to red(caught)) or even a picture<br>
+<br>
+Do you have any ideas on how to get started?<br>
+<br>
+cheers<br>
+<br>
+Martin		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21002/1#comment-175097" name="comment-175097">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/09/2011 (5:57 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Martin<br>
+Perhaps this could help -&gt; <a rel="nofollow" href="http://www.garagegames.com/community/resources/view/20875">colour HUD images to represent player state</a>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/83642.png" class="profilepic">
+			<br>
+			<a rel="Daniel Fasel" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/83642" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Daniel Fasel
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21002/1#comment-175103" name="comment-175103">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/09/2011 (10:22 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I like your tutorials, they are clear to understand and allways very useful!<br>
+How i read some threads ago, you really should write a boock for our nice engine :)<br>
+<br>
+edit: im sure i would buy a book!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/158109.jpg" class="profilepic">
+			<br>
+			<a rel="jack davidson" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/158109" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	jack davidson<br>
+	<span class="studio-name">endless free time</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21002/1#comment-175107" name="comment-175107">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/09/2011 (6:54 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I feel tired just looking at all the stuff you wrote...<br>
+Thanks for this tutorial. Once I fnally get back to T3D, this will be a great refresher.(and I'm sure I'll learn quite a bit, too)<br>
+<br>
+Also, as everyone has said: Write a book allready! I'd buy it. :)		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/21002/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/resources/view/21002#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/resources/view/21002#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/21002');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Tactics-Action Hybrid Game Tutorial Part8  Custom Ai   Steve Acaster   Resources   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

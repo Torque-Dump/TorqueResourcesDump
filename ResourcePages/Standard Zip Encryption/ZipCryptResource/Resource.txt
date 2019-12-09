@@ -1,0 +1,108 @@
+This resource adds standard Zip2.0 encryption support to Torque's existing zip support. This allows you to create encrypted zip files in any standard zip program and use them in Torque. You do not need any additional encryption program beyond what you already have, but command line zip software can be very useful for integrating this into a build system.
+
+I wrote this code under contract for Andy Schatz, who has kindly given permission to post it as a resource. Many thanks also to Mathieu Lopez and James Urquhart for making sure it runs on a Mac.
+
+[b]The Code[/b]
+
+Download the attached zip file for the meat of the code. It is all additions except for some minor tweaks to resManager.cc. I have included a complete resManager.cc from TGE1.4, but I suggest you don't use it directly. You can either use a decent merge tool like [url=http://www.scootersoftware.com/]Beyond Compare[/url] or [url=http://www.winmerge.org/]WinMerge[/url] to merge in the resource manager changes, or follow the instructions below.
+
+The code will work on all versions of TGE, TSE and T2D.
+
+[b]resManager.cc[/b]
+
+Note: These instructions are for TGE 1.4's resManager.cc, and should also be relevant to T2D. TSE's resManager.cpp will be slightly different but the code you need to change will be the same, just in a different place. Added or changed code is in bold.
+
+At the top with the other includes, add an include for zipCryptStream.h. I put it after the other zip includes.
+
+[code]
+#include "core/zipSubStream.h"
+#include "core/zipAggregate.h"
+#include "core/zipHeaders.h"
+[b]#include "core/zipCryptStream.h"[/b]
+[/code]
+
+In ResManager::openStream() around line 858, find and modify the following code:
+
+[code]
+      ZipLocalFileHeader zlfHeader;
+      if (zlfHeader.readFromStream (*diskStream) == false)
+      {
+         Con::errorf("ResourceManager::loadStream: '%s' Not in the zip! (%s/%s)",
+            obj->name, obj->zipPath, obj->zipName);
+         diskStream->close ();
+         return NULL;
+      }
+
+[b]      Stream *attachTo = diskStream;
+      if(zlfHeader.m_header.bitFlags & 0x01)
+      {
+         // The zip is encrypted
+#ifdef TORQUE_DEBUG
+         Con::warnf("Loading Zip2.0 encrypted file %s from zip %s ...", obj->name, obj->zipName);
+#endif
+
+         ZipCryptRStream *cryptStream = new ZipCryptRStream;
+		 cryptStream->setPassword(DEFAULT_ZIP_PASSWORD);
+		 cryptStream->setFileEndPos(diskStream->getPosition() + obj->compressedFileSize);
+		 cryptStream->attachStream(diskStream);
+		 attachTo = cryptStream;
+      }
+[/b]
+      if (zlfHeader.m_header.compressionMethod == ZipLocalFileHeader::Stored
+            || obj->fileSize == 0)
+      {
+         // Just read straight from the stream...
+         ResizeFilterStream *strm = new ResizeFilterStream;
+         [b]strm->attachStream (attachTo);
+         strm->setStreamOffset (attachTo->getPosition (), obj->fileSize);[/b]
+         return strm;
+      }
+      else
+      {
+         if (zlfHeader.m_header.compressionMethod ==
+            ZipLocalFileHeader::Deflated)
+         {
+            ZipSubRStream *zipStream = new ZipSubRStream;
+            [b]zipStream->attachStream (attachTo);
+            zipStream->setUncompressedSize (obj->fileSize);[/b]
+            return zipStream;
+         }
+         else
+         {
+            AssertFatal (false,avar("ResourceManager::loadStream: '%s' Compressed inappropriately in the zip! (%s/%s)",
+               obj->name, obj->zipPath, obj->zipName));
+            diskStream->close ();
+            return NULL;
+         }
+      }
+[/code]
+
+[b]Setting the Zip Password[/b]
+
+The zip password is defined at the top of engine/core/zipCryptStream.h:
+
+[code]
+#define DEFAULT_ZIP_PASSWORD     "test"
+[/code]
+
+You will want to change this. The same password will be used for all encrypted files. Please read the security section below for information on security.
+
+[b]Updating the projects[/b]
+
+I have not included updated projects. It is assumed that you know how to use your development tools and can update the relevant projects yourself.
+
+[b]IMPORTANT NOTES ON SECURITY[/b]
+
+There are a number of things to note in terms of security. Firstly, Zip2.0 encryption has some known weaknesses that allow a determined attacker to decrypt the zip if they have enough partial plain text. If you encrypt things like images, they will have standard headers that could provide sufficient known plain text for such an attack.
+
+The password is #define'd in the header, and as such is recoverable by anyone who can use a disassembler. I would suggest that you use a password consisting of random gibberish so that it does not look like a password. If it looks too much like a password, then it will be easier to recover the password using a hex editor. As far as this code is concerned, you can use binary in passwords provided you do not use the NULL character. In reality, the characters you can use in the password will probably be limited by the zip application you're using to encrypt the zips.
+
+Encryption is performed on a per-file basis. This means you can mix encrypted and unencrypted files in the same zip, but the ability to do that will also be limited by the zip application you're using. It also means that anyone can open your zip and see a list of files in the zip.
+
+You may notice from the code above that when running a debug build, Torque will tell you when it's loading an encrypted file from the zip. This can be useful for debugging, but should probably not be enabled in release builds.
+
+The code is sufficient for preventing casual copying of assets. It is possible to strengthen the security of the system, but that is a subject for another day.
+
+[b]File Support[/b]
+
+When used with the TGE 1.4 resource manager (TGE 1.4, T2D 1.1), the code supports encryption of all files, including ogg files. Older versions of the resource manager (TGE 1.3, T2D 1.0, TSE MS3) do not support seeking withing compressed files and thus do not support loading of ogg files directly from the zip. The encryption code supports seeking in all cases.

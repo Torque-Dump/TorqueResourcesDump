@@ -1,0 +1,809 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0056)http://www.garagegames.com/community/resources/view/8836 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="AIWheeled vehicle was an outstanding resource.  I have done some work to improve the steering and speed control.  In this resource I have made a new class called AIWheeledVehicle2, and I have added an example mission that will make a robot car that drives around the starter.racing track.    This resource is made for Torque v1.4 and works with starter.racing example    This is the original AIWheeledVehicle resource  http://www.garagegames.com/index.php?sec=mg&amp;mod=resource&amp;page=view&amp;qid=6222">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+				<title>AIWheeledVehicle2 | Brian McGavin | Resources | Community | GarageGames.com</title>		<link href="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=1" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	</head>
+<body>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/" class="">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse" class="">Add-ons</a><ul class="sub-nav" id="sub-menu-addons" style="z-index: 1000; display: none; "><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                                </form>
+                                
+                                <script type="text/javascript">
+                                function searchSubmit() {
+                                	var search = $('#top-keywords').val();
+                                	window.location = '/community/search#'+search;
+                                }
+                                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/8836#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/8836#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>AIWheeledVehicle2</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/38585">Brian McGavin</a>
+			<strong>·</strong>
+			10/15/2005 (5:32 pm)			<strong>·</strong>
+			35 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><a href="http://www.garagegames.com/static/pg/resource/8836.aiwheeledvehicle2.zip">Download Code File</a> <br>
+<br>
+AIWheeled vehicle was an outstanding resource.  I have done some work to improve the steering and speed control.  In this resource I have made a new class called AIWheeledVehicle2, and I have added an example mission that will make a robot car that drives around the starter.racing track.<br>
+<br>
+This resource is made for Torque v1.4 and works with starter.racing example<br>
+You need to do the following once you download the zip file.<br>
+<br>
+1.  Add AIWheeledVehicle2.h and AIWheeledVehicle2.cc to your project.  <br>
+2.  Add carbot.cs to your server script folder<br>
+3.  Add robotracing.mis to your data/missions folder<br>
+4.  Modify the file game.cs in your server script folder<br>
+add the line<br>
+exec("./carbot.cs");<br>
+after the line <br>
+exec("./checkpoint.cs");<br>
+<br>
+add the lines in 'function startGame()'<br>
+//Robot car<br>
+	$Bot1 = CreateAIWheeledVehicle2("Herbie","CarPath",pickSpawnPoint());  <br>
+	MissionCleanup.Add($Bot1);<br>
+	echo("Bot id: " @ $Bot1);<br>
+<br>
+after<br>
+ if ($Game::Running) {<br>
+      error("startGame: End the game first!");<br>
+      return;<br>
+   }<br>
+<br>
+add the lines in the 'function startRace()'<br>
+<br>
+   $Bot1.followPath("CarPath", -1);<br>
+   $Bot1.lap = -1;<br>
+   $Bot1.nextCheck = 1;<br>
+<br>
+before the lines<br>
+   // Start the game timer<br>
+//   if ($Game::Duration)<br>
+//      $Game::Schedule = schedule($Game::Duration * 1000, 0, "onGameDurationEnd" );<br>
+   $Game::Running = true;<br>
+   <br>
+   $Game::Running = true;<br>
+<br>
+5.  Run the starter.racing game and choose robotracing.mis<br>
+<br>
+<br>
+How it works.  <br>
+You need to create a path for the vehicle to follow in your mission.  You also need to add a dynamic field 'speed' at each path point.  You will want to set smaller speed values for sharp turns and bigger ones for straightways.  It will require some trial and error to tweak it right.  The path you create needs to be a drivable path.  <br>
+<br>
+The vehicle will try to follow the 'racing line' you draw.  The farther the vehicle gets from the racing line the sharper the turn.</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" alt="Brian McGavin&#39;s profile picture">
+			<br>
+			<a rel="Brian McGavin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/38585" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Brian McGavin
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+							</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/8848"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/8835"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.garagegames.com/community/resource/view/8836/2#comments">2</a> <a href="http://www.garagegames.com/community/resource/view/8836/2#comments" class="next">Next»</a> <div class="clear"></div></div>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/8836/2#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(8836, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Firas" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/4436" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Firas
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-42655" name="comment-42655">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/15/2005 (6:28 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			where is the link to the zip file?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Brian McGavin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/38585" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Brian McGavin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-42663" name="comment-42663">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/15/2005 (11:38 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I guess it got lost some how.  It should be there now		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Treb Connell (formerlyMasterTreb" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/36962" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Treb Connell (formerlyMasterTreb
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-42676" name="comment-42676">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/16/2005 (3:32 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Yay the resources are back!!!! oh and this will be helpful I say this as my ai player drives around in circles.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="fiveforty" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/57630" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	fiveforty
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-42790" name="comment-42790">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/17/2005 (8:36 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I'm totally new to this, so please be gentle!<br>
+if someone could help me out, I will be forever grateful<br>
+<br>
+I've followed this all through, but how do I connect a vehicle to the path created??		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Brian McGavin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/38585" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Brian McGavin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-42821" name="comment-42821">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/18/2005 (1:15 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@540 media<br>
+<br>
+In game.cs(in the sever directory) these lines set the path.  <br>
+<br>
+ $Bot1 = CreateAIWheeledVehicle2("Herbie","CarPath",pickSpawnPoint()); <br>
+ $Bot1.followPath("CarPath", -1);<br>
+<br>
+Change "CarPath" to the name of your path.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="fiveforty" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/57630" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	fiveforty
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-42908" name="comment-42908">#6</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/18/2005 (8:01 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Brian<br>
+<br>
+I did that but still no luck,<br>
+no vehicle is spawning to connect to the path in the first place		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Brian McGavin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/38585" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Brian McGavin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-42922" name="comment-42922">#7</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/18/2005 (10:33 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@540 media<br>
+What does your console output say when you start the mission?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/45455.jpg" class="profilepic">
+			<br>
+			<a rel="Corin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/45455" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Corin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-44230" name="comment-44230">#8</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">11/08/2005 (10:00 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+					</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Brian McGavin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/38585" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Brian McGavin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-45423" name="comment-45423">#9</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">11/28/2005 (9:32 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Juan<br>
+Sorry to take so long.  What exactly do you mean by SetMoveSpeed?  Do you want a scriptable call?  Are trying to set the speed for the next node?   It wouldn't be to hard to a scriptable call to set the speed of a desired node.  Basically the way the code works is if your vehicle is less then the target.  It will apply full throttle until it reaches that speed.  I sometimes use speeds of 1000 so that my vehicle will try to go as fast as possible.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/45455.jpg" class="profilepic">
+			<br>
+			<a rel="Corin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/45455" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Corin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-45445" name="comment-45445">#10</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">11/28/2005 (7:33 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+					</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Brian McGavin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/38585" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Brian McGavin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-45467" name="comment-45467">#11</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">11/29/2005 (3:54 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Juan<br>
+Don't worry your english is fine.  I understand now what you are trying to do.  That is pretty cool.  I wrote a game once that was connected to an exercise bike.  <br>
+<br>
+I don't think it would be that hard to add what you want.  I will try to add a scriptable function call SetDesiredVehicleSpeed().  I will send it to your email listed in your profile.<br>
+<br>
+Good luck<br>
+Brian		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/45455.jpg" class="profilepic">
+			<br>
+			<a rel="Corin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/45455" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Corin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-45518" name="comment-45518">#12</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">11/29/2005 (6:44 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Denis Linardic" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/31292" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Denis Linardic
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-45670" name="comment-45670">#13</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/02/2005 (7:55 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Hi. This resource is exactly what I needed. However I have one big problem. After setting this resource up TGE crash. I am sure that problem is not in this resource.<br>
+<br>
+I didn't follow this resource exactly as explained becouase I am trying to add this resource to my existing project. Everything compiles fine, I add scripts, link to my shape and just when mission is about to start TGE freeze &amp; crash.<br>
+<br>
+******LAST FEW LINES FROM CONSOLE LOG**********<br>
+<br>
+<br>
+<br>
+*** New Mission: GameOne/data/missions/TutorialMission.mis<br>
+*** Phase 1: Download Datablocks &amp; Targets<br>
+Mapping string: MissionStartPhase1Ack to index: 0<br>
+Warning: shape GameOne/data/shapes/3dtorquelogo/torque_logo.dts collision detail 1 (Collision-1) bounds exceed that of shape.<br>
+Warning: shape GameOne/data/shapes/car/car.dts collision detail 1 (Collision-5) bounds exceed that of shape.<br>
+Warning: shape GameOne/data/shapes/car2/car.dts collision detail 1 (Collision-5) bounds exceed that of shape.<br>
+Mapping string: MissionStartPhase2 to index: 9<br>
+*** Phase 2: Download Ghost Objects<br>
+Mapping string: MissionStartPhase2Ack to index: 1<br>
+Ghost Always objects received.<br>
+Mapping string: MissionStartPhase3 to index: 10<br>
+Client Replication Startup has Happened!<br>
+fxFoliageReplicator - Lev: 2  PotNodes: 21  Used: 18  Objs: 1091  Time: 0.0100s.<br>
+fxFoliageReplicator - Approx. 0.12Mb allocated.<br>
+fxFoliageReplicator - Client Foliage Replication Startup is complete.<br>
+*** Phase 3: Mission Lighting<br>
+ Successfully loaded mission lighting file: 'GameOne/data/missions/TutorialMission_a790d1e2.ml'<br>
+Mission lighting done<br>
+Mapping string: MissionStartPhase3Ack to index: 2<br>
+Set::getObject index out of range.<br>
+Bot id: 1378<br>
+followPath()<br>
+<br>
+END OF CONSOLE LOG<br>
+********************************************<br>
+<br>
+<br>
+***************<br>
+OK IT WAS MY ERROR!!!<br>
+<br>
+One of the marker wasn't attached to path...stupid error :)<br>
+<br>
+Thanks!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Brian McGavin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/38585" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Brian McGavin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-45704" name="comment-45704">#14</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/03/2005 (4:19 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Denis<br>
+Are you still having trouble or did you fix the error?<br>
+<br>
+@Juan<br>
+I sent you an email with the changes.  Hopefully it will work for you<br>
+<br>
+Brian		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Denis Linardic" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/31292" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Denis Linardic
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-45706" name="comment-45706">#15</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/03/2005 (4:43 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I solved it  Brian, Thanks for asking. One of the path markers wasn't grouped under path and that produce crash.<br>
+<br>
+Now I am strugling with physics (with Rigid Shape precisely), but that's another problem.<br>
+<br>
+Thanks for the resource, I have 4 cars all following path perfectly, now I have to implement somekind of obstacle avoiding scheme.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Brian McGavin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/38585" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Brian McGavin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-45709" name="comment-45709">#16</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/03/2005 (6:17 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Denis<br>
+<br>
+I had an idea about obstacle avoidance.  You could make multiple paths and if you path was blocked switch to another path.  Of course there would still be special cases like when you got stuck.<br>
+<br>
+Brian		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Denis Linardic" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/31292" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Denis Linardic
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-45710" name="comment-45710">#17</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/03/2005 (6:32 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Acctualy I was thinking of something else. Something like moving vehicle slightly to the left or right (random) becouase I usually need this when bot1 car get's in front of bot2 car...or vice versa so I can't really know where that is going to happend.<br>
+<br>
+Right now I have 4 car's running the race and your resource works great (one of that car is me ;) )<br>
+<br>
+I was very carefull while designing the prototype level so that bots doesn't have too much space for error or stucking. (but this had to be tested) ;)<br>
+<br>
+I will email you or post here if I found anything interest.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Denis Linardic" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/31292" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Denis Linardic
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-45969" name="comment-45969">#18</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/07/2005 (2:55 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Brian, my solution of obstacle avoidance doesn't work. I will try your idea, just have to create smaller race track for testing. Can I email you if I have some questions?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/45455.jpg" class="profilepic">
+			<br>
+			<a rel="Corin" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/45455" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Corin
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-46318" name="comment-46318">#19</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/15/2005 (1:10 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+					</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Denis Linardic" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/31292" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Denis Linardic
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/8836/1#comment-46347" name="comment-46347">#20</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/16/2005 (2:31 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Unfortunatly I don't have time right now...my day job is only thing I can work in this time of year.<br>
+After New Year I will have more time and hopefully more results ;)		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.garagegames.com/community/resource/view/8836/2#comments">2</a> <a href="http://www.garagegames.com/community/resource/view/8836/2#comments" class="next">Next»</a> <div class="clear"></div></div>	<div class="clear"></div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/8836');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./AIWheeledVehicle2   Brian McGavin   Resources   Community   GarageGames.com_files/cf_tools_v1.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src=("https:"==document.location.protocol?"https://":"http://")+"ajax.cloudflare.com/cdn-cgi/scripts/cf_tools_v1.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

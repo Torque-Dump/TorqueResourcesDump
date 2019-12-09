@@ -1,0 +1,719 @@
+Index: Engine/lib/convexDecomp/NvRemoveTjunctions.cpp
+===================================================================
+--- Engine/lib/convexDecomp/NvRemoveTjunctions.cpp	(revision 1)
++++ Engine/lib/convexDecomp/NvRemoveTjunctions.cpp	(working copy)
+@@ -67,6 +67,9 @@
+ #include "NvHashMap.h"
+ #include "NvRemoveTjunctions.h"
+ #include "NvFloatMath.h"
++#ifdef LINUX
++   #include <climits>
++#endif
+ 
+ #pragma warning(disable:4189)
+ 
+Index: Engine/source/gui/controls/guiTreeViewCtrl.cpp
+===================================================================
+--- Engine/source/gui/controls/guiTreeViewCtrl.cpp	(revision 1)
++++ Engine/source/gui/controls/guiTreeViewCtrl.cpp	(working copy)
+@@ -15,7 +15,9 @@
+ #include "platform/event.h"
+ #include "gfx/gfxDrawUtil.h"
+ #include "gui/controls/guiTextEditCtrl.h"
+-#include "gui/editor/editorFunctions.h"
++#ifdef TORQUE_TOOLS
++   #include "gui/editor/editorFunctions.h"
++#endif
+ 
+ 
+ IMPLEMENT_CONOBJECT(GuiTreeViewCtrl);
+@@ -3790,7 +3792,10 @@
+       // If this item is a VirtualParent we can use the generic SimGroup123 icons.
+       // However if there is already an icon in the EditorIconRegistry for this
+       // exact class (not counting parent class icons) we want to use that instead.
+-      bool hasClassIcon = gEditorIcons.hasIconNoRecurse( pObject );
++      bool hasClassIcon = false;
++#ifdef TORQUE_TOOLS
++      hasClassIcon = gEditorIcons.hasIconNoRecurse( pObject );
++#endif
+ 
+       // draw the icon associated with the item
+       if ( !hasClassIcon && item->mState.test(Item::VirtualParent))
+@@ -4928,7 +4933,10 @@
+ 
+    if ( mRenameInternal )
+       obj->setInternalName( data );   
+-   else if ( validateObjectName( data, obj ) )
++   else
++#ifdef TORQUE_TOOLS
++   if ( validateObjectName( data, obj ) )
++#endif
+       obj->assignName( data ); 
+ }
+ 
+Index: Engine/source/lighting/advanced/advancedLightingFeatures.cpp
+===================================================================
+--- Engine/source/lighting/advanced/advancedLightingFeatures.cpp	(revision 1)
++++ Engine/source/lighting/advanced/advancedLightingFeatures.cpp	(working copy)
+@@ -14,7 +14,7 @@
+ #include "gfx/gfxDevice.h"
+ #include "core/util/safeDelete.h"
+ 
+-#ifndef TORQUE_OS_MAC
++#if !defined( TORQUE_OS_MAC ) && !defined( TORQUE_OS_LINUX )
+ #  include "lighting/advanced/hlsl/gBufferConditionerHLSL.h"
+ #  include "lighting/advanced/hlsl/advancedLightingFeaturesHLSL.h"
+ #else
+@@ -37,7 +37,7 @@
+ 
+    if(GFX->getAdapterType() == OpenGL)
+    {
+-#ifdef TORQUE_OS_MAC
++#if defined( TORQUE_OS_MAC ) || defined( TORQUE_OS_LINUX )
+       cond = new GBufferConditionerGLSL( prepassTargetFormat );
+       FEATUREMGR->registerFeature(MFT_PrePassConditioner, cond);
+       FEATUREMGR->registerFeature(MFT_RTLighting, new DeferredRTLightingFeatGLSL());
+@@ -49,7 +49,7 @@
+    }
+    else
+    {
+-#ifndef TORQUE_OS_MAC
++#if !defined( TORQUE_OS_MAC ) && !defined( TORQUE_OS_LINUX )
+       cond = new GBufferConditionerHLSL( prepassTargetFormat, GBufferConditionerHLSL::ViewSpace );
+       FEATUREMGR->registerFeature(MFT_PrePassConditioner, cond);
+       FEATUREMGR->registerFeature(MFT_RTLighting, new DeferredRTLightingFeatHLSL());
+Index: Engine/source/lighting/basic/basicLightManager.cpp
+===================================================================
+--- Engine/source/lighting/basic/basicLightManager.cpp	(revision 1)
++++ Engine/source/lighting/basic/basicLightManager.cpp	(working copy)
+@@ -31,7 +31,7 @@
+ #include "lighting/basic/blTerrainSystem.h"
+ 
+ 
+-#ifdef TORQUE_OS_MAC
++#if defined( TORQUE_OS_MAC ) || defined( TORQUE_OS_LINUX )
+ #include "shaderGen/GLSL/shaderFeatureGLSL.h"
+ #include "shaderGen/GLSL/bumpGLSL.h"
+ #include "shaderGen/GLSL/pixSpecularGLSL.h"
+@@ -135,7 +135,7 @@
+ 
+    if( GFX->getAdapterType() == OpenGL )
+    {
+-      #ifdef TORQUE_OS_MAC
++      #if defined( TORQUE_OS_MAC ) || defined( TORQUE_OS_LINUX )
+          FEATUREMGR->registerFeature( MFT_LightMap, new LightmapFeatGLSL );
+          FEATUREMGR->registerFeature( MFT_ToneMap, new TonemapFeatGLSL );
+          FEATUREMGR->registerFeature( MFT_NormalMap, new BumpFeatGLSL );
+@@ -145,7 +145,7 @@
+    }
+    else
+    {
+-      #ifndef TORQUE_OS_MAC
++      #if !defined( TORQUE_OS_MAC ) && !defined( TORQUE_OS_LINUX )
+          FEATUREMGR->registerFeature( MFT_LightMap, new LightmapFeatHLSL );
+          FEATUREMGR->registerFeature( MFT_ToneMap, new TonemapFeatHLSL );
+          FEATUREMGR->registerFeature( MFT_NormalMap, new BumpFeatHLSL );
+Index: Engine/source/lighting/common/lightMapParams.cpp
+===================================================================
+--- Engine/source/lighting/common/lightMapParams.cpp	(revision 1)
++++ Engine/source/lighting/common/lightMapParams.cpp	(working copy)
+@@ -5,9 +5,18 @@
+ 
+ #include "lighting/common/lightMapParams.h"
+ #include "core/stream/bitStream.h"
++#include "core/module.h"
+ 
+-const LightInfoExType LightMapParams::Type( "LightMapParams" );
++MODULE_BEGIN( LightMapParams )
++MODULE_INIT_AFTER( ShadowMapParams )
++MODULE_INIT
++{
++   LightMapParams::Type = "LightMapParams" ;
++}
++MODULE_END;
+ 
++LightInfoExType LightMapParams::Type( "" );
++
+ LightMapParams::LightMapParams( LightInfo *light ) :
+    representedInLightmap(false), 
+    includeLightmappedGeometryInShadow(false), 
+@@ -41,4 +50,4 @@
+ 
+    // Always make sure that the alpha value of the shadowDarkenColor is -1.0
+    shadowDarkenColor.alpha = -1.0f;
+-}
+\ No newline at end of file
++}
+Index: Engine/source/lighting/common/lightMapParams.h
+===================================================================
+--- Engine/source/lighting/common/lightMapParams.h	(revision 1)
++++ Engine/source/lighting/common/lightMapParams.h	(working copy)
+@@ -17,7 +17,7 @@
+    virtual ~LightMapParams();
+ 
+    /// The LightInfoEx hook type.
+-   static const LightInfoExType Type;
++   static LightInfoExType Type;
+ 
+    // LightInfoEx
+    virtual void set( const LightInfoEx *ex );
+Index: Engine/source/lighting/lightManager.cpp
+===================================================================
+--- Engine/source/lighting/lightManager.cpp	(revision 1)
++++ Engine/source/lighting/lightManager.cpp	(working copy)
+@@ -294,7 +294,7 @@
+ 
+       // NOTE: We haven't ported the lighting shaders on OSX
+       // to the optimized HLSL versions.
+-      #ifdef TORQUE_OS_MAC
++      #if defined( TORQUE_OS_MAC ) || defined( TORQUE_OS_LINUX )
+          static AlignedArray<Point3F> lightPositions( 4, sizeof( Point4F ) );
+       #else
+          static AlignedArray<Point4F> lightPositions( 3, sizeof( Point4F ) );
+@@ -320,7 +320,7 @@
+          if ( !light )            
+             break;
+ 
+-         #ifdef TORQUE_OS_MAC
++         #if defined( TORQUE_OS_MAC ) || defined( TORQUE_OS_LINUX )
+ 
+             lightPositions[i] = light->getPosition();
+ 
+@@ -356,7 +356,7 @@
+       shaderConsts->setSafe( lightDiffuseSC, lightColors );
+       shaderConsts->setSafe( lightInvRadiusSqSC, lightInvRadiusSq );
+ 
+-      #ifndef TORQUE_OS_MAC
++      #if !defined( TORQUE_OS_MAC ) && !defined( TORQUE_OS_LINUX )
+ 
+          shaderConsts->setSafe( lightSpotDirSC, lightSpotDirs );
+          shaderConsts->setSafe( lightSpotAngleSC, lightSpotAngle );
+Index: Engine/source/lighting/shadowMap/lightShadowMap.cpp
+===================================================================
+--- Engine/source/lighting/shadowMap/lightShadowMap.cpp	(revision 1)
++++ Engine/source/lighting/shadowMap/lightShadowMap.cpp	(working copy)
+@@ -23,6 +23,7 @@
+ #include "core/stream/bitStream.h"
+ #include "math/mathIO.h"
+ #include "materials/shaderData.h"
++#include "core/module.h"
+ 
+ // Used for creation in ShadowMapParams::getOrCreateShadowMap()
+ #include "lighting/shadowMap/singleLightShadowMap.h"
+@@ -506,8 +507,16 @@
+ }
+ 
+ 
+-const LightInfoExType ShadowMapParams::Type( "ShadowMapParams" );
++MODULE_BEGIN( ShadowMapParams )
++MODULE_INIT_BEFORE( LightMapParams )
++MODULE_INIT
++{
++   ShadowMapParams::Type = "ShadowMapParams" ;
++}
++MODULE_END;
+ 
++LightInfoExType ShadowMapParams::Type( "" );
++
+ ShadowMapParams::ShadowMapParams( LightInfo *light ) 
+    :  mLight( light ),
+       mShadowMap( NULL )
+Index: Engine/source/lighting/shadowMap/lightShadowMap.h
+===================================================================
+--- Engine/source/lighting/shadowMap/lightShadowMap.h	(revision 3)
++++ Engine/source/lighting/shadowMap/lightShadowMap.h	(working copy)
+@@ -258,7 +258,7 @@
+    virtual ~ShadowMapParams();
+ 
+    /// The LightInfoEx hook type.
+-   static const LightInfoExType Type;
++   static LightInfoExType Type;
+ 
+    // LightInfoEx
+    virtual void set( const LightInfoEx *ex );
+Index: Engine/source/platformX86UNIX/threads/semaphore.cpp
+===================================================================
+--- Engine/source/platformX86UNIX/threads/semaphore.cpp	(revision 1)
++++ Engine/source/platformX86UNIX/threads/semaphore.cpp	(working copy)
+@@ -38,13 +38,25 @@
+   delete mData;
+ }
+ 
+-bool Semaphore::acquire(bool block)
++bool Semaphore::acquire(bool block, S32 timeoutMS)
+ {
+-   AssertFatal(mData, "Semaphore::acquire - Invalid semaphore.");
++   AssertFatal(mData && mData->semaphore, "Semaphore::acquire - Invalid semaphore.");
+    if (block)
+    {
+-      if (SDL_SemWait(mData->semaphore) < 0)
+-         AssertFatal(false, "Semaphore::acquie - Wait failed.");
++      // Semaphore acquiring is different from the MacOS/Win realization because SDL_SemWaitTimeout() with "infinite" timeout can be too heavy on some platforms.
++      // (see "man SDL_SemWaitTimeout(3)" for more info)
++      // "man" states to avoid the use of SDL_SemWaitTimeout at all, but at current stage this looks like a valid and working solution, so keeping it this way.
++      // [bank / Feb-2010]
++      if (timeoutMS == -1)
++      {
++         if (SDL_SemWait(mData->semaphore) < 0)
++            AssertFatal(false, "Semaphore::acquie - Wait failed.");
++      }
++      else
++      {
++         if (SDL_SemWaitTimeout(mData->semaphore, timeoutMS) < 0)
++            AssertFatal(false, "Semaphore::acquie - Wait with timeout failed.");
++      }
+       return (true);
+    }
+    else
+Index: Engine/source/platformX86UNIX/x86UNIXStub.dedicated.cpp
+===================================================================
+--- Engine/source/platformX86UNIX/x86UNIXStub.dedicated.cpp	(revision 1)
++++ Engine/source/platformX86UNIX/x86UNIXStub.dedicated.cpp	(working copy)
+@@ -64,6 +64,8 @@
+ 
+ // Platform Stubs
+ 
++bool Platform::excludeOtherInstances(const char*) { return true; }
++
+ // clipboard
+ const char* Platform::getClipboard() { return ""; }
+ bool Platform::setClipboard(const char *text) { return false; }
+Index: Engine/source/renderInstance/renderPassManager.cpp
+===================================================================
+--- Engine/source/renderInstance/renderPassManager.cpp	(revision 1)
++++ Engine/source/renderInstance/renderPassManager.cpp	(working copy)
+@@ -25,7 +25,7 @@
+ #include "console/engineAPI.h"
+ 
+ 
+-const RenderInstType RenderInstType::Invalid( String::EmptyString );
++const RenderInstType RenderInstType::Invalid( "" );
+ 
+ const RenderInstType RenderPassManager::RIT_Interior("Interior");
+ const RenderInstType RenderPassManager::RIT_Mesh("Mesh");
+Index: Templates/Full/buildFiles/config/project.linux_ded.conf
+===================================================================
+--- Templates/Full/buildFiles/config/project.linux_ded.conf	(revision 0)
++++ Templates/Full/buildFiles/config/project.linux_ded.conf	(revision 0)
+@@ -0,0 +1,62 @@
++<?php
++
++// Set the game project name, this is what your game's exe/dll will be called
++setGameProjectName("Full");
++
++// Set this build to be non-tools, so it will not include anything like editors, etc. Anyway we don't need it on dedicated
++setToolBuild(false);
++
++setPlatform( 'linux_dedicated' );
++
++// Libs
++includeLib( 'mng' );
++includeLib( 'png' );
++includeLib( 'ungif' );
++includeLib( 'jpeg' );
++includeLib( 'tinyxml' );
++includeLib( 'opcode' );
++includeLib( 'squish' );
++includeLib( 'libvorbis' );
++includeLib( 'libtheora' );
++includeLib( 'libogg' );
++includeLib( 'zlib' );
++includeLib( 'pcre' );
++includeLib( 'collada_dom' );
++includeLib( 'convexDecomp' ); 
++
++beginAppConfig( getGameProjectName(), '{C0FCDFF9-E125-412E-87BC-2D89DB971CAB}' );
++
++   // Include only the dedicated crunchy Torque3D goodness
++   include "torque3D_dedicated.conf";
++   
++   addEngineSrcDir( 'main' );
++   
++   // Include the project specific source files
++   include "projectCode.conf";
++
++endAppConfig();
++
++///////////////// And our solution
++beginSolutionConfig( 'Makefile', '{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}' );
++
++   addSolutionProjectRef( getGameProjectName() );
++
++   addSolutionProjectRef( 'collada_dom' );
++   
++   addSolutionProjectRef( 'libvorbis' );
++   addSolutionProjectRef( 'libtheora' );
++   addSolutionProjectRef( 'libogg' );
++   addSolutionProjectRef( 'ljpeg' );
++   addSolutionProjectRef( 'lmng' );
++   addSolutionProjectRef( 'lpng' );
++   addSolutionProjectRef( 'lungif' );
++   addSolutionProjectRef( 'opcode' );
++   addSolutionProjectRef( 'pcre' );
++   addSolutionProjectRef( 'squish' );
++   addSolutionProjectRef( 'tinyxml' );
++   addSolutionProjectRef( 'zlib' );
++   addSolutionProjectRef( 'convexDecomp' );
++
++endSolutionConfig();
++
++?>
+Index: Templates/Full/buildFiles/config/torque3D_dedicated.conf
+===================================================================
+--- Templates/Full/buildFiles/config/torque3D_dedicated.conf	(revision 0)
++++ Templates/Full/buildFiles/config/torque3D_dedicated.conf	(revision 0)
+@@ -0,0 +1,93 @@
++<?php
++        
++    /// Prefs
++    addProjectDefine( 'TORQUE_SHADERGEN' );
++    addProjectDefine( 'TORQUE_UNICODE' );
++    // addProjectDefine( 'TORQUE_SHARED' );
++    addProjectDefine( 'TORQUE_DEDICATED' );
++
++    /// For OPCODE
++    addProjectDefine( 'BAN_OPCODE_AUTOLINK' );
++    addProjectDefine( 'ICE_NO_DLL' );
++    addProjectDefine( 'TORQUE_OPCODE' );
++    
++    // Additional includes
++    addIncludePath( "../../game/shaders" );
++    
++    addLibIncludePath( "lmng" );
++    addLibIncludePath( "lpng" );
++    addLibIncludePath( "ljpeg" );
++    addLibIncludePath( "lungif" );
++    addLibIncludePath( "zlib" );
++    addLibIncludePath( "tinyxml" );
++    addLibIncludePath( "opcode" );
++    addLibIncludePath( "libvorbis/include" );
++    addLibIncludePath( "libogg/include" );
++    addLibIncludePath( "libtheora/include" );
++    addLibIncludePath( "squish" );
++    addLibIncludePath( "convexDecomp" );
++    addLibIncludePath( "fmod/inc" );
++
++    // Modules
++    includeModule( 'Torque3D' );
++    includeModule( 'core' );
++    includeModule( 'T3D' );
++    includeModule( 'vorbis' );
++    includeModule( 'theora' );
++    includeModule( 'fmod' );
++    includeModule( 'advancedLighting' );
++    includeModule( 'basicLighting' );
++    
++    includeModule( 'collada' );
++   
++    // Dependencies
++    addProjectDependency( 'lmng' );
++    addProjectDependency( 'lpng' );
++    addProjectDependency( 'lungif' );
++    addProjectDependency( 'ljpeg' );
++    addProjectDependency( 'zlib' );
++    addProjectDependency( 'tinyxml' );
++    
++    addProjectDependency( 'opcode' );
++    addProjectDependency( 'libvorbis' );
++    addProjectDependency( 'libogg' );
++    addProjectDependency( 'libtheora' );
++    addProjectDependency( 'squish' );
++    addProjectDependency( 'pcre' );
++    addProjectDependency( 'collada_dom' );
++    addProjectDependency( 'convexDecomp' );
++    
++
++    if ( Generator::$platform == "mac" )
++    {    
++        addProjectDefine( '__MACOSX__' );
++        addProjectDefine( 'LTM_DESC' );
++    }
++
++
++    if (Generator::$platform == "win32")
++    {
++        setProjectModuleDefinitionFile('../../' . getLibSrcDir() . 'Torque3D/msvc/torque3d.def');
++
++        addProjectDefine( 'UNICODE' );
++        addProjectDefine( 'INITGUID' );
++
++        addProjectLibInput('COMCTL32.LIB');
++        addProjectLibInput('COMDLG32.LIB');
++        addProjectLibInput('USER32.LIB');
++        addProjectLibInput('ADVAPI32.LIB');
++        addProjectLibInput('GDI32.LIB');
++        addProjectLibInput('WINMM.LIB');
++        addProjectLibInput('WSOCK32.LIB');
++        addProjectLibInput('vfw32.lib');
++        addProjectLibInput('Imm32.lib');
++        addProjectLibInput('d3d9.lib');
++        addProjectLibInput('d3dx9.lib');
++        addProjectLibInput('dxerr9.lib');
++        addProjectLibInput('ole32.lib');
++        addProjectLibInput('shell32.lib');
++        addProjectLibInput('oleaut32.lib');
++        addProjectLibInput('version.lib');
++    }
++
++?>
+Index: Tools/projectGenerator/btargets/targets.inc
+===================================================================
+--- Tools/projectGenerator/btargets/targets.inc	(revision 1)
++++ Tools/projectGenerator/btargets/targets.inc	(working copy)
+@@ -153,7 +153,7 @@
+ 
+ $c->setSolutionInfo( 'makeSolution.tpl', '', '' );
+ 
+-$c->setFileExtensions( 'c', 'cc', 'h', 'cpp', 'inl', 'asm' );
++$c->setFileExtensions( 'c', 'cc', 'cpp', 'asm' );
+ 
+ $c->setPlatforms( "linux" );
+ 
+@@ -175,7 +175,7 @@
+ 
+ $c->setSolutionInfo( 'makeSolution.tpl', '', '' );
+ 
+-$c->setFileExtensions( 'c', 'cc', 'h', 'cpp', 'inl', 'asm' );
++$c->setFileExtensions( 'c', 'cc', 'cpp', 'asm' );
+ 
+ $c->setPlatforms( "linux_dedicated" );
+ 
+@@ -197,7 +197,7 @@
+                   '',         				   // ActiveX Project Template
+                   '.txt' );
+          
+-$c->setFileExtensions( 'c', 'cc', 'h', 'cpp', 'inl', 'asm', 'm', 'mm' );
++$c->setFileExtensions( 'c', 'cc', 'cpp', 'asm', 'm', 'mm' );
+ 
+ // NO PLATFORMS - SO ALL OR NONE?
+ $c->setPlatforms("");
+Index: Tools/projectGenerator/modules/advancedLighting.inc
+===================================================================
+--- Tools/projectGenerator/modules/advancedLighting.inc	(revision 1)
++++ Tools/projectGenerator/modules/advancedLighting.inc	(working copy)
+@@ -16,6 +16,8 @@
+          addEngineSrcDir( 'lighting/advanced/hlsl' );
+          break;
+       case "mac":
++      case "linux":
++      case "linux_dedicated":
+          addEngineSrcDir( 'lighting/advanced/glsl' );
+          break;
+    }
+Index: Tools/projectGenerator/modules/core.inc
+===================================================================
+--- Tools/projectGenerator/modules/core.inc	(revision 1)
++++ Tools/projectGenerator/modules/core.inc	(working copy)
+@@ -88,8 +88,10 @@
+      addEngineSrcDir('windowManager/ps3');
+      break;
+ 
++   case "linux_dedicated":
++     addEngineSrcDir('windowManager/dedicated');
++
+    case "linux":
+-   case "linux_dedicated":
+      addEngineSrcDir('platformX86UNIX');
+      addEngineSrcDir('platformX86UNIX/threads');
+      addEngineSrcDir('platformPOSIX');
+@@ -113,12 +115,12 @@
+       addEngineSrcDir( 'gfx/D3D' );
+       addEngineSrcDir( 'gfx/D3D9' );
+       addEngineSrcDir( 'gfx/D3D9/pc' );
+-      addEngineSrcDir( 'shaderGen/hlsl' );
++      addEngineSrcDir( 'shaderGen/HLSL' );
+       break;
+    case "360":
+       addEngineSrcDir( 'gfx/D3D9' );
+       addEngineSrcDir( 'gfx/D3D9/360' );
+-      addEngineSrcDir( 'shaderGen/hlsl' );
++      addEngineSrcDir( 'shaderGen/HLSL' );
+       addEngineSrcDir( 'shaderGen/360' );
+       break;
+    case "mac":
+@@ -128,8 +130,13 @@
+       addEngineSrcDir( 'gfx/gl' );
+       addEngineSrcDir( 'gfx/gl/ggl' );
+       addEngineSrcDir( 'gfx/gl/ggl/generated' );
+-      addEngineSrcDir( 'shaderGen/glsl' );
++      addEngineSrcDir( 'shaderGen/GLSL' );
+       break;
++   case "linux":
++   case "linux_dedicated":
++      // GFX - GGL
++      addEngineSrcDir( 'shaderGen/GLSL' );
++
+    case "ps3":
+       addEngineSrcDir( 'gfx/gl/ggl/ps3' );
+ 
+@@ -137,7 +144,7 @@
+       addEngineSrcDir( 'gfx/gl' );
+       addEngineSrcDir( 'gfx/gl/ggl' );
+       addEngineSrcDir( 'gfx/gl/ggl/generated' );
+-      addEngineSrcDir( 'shaderGen/glsl' );
++      addEngineSrcDir( 'shaderGen/GLSL' );
+       break;
+ }
+ 
+Index: Tools/projectGenerator/modules/T3D.inc
+===================================================================
+--- Tools/projectGenerator/modules/T3D.inc	(revision 1)
++++ Tools/projectGenerator/modules/T3D.inc	(working copy)
+@@ -14,7 +14,8 @@
+ 
+ addEngineSrcDir('forest');
+ addEngineSrcDir('forest/ts');
+-addEngineSrcDir('forest/editor');
++if(getToolBuild())
++   addEngineSrcDir('forest/editor');
+ 
+ addEngineSrcDir('ts');
+ addEngineSrcDir('ts/arch');
+@@ -59,6 +60,8 @@
+       // Fall through
+       
+    case "mac":
++   case "linux":
++   case "linux_dedicated":
+       addEngineSrcDir( 'terrain/glsl' );
+       break;
+ }
+Index: Tools/projectGenerator/templates/makeApp.tpl
+===================================================================
+--- Tools/projectGenerator/templates/makeApp.tpl	(revision 1)
++++ Tools/projectGenerator/templates/makeApp.tpl	(working copy)
+@@ -12,13 +12,14 @@
+ {/foreach}
+ 
+ LDFLAGS := -g -m32
+-LDLIBS := -lstdc++
+-CFLAGS := -MMD -I. -Wfatal-errors -m32
++LDLIBS := -lstdc++ -lSDL -lpthread -lrt
++CFLAGS := -MMD -I. -Wfatal-errors -m32 -msse -mmmx -march=i686 -pipe
+ 
+ {foreach item=def from=$projIncludes}CFLAGS += -I{$def}
+ {/foreach}
+ 
+-CFLAGS += -DUNICODE;
++CFLAGS += -DUNICODE
++CFLAGS += -DLINUX
+ 
+ {foreach item=def from=$projDefines}CFLAGS += -D{$def}
+ {/foreach}
+@@ -28,10 +29,10 @@
+ CFLAGS_DEBUG += -DTORQUE_DEBUG_GUARD
+ CFLAGS_DEBUG += -DTORQUE_NET_STATS
+ 
+-CFLAGS += -O3
++CFLAGS += -O0
+ 
+-#CC := gcc
+-LD := gcc
++CC := gcc-4.1
++LD := gcc-4.1
+ 
+ APP_TARGETS += $(APPNAME)
+ APP_TARGETS_DEBUG += $(APPNAME)_DEBUG
+Index: Tools/projectGenerator/templates/makeAppShared.tpl
+===================================================================
+--- Tools/projectGenerator/templates/makeAppShared.tpl	(revision 1)
++++ Tools/projectGenerator/templates/makeAppShared.tpl	(working copy)
+@@ -13,12 +13,13 @@
+ 
+ LDFLAGS := -g -m32
+ LDLIBS := -lstdc++
+-CFLAGS := -MMD -I. -Wfatal-errors -m32
++CFLAGS := -MMD -I. -Wfatal-errors -m32 -msse -mmmx -march=i686
+ 
+ {foreach item=def from=$projIncludes}CFLAGS += -I{$def}
+ {/foreach}
+ 
+ CFLAGS += -DUNICODE
++CFLAGS += -DLINUX
+ 
+ {foreach item=def from=$projDefines}CFLAGS += -D{$def}
+ {/foreach}
+@@ -30,8 +31,8 @@
+ 
+ CFLAGS += -O3
+ 
+-#CC := gcc
+-LD := gcc
++CC := gcc-4.1
++LD := gcc-4.1
+ 
+ APP_TARGETS += $(APPNAME)
+ APP_TARGETS_DEBUG += $(APPNAME)_DEBUG
+Index: Tools/projectGenerator/templates/makeLib.tpl
+===================================================================
+--- Tools/projectGenerator/templates/makeLib.tpl	(revision 1)
++++ Tools/projectGenerator/templates/makeLib.tpl	(working copy)
+@@ -16,12 +16,13 @@
+ 
+ LDFLAGS_{$projName} := -g -m32
+ LDLIBS_{$projName} := -lstdc++
+-CFLAGS_{$projName} := -MMD -I. -m32
++CFLAGS_{$projName} := -MMD -I. -m32 -msse -mmmx -march=i686
+ 
+ {foreach item=def from=$projIncludes}CFLAGS_{$projName} += -I{$def}
+ {/foreach}
+ 
+ CFLAGS_{$projName} += -DUNICODE
++CFLAGS_{$projName} += -DLINUX
+ 
+ {foreach item=def from=$projDefines}CFLAGS_{$projName} += -D{$def}
+ {/foreach}
+@@ -33,8 +34,8 @@
+ 
+ CFLAGS_{$projName} += -O3
+ 
+-#CC := gcc
+-LD := gcc
++CC := gcc-4.1
++LD := gcc-4.1
+ 
+ TARGET_{$projName} := {$libDir}/compiled/Make/{$projName}.a
+ TARGET_{$projName}_DEBUG := {$libDir}/compiled/Make/{$projName}_DEBUG.a
+Index: Tools/projectGenerator/templates/makeSo.tpl
+===================================================================
+--- Tools/projectGenerator/templates/makeSo.tpl	(revision 1)
++++ Tools/projectGenerator/templates/makeSo.tpl	(working copy)
+@@ -16,12 +16,13 @@
+ 
+ LDFLAGS_{$projName} := -g -m32 -shared
+ LDLIBS_{$projName} := -lstdc++ -lSDL -lpthread
+-CFLAGS_{$projName} := -MMD -I. -m32 -mmmx -msse -march=i686 
++CFLAGS_{$projName} := -MMD -I. -m32 -mmmx -msse -march=i686
+ 
+ {foreach item=def from=$projIncludes}CFLAGS_{$projName} += -I{$def}
+ {/foreach}
+ 
+ CFLAGS_{$projName} += -DUNICODE
++CFLAGS_{$projName} += -DLINUX
+ 
+ {foreach item=def from=$projDefines}CFLAGS_{$projName} += -D{$def}
+ {/foreach}
+@@ -33,8 +34,8 @@
+ 
+ CFLAGS_{$projName} += -O3
+ 
+-#CC := gcc
+-LD := gcc
++CC := gcc-4.1
++LD := gcc-4.1
+ 
+ SHARED_LIB_TARGETS += {$projName}.so
+ SHARED_LIB_TARGETS_DEBUG += {$projName}_DEBUG.so
+Index: Tools/projectGenerator/templates/makeSolution.tpl
+===================================================================
+--- Tools/projectGenerator/templates/makeSolution.tpl	(revision 1)
++++ Tools/projectGenerator/templates/makeSolution.tpl	(working copy)
+@@ -3,6 +3,8 @@
+ # copyright on the actual sources.
+ # Copyright 2005 Jon Watte.
+ 
++OPTIONS := --jobs=4
++
+ DEPS := 
+ LIB_TARGETS :=
+ LIB_TARGETS_DEBUG := 

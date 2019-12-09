@@ -1,0 +1,4221 @@
+From: "Saved by Windows Internet Explorer 8"
+Subject: TorqueScript Quick Reference 2 - TDN
+Date: Wed, 24 Nov 2010 13:18:49 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CB8BDA.21B591F0"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7600.16543
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://tdn.garagegames.com/wiki/index.php?title=TorqueScript_Quick_Reference_2&printable=yes
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML dir=3Dltr lang=3Den xml:lang=3D"en"=20
+xmlns=3D"http://www.w3.org/1999/xhtml"><HEAD><TITLE>TorqueScript Quick =
+Reference 2 - TDN</TITLE>
+<META content=3D"text/html; charset=3Dutf-8" http-equiv=3DContent-Type>
+<META name=3DKEYWORDS content=3D"TorqueScript Quick Reference 2">
+<META name=3Drobots content=3Dindex,follow><LINK rel=3D"shortcut icon"=20
+href=3D"/favicon.ico"><LINK rel=3DSTYLESHEET type=3Dtext/css=20
+href=3D"http://tdn.garagegames.com/wiki/skins/tdntheme/css/container.css"=
+><LINK=20
+rel=3DSTYLESHEET type=3Dtext/css=20
+href=3D"http://tdn.garagegames.com/wiki/skins/tdntheme/css/navelements.cs=
+s"><LINK=20
+rel=3DSTYLESHEET type=3Dtext/css=20
+href=3D"http://tdn.garagegames.com/wiki/skins/tdntheme/css/sidebar.css"><=
+LINK=20
+rel=3DSTYLESHEET type=3Dtext/css=20
+href=3D"http://tdn.garagegames.com/wiki/skins/tdntheme/css/content.css"><=
+LINK=20
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://tdn.garagegames.com/wiki/skins/common/commonPrint.css">
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://tdn.garagegames.com/wiki/skins/common/wikibits.js"> =
+</SCRIPT>
+
+<META name=3DGENERATOR content=3D"MSHTML 8.00.7600.16671"></HEAD>
+<BODY>
+<DIV id=3DheaderTop><A =
+href=3D"http://tdn.garagegames.com/wiki/TDN_Home"><IMG=20
+class=3Dleft alt=3D""=20
+src=3D"http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_01.pn=
+g"></A>=20
+<DIV id=3Dnavlogin><A class=3Dnew=20
+href=3D"http://tdn.garagegames.com/wiki/User:Bloodknight">Bloodknight =
+</A>/ <A=20
+class=3Dnew =
+href=3D"http://tdn.garagegames.com/wiki/User_talk:Bloodknight">My talk=20
+</A>/ <A =
+href=3D"http://tdn.garagegames.com/wiki/Special:Preferences">Preferences =
+
+</A>/ <A href=3D"http://tdn.garagegames.com/wiki/Special:Watchlist">My =
+watchlist=20
+</A>/ <A=20
+href=3D"http://tdn.garagegames.com/wiki/Special:Contributions/Bloodknight=
+">My=20
+contributions </A>/ <A=20
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DSpecial:Userlog=
+out&amp;returnto=3DTorqueScript_Quick_Reference_2">Log=20
+out </A></DIV><IMG class=3Dright alt=3D""=20
+src=3D"http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_05.pn=
+g"></DIV>
+<DIV id=3DheaderBottom><A =
+href=3D"http://tdn.garagegames.com/wiki/TDN_Home"><IMG=20
+class=3Dleft alt=3D""=20
+src=3D"http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_06.pn=
+g"></A>=20
+<UL>
+  <LI id=3Dca-nstab-main class=3Dselected><A=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2">A=
+rticle</A></LI>
+  <LI id=3Dca-talk><A=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/Talk:TorqueScript_Quick_Reference=
+_2">Discussion</A></LI>
+  <LI id=3Dca-edit><A=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit">Edit</A></LI>
+  <LI id=3Dca-history><A=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dhistory">History</A></LI>
+  <LI id=3Dca-move><A=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/Special:Movepage/TorqueScript_Qui=
+ck_Reference_2">Move</A></LI>
+  <LI id=3Dca-watch><A=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dwatch">Watch</A></LI></UL><IMG=20
+class=3Dright alt=3D""=20
+src=3D"http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_09.pn=
+g">=20
+</DIV>
+<DIV id=3Dcontent>
+<DIV id=3Dsidebar>
+<DIV>
+<DIV class=3DsideNav>
+<H1>TDN Core</H1>
+<DIV>
+<UL>
+  <LI id=3Dn-mainpage><A =
+href=3D"http://tdn.garagegames.com/wiki/TDN_Home">TDN=20
+  Home</A></LI>
+  <LI id=3Dn-metapage><A =
+href=3D"http://tdn.garagegames.com/wiki/Meta">TDN=20
+  Meta</A></LI>
+  <LI id=3Dn-currentevents><A=20
+  href=3D"http://tdn.garagegames.com/wiki/Current_events">Current =
+events</A></LI>
+  <LI id=3Dn-recentchanges><A=20
+  href=3D"http://tdn.garagegames.com/wiki/Special:Recentchanges">Recent=20
+  changes</A></LI>
+  <LI id=3Dn-randompage><A=20
+  href=3D"http://tdn.garagegames.com/wiki/Special:Random">Random =
+page</A></LI>
+  <LI id=3Dn-help><A=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/Help:Contents">Help</A></LI></UL>=
+</DIV></DIV>
+<DIV class=3DsideNav>
+<H1>Navigation</H1>
+<DIV>
+<UL>
+  <LI id=3Dn-torquegameenginepage><A=20
+  href=3D"http://tdn.garagegames.com/wiki/TorqueGameEngine">TGE =
+Home</A></LI>
+  <LI id=3Dn-torqueshaderenginepage><A=20
+  href=3D"http://tdn.garagegames.com/wiki/TorqueShaderEngine">TGEA =
+Home</A></LI>
+  <LI id=3Dn-torque2dpage><A=20
+  href=3D"http://tdn.garagegames.com/wiki/Torque_Game_Builder">TGB =
+Home</A></LI>
+  <LI id=3Dn-torquexpage><A =
+href=3D"http://tdn.garagegames.com/wiki/TorqueX">TorqueX=20
+  Home</A></LI>
+  <LI id=3Dn-tnlpage><A=20
+  href=3D"http://tdn.garagegames.com/wiki/TorqueNetworkLibrary">TNL =
+Home</A></LI>
+  <LI id=3Dn-rtsskpage><A=20
+  href=3D"http://tdn.garagegames.com/wiki/RTSStarterKit">RTS-SK =
+Home</A></LI>
+  <LI id=3Dn-recentchanges><A=20
+  href=3D"http://tdn.garagegames.com/wiki/Special:Recentchanges">Recent=20
+  changes</A></LI>
+  <LI id=3Dn-randompage><A=20
+  href=3D"http://tdn.garagegames.com/wiki/Special:Random">Random=20
+page</A></LI></UL></DIV></DIV>
+<DIV class=3DsideNav>
+<H1><LABEL for=3DsearchInput>Search</LABEL></H1>
+<DIV class=3DsimpleSearch>
+<FORM name=3Dsearchform action=3D/wiki/Special:Search><INPUT =
+accessKey=3Df=20
+id=3DsearchInput type=3Dtext name=3Dsearch> <INPUT class=3DsearchButton =
+value=3DGo type=3Dsubmit name=3Dgo>&nbsp;<INPUT value=3DSearch =
+type=3Dsubmit name=3Dfulltext>=20
+</FORM></DIV>
+<P>&nbsp;</P></DIV>
+<DIV class=3DsideNav>
+<H1>Toolbox</H1>
+<DIV>
+<UL>
+  <LI id=3Dt-whatlinkshere><A=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/Special:Whatlinkshere/TorqueScrip=
+t_Quick_Reference_2">What=20
+  links here</A></LI>
+  <LI id=3Dt-recentchangeslinked><A=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/Special:Recentchangeslinked/Torqu=
+eScript_Quick_Reference_2">Related=20
+  changes</A></LI>
+  <LI id=3Dt-upload><A=20
+  href=3D"http://tdn.garagegames.com/wiki/Special:Upload">Upload =
+file</A></LI>
+  <LI id=3Dt-specialpages><A=20
+  href=3D"http://tdn.garagegames.com/wiki/Special:Specialpages">Special=20
+  pages</A></LI>
+  <LI id=3Dt-print><A=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes&amp;printable=3Dyes">Printable=20
+  version</A></LI></UL></DIV></DIV></DIV></DIV>
+<DIV id=3Dmain>
+<DIV id=3Dmain-content>
+<H1 class=3DfirstHeading>TorqueScript Quick Reference 2</H1>
+<DIV id=3DbodyContent>
+<H3 id=3DsiteSub>From TDN</H3>
+<DIV id=3DcontentSub></DIV><!-- start content -->
+<TABLE id=3Dtoc class=3Dtoc>
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV id=3Dtoctitle>
+      <H2>Contents</H2></DIV>
+      <UL>
+        <LI class=3Dtoclevel-1><A=20
+        =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#Keywords"><SPAN=20
+        class=3Dtocnumber>1</SPAN> <SPAN =
+class=3Dtoctext>Keywords</SPAN></A>=20
+        <UL>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#break"><SPAN=20
+          class=3Dtocnumber>1.1</SPAN> <SPAN =
+class=3Dtoctext>break</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#case"><SPAN=20
+          class=3Dtocnumber>1.2</SPAN> <SPAN =
+class=3Dtoctext>case</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#continue"><SPAN=20
+          class=3Dtocnumber>1.3</SPAN> <SPAN=20
+class=3Dtoctext>continue</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#datablock"><SPAN=20
+          class=3Dtocnumber>1.4</SPAN> <SPAN =
+class=3Dtoctext>datablock</SPAN></A>=20
+          <UL>
+            <LI class=3Dtoclevel-3><A=20
+            =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#Current_Datablock_Classes_and_associa=
+ted_Object_Classes"><SPAN=20
+            class=3Dtocnumber>1.4.1</SPAN> <SPAN class=3Dtoctext>Current =
+Datablock=20
+            Classes and associated Object =
+Classes</SPAN></A></LI></UL></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#default"><SPAN=20
+          class=3Dtocnumber>1.5</SPAN> <SPAN =
+class=3Dtoctext>default</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#else"><SPAN=20
+          class=3Dtocnumber>1.6</SPAN> <SPAN =
+class=3Dtoctext>else</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#FALSE"><SPAN=20
+          class=3Dtocnumber>1.7</SPAN> <SPAN =
+class=3Dtoctext>FALSE</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#for"><SPAN=20
+          class=3Dtocnumber>1.8</SPAN> <SPAN =
+class=3Dtoctext>for</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#function"><SPAN=20
+          class=3Dtocnumber>1.9</SPAN> <SPAN=20
+class=3Dtoctext>function</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#if"><SPAN=20
+          class=3Dtocnumber>1.10</SPAN> <SPAN =
+class=3Dtoctext>if</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#new"><SPAN=20
+          class=3Dtocnumber>1.11</SPAN> <SPAN =
+class=3Dtoctext>new</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#package"><SPAN=20
+          class=3Dtocnumber>1.12</SPAN> <SPAN=20
+class=3Dtoctext>package</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#parent"><SPAN=20
+          class=3Dtocnumber>1.13</SPAN> <SPAN =
+class=3Dtoctext>parent</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#return"><SPAN=20
+          class=3Dtocnumber>1.14</SPAN> <SPAN =
+class=3Dtoctext>return</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#switch"><SPAN=20
+          class=3Dtocnumber>1.15</SPAN> <SPAN =
+class=3Dtoctext>switch</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#switch.24"><SPAN=20
+          class=3Dtocnumber>1.16</SPAN> <SPAN=20
+class=3Dtoctext>switch$</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#TRUE"><SPAN=20
+          class=3Dtocnumber>1.17</SPAN> <SPAN =
+class=3Dtoctext>TRUE</SPAN></A></LI>
+          <LI class=3Dtoclevel-2><A=20
+          =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#while"><SPAN=20
+          class=3Dtocnumber>1.18</SPAN> <SPAN=20
+        =
+class=3Dtoctext>while</SPAN></A></LI></UL></LI></UL></TD></TR></TBODY></T=
+ABLE>
+<P>
+<SCRIPT type=3Dtext/javascript> if (window.showTocToggle) { var =
+tocShowText =3D "show"; var tocHideText =3D "hide"; showTocToggle(); } =
+</SCRIPT>
+</P>
+<DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" class=3Deditsection>[<A=20
+title=3D"TorqueScript Quick Reference 2"=20
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D1">edit</A>]</DIV><A=20
+name=3DKeywords></A>
+<H2>Keywords </H2>
+<TABLE style=3D"TEXT-ALIGN: justify" border=3D0 cellSpacing=3D0 =
+cellPadding=3D0=20
+width=3D700>
+  <TBODY>
+  <TR>
+    <TD width=3D700>
+      <P><B>Note:</B> Although keywords are not reserved, it is =
+considered bad=20
+      practice to use variables that have the same spelling as a =
+keyword.=20
+  </P></TD></TR></TBODY></TABLE>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D2">edit</A>]</DIV><A=20
+      name=3Dbreak></A>
+      <H3>break</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> Use <I>break</I> to exit the innermost <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#fo=
+r">for</A>=20
+      or <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#wh=
+ile">while</A>=20
+      loop. Unlike C and C++, <I>break</I> has no effect in a <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A>=20
+      or <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch.24">switch$</A>=20
+      statement.<BR></P><PRE>%count =3D 0;=20
+while( 1 )=20
+{ =20
+   echo(%count++);=20
+   if (%count &gt; 2)=20
+   break;=20
+}
+</PRE>
+      <P><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#fo=
+r">for</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#wh=
+ile">while</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D3">edit</A>]</DIV><A=20
+      name=3Dcase></A>
+      <H3>case</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> Used to label cases in a <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A>=20
+      or <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch.24">switch$</A>=20
+      statement.<BR><B>Syntax</B><BR><B>case</B> <I>expression</I>=20
+      <B>:</B>(colon character)<BR>The argument of the enclosing <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A>=20
+      or <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch.24">switch$</A>=20
+      statement is evaluated and compared to the value of =
+<I>expression</I>=20
+      using operator <B>=3D=3D</B> or <B>$=3D</B>, respectively. <BR>If =
+<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#TR=
+UE">true</A>,=20
+      execute the statements up to the next <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#ca=
+se">case</A>=20
+      statement and exit the <A title=3D"TorqueScript Quick Reference 2" =
+
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A>.=20
+      <BR>If <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#FA=
+LSE">false</A>,=20
+      skip to the next <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#ca=
+se">case</A>=20
+      statement.<BR><B>See Also</B><BR><A title=3D"TorqueScript Quick =
+Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch.24">switch$</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D4">edit</A>]</DIV><A=20
+      name=3Dcontinue></A>
+      <H3>continue</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> Causes the script to skip to the next iteration =
+of the=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#fo=
+r">for</A>=20
+      or <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#wh=
+ile">while</A>=20
+      loop in which it appears; <BR></P><PRE>%count =3D 0;=20
+while(%count++ &lt; 8)=20
+{=20
+   if ( %count &gt; 2 )
+      continue; // echo will not be executed
+   echo(%count);=20
+}
+</PRE>
+      <P><B>See Also:</B> <BR><A title=3D"TorqueScript Quick Reference =
+2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#fo=
+r">for</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#wh=
+ile">while</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D5">edit</A>]</DIV><A=20
+      name=3Ddatablock></A>
+      <H3>datablock</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The datablock keyword is used to declare a new=20
+      datablock. A datablock object is used in the declaration and=20
+      initialization of a special set of classes that take a =
+datablock(s).=20
+      Datablocks are created on the server and ghosted to=20
+      clients.<BR><BR><B>Syntax</B><BR><BR></P><PRE>datablock =
+DatablockClass ( NewDatablockName&nbsp;: InheritDatablock )=20
+{
+   className =3D "SomeName";
+
+   DataBlockBody
+};
+</PRE>
+      <P><BR></P>
+      <UL>
+        <LI>DatablockClass - A predefined engine class which inherits =
+from=20
+        SimDataBlock or one of it's children.</LI></UL>
+      <P><BR></P>
+      <UL>
+        <LI>NewDatablockName - The name for this datablock. Must be=20
+      unique.</LI></UL>
+      <P><BR></P>
+      <UL>
+        <LI>InheritDatablock - Previously defined datablock to inherit =
+(copy)=20
+        DataBlockBody values from. Optional.</LI></UL>
+      <P><BR></P>
+      <UL>
+        <LI>className - This is a special field which can be initialized =
+with=20
+        the name of a previously defined [in Torque Script] datablock. =
+In=20
+        effect, this inserts the "SomeName" name into the namespace =
+calling=20
+        sequence between NewDatablockName and DatablockClass. For some =
+datablock=20
+        classes, className can be a non-datablock name, but it isn't =
+guaranteed=20
+        to work for all calling sequences or classes. </LI></UL>
+      <P><BR></P>
+      <UL>
+        <LI>DataBlockBody - Fields and the values they will be assigned =
+for this=20
+        datablock.</LI></UL>
+      <P><BR></P><PRE>datablock SimDataBlock( myDataBlock )=20
+{
+   newField =3D "Hello";
+   newField2 =3D 10;
+};=20
+</PRE>
+      <P>Here we have declared a new SimDataBlock datablock named =
+myDataBlock.=20
+      Additionally, we have given it a new field named newField, =
+initialized to=20
+      "Hello" and a new field named newField2 initialized to 10. The =
+namespace=20
+      calling sequence for this datablock is: <B>myDataBlock -&gt;=20
+      SimDataBlock</B><BR></P><PRE>datablock SimDataBlock( =
+mySecondDataBlock&nbsp;: myDataBlock)=20
+{
+   className =3D "myDataBlock";
+   newField2 =3D 15;
+};=20
+</PRE>
+      <P>Here we have declared a new SimDataBlock datablock named=20
+      mySecondDataBlock that derives from myDataBlock. Because it is =
+deriving=20
+      from a prior datablock, it will copy any fields that were declared =
+and/or=20
+      initialized in the parent datablock. However, because we are =
+re-declaring=20
+      the field newField2. The new initialization value is taken in =
+preference=20
+      to the copied value, meaning that newField has the value "Hello" =
+and=20
+      newField2 has the value 15. Finally, we have defined className as=20
+      myDataBlock, making the namespace calling sequence for=20
+      mySecondDataBlock:<BR><BR><B>mySecondDataBlock -&gt; myDataBlock =
+-&gt;=20
+      SimDataBlock<BR><BR>See Also</B><BR><A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#ne=
+w">new</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#pa=
+rent">Parent</A><BR></P></TD></TR></TBODY></TABLE>
+<DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" class=3Deditsection>[<A=20
+title=3D"TorqueScript Quick Reference 2"=20
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D6">edit</A>]</DIV><A=20
+name=3DCurrent_Datablock_Classes_and_associated_Object_Classes></A>
+<H4>Current Datablock Classes and associated Object Classes </H4>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#999999 width=3D226><B>
+      <CENTER>
+      <P>Datablock Class </P></CENTER></B></TD>
+    <TD bgColor=3D#999999 width=3D226><B>
+      <CENTER>
+      <P>Object Class </P></CENTER></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <CENTER>
+      =
+<P>CameraData<BR>DebrisData<BR>ExplosionData<BR>FlyingVehicleData<BR>Game=
+BaseData<BR>HoverVehicleData<BR>ItemData<BR>LightningData<BR>MissionMarke=
+rData<BR>ParticleData<BR>ParticleEmitterData<BR>PathEmitterNodeData<BR>Pa=
+thCameraData<BR>PlayerData<BR>PrecipitationData<BR>ProjectileData<BR>Shap=
+eBaseData<BR>SimDataBlock<BR>SplashData<BR>StaticShapeData<BR>TriggerData=
+<BR>VehicleData<BR>WheeledVehicleData<BR>WheeledVehicleSpring<BR>WheeledV=
+ehicleTire=20
+      </P></CENTER></TD>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <CENTER>
+      =
+<P>Camera<BR>Debris<BR>Explosion<BR>FlyingVehicle<BR>GameBase<BR>HoverVeh=
+icle<BR>Item<BR>Lightning<BR>MissionMarker<BR>Particle<BR>ParticleEmitter=
+<BR>PathEmitterNode<BR>PathCamera<BR>Player<BR>Precipitation<BR>Projectil=
+e<BR>ShapeBase<BR>-none-<BR>Splash<BR>StaticShape<BR>Trigger<BR>Vehicle<B=
+R>WheeledVehicle<BR>WheeledVehicle<BR>WheeledVehicle=20
+      </P></CENTER></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D7">edit</A>]</DIV><A=20
+      name=3Ddefault></A>
+      <H3>default</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The default case in a <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A>=20
+      or <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch.24">switch$</A>=20
+      statement, i.e., the case that is executed if no other cases are=20
+      chosen.<BR><B>Syntax</B><BR><B>default&nbsp;:</B>(colon=20
+      character)<BR><B>Note:</B> The <I>default</I> keyword must be =
+listed after=20
+      all <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#ca=
+se">case</A>=20
+      keywords. It is a syntax error to place it before subsequent <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#ca=
+se">case</A>=20
+      keywords.<BR><BR><B>See Also</B><BR><A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch.24">switch$</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D8">edit</A>]</DIV><A=20
+      name=3Delse></A>
+      <H3>else</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <I>else</I> keyword is used with the <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#if=
+">if</A>=20
+      keyword to control the flow of a script. The general form of the =
+well=20
+      known if-then-else construct is as follows:<BR></P><PRE>if =
+(expression)=20
+{=20
+   statement(s);=20
+}=20
+else=20
+{=20
+   alternate statement(s);=20
+}
+</PRE>
+      <P>Where the alternate statement(s) are executed if the expression =
+
+      evaluates to 0.<BR><BR>See <A title=3D"TorqueScript Quick =
+Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#if=
+">if</A>=20
+      example.<BR><BR><B>See Also</B><BR><A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#if=
+">if</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D9">edit</A>]</DIV><A=20
+      name=3DFALSE></A>
+      <H3>FALSE</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#FA=
+LSE">false</A>=20
+      keyword is used for boolean comparison and evalulates to =
+0.<BR></P><PRE>if( false =3D=3D 0 )=20
+{=20
+   echo( "false evaulates to" SPC 0 );=20
+}
+</PRE>
+      <P><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#if=
+">if</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#tr=
+ue">true</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D10">edit</A>]</DIV><A=20
+      name=3Dfor></A>
+      <H3>for</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> A looping construct, whose general form=20
+      is:<BR><B>for</B> ( <I>statement0</I>&nbsp;; =
+<I>expression1</I>&nbsp;;=20
+      <I>statement2</I> ) <BR>{<BR><I>statements(s)</I><BR>}<BR>where, =
+</P>
+      <UL>
+        <LI><I>statement0</I> - Usually an assignment.=20
+        <LI><I>expression1</I> - An expression, usually of the form:=20
+        <I>variable</I> <B>compare op</B> <I>value</I>=20
+        <LI><I>statement2</I> - Usually an assignment. </LI></UL>
+      <P><B>Execution</B>=20
+      <OL>
+        <P></P>
+        <LI>To begin, <I>statement0 </I>is executed.<BR>
+        <LI>Then, <I>expression1</I> is tested. If false, end the =
+<B>for</B>=20
+        loop.=20
+        <LI>Execute statement(s), then execute <I>statement2</I>.=20
+        <LI>Continue with Step 2 and 3. </LI></OL><B>Notes</B>=20
+      <UL>
+        <LI>All three of <I>statement0</I>, <I>expression1</I>, and=20
+        <I>statement2</I> are <B>required</B>. If you need =
+<I>statement0</I> or=20
+        <I>statement2</I> to be empty, just insert a 0.=20
+        <LI>Composite expressions of the form ( <I>sub_expression0</I> , =
+
+        <I>sub_expression1</I> , <I>sub_expressionN</I> ) are illegal. =
+</LI></UL>
+      <P><B>Example 1</B> </P><PRE>for( %val =3D 0&nbsp;; %val &lt;  =
+3&nbsp;; %val++ )=20
+{=20
+   echo( %val );
+}
+</PRE>
+      <P><B>Example 2</B> Empty <I>statement0</I> and =
+<I>statement2</I><BR></P><PRE>%value =3D 0;=20
+for( 0&nbsp;; %val &lt; 3&nbsp;; 0 )=20
+{=20
+   echo( %val );=20
+   %val ++;
+}
+</PRE>
+      <P><B>Example 3</B> Illegal sub-expressions (would produce an =
+error while=20
+      compiling): </P><PRE>%val =3D 0;=20
+for( %val0 =3D 0 , %val1 =3D 3&nbsp;; %val0 &lt;  3&nbsp;; %val0++, =
+%val1-- ) =20
+{=20
+   echo( %val0 );
+   echo( %val1 );
+}
+</PRE>
+      <P><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#br=
+eak">break</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#co=
+ntinue">continue</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#wh=
+ile">while</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D11">edit</A>]</DIV><A=20
+      name=3Dfunction></A>
+      <H3>function</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <I>function</I> keyword is used to define a =
+new=20
+      console function or method. Unlike a language like C or C++, =
+functions are=20
+      not declared in one place and defined in another, but defined =
+<U>only</U>.=20
+      Redeclaring a named function later in script over-rides the =
+previous=20
+      definition. The format of a function takes one of two=20
+      forms:<BR><BR><B>Function definition</B> </P><PRE>function =
+func_name( [arg0] , ... , [argn] )=20
+{
+   statements;
+   [return val;]
+}
+</PRE>
+      <UL>
+        <LI>func_name - Name by which this function will be subsequently =
+
+        called.<BR>
+        <LI>[arg0] , ... , [argn] - Optional arguments.<BR>
+        <LI>statements - Any number of statements may be contained =
+within the=20
+        body of the function.<BR>
+        <LI>val - Functions may optionally return a value; </LI></UL>
+      <P><BR><B>Console method definition</B> </P><PRE>function =
+namespace::func_name( %this, [arg0] , ... , [argn] )=20
+{
+   statements;
+   [return val;]
+}
+</PRE>
+      <UL>
+        <LI>namespace - The name of a datablock or object classname.<BR>
+        <LI>:: - Namespace resolution operator.<BR>
+        <LI>%this - The first argument of a console method is always the =
+handle=20
+        to the object which is calling the method.</LI></UL>
+      <P><BR><B>Defining a function</B> </P><PRE>function test( %val )=20
+{
+  echo( "test(" SPC %val SPC ")" );
+
+  if( 10 =3D=3D %val ) return true;
+
+  return false;
+}
+</PRE>
+      <P><B>Defining a console method</B> </P><PRE>function Item::test( =
+%this , %val )=20
+{
+  echo( "Item::test(" SPC %this SPC "," SPC %val SPC ")" );
+
+  if( 10 =3D %val ) return true;
+
+  return false;
+}
+</PRE>
+      <P><B>Instantiating a console object</B> </P><PRE>%obj =3D new =
+Item(MyItem)
+{
+  // ..
+};
+</PRE>
+      <P><B>Invoking a console method</B> </P><PRE>Item::test( %obj, 10 =
+)&nbsp;; =09
+%obj.test( 10 )&nbsp;;   	=09
+MyItem.test( 10 )&nbsp;;=20
+%obj.getName().test( 10 )&nbsp;;=20
+</PRE>
+      <UL>
+        <LI>In the first example of invoking, it should be clear that we =
+have=20
+        simply defined a function in the <I>Item</I> namespace and are =
+now=20
+        invoking it in the normal way.=20
+        <LI>In the second example, which is equivalent to the first, the =
+syntax=20
+        used automatically passes the object's handle as the first =
+argument to=20
+        the function.=20
+        <LI>In the third example, we take advantage of the ability of =
+the=20
+        <B>.</B>(dot) operator to use the name of an object in lieu of =
+its=20
+        handle.=20
+        <LI>The fourth example illustrates a different way of doing the =
+same=20
+        thing, this time using the SimObject::getName() function, =
+defined for=20
+        every console class. </LI></UL></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D12">edit</A>]</DIV><A=20
+      name=3Dif></A>
+      <H3>if</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#if=
+">if</A>=20
+      keyword is used with or without the <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#el=
+se">else</A>=20
+      keyword to control the flow of a script. The general form of the =
+well=20
+      known if-then-else construct is as follows,<BR></P><PRE>if =
+(expression)=20
+{=20
+   statement(s);=20
+}
+else=20
+{=20
+   alternate statement(s);=20
+}
+</PRE>
+      <P>Where the statement(s) are executed if the expression evaluates =
+to a=20
+      non-zero value.<BR></P><PRE>if(0)=20
+{=20
+   echo( "hello" );=20
+}=20
+else=20
+{=20
+   echo( "goodbye" );=20
+}
+
+if(5)=20
+{=20
+   echo( "hello" );=20
+}=20
+else=20
+{=20
+   echo( =C3=A2=E2=82=AC=C5=93goodbye=C3=A2=E2=82=AC=C2=9D );=20
+}
+</PRE>
+      <P><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#el=
+se">else</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D13">edit</A>]</DIV><A=20
+      name=3Dnew></A>
+      <H3>new</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <I>new</I> keyword is used to instantiate =
+(create) a=20
+      new copy of a conobject. A conobject is:<BR><BR></P>
+      <UL>
+        <LI>an engine class available in the console (Item(), Player(), =
+etc.),=20
+        or<BR>
+        <LI>a datablock (derived or otherwise).</LI></UL>
+      <P><BR></P><PRE>// New non-datablock (using) object
+%obj =3D new ScriptObject();
+
+//New datablock (using) object
+datablock ItemData( GoldCoin )=20
+{
+...
+};
+
+%coin =3D new Item( myGoldCoin )=20
+{
+  // ...
+  datablock =3D GoldCoin;
+};
+</PRE>
+      <P><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#da=
+tablock">datablock</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D14">edit</A>]</DIV><A=20
+      name=3Dpackage></A>
+      <H3>package</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The package keyword tells the console that the=20
+      subsequent block of code is to be declared but not loaded. =
+Packages=20
+      provide dynamic function-polymorphism in TorqueScript. In short, a =
+
+      function defined in a package will over-ride the prior definition =
+of a=20
+      same named function when the is activated. When the package is=20
+      subsequently de-activated, the previous definition of any =
+overridden=20
+      functions will be re-asserted. </P>
+      <P>A package will have the following syntax: </P><PRE>package =
+package_name=20
+{
+	function function_definition0()=20
+	{
+		[statements;]
+	}
+	...
+	function function_definitionN()=20
+	{
+		[statements;]
+	}
+};
+</PRE>
+      <P>Things to know: </P>
+      <UL>
+        <LI>The same function can be defined in multiple packages.=20
+        <LI>Only functions can be packaged.=20
+        <LI>Datablocks cannot be packaged.=20
+        <LI>Packages 'stack' meaning that deactivating packages =
+activated prior=20
+        to the currently active (s) will deactivate all packages =
+activated prior=20
+        to the being deactivated (see example below).=20
+        <LI>Functions in a may activate and deactivate packages. =
+</LI></UL>
+      <P><B>Activating</B><BR>In order to use the functions in a =
+package, the=20
+      package must be activated:<BR></P><PRE>ActivatePackage(_name);
+</PRE>
+      <P><B>Deactivating</B> <BR>Subsequently a package can be=20
+      deativated:<BR></P><PRE>DeactivatePackage(_name);
+</PRE>
+      <P><B>Usage</B> <BR>First, define a function and two packages, =
+each of=20
+      which provides an alternative definition by the same name. =
+</P><PRE>function testFunction()=20
+{
+   echo( "testFunction() - unpackaged." );
+}
+
+package MyPackage0
+{
+  function testFunction()=20
+  {
+      echo( "testFunction() - MyPackage0." );
+  }
+};
+
+MyPackage1
+{
+  function testFunction()=20
+  {
+      echo( "testFunction() - MyPackage1." );
+  }
+};
+</PRE>
+      <P>Next, invoke that function under three different conditions. =
+The=20
+      following is as if run in the console, with our input set off by =
+'=3D=3D&gt;'=20
+      </P><PRE>=3D=3D&gt; testFunction();=20
+testFunction() - unpackaged.
+
+=3D=3D&gt; ActivatePackage( MyPackage0 );
+
+=3D=3D&gt; testFunction();=20
+testFunction() - MyPackage0.
+
+=3D=3D&gt; ActivatePackage( MyPackage1 );
+
+=3D=3D&gt; testFunction();=20
+testFunction() - MyPackage1.
+
+=3D=3D&gt; DeactivatePackage( MyPackage0 );  // MyPackage1 is =
+automatically deactivated.
+
+=3D=3D&gt; testFunction();=20
+testFunction() - unpackaged.
+</PRE>
+      <P><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#fu=
+nction">function</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#pa=
+rent">Parent</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D15">edit</A>]</DIV><A=20
+      name=3Dparent></A>
+      <H3>parent</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <I>Parent</I> keyword is used with the =
+namespace=20
+      operator (<B>::</B>) to reference the previous definition of a =
+function=20
+      what has been over-ridden either through inheritance or packaging. =
+The=20
+      <I>Parent</I> keyword can only be used within specific=20
+      contexts:<BR><BR></P>
+      <UL>
+        <LI>From within a consoleMethod, or<BR>
+        <LI>from within a packaged function.</LI></UL><PRE>// Calling an =
+inherited parent
+datablock ItemData( GoldCoin )=20
+{
+...
+};
+
+function ItemData::onAdd( %db, %obj )=20
+{
+   echo( "ItemData::onAdd()" );
+}
+
+function GoldCoin::onAdd( %db, %obj )=20
+{
+   Parent::onAdd( %db, %obj );
+
+   echo( "GoldCoin::onAdd()" );
+}
+
+// Calling a  parent
+function testFunction()=20
+{
+   echo( "testFunction() - unpackaged." );
+}
+
+MyPackage0
+{
+  function testFunction()=20
+  {
+     Parent::testFunction();
+     echo( "testFunction() - MyPackage0." );
+  }
+};
+
+...
+
+testFunction();=20
+// prints =3D&gt; testFunction() - unpackaged.
+
+ActivatePackage( MyPackage0 );
+
+testFunction();=20
+// prints =3D&gt; testFunction() - unpackaged.
+// prints =3D&gt; testFunction() - MyPackage0.
+</PRE>
+      <P><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#da=
+tablock">datablock</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#fu=
+nction">function</A>=20
+      <BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D16">edit</A>]</DIV><A=20
+      name=3Dreturn></A>
+      <H3>return</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <I>return</I> keyword is used to return a =
+value from=20
+      a <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#fu=
+nction">function</A><BR></P><PRE>function equal_to( %arg0 , %arg1 )=20
+{=20
+   return ( %arg0 =3D=3D %arg1 );=20
+}
+
+echo( equal_to(10,11) ); // prints 0
+
+echo( equal_to(11,11) ); // prints 1
+</PRE>
+      <P><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#fu=
+nction">function</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D17">edit</A>]</DIV><A=20
+      name=3Dswitch></A>
+      <H3>switch</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <I>switch</I> keyword is used to control the =
+flow of=20
+      a script. It is like the <A title=3D"TorqueScript Quick Reference =
+2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch.24">switch$</A>=20
+      statement, but intended for numeric comparisons instead of string=20
+      comparisons. </P>
+      <P>The general form of a switch statement is as =
+follows:<BR></P><PRE>switch ( numeric expression )=20
+{
+case value0:
+   statement(s);
+case value1:
+   statement(s);
+. . .
+case valueN:
+   statement(s);
+default:
+   statement(s);
+}
+</PRE>
+      <P><B>Execution</B>=20
+      <OL>
+        <P></P>
+        <LI>First, <I>numeric expression</I> is evaluated and compared =
+with=20
+        <I>value0</I>.=20
+        <LI>If the result is <I>true</I>, the statement(s) associated =
+with that=20
+        case are executed, and the <I>switch</I> statement is exited.=20
+        <LI>If not, control passes to the next <A=20
+        title=3D"TorqueScript Quick Reference 2"=20
+        =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#ca=
+se">case</A>=20
+        statement, where <I>numeric expression</I> is again evaluated, =
+this time=20
+        being compared to <I>value1</I>.=20
+        <LI>If control falls through to the <A=20
+        title=3D"TorqueScript Quick Reference 2"=20
+        =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#de=
+fault">default</A>=20
+        case, its statements will be executed. </LI></OL><I>switch</I> =
+is intended=20
+      for use <U>ONLY</U> with numerical comparisons (<B>=3D=3D</B>). If =
+string=20
+      comparisons are desired, use <A title=3D"TorqueScript Quick =
+Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch.24">switch$</A>.=20
+      <BR>Note: Unlike C/C++, the <A title=3D"TorqueScript Quick =
+Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#br=
+eak">break</A>=20
+      statement is not for use in <I>switch</I>. TorqueScript will only =
+execute=20
+      matching cases and will <U>NOT</U> automatically execute all =
+subsequent=20
+      cases. This is proven in the example below.<BR><PRE>%tmp =3D 1;
+
+switch( %tmp  )=20
+{=20
+case 0:=20
+   echo( 0 );=20
+case 1:=20
+   echo( 1 );=20
+default:=20
+   echo( "proof" );=20
+}
+</PRE>
+      <P><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#ca=
+se">case</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#de=
+fault">default</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch.24">switch$</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D18">edit</A>]</DIV><A=20
+      name=3Dswitch.24></A>
+      <H3>switch$</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <I>switch$</I> keyword is used to control =
+the flow=20
+      of a script. It is like the <A title=3D"TorqueScript Quick =
+Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A>=20
+      statement, but intended for string comparisons instead of numeric=20
+      comparisons. </P>
+      <P>The general form of the <I>switch$</I> statement =
+is:<BR></P><PRE>switch$ ( string expression )=20
+{
+case string_value0:
+   statement(s);
+
+case string_value1:
+   statement(s);
+. . .
+case string_valueN:
+   statement(s);
+
+default:
+   statement(s);
+}
+</PRE>
+      <P><B>Execution</B>=20
+      <OL>
+        <P></P>
+        <LI>First, <I>string expression</I> is evaluated and compared =
+with=20
+        <I>value0</I>.=20
+        <LI>If the result is <I>true</I>, the statement(s) associated =
+with that=20
+        case are executed, and the <I>switch$</I> statement is exited.=20
+        <LI>If not, control passes to the next <A=20
+        title=3D"TorqueScript Quick Reference 2"=20
+        =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#ca=
+se">case</A>=20
+        statement, where <I>string expression</I> is again evaluated, =
+this time=20
+        being compared to <I>value1</I>.=20
+        <LI>If control falls through to the <A=20
+        title=3D"TorqueScript Quick Reference 2"=20
+        =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#de=
+fault">default</A>=20
+        case, its statements will be executed. </LI></OL><I>switch$</I> =
+is=20
+      intended for use <U>ONLY</U> with string comparisons =
+(<B>$=3D</B>). If=20
+      numeric comparisons are desired, use <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A>.=20
+      <BR>Note: Unlike C/C++, the <A title=3D"TorqueScript Quick =
+Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#br=
+eak">break</A>=20
+      statement has no role in <I>switch$</I>, see <A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A>.=20
+      <BR><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2" =
+
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#ca=
+se">case</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#de=
+fault">default</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#sw=
+itch">switch</A><BR></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D19">edit</A>]</DIV><A=20
+      name=3DTRUE></A>
+      <H3>TRUE</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#TR=
+UE">true</A>=20
+      keyword is used for boolean comparison and evalulates to =
+1.<BR></P><PRE>if(true =3D=3D 1)=20
+{=20
+   echo( "true evaulates to" SPC 1 );=20
+}
+</PRE>
+      <P><B>See Also</B><BR><A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#if=
+">if</A>,=20
+      <A title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2#FA=
+LSE">false</A><BR></P></TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE border=3D1 cellSpacing=3D0 cellPadding=3D0 width=3D740>
+  <TBODY>
+  <TR>
+    <TD bgColor=3D#6699ff width=3D226><B>
+      <DIV style=3D"FLOAT: right; MARGIN-LEFT: 5px" =
+class=3Deditsection>[<A=20
+      title=3D"TorqueScript Quick Reference 2"=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;action=3Dedit&amp;section=3D20">edit</A>]</DIV><A=20
+      name=3Dwhile></A>
+      <H3>while</H3></B></TD></TR>
+  <TR>
+    <TD bgColor=3D#cccccc vAlign=3Dtop width=3D226 align=3Dleft>
+      <P><B>Purpose</B> The <I>while</I> keyword is a looping construct =
+whose=20
+      general form is:<BR></P><PRE>while (expression)
+{
+   statements(s);=20
+}
+</PRE>
+      <P>Where expression is usually of the form: variable <I>compare =
+op</I>=20
+      value, and the loop continues to execute statement(s) until =
+expression=20
+      evaluates to false (i.e. 0).<BR></P><PRE>%val=3D5;=20
+
+while( %val )=20
+{=20
+   echo( %val-- );=20
+}
+</PRE>
+      <P><B>See Also</B><BR><A title=3D""=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#break">break</A>,=20
+      <A title=3D""=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#continue">continue</A>,=20
+      <A title=3D""=20
+      =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DTorqueScript_Qu=
+ick_Reference_2&amp;printable=3Dyes#for">for</A><BR></P></TD></TR></TBODY=
+></TABLE>
+<P><A title=3D"TorqueScript Quick Reference"=20
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference">Par=
+t 1=20
+</A>|| <STRONG>Part 2 </STRONG>|| <A title=3D"TorqueScript Quick =
+Reference 3"=20
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_3">P=
+art 3=20
+</A></P><!-- Saved in parser cache with key =
+tdnmw:pcache:idhash:2990-0!1!0!0!!en!2 and timestamp 20101124131719 -->
+<DIV class=3Dprintfooter>Retrieved from "<A=20
+href=3D"http://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2">h=
+ttp://tdn.garagegames.com/wiki/TorqueScript_Quick_Reference_2</A>"</DIV><=
+!-- end content -->
+<DIV class=3DvisualClear></DIV></DIV></DIV></DIV>
+<HR class=3Dcleaner>
+</DIV>
+<DIV id=3Dfooter>
+<DIV id=3Df-poweredbyico><A href=3D"http://www.mediawiki.org/"><IMG =
+alt=3DMediaWiki=20
+src=3D"http://tdn.garagegames.com/wiki/skins/common/images/poweredby_medi=
+awiki_88x31.png"></A></DIV>
+<UL id=3Df-list>
+  <LI id=3Df-viewcount>This page has been accessed 11,823 times.</LI>
+  <LI id=3Df-credits>This page was last modified 16:34, 4 September 2010 =
+by <A=20
+  class=3Dnew title=3D"User:Jonny Brannum"=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/index.php?title=3DUser:Jonny_Bran=
+num&amp;action=3Dedit">Jonny=20
+  Brannum</A>.</LI>
+  <LI id=3Df-about><A title=3DTDN:About=20
+  href=3D"http://tdn.garagegames.com/wiki/TDN:About">About TDN</A></LI>
+  <LI id=3Df-disclaimer><A title=3D"TDN:General disclaimer"=20
+  =
+href=3D"http://tdn.garagegames.com/wiki/TDN:General_disclaimer">Disclaime=
+rs</A></LI></UL></DIV>
+<SCRIPT type=3Dtext/javascript=20
+src=3D"http://www.google-analytics.com/urchin.js">=0A=
+</SCRIPT>
+
+<SCRIPT type=3Dtext/javascript>=0A=
+_uacct =3D "UA-30217-4";=0A=
+urchinTracker();=0A=
+</SCRIPT>
+</BODY></HTML>
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_01.png
+
+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
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_05.png
+
+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
+BgDeLBczZu0JHAAAAABJRU5ErkJggg==
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_06.png
+
+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
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/images/header_09.png
+
+iVBORw0KGgoAAAANSUhEUgAAAA4AAAAeCAMAAAArQN94AAAABGdBTUEAAK/INwWK6QAAABl0RVh0
+U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABIUExURfj4+P///9ITE9QTE8IREdUTE+yR
+kaoODtcTE+uIiNkUFLAPD8cREakODswSEqENDfLGxrcQENsUFPC2tt4aGuhwcOp/f+2amkXjiVUA
+AADhSURBVHjaYhAS4uLi4GDlYWdjAAKAAGLgAvJYWZmhXIAAYgBJAbksEC5AADFAeDAuQAAxgDnM
+TFAuQAAxgDgILkAAMUB4MC5AADGAOXAuQAAxgDlwLkAAMTChcAECCM7lBXMBAghNFiCA0GQBAgjK
+5RPk5wTxAAIIwuVjYRcRBvEAAogBwuPmFwPzAAKIgYeHh0WQm1dUAMwDCCAGbiDgFRGH8gACiIET
+BIShHAaAAEJDAAGEhgACCA0BBBAaAgggNAQQQGgIIIAYGFEAQAChcQECCI0LEEBoXIAAQuMCBBgA
+L0QErbxRX1kAAAAASUVORK5CYII=
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: http://tdn.garagegames.com/wiki/skins/common/images/poweredby_mediawiki_88x31.png
+
+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
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/css/container.css
+
+BODY {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#body-with-lockmark {
+	BACKGROUND-IMAGE: url(../images/background_lock.png); =
+BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat; =
+BACKGROUND-POSITION: right bottom
+}
+#content {
+	MIN-WIDTH: 550px; TEXT-ALIGN: left; MARGIN: 1em auto; WIDTH: 100%
+}
+#sidebar {
+	POSITION: absolute; WIDTH: 159px; TOP: 98px; LEFT: 5px
+}
+#sidebar-content {
+	PADDING-BOTTOM: 0.5em; MARGIN: 0px; PADDING-LEFT: 1em; PADDING-RIGHT: =
+1em; FONT-SIZE: 70%; PADDING-TOP: 0.5em
+}
+#main {
+	PADDING-BOTTOM: 5px; MARGIN: 0px 0px 0px 160px; PADDING-LEFT: 5px; =
+PADDING-RIGHT: 5px; PADDING-TOP: 5px
+}
+#main-content {
+	PADDING-BOTTOM: 0.25em; MARGIN: -22px 0px; PADDING-LEFT: 0.5em; =
+PADDING-RIGHT: 0.5em; FONT-SIZE: 100%; PADDING-TOP: 0.25em
+}
+HR.cleaner {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: =
+0px; MARGIN: -1px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+HEIGHT: 1px; VISIBILITY: hidden; CLEAR: both; BORDER-TOP: medium none; =
+BORDER-RIGHT: medium none; PADDING-TOP: 0px
+}
+#headerTop {
+	WIDTH: 100%; BACKGROUND: url(../images/header_03.png) #ffffff repeat-x =
+0px 6px; HEIGHT: 56px
+}
+#headerTop IMG.left {
+	Z-INDEX: 4; BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; =
+BORDER-TOP: 0px; TOP: 6px; BORDER-RIGHT: 0px; LEFT: 0px
+}
+#headerTop IMG.right {
+	BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; BORDER-TOP: =
+0px; TOP: 6px; RIGHT: 0px; BORDER-RIGHT: 0px
+}
+.printfooter {
+	DISPLAY: none
+}
+
+@media Print   =20
+{
+#leftcol {
+	DISPLAY: none
+}
+#navlogin {
+	DISPLAY: none
+}
+
+}
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/css/navelements.css
+
+#headerBottom {
+	WIDTH: 99.99%; BACKGROUND: url(../images/header_07.png) repeat-x; =
+HEIGHT: 30px
+}
+#headerBottom IMG.left {
+	BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; BORDER-TOP: =
+0px; TOP: 56px; BORDER-RIGHT: 0px; LEFT: 0px
+}
+#headerBottom IMG.right {
+	BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; BORDER-TOP: =
+0px; TOP: 56px; RIGHT: 0px; BORDER-RIGHT: 0px
+}
+#headerBottom UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 15px; FLOAT: right; LIST-STYLE-IMAGE: none; =
+PADDING-TOP: 0px
+}
+#headerBottom LI {
+	PADDING-RIGHT: 0.4em; DISPLAY: inline
+}
+#headerBottom LI A {
+	PADDING-BOTTOM: 5px; BACKGROUND: none transparent scroll repeat 0% 0%; =
+COLOR: #ffffff; FONT-SIZE: 7pt; TEXT-DECORATION: none
+}
+#headerBottom LI IMG {
+	PADDING-BOTTOM: 5px; BACKGROUND: none transparent scroll repeat 0% 0%; =
+COLOR: #ffffff; FONT-SIZE: 7pt; TEXT-DECORATION: none
+}
+#headerBottom .selected A {
+	FONT-WEIGHT: bold
+}
+#headerBottom .new A {
+	COLOR: #ffffff
+}
+#headerBottom LI A:hover {
+	BACKGROUND: white; COLOR: #0000dd; TEXT-DECORATION: underline
+}
+#headerBottom LI.istalk {
+	MARGIN-RIGHT: 0px
+}
+#headerBottom LI.istalk A {
+	PADDING-RIGHT: 0.5em
+}
+#headerBottom #ca-addsection A {
+	PADDING-LEFT: 0.4em; PADDING-RIGHT: 0.4em
+}
+LI#ca-talk {
+	MARGIN-RIGHT: 1.6em
+}
+LI#ca-watch {
+	MARGIN-LEFT: 1.6em
+}
+LI#ca-watch {
+	MARGIN-LEFT: 1.6em
+}
+LI#ca-varlang-0 {
+	MARGIN-LEFT: 1.6em
+}
+#navlogin {
+	Z-INDEX: 2; POSITION: absolute; FONT-SIZE: 7pt; TOP: 1px; RIGHT: 10px
+}
+#navlogin A {
+	COLOR: #000; FONT-WEIGHT: bold
+}
+#navlogin A:hover {
+	TEXT-DECORATION: none
+}
+#privateNotice {
+	WIDTH: 100%; BACKGROUND: #d41919; COLOR: white
+}
+#privateNotice A {
+	COLOR: white; TEXT-DECORATION: none
+}
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/css/sidebar.css
+
+INPUT.searchButton {
+	MARGIN-TOP: 1px; FONT-SIZE: 95%
+}
+#searchGoButton {
+	PADDING-LEFT: 0.5em; PADDING-RIGHT: 0.5em; FONT-WEIGHT: bold
+}
+#searchInput {
+	MARGIN: 0px; WIDTH: 10.9em; FONT-SIZE: 95%
+}
+.sideNavHeader {
+	TEXT-TRANSFORM: none; FONT: bold 12px Verdana, Arial, Helvetica, =
+sans-serif; TEXT-DECORATION: none
+}
+.sideNav {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+.sideNav A {
+	PADDING-LEFT: 5px; DISPLAY: block; FONT-FAMILY: Verdana, Arial, =
+Helvetica, sans-serif; COLOR: #444; FONT-SIZE: 12px; FONT-WEIGHT: =
+normal; TEXT-DECORATION: none
+}
+.sideNav A:hover {
+	BACKGROUND-COLOR: #e6e6e6; DISPLAY: block
+}
+.sideNav H1 {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; TEXT-TRANSFORM: =
+uppercase; MARGIN: 0px; PADDING-LEFT: 0.7em; WIDTH: 159px; FONT: bold =
+12px Verdana, Arial, Helvetica, sans-serif; BACKGROUND: =
+url(http://tdn.garagegames.com/wiki/skins/tdntheme/images/sidenavbg.png) =
+no-repeat left top; HEIGHT: 19px; COLOR: white; VERTICAL-ALIGN: middle; =
+BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: =
+none; PADDING-TOP: 2px
+}
+.sideNav H1 A:hover:after {
+	CONTENT: "\00BB"
+}
+.sideNav UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0.25em 0px 1em =
+0.4em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; =
+PADDING-TOP: 0px
+}
+.sideNav LI {
+	WIDTH: 99.99%; DISPLAY: inline; WHITE-SPACE: nowrap
+}
+.sideNav LI A {
+	PADDING-LEFT: 5px; DISPLAY: block; FONT-FAMILY: Verdana, Arial, =
+Helvetica, sans-serif; COLOR: #444; FONT-SIZE: 12px; FONT-WEIGHT: =
+normal; TEXT-DECORATION: none
+}
+.sideNav LI A:hover {
+	BACKGROUND-COLOR: #e6e6e6; DISPLAY: block
+}
+.simpleSearch {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 10px; WIDTH: 120px; DISPLAY: block; =
+FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; HEIGHT: 30px; COLOR: =
+#444; FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none; =
+PADDING-TOP: 5px
+}
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://tdn.garagegames.com/wiki/skins/tdntheme/css/content.css
+
+BODY {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+P {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+H1 {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+H2 {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+H3 {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+TABLE {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+TD {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+TH {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+UL {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+OL {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+TEXTAREA {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+INPUT {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+SELECT {
+	FONT-FAMILY: Geneva, verdana, arial, helvetica, sans-serif; COLOR: =
+#222; FONT-SIZE: 9pt
+}
+A.new {
+	COLOR: #ba0000
+}
+#p-personal A.new {
+	COLOR: #ba0000
+}
+A.new:visited {
+	COLOR: #a55858
+}
+#p-personal A.new:visited {
+	COLOR: #a55858
+}
+TABLE {
+	FONT-SIZE: 100%
+}
+IMG {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; VERTICAL-ALIGN: =
+middle; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+P {
+	LINE-HEIGHT: 1.2em; MARGIN: 0.4em 0em 0.5em
+}
+P IMG {
+	MARGIN: 0px
+}
+HR {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BACKGROUND-COLOR: #aaaaaa; =
+MARGIN: 0.2em 0px; HEIGHT: 1px; COLOR: #aaaaaa; BORDER-TOP: 0px; =
+BORDER-RIGHT: 0px
+}
+H1 {
+	BORDER-BOTTOM: #aaaaaa 1px solid; PADDING-BOTTOM: 0.17em; MARGIN: 0px; =
+BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: black; =
+FONT-WEIGHT: normal; PADDING-TOP: 0.5em
+}
+H2 {
+	BORDER-BOTTOM: #aaaaaa 1px solid; PADDING-BOTTOM: 0.17em; MARGIN: 0px; =
+BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: black; =
+FONT-WEIGHT: normal; PADDING-TOP: 0.5em
+}
+H3 {
+	BORDER-BOTTOM: #aaaaaa 1px solid; PADDING-BOTTOM: 0.17em; MARGIN: 0px; =
+BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: black; =
+FONT-WEIGHT: normal; PADDING-TOP: 0.5em
+}
+H4 {
+	BORDER-BOTTOM: #aaaaaa 1px solid; PADDING-BOTTOM: 0.17em; MARGIN: 0px; =
+BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: black; =
+FONT-WEIGHT: normal; PADDING-TOP: 0.5em
+}
+H5 {
+	BORDER-BOTTOM: #aaaaaa 1px solid; PADDING-BOTTOM: 0.17em; MARGIN: 0px; =
+BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: black; =
+FONT-WEIGHT: normal; PADDING-TOP: 0.5em
+}
+H6 {
+	BORDER-BOTTOM: #aaaaaa 1px solid; PADDING-BOTTOM: 0.17em; MARGIN: 0px; =
+BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: black; =
+FONT-WEIGHT: normal; PADDING-TOP: 0.5em
+}
+H1 {
+	FONT-SIZE: 188%
+}
+H2 {
+	FONT-SIZE: 150%
+}
+H3 {
+	BORDER-BOTTOM: medium none; FONT-WEIGHT: bold
+}
+H4 {
+	BORDER-BOTTOM: medium none; FONT-WEIGHT: bold
+}
+H5 {
+	BORDER-BOTTOM: medium none; FONT-WEIGHT: bold
+}
+H6 {
+	BORDER-BOTTOM: medium none; FONT-WEIGHT: bold
+}
+H3 {
+	FONT-SIZE: 132%
+}
+H4 {
+	FONT-SIZE: 116%
+}
+H5 {
+	FONT-SIZE: 100%
+}
+H6 {
+	FONT-SIZE: 80%
+}
+UL {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; LIST-STYLE-TYPE: square; =
+MARGIN: 0.3em 0px 0px 1.5em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+LIST-STYLE-IMAGE: url(../images/bullet.gif); PADDING-TOP: 0px
+}
+OL {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0.3em 0px 0px 3.2em; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; LIST-STYLE-IMAGE: none; =
+PADDING-TOP: 0px
+}
+LI {
+	MARGIN-BOTTOM: 0.1em
+}
+DT {
+	MARGIN-BOTTOM: 0.1em; FONT-WEIGHT: bold
+}
+DL {
+	MARGIN-TOP: 0.2em; MARGIN-BOTTOM: 0.5em
+}
+DD {
+	LINE-HEIGHT: 1.5em; MARGIN-BOTTOM: 0.1em; MARGIN-LEFT: 2em
+}
+FIELDSET {
+	BORDER-BOTTOM: #2f6fab 1px solid; BORDER-LEFT: #2f6fab 1px solid; =
+PADDING-BOTTOM: 1em; LINE-HEIGHT: 1.5em; MARGIN: 1em 0em; PADDING-LEFT: =
+1em; PADDING-RIGHT: 1em; BORDER-TOP: #2f6fab 1px solid; BORDER-RIGHT: =
+#2f6fab 1px solid; PADDING-TOP: 0em
+}
+LEGEND {
+	PADDING-BOTTOM: 0.5em; PADDING-LEFT: 0.5em; PADDING-RIGHT: 0.5em; =
+BACKGROUND: white; FONT-SIZE: 95%; PADDING-TOP: 0.5em
+}
+FORM {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; MARGIN: 0px; =
+BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+TEXTAREA {
+	PADDING-BOTTOM: 0.1em; PADDING-LEFT: 0.1em; WIDTH: 100%; PADDING-RIGHT: =
+0.1em; PADDING-TOP: 0.1em
+}
+SELECT {
+	VERTICAL-ALIGN: top
+}
+ABBR {
+	BORDER-BOTTOM: black 1px dotted; BACKGROUND: none transparent scroll =
+repeat 0% 0%; COLOR: black; CURSOR: help
+}
+ACRONYM {
+	BORDER-BOTTOM: black 1px dotted; BACKGROUND: none transparent scroll =
+repeat 0% 0%; COLOR: black; CURSOR: help
+}
+.explain {
+	BORDER-BOTTOM: black 1px dotted; BACKGROUND: none transparent scroll =
+repeat 0% 0%; COLOR: black; CURSOR: help
+}
+Q {
+	FONT-STYLE: italic; FONT-FAMILY: Times, "Times New Roman", serif
+}
+CODE {
+	BACKGROUND-COLOR: #f9f9f9
+}
+PRE {
+	BORDER-BOTTOM: #2f6fab 1px dashed; BORDER-LEFT: #2f6fab 1px dashed; =
+PADDING-BOTTOM: 1em; LINE-HEIGHT: 1.1em; BACKGROUND-COLOR: #f9f9f9; =
+PADDING-LEFT: 1em; PADDING-RIGHT: 1em; COLOR: black; BORDER-TOP: #2f6fab =
+1px dashed; BORDER-RIGHT: #2f6fab 1px dashed; PADDING-TOP: 1em
+}
+.usermessage {
+	BORDER-BOTTOM: #ffa500 1px solid; BORDER-LEFT: #ffa500 1px solid; =
+PADDING-BOTTOM: 0.5em; BACKGROUND-COLOR: #ffce7b; MARGIN: 2em 0em 1em; =
+PADDING-LEFT: 1em; PADDING-RIGHT: 1em; COLOR: black; VERTICAL-ALIGN: =
+middle; BORDER-TOP: #ffa500 1px solid; FONT-WEIGHT: bold; BORDER-RIGHT: =
+#ffa500 1px solid; PADDING-TOP: 0.5em
+}
+#siteNotice {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; PADDING-LEFT: 0.9em; =
+PADDING-RIGHT: 0.9em; FONT-SIZE: 95%; PADDING-TOP: 0px
+}
+#siteNotice P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+.error {
+	COLOR: red; FONT-SIZE: larger
+}
+#catlinks {
+	BORDER-BOTTOM: #aaaaaa 1px solid; BORDER-LEFT: #aaaaaa 1px solid; =
+PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #f9f9f9; MARGIN-TOP: 1em; =
+PADDING-LEFT: 5px; PADDING-RIGHT: 5px; CLEAR: both; BORDER-TOP: #aaaaaa =
+1px solid; BORDER-RIGHT: #aaaaaa 1px solid; PADDING-TOP: 5px
+}
+.documentByLine {
+	TEXT-ALIGN: right; COLOR: #76797c; CLEAR: both; FONT-SIZE: 90%; =
+FONT-WEIGHT: normal
+}
+#siteSub {
+	DISPLAY: none
+}
+.center {
+	TEXT-ALIGN: center; WIDTH: 100%
+}
+*.center * {
+	MARGIN-LEFT: auto; MARGIN-RIGHT: auto
+}
+.small {
+	FONT-SIZE: 94%
+}
+.small * {
+	FONT-SIZE: 94%
+}
+TABLE.small {
+	FONT-SIZE: 100%
+}
+#toc {
+	BORDER-BOTTOM: #aaaaaa 1px solid; BORDER-LEFT: #aaaaaa 1px solid; =
+PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #f9f9f9; PADDING-LEFT: 5px; =
+PADDING-RIGHT: 5px; FONT-SIZE: 95%; BORDER-TOP: #aaaaaa 1px solid; =
+BORDER-RIGHT: #aaaaaa 1px solid; PADDING-TOP: 5px
+}
+#toc .tocindent {
+	MARGIN-LEFT: 2em
+}
+#toc .tocline {
+	MARGIN-BOTTOM: 0px
+}
+#toc P {
+	MARGIN: 0px
+}
+#toc .toctoggle {
+	FONT-SIZE: 94%
+}
+#toc .editsection {
+	MARGIN-TOP: 0.7em; FONT-SIZE: 94%
+}
+DIV.floatright {
+	BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; MARGIN: 0px =
+0px 0.5em 0.5em; FLOAT: right; CLEAR: right; BORDER-TOP: 0px; =
+BORDER-RIGHT: 0px
+}
+TABLE.floatright {
+	BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; MARGIN: 0px =
+0px 0.5em 0.5em; FLOAT: right; CLEAR: right; BORDER-TOP: 0px; =
+BORDER-RIGHT: 0px
+}
+DIV.floatright P {
+	FONT-STYLE: italic
+}
+DIV.floatleft {
+	BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; MARGIN: 0px =
+0.5em 0.5em 0px; FLOAT: left; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+TABLE.floatleft {
+	BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; MARGIN: 0px =
+0.5em 0.5em 0px; FLOAT: left; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+DIV.floatleft P {
+	FONT-STYLE: italic
+}
+DIV.thumb {
+	BORDER-BOTTOM-STYLE: solid; BORDER-BOTTOM-COLOR: white; =
+BORDER-RIGHT-STYLE: solid; BORDER-TOP-COLOR: white; WIDTH: auto; =
+BORDER-TOP-STYLE: solid; MARGIN-BOTTOM: 0.5em; BORDER-RIGHT-COLOR: =
+white; BORDER-LEFT-STYLE: solid; BORDER-LEFT-COLOR: white
+}
+DIV.thumb DIV {
+	BORDER-BOTTOM: #cccccc 1px solid; TEXT-ALIGN: center; BORDER-LEFT: =
+#cccccc 1px solid; PADDING-BOTTOM: 3px !important; BACKGROUND-COLOR: =
+#f9f9f9; PADDING-LEFT: 3px !important; PADDING-RIGHT: 3px !important; =
+FONT-SIZE: 94%; OVERFLOW: hidden; BORDER-TOP: #cccccc 1px solid; =
+BORDER-RIGHT: #cccccc 1px solid; PADDING-TOP: 3px !important
+}
+DIV.thumb DIV A IMG {
+	BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; =
+BORDER-TOP: #cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid
+}
+DIV.thumb DIV DIV.thumbcaption {
+	BORDER-BOTTOM: medium none; TEXT-ALIGN: left; BORDER-LEFT: medium none; =
+PADDING-BOTTOM: 0.1em; LINE-HEIGHT: 1.4em; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; =
+PADDING-TOP: 0.3em
+}
+DIV.magnify {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BACKGROUND: none =
+transparent scroll repeat 0% 0%; FLOAT: right; BORDER-TOP: medium none; =
+BORDER-RIGHT: medium none
+}
+DIV.magnify A {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; DISPLAY: block; =
+BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-TOP: medium =
+none; BORDER-RIGHT: medium none
+}
+DIV.magnify IMG {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; DISPLAY: block; =
+BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-TOP: medium =
+none; BORDER-RIGHT: medium none
+}
+DIV.tright {
+	BORDER-RIGHT-WIDTH: 0px; FLOAT: right; BORDER-TOP-WIDTH: 0.5em; =
+BORDER-BOTTOM-WIDTH: 0.8em; CLEAR: right; BORDER-LEFT-WIDTH: 1.4em
+}
+DIV.tleft {
+	BORDER-RIGHT-WIDTH: 1.4em; FLOAT: left; BORDER-TOP-WIDTH: 0.5em; =
+BORDER-BOTTOM-WIDTH: 0.8em; BORDER-LEFT-WIDTH: 0px; MARGIN-RIGHT: 0.5em
+}
+.urlexpansion {
+	DISPLAY: none
+}
+.hiddenStructure {
+	DISPLAY: none
+}
+IMG.tex {
+	VERTICAL-ALIGN: middle
+}
+SPAN.texhtml {
+	FONT-FAMILY: serif
+}
+.autocomment {
+	COLOR: gray
+}
+#pagehistory SPAN.user {
+	MARGIN-LEFT: 1.4em; MARGIN-RIGHT: 0.4em
+}
+#pagehistory SPAN.minor {
+	FONT-WEIGHT: bold
+}
+#pagehistory LI {
+	BORDER-BOTTOM: white 1px solid; BORDER-LEFT: white 1px solid; =
+BORDER-TOP: white 1px solid; BORDER-RIGHT: white 1px solid
+}
+#pagehistory LI.selected {
+	BORDER-BOTTOM: #aaaaaa 1px dashed; BORDER-LEFT: #aaaaaa 1px dashed; =
+BACKGROUND-COLOR: #f9f9f9; BORDER-TOP: #aaaaaa 1px dashed; BORDER-RIGHT: =
+#aaaaaa 1px dashed
+}
+TABLE.diff {
+	BACKGROUND: white
+}
+TD.diff-otitle {
+	BACKGROUND: #ffffff
+}
+TD.diff-ntitle {
+	BACKGROUND: #ffffff
+}
+TD.diff-addedline {
+	BACKGROUND: #ccffcc; FONT-SIZE: smaller
+}
+TD.diff-deletedline {
+	BACKGROUND: #ffffaa; FONT-SIZE: smaller
+}
+TD.diff-context {
+	BACKGROUND: #eeeeee; FONT-SIZE: smaller
+}
+SPAN.diffchange {
+	COLOR: red; FONT-WEIGHT: bold
+}
+#footer {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 5px; MARGIN: 180px 10px 10px 180px; =
+PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #eeeeee; PADDING-TOP: =
+5px
+}
+#footer LI {
+	MARGIN: 0px 1.3em; DISPLAY: inline; FONT-SIZE: 70%
+}
+HEAD:first-child + BODY #footer LI {
+	WHITE-SPACE: nowrap
+}
+#f-poweredbyico {
+	POSITION: relative; MARGIN: 0px 10px; TOP: -2px
+}
+#f-copyrightico {
+	POSITION: relative; MARGIN: 0px 10px; TOP: -2px
+}
+#f-poweredbyico {
+	FLOAT: right; HEIGHT: 1%
+}
+#f-copyrightico {
+	FLOAT: left; HEIGHT: 1%
+}
+#preftoc {
+	MARGIN: 1em; WIDTH: 13em; FLOAT: left
+}
+#preftoc LI {
+	BORDER-BOTTOM: white 1px solid; BORDER-LEFT: white 1px solid; =
+BORDER-TOP: white 1px solid; BORDER-RIGHT: white 1px solid
+}
+#preftoc LI.selected {
+	BORDER-BOTTOM: #aaaaaa 1px dashed; BORDER-LEFT: #aaaaaa 1px dashed; =
+BACKGROUND-COLOR: #f9f9f9; BORDER-TOP: #aaaaaa 1px dashed; BORDER-RIGHT: =
+#aaaaaa 1px dashed
+}
+#preftoc A {
+	DISPLAY: block; COLOR: #0014a6
+}
+#preftoc A:active {
+	DISPLAY: block; COLOR: #0014a6
+}
+#prefcontrol {
+	MARGIN-TOP: 1em; FLOAT: left; CLEAR: both
+}
+DIV.prefsectiontip {
+	MARGIN-TOP: 1em; FONT-SIZE: 95%
+}
+FIELDSET.operaprefsection {
+	MARGIN-LEFT: 15em
+}
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://tdn.garagegames.com/wiki/skins/common/commonPrint.css
+
+A.stub {
+	COLOR: #ba0000; TEXT-DECORATION: none
+}
+A.new {
+	COLOR: #ba0000; TEXT-DECORATION: none
+}
+#toc {
+	BORDER-BOTTOM: #aaaaaa 1px solid; BORDER-LEFT: #aaaaaa 1px solid; =
+PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #f9f9f9; PADDING-LEFT: 5px; =
+PADDING-RIGHT: 5px; BORDER-TOP: #aaaaaa 1px solid; BORDER-RIGHT: #aaaaaa =
+1px solid; PADDING-TOP: 5px
+}
+.tocindent {
+	MARGIN-LEFT: 2em
+}
+.tocline {
+	MARGIN-BOTTOM: 0px
+}
+.toctoggle {
+	FONT-SIZE: smaller
+}
+.editsection {
+	FONT-SIZE: smaller
+}
+DIV.floatright {
+	BORDER-BOTTOM: white 0.8em solid; POSITION: relative; BORDER-LEFT: =
+white 1.4em solid; MARGIN: 0px; FLOAT: right; BORDER-TOP: white 0.5em =
+solid; BORDER-RIGHT: white 0px solid
+}
+DIV.floatright P {
+	FONT-STYLE: italic
+}
+DIV.floatleft {
+	BORDER-BOTTOM: white 0.8em solid; POSITION: relative; BORDER-LEFT: =
+white 0px solid; MARGIN: 0.3em 0.5em 0.5em 0px; FLOAT: left; BORDER-TOP: =
+white 0.5em solid; BORDER-RIGHT: white 1.4em solid
+}
+DIV.floatleft P {
+	FONT-STYLE: italic
+}
+DIV.thumb {
+	BORDER-BOTTOM-STYLE: solid; BORDER-BOTTOM-COLOR: white; =
+BORDER-RIGHT-STYLE: solid; BORDER-TOP-COLOR: white; WIDTH: auto; =
+BORDER-TOP-STYLE: solid; MARGIN-BOTTOM: 0.5em; BORDER-RIGHT-COLOR: =
+white; BORDER-LEFT-STYLE: solid; OVERFLOW: hidden; BORDER-LEFT-COLOR: =
+white
+}
+DIV.thumb DIV {
+	BORDER-BOTTOM: #cccccc 1px solid; TEXT-ALIGN: center; BORDER-LEFT: =
+#cccccc 1px solid; PADDING-BOTTOM: 3px !important; BACKGROUND-COLOR: =
+#f9f9f9; PADDING-LEFT: 3px !important; PADDING-RIGHT: 3px !important; =
+FONT-SIZE: 94%; BORDER-TOP: #cccccc 1px solid; BORDER-RIGHT: #cccccc 1px =
+solid; PADDING-TOP: 3px !important
+}
+DIV.thumb DIV A IMG {
+	BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; =
+BORDER-TOP: #cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid
+}
+DIV.thumb DIV DIV.thumbcaption {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: =
+0.1em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; =
+BORDER-RIGHT: medium none; PADDING-TOP: 0.3em
+}
+DIV.magnify {
+	DISPLAY: none
+}
+DIV.tright {
+	BORDER-RIGHT-WIDTH: 0px; FLOAT: right; BORDER-TOP-WIDTH: 0.5em; =
+BORDER-BOTTOM-WIDTH: 0.8em; BORDER-LEFT-WIDTH: 1.4em
+}
+DIV.tleft {
+	BORDER-RIGHT-WIDTH: 1.4em; FLOAT: left; BORDER-TOP-WIDTH: 0.5em; =
+BORDER-BOTTOM-WIDTH: 0.8em; BORDER-LEFT-WIDTH: 0px; MARGIN-RIGHT: 0.5em
+}
+TABLE.rimage {
+	POSITION: relative; TEXT-ALIGN: center; WIDTH: 1pt; MARGIN-BOTTOM: 1em; =
+FLOAT: right; MARGIN-LEFT: 1em
+}
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; BACKGROUND: white; COLOR: black; PADDING-TOP: 0px
+}
+.noprint {
+	DISPLAY: none
+}
+DIV.top {
+	DISPLAY: none
+}
+DIV#column-one {
+	DISPLAY: none
+}
+#colophon {
+	DISPLAY: none
+}
+.editsection {
+	DISPLAY: none
+}
+.toctoggle {
+	DISPLAY: none
+}
+.tochidden {
+	DISPLAY: none
+}
+DIV#f-poweredbyico {
+	DISPLAY: none
+}
+DIV#f-copyrightico {
+	DISPLAY: none
+}
+LI#f-viewcount {
+	DISPLAY: none
+}
+LI#f-about {
+	DISPLAY: none
+}
+#sidebar {
+	DISPLAY: none
+}
+#headerTop {
+	DISPLAY: none
+}
+#headerBottom {
+	DISPLAY: none
+}
+LI#f-disclaimer {
+	DISPLAY: none
+}
+UL {
+	LIST-STYLE-TYPE: square
+}
+#content {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: =
+0px !important; MARGIN: 0px; PADDING-LEFT: 0px !important; =
+PADDING-RIGHT: 0px !important; BACKGROUND: none transparent scroll =
+repeat 0% 0%; FONT-SIZE: 11pt; BORDER-TOP: medium none; BORDER-RIGHT: =
+medium none; PADDING-TOP: 0px !important
+}
+#footer {
+	BORDER-TOP: black 1px solid
+}
+H1 {
+	FONT-WEIGHT: bold
+}
+H2 {
+	FONT-WEIGHT: bold
+}
+H3 {
+	FONT-WEIGHT: bold
+}
+H4 {
+	FONT-WEIGHT: bold
+}
+H5 {
+	FONT-WEIGHT: bold
+}
+H6 {
+	FONT-WEIGHT: bold
+}
+P {
+	LINE-HEIGHT: 1.2em; MARGIN: 1em 0px
+}
+.documentDescription {
+	LINE-HEIGHT: 1.2em; MARGIN: 1em 0px
+}
+.tocindent P {
+	MARGIN: 0px
+}
+PRE {
+	BORDER-BOTTOM: black 1pt dashed; BORDER-LEFT: black 1pt dashed; =
+PADDING-BOTTOM: 1em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WHITE-SPACE: =
+pre; FONT-SIZE: 8pt; OVERFLOW: auto; BORDER-TOP: black 1pt dashed; =
+BORDER-RIGHT: black 1pt dashed; PADDING-TOP: 1em
+}
+TABLE.listing {
+	BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; =
+BORDER-COLLAPSE: collapse; BORDER-TOP: black 1pt solid; BORDER-RIGHT: =
+black 1pt solid
+}
+TABLE.listing TD {
+	BORDER-BOTTOM: black 1pt solid; BORDER-LEFT: black 1pt solid; =
+BORDER-COLLAPSE: collapse; BORDER-TOP: black 1pt solid; BORDER-RIGHT: =
+black 1pt solid
+}
+A {
+	PADDING-BOTTOM: 0px !important; PADDING-LEFT: 0px !important; =
+PADDING-RIGHT: 0px !important; COLOR: black !important; PADDING-TOP: 0px =
+!important
+}
+A:link {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #520; =
+TEXT-DECORATION: underline
+}
+A:visited {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #520; =
+TEXT-DECORATION: underline
+}
+#content A.text.external:after {
+	CONTENT: " (" attr(href) ") "
+}
+#content A.autonumber.external:after {
+	CONTENT: " (" attr(href) ") "
+}
+#globalWrapper {
+	MIN-WIDTH: 0px !important; WIDTH: 100% !important
+}
+#column-content {
+	MARGIN: 0px
+}
+#column-content #content {
+	PADDING-BOTTOM: 1em; MARGIN: 0px; PADDING-LEFT: 1em; PADDING-RIGHT: =
+1em; PADDING-TOP: 1em
+}
+A {
+	COLOR: black !important; TEXT-DECORATION: none !important
+}
+A.external {
+	COLOR: black !important; TEXT-DECORATION: none !important
+}
+A.new {
+	COLOR: black !important; TEXT-DECORATION: none !important
+}
+A.stub {
+	COLOR: black !important; TEXT-DECORATION: none !important
+}
+A {
+	COLOR: inherit !important; TEXT-DECORATION: inherit !important
+}
+A.external {
+	COLOR: inherit !important; TEXT-DECORATION: inherit !important
+}
+A.new {
+	COLOR: inherit !important; TEXT-DECORATION: inherit !important
+}
+A.stub {
+	COLOR: inherit !important; TEXT-DECORATION: inherit !important
+}
+IMG {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: =
+medium none; BORDER-RIGHT: medium none
+}
+IMG.tex {
+	VERTICAL-ALIGN: middle
+}
+SPAN.texhtml {
+	FONT-FAMILY: serif
+}
+DIV.townBox {
+	BORDER-BOTTOM: gray 1px solid; POSITION: relative; BORDER-LEFT: gray =
+1px solid; PADDING-BOTTOM: 0.3em; PADDING-LEFT: 0.3em; WIDTH: 200px; =
+PADDING-RIGHT: 0.3em; BACKGROUND: white; FLOAT: right; MARGIN-LEFT: 1em; =
+CLEAR: right; OVERFLOW: hidden; BORDER-TOP: gray 1px solid; =
+BORDER-RIGHT: gray 1px solid; PADDING-TOP: 0.3em
+}
+DIV.townBox DL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0.3em; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; FONT-SIZE: 96%; PADDING-TOP: 0px
+}
+DIV.townBox DL DT {
+	MARGIN: 0.4em 0px 0px; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+DIV.townBox DL DD {
+	BACKGROUND-COLOR: #f3f3f3; MARGIN: 0.1em 0px 0px 1.1em
+}
+#siteNotice {
+	DISPLAY: none
+}
+TABLE.gallery {
+	BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; =
+PADDING-BOTTOM: 2px; BACKGROUND-COLOR: #ffffff; MARGIN: 2px; =
+PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BORDER-TOP: #cccccc 1px solid; =
+BORDER-RIGHT: #cccccc 1px solid; PADDING-TOP: 2px
+}
+TABLE.gallery TR {
+	VERTICAL-ALIGN: top
+}
+DIV.gallerybox {
+	BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; =
+BACKGROUND-COLOR: #f9f9f9; MARGIN: 2px; WIDTH: 150px; BORDER-TOP: =
+#cccccc 1px solid; BORDER-RIGHT: #cccccc 1px solid
+}
+DIV.gallerybox DIV.thumb {
+	BORDER-BOTTOM: #cccccc 1px solid; TEXT-ALIGN: center; BORDER-LEFT: =
+#cccccc 1px solid; MARGIN: 2px; BORDER-TOP: #cccccc 1px solid; =
+BORDER-RIGHT: #cccccc 1px solid
+}
+DIV.gallerytext {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; FONT-SIZE: =
+94%; PADDING-TOP: 2px
+}
+TABLE.diff {
+	BACKGROUND: white
+}
+TD.diff-otitle {
+	BACKGROUND: #ffffff
+}
+TD.diff-ntitle {
+	BACKGROUND: #ffffff
+}
+TD.diff-addedline {
+	BORDER-BOTTOM: black 2px solid; BORDER-LEFT: black 2px solid; =
+BACKGROUND: #ccffcc; FONT-SIZE: smaller; BORDER-TOP: black 2px solid; =
+BORDER-RIGHT: black 2px solid
+}
+TD.diff-deletedline {
+	BORDER-BOTTOM: black 2px dotted; BORDER-LEFT: black 2px dotted; =
+BACKGROUND: #ffffaa; FONT-SIZE: smaller; BORDER-TOP: black 2px dotted; =
+BORDER-RIGHT: black 2px dotted
+}
+TD.diff-context {
+	BACKGROUND: #eeeeee; FONT-SIZE: smaller
+}
+SPAN.diffchange {
+	COLOR: silver; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+#content {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; =
+PADDING-LEFT: 0px; WIDTH: 99%; PADDING-RIGHT: 0px; BORDER-TOP: 0px; =
+BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+#main {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; =
+PADDING-LEFT: 0px; WIDTH: 99%; PADDING-RIGHT: 0px; BORDER-TOP: 0px; =
+BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+#main-content {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; =
+PADDING-LEFT: 0px; WIDTH: 99%; PADDING-RIGHT: 0px; BORDER-TOP: 0px; =
+BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+#bodyContent {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; =
+PADDING-LEFT: 0px; WIDTH: 99%; PADDING-RIGHT: 0px; BORDER-TOP: 0px; =
+BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+#footer {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 5px; MARGIN: 5px 10px 10px 5px; =
+PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #eeeeee; PADDING-TOP: =
+5px
+}
+#footer LI {
+	MARGIN: 0px 1.3em; DISPLAY: inline; FONT-SIZE: 70%
+}
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://tdn.garagegames.com/wiki/skins/common/wikibits.js
+
+// Wikipedia JavaScript support functions
+// if this is true, the toolbar will no longer overwrite the infobox =
+when you move the mouse over individual items
+var noOverwrite=3Dfalse;
+var alertText;
+var clientPC =3D navigator.userAgent.toLowerCase(); // Get client info
+var is_gecko =3D ((clientPC.indexOf('gecko')!=3D-1) && =
+(clientPC.indexOf('spoofer')=3D=3D-1)
+                && (clientPC.indexOf('khtml') =3D=3D -1) && =
+(clientPC.indexOf('netscape/7.0')=3D=3D-1));
+var is_safari =3D ((clientPC.indexOf('AppleWebKit')!=3D-1) && =
+(clientPC.indexOf('spoofer')=3D=3D-1));
+var is_khtml =3D (navigator.vendor =3D=3D 'KDE' || ( document.childNodes =
+&& !document.all && !navigator.taintEnabled ));
+if (clientPC.indexOf('opera')!=3D-1) {
+    var is_opera =3D true;
+    var is_opera_preseven =3D (window.opera && !document.childNodes);
+    var is_opera_seven =3D (window.opera && document.childNodes);
+}
+
+// add any onload functions in this hook (please don't hard-code any =
+events in the xhtml source)
+function onloadhook () {
+    // don't run anything below this for non-dom browsers
+    if(!(document.getElementById && document.getElementsByTagName)) =
+return;
+    histrowinit();
+    unhidetzbutton();
+    tabbedprefs();
+    akeytt();
+}
+if (window.addEventListener) =
+window.addEventListener("load",onloadhook,false);
+else if (window.attachEvent) window.attachEvent("onload",onloadhook);
+
+
+// document.write special stylesheet links
+if(typeof stylepath !=3D 'undefined' && typeof skin !=3D 'undefined') {
+    if (is_opera_preseven) {
+        document.write('<link rel=3D"stylesheet" type=3D"text/css" =
+href=3D"'+stylepath+'/'+skin+'/Opera6Fixes.css">');
+    } else if (is_opera_seven) {
+        document.write('<link rel=3D"stylesheet" type=3D"text/css" =
+href=3D"'+stylepath+'/'+skin+'/Opera7Fixes.css">');
+    } else if (is_khtml) {
+        document.write('<link rel=3D"stylesheet" type=3D"text/css" =
+href=3D"'+stylepath+'/'+skin+'/KHTMLFixes.css">');
+    }
+}
+// Un-trap us from framesets
+if( window.top !=3D window ) window.top.location =3D window.location;
+
+// for enhanced RecentChanges
+function toggleVisibility( _levelId, _otherId, _linkId) {
+	var thisLevel =3D document.getElementById( _levelId );
+	var otherLevel =3D document.getElementById( _otherId );
+	var linkLevel =3D document.getElementById( _linkId );
+	if ( thisLevel.style.display =3D=3D 'none' ) {
+		thisLevel.style.display =3D 'block';
+		otherLevel.style.display =3D 'none';
+		linkLevel.style.display =3D 'inline';
+	} else {
+		thisLevel.style.display =3D 'none';
+		otherLevel.style.display =3D 'inline';
+		linkLevel.style.display =3D 'none';
+		}
+}
+
+// page history stuff
+// attach event handlers to the input elements on history page
+function histrowinit () {
+    hf =3D document.getElementById('pagehistory');
+    if(!hf) return;
+    lis =3D hf.getElementsByTagName('li');
+    for (i=3D0;i<lis.length;i++) {
+        inputs=3Dlis[i].getElementsByTagName('input');
+        if(inputs[0] && inputs[1]) {
+                inputs[0].onclick =3D diffcheck;
+                inputs[1].onclick =3D diffcheck;
+        }
+    }
+    diffcheck();
+}
+// check selection and tweak visibility/class onclick
+function diffcheck() {=20
+    var dli =3D false; // the li where the diff radio is checked
+    var oli =3D false; // the li where the oldid radio is checked
+    hf =3D document.getElementById('pagehistory');
+    if(!hf) return;
+    lis =3D hf.getElementsByTagName('li');
+    for (i=3D0;i<lis.length;i++) {
+        inputs=3Dlis[i].getElementsByTagName('input');
+        if(inputs[1] && inputs[0]) {
+            if(inputs[1].checked || inputs[0].checked) { // this row has =
+a checked radio button
+                if(inputs[1].checked && inputs[0].checked && =
+inputs[0].value =3D=3D inputs[1].value) return false;
+                if(oli) { // it's the second checked radio
+                    if(inputs[1].checked) {
+                    oli.className =3D "selected";
+                    return false=20
+                    }
+                } else if (inputs[0].checked) {
+                    return false;
+                }
+                if(inputs[0].checked) dli =3D lis[i];
+                if(!oli) inputs[0].style.visibility =3D 'hidden';
+                if(dli) inputs[1].style.visibility =3D 'hidden';
+                lis[i].className =3D "selected";
+                oli =3D lis[i];
+            }  else { // no radio is checked in this row
+                if(!oli) inputs[0].style.visibility =3D 'hidden';
+                else inputs[0].style.visibility =3D 'visible';
+                if(dli) inputs[1].style.visibility =3D 'hidden';
+                else inputs[1].style.visibility =3D 'visible';
+                lis[i].className =3D "";
+            }
+        }
+    }
+}
+
+// generate toc from prefs form, fold sections
+// XXX: needs testing on IE/Mac and safari
+// more comments to follow
+function tabbedprefs() {
+    prefform =3D document.getElementById('preferences');
+    if(!prefform || !document.createElement) return;
+    if(prefform.nodeName.toLowerCase() =3D=3D 'a') return; // Occasional =
+IE problem
+    prefform.className =3D prefform.className + 'jsprefs';
+    var sections =3D new Array();
+    children =3D prefform.childNodes;
+    var seci =3D 0;
+    for(i=3D0;i<children.length;i++) {
+        if(children[i].nodeName.toLowerCase().indexOf('fieldset') !=3D =
+-1) {
+            children[i].id =3D 'prefsection-' + seci;
+            children[i].className =3D 'prefsection';
+            if(is_opera || is_khtml) children[i].className =3D =
+'prefsection operaprefsection';
+            legends =3D children[i].getElementsByTagName('legend');
+            sections[seci] =3D new Object();
+            if(legends[0] && legends[0].firstChild.nodeValue)
+                sections[seci].text =3D legends[0].firstChild.nodeValue;
+            else
+                sections[seci].text =3D '# ' + seci;
+            sections[seci].secid =3D children[i].id;
+            seci++;
+            if(sections.length !=3D 1) children[i].style.display =3D =
+'none';
+            else var selectedid =3D children[i].id;
+        }
+    }
+    var toc =3D document.createElement('ul');
+    toc.id =3D 'preftoc';
+    toc.selectedid =3D selectedid;
+    for(i=3D0;i<sections.length;i++) {
+        var li =3D document.createElement('li');
+        if(i =3D=3D 0) li.className =3D 'selected';
+        var a =3D  document.createElement('a');
+        a.href =3D '#' + sections[i].secid;
+        a.onclick =3D uncoversection;
+        a.appendChild(document.createTextNode(sections[i].text));
+        a.secid =3D sections[i].secid;
+        li.appendChild(a);
+        toc.appendChild(li);
+    }
+    prefform.insertBefore(toc, children[0]);
+    document.getElementById('prefsubmit').id =3D 'prefcontrol';
+}
+function uncoversection() {
+    oldsecid =3D this.parentNode.parentNode.selectedid;
+    newsec =3D document.getElementById(this.secid);
+    if(oldsecid !=3D this.secid) {
+        ul =3D document.getElementById('preftoc');
+        document.getElementById(oldsecid).style.display =3D 'none';
+        newsec.style.display =3D 'block';
+        ul.selectedid =3D this.secid;
+        lis =3D ul.getElementsByTagName('li');
+        for(i=3D0;i< lis.length;i++) {
+            lis[i].className =3D '';
+        }
+        this.parentNode.className =3D 'selected';
+    }
+    return false;
+}
+
+// Timezone stuff
+// tz in format [+-]HHMM
+function checkTimezone( tz, msg ) {
+	var localclock =3D new Date();
+	// returns negative offset from GMT in minutes
+	var tzRaw =3D localclock.getTimezoneOffset();
+	var tzHour =3D Math.floor( Math.abs(tzRaw) / 60);
+	var tzMin =3D Math.abs(tzRaw) % 60;
+	var tzString =3D ((tzRaw >=3D 0) ? "-" : "+") + ((tzHour < 10) ? "0" : =
+"") + tzHour + ((tzMin < 10) ? "0" : "") + tzMin;
+	if( tz !=3D tzString ) {
+		var junk =3D msg.split( '$1' );
+		document.write( junk[0] + "UTC" + tzString + junk[1] );
+	}
+}
+function unhidetzbutton() {
+    tzb =3D document.getElementById('guesstimezonebutton')
+    if(tzb) tzb.style.display =3D 'inline';
+}
+
+// in [-]HH:MM format...
+// won't yet work with non-even tzs
+function fetchTimezone() {
+	// FIXME: work around Safari bug
+	var localclock =3D new Date();
+	// returns negative offset from GMT in minutes
+	var tzRaw =3D localclock.getTimezoneOffset();
+	var tzHour =3D Math.floor( Math.abs(tzRaw) / 60);
+	var tzMin =3D Math.abs(tzRaw) % 60;
+	var tzString =3D ((tzRaw >=3D 0) ? "-" : "") + ((tzHour < 10) ? "0" : =
+"") + tzHour +
+		":" + ((tzMin < 10) ? "0" : "") + tzMin;
+	return tzString;
+}
+
+function guessTimezone(box) {
+	document.preferences.wpHourDiff.value =3D fetchTimezone();
+}
+
+function showTocToggle() {
+  if (document.createTextNode) {
+    // Uses DOM calls to avoid document.write + XHTML issues
+
+    var linkHolder =3D document.getElementById('toctitle')
+    if (!linkHolder) return;
+
+    var outerSpan =3D document.createElement('span');
+    outerSpan.className =3D 'toctoggle';
+
+    var toggleLink =3D document.createElement('a');
+    toggleLink.id =3D 'togglelink';
+    toggleLink.className =3D 'internal';
+    toggleLink.href =3D 'javascript:toggleToc()';
+    toggleLink.appendChild(document.createTextNode(tocHideText));
+
+    outerSpan.appendChild(document.createTextNode('['));
+    outerSpan.appendChild(toggleLink);
+    outerSpan.appendChild(document.createTextNode(']'));
+
+    linkHolder.appendChild(document.createTextNode(' '));
+    linkHolder.appendChild(outerSpan);
+
+    var cookiePos =3D document.cookie.indexOf("hidetoc=3D");
+    if (cookiePos > -1 && document.cookie.charAt(cookiePos + 8) =3D=3D =
+1)
+     toggleToc();
+  }
+}
+
+function changeText(el, newText) {
+  // Safari work around
+  if (el.innerText)
+    el.innerText =3D newText;
+  else if (el.firstChild && el.firstChild.nodeValue)
+    el.firstChild.nodeValue =3D newText;
+}
+ =20
+function toggleToc() {
+ 	var toc =3D =
+document.getElementById('toc').getElementsByTagName('ul')[0];
+  var toggleLink =3D document.getElementById('togglelink')
+ =20
+ 	if(toc && toggleLink && toc.style.display =3D=3D 'none') {
+     changeText(toggleLink, tocHideText);
+ 		toc.style.display =3D 'block';
+     document.cookie =3D "hidetoc=3D0";
+	} else {
+    changeText(toggleLink, tocShowText);
+		toc.style.display =3D 'none';
+    document.cookie =3D "hidetoc=3D1";
+	}
+}
+
+// this function generates the actual toolbar buttons with localized =
+text
+// we use it to avoid creating the toolbar where javascript is not =
+enabled
+function addButton(imageFile, speedTip, tagOpen, tagClose, sampleText) {
+
+	imageFile=3DescapeQuotesHTML(imageFile);
+	speedTip=3DescapeQuotesHTML(speedTip);
+	tagOpen=3DescapeQuotes(tagOpen);
+	tagClose=3DescapeQuotes(tagClose);
+	sampleText=3DescapeQuotes(sampleText);
+	var mouseOver=3D"";
+
+	// we can't change the selection, so we show example texts
+	// when moving the mouse instead, until the first button is clicked
+	if(!document.selection && !is_gecko) {
+		// filter backslashes so it can be shown in the infobox
+		var re=3Dnew RegExp("\\\\n","g");
+		tagOpen=3DtagOpen.replace(re,"");
+		tagClose=3DtagClose.replace(re,"");
+		mouseOver =3D =
+"onMouseover=3D\"if(!noOverwrite){document.infoform.infobox.value=3D'"+ta=
+gOpen+sampleText+tagClose+"'};\"";
+	}
+
+	document.write("<a href=3D\"javascript:insertTags");
+	document.write("('"+tagOpen+"','"+tagClose+"','"+sampleText+"');\">");
+
+	document.write("<img width=3D\"23\" height=3D\"22\" =
+src=3D\""+imageFile+"\" border=3D\"0\" alt=3D\""+speedTip+"\" =
+title=3D\""+speedTip+"\""+mouseOver+">");
+	document.write("</a>");
+	return;
+}
+
+function addInfobox(infoText,text_alert) {
+	alertText=3Dtext_alert;
+	var clientPC =3D navigator.userAgent.toLowerCase(); // Get client info
+
+	var re=3Dnew RegExp("\\\\n","g");
+	alertText=3DalertText.replace(re,"\n");
+
+	// if no support for changing selection, add a small copy & paste field
+	// document.selection is an IE-only property. The full toolbar works in =
+IE and
+	// Gecko-based browsers.
+	if(!document.selection && !is_gecko) {
+ 		infoText=3DescapeQuotesHTML(infoText);
+	 	document.write("<form name=3D'infoform' id=3D'infoform'>"+
+			"<input size=3D80 id=3D'infobox' name=3D'infobox' value=3D\""+
+			infoText+"\" readonly=3D'readonly'></form>");
+ 	}
+
+}
+
+function escapeQuotes(text) {
+	var re=3Dnew RegExp("'","g");
+	text=3Dtext.replace(re,"\\'");
+	re=3Dnew RegExp("\\n","g");
+	text=3Dtext.replace(re,"\\n");
+	return escapeQuotesHTML(text);
+}
+
+function escapeQuotesHTML(text) {
+	var re=3Dnew RegExp('&',"g");
+	text=3Dtext.replace(re,"&amp;");
+	var re=3Dnew RegExp('"',"g");
+	text=3Dtext.replace(re,"&quot;");
+	var re=3Dnew RegExp('<',"g");
+	text=3Dtext.replace(re,"&lt;");
+	var re=3Dnew RegExp('>',"g");
+	text=3Dtext.replace(re,"&gt;");
+	return text;
+}
+
+// apply tagOpen/tagClose to selection in textarea,
+// use sampleText instead of selection if there is none
+// copied and adapted from phpBB
+function insertTags(tagOpen, tagClose, sampleText) {
+
+	var txtarea =3D document.editform.wpTextbox1;
+	// IE
+	if(document.selection  && !is_gecko) {
+		var theSelection =3D document.selection.createRange().text;
+		if(!theSelection) { theSelection=3DsampleText;}
+		txtarea.focus();
+		if(theSelection.charAt(theSelection.length - 1) =3D=3D " "){// exclude =
+ending space char, if any
+			theSelection =3D theSelection.substring(0, theSelection.length - 1);
+			document.selection.createRange().text =3D tagOpen + theSelection + =
+tagClose + " ";
+		} else {
+			document.selection.createRange().text =3D tagOpen + theSelection + =
+tagClose;
+		}
+
+	// Mozilla
+	} else if(txtarea.selectionStart || txtarea.selectionStart =3D=3D '0') =
+{
+ 		var startPos =3D txtarea.selectionStart;
+		var endPos =3D txtarea.selectionEnd;
+		var scrollTop=3Dtxtarea.scrollTop;
+		var myText =3D (txtarea.value).substring(startPos, endPos);
+		if(!myText) { myText=3DsampleText;}
+		if(myText.charAt(myText.length - 1) =3D=3D " "){ // exclude ending =
+space char, if any
+			subst =3D tagOpen + myText.substring(0, (myText.length - 1)) + =
+tagClose + " ";
+		} else {
+			subst =3D tagOpen + myText + tagClose;
+		}
+		txtarea.value =3D txtarea.value.substring(0, startPos) + subst +
+		  txtarea.value.substring(endPos, txtarea.value.length);
+		txtarea.focus();
+
+		var cPos=3DstartPos+(tagOpen.length+myText.length+tagClose.length);
+		txtarea.selectionStart=3DcPos;
+		txtarea.selectionEnd=3DcPos;
+		txtarea.scrollTop=3DscrollTop;
+
+	// All others
+	} else {
+		var copy_alertText=3DalertText;
+		var re1=3Dnew RegExp("\\$1","g");
+		var re2=3Dnew RegExp("\\$2","g");
+		copy_alertText=3Dcopy_alertText.replace(re1,sampleText);
+		=
+copy_alertText=3Dcopy_alertText.replace(re2,tagOpen+sampleText+tagClose);=
+
+		var text;
+		if (sampleText) {
+			text=3Dprompt(copy_alertText);
+		} else {
+			text=3D"";
+		}
+		if(!text) { text=3DsampleText;}
+		text=3DtagOpen+text+tagClose;
+		document.infoform.infobox.value=3Dtext;
+		// in Safari this causes scrolling
+		if(!is_safari) {
+			txtarea.focus();
+		}
+		noOverwrite=3Dtrue;
+	}
+	// reposition cursor if possible
+	if (txtarea.createTextRange) txtarea.caretPos =3D =
+document.selection.createRange().duplicate();
+}
+
+function akeytt() {
+    if(typeof ta =3D=3D "undefined" || !ta) return;
+    pref =3D 'alt-';
+    if(is_safari || navigator.userAgent.toLowerCase().indexOf( 'mac' ) + =
+1 ) pref =3D 'control-';
+    if(is_opera) pref =3D 'shift-esc-';
+    for(id in ta) {
+        n =3D document.getElementById(id);
+        if(n){
+            a =3D n.childNodes[0];
+            if(a){
+                if(ta[id][0].length > 0) {
+                    a.accessKey =3D ta[id][0];
+                    ak =3D ' ['+pref+ta[id][0]+']';
+                } else {
+                    ak =3D '';
+                }
+                a.title =3D ta[id][1]+ak;
+            } else {
+                if(ta[id][0].length > 0) {
+                    n.accessKey =3D ta[id][0];
+                    ak =3D ' ['+pref+ta[id][0]+']';
+                } else {
+                    ak =3D '';
+                }
+                n.title =3D ta[id][1]+ak;
+            }
+        }
+    }
+}
+
+function setupRightClickEdit() {
+	if( document.getElementsByTagName ) {
+		var divs =3D document.getElementsByTagName( 'div' );
+		for( var i =3D 0; i < divs.length; i++ ) {
+			var el =3D divs[i];
+			if( el.className =3D=3D 'editsection' ) {
+				addRightClickEditHandler( el );
+			}
+		}
+	}
+}
+
+function addRightClickEditHandler( el ) {
+	for( var i =3D 0; i < el.childNodes.length; i++ ) {
+		var link =3D el.childNodes[i];
+		if( link.nodeType =3D=3D 1 && link.nodeName.toLowerCase() =3D=3D 'a' ) =
+{
+			var editHref =3D link.getAttribute( 'href' );
+		=09
+			// find the following a
+			var next =3D el.nextSibling;
+			while( next.nodeType !=3D 1 )
+				next =3D next.nextSibling;
+		=09
+			// find the following header
+			next =3D next.nextSibling;
+			while( next.nodeType !=3D 1 )
+				next =3D next.nextSibling;
+		=09
+			if( next && next.nodeType =3D=3D 1 &&
+				next.nodeName.match( /^[Hh][1-6]$/ ) ) {
+				next.oncontextmenu =3D function() {
+					document.location =3D editHref;
+					return false;
+				}
+			}
+		}
+	}
+}
+
+function fillDestFilename() {
+	if (!document.getElementById) return;
+	var path =3D document.getElementById('wpUploadFile').value;
+	// Find trailing part
+	var slash =3D path.lastIndexOf( '/' );
+	var backslash =3D path.lastIndexOf( '\\' );
+	var fname;
+	if ( slash =3D=3D -1 && backslash =3D=3D -1 ) {
+		fname =3D path;
+	} else if ( slash > backslash ) {
+		fname =3D path.substring( slash+1, 10000 );
+	} else {
+		fname =3D path.substring( backslash+1, 10000 );
+	}
+
+	// Capitalise first letter and replace spaces by underscores
+	fname =3D =
+fname.charAt(0).toUpperCase().concat(fname.substring(1,10000)).replace( =
+/ /g, '_' );
+
+	// Output result
+	var destFile =3D document.getElementById('wpDestFile');
+	if (destFile) destFile.value =3D fname;
+}
+=09
+
+function considerChangingExpiryFocus() {
+	if (!document.getElementById) return;
+	var drop =3D document.getElementById('wpBlockExpiry');
+	if (!drop) return;
+	var field =3D document.getElementById('wpBlockOther');
+	if (!field) return;
+	var opt =3D drop.value;
+	if (opt =3D=3D 'other')
+		field.style.display =3D '';
+	else
+		field.style.display =3D 'none';
+}
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.google-analytics.com/urchin.js
+
+//-- Google Analytics Urchin Module=0A=
+//-- Copyright 2007 Google, All Rights Reserved.=0A=
+=0A=
+//-- Urchin On Demand Settings ONLY=0A=
+var _uacct=3D"";			// set up the Urchin Account=0A=
+var _userv=3D1;			// service mode (0=3Dlocal,1=3Dremote,2=3Dboth)=0A=
+=0A=
+//-- UTM User Settings=0A=
+var _ufsc=3D1;			// set client info flag (1=3Don|0=3Doff)=0A=
+var _udn=3D"auto";		// (auto|none|domain) set the domain name for cookies=0A=
+var _uhash=3D"on";		// (on|off) unique domain hash for cookies=0A=
+var _utimeout=3D"1800";   	// set the inactive session timeout in seconds=0A=
+var _ugifpath=3D"/__utm.gif";	// set the web path to the __utm.gif file=0A=
+var _utsp=3D"|";			// transaction field separator=0A=
+var _uflash=3D1;			// set flash version detect option (1=3Don|0=3Doff)=0A=
+var _utitle=3D1;			// set the document title detect option =
+(1=3Don|0=3Doff)=0A=
+var _ulink=3D0;			// enable linker functionality (1=3Don|0=3Doff)=0A=
+var _uanchor=3D0;			// enable use of anchors for campaign =
+(1=3Don|0=3Doff)=0A=
+var _utcp=3D"/";			// the cookie path for tracking=0A=
+var _usample=3D100;		// The sampling % of visitors to track (1-100).=0A=
+=0A=
+//-- UTM Campaign Tracking Settings=0A=
+var _uctm=3D1;			// set campaign tracking module (1=3Don|0=3Doff)=0A=
+var _ucto=3D"15768000";		// set timeout in seconds (6 month default)=0A=
+var _uccn=3D"utm_campaign";	// name=0A=
+var _ucmd=3D"utm_medium";		// medium (cpc|cpm|link|email|organic)=0A=
+var _ucsr=3D"utm_source";		// source=0A=
+var _uctr=3D"utm_term";		// term/keyword=0A=
+var _ucct=3D"utm_content";	// content=0A=
+var _ucid=3D"utm_id";		// id number=0A=
+var _ucno=3D"utm_nooverride";	// don't override=0A=
+=0A=
+//-- Auto/Organic Sources and Keywords=0A=
+var _uOsr=3Dnew Array();=0A=
+var _uOkw=3Dnew Array();=0A=
+_uOsr[0]=3D"google";	_uOkw[0]=3D"q";=0A=
+_uOsr[1]=3D"yahoo";	_uOkw[1]=3D"p";=0A=
+_uOsr[2]=3D"msn";		_uOkw[2]=3D"q";=0A=
+_uOsr[3]=3D"aol";		_uOkw[3]=3D"query";=0A=
+_uOsr[4]=3D"aol";		_uOkw[4]=3D"encquery";=0A=
+_uOsr[5]=3D"lycos";	_uOkw[5]=3D"query";=0A=
+_uOsr[6]=3D"ask";		_uOkw[6]=3D"q";=0A=
+_uOsr[7]=3D"altavista";	_uOkw[7]=3D"q";=0A=
+_uOsr[8]=3D"netscape";	_uOkw[8]=3D"query";=0A=
+_uOsr[9]=3D"cnn";	_uOkw[9]=3D"query";=0A=
+_uOsr[10]=3D"looksmart";	_uOkw[10]=3D"qt";=0A=
+_uOsr[11]=3D"about";	_uOkw[11]=3D"terms";=0A=
+_uOsr[12]=3D"mamma";	_uOkw[12]=3D"query";=0A=
+_uOsr[13]=3D"alltheweb";	_uOkw[13]=3D"q";=0A=
+_uOsr[14]=3D"gigablast";	_uOkw[14]=3D"q";=0A=
+_uOsr[15]=3D"voila";	_uOkw[15]=3D"rdata";=0A=
+_uOsr[16]=3D"virgilio";	_uOkw[16]=3D"qs";=0A=
+_uOsr[17]=3D"live";	_uOkw[17]=3D"q";=0A=
+_uOsr[18]=3D"baidu";	_uOkw[18]=3D"wd";=0A=
+_uOsr[19]=3D"alice";	_uOkw[19]=3D"qs";=0A=
+_uOsr[20]=3D"yandex";	_uOkw[20]=3D"text";=0A=
+_uOsr[21]=3D"najdi";	_uOkw[21]=3D"q";=0A=
+_uOsr[22]=3D"aol";	_uOkw[22]=3D"q";=0A=
+_uOsr[23]=3D"club-internet"; _uOkw[23]=3D"query";=0A=
+_uOsr[24]=3D"mama";	_uOkw[24]=3D"query";=0A=
+_uOsr[25]=3D"seznam";	_uOkw[25]=3D"q";=0A=
+_uOsr[26]=3D"search";	_uOkw[26]=3D"q";=0A=
+_uOsr[27]=3D"wp";	_uOkw[27]=3D"szukaj";=0A=
+_uOsr[28]=3D"onet";	_uOkw[28]=3D"qt";=0A=
+_uOsr[29]=3D"netsprint";	_uOkw[29]=3D"q";=0A=
+_uOsr[30]=3D"google.interia";	_uOkw[30]=3D"q";=0A=
+_uOsr[31]=3D"szukacz";	_uOkw[31]=3D"q";=0A=
+_uOsr[32]=3D"yam";	_uOkw[32]=3D"k";=0A=
+_uOsr[33]=3D"pchome";	_uOkw[33]=3D"q";=0A=
+_uOsr[34]=3D"kvasir";	_uOkw[34]=3D"searchExpr";=0A=
+_uOsr[35]=3D"sesam";	_uOkw[35]=3D"q";=0A=
+_uOsr[36]=3D"ozu"; _uOkw[36]=3D"q";=0A=
+_uOsr[37]=3D"terra"; _uOkw[37]=3D"query";=0A=
+_uOsr[38]=3D"nostrum"; _uOkw[38]=3D"query";=0A=
+_uOsr[39]=3D"mynet"; _uOkw[39]=3D"q";=0A=
+_uOsr[40]=3D"ekolay"; _uOkw[40]=3D"q";=0A=
+_uOsr[41]=3D"search.ilse"; _uOkw[41]=3D"search_for";=0A=
+_uOsr[42]=3D"bing"; _uOkw[42]=3D"q";=0A=
+=0A=
+//-- Auto/Organic Keywords to Ignore=0A=
+var _uOno=3Dnew Array();=0A=
+//_uOno[0]=3D"urchin";=0A=
+//_uOno[1]=3D"urchin.com";=0A=
+//_uOno[2]=3D"www.urchin.com";=0A=
+=0A=
+//-- Referral domains to Ignore=0A=
+var _uRno=3Dnew Array();=0A=
+//_uRno[0]=3D".urchin.com";=0A=
+=0A=
+//-- **** Don't modify below this point ***=0A=
+var =
+_uff,_udh,_udt,_ubl=3D0,_udo=3D"",_uu,_ufns=3D0,_uns=3D0,_ur=3D"-",_ufno=3D=
+0,_ust=3D0,_ubd=3Ddocument,_udl=3D_ubd.location,_udlh=3D"",_uwv=3D"1.3";=0A=
+var _ugifpath2=3D"http://www.google-analytics.com/__utm.gif";=0A=
+if (_udl.hash) _udlh=3D_udl.href.substring(_udl.href.indexOf('#'));=0A=
+if (_udl.protocol=3D=3D"https:") =
+_ugifpath2=3D"https://ssl.google-analytics.com/__utm.gif";=0A=
+if (!_utcp || _utcp=3D=3D"") _utcp=3D"/";=0A=
+function urchinTracker(page) {=0A=
+ if (_udl.protocol=3D=3D"file:") return;=0A=
+ if (_uff && (!page || page=3D=3D"")) return;=0A=
+ var a,b,c,xx,v,z,k,x=3D"",s=3D"",f=3D0,nv=3D0;=0A=
+ var nx=3D" expires=3D"+_uNx()+";";=0A=
+ var dc=3D_ubd.cookie;=0A=
+ _udh=3D_uDomain();=0A=
+ if (!_uVG()) return;=0A=
+ _uu=3DMath.round(Math.random()*2147483647);=0A=
+ _udt=3Dnew Date();=0A=
+ _ust=3DMath.round(_udt.getTime()/1000);=0A=
+ a=3Ddc.indexOf("__utma=3D"+_udh+".");=0A=
+ b=3Ddc.indexOf("__utmb=3D"+_udh);=0A=
+ c=3Ddc.indexOf("__utmc=3D"+_udh);=0A=
+ if (_udn && _udn!=3D"") { _udo=3D" domain=3D"+_udn+";"; }=0A=
+ if (_utimeout && _utimeout!=3D"") {=0A=
+  x=3Dnew Date(_udt.getTime()+(_utimeout*1000));=0A=
+  x=3D" expires=3D"+x.toGMTString()+";";=0A=
+ }=0A=
+ if (_ulink) {=0A=
+  if (_uanchor && _udlh && _udlh!=3D"") s=3D_udlh+"&";=0A=
+  s+=3D_udl.search;=0A=
+  if(s && s!=3D"" && s.indexOf("__utma=3D")>=3D0) {=0A=
+   if (!(_uIN(a=3D_uGC(s,"__utma=3D","&")))) a=3D"-";=0A=
+   if (!(_uIN(b=3D_uGC(s,"__utmb=3D","&")))) b=3D"-";=0A=
+   if (!(_uIN(c=3D_uGC(s,"__utmc=3D","&")))) c=3D"-";=0A=
+   v=3D_uGC(s,"__utmv=3D","&");=0A=
+   z=3D_uGC(s,"__utmz=3D","&");=0A=
+   k=3D_uGC(s,"__utmk=3D","&");=0A=
+   xx=3D_uGC(s,"__utmx=3D","&");=0A=
+   if ((k*1) !=3D ((_uHash(a+b+c+xx+z+v)*1)+(_udh*1))) =
+{_ubl=3D1;a=3D"-";b=3D"-";c=3D"-";xx=3D"-";z=3D"-";v=3D"-";}=0A=
+   if (a!=3D"-" && b!=3D"-" && c!=3D"-") f=3D1;=0A=
+   else if(a!=3D"-") f=3D2;=0A=
+  }=0A=
+ }=0A=
+ if(f=3D=3D1) {=0A=
+  _ubd.cookie=3D"__utma=3D"+a+"; path=3D"+_utcp+";"+nx+_udo;=0A=
+  _ubd.cookie=3D"__utmb=3D"+b+"; path=3D"+_utcp+";"+x+_udo;=0A=
+  _ubd.cookie=3D"__utmc=3D"+c+"; path=3D"+_utcp+";"+_udo;=0A=
+ } else if (f=3D=3D2) {=0A=
+  a=3D_uFixA(s,"&",_ust);=0A=
+  _ubd.cookie=3D"__utma=3D"+a+"; path=3D"+_utcp+";"+nx+_udo;=0A=
+  _ubd.cookie=3D"__utmb=3D"+_udh+"; path=3D"+_utcp+";"+x+_udo;=0A=
+  _ubd.cookie=3D"__utmc=3D"+_udh+"; path=3D"+_utcp+";"+_udo;=0A=
+  _ufns=3D1;=0A=
+ } else if (a>=3D0 && b>=3D0 && c>=3D0) {=0A=
+   b =3D _uGC(dc,"__utmb=3D"+_udh,";");=0A=
+   b =3D ("-" =3D=3D b) ? _udh : b;  =0A=
+  _ubd.cookie=3D"__utmb=3D"+b+"; path=3D"+_utcp+";"+x+_udo;=0A=
+ } else {=0A=
+  if (a>=3D0) a=3D_uFixA(_ubd.cookie,";",_ust);=0A=
+  else {=0A=
+   a=3D_udh+"."+_uu+"."+_ust+"."+_ust+"."+_ust+".1";=0A=
+   nv=3D1;=0A=
+  }=0A=
+  _ubd.cookie=3D"__utma=3D"+a+"; path=3D"+_utcp+";"+nx+_udo;=0A=
+  _ubd.cookie=3D"__utmb=3D"+_udh+"; path=3D"+_utcp+";"+x+_udo;=0A=
+  _ubd.cookie=3D"__utmc=3D"+_udh+"; path=3D"+_utcp+";"+_udo;=0A=
+  _ufns=3D1;=0A=
+ }=0A=
+ if (_ulink && xx && xx!=3D"" && xx!=3D"-") {=0A=
+   xx=3D_uUES(xx);=0A=
+   if (xx.indexOf(";")=3D=3D-1) _ubd.cookie=3D"__utmx=3D"+xx+"; =
+path=3D"+_utcp+";"+nx+_udo;=0A=
+ }=0A=
+ if (_ulink && v && v!=3D"" && v!=3D"-") {=0A=
+  v=3D_uUES(v);=0A=
+  if (v.indexOf(";")=3D=3D-1) _ubd.cookie=3D"__utmv=3D"+v+"; =
+path=3D"+_utcp+";"+nx+_udo;=0A=
+ }=0A=
+ var wc=3Dwindow;=0A=
+ var c=3D_ubd.cookie;=0A=
+ if(wc && wc.gaGlobal && wc.gaGlobal.dh=3D=3D_udh){=0A=
+  var g=3Dwc.gaGlobal;=0A=
+  var ua=3Dc.split("__utma=3D"+_udh+".")[1].split(";")[0].split(".");=0A=
+  if(g.sid)ua[3]=3Dg.sid;=0A=
+  if(nv>0){=0A=
+   ua[2]=3Dua[3];=0A=
+   if(g.vid){=0A=
+    var v=3Dg.vid.split(".");=0A=
+    ua[0]=3Dv[0];=0A=
+    ua[1]=3Dv[1];=0A=
+   }=0A=
+  }=0A=
+  _ubd.cookie=3D"__utma=3D"+_udh+"."+ua.join(".")+"; =
+path=3D"+_utcp+";"+nx+_udo;=0A=
+ }=0A=
+ _uInfo(page);=0A=
+ _ufns=3D0;=0A=
+ _ufno=3D0;=0A=
+ if (!page || page=3D=3D"") _uff=3D1;=0A=
+}=0A=
+function _uGH() {=0A=
+ var hid;=0A=
+ var wc=3Dwindow;=0A=
+ if (wc && wc.gaGlobal && wc.gaGlobal.hid) {=0A=
+  hid=3Dwc.gaGlobal.hid;=0A=
+ } else {=0A=
+  hid=3DMath.round(Math.random()*0x7fffffff);=0A=
+  if (!wc.gaGlobal) wc.gaGlobal=3D{};=0A=
+  wc.gaGlobal.hid=3Dhid;=0A=
+ }=0A=
+ return hid;=0A=
+}=0A=
+function _uInfo(page) {=0A=
+ var p,s=3D"",dm=3D"",pg=3D_udl.pathname+_udl.search;=0A=
+ if (page && page!=3D"") pg=3D_uES(page,1);=0A=
+ _ur=3D_ubd.referrer;=0A=
+ if (!_ur || _ur=3D=3D"") { _ur=3D"-"; }=0A=
+ else {=0A=
+  dm=3D_ubd.domain;=0A=
+  if(_utcp && _utcp!=3D"/") dm+=3D_utcp;=0A=
+  p=3D_ur.indexOf(dm);=0A=
+  if ((p>=3D0) && (p<=3D8)) { _ur=3D"0"; }=0A=
+  if (_ur.indexOf("[")=3D=3D0 && =
+_ur.lastIndexOf("]")=3D=3D(_ur.length-1)) { _ur=3D"-"; }=0A=
+ }=0A=
+ s+=3D"&utmn=3D"+_uu;=0A=
+ if (_ufsc) s+=3D_uBInfo();=0A=
+ if (_uctm) s+=3D_uCInfo();=0A=
+ if (_utitle && _ubd.title && _ubd.title!=3D"") =
+s+=3D"&utmdt=3D"+_uES(_ubd.title);=0A=
+ if (_udl.hostname && _udl.hostname!=3D"") =
+s+=3D"&utmhn=3D"+_uES(_udl.hostname);=0A=
+ if (_usample && _usample !=3D 100) s+=3D"&utmsp=3D"+_uES(_usample);=0A=
+ s+=3D"&utmhid=3D"+_uGH();=0A=
+ s+=3D"&utmr=3D"+_ur;=0A=
+ s+=3D"&utmp=3D"+pg;=0A=
+ if ((_userv=3D=3D0 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i=3Dnew Image(1,1);=0A=
+  i.src=3D_ugifpath+"?"+"utmwv=3D"+_uwv+s;=0A=
+  i.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+ if ((_userv=3D=3D1 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i2=3Dnew Image(1,1);=0A=
+  =
+i2.src=3D_ugifpath2+"?"+"utmwv=3D"+_uwv+s+"&utmac=3D"+_uacct+"&utmcc=3D"+=
+_uGCS();=0A=
+  i2.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+ return;=0A=
+}=0A=
+function _uVoid() { return; }=0A=
+function _uCInfo() {=0A=
+ if (!_ucto || _ucto=3D=3D"") { _ucto=3D"15768000"; }=0A=
+ if (!_uVG()) return;=0A=
+ var =
+c=3D"",t=3D"-",t2=3D"-",t3=3D"-",o=3D0,cs=3D0,cn=3D0,i=3D0,z=3D"-",s=3D""=
+;=0A=
+ if (_uanchor && _udlh && _udlh!=3D"") s=3D_udlh+"&";=0A=
+ s+=3D_udl.search;=0A=
+ var x=3Dnew Date(_udt.getTime()+(_ucto*1000));=0A=
+ var dc=3D_ubd.cookie;=0A=
+ x=3D" expires=3D"+x.toGMTString()+";";=0A=
+ if (_ulink && !_ubl) {=0A=
+  z=3D_uUES(_uGC(s,"__utmz=3D","&"));=0A=
+  if (z!=3D"-" && z.indexOf(";")=3D=3D-1) { =
+_ubd.cookie=3D"__utmz=3D"+z+"; path=3D"+_utcp+";"+x+_udo; return ""; }=0A=
+ }=0A=
+ z=3Ddc.indexOf("__utmz=3D"+_udh+".");=0A=
+ if (z>-1) { z=3D_uGC(dc,"__utmz=3D"+_udh+".",";"); }=0A=
+ else { z=3D"-"; }=0A=
+ t=3D_uGC(s,_ucid+"=3D","&");=0A=
+ t2=3D_uGC(s,_ucsr+"=3D","&");=0A=
+ t3=3D_uGC(s,"gclid=3D","&");=0A=
+ if ((t!=3D"-" && t!=3D"") || (t2!=3D"-" && t2!=3D"") || (t3!=3D"-" && =
+t3!=3D"")) {=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"utmcid=3D"+_uEC(t);=0A=
+  if (t2!=3D"-" && t2!=3D"") { if (c !=3D "") c+=3D"|"; =
+c+=3D"utmcsr=3D"+_uEC(t2); }=0A=
+  if (t3!=3D"-" && t3!=3D"") { if (c !=3D "") c+=3D"|"; =
+c+=3D"utmgclid=3D"+_uEC(t3); }=0A=
+  t=3D_uGC(s,_uccn+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmccn=3D"+_uEC(t);=0A=
+  else c+=3D"|utmccn=3D(not+set)";=0A=
+  t=3D_uGC(s,_ucmd+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmcmd=3D"+_uEC(t);=0A=
+  else  c+=3D"|utmcmd=3D(not+set)";=0A=
+  t=3D_uGC(s,_uctr+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmctr=3D"+_uEC(t);=0A=
+  else { t=3D_uOrg(1); if (t!=3D"-" && t!=3D"") =
+c+=3D"|utmctr=3D"+_uEC(t); }=0A=
+  t=3D_uGC(s,_ucct+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmcct=3D"+_uEC(t);=0A=
+  t=3D_uGC(s,_ucno+"=3D","&");=0A=
+  if (t=3D=3D"1") o=3D1;=0A=
+  if (z!=3D"-" && o=3D=3D1) return "";=0A=
+ }=0A=
+ if (c=3D=3D"-" || c=3D=3D"") { c=3D_uOrg(); if (z!=3D"-" && =
+_ufno=3D=3D1)  return ""; }=0A=
+ if (c=3D=3D"-" || c=3D=3D"") { if (_ufns=3D=3D1)  c=3D_uRef(); if =
+(z!=3D"-" && _ufno=3D=3D1)  return ""; }=0A=
+ if (c=3D=3D"-" || c=3D=3D"") {=0A=
+  if (z=3D=3D"-" && _ufns=3D=3D1) { =
+c=3D"utmccn=3D(direct)|utmcsr=3D(direct)|utmcmd=3D(none)"; }=0A=
+  if (c=3D=3D"-" || c=3D=3D"") return "";=0A=
+ }=0A=
+ if (z!=3D"-") {=0A=
+  i=3Dz.indexOf(".");=0A=
+  if (i>-1) i=3Dz.indexOf(".",i+1);=0A=
+  if (i>-1) i=3Dz.indexOf(".",i+1);=0A=
+  if (i>-1) i=3Dz.indexOf(".",i+1);=0A=
+  t=3Dz.substring(i+1,z.length);=0A=
+  if (t.toLowerCase()=3D=3Dc.toLowerCase()) cs=3D1;=0A=
+  t=3Dz.substring(0,i);=0A=
+  if ((i=3Dt.lastIndexOf(".")) > -1) {=0A=
+   t=3Dt.substring(i+1,t.length);=0A=
+   cn=3D(t*1);=0A=
+  }=0A=
+ }=0A=
+ if (cs=3D=3D0 || _ufns=3D=3D1) {=0A=
+  t=3D_uGC(dc,"__utma=3D"+_udh+".",";");=0A=
+  if ((i=3Dt.lastIndexOf(".")) > 9) {=0A=
+   _uns=3Dt.substring(i+1,t.length);=0A=
+   _uns=3D(_uns*1);=0A=
+  }=0A=
+  cn++;=0A=
+  if (_uns=3D=3D0) _uns=3D1;=0A=
+  _ubd.cookie=3D"__utmz=3D"+_udh+"."+_ust+"."+_uns+"."+cn+"."+c+"; =
+path=3D"+_utcp+"; "+x+_udo;=0A=
+ }=0A=
+ if (cs=3D=3D0 || _ufns=3D=3D1) return "&utmcn=3D1";=0A=
+ else return "&utmcr=3D1";=0A=
+}=0A=
+function _uRef() {=0A=
+ if (_ur=3D=3D"0" || _ur=3D=3D"" || _ur=3D=3D"-") return "";=0A=
+ var i=3D0,h,k,n;=0A=
+ if ((i=3D_ur.indexOf("://"))<0 || _uGCse()) return "";=0A=
+ h=3D_ur.substring(i+3,_ur.length);=0A=
+ if (h.indexOf("/") > -1) {=0A=
+  k=3Dh.substring(h.indexOf("/"),h.length);=0A=
+  if (k.indexOf("?") > -1) k=3Dk.substring(0,k.indexOf("?"));=0A=
+  h=3Dh.substring(0,h.indexOf("/"));=0A=
+ }=0A=
+ h=3Dh.toLowerCase();=0A=
+ n=3Dh;=0A=
+ if ((i=3Dn.indexOf(":")) > -1) n=3Dn.substring(0,i);=0A=
+ for (var ii=3D0;ii<_uRno.length;ii++) {=0A=
+  if ((i=3Dn.indexOf(_uRno[ii].toLowerCase())) > -1 && =
+n.length=3D=3D(i+_uRno[ii].length)) { _ufno=3D1; break; }=0A=
+ }=0A=
+ if (h.indexOf("www.")=3D=3D0) h=3Dh.substring(4,h.length);=0A=
+ return =
+"utmccn=3D(referral)|utmcsr=3D"+_uEC(h)+"|"+"utmcct=3D"+_uEC(k)+"|utmcmd=3D=
+referral";=0A=
+}=0A=
+function _uOrg(t) {=0A=
+ if (_ur=3D=3D"0" || _ur=3D=3D"" || _ur=3D=3D"-") return "";=0A=
+ var i=3D0,h,k;=0A=
+ if ((i=3D_ur.indexOf("://"))<0 || _uGCse()) return "";=0A=
+ h=3D_ur.substring(i+3,_ur.length);=0A=
+ if (h.indexOf("/") > -1) {=0A=
+  h=3Dh.substring(0,h.indexOf("/"));=0A=
+ }=0A=
+ for (var ii=3D0;ii<_uOsr.length;ii++) {=0A=
+  if (h.toLowerCase().indexOf(_uOsr[ii].toLowerCase()) > -1) {=0A=
+   if ((i=3D_ur.indexOf("?"+_uOkw[ii]+"=3D")) > -1 || =
+(i=3D_ur.indexOf("&"+_uOkw[ii]+"=3D")) > -1) {=0A=
+    k=3D_ur.substring(i+_uOkw[ii].length+2,_ur.length);=0A=
+    if ((i=3Dk.indexOf("&")) > -1) k=3Dk.substring(0,i);=0A=
+    for (var yy=3D0;yy<_uOno.length;yy++) {=0A=
+     if (_uOno[yy].toLowerCase()=3D=3Dk.toLowerCase()) { _ufno=3D1; =
+break; }=0A=
+    }=0A=
+    if (t) return _uEC(k);=0A=
+    else return =
+"utmccn=3D(organic)|utmcsr=3D"+_uEC(_uOsr[ii])+"|"+"utmctr=3D"+_uEC(k)+"|=
+utmcmd=3Dorganic";=0A=
+   }=0A=
+  }=0A=
+ }=0A=
+ return "";=0A=
+}=0A=
+function _uGCse() {=0A=
+ var h,p;=0A=
+ h=3Dp=3D_ur.split("://")[1];=0A=
+ if(h.indexOf("/")>-1) {=0A=
+  h=3Dh.split("/")[0];=0A=
+  p=3Dp.substring(p.indexOf("/")+1,p.length);=0A=
+ }=0A=
+ if(p.indexOf("?")>-1) {=0A=
+  p=3Dp.split("?")[0];=0A=
+ }=0A=
+ if(h.toLowerCase().indexOf("google")>-1) {=0A=
+  if(_ur.indexOf("?q=3D")>-1 || _ur.indexOf("&q=3D")>-1) {=0A=
+   if (p.toLowerCase().indexOf("cse")>-1) {=0A=
+    return true;=0A=
+   }=0A=
+  }=0A=
+ }=0A=
+}=0A=
+function _uBInfo() {=0A=
+ var sr=3D"-",sc=3D"-",ul=3D"-",fl=3D"-",cs=3D"-",je=3D1;=0A=
+ var n=3Dnavigator;=0A=
+ if (self.screen) {=0A=
+  sr=3Dscreen.width+"x"+screen.height;=0A=
+  sc=3Dscreen.colorDepth+"-bit";=0A=
+ } else if (self.java) {=0A=
+  var j=3Djava.awt.Toolkit.getDefaultToolkit();=0A=
+  var s=3Dj.getScreenSize();=0A=
+  sr=3Ds.width+"x"+s.height;=0A=
+ }=0A=
+ if (n.language) { ul=3Dn.language.toLowerCase(); }=0A=
+ else if (n.browserLanguage) { ul=3Dn.browserLanguage.toLowerCase(); }=0A=
+ je=3Dn.javaEnabled()?1:0;=0A=
+ if (_uflash) fl=3D_uFlash();=0A=
+ if (_ubd.characterSet) cs=3D_uES(_ubd.characterSet);=0A=
+ else if (_ubd.charset) cs=3D_uES(_ubd.charset);=0A=
+ return =
+"&utmcs=3D"+cs+"&utmsr=3D"+sr+"&utmsc=3D"+sc+"&utmul=3D"+ul+"&utmje=3D"+j=
+e+"&utmfl=3D"+fl;=0A=
+}=0A=
+function __utmSetTrans() {=0A=
+ var e;=0A=
+ if (_ubd.getElementById) e=3D_ubd.getElementById("utmtrans");=0A=
+ else if (_ubd.utmform && _ubd.utmform.utmtrans) =
+e=3D_ubd.utmform.utmtrans;=0A=
+ if (!e) return;=0A=
+ var l=3De.value.split("UTM:");=0A=
+ var i,i2,c;=0A=
+ if (_userv=3D=3D0 || _userv=3D=3D2) i=3Dnew Array();=0A=
+ if (_userv=3D=3D1 || _userv=3D=3D2) { i2=3Dnew Array(); c=3D_uGCS(); }=0A=
+=0A=
+ for (var ii=3D0;ii<l.length;ii++) {=0A=
+  l[ii]=3D_uTrim(l[ii]);=0A=
+  if (l[ii].charAt(0)!=3D'T' && l[ii].charAt(0)!=3D'I') continue;=0A=
+  var r=3DMath.round(Math.random()*2147483647);=0A=
+  if (!_utsp || _utsp=3D=3D"") _utsp=3D"|";=0A=
+  var f=3Dl[ii].split(_utsp),s=3D"";=0A=
+  if (f[0].charAt(0)=3D=3D'T') {=0A=
+   s=3D"&utmt=3Dtran"+"&utmn=3D"+r;=0A=
+   f[1]=3D_uTrim(f[1]); if(f[1]&&f[1]!=3D"") =
+s+=3D"&utmtid=3D"+_uES(f[1]);=0A=
+   f[2]=3D_uTrim(f[2]); if(f[2]&&f[2]!=3D"") =
+s+=3D"&utmtst=3D"+_uES(f[2]);=0A=
+   f[3]=3D_uTrim(f[3]); if(f[3]&&f[3]!=3D"") =
+s+=3D"&utmtto=3D"+_uES(f[3]);=0A=
+   f[4]=3D_uTrim(f[4]); if(f[4]&&f[4]!=3D"") =
+s+=3D"&utmttx=3D"+_uES(f[4]);=0A=
+   f[5]=3D_uTrim(f[5]); if(f[5]&&f[5]!=3D"") =
+s+=3D"&utmtsp=3D"+_uES(f[5]);=0A=
+   f[6]=3D_uTrim(f[6]); if(f[6]&&f[6]!=3D"") =
+s+=3D"&utmtci=3D"+_uES(f[6]);=0A=
+   f[7]=3D_uTrim(f[7]); if(f[7]&&f[7]!=3D"") =
+s+=3D"&utmtrg=3D"+_uES(f[7]);=0A=
+   f[8]=3D_uTrim(f[8]); if(f[8]&&f[8]!=3D"") =
+s+=3D"&utmtco=3D"+_uES(f[8]);=0A=
+  } else {=0A=
+   s=3D"&utmt=3Ditem"+"&utmn=3D"+r;=0A=
+   f[1]=3D_uTrim(f[1]); if(f[1]&&f[1]!=3D"") =
+s+=3D"&utmtid=3D"+_uES(f[1]);=0A=
+   f[2]=3D_uTrim(f[2]); if(f[2]&&f[2]!=3D"") =
+s+=3D"&utmipc=3D"+_uES(f[2]);=0A=
+   f[3]=3D_uTrim(f[3]); if(f[3]&&f[3]!=3D"") =
+s+=3D"&utmipn=3D"+_uES(f[3]);=0A=
+   f[4]=3D_uTrim(f[4]); if(f[4]&&f[4]!=3D"") =
+s+=3D"&utmiva=3D"+_uES(f[4]);=0A=
+   f[5]=3D_uTrim(f[5]); if(f[5]&&f[5]!=3D"") =
+s+=3D"&utmipr=3D"+_uES(f[5]);=0A=
+   f[6]=3D_uTrim(f[6]); if(f[6]&&f[6]!=3D"") =
+s+=3D"&utmiqt=3D"+_uES(f[6]);=0A=
+  }=0A=
+  if (_udl.hostname && _udl.hostname!=3D"") =
+s+=3D"&utmhn=3D"+_uES(_udl.hostname);=0A=
+  if (_usample && _usample !=3D 100) s+=3D"&utmsp=3D"+_uES(_usample);=0A=
+=0A=
+  if ((_userv=3D=3D0 || _userv=3D=3D2) && _uSP()) {=0A=
+   i[ii]=3Dnew Image(1,1);=0A=
+   i[ii].src=3D_ugifpath+"?"+"utmwv=3D"+_uwv+s;=0A=
+   i[ii].onload=3Dfunction() { _uVoid(); }=0A=
+  }=0A=
+  if ((_userv=3D=3D1 || _userv=3D=3D2) && _uSP()) {=0A=
+   i2[ii]=3Dnew Image(1,1);=0A=
+   =
+i2[ii].src=3D_ugifpath2+"?"+"utmwv=3D"+_uwv+s+"&utmac=3D"+_uacct+"&utmcc=3D=
+"+c;=0A=
+   i2[ii].onload=3Dfunction() { _uVoid(); }=0A=
+  }=0A=
+ }=0A=
+ return;=0A=
+}=0A=
+function _uFlash() {=0A=
+ var f=3D"-",n=3Dnavigator;=0A=
+ if (n.plugins && n.plugins.length) {=0A=
+  for (var ii=3D0;ii<n.plugins.length;ii++) {=0A=
+   if (n.plugins[ii].name.indexOf('Shockwave Flash')!=3D-1) {=0A=
+    f=3Dn.plugins[ii].description.split('Shockwave Flash ')[1];=0A=
+    break;=0A=
+   }=0A=
+  }=0A=
+ } else {=0A=
+  var fl;=0A=
+  try {=0A=
+   fl =3D new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");=0A=
+   f =3D fl.GetVariable("$version");=0A=
+  } catch(e) {}=0A=
+  if (f =3D=3D "-") {=0A=
+   try {=0A=
+    fl =3D new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6");=0A=
+    f =3D "WIN 6,0,21,0";=0A=
+    fl.AllowScriptAccess =3D "always";=0A=
+    f =3D fl.GetVariable("$version");=0A=
+   } catch(e) {}=0A=
+  }=0A=
+  if (f =3D=3D "-") {=0A=
+   try {=0A=
+    fl =3D new ActiveXObject("ShockwaveFlash.ShockwaveFlash");=0A=
+    f =3D fl.GetVariable("$version");=0A=
+   } catch(e) {}=0A=
+  }=0A=
+  if (f !=3D "-") {=0A=
+   f =3D f.split(" ")[1].split(",");=0A=
+   f =3D f[0] + "." + f[1] + " r" + f[2];=0A=
+  }=0A=
+ }=0A=
+ return f;=0A=
+}=0A=
+function __utmLinkerUrl(l,h) {=0A=
+ var p,k,a=3D"-",b=3D"-",c=3D"-",x=3D"-",z=3D"-",v=3D"-";=0A=
+ var dc=3D_ubd.cookie;=0A=
+ var iq =3D l.indexOf("?");=0A=
+ var ih =3D l.indexOf("#");=0A=
+ var url=3Dl;=0A=
+ if (dc) {=0A=
+  a=3D_uES(_uGC(dc,"__utma=3D"+_udh+".",";"));=0A=
+  b=3D_uES(_uGC(dc,"__utmb=3D"+_udh,";"));=0A=
+  c=3D_uES(_uGC(dc,"__utmc=3D"+_udh,";"));=0A=
+  x=3D_uES(_uGC(dc,"__utmx=3D"+_udh,";"));=0A=
+  z=3D_uES(_uGC(dc,"__utmz=3D"+_udh+".",";"));=0A=
+  v=3D_uES(_uGC(dc,"__utmv=3D"+_udh+".",";"));=0A=
+  k=3D(_uHash(a+b+c+x+z+v)*1)+(_udh*1);=0A=
+  =
+p=3D"__utma=3D"+a+"&__utmb=3D"+b+"&__utmc=3D"+c+"&__utmx=3D"+x+"&__utmz=3D=
+"+z+"&__utmv=3D"+v+"&__utmk=3D"+k;=0A=
+ }=0A=
+ if (p) {=0A=
+  if (h && ih>-1) return;=0A=
+  if (h) { url=3Dl+"#"+p; }=0A=
+  else {=0A=
+   if (iq=3D=3D-1 && ih=3D=3D-1) url=3Dl+"?"+p;=0A=
+   else if (ih=3D=3D-1) url=3Dl+"&"+p;=0A=
+   else if (iq=3D=3D-1) url=3Dl.substring(0,ih-1)+"?"+p+l.substring(ih);=0A=
+   else url=3Dl.substring(0,ih-1)+"&"+p+l.substring(ih);=0A=
+  }=0A=
+ }=0A=
+ return url;=0A=
+}=0A=
+function __utmLinker(l,h) {=0A=
+ if (!_ulink || !l || l=3D=3D"") return;=0A=
+ _udl.href=3D__utmLinkerUrl(l,h);=0A=
+}=0A=
+function __utmLinkPost(f,h) {=0A=
+ if (!_ulink || !f || !f.action) return;=0A=
+ f.action=3D__utmLinkerUrl(f.action, h);=0A=
+ return;=0A=
+}=0A=
+function __utmSetVar(v) {=0A=
+ if (!v || v=3D=3D"") return;=0A=
+ if (!_udo || _udo =3D=3D "") {=0A=
+  _udh=3D_uDomain();=0A=
+  if (_udn && _udn!=3D"") { _udo=3D" domain=3D"+_udn+";"; }=0A=
+ }=0A=
+ if (!_uVG()) return;=0A=
+ var r=3DMath.round(Math.random() * 2147483647);=0A=
+ _ubd.cookie=3D"__utmv=3D"+_udh+"."+_uES(v)+"; path=3D"+_utcp+"; =
+expires=3D"+_uNx()+";"+_udo;=0A=
+ var s=3D"&utmt=3Dvar&utmn=3D"+r;=0A=
+ if (_usample && _usample !=3D 100) s+=3D"&utmsp=3D"+_uES(_usample);=0A=
+ if ((_userv=3D=3D0 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i=3Dnew Image(1,1);=0A=
+  i.src=3D_ugifpath+"?"+"utmwv=3D"+_uwv+s;=0A=
+  i.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+ if ((_userv=3D=3D1 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i2=3Dnew Image(1,1);=0A=
+  =
+i2.src=3D_ugifpath2+"?"+"utmwv=3D"+_uwv+s+"&utmac=3D"+_uacct+"&utmcc=3D"+=
+_uGCS();=0A=
+  i2.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+}=0A=
+function _uGCS() {=0A=
+ var t,c=3D"",dc=3D_ubd.cookie;=0A=
+ if ((t=3D_uGC(dc,"__utma=3D"+_udh+".",";"))!=3D"-") =
+c+=3D_uES("__utma=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmx=3D"+_udh,";"))!=3D"-") =
+c+=3D_uES("__utmx=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmz=3D"+_udh+".",";"))!=3D"-") =
+c+=3D_uES("__utmz=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmv=3D"+_udh+".",";"))!=3D"-") =
+c+=3D_uES("__utmv=3D"+t+";");=0A=
+ if (c.charAt(c.length-1)=3D=3D"+") c=3Dc.substring(0,c.length-1);=0A=
+ return c;=0A=
+}=0A=
+function _uGC(l,n,s) {=0A=
+ if (!l || l=3D=3D"" || !n || n=3D=3D"" || !s || s=3D=3D"") return "-";=0A=
+ var i,i2,i3,c=3D"-";=0A=
+ i=3Dl.indexOf(n);=0A=
+ i3=3Dn.indexOf("=3D")+1;=0A=
+ if (i > -1) {=0A=
+  i2=3Dl.indexOf(s,i); if (i2 < 0) { i2=3Dl.length; }=0A=
+  c=3Dl.substring((i+i3),i2);=0A=
+ }=0A=
+ return c;=0A=
+}=0A=
+function _uDomain() {=0A=
+ if (!_udn || _udn=3D=3D"" || _udn=3D=3D"none") { _udn=3D""; return 1; }=0A=
+ if (_udn=3D=3D"auto") {=0A=
+  var d=3D_ubd.domain;=0A=
+  if (d.substring(0,4)=3D=3D"www.") {=0A=
+   d=3Dd.substring(4,d.length);=0A=
+  }=0A=
+  _udn=3Dd;=0A=
+ }=0A=
+ _udn =3D _udn.toLowerCase(); =0A=
+ if (_uhash=3D=3D"off") return 1;=0A=
+ return _uHash(_udn);=0A=
+}=0A=
+function _uHash(d) {=0A=
+ if (!d || d=3D=3D"") return 1;=0A=
+ var h=3D0,g=3D0;=0A=
+ for (var i=3Dd.length-1;i>=3D0;i--) {=0A=
+  var c=3DparseInt(d.charCodeAt(i));=0A=
+  h=3D((h << 6) & 0xfffffff) + c + (c << 14);=0A=
+  if ((g=3Dh & 0xfe00000)!=3D0) h=3D(h ^ (g >> 21));=0A=
+ }=0A=
+ return h;=0A=
+}=0A=
+function _uFixA(c,s,t) {=0A=
+ if (!c || c=3D=3D"" || !s || s=3D=3D"" || !t || t=3D=3D"") return "-";=0A=
+ var a=3D_uGC(c,"__utma=3D"+_udh+".",s);=0A=
+ var lt=3D0,i=3D0;=0A=
+ if ((i=3Da.lastIndexOf(".")) > 9) {=0A=
+  _uns=3Da.substring(i+1,a.length);=0A=
+  _uns=3D(_uns*1)+1;=0A=
+  a=3Da.substring(0,i);=0A=
+  if ((i=3Da.lastIndexOf(".")) > 7) {=0A=
+   lt=3Da.substring(i+1,a.length);=0A=
+   a=3Da.substring(0,i);=0A=
+  }=0A=
+  if ((i=3Da.lastIndexOf(".")) > 5) {=0A=
+   a=3Da.substring(0,i);=0A=
+  }=0A=
+  a+=3D"."+lt+"."+t+"."+_uns;=0A=
+ }=0A=
+ return a;=0A=
+}=0A=
+function _uTrim(s) {=0A=
+  if (!s || s=3D=3D"") return "";=0A=
+  while ((s.charAt(0)=3D=3D' ') || (s.charAt(0)=3D=3D'\n') || =
+(s.charAt(0,1)=3D=3D'\r')) s=3Ds.substring(1,s.length);=0A=
+  while ((s.charAt(s.length-1)=3D=3D' ') || =
+(s.charAt(s.length-1)=3D=3D'\n') || (s.charAt(s.length-1)=3D=3D'\r')) =
+s=3Ds.substring(0,s.length-1);=0A=
+  return s;=0A=
+}=0A=
+function _uEC(s) {=0A=
+  var n=3D"";=0A=
+  if (!s || s=3D=3D"") return "";=0A=
+  for (var i=3D0;i<s.length;i++) {if (s.charAt(i)=3D=3D" ") n+=3D"+"; =
+else n+=3Ds.charAt(i);}=0A=
+  return n;=0A=
+}=0A=
+function __utmVisitorCode(f) {=0A=
+ var r=3D0,t=3D0,i=3D0,i2=3D0,m=3D31;=0A=
+ var a=3D_uGC(_ubd.cookie,"__utma=3D"+_udh+".",";");=0A=
+ if ((i=3Da.indexOf(".",0))<0) return;=0A=
+ if ((i2=3Da.indexOf(".",i+1))>0) r=3Da.substring(i+1,i2); else return =
+"";  =0A=
+ if ((i=3Da.indexOf(".",i2+1))>0) t=3Da.substring(i2+1,i); else return =
+"";  =0A=
+ if (f) {=0A=
+  return r;=0A=
+ } else {=0A=
+  var c=3Dnew =
+Array('A','B','C','D','E','F','G','H','J','K','L','M','N','P','R','S','T'=
+,'U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9');=0A=
+  return =
+c[r>>28&m]+c[r>>23&m]+c[r>>18&m]+c[r>>13&m]+"-"+c[r>>8&m]+c[r>>3&m]+c[((r=
+&7)<<2)+(t>>30&3)]+c[t>>25&m]+c[t>>20&m]+"-"+c[t>>15&m]+c[t>>10&m]+c[t>>5=
+&m]+c[t&m];=0A=
+ }=0A=
+}=0A=
+function _uIN(n) {=0A=
+ if (!n) return false;=0A=
+ for (var i=3D0;i<n.length;i++) {=0A=
+  var c=3Dn.charAt(i);=0A=
+  if ((c<"0" || c>"9") && (c!=3D".")) return false;=0A=
+ }=0A=
+ return true;=0A=
+}=0A=
+function _uES(s,u) {=0A=
+ if (typeof(encodeURIComponent) =3D=3D 'function') {=0A=
+  if (u) return encodeURI(s);=0A=
+  else return encodeURIComponent(s);=0A=
+ } else {=0A=
+  return escape(s);=0A=
+ }=0A=
+}=0A=
+function _uUES(s) {=0A=
+ if (typeof(decodeURIComponent) =3D=3D 'function') {=0A=
+  return decodeURIComponent(s);=0A=
+ } else {=0A=
+  return unescape(s);=0A=
+ }=0A=
+}=0A=
+function _uVG() {=0A=
+ if((_udn.indexOf("www.google.") =3D=3D 0 || _udn.indexOf(".google.") =
+=3D=3D 0 || _udn.indexOf("google.") =3D=3D 0) && _utcp=3D=3D'/' && =
+_udn.indexOf("google.org")=3D=3D-1) {=0A=
+  return false;=0A=
+ }=0A=
+ return true;=0A=
+}=0A=
+function _uSP() {=0A=
+ var s=3D100;=0A=
+ if (_usample) s=3D_usample;=0A=
+ if(s>=3D100 || s<=3D0) return true;=0A=
+ return ((__utmVisitorCode(1)%10000)<(s*100));=0A=
+}=0A=
+function urchinPathCopy(p){=0A=
+ var d=3Ddocument,nx,tx,sx,i,c,cs,t,h,o;=0A=
+ cs=3Dnew Array("a","b","c","v","x","z");=0A=
+ h=3D_uDomain(); if (_udn && _udn!=3D"") o=3D" domain=3D"+_udn+";";=0A=
+ nx=3D_uNx()+";";=0A=
+ tx=3Dnew Date(); tx.setTime(tx.getTime()+(_utimeout*1000));=0A=
+ tx=3Dtx.toGMTString()+";";=0A=
+ sx=3Dnew Date(); sx.setTime(sx.getTime()+(_ucto*1000));=0A=
+ sx=3Dsx.toGMTString()+";";=0A=
+ for (i=3D0;i<6;i++){=0A=
+  t=3D" expires=3D";=0A=
+  if (i=3D=3D1) t+=3Dtx; else if (i=3D=3D2) t=3D""; else if (i=3D=3D5) =
+t+=3Dsx; else t+=3Dnx;=0A=
+  c=3D_uGC(d.cookie,"__utm"+cs[i]+"=3D"+h,";");=0A=
+  if (c!=3D"-") d.cookie=3D"__utm"+cs[i]+"=3D"+c+"; path=3D"+p+";"+t+o;=0A=
+ }=0A=
+}=0A=
+function _uCO() {=0A=
+ if (!_utk || _utk=3D=3D"" || _utk.length<10) return;=0A=
+ var d=3D'www.google.com';=0A=
+ if (_utk.charAt(0)=3D=3D'!') d=3D'analytics.corp.google.com';=0A=
+ _ubd.cookie=3D"GASO=3D"+_utk+"; path=3D"+_utcp+";"+_udo;=0A=
+ var sc=3Ddocument.createElement('script');=0A=
+ sc.type=3D'text/javascript';=0A=
+ sc.id=3D"_gasojs";=0A=
+ =
+sc.src=3D'https://'+d+'/analytics/reporting/overlay_js?gaso=3D'+_utk+'&'+=
+Math.random();=0A=
+ document.getElementsByTagName('head')[0].appendChild(sc);  =0A=
+}=0A=
+function _uGT() {=0A=
+ var h=3Dlocation.hash, a;=0A=
+ if (h && h!=3D"" && h.indexOf("#gaso=3D")=3D=3D0) {=0A=
+  a=3D_uGC(h,"gaso=3D","&");=0A=
+ } else {=0A=
+  a=3D_uGC(_ubd.cookie,"GASO=3D",";");=0A=
+ }=0A=
+ return a;=0A=
+}=0A=
+var _utk=3D_uGT();=0A=
+if (_utk && _utk!=3D"" && _utk.length>10 && _utk.indexOf("=3D")=3D=3D-1) =
+{=0A=
+ if (window.addEventListener) {=0A=
+  window.addEventListener('load', _uCO, false); =0A=
+ } else if (window.attachEvent) { =0A=
+  window.attachEvent('onload', _uCO);=0A=
+ }=0A=
+}=0A=
+=0A=
+function _uNx() {=0A=
+  return (new Date((new Date()).getTime()+63072000000)).toGMTString();=0A=
+}=0A=
+
+------=_NextPart_000_0000_01CB8BDA.21B591F0--

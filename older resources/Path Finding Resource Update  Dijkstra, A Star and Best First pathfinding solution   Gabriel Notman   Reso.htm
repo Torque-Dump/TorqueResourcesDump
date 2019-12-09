@@ -1,0 +1,1112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0067)http://www.garagegames.com/community/resource/view/14495/3#comments -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="An updated version of this resource:   [url]http://garagegames.com/index.php?sec=mg&amp;mod=resource&amp;page=view&amp;qid=13326[/url]  A few bugs have been fixed and some demo scripts have been added to make it easier to use.  Including integration into starter.fps (1.5.2) with a demo mission.">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+				<title>Path Finding Resource Update: Dijkstra, A Star and Best First pathfinding solution | Gabriel Notman | Resources | Community | GarageGames.com</title>		<link href="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=1" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/ping"></script><script type="text/javascript" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/jquery.js"></script>
+<script type="text/javascript" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/plugins.js"></script>
+<script type="text/javascript" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d" class="">Engines</a><ul class="sub-nav" id="sub-menu-products" style="z-index: 1007; display: none; "><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse" class="">Add-ons</a><ul class="sub-nav" id="sub-menu-addons" style="z-index: 1008; display: none; "><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community" class="">Community</a><ul class="sub-nav" id="sub-menu-community" style="z-index: 1009; display: none; "><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support" class="">Support</a><ul class="sub-nav" id="sub-menu-support" style="z-index: 1004; display: none; "><li class=""><a href="http://www.garagegames.com/documentation" class="">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company" class="">Company</a><ul class="sub-nav" id="sub-menu-company" style="z-index: 1000; display: none; "><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px" class=""><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink" class=""><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account" class=""><a rel="nofollow" href="http://www.garagegames.com/account" class=""><span></span>My Account</a>
+		<ul class="myaccount-options" style="z-index: 1002; display: none; ">
+			<li class=""><a rel="nofollow" href="http://www.garagegames.com/account" class="">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Path Finding Resource Update: Dijkstra, A Star and Best First pathfinding solution</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/70569">Gabriel Notman</a>
+			<strong>·</strong>
+			04/03/2008 (9:29 am)			<strong>·</strong>
+			59 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body">Here is an update on the resource:<br>
+<a rel="nofollow" href="http://garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=13326" target="_blank">garagegames.com/index.php?sec=mg&amp;mod=resource&amp;page=view&amp;qid=13326</a><br>
+<br>
+It has been updated so that it easy easier to integrate and use with the likes of the fps starter kit.<br>
+Also a few bugs were found in the original resource which have been fixed here.<br>
+<br>
+It does use the Script Array resource by Daniel Neilsen.<br>
+<a rel="nofollow" href="http://www.garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=4711">www.garagegames.com/index.php?sec=mg&amp;mod=resource&amp;page=view&amp;qid=4711</a><br>
+However this has been included already.<br>
+<br>
+To use this resource in new missions, simply walk around the mission and press the drop node key (bound to 'x' by default). This will drop a node at your player's current position and start building the navigation graph, adjacency data and cost information. You must then save the mission before exiting. This will save the nodes as part of the mission, and will also save out the path data to file in the missions directory with the same name as the mission but with the added extension of '.dat'.<br>
+<br>
+Once you have a navigation graph with at least two nodes, you can see a visual representation in the world editor. Simply open the editor and select one of the nodes. This will show a blue line connecting each of the nodes which are adjacent, or connected.<br>
+<br>
+A modified version of the stronghold mission has been included with this resource (including the path data).<br>
+It will show up as 'AI Stronghold' in your missions list. <br>
+Here is a screen shot showing the navigation graph:<br>
+<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/sShot.jpg" alt="www.gabriel-notman.com/upload/sShot.jpg"><br>
+The AiPlayer script has been modified so that it will follow a path using this resource (if the navigation graph is available). Kork will simply pick a random location (it uses one of the graph's nodes as a target position, but it could use any coordinates), find a path to that location, and then head on his way. When he arrives he will wait one second and then repeat this process. This is not the most intelligent of behaviour, but it is there to simply demonstrate the path finding.<br>
+<br>
+If you have the world editor open and one of the nodes selected, you will see the most recent found path drawn in green instead of the standard blue.<br>
+<br>
+Unfortunately the graph data pushes this resource over the size limit.<br>
+You can download the resource here:<br>
+<a rel="nofollow" href="http://www.gabriel-notman.com/upload/PathFinding.zip" target="_blank">www.gabriel-notman.com/upload/PathFinding.zip</a><br>
+<br>
+<b>Known issues (April 12th 08):</b><br>
+1. <b>Inefficient search of the start and end nodes.</b> Currently it searches all the nodes in the graph to find the nearest nodes to both start and end positions. It uses a raycast to determine if it that node is reachable from either location. Initial testing on a ~100 node graph indicated this was taking up 90-95% of the time costs of the pathfinding. This cost will also increase with larger graphs (included demo graph has ~500 nodes). A potential fix is to add a maximum radius when searching for the start and end nodes, so reducing and limiting the raycast costs. <br>
+<br>
+2. <b>Possible bug with very short paths.</b> If the closest node to both the start and end locations is the same, it may be added to the list twice.<br>
+<br>
+3. <b>Possible problem with very long paths.</b> The full path is returned as a space separated list of node IDs in a single string. This has the potential to exceed the maximum string length, although I'm not sure what the limit is.<br>
+<br>
+4. <b>Nearest node may cause backtracking.</b> When searching for a new path, it is possible that the AIPlayer will have to turn around and walk a few steps backwards. This is because the nearest node may be behind him. A possible solution will be to add an angular limit on the nodes to search for, so that the path only looks to use nodes in front of the AIPlayer, as starting nodes for the potential path.<br>
+<br>
+I hope to work out these issues and update the resource soon.</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/blank-user.jpg" alt="Gabriel Notman&#39;s profile picture">
+			<br>
+			<a rel="Gabriel Notman" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/70569" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Gabriel Notman
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+							</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/13620">64bit math library for TorqueScript</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/13326">Dijkstra, A Star and Best First pathfinding solution (pre-comipled or real-time)</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/13081">Custom FX object</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/14481"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/14510"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<div class="paging"><span>Page</span><a href="http://www.garagegames.com/community/resource/view/14495/" class="first">«First</a> <a href="http://www.garagegames.com/community/resource/view/14495/2#comments" class="previous">«Previous</a> <a href="http://www.garagegames.com/community/resource/view/14495/">1</a> <a href="http://www.garagegames.com/community/resource/view/14495/2#comments">2</a> <em>3</em> <span class="next">Next»</span> <div class="clear"></div></div>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/14495/3#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(14495, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/101755.jpg" class="profilepic">
+			<br>
+			<a rel="Konrad Kiss" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101755" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Konrad Kiss<br>
+	<span class="studio-name">Bitgap Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-131341" name="comment-131341">#41</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/16/2009 (7:13 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			On one hand, it's unnecessary overhead. If you know, that the closest distance for nodes on your level is going to be 2 units, then you won't accidentally drop two nodes at the same location, or very close to each other (as in - so close that your AI reaches both when going to one of them). Also, I like to cover only problematic parts of the map, and not the entire map. This comes in handy when I run around on the map punching "x". This helps me create a rather good array of nodes without having to worry about every node's exact location.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/138071.gif" class="profilepic">
+			<br>
+			<a rel="deepscratch" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/138071" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	deepscratch<br>
+	<span class="studio-name">DeepScratchStudios</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-131351" name="comment-131351">#42</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/16/2009 (8:07 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			you mention that it is a modified dropnode, I cant seem to find an original dropnode function.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/101755.jpg" class="profilepic">
+			<br>
+			<a rel="Konrad Kiss" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101755" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Konrad Kiss<br>
+	<span class="studio-name">Bitgap Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-131355" name="comment-131355">#43</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/16/2009 (8:31 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			You're right, sorry about that.. I've extracted stuff from ServerCmdDropNode into a server function called dropNode, because I wanted AI to be able to drop nodes. (Had some AI automatically drop and remove nodes until the place was well traversable.)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/138071.gif" class="profilepic">
+			<br>
+			<a rel="deepscratch" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/138071" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	deepscratch<br>
+	<span class="studio-name">DeepScratchStudios</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-131363" name="comment-131363">#44</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/16/2009 (8:46 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Bryce,<br>
+got it working, thank you.<br>
+<br>
+@Konrad,<br>
+<blockquote><span>Quote:</span>Edit: you'll need to modify the call to dropNode in ServerCmdDropNode. </blockquote><br>
+I dont understand, could you elaborate?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/43676.png" class="profilepic">
+			<br>
+			<a rel="Bryce" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/43676" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Bryce
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-131365" name="comment-131365">#45</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/16/2009 (8:48 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			What Konrad means is that to use his function that doesn't allow close nodes, you need to make the modifications to ServerCmdDropNode in, what is it, aiPaths.cs?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/101755.jpg" class="profilepic">
+			<br>
+			<a rel="Konrad Kiss" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101755" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Konrad Kiss<br>
+	<span class="studio-name">Bitgap Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-131367" name="comment-131367">#46</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/16/2009 (8:50 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@deepscratch: It's just a simple check to see if you already have dropped a node at the or close to the position you're dropping a new node to. It's nothing you HAVE to do, its just some optional fanciness. Sorry if I was obscure.<br>
+<br>
+@bryce: yep, aiPaths.cs		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/138071.gif" class="profilepic">
+			<br>
+			<a rel="deepscratch" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/138071" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	deepscratch<br>
+	<span class="studio-name">DeepScratchStudios</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-131391" name="comment-131391">#47</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/16/2009 (10:52 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			done, working, awesome.<br>
+thanks for the help guys.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/43676.png" class="profilepic">
+			<br>
+			<a rel="Bryce" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/43676" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Bryce
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-131403" name="comment-131403">#48</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">07/16/2009 (11:06 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Glad I could help!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-141119" name="comment-141119">#49</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/20/2009 (9:47 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Just a note that if you're using T3D 1.* you need to add an include for core/stream/filestream.h to AIPathGroup.<br>
+<br>
+other things to do not listed above:<br>
+<br>
+In GameCore.cs I put <i>LoadPaths()</i> in <i>GameCore::onClientEnterGame</i> - it seems to haevv issues reloading in other places, and exec'ed the pathfinding files in scriptexec.cs<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//AI&nbsp;pathfinding</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>exec(<span class="string">"./nodes.cs"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>exec(<span class="string">"./aiPaths.cs"</span><span>);&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">//AI pathfinding
+exec("./nodes.cs");
+exec("./aiPaths.cs");</pre><br>
+tools/worldEditor/scripts/editors/creator.ed.cs<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>%</span><span class="keyword">this</span><span>.beginGroup(&nbsp;</span><span class="string">"System"</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.registerMissionObject(&nbsp;</span><span class="string">"SimGroup"</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.registerMissionObject(&nbsp;</span><span class="string">"AIPathGroup"</span><span>&nbsp;);</span><span class="comment">//yorks&nbsp;added</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">%this.beginGroup( "System" );
+   
+      %this.registerMissionObject( "SimGroup" );
+	  %this.registerMissionObject( "AIPathGroup" );//yorks added</pre><br>
+And remember to turn any arrays into arrayobjects.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/43676.png" class="profilepic">
+			<br>
+			<a rel="Bryce" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/43676" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Bryce
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-145163" name="comment-145163">#50</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">11/21/2009 (11:58 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			To delete a node, I have to use <i>AIPaths.removeObjectSafe()</i> (or whatever that function is called), and then I can delete it from the editor.<br>
+<br>
+Would there be any way to have the delete selection editor function check if the object it's deleting is a path node, and if it is, perform the safe remove function on it first? It would be nice to just click and hit delete without screwing up the adjacency...		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Gabriel Notman" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/70569" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Gabriel Notman
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-145179" name="comment-145179">#51</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">11/22/2009 (12:24 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			You only need to use that method if you want to preserve existing adjacency and path data. You could quite easily intercept the delete action and call the necessary method as well. I'm not sure if there is a script call back when an object is deleted. If there isn't a callback you will have to look inside the code for the editor class.<br>
+<br>
+Gabriel		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/43676.png" class="profilepic">
+			<br>
+			<a rel="Bryce" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/43676" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Bryce
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-145181" name="comment-145181">#52</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">11/22/2009 (12:37 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I'll look into it, thank you!<br>
+<br>
+I was running a map with about 1600 path nodes, and there was a significant hit whenever I did a findPath. The hit was coming from all the raycasts that are used in findNearestNode(). My version of it is below, it does the distance check before the raycast to avoid unnecessary performance hits. It only casts rays to nodes that are within 20 units of _location.<br>
+<br>
+Go ahead and replace AIPathGroup::FindNearestNode in AIPathGroup.cc with:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>U32&nbsp;AIPathGroup::findNearestNode(Point3F&nbsp;_location,F32&nbsp;_random)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;U32&nbsp;index=-1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;closestDist;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>&nbsp;(U32&nbsp;i=0;&nbsp;i&lt;mNodeCount;&nbsp;i++)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ShapeBase*&nbsp;obj=(ShapeBase*)objectList[i];&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Point3F&nbsp;target=obj-&gt;getBoxCenter();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RayInfo&nbsp;rInfo;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Container&nbsp;*&nbsp;currentContainer&nbsp;=&nbsp;&nbsp;&amp;gServerContainer;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Point3F&nbsp;vector=_location-target;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;dist=vector.len()+gRandGen.randF(0,&nbsp;_random);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(dist&nbsp;&gt;=&nbsp;20)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">continue</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U32&nbsp;mask=&nbsp;&nbsp;StaticObjectType&nbsp;|&nbsp;InteriorObjectType&nbsp;|&nbsp;StaticShapeObjectType&nbsp;|&nbsp;TerrainObjectType&nbsp;|&nbsp;StaticTSObjectType;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;pass=!currentContainer-&gt;castRay(_location,&nbsp;target,&nbsp;mask,&nbsp;&amp;rInfo);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(pass)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;((index&nbsp;==-1)&nbsp;||&nbsp;(dist&lt;closestDist))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index=i;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closestDist=dist;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;index;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">U32 AIPathGroup::findNearestNode(Point3F _location,F32 _random)
+{
+	U32 index=-1;
+	F32 closestDist;
+
+	for (U32 i=0; i&lt;mNodeCount; i++)
+	{
+		ShapeBase* obj=(ShapeBase*)objectList[i];
+		Point3F target=obj-&gt;getBoxCenter();
+
+		RayInfo rInfo;
+		Container * currentContainer =  &amp;gServerContainer;
+
+		Point3F vector=_location-target;
+	    F32 dist=vector.len()+gRandGen.randF(0, _random);
+
+		if (dist &gt;= 20)
+		{
+			continue;
+		}
+	
+		U32 mask=  StaticObjectType | InteriorObjectType | StaticShapeObjectType | TerrainObjectType | StaticTSObjectType;
+		bool pass=!currentContainer-&gt;castRay(_location, target, mask, &amp;rInfo);
+	
+		if (pass)
+		{
+			if ((index ==-1) || (dist&lt;closestDist))
+			{
+				index=i;
+				closestDist=dist;
+			}
+		}
+	}
+
+	return index;
+}</pre><br>
+Pathfinding is now lightning fast, I've got 40 civilians running about a 1600-node map with no lag.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-145283" name="comment-145283">#53</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">11/23/2009 (4:43 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Ah, I was just about to look into doing that myself - good timing Bryce!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-151693" name="comment-151693">#54</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">02/12/2010 (9:53 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Just to note on migrating to T3D1.1(b1), the only changes are the location of gameconnection in AiPathGroup.cpp - <i>#include "gamebase/gameConnection.h"</i> and in gfxdrawutil.cpp<br>
+<i>perp.set</i> and <i>perp.normalize</i> (for changing line thickness) are removed and line thickness is handled automatically --- and now it really is a line and not a great big thick ribbon, which is much better.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Kent Butler" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/100255" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Kent Butler
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-154669" name="comment-154669">#55</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/30/2010 (2:22 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			If anyone is still using this resource, here is a little TGE utility function which can be added to the ~/server/scripts/aiPaths.cs file to automate laying out a grid of AIPathNode objects in a level.<br>
+<br>
+The routine will place a node at ground level(+offset) for every point in the requested grid that is not already occupied by a game object. Optionally, the nodes can be limited to a min/max altitude range (likely unhelpful for anyone, but hey ... I needed it).<br>
+<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//&nbsp;KGB:&nbsp;Create&nbsp;a&nbsp;grid&nbsp;of&nbsp;AIPathNode&nbsp;objects&nbsp;added&nbsp;to&nbsp;the&nbsp;AiPaths&nbsp;container.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//Params:</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//%start_pos&nbsp;(Point2F)&nbsp;-&nbsp;The&nbsp;starting&nbsp;point&nbsp;for&nbsp;the&nbsp;grid&nbsp;(minimum&nbsp;X/Y;&nbsp;z&nbsp;is&nbsp;ignored&nbsp;if&nbsp;included).</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//%extent_xy&nbsp;(Point2F)&nbsp;-&nbsp;X/Y&nbsp;world&nbsp;unit&nbsp;values&nbsp;added&nbsp;to&nbsp;start_pos&nbsp;to&nbsp;determine&nbsp;grid&nbsp;size.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//%step&nbsp;(Point2F)&nbsp;-&nbsp;number&nbsp;of&nbsp;World&nbsp;Units&nbsp;to&nbsp;skip&nbsp;between&nbsp;nodes.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//%altitude_minmax(Point2F)&nbsp;-&nbsp;OPTIONAL.&nbsp;Sets&nbsp;the&nbsp;minimum&nbsp;and&nbsp;maximum&nbsp;ground&nbsp;level&nbsp;that&nbsp;nodes&nbsp;will&nbsp;be&nbsp;added&nbsp;within.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>$AiPaths::Debugging&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>function&nbsp;makeAINodeGrid(%start_pos,&nbsp;%extent_xy,&nbsp;%step,&nbsp;%altutide_minmax)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%groundOffset&nbsp;=&nbsp;1;&nbsp;<span class="comment">//&nbsp;Amount&nbsp;added&nbsp;to&nbsp;object&nbsp;altitude&nbsp;(z)&nbsp;before&nbsp;adding</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%objectClearance&nbsp;=&nbsp;2.5;&nbsp;<span class="comment">//&nbsp;Distance&nbsp;required&nbsp;from&nbsp;objects&nbsp;when&nbsp;determining&nbsp;node&nbsp;will&nbsp;be&nbsp;added.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Make&nbsp;sure&nbsp;the&nbsp;default&nbsp;AiPathGroup&nbsp;exists</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(!isObject(AiPaths))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">new</span><span>&nbsp;AiPathGroup(AiPaths)&nbsp;{};&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AiPaths.renderAll(<span class="keyword">true</span><span>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MissionGroup.add(AiPaths);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Parse&nbsp;the&nbsp;params</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%sx&nbsp;=&nbsp;getWord(%start_pos,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%sy&nbsp;=&nbsp;getWord(%start_pos,&nbsp;1);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%ex&nbsp;=&nbsp;getWord(%extent_xy,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%ey&nbsp;=&nbsp;getWord(%extent_xy,&nbsp;1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;See&nbsp;if&nbsp;altitude&nbsp;limit&nbsp;has&nbsp;been&nbsp;passes,&nbsp;and&nbsp;parse&nbsp;if&nbsp;necessary</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%altutide_minmax&nbsp;!$=</span><span class="string">""</span><span>){&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ck_alt&nbsp;=<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%a_min&nbsp;=&nbsp;getWord(%altutide_minmax,&nbsp;0);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%a_max&nbsp;=&nbsp;getWord(%altutide_minmax,&nbsp;1);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span><span>&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ck_alt&nbsp;=&nbsp;<span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Set&nbsp;up&nbsp;the&nbsp;loop&nbsp;and&nbsp;add&nbsp;nodes</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>(%x&nbsp;=&nbsp;%sx;&nbsp;%x&nbsp;&lt;&nbsp;%sx&nbsp;+&nbsp;%ex;&nbsp;%x&nbsp;+=&nbsp;%step){&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>(%y&nbsp;=&nbsp;%sy;&nbsp;%y&nbsp;&lt;&nbsp;%sy&nbsp;+&nbsp;%ey;&nbsp;%y&nbsp;+=&nbsp;%step){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;%x&nbsp;SPC&nbsp;%y&nbsp;SPC&nbsp;<span class="string">"5000"</span><span>;&nbsp;&nbsp;</span><span class="comment">//&nbsp;These&nbsp;numbers&nbsp;are&nbsp;assuming&nbsp;a&nbsp;"sea&nbsp;level"&nbsp;reference</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;%x&nbsp;SPC&nbsp;%y&nbsp;SPC&nbsp;<span class="string">"-100"</span><span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;altitude&nbsp;of&nbsp;0&nbsp;...&nbsp;can&nbsp;be&nbsp;tweaked&nbsp;for&nbsp;different&nbsp;terrains&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ground&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;containerRayCast(%start,&nbsp;%end,&nbsp;$TypeMasks::TerrainObjectType,&nbsp;0);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;getWord(%ground,&nbsp;3);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%outstr&nbsp;=&nbsp;<span class="string">"Node&nbsp;Check&nbsp;&nbsp;&nbsp;:&nbsp;"</span><span>&nbsp;@&nbsp;%x&nbsp;SPC&nbsp;%y&nbsp;SPC&nbsp;</span><span class="string">"&nbsp;&nbsp;&nbsp;Ground&nbsp;Level:&nbsp;"</span><span>&nbsp;@&nbsp;%z;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%rstr&nbsp;=&nbsp;<span class="string">"Unknown&nbsp;result"</span><span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%z&nbsp;+=&nbsp;%groundOffset;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Bring&nbsp;the&nbsp;node&nbsp;up&nbsp;a&nbsp;little&nbsp;&nbsp;&nbsp;off&nbsp;the&nbsp;ground</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Make&nbsp;sure&nbsp;the&nbsp;position&nbsp;is&nbsp;within&nbsp;altitude&nbsp;limits&nbsp;(if&nbsp;set)</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%ck_alt==</span><span class="keyword">false</span><span>&nbsp;||&nbsp;(%z&lt;=%a_max&nbsp;&amp;&amp;&nbsp;%z&nbsp;&gt;=%a_min&nbsp;)&nbsp;){&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%position&nbsp;=&nbsp;%x&nbsp;@&nbsp;<span class="string">"&nbsp;"</span><span>&nbsp;@&nbsp;%y&nbsp;@&nbsp;</span><span class="string">"&nbsp;"</span><span>&nbsp;@&nbsp;%z;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%mask&nbsp;=&nbsp;($TypeMasks::VehicleObjectType&nbsp;|&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$TypeMasks::MoveableObjectType&nbsp;|&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$TypeMasks::StaticShapeObjectType&nbsp;|&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$TypeMasks::ForceFieldObjectType&nbsp;|&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$TypeMasks::InteriorObjectType&nbsp;|&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$TypeMasks::WaterObjectType&nbsp;|&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$TypeMasks::ItemObjectType);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Make&nbsp;sure&nbsp;something&nbsp;isn't&nbsp;already&nbsp;in&nbsp;this&nbsp;spot</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(ContainerBoxEmpty(%mask,%position,&nbsp;&nbsp;%objectClearance))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%rstr&nbsp;=&nbsp;<span class="string">"Position&nbsp;Is&nbsp;Good,&nbsp;adding&nbsp;node"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%node&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;AIPathNode()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dataBlock&nbsp;=&nbsp;PathNode;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position&nbsp;=&nbsp;%position;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AiPaths.addObjectSafe(%node,&nbsp;$AiPaths::AdjType,&nbsp;$AiPaths::AdjDist);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span><span>&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%rstr&nbsp;=&nbsp;<span class="string">"Position&nbsp;Is&nbsp;occupied"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span><span>&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%rstr&nbsp;=&nbsp;<span class="string">"Altitude&nbsp;Check&nbsp;failed"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Report&nbsp;if&nbsp;desired</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>($AiPaths::Debugging)&nbsp;error&nbsp;(%outstr&nbsp;SPC&nbsp;</span><span class="string">"-"</span><span>&nbsp;SPC&nbsp;%rstr);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">// KGB: Create a grid of AIPathNode objects added to the AiPaths container.
+//Params:
+//%start_pos (Point2F) - The starting point for the grid (minimum X/Y; z is ignored if included).
+//%extent_xy (Point2F) - X/Y world unit values added to start_pos to determine grid size.
+//%step (Point2F) - number of World Units to skip between nodes.
+//%altitude_minmax(Point2F) - OPTIONAL. Sets the minimum and maximum ground level that nodes will be added within.
+//
+$AiPaths::Debugging = true;
+function makeAINodeGrid(%start_pos, %extent_xy, %step, %altutide_minmax)
+{
+	%groundOffset = 1; // Amount added to object altitude (z) before adding
+	%objectClearance = 2.5; // Distance required from objects when determining node will be added.
+	
+	// Make sure the default AiPathGroup exists
+	if (!isObject(AiPaths))
+	{
+		new AiPathGroup(AiPaths) {};
+		AiPaths.renderAll(true);      
+		MissionGroup.add(AiPaths);
+	}	
+	// Parse the params
+	%sx = getWord(%start_pos, 0);
+	%sy = getWord(%start_pos, 1);
+	%ex = getWord(%extent_xy, 0);
+	%ey = getWord(%extent_xy, 1);	
+	// See if altitude limit has been passes, and parse if necessary
+	if(%altutide_minmax !$=""){
+		%ck_alt =true;
+		%a_min = getWord(%altutide_minmax, 0);
+		%a_max = getWord(%altutide_minmax, 1);
+	} else {
+		%ck_alt = false;
+	}	
+	// Set up the loop and add nodes
+	for(%x = %sx; %x &lt; %sx + %ex; %x += %step){
+		for(%y = %sy; %y &lt; %sy + %ey; %y += %step){			
+			%start 		= %x SPC %y SPC "5000";  // These numbers are assuming a "sea level" reference
+			%end 		= %x SPC %y SPC "-100";		// altitude of 0 ... can be tweaked for different terrains			
+			%ground 	= containerRayCast(%start, %end, $TypeMasks::TerrainObjectType, 0);			
+			%z 		= getWord(%ground, 3);
+			%outstr = "Node Check   : " @ %x SPC %y SPC "   Ground Level: " @ %z;
+			%rstr = "Unknown result";									
+			%z += %groundOffset;	// Bring the node up a little	off the ground
+			
+			// Make sure the position is within altitude limits (if set)
+			if(%ck_alt==false || (%z&lt;=%a_max &amp;&amp; %z &gt;=%a_min ) ){
+				%position = %x @ " " @ %y @ " " @ %z;		
+				%mask = ($TypeMasks::VehicleObjectType |
+					$TypeMasks::MoveableObjectType |
+					$TypeMasks::StaticShapeObjectType |
+					$TypeMasks::ForceFieldObjectType |
+					$TypeMasks::InteriorObjectType |
+					$TypeMasks::WaterObjectType |
+					$TypeMasks::ItemObjectType);
+				// Make sure something isn't already in this spot
+				if (ContainerBoxEmpty(%mask,%position, 	%objectClearance))
+				{
+					%rstr = "Position Is Good, adding node";
+					%node = new AIPathNode() {
+							dataBlock = PathNode;
+							position = %position;
+					};
+					AiPaths.addObjectSafe(%node, $AiPaths::AdjType, $AiPaths::AdjDist);				
+				} else {
+					%rstr = "Position Is occupied";
+				}
+			} else {
+				%rstr = "Altitude Check failed";
+			}
+			// Report if desired
+			if($AiPaths::Debugging) error (%outstr SPC "-" SPC %rstr);
+		}
+	}
+}</pre><br>
+usage example:<br>
+makeAINodeGrid("-50 -50","100 100",10,"95 110");<br>
+or (without altitude limit)<br>
+makeAINodeGrid("-50 -50","100 100",10);<br>
+<br>
+This would lay out a node grid at ground level every 10 units from [-50,-50] to [50,50] (x/y coordinates). The first example would only add nodes where the ground level (z) sits between 95 and 100.<br>
+<br>
+There isn't much sanity checking on the parameters, so be careful. Hopefully someone finds it useful - don't know how it will translate into T3D.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-154673" name="comment-154673">#56</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/30/2010 (3:17 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I am certainly still using it in T3d and I'll check this out. Sounds very useful. <br>
+<br>
+Although I will say that the resource "as is" is wonderful because by just running through the level and hitting "x" periodically , you can place nodes in strategic places.<br>
+<br>
+But this would certainly be a timesaver in complex levels and/or large levels, which are more common in TGE right now I imagine since T3D has smaller terrains. <br>
+<br>
+<br>
+<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Kent Butler" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/100255" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Kent Butler
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-154677" name="comment-154677">#57</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/30/2010 (4:35 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Yes. This resource is excellent as it sits! Kudos and thanks to the author (and others who have posted improvements, etc.). The "X" method works great.<br>
+<br>
+The demo I'm working on has a series of villages in valleys. After placing all the interiors and static obstacles for a village, this function is used with a pretty tight step value to lay out the nav nodes around all the buildings, etc. Usually I have to remove/add a few and do some shifting but it gives pretty good coverage without all the running between buildings. Finally the trees and that sort of thing are added and the last adjustments made. The altitude limit lets me be lazy and just give it a big-ole square - taking advantage of the valleys the villages sit in. Then "X" makes the roads linking villages and interior paths ... pretty nice for what we're doing.<br>
+<br>
+Sort of a specialized function - but it may have other uses. Regardless, this is truly an excellent resource!<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/43676.png" class="profilepic">
+			<br>
+			<a rel="Bryce" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/43676" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Bryce
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-160985" name="comment-160985">#58</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">08/11/2010 (12:49 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			For T3D, 1.1, Beta 2, I've fixed issues with failing to register the path nodes.<br>
+<br>
+My new AIPathNode.cpp:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#include&nbsp;"./aipathnode.h"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"./aipathgroup.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#include&nbsp;"T3D/missionMarker.h"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">extern</span><span>&nbsp;</span><span class="datatypes">bool</span><span>&nbsp;gEditingMission;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>IMPLEMENT_CO_DATABLOCK_V1(AIPathNodeData);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>IMPLEMENT_CO_NETOBJECT_V1(AIPathNode);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>AIPathNode::AIPathNode(<span class="keyword">void</span><span>):&nbsp;MissionMarker()&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>AIPathNode::~AIPathNode(<span class="keyword">void</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="datatypes">bool</span><span>&nbsp;AIPathNode::onAdd()&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(!Parent::onAdd()&nbsp;||&nbsp;!mDataBlock)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>(</span><span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>(</span><span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">void</span><span>&nbsp;AIPathNode::onRemove()&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//Con::executef(2,"ProperlyRemoveNode",scriptThis());</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;Parent::onRemove();&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="datatypes">bool</span><span>&nbsp;AIPathNode::onNewDataBlock(GameBaseData&nbsp;*&nbsp;dptr,&nbsp;</span><span class="datatypes">bool</span><span>&nbsp;reload)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;mDataBlock&nbsp;=&nbsp;<span class="keyword">dynamic_cast</span><span>&lt;AIPathNodeData*&gt;(dptr);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(!mDataBlock&nbsp;||&nbsp;!Parent::onNewDataBlock(dptr,reload))&nbsp;</span><span class="comment">//&nbsp;Issue?</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>(</span><span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;scriptOnNewDataBlock();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>(</span><span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#include "./aipathnode.h"
+#include "./aipathgroup.h"
+#include "T3D/missionMarker.h"
+
+extern bool gEditingMission;
+
+IMPLEMENT_CO_DATABLOCK_V1(AIPathNodeData);
+
+IMPLEMENT_CO_NETOBJECT_V1(AIPathNode);
+
+AIPathNode::AIPathNode(void): MissionMarker()
+{
+}
+
+AIPathNode::~AIPathNode(void)
+{
+}
+
+bool AIPathNode::onAdd()
+{
+   if(!Parent::onAdd() || !mDataBlock)
+      return(false);
+
+    return(true);
+}
+
+void AIPathNode::onRemove()
+{
+   //Con::executef(2,"ProperlyRemoveNode",scriptThis());
+   Parent::onRemove();
+}
+
+bool AIPathNode::onNewDataBlock(GameBaseData * dptr, bool reload)
+{
+   mDataBlock = dynamic_cast&lt;AIPathNodeData*&gt;(dptr);
+   
+   if(!mDataBlock || !Parent::onNewDataBlock(dptr,reload)) // Issue?
+      return(false);
+   scriptOnNewDataBlock();
+   
+   return(true);
+}</pre><br>
+My new AIPathNode.h:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#pragma&nbsp;once</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"./T3D/missionmarker.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">class</span><span>&nbsp;AIPathNodeData&nbsp;:&nbsp;</span><span class="keyword">public</span><span>&nbsp;MissionMarkerData&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>:&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">typedef</span><span>&nbsp;MissionMarkerData&nbsp;Parent;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>:&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DECLARE_CONOBJECT(AIPathNodeData);&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">class</span><span>&nbsp;AIPathNode&nbsp;:&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;MissionMarker&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">private</span><span>:&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">typedef</span><span>&nbsp;MissionMarker&nbsp;Parent;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span><span>:&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">enum</span><span>&nbsp;MaskBits&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PositionMask&nbsp;=&nbsp;Parent::NextFreeMask,&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NextFreeMask&nbsp;=&nbsp;Parent::NextFreeMask&nbsp;&lt;&lt;&nbsp;1&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AIPathNodeData*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mDataBlock;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">public</span><span>:&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;onNewDataBlock(GameBaseData&nbsp;*dptr,&nbsp;</span><span class="datatypes">bool</span><span>&nbsp;reload);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;onAdd();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">void</span><span>&nbsp;onRemove();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;AIPathNode(<span class="keyword">void</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;~AIPathNode(<span class="keyword">void</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;DECLARE_CONOBJECT(AIPathNode);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#pragma once
+#include "./T3D/missionmarker.h"
+
+class AIPathNodeData : public MissionMarkerData
+{
+   private:
+      typedef MissionMarkerData Parent;
+	public:
+      DECLARE_CONOBJECT(AIPathNodeData);
+};
+
+class AIPathNode :
+	public MissionMarker
+{
+private:
+	typedef MissionMarker Parent;
+
+   protected:
+      enum MaskBits {
+         PositionMask = Parent::NextFreeMask,
+         NextFreeMask = Parent::NextFreeMask &lt;&lt; 1
+      };
+
+      AIPathNodeData*        mDataBlock;
+   
+public:
+    bool onNewDataBlock(GameBaseData *dptr, bool reload);
+    bool onAdd();
+    void onRemove();
+
+	AIPathNode(void);
+	~AIPathNode(void);
+
+	DECLARE_CONOBJECT(AIPathNode);    
+};</pre>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Kent Butler" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/100255" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Kent Butler
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/14495/3#comment-162631" name="comment-162631">#59</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">09/12/2010 (3:46 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Here is a little hack to the findPath() routine (in AIPathGroup.cc). It isn't perfect, but it significantly reduces instances of the player running the entirely wrong direction to start/running past the destination and then back to it.<br>
+<br>
+In AIPathGroup.cc, locate the "AIPathGroup::findPath" function. Near line 132, insert the indicated code.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>PROFILE_START(PATHFINDING);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">switch</span><span>&nbsp;(_method)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;ASTAR:&nbsp;&nbsp;path=aStarFind(startIndex,&nbsp;targetIndex,&nbsp;_random);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;BESTFIRST:&nbsp;path=bestFirstFind(startIndex,&nbsp;targetIndex,&nbsp;_random);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;DIJKSTRA:&nbsp;path=dijkstraFind(startIndex,&nbsp;targetIndex,&nbsp;_random);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROFILE_END();&nbsp;<span class="comment">//pathfinding</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(!path)&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROFILE_END();&nbsp;<span class="comment">//findpath</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;NULL;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//&nbsp;-------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;KGB:&nbsp;Do&nbsp;a&nbsp;final&nbsp;check&nbsp;to&nbsp;see&nbsp;if&nbsp;the&nbsp;end&nbsp;nodes&nbsp;should&nbsp;be&nbsp;eliminated</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;-------------------------------------------------------------------&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;ShapeBase*&nbsp;obj;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;Point3F&nbsp;vector;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;dist1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;dist2;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;F32&nbsp;dist3;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;U32&nbsp;t;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;U32&nbsp;t2;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;Point3F&nbsp;node0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;Point3F&nbsp;node1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;pushnode;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;First&nbsp;Check&nbsp;the&nbsp;front</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;=&nbsp;path-&gt;first();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;path-&gt;pop_front();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;t2&nbsp;=&nbsp;path-&gt;first();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;obj&nbsp;=&nbsp;(ShapeBase*)objectList[&nbsp;t&nbsp;];&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node0=obj-&gt;getBoxCenter();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;obj&nbsp;=&nbsp;(ShapeBase*)objectList[&nbsp;t2&nbsp;];&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node1=obj-&gt;getBoxCenter();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;vector&nbsp;=&nbsp;_start&nbsp;-&nbsp;node0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;dist1&nbsp;=&nbsp;vector.len();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;vector&nbsp;=&nbsp;node0&nbsp;-&nbsp;node1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;dist2&nbsp;=&nbsp;vector.len();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;vector&nbsp;=&nbsp;_start&nbsp;-&nbsp;node1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;dist3&nbsp;=&nbsp;vector.len();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;If&nbsp;the&nbsp;combined&nbsp;distance&nbsp;between&nbsp;the&nbsp;first&nbsp;two&nbsp;path&nbsp;nodes&nbsp;is&nbsp;greater</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;than&nbsp;the&nbsp;distance&nbsp;between&nbsp;the&nbsp;start&nbsp;position&nbsp;and&nbsp;the&nbsp;second&nbsp;path&nbsp;node</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;check&nbsp;the&nbsp;LOS&nbsp;and&nbsp;remove&nbsp;the&nbsp;first&nbsp;path&nbsp;node&nbsp;if&nbsp;possible.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;pushnode&nbsp;=&nbsp;<span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;dist1+dist2&nbsp;&gt;&nbsp;dist3){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(checkLOS(_start,&nbsp;node1)&nbsp;==&nbsp;</span><span class="keyword">false</span><span>){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pushnode&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span><span>&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pushnode&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(pushnode){&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path-&gt;push_front(t);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Then&nbsp;the&nbsp;back</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;=&nbsp;path-&gt;last();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;path-&gt;pop_back();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;t2&nbsp;=&nbsp;path-&gt;last();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;obj&nbsp;=&nbsp;(ShapeBase*)objectList[&nbsp;t&nbsp;];&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node0=obj-&gt;getBoxCenter();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;obj&nbsp;=&nbsp;(ShapeBase*)objectList[&nbsp;t2&nbsp;];&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node1=obj-&gt;getBoxCenter();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;vector&nbsp;=&nbsp;node0&nbsp;-&nbsp;_target;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;dist1&nbsp;=&nbsp;vector.len();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;vector&nbsp;=&nbsp;node0&nbsp;-&nbsp;node1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;dist2&nbsp;=&nbsp;vector.len();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;vector&nbsp;=&nbsp;node1&nbsp;-&nbsp;_target;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;dist3&nbsp;=&nbsp;vector.len();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;pushnode&nbsp;=&nbsp;<span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;dist1+dist2&nbsp;&gt;&nbsp;dist3){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(checkLOS(_target,&nbsp;node1)&nbsp;==&nbsp;</span><span class="keyword">false</span><span>){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pushnode&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span><span>&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pushnode&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(pushnode){&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path-&gt;push_back(t);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//&nbsp;----------------------&nbsp;KGB&nbsp;END&nbsp;--------------------------&nbsp;//</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;resetLastPath();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;Vector&lt;U32&gt;*&nbsp;idList=<span class="keyword">new</span><span>&nbsp;Vector&lt;U32&gt;;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;Vector&lt;U32&gt;::iterator&nbsp;iter=path-&gt;begin();&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">PROFILE_START(PATHFINDING);
+		switch (_method)
+		{
+			case ASTAR:  path=aStarFind(startIndex, targetIndex, _random);
+			break;
+			case BESTFIRST: path=bestFirstFind(startIndex, targetIndex, _random);
+			break;
+			case DIJKSTRA: path=dijkstraFind(startIndex, targetIndex, _random);
+			break;
+		}
+		PROFILE_END(); //pathfinding
+	}
+	
+	if (!path) 
+	{
+		PROFILE_END(); //findpath
+		return NULL;
+	}
+
+// -------------------------------------------------------------------
+// KGB: Do a final check to see if the end nodes should be eliminated
+// -------------------------------------------------------------------    
+    ShapeBase* obj;
+    Point3F vector;
+    F32 dist1;
+    F32 dist2;
+    F32 dist3;
+    U32 t;
+    U32 t2;
+    Point3F node0;
+    Point3F node1;
+    bool pushnode;
+
+    // First Check the front
+    t = path-&gt;first();
+    path-&gt;pop_front();
+    t2 = path-&gt;first();
+
+    obj = (ShapeBase*)objectList[ t ];
+		node0=obj-&gt;getBoxCenter();
+
+    obj = (ShapeBase*)objectList[ t2 ];
+		node1=obj-&gt;getBoxCenter();
+
+    vector = _start - node0;
+    dist1 = vector.len();
+
+    vector = node0 - node1;
+    dist2 = vector.len();
+
+    vector = _start - node1;
+    dist3 = vector.len();
+
+    // If the combined distance between the first two path nodes is greater
+    // than the distance between the start position and the second path node
+    // check the LOS and remove the first path node if possible.
+    //
+    pushnode = false;
+    if ( dist1+dist2 &gt; dist3){      
+      if(checkLOS(_start, node1) == false){        
+        pushnode = true;
+      }
+    } else {
+      pushnode = true;
+    }
+    if (pushnode){
+      path-&gt;push_front(t);
+    }
+
+    // Then the back
+    t = path-&gt;last();
+    path-&gt;pop_back();
+    t2 = path-&gt;last();
+
+    obj = (ShapeBase*)objectList[ t ];
+		node0=obj-&gt;getBoxCenter();
+
+    obj = (ShapeBase*)objectList[ t2 ];
+		node1=obj-&gt;getBoxCenter();
+
+    vector = node0 - _target;
+    dist1 = vector.len();
+
+    vector = node0 - node1;
+    dist2 = vector.len();
+
+    vector = node1 - _target;
+    dist3 = vector.len();
+
+    pushnode = false;
+    if ( dist1+dist2 &gt; dist3){      
+      if(checkLOS(_target, node1) == false){        
+        pushnode = true;
+      }
+    } else {
+      pushnode = true;
+    }
+    if (pushnode){
+      path-&gt;push_back(t);
+    }
+// ---------------------- KGB END -------------------------- //
+    resetLastPath();
+
+    Vector&lt;U32&gt;* idList=new Vector&lt;U32&gt;;
+    Vector&lt;U32&gt;::iterator iter=path-&gt;begin();</pre><br>
+I also broke the LOS check out into it's own function and exposed it to script. So the following needs to be pasted to the bottom of the AIPathGroup.cc file:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//&nbsp;------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;KGB:&nbsp;Added&nbsp;for&nbsp;convenience</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="datatypes">bool</span><span>&nbsp;AIPathGroup::checkLOS(Point3F&nbsp;_start,Point3F&nbsp;_end)&nbsp;&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RayInfo&nbsp;rInfo;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Container&nbsp;*&nbsp;currentContainer&nbsp;=&nbsp;&nbsp;&amp;gServerContainer;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U32&nbsp;mask=&nbsp;&nbsp;StaticObjectType&nbsp;|&nbsp;InteriorObjectType&nbsp;|&nbsp;StaticShapeObjectType&nbsp;|&nbsp;TerrainObjectType&nbsp;|&nbsp;StaticTSObjectType;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes">bool</span><span>&nbsp;rv&nbsp;=!currentContainer-&gt;castRay(_start,&nbsp;_end,&nbsp;mask,&nbsp;&amp;rInfo);&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;rv;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>ConsoleMethod(AIPathGroup,&nbsp;checkLOS,&nbsp;<span class="datatypes">bool</span><span>,&nbsp;4,&nbsp;4,&nbsp;</span><span class="string">"(Point3F&nbsp;start,&nbsp;Point3F&nbsp;end)"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;Point3F&nbsp;pt;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;Point3F&nbsp;pt2;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;dSscanf(argv[2],&nbsp;<span class="string">"%g&nbsp;%g&nbsp;%g"</span><span>,&nbsp;&amp;pt.x,&nbsp;&amp;pt.y,&nbsp;&amp;pt.z);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;dSscanf(argv[3],&nbsp;<span class="string">"%g&nbsp;%g&nbsp;%g"</span><span>,&nbsp;&amp;pt2.x,&nbsp;&amp;pt2.y,&nbsp;&amp;pt2.z);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;object-&gt;checkLOS(pt,pt2);&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//&nbsp;------------------&nbsp;End&nbsp;KGB&nbsp;---------------------------</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">// ------------------------------------------------------
+// KGB: Added for convenience
+//
+bool AIPathGroup::checkLOS(Point3F _start,Point3F _end)  {
+      RayInfo rInfo;  
+      Container * currentContainer =  &amp;gServerContainer;  
+      U32 mask=  StaticObjectType | InteriorObjectType | StaticShapeObjectType | TerrainObjectType | StaticTSObjectType;  
+      bool rv =!currentContainer-&gt;castRay(_start, _end, mask, &amp;rInfo);  
+      return rv;
+}
+
+
+ConsoleMethod(AIPathGroup, checkLOS, bool, 4, 4, "(Point3F start, Point3F end)")
+{
+  Point3F pt;
+  Point3F pt2;
+  dSscanf(argv[2], "%g %g %g", &amp;pt.x, &amp;pt.y, &amp;pt.z);
+  dSscanf(argv[3], "%g %g %g", &amp;pt2.x, &amp;pt2.y, &amp;pt2.z);
+  
+  return object-&gt;checkLOS(pt,pt2);
+}
+// ------------------ End KGB ---------------------------</pre><br>
+Of course, the new function must be declared in AIPathGroup.h ... in the "public" section:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="datatypes">bool</span><span>&nbsp;checkLOS(Point3F&nbsp;_start,Point3F&nbsp;_end);&nbsp;&nbsp;</span><span class="comment">//&nbsp;KGB:&nbsp;Added&nbsp;For&nbsp;convenience</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">bool checkLOS(Point3F _start,Point3F _end);  // KGB: Added For convenience</pre><br>
+<i>(edit:bug correction)</i>		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<div class="paging"><span>Page</span><a href="http://www.garagegames.com/community/resource/view/14495/" class="first">«First</a> <a href="http://www.garagegames.com/community/resource/view/14495/2#comments" class="previous">«Previous</a> <a href="http://www.garagegames.com/community/resource/view/14495/">1</a> <a href="http://www.garagegames.com/community/resource/view/14495/2#comments">2</a> <em>3</em> <span class="next">Next»</span> <div class="clear"></div></div>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/14495/3" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/resource/view/14495/3#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/14495');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   GarageGames.com 2_files/cf_tools_v1.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src=("https:"==document.location.protocol?"https://":"http://")+"ajax.cloudflare.com/cdn-cgi/scripts/cf_tools_v1.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

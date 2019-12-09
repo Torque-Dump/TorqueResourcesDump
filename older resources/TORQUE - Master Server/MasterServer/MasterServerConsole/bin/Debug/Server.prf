@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<Preferences xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Master Server</Name>
+  <Region>Earth</Region>
+  <Server_Port>28002</Server_Port>
+  <Heatbeat_To>180</Heatbeat_To>
+  <Flush_Time>1800</Flush_Time>
+  <Variable_Seconds>1</Variable_Seconds>
+  <Variable_Count>5</Variable_Count>
+  <Ban_Time>30</Ban_Time>
+  <Verbosity>3</Verbosity>
+</Preferences>

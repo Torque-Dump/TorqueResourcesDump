@@ -1,0 +1,14 @@
+C:\Projects\MasterServer\MasterServerConsole\bin\Debug\MasterServerConsole.exe
+C:\Projects\MasterServer\MasterServerConsole\bin\Debug\MasterServerConsole.pdb
+C:\Projects\MasterServer\MasterServerConsole\bin\Debug\MSLib.dll
+C:\Projects\MasterServer\MasterServerConsole\bin\Debug\MSLib.pdb
+C:\Projects\MasterServer\MasterServerConsole\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\MasterServer\MasterServerConsole\obj\Debug\MasterServerConsole.exe
+C:\Projects\MasterServer\MasterServerConsole\obj\Debug\MasterServerConsole.pdb
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServerConsole\bin\Debug\MasterServerConsole.exe
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServerConsole\bin\Debug\MasterServerConsole.pdb
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServerConsole\bin\Debug\MSLib.dll
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServerConsole\bin\Debug\MSLib.pdb
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServerConsole\obj\Debug\ResolveAssemblyReference.cache
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServerConsole\obj\Debug\MasterServerConsole.exe
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServerConsole\obj\Debug\MasterServerConsole.pdb

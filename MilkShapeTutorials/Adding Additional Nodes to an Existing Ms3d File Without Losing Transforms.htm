@@ -1,0 +1,257 @@
+
+<!-- saved from url=(0054)http://pages.sbcglobal.net/rexpiscator/_wsn/page7.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="expires" content="Wed, 1 Jan 1998 00:00:00 GMT">
+<meta http-equiv="KEYWORDS" content="            ">
+<meta name="DESCRIPTION" content="Rex&#39;s 3D World">
+
+<meta name="GENERATOR" content="WebSiteNOW!(TM) Rev: Release.Unix.3.10.06a">
+<meta name="WSNVERSION" content="Release.Unix.3.10.06a">
+<!-- CATEGORY=business -->
+<!-- THEME=wood2 -->
+<!-- LAYOUT=layout01 -->
+<!-- WSNGROUP=sbcglobal -->
+<title>
+Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms
+</title>
+</head>
+<body background="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/tile_sidebar.jpg" vlink="#ff00ff" link="#4000ff" alink="#4000ff" text="#000000">
+<basefont face="Verdana, Arial" size="2">
+
+
+<table width="640" cellspacing="4" cellpadding="0" border="0">
+<tbody><tr>
+<td width="100" valign="top" align="left" rowspan="11">
+<img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/trans.gif" width="100" vspace="0">
+
+</td>
+<td valign="middle" align="center" colspan="2"><table cellpadding="0" cellspacing="0" width="100%">
+
+<tbody><tr>
+<td width="100%" align="center" valign="middle">
+<font face="Verdana, Arial" size="6">
+<b>Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms
+</b></font>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td valign="middle" align="center" colspan="2">
+<img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bar.jpg" hspace="0" vspace="0" border="0">
+</td>
+</tr>
+<tr>
+<td width="250" height="100" valign="top" align="left"><table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="left" valign="top">
+<font face="Verdana, Arial" size="2">
+After texting with <b>Joe M</b>. @ <b>GG</b> in <b>Thread</b>; I decided to put together another online Guide[GGResource], describing the <b>Process</b> for adding additional <b>Nodes[ms3d Joints]</b>, without losing the <b>Transforms</b> setup previously.  This <b>Process</b> gets a little tedious and it's a little tricky, but it does work and this is my attempt to document it's validity thru demonstration of the techniques.  During my testing and protoTyping, I managed to get a player shape that loaded all the default SDK sequences, <i>and</i> contained the maximum of <b>8</b> mountPoints.  All ended up with usuable orientation/alignment, requiring virtually NIL scripting offsets!</font><p><font face="Verdana, Arial" size="2">
+
+</font>
+</p></td>
+</tr>
+</tbody></table>
+</td>
+<td valign="middle" align="center" rowspan="2" height="300"><table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="center" valign="middle">
+<a href="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/8NodePlayer.jpg" target="_blank"><img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/8NodePlayer.jpg" border="0" width="400"></a>
+ 
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td width="250" height="100" valign="top" align="left"><table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="left" valign="top">
+<font face="Verdana, Arial" size="2">
+At right, is the protoShape I produced to confirm to myself that my additional <b>Nodes</b> did NOT bork the previous <b>Transforms</b> setup by the exporter's author, <b>Chris Robertson</b>.  Further proofing consisted of dropping this 'BoxyBoy' mesh into the engine as the player avatar.  Worked just fine...:).  And the new <b>Nodes</b> are indeed linked into the hierarchy as leafs[have not  attempted to place them as a <b>Parent</b>], with no ill effect seen so far.  </font><p><font face="Verdana, Arial" size="2">
+
+</font>
+</p></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td valign="middle" align="center" colspan="2">
+<table width="90%" align="center" cellspacing="2" cellpadding="2" border="0">
+<tbody><tr>
+<td width="20" valign="top" align="center">
+<img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" hspace="0" vspace="0" border="0">
+</td>
+<td valign="top" height="80">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="left" valign="top">
+<font face="Verdana, Arial" size="2">
+<b><u>Background:</u></b><br>
+This <b>Process</b> will pull together assets from a few sources, <b>Merge</b> them, and finish with compiling the  <b>Milkshape Scene</b> into a new, default SDK <b>playerClass</b> DTS shape.  The base <b>Source</b> file is, of course, <b>Chris Robertson</b>'s default <b>DTSPlus!</b> exporter player-example <b>Scene</b>.  It's a superb rig and it must have been a lot of work to get the <b>Transforms</b> aligned with enough precision to allow the engine to validate the shape and sequences.<br>
+<br>
+The mesh in the "<b>mrbox.ms3d</b>" is a little 'loose' where the segments' pivots intersect at the appropriate <b>Joint</b> positions.  This is especially noticeable with the <b>Head</b> mesh object.  It is set forward, quite a bit from the <b>Node</b> and I feel doesn't represent the engine's true 'eye' location, in regards to the actual mesh, the <b>Node</b> is placed perfectly, it's the mesh I feel that needs moving backwards toward the "<b>Neck</b>" <b>Node</b> just a bit.  To this end, another player mesh will be substituted.  I will include a new player mesh file to use as a base <b>Scene</b> to have merged into it a copy of the skeleton's <b>Scene</b> to facilitate positioning the additional <b>Nodes</b> on an 'assumed' mesh boundry of something more closely following the <b>Skinning envelopes</b> of the SDK default.  I hope that made some sense, if not, it will become clear with each procedural step, ;).  My intent is for locating the new <b>Nodes</b> right on the mesh's boundry.</font><p><font face="Verdana, Arial" size="2">
+
+</font>
+</p></td>
+</tr>
+</tbody></table>
+
+</td>
+</tr>
+<tr>
+<td width="20" valign="top" align="center">
+<img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" hspace="0" vspace="0" border="0">
+</td>
+<td valign="top" height="80">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="left" valign="top">
+<font face="Verdana, Arial" size="2">
+<b><u>Humble Beginnings:</u></b><br>
+This precursor to the actual steps necessary to alter the chain is 'old-stuf' when it comes to <b>Milkshape3D</b> and this whole <b>Guide</b> can be used as steps to actually pulling off a successful compile of a shape from the Milkfarm to working <b>playerClass</b> that  functions with the default SDK <b>Max</b> produced sequences.</font><p><font face="Verdana, Arial" size="2">
+
+</font>
+</p></td>
+</tr>
+</tbody></table>
+
+</td>
+</tr>
+<tr>
+<td width="20" valign="top" align="center">
+<img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" hspace="0" vspace="0" border="0">
+</td>
+<td valign="top" height="80">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="left" valign="top">
+<font face="Verdana, Arial" size="2">
+<b><u>Time to make the doughnuts...:</u></b><br>
+<br>
+1. <b>Launch Milkshape3D</b>.<br>
+2. <b>Merge</b> into the <b>Scene</b> a copy of: "<b>m7playerMESH.ms3d</b>".  Bring up the <b>Materials Tab</b> and reconnect/renavigate the path from <b>Material01</b> to the "<b>defaultRGBPalette.bmp</b>" texture I've included.<br>
+3. <b>Merge</b> into the <b>Scene</b> a copy of: "<b>mrbox.ms3d</b>".  Note: the example file "<b>skeleton.ms3d</b>", could be substituted instead and then proceed to <b>Vertex Assignment</b>, <b>SubStep6</b>, below.<br>
+4. <b>Save</b> the <b>Scene</b> as: "<b>m7player[ref].ms3d</b>".<br>
+5. Take time to examine the two meshes and the differences between them.  First, you'll notice that "<b>MrBox0</b>" is a single mesh and that's important later on when getting sequences to load into it, as it needs to be a <b>'Skinned Mesh'</b> to allow this to occur.  While on the other hand, "<b>m7playerMESH</b>" is a multi <b>Group/Mesh</b> object.  This will help greatly when it is time to <b>Assign</b> the vertices to the appropriate <b>Nodes/Joints</b> and for texturing/UVmapping.  I believe I may have discovered an additional 'trick', that may allow for multiple texture maps on a segmented <b>Mesh</b>[which is 'normal' <b>Ms3d</b> behavior], fooling <b>Ms3d/DTSPlus!</b> into evaluating the shape as a <b>Single Mesh</b>.  This theory will not be presented here.<br>
+6. Go thru and <b>Assign</b> all the <b>Groups</b> to appropriate <b>Joints</b>.  The naming convention I gave each <b>Group</b> should correspond to the <b>Joint Listings</b>. The exceptions should be the <b>COM</b> group, which is my <b>Center Of Mass</b>, and I assigned that to the <b>Pelvis</b> joint &amp; the <b>Finger*</b> groups, which I assigned to each respective <b>Hand*</b> joint, &amp; finally the <b>Toe*</b> groups got assigned to each corresponding <b>Foot*</b> joint.  To me, the <b>COM</b> group represents the <b>Root/Bounds</b> of the object, but this is NOT where the engine locates them, it's more of a reference for this author.<br>
+7. Finish <b>Group/Vertex</b> assignments and then <b>Save/BU</b> the <b>Scene</b>.<br>
+8. Check assignments by entering <b>Animation Mode</b>, and manipulating each <b>Joint</b> in turn to assure proper deformations.  They should be fairly 'rigid' in that each <b>Group</b> is assigned to only a single <b>Joint</b> and give the player a 'robotic' look to the mesh.  Exit <b>Animation Mode</b> without <b>Recording</b> a keyframe and while <b>NO</b> joint is selected!<br>
+9. <b>Save</b> the <b>Scene</b>.  Do <b>NOT</b> be in <b>Animation Mode</b> when <b>Saving</b>!  It corrupts the <b>Scene</b>.  This is a native <b>Milkshape3D</b> 'quirk'.<br>
+10. Check over the <b>Scene</b> one final time, select all the sub <b>Groups</b> associated with "<b>m7PlayerMESH.ms3d</b>" object, and <b>Regroup</b> them into a single <b>Group/Mesh</b>.  Name this <b>Group</b> as desired, this example will use the naming convention, "<b>BoxyBoy0</b>".  This is now the <b>playerClass</b>'s new mesh.<br>
+11. Take a deep breath, select "<b>MrBox0</b>", and <b>DELETE</b> the <b>Group</b> from the <b>Listing</b>.  That <b>Group/Mesh</b> is forever gone.  Now, bring up the <b>Materials Tab</b> and select <b>Material01</b> with the file name of "<b>green</b>".  <b>Delete</b> this <b>Material</b>, as it was used to texture "<b>MrBox0</b>".<br>
+12.  <b>Save</b> &amp; <b>BU</b> the <b>Scene</b> as desired.  This portion of creating a default loading <b>playerClass</b> object is over.</font><p><font face="Verdana, Arial" size="2">
+
+</font>
+</p></td>
+</tr>
+</tbody></table>
+
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td valign="middle" align="center" colspan="2">
+<table width="90%" cellspacing="0" cellpadding="0" border="0">
+
+<tbody><tr>
+<td width="33%" valign="middle" align="center"><a href="http://myhome.prodigy.net/">
+<img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/links.jpg" border="0" hspace="0" vspace="0"></a>
+<br>
+<font face="Verdana, Arial" size="2">
+<a href="http://myhome.prodigy.net/">Your Link</a>
+</font>
+</td>
+<td width="33%" valign="middle" align="center"><a href="http://myhome.prodigy.net/">
+<img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/links.jpg" border="0" hspace="0" vspace="0"></a>
+<br>
+<font face="Verdana, Arial" size="2">
+<a href="http://myhome.prodigy.net/">Your Link</a>
+</font>
+</td>
+<td width="33%" valign="middle" align="center"><a href="http://myhome.prodigy.net/">
+<img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/links.jpg" border="0" hspace="0" vspace="0"></a>
+<br>
+<font face="Verdana, Arial" size="2">
+<a href="http://myhome.prodigy.net/">Your Link</a>
+</font>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td valign="top" align="left" colspan="2">
+
+
+</td>
+</tr>
+<tr>
+<td valign="middle" align="center" colspan="2">
+<img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bar.jpg" hspace="0" vspace="0" border="0">
+</td>
+</tr>
+<tr><td valign="middle" align="center" colspan="2">
+<p>
+<table>
+<tbody><tr>
+<td align="center"><font face="Verdana, Arial" size="3">
+<a href="http://pages.sbcglobal.net/rexpiscator/index.html"><img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" border="0"></a>&nbsp;&nbsp;<a href="http://pages.sbcglobal.net/rexpiscator/index.html">HOME</a>&nbsp;&nbsp;
+</font>
+
+</td><td align="center"><font face="Verdana, Arial" size="3">
+<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page2.html"><img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" border="0"></a>&nbsp;&nbsp;<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page2.html">...more Rex</a>&nbsp;&nbsp;
+</font>
+
+</td><td align="center"><font face="Verdana, Arial" size="3">
+<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page3.html"><img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" border="0"></a>&nbsp;&nbsp;<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page3.html">gS2DTS Setup</a>&nbsp;&nbsp;
+</font>
+
+</td><td align="center"><font face="Verdana, Arial" size="3">
+<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page4.html"><img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" border="0"></a>&nbsp;&nbsp;<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page4.html">Mesh Prep</a>&nbsp;&nbsp;
+</font>
+
+</td><td align="center"><font face="Verdana, Arial" size="3">
+<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page5.html"><img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" border="0"></a>&nbsp;&nbsp;<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page5.html">Shape Build</a>&nbsp;&nbsp;
+</font>
+
+</td><td align="center"><font face="Verdana, Arial" size="3">
+<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page6.html"><img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" border="0"></a>&nbsp;&nbsp;<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page6.html">Gallery</a>&nbsp;&nbsp;
+</font>
+
+</td><td align="center"><font face="Verdana, Arial" size="3">
+<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page8.html"><img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" border="0"></a>&nbsp;&nbsp;<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page8.html">Non-destructive Nodes</a>&nbsp;&nbsp;
+</font>
+
+</td><td align="center"><font face="Verdana, Arial" size="3">
+<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page9.html"><img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/bullet.jpg" border="0"></a>&nbsp;&nbsp;<a href="http://pages.sbcglobal.net/rexpiscator/_wsn/page9.html">Milkshape3D Blends</a>&nbsp;&nbsp;
+</font>
+
+</td>
+
+</tr>
+</tbody></table>
+</p></td>
+</tr>
+
+<tr>
+<td valign="middle" align="center" colspan="2"><center>
+
+
+<img src="./Adding Additional Nodes to an Existing Ms3d File Without Losing Transforms_files/counter.cgi">
+
+
+
+
+</center>
+</td>
+</tr>
+</tbody></table>
+
+
+
+</body></html>

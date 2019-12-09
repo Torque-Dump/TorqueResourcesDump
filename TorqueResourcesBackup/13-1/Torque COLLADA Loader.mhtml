@@ -1,0 +1,3477 @@
+From: <Saved by WebKit>
+Subject: Torque COLLADA Loader
+Date: Tue, 16 Mar 2015 11:39:11 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_7846_5A5C6BF8.6587C6BB"
+
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/documentation/Artist%20Guide/Formats/ColladaLoader.html
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3.=
+org/1999/xhtml"><head><meta charset=3D"UTF-8">
+
+
+
+
+
+
+<link href=3D"http://docs.garagegames.com/torque-3d/official/content/includ=
+e/tutorialStyles.css" rel=3D"stylesheet" type=3D"text/css">
+<link href=3D"http://docs.garagegames.com/torque-3d/official/content/includ=
+e/tutorial.css" rel=3D"stylesheet" type=3D"text/css">
+<link href=3D"http://docs.garagegames.com/torque-3d/official/content/includ=
+e/globalMainPageStyles.css" rel=3D"stylesheet" type=3D"text/css">
+<link href=3D"http://docs.garagegames.com/torque-3d/official/content/includ=
+e/referenceThemeStyle.css" rel=3D"stylesheet" type=3D"text/css">
+<link href=3D"http://docs.garagegames.com/torque-3d/official/content/includ=
+e/docTheme/theme.css" rel=3D"stylesheet" type=3D"text/css">
+
+<link rel=3D"stylesheet" type=3D"text/css" href=3D"http://docs.garagegames.=
+com/torque-3d/official/content/include/container.css">
+<link rel=3D"stylesheet" type=3D"text/css" href=3D"http://docs.garagegames.=
+com/torque-3d/official/content/include/content.css">
+
+<title>Torque COLLADA Loader</title>
+</head>
+
+<body id=3D"BODYID" onload=3D"initComponent()">
+<table width=3D"700" cellspacing=3D"0" cellpadding=3D"15" border=3D"0" styl=
+e=3D"text-align: justify; width: 700 !important;" xmlns=3D"">
+<tbody>
+<tr style=3D"width: 700 !important">
+<td width=3D"700">
+<table id=3D"toc" summary=3D"Contents">
+          <tbody>
+            <tr>
+              <td><div id=3D"toctitle">
+                  <h2>Contents</h2></div>
+                 =20
+                <ul>
+                  <li class=3D"toclevel-1"><a href=3D"http://docs.garagegam=
+es.com/torque-3d/official/content/documentation/Artist%20Guide/Formats/Coll=
+adaLoader.html#Introduction"><span class=3D"tocnumber">1</span> <span class=
+=3D"toctext">Introduction</span></a></li>
+                  <li class=3D"toclevel-1"><a href=3D"http://docs.garagegam=
+es.com/torque-3d/official/content/documentation/Artist%20Guide/Formats/Coll=
+adaLoader.html#COLLADAforTorque3D"><span class=3D"tocnumber">2</span> <span=
+ class=3D"toctext">COLLADA for Torque 3D</span></a></li>
+                  <li class=3D"toclevel-1"><a href=3D"http://docs.garagegam=
+es.com/torque-3d/official/content/documentation/Artist%20Guide/Formats/Coll=
+adaLoader.html#Troubleshooting"><span class=3D"tocnumber">3</span> <span cl=
+ass=3D"toctext">Troubleshooting</span></a></li>
+                  <li class=3D"toclevel-1"><a href=3D"http://docs.garagegam=
+es.com/torque-3d/official/content/documentation/Artist%20Guide/Formats/Coll=
+adaLoader.html#Appendix1"><span class=3D"tocnumber">4</span> <span class=3D=
+"toctext">Appendix 1: Material Settings</span></a></li>
+                  <li class=3D"toclevel-1"><a href=3D"http://docs.garagegam=
+es.com/torque-3d/official/content/documentation/Artist%20Guide/Formats/Coll=
+adaLoader.html#Appendix2"><span class=3D"tocnumber">5</span> <span class=3D=
+"toctext">Appendix 2: Supported Extensions</span></a></li>
+                  <li class=3D"toclevel-1"><a href=3D"http://docs.garagegam=
+es.com/torque-3d/official/content/documentation/Artist%20Guide/Formats/Coll=
+adaLoader.html#Appendix3"><span class=3D"tocnumber">6</span> <span class=3D=
+"toctext">Appendix 3: Supported COLLADA Elements</span></a></li>
+
+                </ul></td>
+            </tr>
+          </tbody>
+        </table>
+</td>
+</tr>
+<tr>
+
+    <td width=3D"700" style=3D"width: 700 !important"><a name=3D"Introducti=
+on" id=3D"Introduction"></a>
+        <h2> <span class=3D"mw-headline">Introduction</span></h2>
+
+<p>COLLADA is an XML based file format, meaning DAE files may be opened, vi=
+ewed and edited (if desired) in any text editor. </p>
+<p>COLLADA is emerging as <b><i>the</i></b> format for interchanging models=
+ between DCC (digital-content-creation) applications.=20
+Torque 3D can load geometry, material and animation data directly from COLL=
+ADA (.dae) files. The Torque 3D COLLADA loader is based on=20
+<a href=3D"http://www.khronos.org/files/collada_1_4_release_notes.pdf" clas=
+s=3D"external">version 1.4.1 of the COLLADA specification</a>.</p>
+
+<p>Many 3D modeling applications come with built-in COLLADA import and expo=
+rt functionality, but third party plugins are=20
+also available that may be more stable, updated more frequently and give be=
+tter results. In particular, <a href=3D"http://www.opencollada.org/" target=
+=3D"_blank" class=3D"external">OpenCOLLADA</a>=20
+ is recommended for both Autodesk 3ds Max and Maya.</p>
+
+<h3>COLLADA &lt;unit&gt; scale</h3>
+
+<p>When creating a model, it makes sense to work in units appropriate to th=
+e type of object being modeled. For example,=20
+it may be convenient to model a building in <i>meters</i> (or <i>feet</i>),=
+ but a small=20
+object like a pen would be better modeled in <i>cm</i> (or <i>inches</i>). =
+Normally the modeler would be forced to=20
+choose a single unit for both objects, and one object would end up having a=
+wkward measurements; like a building that=20
+is 2000 units high, or a pen that is only 0.14 units long.</p>
+
+<p>This was often the case when exporting DTS models, since the convention =
+for Torque 3D is that 1 Torque unit =3D 1 meter;=20
+forcing the modeler to always work in meters or apply a model-specific scal=
+e factor prior to export.</p>
+
+<p>COLLADA provides a mechanism to specify the units used when modeling the=
+ object. This is very important, since it=20
+allows a set of objects modeled in completely different units to be importe=
+d into Torque 3D with the correct scale relative=20
+to each other. This is done using the COLLADA &lt;unit&gt; element, which a=
+ppears near the top of the .dae file and=20
+specifies the units-per-meter used for all positional values in the file su=
+ch as vertex and node positions, translation=20
+animations etc. Torque 3D uses this value as a global scale factor which is=
+ applied to the entire model on import.</p>
+
+<p>Many modeling applications allow the user to specify the units to be use=
+d, or alternatively, the option may be=20
+available when exporting the model to COLLADA.</p>
+
+<p>For example, if the model was created using <i>feet</i> as the unit, it =
+would have a &lt;unit&gt; element as follows:</p>
+
+<pre>&lt;unit meter=3D"0.3048" name=3D"foot"/&gt;</pre>
+
+<p>Torque 3D would scale the entire model by 0.3048 to convert it to a comm=
+on reference of 1 Torque unit-per-meter. If another=20
+model was loaded that had been modeled in <i>meters</i>, its &lt;unit&gt;el=
+ement would look like this:</p>
+
+<pre>&lt;unit meter=3D"1.0" name=3D"meter"/&gt;</pre>
+
+<p>In this case, the model is already measured in meters and would not be s=
+caled on import.</p>
+
+<p>It is up to the modeler to ensure that models are created with appropria=
+te units in mind. For example, if a chair=20
+was modeled at 5 units high in the modeling application (simply because tha=
+t was a convenient value for the modeler),=20
+then exported to DAE with units set to <i>feet</i>, then the chair would ap=
+pear to be the equivalent of 5 feet high in Torque 3D!=20
+The Torque 3D COLLADA import dialog allows you to override the &lt;unit&gt;=
+ scale specified in the DAE file, for cases like this=20
+when the modeler has not taken units into account.</p>
+
+<h3><a name=3D"UP_AXIS">Up Axis</a></h3>
+
+<p>COLLADA defines the following coordinate systems using the &lt;up_axis&g=
+t; element:</p>
+
+<p><img src=3D"http://docs.garagegames.com/torque-3d/official/content/docum=
+entation/Artist%20Guide/Formats/images/torque_axes.png"></p>
+
+<p>The coordinate system in Torque 3D is equivalent to Z_UP, and the loader=
+ will automatically convert models using X_UP or=20
+Y_UP to this coordinate system. Some COLLADA exporters may generate models =
+with a wrong or missing &lt;up_axis&gt; element=20
+(Z_UP is assumed if &lt;up_axis&gt; is not specified). In this case, the CO=
+LLADA import dialog can be used to override the value.</p>
+
+<a name=3D"COLLADAforTorque3D" id=3D"A1"></a>
+<h2> <span class=3D"mw-headline">COLLADA for Torque 3D</span></h2>
+
+<p>The COLLADA loader supports polygonal geometry, simple materials (no sup=
+port for embedded CG/GLSL shaders) and all forms of animation available in =
+Torque 3D.</p>
+
+<p>COLLADA camera, and physics elements are not supported. COLLADA lights m=
+ay be instantiated in the current mission as part of importing the model.</=
+p>
+
+<p><a href=3D"http://docs.garagegames.com/torque-3d/official/content/docume=
+ntation/Artist%20Guide/Formats/ColladaLoader.html#Appendix3">Appendix 3: Su=
+pported COLLADA elements</a> has a full listing of the elements that are su=
+pported.</p>
+
+<h3>Import Dialog</h3>
+
+<p>When a COLLADA model is first added using the World Editor, or opened in=
+ the <a href=3D"http://docs.garagegames.com/torque-3d/official/content/docu=
+mentation/World%20Editor/Editors/ShapeEditor.html">Shape Editor</a>,=20
+the COLLADA import dialog is displayed to control how Torque 3D will import=
+ the model.</p>
+
+<p><img src=3D"http://docs.garagegames.com/torque-3d/official/content/docum=
+entation/Artist%20Guide/Formats/images/COLLADA_import_dlg.png"></p>
+
+<ul>
+ <li>The frame on the left displays the shape hierarchy, including nodes, g=
+eometry, lights, materials and animations.</li>
+ <li><b>LOD</b>: Controls how level-of-detail is generated for the model:</=
+li>
+ <ul>
+  <li><b>DetectDTS</b>: Attempts to detect whether the shape uses the DTS n=
+ode markup scheme, and if found, uses=20
+  <i>TrailingNumber</i> mode (below). If not detected, <i>SingleSize</i> mo=
+de is used. The shape is determined to=20
+  be using DTS markup if there is a root level node called "base*" (where *=
+ is anything) with a child node=20
+  called "start*". See <a href=3D"http://docs.garagegames.com/torque-3d/off=
+icial/content/documentation/Artist%20Guide/Formats/ColladaLoader.html#SCENE=
+_LOD">Scene hierarchy and LOD</a> for more details.</li>
+  <li><b>SingleSize</b>: All geometry in the shape will be added to a singl=
+e detail level, with size given by the=20
+  value in the gui. The exception is collision meshes which will be at a fi=
+xed negative detail size.</li>
+  <li><b>TrailingNumber</b>: The detail size for geometry in the shape will=
+ be determined by the number at the end=20
+  of the node (or mesh, if the modeling app does not distinguish between th=
+e two) name. An underscore before the=20
+  number will be interpreted as a negative sign. eg. "mesh1" (size=3D1), "m=
+esh3 1" (size=3D1), "mesh_1" (size=3D-1)</li>
+ </ul>
+ <li><b>Materials Prefix</b>: Some COLLADA exporters generate &lt;material&=
+gt; elements with generic names such=20
+ as "texture1", "texture2" etc. This causes problems when the model is used=
+ in Torque since=20
+ the names may clash with existing Materials. This option can be used to pr=
+efix all material names in the model=20
+ so they will be unique. Press return after editing the field to update the=
+ tree view. The icon (and tooltip) next=20
+ to the material name indicates whether there is already a script Material =
+object mapped to that name.</li>
+ <li><b>Import Nodes</b>: A list of semicolon separated node names (with wi=
+ldcards) to always import, even if the=20
+ name matches the Ignore Nodes list. This is similar to the AlwaysExport li=
+st used with DTS exporting. For example:=20
+ mount*;cam;eye nodes. Press return after editing the field to update the t=
+ree view.</li>
+ <li><b>Ignore Nodes</b>: A list of semicolon separated node names (with wi=
+ldcards) to ignore on import, similar to=20
+ the NeverExport list used with DTS exporting. For example: *-PIVOT;dummy. =
+Press return after editing the field to=20
+ update the tree view. Nodes that will be ignored are marked with a <img sr=
+c=3D"http://docs.garagegames.com/torque-3d/official/content/documentation/A=
+rtist%20Guide/Formats/images/IconCancel.png">. Child nodes and=20
+ geometry attached to an ignored node will still be imported.</li>
+<li><b>Import Meshes</b>: A list of semicolon separated mesh names (with wi=
+ldcards) to always import, even if the name=20
+matches the Ignore Meshes list. For example: bounds;Body*. Press return aft=
+er editing the field to update the tree view.</li>
+ <li><b>Ignore Meshes</b>: A list of semicolon separated mesh names (with w=
+ildcards) to ignore on import. For example: *dummy.=20
+ Press return after editing the field to update the tree view. Meshes that =
+will be ignored are marked with a <img src=3D"http://docs.garagegames.com/t=
+orque-3d/official/content/documentation/Artist%20Guide/Formats/images/IconC=
+ancel.png">.</li>
+ <li><b>Override up_axis</b>: Set this option to override the up_axis speci=
+fied in the DAE file. A value of Z_UP means=20
+ no coordinate transformation will be applied.</li>
+ <li><b>Override scale</b>: Set this option to override the scale factor ap=
+plied to the model on import. A value of 1.0 means the model will not be sc=
+aled.</li>
+ <li><b>Ignore bone scaling</b>: Because of the way Torque bakes scale info=
+rmation into the mesh vertices, some skinned=20
+ models will load with strange geometry (the mesh is still attached to the =
+skeleton, but appears thin and stretched out).=20
+ Re-importing the model with this option set should resolve the issue.</li>
+ <li><b>Center model</b>: Setting this option causes the model to be transl=
+ated such that the origin is at the center of the shape's bounding box.</li=
+>
+ <li><b>Floor model</b>: Setting this option causes the model to be transla=
+ted (in the Z axis only) such that the origin is at=20
+ the bottom of the shape's bounding box. It can be used along with Center M=
+odel so that the origin is also centered (ie. at the center of the feet of =
+a character model).</li>
+ <li><b>Force update materials.cs</b>: Setting this option causes the COLLA=
+DA loader to write all materials in the DAE file=20
+ into a materials.cs script in the same folder, even if they are already ma=
+pped to another Torque Material. If not set, the=20
+ COLLADA loader only creates Materials for material names that are unmapped=
+.</li>
+ <li><b>Add lights to scene</b>: If this option is set, a SimGroup will be =
+created (suitable for converting to a prefab)=20
+ containing the imported shape as well as PointLight and SpotLight objects =
+for any lights in the DAE file. This option is=20
+ only available when adding a model through the World Editor.<br>
+ Unlike the other import options, this setting is not persistent, so you wi=
+ll need to set it each time you want to import=20
+ the lights. Prefabs are recommended where it makes sense for the model to =
+always include the lights. For example, a streetlamp=20
+ model may include a light source in the DAE file. The first time this mode=
+l is imported into Torque, the <i>Add lights to scene</i>=20
+ setting should be set, and the resulting SimGroup saved to a prefab so you=
+ can easily instantiate the model and light multiple times in the scene.</l=
+i>
+ <li><b>Load from .cfg</b>: Loads the AlwaysImport and NeverImport lists fr=
+om a DTS config file (either model_name.cfg or=20
+ dtsScene.cfg, whichever is found first). This feature is useful when impor=
+ting a scene previously setup for DTS export that=20
+ used a config file to specify the AlwaysExport and NeverExport lists.</li>
+ <li><b>Save to .cfg</b>: Saves the AlwaysImport and NeverImport lists to a=
+ DTS config file (model_name.cfg).</li>
+</ul>
+
+<h3>Geometry</h3>
+
+<p>The Torque 3D COLLADA importer supports all of the COLLADA polygonal geo=
+metry elements: &lt;triangles&gt;, &lt;tristrips&gt;,=20
+&lt;trifans&gt;, &lt;polygons&gt; and &lt;polylist&gt;, with non-triangular=
+ polygons automatically converted to triangles during=20
+loading. Note that if polygons are non-planar, this may introduce seams on =
+the model, so the best option is to triangulate in=20
+the modeling application prior to exporting.</p>
+
+<p>In previous versions of Torque, when exporting to DTS, a single mesh cou=
+ld not have more than around 11,000 triangles=20
+(the exact limit depends on the materials assigned to the mesh, and the num=
+ber of shared vertices). The Torque 3D COLLADA loader=20
+however does not impose any limit on the number of vertices or polygons wit=
+hin a single mesh; it is up to the user to determine=20
+appropriate polygon counts for each model to ensure acceptable rendering pe=
+rformance.</p>
+
+<p>Torque still uses 16-bit triangle indexing internally, so the COLLADA lo=
+ader will automatically split meshes with too many=20
+polygons into multiple draw calls as required.</p>
+
+<h3><a name=3D"SCENE_LOD">Scene hierarchy and LOD</a></h3>
+
+<p>When exporting to DTS, it was required to adhere to a strict scene hiera=
+rchy in order to specify LOD. The COLLADA loader=20
+is a bit more flexible, and is designed to import scenes regardless of whet=
+her they have been prepared for DTS export or not.=20
+The traditional DTS scene export hierarchy appears below.</p>
+
+<pre>+-bounds                    bounds node
++-base01                    subshape
+| +-start01                 shape branch
+| | +-Collision-1           collision mesh
+| | +-Shape128              mesh
+| |
+| +-detail128               detail
+| +-detail2                 detail
+| +-collision-1             collision detail
+|
++-Shape2                    lower-detail
+mesh
+</pre>
+
+<p>These models are loaded as normal (ie. the loader collects the detail ma=
+rkers and uses them to group meshes into a single=20
+object with multiple detail levels). The above model would appear in-game a=
+s:</p>
+
+<pre>+-base01
++-start01
+  +-Collision               Object Collision with details: -1
+  +-Shape                   Object Shape with details: 32 2
+</pre>
+
+<p>The loader also supports models that do not use the above layout. These =
+scenes are detected by the absence of the=20
+baseXXX-&gt;startXXX hierarchy (where XXX is any string), and the entire sc=
+ene is added to a single subshape with a single=20
+detail level size of 2 (the fixed size can be selected in the COLLADA impor=
+t dialog).</p>
+
+<p>For example, this model:</p>
+
+<pre>+-shape1
+| +-Box01                   mesh
++-shape2
+  +-Cylinder01              mesh
+  +-Cylinder02              mesh
+  +-Box02                   mesh
+</pre>
+
+<p>Will be imported as:</p>
+
+<pre>+-shape1
+| +-Box01                   Object Box01 with details: 2
+|-shape2
++-Cylinder01                Object Cylinder01 with details: 2
++-Cylinder01                Object Cylinder02 with details: 2
+  +-Box3                    Object Box03 with details: 2
+</pre>
+
+<p>Note the following:</p>
+
+<ul>
+ <li>all objects have a single detail of size 2</li>
+ <li>trailing numbers have <b>not</b> been stripped from the object names</=
+li>
+</ul>
+
+<p>To summarize: if you're used to exporting scenes to DTS, you are welcome=
+ to keep using the DTS scene hierarchy,=20
+and the exported COLLADA model should import exactly the same. If you're ne=
+w to Torque, or don't want to use the DTS=20
+scene markup anymore, just put the detail size as a number at the end of th=
+e mesh name, and select <i>TrailingNumber</i>=20
+as the LOD type in the COLLADA Import interface.</p>
+
+<h3><a name=3D"BOUNDS">Bounding Box</a></h3>
+
+<p>A 3Space bounding box is simply an axis-aligned cuboid that fits around =
+the shape. Torque 3D uses the centre of the bounding=20
+box as the object's origin when placed in the world editor, and it may also=
+ be used for simple collision detection.</p>
+
+<p>It is important therefore for the shape bounding box to have the correct=
+ size and position. When exporting DTS models,=20
+this was done by adding a mesh called <i>bounds</i> to the root level of th=
+e scene. The DTS exporter would detect this special=20
+name and use the bounds mesh geometry to compute the shape bounding box.</p=
+>
+
+<p>This option is still available to models exported to COLLADA, and may be=
+ preferable if the model is animated and you=20
+want exact control over the size and position of the bounding box. For exam=
+ple, a walking character animation may move=20
+the feet or arms of the model outside the box containing the shape in its r=
+oot pose, so you can use a custom bounding box=20
+to explicitly specify the bounding box extents.</p>
+
+<p>If the DAE model does not contain a root level &lt;node&gt; called <i>bo=
+unds</i> with geometry attached to it, the Torque 3D=20
+COLLADA importer will automatically calculate a bounding box that encloses =
+all of the geometry in the scene. For animated=20
+models, only the root (non-animated) pose is considered. For static objects=
+ this is usually adequate.</p>
+
+<h3>Collision Meshes</h3>
+
+<p>Meshes exported to COLLADA can be marked as <a href=3D"http://docs.garag=
+egames.com/torque-3d/official/content/documentation/Artist%20Guide/Primer/t=
+orque_art_primer.html#COLLISION_GEOMETRY">collision</a>=20
+or line-of-sight collision meshes by setting the node or mesh name to <i>Co=
+llision-X</i> or <i>LOSCol-X</i> respectively,=20
+where X is a number from 1 to 8 in the case of collision meshes, or 9-16 in=
+ the case of LOS collision meshes. If your=20
+modeling application does not support -'s in names, use an underscore inste=
+ad (eg. collision_1). The number at the end of=20
+the name denotes the detail size of the mesh.</p>
+
+<p>Note that both types of mesh must be convex.</p>
+
+<h3><a name=3D"BILLBOARDS">Billboards</a></h3>
+
+<p>A mesh can be marked as a <a href=3D"http://docs.garagegames.com/torque-=
+3d/official/content/documentation/Artist%20Guide/Primer/torque_art_primer.h=
+tml#BILLBOARDS">billboard</a> prior to exporting to=20
+COLLADA by prefixing the name of the node that instantiates the mesh (or th=
+e mesh itself if the modeling application does=20
+not make that distinction) with BB:: (or BB_ if the app does not allow colo=
+ns in names). Z billboards only rotate around=20
+their Z (vertical) axis to face the camera, and are specified by prefixing =
+the node (or mesh) name with BBZ:: (or BBZ_).</p>
+
+<h3><a name=3D"IMPOSTERS">Imposters (AutoBillboards)</a></h3>
+
+<p>To define an <a href=3D"http://docs.garagegames.com/torque-3d/official/c=
+ontent/documentation/Artist%20Guide/Primer/torque_art_primer.html#IMPOSTERS=
+">imposter</a> detail level for a shape for export to COLLADA,=20
+simply create a node at the root level with no children or geometry attache=
+d, and prefix its name with BB:: (or BB_). Then set=20
+the following user properties on the node itself:</p>
+
+<ul>
+ <li>BB::DL</li>
+ <li>BB::DIM</li>
+ <li>BB::EQUATOR_STEPS</li>
+ <li>BB::POLAR_STEPS</li>
+ <li>BB::INCLUDE_POLES</li>
+ <li>BB::POLAR_ANGLE</li>
+</ul>
+
+<p><b>Note:</b> at the time of writing, only the OpenCOLLADA MAX exporter g=
+enerates DAE files with the appropriate=20
+<a href=3D"http://docs.garagegames.com/torque-3d/official/content/documenta=
+tion/Artist%20Guide/Formats/ColladaLoader.html#EXTENSION_USER_PROPERTIES">u=
+ser properties</a> to specify imposter settings. For other users, the <a hr=
+ef=3D"http://docs.garagegames.com/torque-3d/official/content/documentation/=
+World%20Editor/Editors/ShapeEditor.html#IMPOSTERS">
+Torque 3D Shape Editor</a> can add and edit imposter detail levels.</p>
+
+<h3>Materials</h3>
+
+<p>In previous versions of Torque, and still when exporting to DTS, a Mater=
+ial was identified only by its diffuse texture. In Torque 3D,=20
+Materials encompass much more than just the diffuse texture (and may not ha=
+ve a diffuse texture at all), and are more akin to the=20
+materials defined in a modeling application. For this reason, the COLLADA l=
+oader names materials using the &lt;material&gt; element=20
+name, rather than the diffuse texture filename. For example, here is a typi=
+cal material definition in a DAE file:</p>
+
+<pre>&lt;library_images&gt;
+  &lt;image id=3D"myTexture.png" name=3D"myTexture_png"&gt;
+    &lt;init_from&gt;myTexture.png&lt;/init_from&gt;
+  &lt;/image&gt;
+&lt;/library_images&gt;
+&lt;library_materials&gt;
+  &lt;material id=3D"COLLADAMat" name=3D"COLLADAMat"&gt;
+    &lt;instance_effect url=3D"#COLLADAMat-fx"/&gt;
+  &lt;/material&gt;
+&lt;/library_materials&gt;
+</pre>
+
+<p>And the corresponding Torque Material definition:</p>
+
+<pre>new Material(myMat)
+{
+   diffuseMap[0] =3D "myTexture";
+   mapTo =3D "COLLADAMat";
+};
+</pre>
+
+<p>The <i>mapTo</i> field of the Torque Material must be set to the name of=
+ the &lt;material&gt; element in the DAE file=20
+(in this case "COLLADAMat"). For most COLLADA exporters, this will not be t=
+he same as the diffuse texture filename,=20
+and therefore the material will not display correctly without a script Mate=
+rial definition.</p>
+
+<p>Fortunately, the COLLADA loader will auto-generate the materials.cs scri=
+pt for any unmapped materials defined in the DAE file.=20
+The initial properties of the Material are determined from the COLLADA &lt;=
+material&gt; (see <a href=3D"http://docs.garagegames.com/torque-3d/official=
+/content/documentation/Artist%20Guide/Formats/ColladaLoader.html#Appendix1"=
+>Appendix 1:=20
+Material settings</a> for more details). For many Materials, these initial =
+settings will be sufficient, but the Material Editor=20
+can be used to fine-tune properties if needed.</p>
+
+<p>It should be noted that to avoid overwriting existing Materials, the COL=
+LADA loader only generates Materials for <b>unmapped</b>=20
+material names. The COLLADA import dialog shows which materials are unmappe=
+d (and therefore, which Materials will be generated),=20
+and also allows you to force an update of materials.cs, including any mappe=
+d materials.</p>=20
+
+<p>The COLLADA loader uses the following rules to determine the texture pat=
+hs for the autogenerated Materials based on the path specified in the DAE f=
+ile: </p>
+
+<ol>
+ <li>Absolute paths that reference outside the Torque game folder will be i=
+gnored, and the texture path set to the model folder.=20
+ For example, "D:\images\myTexture.jpg" will become "myTexture.jpg".</li>
+ <li>Absolute paths that reference inside the Torque game folder will be us=
+ed as expected. For example, "D:\Torque\game\art\myTexture.jpg"=20
+ will become "art/myTexture.jpg".</li>
+ <li>Relative paths will be appended to the model folder. For example, "./t=
+extures/myTexture.jpg" for a model in=20
+ the "art/shapes/trees" folder will become "art/shapes/trees/textures/myTex=
+ture.jpg".</li>
+</ol>
+
+<h3>Animation</h3>
+
+<p>The following table summarizes the type of animations available using th=
+e COLLADA loader.</p>
+
+<table><tbody>
+ <tr><td><strong>Animation Type</strong></td><th>Notes</th></tr>
+ <tr><td>Node transform</td><td>Supported using animated COLLADA node trans=
+forms (rotate, translate etc).</td></tr>
+ <tr><td>Skeletal animation</td><td>Supported using animated COLLADA node t=
+ransforms (rotate, translate etc) with a &lt;skin&gt;=20
+ controller to provide vertex weights.</td></tr>
+ <tr><td>Visibility</td><td>Supported using the FCOLLADA &lt;node&gt; exten=
+sion (with animated visibility).</td></tr>
+ <tr><td>UV (texture mapping)</td><td>UV keyframe animation is not supporte=
+d in Torque 3D. Certain UV transformations such as offset=20
+ and rotation can be animated using the Material Editor.</td></tr>
+ <tr><td>Morph</td><td>Morph (vertex keyframe) animation is not supported i=
+n Torque 3D.</td></tr>
+</tbody></table>
+
+<p>Torque animation sequences are implemented using COLLADA &lt;animation_c=
+lip&gt; elements. If the DAE file contains &lt;animation&gt;=20
+elements, but does not contain any &lt;animation_clip&gt;s, the loader will=
+ automatically create a cyclic animation sequence=20
+called <i>ambient</i> using all of the &lt;animation&gt;s. You can use the =
+<a href=3D"http://docs.garagegames.com/torque-3d/official/content/documenta=
+tion/World%20Editor/Editors/ShapeEditor.html#CLIPS">Shape Editor</a>=20
+tool to split this combined sequence into multiple sequences if required.</=
+p>
+
+<h3>DAE to DTS</h3>
+
+<p>Torque's native model format, DTS, is much faster to read than COLLADA, =
+so once a DAE file has been imported, the loader=20
+automatically saves the 3space model to a DTS file. For example, importing =
+myShape.dae will generate myShape.cached.dts. The next=20
+time Torque attempts to load the DAE file, it compares the timestamps of th=
+e two files, and if the cached DTS is newer, then it=20
+loads that instead. Re-exporting the DAE (or modifying it by hand) will cau=
+se the DAE to be re-imported, and the cached DTS overwritten with the lates=
+t model.</p>
+
+<p>Demos and released games can ship only the cached DTS files if desired. =
+Torque will automatically load the cached DTS if the=20
+DAE is missing. Datablocks and mission files should continue to refer to th=
+e DAE file. </p>
+
+<p>A console function is available to batch-convert a set of DAE files to D=
+TS. The function takes a single argument that specifies=20
+a wildcard pattern to match DAE files to be converted. For example:</p>
+
+<pre>// convert ALL dae files in the game directory
+convertCOLLADAModels("");
+
+// convert all dae files in the art/shapes folder
+convertCOLLADAModles("art/shapes/*.dae");
+
+// convert dae files in the art folder with 'tree' in the filename
+convertCOLLADAModels("art/*tree*.dae");
+</pre>
+
+<p>A command line tool, <a href=3D"http://docs.garagegames.com/torque-3d/of=
+ficial/content/documentation/Artist%20Guide/Exporters/dae2dts.html">dae2dts=
+</a>, is also available for batch model conversion, or even for=20
+integration into a custom art pipeline. For example, a modeling app could b=
+e scripted to export to COLLADA, then call dae2dts to convert to DTS.</p>
+
+<h3>Google Earth (KMZ) models</h3>
+
+<p>Models exported from <a href=3D"http://sketchup.google.com/" target=3D"_=
+blank" class=3D"external">Google Sketchup</a> or downloaded from the=20
+<a href=3D"http://sketchup.google.com/3dwarehouse/" target=3D"_blank" class=
+=3D"external">Google 3D warehouse</a> can be loaded=20
+directly into Torque 3D. Just export the Sketchup (.skp) file to GoogleEart=
+h 4 format (in Sketchup: <i>File-&gt;Export-&gt;3D Model</i>),=20
+which will produce a .kmz file. This is a normal zip file containing the DA=
+E file and textures. For example:</p>
+
+<pre>cowboy.kmz
++-doc.kml
++-models
+| +-cowboy.dae
++-images
+  +-texture0.jpg
+  +-texture1.jpg
+  +-texture2.jpg
+</pre>
+
+<p>Torque understands that this is really just a zip file, and you don't ev=
+en need to unzip it to load the COLLADA model!=20
+KMZ files will appear in the Torque 3D World Editor in the same way as DTS =
+and DAE files. When the model is imported, Torque 3D will=20
+automatically extract the converted DAE file and textures into the KMZ fold=
+er, but mission files and datablocks should continue=20
+to refer to the KMZ file itself. For example:</p>
+
+<pre>datablock PlayerData(CowboyData : DefaultPlayerData)
+{
+   shapeFile =3D "~/data/shapes/players/cowboy.kmz";
+   renderFirstPerson =3D false;
+   emap =3D true;
+};
+</pre>
+
+<p>Note that the .kmz file is treated as a normal directory ("cowboy" with =
+no .kmz extension), and the path <b>inside</b>=20
+the .kmz file is required (models/cowboy.dae).</p>
+
+<p><b>NOTE</b>: Sketchup 7 and later can export directly to COLLADA, so the=
+re is no need to use KMZ files unless desired.</p>
+
+<p><b>NOTE</b>: There is a known bug in the Google Sketchup 6 COLLADA expor=
+ter, in that it exports materials with the transparency=20
+inverted (1.0 - transparency). The Torque COLLADA loader automatically corr=
+ects this.</p>
+
+<p><b>NOTE</b>: One caution with this type of file is that all materials ar=
+e exported as double-sided (using the GOOGLEEARTH extension,=20
+see <a href=3D"http://docs.garagegames.com/torque-3d/official/content/docum=
+entation/Artist%20Guide/Formats/ColladaLoader.html#Appendix2">Appendix 2: S=
+upported Extensions</a>). For most models this is not desired, as it means =
+the GPU will not=20
+cull backfaces (triangles not facing the camera) and render polygons twice.=
+ The double-sided property can be disabled for the relevant Material using =
+the Material Editor.</p>
+
+<a name=3D"Troubleshooting" id=3D"A2"></a>
+<h2> <span class=3D"mw-headline">Troubleshooting</span></h2>
+
+<h3>1. Torque crashes when loading or displaying a COLLADA model</h3>
+
+<p>Support for COLLADA in Torque 3D is still relatively new - it is possibl=
+e that bugs or non-standard models will cause Torque to crash.=20
+If you think this is the case, please report the issue in the Torque 3D bug=
+ report forums, along with the model (if possible) and a description of how=
+ to=20
+reproduce the problem. Providing a sample model and a clear, detailed bug r=
+eport is by far the most effective way to get the problem resolved.</p>
+
+<h3>2. Materials are missing/wrong</h3>
+
+<p>A major difference between a COLLADA and a DTS model is in the naming of=
+ materials. Materials in DTS files are generally named=20
+using the diffuse texture filename. For example, a DTS material that uses t=
+he texture <i>wood.jpg</i> would be called <i>wood</i>.=20
+When Torque loads this model, if there are no script Materials defined that=
+ mapTo <i>wood</i>, the engine looks for a JPG, PNG or BMP=20
+file with that name in the same directory as the model.</p>
+
+<p>However, in a modeling application, a material usually encompasses much =
+more than just the diffuse texture. When a model is=20
+exported to the COLLADA file format, the name of the material in the modeli=
+ng app is stored in the &lt;material&gt; tag in the COLLADA file.</p>
+
+<p>It is this &lt;material&gt; name that is used by the COLLADA loader as t=
+he name of the Material in Torque. If no script Material is=20
+defined that maps to this name, the engine will look for a JPG, PNG, TGA or=
+ BMP texture in the same way. So there are two approaches to=20
+get materials to show up correctly for COLLADA models:</p>
+
+<ol>
+ <li>Name the material in the 3D app the same as the diffuse texture file.<=
+/li>
+ <li>Create a materials.cs file in the same directory as the model, and def=
+ine a script Material object that maps to each COLLADA material.=20
+ This is the recommended approach.</li>
+</ol>
+
+<p>After importing, use the Material Editor tool (or manually inspect the m=
+aterials.cs script) to modify material settings if required.</p>
+
+<h3>3. COLLADA models are slow to load or render</h3>
+
+<p>The Torque DTS file format is a binary format designed to make loading m=
+odels into Torque extremely fast - in many cases, whole=20
+arrays of data are loaded directly into memory with no conversion at all.</=
+p>
+
+<p>By contrast, the COLLADA file format is an extremely flexible human-read=
+able text format - but that flexibility comes at a cost.=20
+Arrays of numbers need to be converted to their binary equivalents, and the=
+ structure and layout of a COLLADA model needs to be=20
+converted into the form expected by Torque. It will always be much slower t=
+o load a COLLADA file than a Torque DTS model.</p>
+
+<p>To get around this limitation, the loader automatically saves the conver=
+ted COLLADA model to a DTS file. For example, myModel.dae=20
+will be saved to myModel.cached.dts when it is first loaded by Torque. The =
+next time the model is loaded, the cached DTS will be loaded=20
+instead, which will be much faster. If the COLLADA model changes (ie. myMod=
+el.dae has a modification time later than myModel.cached.dts),=20
+Torque will reload the COLLADA file, and overwrite the cached DTS file with=
+ the new model data.</p>
+
+<p>These 'cached' DTS files can be shipped instead of the DAE files with a =
+demo or game to avoid having to release the text-format=20
+COLLADA files. If the DAE is not present, Torque will always load the cache=
+d DTS. Datablocks and mission files should continue to point at the DAE fil=
+e.</p>
+
+<p>Another thing to consider is the polygon count of the model. COLLADA mod=
+els are essentially unlimited in the number of polygons=20
+that they support. All that data needs to be loaded into memory before conv=
+erting to 3space (which supports only 16 bit triangle indices,=20
+meaning larger meshes may need to be split up). As well as being slow to lo=
+ad, a model with too many polygons will also lead to poor rendering perform=
+ance.</p>
+
+<h3>4. Model transparency is incorrect</h3>
+
+<p>Some exporters do not comply with the COLLADA specification when it come=
+s to material transparency. For example Google Sketchup 6=20
+always exports materials with the transparency inverted (1.0 - transparency=
+). The Torque COLLADA loader attempts to detect inverted=20
+transparency automatically (a warning message will be generated in the cons=
+ole for all converted elements).</p>
+
+<p>Check the transparency elements of each material in the .dae file. If th=
+e <i>opaque</i> attribute of the &lt;transparent&gt; element=20
+is missing or set to A_ONE, then the COLLADA loader calculates transparency=
+ as:</p>
+
+<pre>1.0 - (&lt;transparency&gt; * &lt;transparent&gt;[3])</pre>
+
+<p>If the <i>opaque</i> attribute is set to RGB_ZERO, then transparency is =
+calculated as:</p>
+
+<pre>&lt;transparency&gt; * ((&lt;transparent&gt;[0] + &lt;transparent&gt;[=
+1] + &lt;transparent&gt;[2]) / 3)</pre>
+
+<p>Transparency, as well as other Material properties, can be easily correc=
+ted in the Material Editor.</p>
+
+<h3>5. Geometry is missing or the wrong size</h3>
+
+<ul>
+ <li>Check the console for warnings or errors. In particular, note that the=
+ COLLADA loader only supports polygonal geometry,=20
+ and will generate a warning message such as:
+   <p><i>COLLADA &lt;xxx&gt; element in YYY is not supported.</i></p>
+   if it encounters unsupported geometry such as &lt;line&gt;, &lt;spline&g=
+t; &lt;capsule&gt; etc. The best option is to convert=20
+   non-polygonal geometry in your modeling application prior to export, but=
+ you could also try the=20
+     <a href=3D"http://sourceforge.net/projects/colladarefinery/" class=3D"=
+external">COLLADA=20
+   Refinery</a> toolchain.</li>
+
+ <li>Try importing the model back into your modeling application. If this f=
+ails, or gives unexpected results, there may be a=20
+ problem with the COLLADA export feature of your modeling application.</li>
+
+ <li>Check that you have set up your scene correctly for LOD. The <a href=
+=3D"http://docs.garagegames.com/torque-3d/official/content/documentation/Wo=
+rld%20Editor/Editors/ShapeEditor.html#ADVANCED_DETAILS">Shape Editor</a>=20
+ tool may be used to inspect the detail levels present in the model.</li>
+
+ <li>Check the scale of the object. At the top of the .dae file, there is u=
+sually an element similar to this:
+   <pre>&lt;unit name=3D"inches" meter=3D"0.0254"/&gt;</pre>
+   This value represents the units that the model is measured in, and is ap=
+plied as a global scaler to the entire model by the COLLADA loader.=20
+   Unfortunately, not all applications have the same idea of scale, so a mo=
+del that is 1 meter high might be very large in one application but=20
+   very small in another. The &lt;unit&gt; value is displayed and can be ov=
+erridden in the COLLADA import dialog, so try increasing or decreasing=20
+   the value by a factor of 10 or 100 to see if the model becomes visible.<=
+/li>
+</ul>
+
+<h3>6. Skinned meshes are distorted</h3>
+
+<ul>
+ <li>Check the console for warnings or errors. The COLLADA loader will gene=
+rate such messages if it encounters problems with the model.</li>
+
+ <li>If the mesh is correctly attached to the skeleton, but appears "stretc=
+hed out", try re-importing the model with=20
+ the <i>Ignore bone scaling</i> option set in the Import Dialog.</li>
+
+ <li>Try re-importing the model with the <i>Override up_axis</i> set to Z_U=
+P (to prevent the loader applying a coordinate-system=20
+ transformation) and <i>Override scale</i> set to 1.0 (to prevent the loade=
+r applying a global scaler).</li>
+
+ <li>Try re-exporting the model with the <i>Bake Transforms</i> or <i>Singl=
+e Matrix</i> option set in the exporter.</li>
+
+ <li>If bones are missing from the shape (making the skinned mesh appear cr=
+ushed in on itself), make sure everything in the scene is=20
+ unhidden/unfrozen prior to exporting. Some COLLADA exporters will not expo=
+rt correctly if scene elements are hidden or frozen.</li>
+
+</ul>
+
+<h3>7. Some bones do not animate correctly</h3>
+
+<p>Torque stores animations as a series of regularly spaced keyframes. COLL=
+ADA supports this method as well, but animations may also=20
+be exported as animation curves defined by control points. In both cases, t=
+he COLLADA loader samples the animation data to produce a=20
+set of keyframes for Torque. The sampling frequency is determined by findin=
+g the minimum time between exported keyframes (clamped to a rate of 15-60 f=
+rames per second).</p>
+
+<p>For COLLADA animations exported with the <i>Sample Animation</i> option =
+set, this method will sample the exact exported keyframes,=20
+meaning no interpolation is required, and the animation should play perfect=
+ly in Torque.</p>
+
+<p>For animations exported as curve control points, the loader must interpo=
+late  between points. This can sometimes cause problems if=20
+the animation curves are not continuous; for example, if a rotation angle w=
+raps around from +180 to -180 degrees. The symptom of this=20
+issue is bones flipping around on some frames when the animation is played =
+in Torque. This can be resolved by setting the <i>Sample Animation</i>=20
+and/or <i>Single Matrix/Baked Transform</i> export options.</p>
+
+<a name=3D"Appendix1" id=3D"A3"></a>
+<h2> <span class=3D"mw-headline">Appendix 1: Material settings</span></h2>
+
+<p>This table shows how COLLADA &lt;material&gt;s are mapped to Torque Mate=
+rials.</p>
+
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tbody>
+ <tr><th>Material setting</th><th colspan=3D"2">COLLADA &lt;material&gt; ma=
+pping</th></tr>
+ <tr><td>mapTo</td><td colspan=3D"2">The name of the &lt;material&gt; eleme=
+nt.</td></tr>
+ <tr><td>diffuseMap[0]</td><td colspan=3D"2">Resolved to an &lt;image&gt; f=
+ilename using the shader &lt;diffuse&gt;.&lt;texture&gt; element.</td></tr>
+ <tr><td>normalMap[0]</td><td colspan=3D"2">Resolved to an &lt;image&gt; fi=
+lename using the FCOLLADA &lt;extra&gt; profile &lt;bump&gt;.&lt;texture&gt=
+; element.</td></tr>
+ <tr><td>specularMap[0]</td><td colspan=3D"2">Resolved to an &lt;image&gt; =
+filename using the shader &lt;specular&gt;.&lt;texture&gt; element.</td></t=
+r>
+ <tr><td rowspan=3D"5">diffuseColor[0]</td><td><b>Shader type</b></td><td><=
+b>Value</b></td></tr>
+ <tr><td>&lt;constant&gt;</td><td>1 1 1 1</td></tr>
+ <tr><td>&lt;blinn&gt;</td><td>blinn.diffuse</td></tr>
+ <tr><td>&lt;lambert&gt;</td><td>lambert.diffuse</td></tr>
+ <tr><td>&lt;phong&gt;</td><td>phong.diffuse</td></tr>
+ <tr><td rowspan=3D"5">specular[0]</td><td><b>Shader type</b></td><td><b>Va=
+lue</b></td></tr>
+ <tr><td>&lt;constant&gt;</td><td>constant.reflective</td></tr>
+ <tr><td>&lt;blinn&gt;</td><td>blinn.specular</td></tr>
+ <tr><td>&lt;lambert&gt;</td><td>lambert.reflective</td></tr>
+ <tr><td>&lt;phong&gt;</td><td>phong.specular</td></tr>
+ <tr><td rowspan=3D"5">specularPower[0]</td><td><b>Shader type</b></td><td>=
+<b>Value</b></td></tr>
+ <tr><td>&lt;constant&gt;</td><td>constant.reflectivity</td></tr>
+ <tr><td>&lt;blinn&gt;</td><td>blinn.shininess</td></tr>
+ <tr><td>&lt;lambert&gt;</td><td>lambert.reflectivity</td></tr>
+ <tr><td>&lt;phong&gt;</td><td>phong.shininess</td></tr>
+ <tr><td>doubleSided</td><td colspan=3D"2">This flag is set if any of the s=
+upported extensions have the &lt;double_sided&gt; flag set.</td></tr>
+ <tr><td>translucent</td><td colspan=3D"2">If the shader &lt;transparent&gt=
+; <i>opaque</i> attribute is missing or set to A_ONE, translucency is:
+   <pre style=3D"width: 300 !important">1.0 - (&lt;transparency&gt; * &lt;t=
+ransparent&gt;[3])</pre>
+   Else if the <i>opaque</i> attribute is set to RGB_ZERO:
+   <pre style=3D"width: 300 !important">&lt;transparency&gt; * ((&lt;transp=
+arent&gt;[0] + &lt;transparent&gt;[1] +=20
+   &lt;transparent&gt;[2]) / 3)</pre>
+   This flag is set if the translucency calculated above !=3D 0.</td></tr>
+ <tr><td rowspan=3D"3">translucentBlendOp</td><td>translucency &gt; 0 and &=
+lt;=3D 1</td><td>blendOp =3D LerpAlpha<br>diffuse[0].alpha =3D translucency=
+</td></tr>
+ <tr><td>translucency &gt; 1</td><td>blendOp =3D Add<br>diffuse[0].alpha =
+=3D translucency - 1</td></tr>
+ <tr><td>translucency &lt; 0</td><td>blendOp =3D Sub<br>diffuse[0].alpha =
+=3D -translucency</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+
+<a name=3D"Appendix2" id=3D"A4"></a>
+<h2> <span class=3D"mw-headline">Appendix 2: Supported Extensions</span></h=
+2>
+
+<p>COLLADA allows application vendors to extend the COLLADA specification t=
+o provide application-specific features that are not=20
+yet supported natively in COLLADA. These extensions are contained within th=
+e &lt;extra&gt; tag and can appear almost anywhere in the COLLADA model fil=
+e.</p>
+
+<p>The Torque COLLADA loader supports the following extensions:</p>
+
+<h3>1. &lt;texture&gt; MAYA</h3>
+
+<p>This extension specifies a transform which is applied to the UV coordina=
+tes of any triangles that use the material. It is only=20
+supported for the &lt;diffuse&gt; texture of a material. See=20
+<a href=3D"https://collada.org/mediawiki/index.php/Maya_texture_placement_M=
+AYA_extension" target=3D"_blank" class=3D"external">
+Maya Texture Placement - MAYA Extension</a> for more details.</p>
+
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tbody>
+ <tr><th>Element name</th><th>Supported</th><th>Animatable</th></tr>
+ <tr><td>wrapU, wrapV</td><td>Yes</td><td>No</td></tr>
+ <tr><td>mirrorU, mirrorV</td><td>No</td><td>No</td></tr>
+ <tr><td>coverageU, coverageV</td><td>No</td><td>No</td></tr>
+ <tr><td>translateFrameU, translateFrameV</td><td>No</td><td>No</td></tr>
+ <tr><td>rotateFrame</td><td>No</td><td>No</td></tr>
+ <tr><td>stagger</td><td>No</td><td>No</td></tr>
+ <tr><td>fast</td><td>No</td><td>No</td></tr>
+ <tr><td>repeatU, repeatV</td><td>Yes</td><td>No</td></tr>
+ <tr><td>offsetU, offsetV</td><td>Yes</td><td>No</td></tr>
+ <tr><td>rotateUV</td><td>Yes</td><td>No</td></tr>
+ <tr><td>noiseU, noiseV</td><td>Yes</td><td>No</td></tr>
+</tbody></table>
+</td></tr>
+<tr>
+<td>
+
+<pre>&lt;diffuse&gt;
+  &lt;texture texture=3D"file1-sampler" texcoord=3D"TEX0"&gt;
+    &lt;extra&gt;
+      &lt;technique profile=3D"MAYA"&gt;
+        &lt;wrapU&gt;1&lt;/wrapU&gt;
+        &lt;wrapV&gt;1&lt;/wrapV&gt;
+        &lt;mirrorU&gt;0&lt;/mirrorU&gt;
+        &lt;mirrorV&gt;0&lt;/mirrorV&gt;
+        &lt;coverageU&gt;1&lt;/coverageU&gt;
+        &lt;coverageV&gt;1&lt;/coverageV&gt;
+        &lt;translateFrameU&gt;0&lt;/translateFrameU&gt;
+        &lt;translateFrameV&gt;0&lt;/translateFrameV&gt;
+        &lt;rotateFrame&gt;0&lt;/rotateFrame&gt;
+        &lt;stagger&gt;0&lt;/stagger&gt;
+        &lt;fast&gt;0&lt;/fast&gt;
+        &lt;repeatU&gt;1&lt;/repeatU&gt;
+        &lt;repeatV&gt;1&lt;/repeatV&gt;
+        &lt;offsetU&gt;0&lt;/offsetU&gt;
+        &lt;offsetV&gt;0&lt;/offsetV&gt;
+        &lt;rotateUV&gt;0&lt;/rotateUV&gt;
+        &lt;noiseU&gt;0&lt;/noiseU&gt;
+        &lt;noiseV&gt;0&lt;/noiseV&gt;
+      &lt;/technique&gt;
+    &lt;/extra&gt;
+  &lt;/texture&gt;
+&lt;/diffuse&gt;
+</pre>
+
+<h3>2. &lt;profile_COMMON&gt; GOOGLEEARTH</h3>
+
+<p>This extension allows materials to be double sided (ie. viewable from bo=
+th sides of a triangle). Any geometry using the=20
+material that references the effect will be double sided. There are a numbe=
+r of different extensions that set the double sided=20
+flag - if any of them are set, the geometry will be double sided.</p>
+
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tbody>
+ <tr><td><strong>Element name</strong></td>  <td><strong>Supported</strong>=
+</td>  <td><strong>Animatable</strong></td></tr>
+ <tr><td>double_sided</td>  <td>Yes</td>        <td>No</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+
+<pre>&lt;effect id=3D"my-effect" name=3D"my-effect"&gt;
+  &lt;profile_COMMON&gt;
+    ...
+      &lt;extra&gt;
+        &lt;technique profile=3D"GOOGLEEARTH"&gt;
+          &lt;double_sided&gt;1&lt;/double_sided&gt;
+        &lt;/technique&gt;
+      &lt;/extra&gt;
+  &lt;/profile_COMMON&gt;
+&lt;/effect&gt;
+</pre>
+
+<h3>3. &lt;effect&gt; MAX3D</h3>
+
+<p>This extension allows materials to be double sided (ie. viewable from bo=
+th sides of a triangle). Any geometry using the=20
+material that references the effect will be double sided. There are a numbe=
+r of different extensions that set the double sided=20
+flag - if any of them are set, the geometry will be double sided.</p>
+</td></tr>
+<tr>
+<td>
+<table>
+<tbody>
+ <tr><td><strong>Element name</strong></td><td><strong>Supported</strong></=
+td><td>
+     <strong>Animatable</strong></td></tr>
+ <tr><td>faceted</td><td>No</td><td>No</td></tr>
+ <tr><td>double_sided</td><td>Yes</td><td>No</td></tr>
+ <tr><td>wireframe</td><td>No</td><td>No</td></tr>
+ <tr><td>face_map</td><td>No</td><td>No</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<pre>&lt;effect&gt;
+  ...
+  &lt;extra&gt;
+    &lt;technique profile=3D"MAX3D"&gt;
+      &lt;faceted&gt;0&lt;/faceted&gt;
+      &lt;double_sided&gt;0&lt;/double_sided&gt;
+      &lt;wireframe&gt;0&lt;/wireframe&gt;
+      &lt;face_map&gt;0&lt;/face_map&gt;
+    &lt;/technique&gt;
+  &lt;/extra&gt;
+&lt;/effect&gt;
+</pre>
+
+<h3>4. &lt;profile_COMMON&gt; FCOLLADA</h3>
+
+<p>This extension allows the normal map (bump map) for a material to be spe=
+cified. The &lt;bump&gt;.&lt;texture&gt; element=20
+specifies a sampler2D in the same way as the &lt;diffuse&gt; and &lt;specul=
+ar&gt; elements do.</p>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tbody>
+ <tr><td><strong>Element name</strong></td><td><strong>Supported</strong></=
+td><td>
+     <strong>Animatable</strong></td></tr>
+ <tr><td>bump</td><td>Yes</td><td>No</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<pre>&lt;effect&gt;
+  &lt;profile_COMMON&gt;
+    ...
+    &lt;extra&gt;
+    &lt;technique profile=3D"FCOLLADA"&gt;
+      &lt;bump&gt;
+        &lt;texture texture=3D"normal-sampler" texcoord=3D"TEX0"&gt;
+      &lt;/bump&gt;
+    &lt;/technique&gt;
+    &lt;/extra&gt;
+  &lt;/profile_COMMON&gt;
+&lt;/effect&gt;
+</pre>
+
+<h3>5. &lt;geometry&gt; MAYA</h3>
+
+<p>This extension allows materials to be double sided (ie. viewable from bo=
+th sides of a triangle). Any geometry using the=20
+material that references the effect will be double sided. There are a numbe=
+r of different extensions that set the double=20
+sided flag =EF=BF=BD if any of them are set, the geometry will be double si=
+ded.</p>
+</td></tr>
+<tr>
+<td>
+<table>
+<tbody>
+ <tr><td><strong>Element name</strong></td><td><strong>Supported</strong></=
+td><td>
+     <strong>Animatable</strong></td></tr>
+ <tr><td>double_sided</td><td>Yes</td><td>No</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<pre>&lt;geometry&gt;
+  ...
+  &lt;extra&gt;
+    &lt;technique profile=3D"MAYA"&gt;
+      &lt;double_sided&gt;1&lt;/double_sided&gt;
+    &lt;/technique&gt;
+  &lt;/extra&gt;
+&lt;/geometry&gt;
+</pre>
+
+<h3><a name=3D"EXTENSION_USER_PROPERTIES">6. &lt;node&gt; FCOLLADA or OpenC=
+OLLADA</a></h3>
+
+<p>This extension allows the visibility of a node (and all objects attached=
+ to that node) to be animated, and also to attach=20
+custom properties to a node (such as those used to specify Auto Billboard p=
+arameters).</p>
+
+<p>Note that when node visibility is computed, the entire node hierarchy is=
+ taken into account, so if a node is at 10% visibility,=20
+and its parent node is at 50% visibility, the computed node visibility will=
+ be 5%.</p>
+</td></tr>
+<tr>
+<td>
+<table>
+<tbody>
+ <tr><td><strong>Element name</strong></td><td><strong>Supported</strong></=
+td><td>
+     <strong>Animatable</strong></td></tr>
+ <tr><td>visibility</td><td>Yes</td><td>Yes</td></tr>
+ <tr><td>user_properties</td><td>Yes</td><td>No</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<pre>&lt;node id=3D"my-node" type=3D"NODE"&gt;
+  ...
+  &lt;extra&gt;
+    &lt;technique profile=3D"FCOLLADA"&gt;
+      &lt;visibility sid=3D"my_vis"&gt;1&lt;/visibility&gt;
+      &lt;user_properties&gt;BB::DIM=3D128 &amp;#13;&amp;#13;
+BB::EQUATOR_STEPS=3D12 &amp;#13;&amp;#13;
+BB::POLAR_STEPS=3D6 &lt;/user_properties&gt;
+    &lt;/technique&gt;
+  &lt;/extra&gt;
+&lt;/node&gt;
+</pre>
+
+<a name=3D"Appendix3" id=3D"A5"></a>
+<h2> <span class=3D"mw-headline">Appendix 3: Supported COLLADA elements</sp=
+an></h2>
+</td>
+</tr>
+<tr>
+<td style=3D"width: 700 !important">
+<table>
+<tbody>
+ <tr><td><p style=3D"font-weight: bold">Element Name</p></td><td><p style=
+=3D"font-weight: bold">Supported</p></td><td><p style=3D"font-weight: bold"=
+>Notes</p></td></tr>
+=20
+ <tr><td>&lt;accessor&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;alpha_func&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;alpha_test_enable&gt;</td><td>no</td><td>COLLADA Shader elemen=
+ts are not supported</td></tr>
+ <tr><td>&lt;alpha&gt;</td><td>No</td><td>COLLADA Shader elements are not s=
+upported</td></tr>
+ <tr><td>&lt;ambient&gt;</td><td>no</td><td>This element is not supported</=
+td></tr>
+ <tr><td>&lt;angular_velocity&gt;</td><td>no</td><td>COLLADA Physics is not=
+ supported</td></tr>
+ <tr><td>&lt;angular&gt;</td><td>no</td><td>COLLADA Physics is not supporte=
+d</td></tr>
+ <tr><td>&lt;animation_clip&gt;</td><td>yes</td><td>Animation clips are equ=
+ivalent to Torque sequences. If no animation_clips are=20
+ defined, but the document contains animations, a single clip is created th=
+at contains all animations.</td></tr>
+ <tr><td>&lt;animation&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;annotate&gt;</td><td>no</td><td>COLLADA Shader elements are no=
+t supported</td></tr>
+ <tr><td>&lt;argument&gt;</td><td>no</td><td>COLLADA Shader elements are no=
+t supported</td></tr>
+ <tr><td>&lt;array&gt;</td><td>no</td><td>COLLADA Shader elements are not s=
+upported</td></tr>
+ <tr><td>&lt;asset&gt;</td><td>yes</td><td>Most fields are ignored. Only &l=
+t;unit&gt; and &lt;up_axis&gt; have any effect.</td></tr>
+ <tr><td>&lt;attachment&gt;</td><td>no</td><td>COLLADA Physics is not suppo=
+rted</td></tr>
+ <tr><td>&lt;author&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;authoring_tool&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;auto_normal_enable&gt;</td><td>no</td><td>COLLADA Shader eleme=
+nts are not supported</td></tr>
+ <tr><td>&lt;bind_material&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;bind_vertex_input&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;bind&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;blend_color&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;blend_enable&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;blend_equation_separate&gt;</td><td>no</td><td>COLLADA Shader =
+elements are not supported</td></tr>
+ <tr><td>&lt;blend_equation&gt;</td><td>no</td><td>COLLADA Shader elements =
+are not supported</td></tr>
+ <tr><td>&lt;blend_func_separate&gt;</td><td>no</td><td>COLLADA Shader elem=
+ents are not supported</td></tr>
+ <tr><td>&lt;blend_func&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;blinn&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;bool_array&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;border_color&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;box&gt;</td><td>no</td><td>COLLADA loader does not yet auto-ge=
+nerate box geometry.</td></tr>
+ <tr><td>&lt;camera&gt;</td><td>no</td><td>Camera elements are not supporte=
+d</td></tr>
+ <tr><td>&lt;capsule&gt;</td><td>no</td><td>Torque does not support non-pol=
+ygonal geometry</td></tr>
+ <tr><td>&lt;channel&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;channels&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;clear_color&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;clear_depth&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;clear_stencil&gt;</td><td>no</td><td>COLLADA Shader elements a=
+re not supported</td></tr>
+ <tr><td>&lt;clip_plane_enable&gt;</td><td>no</td><td>COLLADA Shader elemen=
+ts are not supported</td></tr>
+ <tr><td>&lt;clip_plane&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;code&gt;</td><td>no</td><td>COLLADA Shader elements are not su=
+pported</td></tr>
+ <tr><td>&lt;COLLADA&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;color_clear&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;color_logic_op_enable&gt;</td><td>no</td><td>COLLADA Shader el=
+ements are not supported</td></tr>
+ <tr><td>&lt;color_mask&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;color_material_enable&gt;</td><td>no</td><td>COLLADA Shader el=
+ements are not supported</td></tr>
+ <tr><td>&lt;color_material&gt;</td><td>no</td><td>COLLADA Shader elements =
+are not supported</td></tr>
+ <tr><td>&lt;color_target&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;color&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;comments&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;common_color_or_texture_type&gt;</td><td>yes</td><td>&nbsp;</t=
+d></tr>
+ <tr><td>&lt;compiler_target&gt;</td><td>no</td><td>COLLADA Shader elements=
+ are not supported</td></tr>
+ <tr><td>&lt;connect_param&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;constant&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;contributor&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;control_vertices&gt;</td><td>no</td><td>&lt;spline&gt; is not =
+supported</td></tr>
+ <tr><td>&lt;controller&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;convex_mesh&gt;</td><td>no</td><td>COLLADA loader does not aut=
+o-generate convex meshes.</td></tr>
+ <tr><td>&lt;copyright&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;created&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;cull_face_enable&gt;</td><td>no</td><td>COLLADA Shader element=
+s are not supported</td></tr>
+ <tr><td>&lt;cull_face&gt;</td><td>no</td><td>COLLADA Shader elements are n=
+ot supported</td></tr>
+ <tr><td>&lt;cylinder&gt;</td><td>no</td><td>Torque does not support non-po=
+lygonal geometry</td></tr>
+ <tr><td>&lt;damping&gt;</td><td>no</td><td>COLLADA Physics is not supporte=
+d</td></tr>
+ <tr><td>&lt;data&gt;</td><td>no</td><td>Embedded image data is not yet sup=
+ported</td></tr>
+ <tr><td>&lt;density&gt;</td><td>no</td><td>COLLADA Physics is not supporte=
+d</td></tr>
+ <tr><td>&lt;depth_bounds_enable&gt;</td><td>no</td><td>COLLADA Shader elem=
+ents are not supported</td></tr>
+ <tr><td>&lt;depth_bounds&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;depth_clamp_enable&gt;</td><td>no</td><td>COLLADA Shader eleme=
+nts are not supported</td></tr>
+ <tr><td>&lt;depth_clear&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;depth_func&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;depth_mask&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;depth_range&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;depth_target&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;depth_test_enable&gt;</td><td>no</td><td>COLLADA Shader elemen=
+ts are not supported</td></tr>
+ <tr><td>&lt;diffuse&gt;</td><td>yes</td><td>Mapped to Material diffuse[0]<=
+/td></tr>
+ <tr><td>&lt;directional&gt;</td><td>no</td><td>Light elements are loaded i=
+n a separate pass using the loadCOLLADALights console=20
+ function (available by checking the Add Lights checkbox in the import gui)=
+</td></tr>
+ <tr><td>&lt;dither_enable&gt;</td><td>no</td><td>COLLADA Shader elements a=
+re not supported</td></tr>
+ <tr><td>&lt;draw&gt;</td><td>no</td><td>COLLADA Shader elements are not su=
+pported</td></tr>
+ <tr><td>&lt;dynamic_friction&gt;</td><td>no</td><td>COLLADA Physics is not=
+ supported</td></tr>
+ <tr><td>&lt;dynamic&gt;</td><td>no</td><td>COLLADA Physics is not supporte=
+d</td></tr>
+ <tr><td>&lt;effect&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;emission&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;enabled&gt;</td><td>no</td><td>COLLADA Physics is not supporte=
+d</td></tr>
+ <tr><td>&lt;equation&gt;</td><td>no</td><td>&lt;plane&gt; is not supported=
+</td></tr>
+ <tr><td>&lt;extra&gt;</td><td>yes</td><td>See <a href=3D"http://docs.garag=
+egames.com/torque-3d/official/content/documentation/Artist%20Guide/Formats/=
+ColladaLoader.html#Appendix2">Appendix 2</a> for a list of supported extens=
+ions.</td></tr>
+ <tr><td>&lt;float_array&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;float&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;fog_color&gt;</td><td>no</td><td>COLLADA Shader elements are n=
+ot supported</td></tr>
+ <tr><td>&lt;fog_coord_src&gt;</td><td>no</td><td>COLLADA Shader elements a=
+re not supported</td></tr>
+ <tr><td>&lt;fog_density&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;fog_enable&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;fog_end&gt;</td><td>no</td><td>COLLADA Shader elements are not=
+ supported</td></tr>
+ <tr><td>&lt;fog_mode&gt;</td><td>no</td><td>COLLADA Shader elements are no=
+t supported</td></tr>
+ <tr><td>&lt;fog_state&gt;</td><td>no</td><td>COLLADA Shader elements are n=
+ot supported</td></tr>
+ <tr><td>&lt;force_field&gt;</td><td>no</td><td>COLLADA Physics is not supp=
+orted</td></tr>
+ <tr><td>&lt;format_hint&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;format&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;front_face&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;func&gt;</td><td>no</td><td>COLLADA Shader elements are not su=
+pported</td></tr>
+ <tr><td>&lt;generator&gt;</td><td>no</td><td>COLLADA Shader elements are n=
+ot supported</td></tr>
+ <tr><td>&lt;geometry&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;half_extents&gt;</td><td>no</td><td>&lt;box&gt; element is not=
+ supported</td></tr>
+ <tr><td>&lt;height&gt;</td><td>no</td><td>COLLADA Physics is not supported=
+</td></tr>
+ <tr><td>&lt;hollow&gt;</td><td>no</td><td>COLLADA Physics is not supported=
+</td></tr>
+ <tr><td>&lt;IDREF_array&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;image&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;imager&gt;</td><td>no</td><td>Camera elements are not supporte=
+d</td></tr>
+ <tr><td>&lt;include&gt;</td><td>no</td><td>COLLADA Shader elements are not=
+ supported</td></tr>
+ <tr><td>&lt;index_of_refraction&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;inertia&gt;</td><td>no</td><td>COLLADA Physics is not supporte=
+d</td></tr>
+ <tr><td>&lt;init_as_null&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;init_as_target&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;init_cube&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;init_from&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;init_planar&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;init_volume&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;input&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;instance_animation&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;instance_camera&gt;</td><td>no</td><td>Camera elements are not=
+ supported</td></tr>
+ <tr><td>&lt;instance_controller&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;instance_effect&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;instance_force_field&gt;</td><td>no</td><td>COLLADA Physics is=
+ not supported</td></tr>
+ <tr><td>&lt;instance_geometry&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;instance_light&gt;</td><td>no</td><td>Light elements are loade=
+d in a separate pass using the loadCOLLADALights=20
+ console function (available by checking the Add Lights checkbox in the imp=
+ort gui)</td></tr>
+ <tr><td>&lt;instance_material&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;instance_node&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;instance_physics_material&gt;</td><td>no</td><td>COLLADA Physi=
+cs is not supported</td></tr>
+ <tr><td>&lt;instance_physics_model&gt;</td><td>no</td><td>COLLADA Physics =
+is not supported</td></tr>
+ <tr><td>&lt;instance_physics_scene&gt;</td><td>no</td><td>COLLADA Physics =
+is not supported</td></tr>
+ <tr><td>&lt;instance_rigid_body&gt;</td><td>no</td><td>COLLADA Physics is =
+not supported</td></tr>
+ <tr><td>&lt;instance_rigid_contraint&gt;</td><td>no</td><td>COLLADA Physic=
+s is not supported</td></tr>
+ <tr><td>&lt;instance_visual_scene&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;int_array&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;interpenetrate&gt;</td><td>no</td><td>COLLADA Physics is not s=
+upported</td></tr>
+ <tr><td>&lt;joints&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;keywords&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;lambert&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;layer&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;library_animation_clips&gt;</td><td>yes</td><td>&nbsp;</td></t=
+r>
+ <tr><td>&lt;library_animations&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;library_cameras&gt;</td><td>no</td><td>Camera elements are not=
+ supported</td></tr>
+ <tr><td>&lt;library_controllers&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;library_effects&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;library_force_fields&gt;</td><td>no</td><td>COLLADA Physics is=
+ not supported</td></tr>
+ <tr><td>&lt;library_geometries&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;library_images&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;library_lights&gt;</td><td>no</td><td>Light elements are loade=
+d in a separate pass using the loadCOLLADALights=20
+ console function (available by checking the Add Lights checkbox in the imp=
+ort gui)</td></tr>
+ <tr><td>&lt;library_materials&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;library_nodes&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;library_physics_materials&gt;</td><td>no</td><td>COLLADA Physi=
+cs is not supported</td></tr>
+ <tr><td>&lt;library_physics_models&gt;</td><td>no</td><td>COLLADA Physics =
+is not supported</td></tr>
+ <tr><td>&lt;library_physics_scenes&gt;</td><td>no</td><td>COLLADA Physics =
+is not supported</td></tr>
+ <tr><td>&lt;library_visual_scenes&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;light_ambient&gt;</td><td>no</td><td>COLLADA Shader elements a=
+re not supported</td></tr>
+ <tr><td>&lt;light_constant_attenuation&gt;</td><td>no</td><td>COLLADA Shad=
+er elements are not supported</td></tr>
+ <tr><td>&lt;light_diffuse&gt;</td><td>no</td><td>COLLADA Shader elements a=
+re not supported</td></tr>
+ <tr><td>&lt;light_enable&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;light_linear_attenuation&gt;</td><td>no</td><td>COLLADA Shader=
+ elements are not supported</td></tr>
+ <tr><td>&lt;light_model_ambient&gt;</td><td>no</td><td>COLLADA Shader elem=
+ents are not supported</td></tr>
+ <tr><td>&lt;light_model_color_control&gt;</td><td>no</td><td>COLLADA Shade=
+r elements are not supported</td></tr>
+ <tr><td>&lt;light_model_local_viewer_enable&gt;</td><td>no</td><td>COLLADA=
+ Shader elements are not supported</td></tr>
+ <tr><td>&lt;light_model_two_side_enable&gt;</td><td>no</td><td>COLLADA Sha=
+der elements are not supported</td></tr>
+ <tr><td>&lt;light_position&gt;</td><td>no</td><td>COLLADA Shader elements =
+are not supported</td></tr>
+ <tr><td>&lt;light_quadratic_attenuation&gt;</td><td>no</td><td>COLLADA Sha=
+der elements are not supported</td></tr>
+ <tr><td>&lt;light_specular&gt;</td><td>no</td><td>COLLADA Shader elements =
+are not supported</td></tr>
+ <tr><td>&lt;light_spot_cutoff&gt;</td><td>no</td><td>COLLADA Shader elemen=
+ts are not supported</td></tr>
+ <tr><td>&lt;light_spot_direction&gt;</td><td>no</td><td>COLLADA Shader ele=
+ments are not supported</td></tr>
+ <tr><td>&lt;light_spot_exponent&gt;</td><td>no</td><td>COLLADA Shader elem=
+ents are not supported</td></tr>
+ <tr><td>&lt;light&gt;</td><td>no</td><td>Light elements are not supported<=
+/td></tr>
+ <tr><td>&lt;lighting_enable&gt;</td><td>no</td><td>COLLADA Shader elements=
+ are not supported</td></tr>
+ <tr><td>&lt;lights&gt;</td><td>no</td><td>Light elements are loaded in a s=
+eparate pass using the loadCOLLADALights console=20
+ function (available by checking the Add Lights checkbox in the import gui)=
+</td></tr>
+ <tr><td>&lt;limits&gt;</td><td>no</td><td>COLLADA Physics is not supported=
+</td></tr>
+ <tr><td>&lt;line_smooth_enable&gt;</td><td>no</td><td>COLLADA Shader eleme=
+nts are not supported</td></tr>
+ <tr><td>&lt;line_stipple_enable&gt;</td><td>no</td><td>COLLADA Shader elem=
+ents are not supported</td></tr>
+ <tr><td>&lt;line_stipple&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;line_width&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;linear&gt;</td><td>no</td><td>COLLADA Physics is not supported=
+</td></tr>
+ <tr><td>&lt;lines&gt;</td><td>no</td><td>Torque does not support non-polyg=
+onal geometry</td></tr>
+ <tr><td>&lt;linestrips&gt;</td><td>no</td><td>Torque does not support non-=
+polygonal geometry</td></tr>
+ <tr><td>&lt;logic_op_enable&gt;</td><td>no</td><td>COLLADA Shader elements=
+ are not supported</td></tr>
+ <tr><td>&lt;logic_op&gt;</td><td>no</td><td>COLLADA Shader elements are no=
+t supported</td></tr>
+ <tr><td>&lt;lookat&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;magfilter&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;mass_frame&gt;</td><td>no</td><td>COLLADA Physics is not suppo=
+rted</td></tr>
+ <tr><td>&lt;mass&gt;</td><td>no</td><td>COLLADA Physics is not supported</=
+td></tr>
+ <tr><td>&lt;material_ambient&gt;</td><td>no</td><td>COLLADA Shader element=
+s are not supported</td></tr>
+ <tr><td>&lt;material_diffuse&gt;</td><td>no</td><td>COLLADA Shader element=
+s are not supported</td></tr>
+ <tr><td>&lt;material_emission&gt;</td><td>no</td><td>COLLADA Shader elemen=
+ts are not supported</td></tr>
+ <tr><td>&lt;material_shininess&gt;</td><td>no</td><td>COLLADA Shader eleme=
+nts are not supported</td></tr>
+ <tr><td>&lt;material_specular&gt;</td><td>no</td><td>COLLADA Shader elemen=
+ts are not supported</td></tr>
+ <tr><td>&lt;material&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;matrix&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;mesh&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;minfilter&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;mip_levels&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;mipfilter&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;mipmap_bias&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;mipmap_generate&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;mipmap_maxlevel&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;model_view_matrix&gt;</td><td>no</td><td>Camera elements are n=
+ot supported</td></tr>
+ <tr><td>&lt;modified&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;modifier&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;morph&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;multisample_enable&gt;</td><td>no</td><td>COLLADA Shader eleme=
+nts are not supported</td></tr>
+ <tr><td>&lt;Name_array&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;name&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;newparam&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;node&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;normalize_enable&gt;</td><td>no</td><td>COLLADA Shader element=
+s are not supported</td></tr>
+ <tr><td>&lt;optics&gt;</td><td>no</td><td>Camera elements are not supporte=
+d</td></tr>
+ <tr><td>&lt;option&gt;</td><td>no</td><td>Torque does not compress data</t=
+d></tr>
+ <tr><td>&lt;orthographic&gt;</td><td>no</td><td>Camera elements are not su=
+pported</td></tr>
+ <tr><td>&lt;p&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;param&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;pass&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;perspective&gt;</td><td>no</td><td>Camera elements are not sup=
+ported</td></tr>
+ <tr><td>&lt;phong&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;physics_material&gt;</td><td>no</td><td>COLLADA Physics is not=
+ supported</td></tr>
+ <tr><td>&lt;physics_model&gt;</td><td>no</td><td>COLLADA Physics is not su=
+pported</td></tr>
+ <tr><td>&lt;physics_scene&gt;</td><td>no</td><td>COLLADA Physics is not su=
+pported</td></tr>
+ <tr><td>&lt;plane&gt;</td><td>no</td><td>Torque does not support non-polyg=
+onal geometry</td></tr>
+ <tr><td>&lt;point_distance_attenuation&gt;</td><td>no</td><td>COLLADA Shad=
+er elements are not supported</td></tr>
+ <tr><td>&lt;point_fade_threshold_size&gt;</td><td>no</td><td>COLLADA Shade=
+r elements are not supported</td></tr>
+ <tr><td>&lt;point_size_max&gt;</td><td>no</td><td>COLLADA Shader elements =
+are not supported</td></tr>
+ <tr><td>&lt;point_size_min&gt;</td><td>no</td><td>COLLADA Shader elements =
+are not supported</td></tr>
+ <tr><td>&lt;point_size&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;point_smooth_enable&gt;</td><td>no</td><td>COLLADA Shader elem=
+ents are not supported</td></tr>
+ <tr><td>&lt;point&gt;</td><td>no</td><td>Light elements are loaded in a se=
+parate pass using the loadCOLLADALights console=20
+ function (available by checking the Add Lights checkbox in the import gui)=
+</td></tr>
+ <tr><td>&lt;polygon_mode&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;polygon_offset_fill_enable&gt;</td><td>no</td><td>COLLADA Shad=
+er elements are not supported</td></tr>
+ <tr><td>&lt;polygon_offset_line_enable&gt;</td><td>no</td><td>COLLADA Shad=
+er elements are not supported</td></tr>
+ <tr><td>&lt;polygon_offset_point_enable&gt;</td><td>no</td><td>COLLADA Sha=
+der elements are not supported</td></tr>
+ <tr><td>&lt;polygon_offset&gt;</td><td>no</td><td>COLLADA Shader elements =
+are not supported</td></tr>
+ <tr><td>&lt;polygon_smooth_enable&gt;</td><td>no</td><td>COLLADA Shader el=
+ements are not supported</td></tr>
+ <tr><td>&lt;polygon_stipple_enable&gt;</td><td>no</td><td>COLLADA Shader e=
+lements are not supported</td></tr>
+ <tr><td>&lt;polygons&gt;</td><td>Yes</td><td>This element is supported. No=
+n-triangular polygons are automatically converted to triangles during loadi=
+ng.</td></tr>
+ <tr><td>&lt;polylist&gt;</td><td>Yes</td><td>This element is supported. No=
+n-triangular polygons are automatically converted to triangles during loadi=
+ng.</td></tr>
+ <tr><td>&lt;precision&gt;</td><td>no</td><td>Torque assumes all values hav=
+e 32-bit precision.</td></tr>
+ <tr><td>&lt;profile_CG&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;profile_COMMON&gt;</td><td>no</td><td>COLLADA Shader elements =
+are not supported</td></tr>
+ <tr><td>&lt;profile_GLES&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;profile_GLSL&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;projection_matrix&gt;</td><td>no</td><td>COLLADA Shader elemen=
+ts are not supported</td></tr>
+ <tr><td>&lt;radius&gt;</td><td>no</td><td>COLLADA Physics is not supported=
+</td></tr>
+ <tr><td>&lt;radius1&gt;</td><td>no</td><td>COLLADA Physics is not supporte=
+d</td></tr>
+ <tr><td>&lt;radius2&gt;</td><td>no</td><td>COLLADA Physics is not supporte=
+d</td></tr>
+ <tr><td>&lt;range&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;ref_attachment&gt;</td><td>no</td><td>COLLADA Physics is not s=
+upported</td></tr>
+ <tr><td>&lt;reflective&gt;</td><td>yes</td><td>Mapped to specular[0]</td><=
+/tr>
+ <tr><td>&lt;reflectivity&gt;</td><td>yes</td><td>Mapped to specularPower[0=
+]</td></tr>
+ <tr><td>&lt;render&gt;</td><td>no</td><td>COLLADA Shader elements are not =
+supported</td></tr>
+ <tr><td>&lt;rescale_normal_enable&gt;</td><td>no</td><td>COLLADA Shader el=
+ements are not supported</td></tr>
+ <tr><td>&lt;restitution&gt;</td><td>no</td><td>COLLADA Physics is not supp=
+orted</td></tr>
+ <tr><td>&lt;revision&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;RGB&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;rigid_body&gt;</td><td>no</td><td>COLLADA Physics is not suppo=
+rted</td></tr>
+ <tr><td>&lt;rigid_constraint&gt;</td><td>no</td><td>COLLADA Physics is not=
+ supported</td></tr>
+ <tr><td>&lt;rotate&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;sample_alpha_to_coverage_enable&gt;</td><td>no</td><td>COLLADA=
+ Shader elements are not supported</td></tr>
+ <tr><td>&lt;sample_alpha_to_one_enable&gt;</td><td>no</td><td>COLLADA Shad=
+er elements are not supported</td></tr>
+ <tr><td>&lt;sample_coverage_enable&gt;</td><td>no</td><td>COLLADA Shader e=
+lements are not supported</td></tr>
+ <tr><td>&lt;sampler_state&gt;</td><td>no</td><td>COLLADA Shader elements a=
+re not supported</td></tr>
+ <tr><td>&lt;sampler&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;sampler1D&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;sampler2D&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;sampler3D&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;samplerCUBE&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;samplerDEPTH&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;samplerRECT&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;scale&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;scene&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;scissor_test_enable&gt;</td><td>no</td><td>COLLADA Shader elem=
+ents are not supported</td></tr>
+ <tr><td>&lt;scissor&gt;</td><td>no</td><td>COLLADA Shader elements are not=
+ supported</td></tr>
+ <tr><td>&lt;semantic&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;setparam&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;shade_model&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;shader&gt;</td><td>no</td><td>COLLADA Shader elements are not =
+supported</td></tr>
+ <tr><td>&lt;shape&gt;</td><td>no</td><td>COLLADA Physics is not supported<=
+/td></tr>
+ <tr><td>&lt;shininess&gt;</td><td>yes</td><td>Mapped to specularPower[0]</=
+td></tr>
+ <tr><td>&lt;size&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;skeleton&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;skew&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;skin&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;source_data&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;source&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;specular&gt;</td><td>yes</td><td>Mapped to specularPower[0]</t=
+d></tr>
+ <tr><td>&lt;sphere&gt;</td><td>no</td><td>Torque does not support non-poly=
+gonal geometry.</td></tr>
+ <tr><td>&lt;spline&gt;</td><td>no</td><td>Torque does not support non-poly=
+gonal geometry</td></tr>
+ <tr><td>&lt;spot&gt;</td><td>no</td><td>Light elements are loaded in a sep=
+arate pass using the loadCOLLADALights console=20
+ function (available by checking the Add Lights checkbox in the import gui)=
+</td></tr>
+ <tr><td>&lt;spring&gt;</td><td>no</td><td>COLLADA Physics is not supported=
+</td></tr>
+ <tr><td>&lt;static_friction&gt;</td><td>no</td><td>COLLADA Physics is not =
+supported</td></tr>
+ <tr><td>&lt;stencil_clear&gt;</td><td>no</td><td>COLLADA Shader elements a=
+re not supported</td></tr>
+ <tr><td>&lt;stencil_func_separate&gt;</td><td>no</td><td>COLLADA Shader el=
+ements are not supported</td></tr>
+ <tr><td>&lt;stencil_func&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;stencil_mask_separate&gt;</td><td>no</td><td>COLLADA Shader el=
+ements are not supported</td></tr>
+ <tr><td>&lt;stencil_mask&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;stencil_op_separate&gt;</td><td>no</td><td>COLLADA Shader elem=
+ents are not supported</td></tr>
+ <tr><td>&lt;stencil_op&gt;</td><td>no</td><td>COLLADA Shader elements are =
+not supported</td></tr>
+ <tr><td>&lt;stencil_target&gt;</td><td>no</td><td>COLLADA Shader elements =
+are not supported</td></tr>
+ <tr><td>&lt;stencil_test_enable&gt;</td><td>no</td><td>COLLADA Shader elem=
+ents are not supported</td></tr>
+ <tr><td>&lt;stiffness&gt;</td><td>no</td><td>COLLADA Physics is not suppor=
+ted</td></tr>
+ <tr><td>&lt;subject&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;surface&gt;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;swing_cone_and_twist&gt;</td><td>no</td><td>COLLADA Physics is=
+ not supported</td></tr>
+ <tr><td>&lt;tapered_capsule&gt;</td><td>no</td><td>Torque does not support=
+ non-polygonal geometry.</td></tr>
+ <tr><td>&lt;tapered_cylinder&gt;</td><td>no</td><td>Torque does not suppor=
+t non-polygonal geometry.</td></tr>
+ <tr><td>&lt;target_value&gt;</td><td>no</td><td>COLLADA Physics is not sup=
+ported</td></tr>
+ <tr><td>&lt;targets&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;technique_common&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;technique_hint&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;technique&gt;</td><td>yes</td><td>See <a href=3D"http://docs.g=
+aragegames.com/torque-3d/official/content/documentation/Artist%20Guide/Form=
+ats/ColladaLoader.html#Appendix2">Appendix 2</a> for a list of supported ex=
+tensions.</td></tr>
+ <tr><td>&lt;texcombiner&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;texcoord&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;texenv&gt;</td><td>no</td><td>COLLADA Shader elements are not =
+supported</td></tr>
+ <tr><td>&lt;texture_env_color&gt;</td><td>no</td><td>COLLADA Shader elemen=
+ts are not supported</td></tr>
+ <tr><td>&lt;texture_env_mode&gt;</td><td>no</td><td>COLLADA Shader element=
+s are not supported</td></tr>
+ <tr><td>&lt;texture_pipeline_enable&gt;</td><td>no</td><td>COLLADA Shader =
+elements are not supported</td></tr>
+ <tr><td>&lt;texture_pipeline&gt;</td><td>no</td><td>COLLADA Shader element=
+s are not supported</td></tr>
+ <tr><td>&lt;texture_unit&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;texture&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;texture1D_enable&gt;</td><td>no</td><td>COLLADA Shader element=
+s are not supported</td></tr>
+ <tr><td>&lt;texture1D&gt;</td><td>no</td><td>COLLADA Shader elements are n=
+ot supported</td></tr>
+ <tr><td>&lt;texture2D_enable&gt;</td><td>no</td><td>COLLADA Shader element=
+s are not supported</td></tr>
+ <tr><td>&lt;texture2D&gt;</td><td>no</td><td>COLLADA Shader elements are n=
+ot supported</td></tr>
+ <tr><td>&lt;texture3D_enable&gt;</td><td>no</td><td>COLLADA Shader element=
+s are not supported</td></tr>
+ <tr><td>&lt;texture3D&gt;</td><td>no</td><td>COLLADA Shader elements are n=
+ot supported</td></tr>
+ <tr><td>&lt;textureCUBE_enable&gt;</td><td>no</td><td>COLLADA Shader eleme=
+nts are not supported</td></tr>
+ <tr><td>&lt;textureCUBE&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;textureDEPTH_enable&gt;</td><td>no</td><td>COLLADA Shader elem=
+ents are not supported</td></tr>
+ <tr><td>&lt;textureDEPTH&gt;</td><td>no</td><td>COLLADA Shader elements ar=
+e not supported</td></tr>
+ <tr><td>&lt;textureRECT_enable&gt;</td><td>no</td><td>COLLADA Shader eleme=
+nts are not supported</td></tr>
+ <tr><td>&lt;textureRECT&gt;</td><td>no</td><td>COLLADA Shader elements are=
+ not supported</td></tr>
+ <tr><td>&lt;title&gt;</td><td>ignored</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;translate&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;transparency&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;transparent&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;triangles&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;trifans&gt;</td><td>yes</td><td>Auto converted to triangle lis=
+ts during loading.</td></tr>
+ <tr><td>&lt;tristrips&gt;</td><td>yes</td><td>Auto converted to triangle l=
+ists during loading.</td></tr>
+ <tr><td>&lt;unit&gt;</td><td>yes</td><td>Only the root &lt;unit&gt; (the o=
+ne under &lt;COLLADA&gt; has effect.=20
+ This value is used as a global scaler applied to the whole model.</td></tr=
+>
+ <tr><td>&lt;up_axis&gt;</td><td>no</td><td>Models that use X_UP or Y_UP wi=
+ll be automatically converted to Z_UP by the COLLADA loader. </td></tr>
+ <tr><td>&lt;usertype&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;value&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;velocity&gt;</td><td>no</td><td>COLLADA Physics is not support=
+ed</td></tr>
+ <tr><td>&lt;vertex_weights&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;vertices&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;viewport_ratio&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;visual_scene&gt;</td><td>yes</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;wrap_p&gt;</td><td>no</td><td>&nbsp;</td></tr>
+ <tr><td>&lt;wrap_s&gt;</td><td>yes</td><td>May be overridden by the MAYA &=
+lt;texture&gt; extension</td></tr>
+ <tr><td>&lt;wrap_t&gt;</td><td>yes</td><td>May be overridden by the MAYA &=
+lt;texture&gt; extension</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<h2>Conclusion</h2>
+
+<p>This article was intended to give you an overview of the COLLADA Loader =
+system in Torque 3D. As an artist, you can always=20
+refer back to this doc to see what features are supported by the tech while=
+ you are generating assets.</p>
+
+</td>
+</tr>
+</tbody>
+</table>
+<div class=3D"footer">   <a href=3D"http://docs.garagegames.com/torque-3d/o=
+fficial/content/content_welcome.html" target=3D"">Home</a>   <a href=3D"htt=
+p://docs.garagegames.com/torque-3d/official/content/documentation/Artist%20=
+Guide/Formats/ColladaLoader.html#">Back to Top</a></div>
+
+</body></html>
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/include/tutorialStyles.css
+
+.componentBox { position: relative; width: 80%; top: 2px; left: 20px; borde=
+r: 1px solid rgb(153, 51, 0); padding: 0px; background-image: url(http://do=
+cs.garagegames.com/torque-3d/official/content/include/docTheme/bg.jpg); bac=
+kground-color: rgb(255, 255, 255); background-position: 100% 0px; backgroun=
+d-repeat: no-repeat; }
+
+a.componentLink { display: inline; position: static; cursor: pointer; }
+
+a.componentNoJSLink { display: none; position: relative; left: 20px; cursor=
+: pointer; }
+
+.highLightBox a { cursor: pointer; }
+
+.highLightBox { position: relative; width: 127px; height: 17px; top: 0px; l=
+eft: 0px; border: 1px solid black; padding: 0px; overflow: hidden; text-ali=
+gn: left; background-color: rgb(204, 204, 204); }
+
+.hightLightText { position: relative; top: -5px; font-size: 18px; font-weig=
+ht: bold; text-align: left; }
+
+.highightBar { position: relative; left: -10px; text-align: left; }
+
+.highightCloseButton { position: relative; left: -15px; }
+
+a.methodTag { display: inline-block; padding-right: 2px; text-decoration: n=
+one; font-style: italic; cursor: pointer; }
+
+a.referenceHeaderLink:hover { color: yellow; text-decoration: none; }
+
+a.referenceHeaderLink { color: rgb(0, 0, 102); text-decoration: none; posit=
+ion: relative; left: 2px; }
+
+a.methodTag:hover { display: inline-block; color: red; }
+
+a.methodTag span { display: inline-block; font-style: normal; font-variant:=
+ normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-h=
+eight: normal; font-family: Arial, Helvetica, sans-serif; top: -4.45em; lef=
+t: -3em; width: 15em; }
+
+a.methodTag:hover span { z-index: 1; display: inline-block; position: absol=
+ute; top: -4.45em; left: -3em; width: 15em; text-align: center; }
+
+.descriptionWindow { display: block; position: absolute; width: 520px; heig=
+ht: 460px; color: black; text-align: left; z-index: 1; border: 1px dotted r=
+gb(166, 194, 145); background-color: rgb(255, 255, 192); }
+
+.descriptionSpanBack { position: relative; display: block; top: 0px; left: =
+0px; width: 100%; height: 100%; background-color: rgb(255, 241, 187); }
+
+.descriptionHeader { position: absolute; width: 507px; height: 17px; left: =
+0px; top: 0px; margin: 5px; overflow: hidden; border: 1px solid rgb(255, 25=
+5, 230); z-index: 3; background-color: rgb(254, 221, 87); }
+
+.descriptionSpanText { position: absolute; display: block; left: 5px; top: =
+29px; width: 487px; height: 100px; padding: 10px; font-size: 0.8em; overflo=
+w: scroll; border-top-width: 1px; border-top-style: dashed; border-top-colo=
+r: rgb(233, 200, 63); border-left-width: 1px; border-left-style: dashed; bo=
+rder-left-color: rgb(233, 200, 63); z-index: 2; background-color: rgb(255, =
+255, 230); }
+
+.descriptionCloseLink { display: block; float: right; height: 17px; width: =
+18px; overflow: hidden; border-left-width: 10px; border-left-style: solid; =
+border-left-color: rgb(255, 255, 192); color: black; cursor: pointer; z-ind=
+ex: 4; font-size: 10px; font-weight: bold; background: url(http://docs.gara=
+gegames.com/torque-3d/official/content/images/closetooltip.gif) 0px 0px no-=
+repeat rgb(255, 255, 230); }
+
+a.descriptionCloseLink:hover { color: red; background-position: 0px -40px; =
+}
+
+.descriptionTitle { display: block; position: relative; left: 15px; top: 2p=
+x; width: 435px; font-weight: bold; font-family: Arial; text-align: left; f=
+ont-size: 10px; padding-right: 1px; color: black; z-index: 4; }
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/include/tutorial.css
+
+body { font-family: Arial; }
+
+.DocHeading { font-size: 32px; font-weight: bold; text-align: center; }
+
+.TutorialSectionHeading { font-size: 26px; font-weight: bold; }
+
+.TutorialSectionBlock { position: relative; left: 2%; display: block; width=
+: 96%; border-style: solid; border-width: 2px; }
+
+.TutorialSummaryBlock { font-size: 16px; font-weight: bold; position: relat=
+ive; display: block; padding-top: 5px; padding-bottom: 5px; padding-left: 5=
+px; border-bottom-style: solid; border-bottom-width: 1px; }
+
+.TutorialBeginSectionBlock { position: relative; display: block; vertical-a=
+lign: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; bor=
+der-bottom-style: solid; border-bottom-width: 1px; }
+
+.TutorialBeginSectionButton { font-size: 14px; font-weight: bold; cursor: p=
+ointer; padding-left: 5px; padding-right: 5px; border-style: solid; border-=
+width: 1px; background-color: rgb(230, 230, 230); }
+
+.TutorialSummaryText { font-size: 14px; font-weight: normal; position: rela=
+tive; display: inline; }
+
+.TutorialStepSetBlock { position: relative; display: block; border-bottom-s=
+tyle: solid; border-bottom-width: 1px; }
+
+.TutorialStepBlock { position: relative; display: block; top: 0px; padding-=
+left: 10px; padding-top: 2px; padding-bottom: 2px; font-size: 16px; font-we=
+ight: bold; }
+
+.TutorialStepImages { position: relative; display: block; padding: 2px 5px;=
+ font-size: 16px; font-weight: bold; }
+
+.TutorialStepImage { position: relative; display: block; margin-bottom: 10p=
+x; border-style: solid; border-width: 1px; }
+
+.TutorialStepHeading { position: relative; display: inline; font-size: 16px=
+; font-weight: bold; vertical-align: top; }
+
+.TutorialStepText { position: relative; display: inline; font-size: 14px; f=
+ont-weight: normal; vertical-align: top; }
+
+.TutorialStepButtonBlock { position: relative; display: block; vertical-ali=
+gn: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; borde=
+r-bottom-style: solid; border-bottom-width: 1px; }
+
+.TutorialStepTopReferenceBarBlock { position: relative; display: block; fon=
+t-size: 16px; font-weight: bold; padding-top: 5px; padding-bottom: 5px; pad=
+ding-left: 5px; border-bottom-style: solid; border-bottom-width: 1px; }
+
+.TutorialStepTopReferenceBar { position: relative; display: inline; top: 2p=
+x; }
+
+.TutorialStepButton { font-size: 14px; cursor: pointer; padding-left: 5px; =
+padding-right: 5px; border-style: solid; border-width: 1px; background-colo=
+r: rgb(230, 230, 230); }
+
+.TutorialStepButton:hover, .TutorialStepLetterButton:hover { background-col=
+or: rgb(102, 153, 255); }
+
+.TutorialStepLetterButton { cursor: pointer; position: relative; top: -1px;=
+ margin-right: 5px; padding-left: 5px; padding-right: 5px; border-style: so=
+lid; border-width: 1px; background-color: rgb(230, 230, 230); }
+
+.TutorialStepSet { position: relative; display: block; width: 100%; height:=
+ 600px; border-right-style: solid; border-right-width: 1px; vertical-align:=
+ top; overflow: auto; }
+
+.TutorialStepImageSet { position: absolute; display: block; top: 32px; left=
+: 75.1%; width: 24.7%; height: 92.3%; border-style: solid; border-width: 0p=
+x; overflow: auto; }
+
+.TutorialWhyBlock { position: relative; display: none; font-size: 0px; font=
+-weight: bold; }
+
+.TutorialWhyText { font-size: 14px; font-weight: normal; position: relative=
+; display: inline; }
+
+.ArticleSectionHeading { position: relative; left: 4px; font-size: 26px; fo=
+nt-weight: bold; }
+
+.ArticleSectionBlock { position: relative; left: 2%; display: block; width:=
+ 96%; border-style: none; border-width: 2px; }
+
+.ArticleSummaryBlock { font-size: 16px; font-weight: bold; position: relati=
+ve; display: inline; padding-top: 0px; padding-bottom: 5px; padding-left: 5=
+px; border-bottom-style: none; border-bottom-width: 1px; }
+
+.ArticleBeginSectionBlock { position: relative; display: none; vertical-ali=
+gn: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; borde=
+r-bottom-style: solid; border-bottom-width: 1px; }
+
+.ArticleBeginSectionButton { display: none; font-size: 14px; font-weight: b=
+old; cursor: pointer; padding-left: 5px; padding-right: 5px; border-style: =
+solid; border-width: 1px; background-color: rgb(230, 230, 230); }
+
+.ArticleSummaryText { font-size: 14px; font-weight: normal; position: relat=
+ive; display: inline; }
+
+.ArticleStepSetBlock { position: relative; display: block; border-bottom-st=
+yle: none; border-bottom-width: 1px; }
+
+.ArticleStepBlock { position: relative; display: block; top: 0px; padding-l=
+eft: 10px; padding-top: 2px; padding-bottom: 12px; font-size: 16px; font-we=
+ight: bold; border-style: none; }
+
+.ArticleStepImages { position: relative; display: block; padding: 2px 5px; =
+font-size: 16px; font-weight: bold; }
+
+.ArticleStepImage { position: relative; display: block; margin-bottom: 10px=
+; border-style: none; border-width: 1px; }
+
+.ArticleStepHeading { position: relative; display: inline; font-size: 16px;=
+ font-weight: bold; vertical-align: top; }
+
+.ArticleStepText { position: relative; left: 15px; margin-right: 15px; padd=
+ing-bottom: 10px; display: block; font-size: 14px; font-weight: normal; ver=
+tical-align: top; }
+
+.ArticleStepTable { position: relative; left: 15px; margin-right: 15px; mar=
+gin-bottom: 10px; margin-top: 10px; border-style: solid; border-width: 1px;=
+ }
+
+.ArticleStepButtonBlock { position: relative; display: block; vertical-alig=
+n: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; border=
+-bottom-style: none; border-bottom-width: 1px; }
+
+.ArticleStepTopReferenceBarBlock { position: relative; display: none; font-=
+size: 16px; font-weight: bold; padding-top: 5px; padding-bottom: 5px; paddi=
+ng-left: 5px; border-bottom-style: none; border-bottom-width: 1px; }
+
+.ArticleStepTopReferenceBar { position: relative; display: inline; top: 2px=
+; }
+
+.ArticleStepButton { font-size: 14px; cursor: pointer; padding-left: 5px; p=
+adding-right: 5px; border-style: solid; border-width: 1px; background-color=
+: rgb(230, 230, 230); }
+
+.ArticleStepButton:hover, .ArticleStepLetterButton:hover { background-color=
+: rgb(102, 153, 255); }
+
+.ArticleStepLetterButton { cursor: pointer; position: relative; top: -1px; =
+margin-right: 5px; padding-left: 5px; padding-right: 5px; border-style: sol=
+id; border-width: 1px; background-color: rgb(230, 230, 230); }
+
+.ArticleStepSet { position: relative; display: block; width: 75%; border-ri=
+ght-style: none; border-right-width: 1px; vertical-align: top; overflow: au=
+to; }
+
+.ArticleStepImageSet { position: absolute; display: block; top: 32px; left:=
+ 75.1%; width: 24.7%; height: 92.3%; border-style: none; border-width: 0px;=
+ overflow: auto; }
+
+.ArticleWhyBlock { position: relative; display: none; font-size: 0px; font-=
+weight: bold; }
+
+.ArticleWhyText { font-size: 14px; font-weight: normal; position: relative;=
+ display: inline; }
+
+.CrossLinkFooterBlock { display: block; position: relative; width: 100%; he=
+ight: 45px; border-style: solid; border-width: 1px; background-color: rgb(2=
+38, 238, 238); }
+
+.CrossLinkTitle { display: block; position: absolute; left: -1px; top: -22p=
+x; border-style: solid; border-width: 1px; background-color: rgb(230, 230, =
+230); }
+
+.CrossLinkFunctionalityBlock { display: block; position: absolute; width: 4=
+8%; height: 95%; left: 1%; background-color: rgb(204, 204, 204); }
+
+.CrossLinkGenreBlock { display: block; position: absolute; width: 48%; heig=
+ht: 95%; left: 51%; background-color: rgb(230, 230, 230); }
+
+pre.code { display: inline-block; font-size: 12px; margin-left: 5px; border=
+-style: solid; border-width: 1px 1px 2px 2px; border-color: black; backgrou=
+nd-color: rgb(238, 238, 238); }
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: image/jpeg
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/include/docTheme/bg.jpg
+
+/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUEBAQEBAUEBAUHBQQFBwkGBQUGCQoICAkICAoNCgsL
+CwsKDQwMDA0MDAwPDxERDw8XFhYWFxkZGRkZGRkZGRn/2wBDAQYGBgoJChMNDRMWEQ4RFhkZGRkZ
+GRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRn/wAARCAH0BkADAREA
+AhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEI/8QAGBABAQEBAQAAAAAAAAAAAAAAABEBEmH/
+xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A
+2WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACU
+C6Bm7QUAAAAAAAAEoFA68BQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBAIAAAAAAAAACAAA/9k=
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: image/jpeg
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/images/code_bg.jpg
+
+/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAAQQAA/+4ADkFkb2JlAGTAAAAAAf/b
+AIQABQQEBAQEBQQEBQcFBAUHCQYFBQYJCggICQgICg0KCwsLCwoNDAwMDQwMDA8PEREPDxcWFhYX
+GRkZGRkZGRkZGQEGBgYKCQoTDQ0TFhEOERYZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZ
+GRkZGRkZGRkZGRkZGRkZGRkZ/8AAEQgAGANcAwERAAIRAQMRAf/EAE0AAQEBAQAAAAAAAAAAAAAA
+AAABBQgBAQAAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAARAQAAAAAAAAAAAAAAAAAA
+AAD/2gAMAwEAAhEDEQA/AOugAAAAUAAAAAAFAAAABQAAAAUAAAFAAAABQAAAUAAAFAAABQAAAUAA
+FAAABQAAAAUAAAFAAAABQAAAAUAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAABnAAAAAAoAAAAAAK
+AAACgAAAAoAAAKAAACgAAAoAAAAKAAACgAAoAAAKAAACgAAAAoAAAKAAAACgAAAAoAAAAAAKAAAA
+AAAAAAAAAAAAAAAAAAAAAAADOAAAAABQAAAAAUAAAAAFAAABQAAAUAAAAFAAABQAAAUAAFAAABQA
+AAUAAAFAAAABQAAAUAAAAFAAAABQAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAH/2Q==
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/include/globalMainPageStyles.css
+
+@page { size: 8.5in 11in; margin: 0.5in 1.25in; }
+
+p { margin-top: 0px; }
+
+body { font-family: Arial, Helvetica, sans-serif; margin: 12px; background-=
+image: url(http://docs.garagegames.com/torque-3d/official/content/include/d=
+ocTheme/bg.jpg); background-attachment: fixed; background-color: rgb(255, 2=
+55, 255); background-position: 100% 0px; background-repeat: no-repeat; }
+
+a.methodTag { position: relative; cursor: pointer; border-width: 1px; borde=
+r-style: dotted dotted dashed; border-color: rgb(255, 255, 255) rgb(255, 25=
+5, 255) rgb(208, 224, 194); padding: 0px 2px; }
+
+pre a.methodTag { border-width: 1px; border-style: dotted dotted dashed; bo=
+rder-color: rgb(244, 244, 244) rgb(244, 244, 244) rgb(208, 224, 194); }
+
+td a.methodTag, .note a.methodTag { border-width: 1px; border-style: dotted=
+ dotted dashed; border-color: rgb(244, 245, 255) rgb(244, 245, 255) rgb(174=
+, 183, 255); }
+
+a.methodTag:hover { border: 1px dashed rgb(208, 224, 194); background: rgb(=
+255, 255, 192); }
+
+pre a.methodTag:hover { background: rgb(255, 255, 192); }
+
+td a.methodTag:hover, .note a.methodTag:hover { border: 1px dashed rgb(174,=
+ 183, 255); background: rgb(255, 241, 187); }
+
+a.methodTag span { display: none; white-space: normal; font-style: normal; =
+font-variant: normal; font-stretch: normal; font-size: 11px; font-family: A=
+rial, Helvetica, sans-serif; line-height: 1.3em; font-weight: bold; border:=
+ 1px dotted rgb(166, 194, 145); padding: 0.5em; background: rgb(255, 255, 1=
+92); }
+
+pre a.methodTag span { background: rgb(255, 255, 192); }
+
+a.methodTag:hover span { z-index: 1; display: block; position: absolute; to=
+p: -5.45em; left: -3em; width: 15em; text-align: center; }
+
+pre.code { font-size: 12px; padding: 8px; border: 1px dashed rgb(208, 224, =
+194); margin: 16px 10px; line-height: 1.3em; background-image: url(http://d=
+ocs.garagegames.com/torque-3d/official/content/images/code_bg.jpg); backgro=
+und-attachment: scroll; background-color: rgb(244, 244, 244); background-po=
+sition: 100% 50%; background-repeat: repeat-y; }
+
+#highLightHUD { padding: 0px; height: 28px; width: 136px; margin-bottom: 15=
+px; border: 1px dashed rgb(208, 224, 194); font-size: 10px; text-align: lef=
+t; background-image: url(http://docs.garagegames.com/torque-3d/official/con=
+tent/images/code_bg.jpg); background-attachment: scroll; background-color: =
+rgb(175, 201, 156); background-position: 100% 50%; background-repeat: repea=
+t-y; }
+
+#highLightHUD a, #highLightHUD div { text-align: center; text-decoration: u=
+nderline; font-weight: bold; height: 18px; width: 128px; position: absolute=
+; top: 4px; left: 4px; display: block; padding-top: 3px; }
+
+#highLightHUD a { background-color: yellow; }
+
+.footer { font-size: 11px; width: 99%; margin: 50px 0px 0px; padding: 8px; =
+text-align: left; background-image: url(http://docs.garagegames.com/torque-=
+3d/official/content/images/code_bg.jpg); background-repeat: repeat-y; }
+
+.footer .copy { display: block; text-align: right; float: right; }
+
+.footer a { margin: 0px 5px; }
+
+.imageright { float: right; margin: 5px 20px 20px; padding: 8px; border: 1p=
+x dashed rgb(208, 224, 194); background-color: rgb(255, 255, 255); }
+
+td.infoTD { vertical-align: top; padding: 15px; }
+
+.warningBox { position: relative; display: block; border: 3px dashed rgb(22=
+1, 0, 0); padding: 20px; margin-bottom: 50px; background-color: rgb(249, 24=
+2, 242); }
+
+.warningBox h2 { color: red; margin-top: -10px; }
+
+.titleText { font-style: normal; font-variant: normal; font-weight: bold; f=
+ont-stretch: normal; font-size: 26px; line-height: normal; font-family: Ari=
+al; }
+
+.tagBox { width: 99%; border-style: none; border-width: 1px; background-ima=
+ge: url(http://docs.garagegames.com/torque-3d/official/content/images/code_=
+bg.jpg); background-repeat: repeat-y; }
+
+.functionalityBox, .genreBox { width: 50%; border-style: none; border-width=
+: 1px; }
+
+.functionalityBox { border-color: green; }
+
+.genreBox { border-color: blue; }
+
+.genreTitle, .functionalityTitle { font-size: 13px; font-weight: bold; }
+
+.genreTagSubTitle, .functionalityTagSubTitle { display: block; font-size: 1=
+3px; font-weight: bold; margin-top: 3px; }
+
+.functionalityEntry, .genreEntry { display: block; font-family: Arial; font=
+-size: 13px; }
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/include/referenceThemeStyle.css
+
+
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/include/docTheme/theme.css
+
+html.toc { background-color: rgb(251, 251, 249); }
+
+pre.code { border-color: rgb(208, 224, 194); }
+
+.tocLabel { color: rgb(255, 255, 255); }
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/include/container.css
+
+body { padding: 0px; margin: 0px; text-align: left; }
+
+#body-with-lockmark { background-image: url(http://docs.garagegames.com/tor=
+que-3d/official/content/images/background_lock.png); background-attachment:=
+ fixed; background-position: 100% 100%; background-repeat: no-repeat; }
+
+#content { min-width: 550px; margin: 1em auto; width: 100%; text-align: lef=
+t; }
+
+#sidebar { left: 5px; width: 159px; position: absolute; top: 98px; }
+
+#sidebar-content { padding: 0.5em 1em; font-size: 70%; margin: 0px; }
+
+#main { padding: 5px; margin: 0px 0px 0px 160px; }
+
+#main-content { padding: 0.25em 0.5em; font-size: 100%; margin: -22px 0px; =
+}
+
+hr.cleaner { clear: both; padding: 0px; visibility: hidden; margin: -1px 0p=
+x 0px; border-style: none; height: 1px; }
+
+#headerTop { width: 100%; height: 56px; background: url(http://docs.garageg=
+ames.com/torque-3d/official/content/images/header_03.png) 0px 6px repeat-x =
+rgb(255, 255, 255); }
+
+#headerTop img.left { border-width: 0px; z-index: 4; left: 0px; position: a=
+bsolute; top: 6px; }
+
+#headerTop img.right { border-width: 0px; right: 0px; position: absolute; t=
+op: 6px; }
+
+.printfooter { display: none; }
+
+@media print {=20
+  #leftcol { display: none; }
+  #navlogin { display: none; }
+}
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/include/bullet.gif
+
+R0lGODlhEwATAIABAAAAAO7u7iH5BAEAAAEALAAAAAATABMAAAIVjI+py+0Po5y0LoApBjrbD4bi
+SEIFADs=
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/include/content.css
+
+body { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdana=
+, arial, helvetica, sans-serif; }
+
+p { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdana, a=
+rial, helvetica, sans-serif; }
+
+h1 { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdana, =
+arial, helvetica, sans-serif; }
+
+h2 { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdana, =
+arial, helvetica, sans-serif; }
+
+h3 { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdana, =
+arial, helvetica, sans-serif; }
+
+table { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdan=
+a, arial, helvetica, sans-serif; }
+
+td { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdana, =
+arial, helvetica, sans-serif; }
+
+th { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdana, =
+arial, helvetica, sans-serif; }
+
+ul { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdana, =
+arial, helvetica, sans-serif; }
+
+ol { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdana, =
+arial, helvetica, sans-serif; }
+
+textarea { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, ver=
+dana, arial, helvetica, sans-serif; }
+
+input { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verdan=
+a, arial, helvetica, sans-serif; }
+
+select { font-size: 9pt; color: rgb(34, 34, 34); font-family: Geneva, verda=
+na, arial, helvetica, sans-serif; }
+
+a.new { color: rgb(186, 0, 0); }
+
+#p-personal a.new { color: rgb(186, 0, 0); }
+
+a.new:visited { color: rgb(165, 88, 88); }
+
+#p-personal a.new:visited { color: rgb(165, 88, 88); }
+
+table { font-size: 100%; }
+
+img { vertical-align: middle; border-style: none; }
+
+p { margin: 0.4em 0em 0.5em; line-height: 1.2em; }
+
+p img { margin: 0px; }
+
+hr { border-width: 0px; margin: 0.2em 0px; color: rgb(170, 170, 170); heigh=
+t: 1px; background-color: rgb(170, 170, 170); }
+
+h1 { font-weight: normal; padding-bottom: 0.17em; margin: 0px; color: black=
+; padding-top: 0.5em; border-bottom-color: rgb(170, 170, 170); border-botto=
+m-width: 1px; border-bottom-style: solid; background: none 0% 0% repeat scr=
+oll transparent; }
+
+h2 { font-weight: normal; padding-bottom: 0.17em; margin: 0px; color: black=
+; padding-top: 0.5em; border-bottom-color: rgb(170, 170, 170); border-botto=
+m-width: 1px; border-bottom-style: solid; background: none 0% 0% repeat scr=
+oll transparent; }
+
+h3 { font-weight: normal; padding-bottom: 0.17em; margin: 0px; color: black=
+; padding-top: 0.5em; border-bottom-color: rgb(170, 170, 170); border-botto=
+m-width: 1px; border-bottom-style: solid; background: none 0% 0% repeat scr=
+oll transparent; }
+
+h4 { font-weight: normal; padding-bottom: 0.17em; margin: 0px; color: black=
+; padding-top: 0.5em; border-bottom-color: rgb(170, 170, 170); border-botto=
+m-width: 1px; border-bottom-style: solid; background: none 0% 0% repeat scr=
+oll transparent; }
+
+h5 { font-weight: normal; padding-bottom: 0.17em; margin: 0px; color: black=
+; padding-top: 0.5em; border-bottom-color: rgb(170, 170, 170); border-botto=
+m-width: 1px; border-bottom-style: solid; background: none 0% 0% repeat scr=
+oll transparent; }
+
+h6 { font-weight: normal; padding-bottom: 0.17em; margin: 0px; color: black=
+; padding-top: 0.5em; border-bottom-color: rgb(170, 170, 170); border-botto=
+m-width: 1px; border-bottom-style: solid; background: none 0% 0% repeat scr=
+oll transparent; }
+
+h1 { font-size: 188%; }
+
+h2 { font-size: 150%; }
+
+h3 { font-weight: bold; border-bottom-style: none; }
+
+h4 { font-weight: bold; border-bottom-style: none; }
+
+h5 { font-weight: bold; border-bottom-style: none; }
+
+h6 { font-weight: bold; border-bottom-style: none; }
+
+h3 { font-size: 132%; }
+
+h4 { font-size: 116%; }
+
+h5 { font-size: 100%; }
+
+h6 { font-size: 80%; }
+
+ul { padding: 0px; list-style-image: url(http://docs.garagegames.com/torque=
+-3d/official/content/include/bullet.gif); margin: 0.3em 0px 0px 1.5em; line=
+-height: 1.5em; list-style-type: square; }
+
+ol { padding: 0px; list-style-image: none; margin: 0.3em 0px 0px 3.2em; lin=
+e-height: 1.5em; }
+
+li { margin-bottom: 0.1em; }
+
+dt { font-weight: bold; margin-bottom: 0.1em; }
+
+dl { margin-top: 0.2em; margin-bottom: 0.5em; }
+
+dd { margin-bottom: 0.1em; margin-left: 2em; line-height: 1.5em; }
+
+fieldset { border: 1px solid rgb(47, 111, 171); padding: 0em 1em 1em; margi=
+n: 1em 0em; line-height: 1.5em; }
+
+legend { padding: 0.5em; font-size: 95%; background: white; }
+
+form { margin: 0px; border-style: none; }
+
+textarea { padding: 0.1em; width: 100%; }
+
+select { vertical-align: top; }
+
+abbr { cursor: help; color: black; border-bottom-color: black; border-botto=
+m-width: 1px; border-bottom-style: dotted; background: none 0% 0% repeat sc=
+roll transparent; }
+
+acronym { cursor: help; color: black; border-bottom-color: black; border-bo=
+ttom-width: 1px; border-bottom-style: dotted; background: none 0% 0% repeat=
+ scroll transparent; }
+
+.explain { cursor: help; color: black; border-bottom-color: black; border-b=
+ottom-width: 1px; border-bottom-style: dotted; background: none 0% 0% repea=
+t scroll transparent; }
+
+q { font-style: italic; font-family: Times, 'Times New Roman', serif; }
+
+code { background-color: rgb(249, 249, 249); }
+
+pre { border: 1px dashed rgb(47, 111, 171); padding: 1em; color: black; lin=
+e-height: 1.1em; background-color: rgb(249, 249, 249); }
+
+.usermessage { border: 1px solid rgb(255, 165, 0); padding: 0.5em 1em; font=
+-weight: bold; margin: 2em 0em 1em; vertical-align: middle; color: black; b=
+ackground-color: rgb(255, 206, 123); }
+
+#siteNotice { padding: 0px 0.9em; font-size: 95%; text-align: center; }
+
+#siteNotice p { padding: 0px; margin: 0px; }
+
+.error { font-size: larger; color: red; }
+
+#catlinks { clear: both; border: 1px solid rgb(170, 170, 170); padding: 5px=
+; margin-top: 1em; background-color: rgb(249, 249, 249); }
+
+.documentByLine { clear: both; font-weight: normal; font-size: 90%; color: =
+rgb(118, 121, 124); text-align: right; }
+
+#siteSub { display: none; }
+
+.center { width: 100%; text-align: center; }
+
+.center * { margin-left: auto; margin-right: auto; }
+
+.small { font-size: 94%; }
+
+.small * { font-size: 94%; }
+
+table.small { font-size: 100%; }
+
+#toc { border: 1px solid rgb(170, 170, 170); padding: 5px; font-size: 95%; =
+background-color: rgb(249, 249, 249); }
+
+#toc .tocindent { margin-left: 2em; }
+
+#toc .tocline { margin-bottom: 0px; }
+
+#toc p { margin: 0px; }
+
+#toc .toctoggle { font-size: 94%; }
+
+#toc .editsection { margin-top: 0.7em; font-size: 94%; }
+
+div.floatright { border-width: 0px; clear: right; float: right; margin: 0px=
+ 0px 0.5em 0.5em; position: relative; }
+
+table.floatright { border-width: 0px; clear: right; float: right; margin: 0=
+px 0px 0.5em 0.5em; position: relative; }
+
+div.floatright p { font-style: italic; }
+
+div.floatleft { border-width: 0px; float: left; margin: 0px 0.5em 0.5em 0px=
+; position: relative; }
+
+table.floatleft { border-width: 0px; float: left; margin: 0px 0.5em 0.5em 0=
+px; position: relative; }
+
+div.floatleft p { font-style: italic; }
+
+div.thumb { border-color: white; margin-bottom: 0.5em; width: auto; border-=
+style: solid; }
+
+div.thumb div { border: 1px solid rgb(204, 204, 204); font-size: 94%; overf=
+low: hidden; text-align: center; padding: 3px !important; background-color:=
+ rgb(249, 249, 249); }
+
+div.thumb div a img { border: 1px solid rgb(204, 204, 204); }
+
+div.thumb div div.thumbcaption { padding: 0.3em 0px 0.1em; border-style: no=
+ne; line-height: 1.4em; text-align: left; }
+
+div.magnify { float: right; border-style: none !important; background: none=
+ 0% 0% repeat scroll transparent; }
+
+div.magnify a { display: block; border-style: none !important; background: =
+none 0% 0% repeat scroll transparent; }
+
+div.magnify img { display: block; border-style: none !important; background=
+: none 0% 0% repeat scroll transparent; }
+
+div.tright { border-width: 0.5em 0px 0.8em 1.4em; clear: right; float: righ=
+t; }
+
+div.tleft { border-width: 0.5em 1.4em 0.8em 0px; float: left; margin-right:=
+ 0.5em; }
+
+.urlexpansion { display: none; }
+
+.hiddenStructure { display: none; }
+
+img.tex { vertical-align: middle; }
+
+span.texhtml { font-family: serif; }
+
+.autocomment { color: gray; }
+
+#pagehistory span.user { margin-left: 1.4em; margin-right: 0.4em; }
+
+#pagehistory span.minor { font-weight: bold; }
+
+#pagehistory li { border: 1px solid white; }
+
+#pagehistory li.selected { border: 1px dashed rgb(170, 170, 170); backgroun=
+d-color: rgb(249, 249, 249); }
+
+table.diff { background: white; }
+
+td.diff-otitle { background: rgb(255, 255, 255); }
+
+td.diff-ntitle { background: rgb(255, 255, 255); }
+
+td.diff-addedline { font-size: smaller; background: rgb(204, 255, 204); }
+
+td.diff-deletedline { font-size: smaller; background: rgb(255, 255, 170); }
+
+td.diff-context { font-size: smaller; background: rgb(238, 238, 238); }
+
+span.diffchange { font-weight: bold; color: red; }
+
+#footer { padding: 5px; margin: 180px 10px 10px 180px; text-align: center; =
+background: rgb(238, 238, 238); }
+
+#footer li { display: inline; font-size: 70%; margin: 0px 1.3em; }
+
+head:first-child + body #footer li { white-space: nowrap; }
+
+#f-poweredbyico { margin: 0px 10px; position: relative; top: -2px; }
+
+#f-copyrightico { margin: 0px 10px; position: relative; top: -2px; }
+
+#f-poweredbyico { float: right; height: 1%; }
+
+#f-copyrightico { float: left; height: 1%; }
+
+#preftoc { float: left; margin: 1em; width: 13em; }
+
+#preftoc li { border: 1px solid white; }
+
+#preftoc li.selected { border: 1px dashed rgb(170, 170, 170); background-co=
+lor: rgb(249, 249, 249); }
+
+#preftoc a { display: block; color: rgb(0, 20, 166); }
+
+#preftoc a:active { display: block; color: rgb(0, 20, 166); }
+
+#prefcontrol { clear: both; margin-top: 1em; float: left; }
+
+div.prefsectiontip { margin-top: 1em; font-size: 95%; }
+
+fieldset.operaprefsection { margin-left: 15em; }
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/documentation/Artist%20Guide/Formats/images/torque_axes.png
+
+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
+AAAAAElFTkSuQmCC
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://docs.garagegames.com/torque-3d/official/content/documentation/Artist%20Guide/Formats/images/IconCancel.png
+
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0
+U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALnSURBVHjaYvz//z8DJQAggFjQBZ62NsQx
+/Pub+f/vP32Gv3+////7h+H/37+cQHyR4c+f6fITpi1CVg8QQIzILgBqjmfl41ogYKTJwMrPw/D/
+9x8Ghr//GBiBcr/evmd4e+QMw89Xb5IUZy6YD9MDEEBwA5621Cey8HLNEzTWYmD79pSB4dUjBoZ/
+/xgYQIb8/MnAwC/J8JNXhuH1wRMMP1+/TVZetHIeSB9AAIENeNpcl8jCB9RsBNT8Faj52T0GoHOB
+1v4GGvAbYsivXwwM4goMPwXkGF4eOA5ySaLq6k0LAAKICWQK0J+ZgoaaDGwfHzMwPLrNwCAow8Cg
+4wjU+JeB4TvQdk0rBgYhaQaGW1cY2J/cYBCzNAJ671cmSC9AAEEC8c9fPVZubgaGa0CbfwJt4uBn
+YLDyY2DgEmRg+PYZyPZiYFg1BSh/iYHh9lUGdmU9oAG/9UFaAQIIbMD/P7+//f/5k50RZOMPoI3n
+DjIwsHAyMLiGQ0Lq4EYGhsM7IHKMTAz/fvwCGfANJAUQQGAD/oH8C3Pu918QTazsiLhiBRr25x/c
+AKCLQZaCpQACCOKC37+5GRmAsfHtG8QQY3sGBocABoZdaxgYPn9gYAhOAQYsMFZWzGQAKWNiBOn5
+ww3SCxBAkDD4/fvy77fvjdmEgQF15xoDw70bDAyLJjAw7NsEtA1o06vnwHh+DIlOJS2GH6/egFxw
+GaQVIICgXvg9/dWR03NETfUZ2L99Z2C4CZS7dhESjSDv7VgPNuiPshbDTyUdhme79wEN+DsdpBcg
+gOAJ6W5MaAorL89sMTMjBo77V4AuAbri/z9wavz98wfDPzllhl/A0H+5Zz8wDbxO1TlzZQ5IH0AA
+oSTlW8E+iez8vPPEzIwZ2AT4Gf4CE8+/f3/BAff9zVuGN/sPMvx8/jJJ5+xVeFIGCCBG9Nx408sp
+7v+fP8DM9FcfSH9nQGSmS0A8XffstYXI6gECiJHS7AwQYACMV1YWXm+MdQAAAABJRU5ErkJggg==
+------=_NextPart_000_7846_5A5C6BF8.6587C6BB--

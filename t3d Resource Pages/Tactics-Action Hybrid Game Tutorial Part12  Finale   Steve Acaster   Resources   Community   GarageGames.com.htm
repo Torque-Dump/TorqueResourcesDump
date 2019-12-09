@@ -1,0 +1,608 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0057)http://www.garagegames.com/community/resources/view/21013 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="Valkyria Chronicles style turnbased, 3rd person squad tactics-action hybrid gametype for Torque3D (singleplayer). Part Twelve - Final Part.">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Tactics-Action Hybrid Game Tutorial Part12: Finale | Steve Acaster | Resources | Community | GarageGames.com</title>		<link href="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/21013#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/21013#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Tactics-Action Hybrid Game Tutorial Part12: Finale</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/101767">Steve Acaster</a>
+			<strong>·</strong>
+			05/13/2011 (3:14 pm)			<strong>·</strong>
+			5 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21005">Back to Part Eleven: Ai Paths</a><br>
+<br>
+It's time to complete our game Tutorial and finish this working level.<br>
+<br>
+Near the rock where out two paths end, create a new trigger and call it "trig3" and scale it so it stretches over the route. We'll have two more Enemy Ai spawn at the starting markers of the two paths, but this time these Ai will just be static. Well also have a third Ai spawn, so place a spawnSphere or wayPoint halfway down the dead-end alley which this rock is outside the entrance of, and call it "botspawn3". Put the trigger in the appropriate folder/simGroup and in the enterCommand:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">if</span><span>(trig3.triggerOff&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot5))&nbsp;&nbsp;</span></span></li><li class=""><span>aiplayer::tacticsSpawn(bot5,&nbsp;path1start,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot6))&nbsp;&nbsp;</span></span></li><li class=""><span>aiplayer::tacticsSpawn(bot6,&nbsp;path2start,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot7))&nbsp;&nbsp;</span></span></li><li class=""><span>aiplayer::tacticsSpawn(bot7,&nbsp;botspawn3,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span>trig3.triggerOff&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">if(trig3.triggerOff == 1)
+return;
+if(!isObject(bot5))
+aiplayer::tacticsSpawn(bot5, path1start, 0);
+if(!isObject(bot6))
+aiplayer::tacticsSpawn(bot6, path2start, 0);
+if(!isObject(bot7))
+aiplayer::tacticsSpawn(bot7, botspawn3, 0);
+trig3.triggerOff = 1;</pre><br>
+Notice that we are missing the "paths" variable from the spawn functions - thus there are no paths for these new Ai to follow and they will reamin stationary.<br>
+<br>
+Next go to the last rock on the route and place waypoints at either side of it, call them "botspawn3" and "botspawn4". Create a trigger called "trig4", and position it across the route just behind the penultimate rock where our two paths start.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">if</span><span>(trig4.triggerOff&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot8))&nbsp;&nbsp;</span></span></li><li class=""><span>aiplayer::tacticsSpawn(bot8,botspawn4,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot9))&nbsp;&nbsp;</span></span></li><li class=""><span>aiplayer::tacticsSpawn(bot9,&nbsp;botspawn5,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span>trig4.triggerOff&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">if(trig4.triggerOff == 1)
+return;
+if(!isObject(bot8))
+aiplayer::tacticsSpawn(bot8,botspawn4, 0);
+if(!isObject(bot9))
+aiplayer::tacticsSpawn(bot9, botspawn5, 0);
+trig4.triggerOff = 1;</pre><br>
+They will be one more enemy engagement for our Ally Team before the "Finale" at the station01 model. Halfway down the final dead-end alley place a spawnSphere and call it "botspawn6", we'll give this Ai a "goal", somewhere to run to in a straight line with nothing in the way, and thus save ourselves the time of creating a path. Just outside the entrance to this last dead-end alley, in direct view of the spawnSphere, create a wayPoint or spawnSphere and call it "bot6goal" which goes in the "bot_paths" folder in the "Scene Inspector".<br>
+<br>
+Now create two new paths, have them start in our large, circular area with the station, just inside of the entrance way, and so that they cannot be seen from the last corner of the route. Call these paths "botpath3" and "botpath4", and call their starting nodes "path3start" and "path4start" respectively. Remember to add all paths to their "bot_paths" folder/simGroup or the Ai will not follow them.<br>
+<br>
+Create a new trigger called "trig5" and place it at the final corner, past the last rock but before the last dead-end alley. make it a big square to fill the route at the corner.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">if</span><span>(trig5.triggerOff&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot10))&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>aiplayer::tacticsSpawn(bot10,&nbsp;botspawn6&nbsp;,&nbsp;0);&nbsp;&nbsp;</span></li><li class=""><span>bot10.goal=bot6goal;&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">if</span><span>(!isObject(bot11))&nbsp;&nbsp;</span></span></li><li class="alt"><span>aiplayer::tacticsSpawn(bot11,&nbsp;path3start,&nbsp;0,&nbsp;botpath3);&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">if</span><span>(!isObject(bot12))&nbsp;&nbsp;</span></span></li><li class="alt"><span>aiplayer::tacticsSpawn(bot12,&nbsp;path4start,&nbsp;0,&nbsp;botpath4);&nbsp;&nbsp;</span></li><li class=""><span>trig5.triggerOff&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">if(trig5.triggerOff == 1)
+return;
+if(!isObject(bot10))
+{
+aiplayer::tacticsSpawn(bot10, botspawn6 , 0);
+bot10.goal=bot6goal;
+}
+if(!isObject(bot11))
+aiplayer::tacticsSpawn(bot11, path3start, 0, botpath3);
+if(!isObject(bot12))
+aiplayer::tacticsSpawn(bot12, path4start, 0, botpath4);
+trig5.triggerOff = 1;</pre><br>
+Save and save often - remember, if you have been playtesting whilst building a level, some of your triggers may have been "turned off", so you need to edit their "triggerOff" variable and reset it to "0".<br>
+<br>
+Now let's make our "finale". Outside the station01, on either side of it (looking from the route the Ally Team will approach) add spawnspheres called "botspawn7" and "botspawn8". Move them so that they have the entrance to the final area in view. Create two more called "botspawn9" and "botspawn10" and place one in each of the lower towers of station01 model, near to the doorway (they won't be able to see the entrance to the final area directly but will be able to see close to it).<br>
+<br>
+Create two new paths, "botpath5" and "botpath6" with their starting markers called "path5start" and "path6start" respectively. Both of these paths should start behind one of the station01 towers - where it cannot be seen from the entrance route to the final area, and then have a trial of "path nodes/markers" which run underneath the bridge of station01 and come to a stop just a little way in front of the station01 model.<br>
+<br>
+Now we need our final trigger to spawn these Enemy Team defenders, as well as to check for "victory conditions" (we created the variable "vitory = 0" when the "turnManager" spawned at "startGame"). Place a new trigger called "final_trig", down the route leading to the final area with the station01 model,  between the entrance to this final area and the entrance to the last dead-end alley and make it large so that it covers most of this part of the route (scale = 30 30 5). It is highly likely that in-game an Enemy Team member will move through this trigger and start it off before a member of Ally Team does, so we'll need some script to make certain that only Ally Team members can cause this trigger to fire. For this we need to identify which object has entered the trigger and for this we use the "tickCommand".<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">if</span><span>(final_trig.triggerOff&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">for</span><span>(%x=0;&nbsp;%x&nbsp;&lt;&nbsp;final_trig.getNumObjects();&nbsp;%x++)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>%obj&nbsp;=&nbsp;final_trig.getObject(%x);&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">if</span><span>(%obj.team&nbsp;!=&nbsp;1)&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>final_spawn();&nbsp;&nbsp;</span></li><li class="alt"><span>final_trig.triggerOff&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">if(final_trig.triggerOff == 1)
+return;
+for(%x=0; %x &lt; final_trig.getNumObjects(); %x++)
+{
+%obj = final_trig.getObject(%x);
+if(%obj.team != 1)
+return;
+final_spawn();
+final_trig.triggerOff = 1;
+}</pre><br>
+How it works: the trigger counts all of the objects inside it every "tick" (500m/s for stock defaultTrigger datablock), if that playerObject is not of "team = 1" it aborts before the main body of the trigger is reached. When an Ally playerObject is inside the trigger it will start the function "final_spawn()" and then set the "triggerOff" to "true", effectively disabling the trigger. In <i>scripts/server/gameTorqueTactics.cs</i> add the new function at the bottom.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>final_Spawn()&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot13))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;aiplayer::tacticsSpawn(bot13,&nbsp;botspawn7&nbsp;,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot14))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;aiplayer::tacticsSpawn(bot14,&nbsp;botspawn8&nbsp;,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot15))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;aiplayer::tacticsSpawn(bot15,&nbsp;botspawn9&nbsp;,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot16))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;aiplayer::tacticsSpawn(bot16,&nbsp;botspawn10,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot17))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;aiplayer::tacticsSpawn(bot17,&nbsp;path3start,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot18))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;aiplayer::tacticsSpawn(bot18,&nbsp;path4start,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot19))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;aiplayer::tacticsSpawn(bot19,&nbsp;path5start,&nbsp;0,&nbsp;botpath5);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot20))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;aiplayer::tacticsSpawn(bot20,&nbsp;path6start,&nbsp;0,&nbsp;botpath6);&nbsp;&nbsp;</span></li><li class="alt"><span>start_victory_check();&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">final_Spawn()
+{
+if(!isObject(bot13))
+	aiplayer::tacticsSpawn(bot13, botspawn7 , 0);
+if(!isObject(bot14))
+	aiplayer::tacticsSpawn(bot14, botspawn8 , 0);
+if(!isObject(bot15))
+	aiplayer::tacticsSpawn(bot15, botspawn9 , 0);
+if(!isObject(bot16))
+	aiplayer::tacticsSpawn(bot16, botspawn10, 0);
+if(!isObject(bot17))
+	aiplayer::tacticsSpawn(bot17, path3start, 0);
+if(!isObject(bot18))
+	aiplayer::tacticsSpawn(bot18, path4start, 0);
+if(!isObject(bot19))
+	aiplayer::tacticsSpawn(bot19, path5start, 0, botpath5);
+if(!isObject(bot20))
+	aiplayer::tacticsSpawn(bot20, path6start, 0, botpath6);
+start_victory_check();
+}</pre><br>
+The object of the game we are creating in this Tutorial is to capture the station01 model, so the Ally Team will have to kill all of the Enemy Team which defend it - but don't have to kill all of the Enemy Team in the level (though due to the linear nature of the mission route, it is likely that they did). We need to check when this "victory condition" has been met and for this purpose we will have a function which will loop until the defending Ai members are deceased. "Final_Spawn" calls, "start_Victory_Check()" to begin this function, and this in turn loops "victory_Check()".<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;start_Victory_Check()&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(!isObject($Defend))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;arrayobject();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(bot13))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.add(bot13,&nbsp;bot13.getID());&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(bot14))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.add(bot14,&nbsp;bot14.getID());&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(bot15))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.add(bot15,&nbsp;bot15.getID());&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(bot16))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.add(bot16,&nbsp;bot16.getID());&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(bot17))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.add(bot17,&nbsp;bot17.getID());&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(bot18))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.add(bot18,&nbsp;bot18.getID());&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(bot19))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.add(bot19,&nbsp;bot19.getID());&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(bot20))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.add(bot20,&nbsp;bot20.getID());&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MissionCleanup.add($EnemyManager);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;schedule(1000,&nbsp;turnManager,&nbsp;<span class="string">"victory_Check"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;victory_Check()&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>%count&nbsp;=&nbsp;$Defend.count();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">if</span><span>(%count&nbsp;&gt;&nbsp;0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>(%i=0;&nbsp;%i&nbsp;&lt;&nbsp;%count;&nbsp;%i++)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%bot&nbsp;=&nbsp;$Defend.getkey(%i);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(!isObject(%bot))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%k&nbsp;=&nbsp;$Defend.getindexfromkey(%bot);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.erase(%k);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%bot.getState()&nbsp;$=&nbsp;</span><span class="string">"Dead"</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%k&nbsp;=&nbsp;$Defend.getindexfromkey(%bot);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.erase(%k);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;schedule(2000,&nbsp;turnManager,&nbsp;<span class="string">"victory_Check"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"Victory&nbsp;Conditions&nbsp;have&nbsp;been&nbsp;met!&nbsp;No&nbsp;Defenders&nbsp;left!"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;turnManager.victory&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function start_Victory_Check()
+{
+	if(!isObject($Defend))
+	{
+		$Defend = new arrayobject();
+
+		if(isObject(bot13))
+			$Defend.add(bot13, bot13.getID());
+		if(isObject(bot14))
+			$Defend.add(bot14, bot14.getID());
+		if(isObject(bot15))
+			$Defend.add(bot15, bot15.getID());
+		if(isObject(bot16))
+			$Defend.add(bot16, bot16.getID());
+		if(isObject(bot17))
+			$Defend.add(bot17, bot17.getID());
+		if(isObject(bot18))
+			$Defend.add(bot18, bot18.getID());
+		if(isObject(bot19))
+			$Defend.add(bot19, bot19.getID());
+		if(isObject(bot20))
+			$Defend.add(bot20, bot20.getID());
+		MissionCleanup.add($EnemyManager);
+	}
+	schedule(1000, turnManager, "victory_Check");
+}
+
+function victory_Check()
+{
+%count = $Defend.count();
+
+if(%count &gt; 0)
+{
+	for(%i=0; %i &lt; %count; %i++)
+	{
+		%bot = $Defend.getkey(%i);
+		if(!isObject(%bot))
+		{
+			%k = $Defend.getindexfromkey(%bot);
+   			$Defend.erase(%k);
+		}
+		else
+		{
+			if(%bot.getState() $= "Dead")
+			{
+				%k = $Defend.getindexfromkey(%bot);
+				$Defend.erase(%k);
+			}
+		}
+	}
+	schedule(2000, turnManager, "victory_Check");
+	}
+	else
+	{
+		echo("Victory Conditions have been met! No Defenders left!");
+		turnManager.victory = 1;
+	}
+
+}</pre><br>
+Make sure that this new arrayObject get's deleted when the game ends.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21013#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;TorqueTacticsGame::endGame(%game)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(turnManager))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TurnManager.<span class="keyword">delete</span><span>();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"Deleting&nbsp;Turn&nbsp;Management&nbsp;System"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject($Defend))</span><span class="comment">//&lt;---&nbsp;yorks</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Defend.<span class="keyword">delete</span><span>();</span><span class="comment">//yorks&nbsp;&lt;---</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;parent::endGame(%game);&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function TorqueTacticsGame::endGame(%game)
+{
+
+//...
+	
+	if(isObject(turnManager))
+	{	
+		TurnManager.delete();
+		echo("Deleting Turn Management System");
+	}
+
+	if(isObject($Defend))//&lt;--- yorks
+		$Defend.delete();//yorks &lt;---
+
+   parent::endGame(%game);
+//...</pre><br>
+When the victory condition has been met, it will be used when we the Turn changes in "TurnOver" Server Command which we made earlier.<br>
+<br>
+You should now have a functioning 3rd person, turnbased squad tactics/action hybrid similar in gameplay style to "Valkyria Chronicles" ... because Torque3D is not just for Tribes style First Person Shooters - but anything which you have the will to create.</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/101767.png" alt="Steve Acaster&#39;s profile picture">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				One Bloke ... In His Bedroom ... Trying To Make Computer Games ... eventually ...			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21015">Move Rock - Circumnavigate Rock - Go Off On Tangent</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21012"> Tactics-Action Hybrid Game Tutorial Part11: Ai Paths</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21005">Tactics-Action Hybrid Game Tutorial Part10: GamePlay Test</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21003">Tactics-Action Hybrid Game Tutorial Part9: Ai Combat</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21002">Tactics-Action Hybrid Game Tutorial Part8: Custom Ai</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/21016"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/21012"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/21013#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(21013, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/101755.jpg" class="profilepic">
+			<br>
+			<a rel="Konrad Kiss" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101755" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Konrad Kiss<br>
+	<span class="studio-name">Bitgap Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21013/1#comment-175190" name="comment-175190">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/13/2011 (4:15 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Beautiful closure, Steve. I hope this finds its place into the official docs. Really really awesome series! Thank you.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/231386.jpg" class="profilepic">
+			<br>
+			<a rel="Lunacy" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/231386" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Lunacy
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21013/1#comment-175198" name="comment-175198">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/13/2011 (6:58 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Many thanks for this series, it covers many aspects of T3D, and it's really great to have something working nicely at the end. Very helpful.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/95011.jpg" class="profilepic">
+			<br>
+			<a rel="QuintonD" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/95011" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	QuintonD
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21013/1#comment-175206" name="comment-175206">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/13/2011 (9:57 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Thanks for this Steve. I have the last two sections to do, then it is time to put my custom art and assets in with a nice shiny new GUI ... :)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/226633.jpg" class="profilepic">
+			<br>
+			<a rel="Jordan Fye" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/226633" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Jordan Fye
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21013/1#comment-175273" name="comment-175273">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/15/2011 (10:07 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I would honestly pay for a book once you make one. Very good!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/119818.jpg" class="profilepic">
+			<br>
+			<a rel="David (Robert) Pemberton" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/119818" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	David (Robert) Pemberton
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21013/1#comment-175296" name="comment-175296">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/16/2011 (2:07 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I wonder how many turn based action/stratergy games you just spawned Steve?<br>
+<br>
+Am definately thinking about reserecting one I had on in mind and put on the back burner years ago.<br>
+<br>
+As for a book, I would buy it as well, can't wait for 1.1 Final to use all the funky new stock objects		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/21013/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/resources/view/21013#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/resources/view/21013#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/21013');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Tactics-Action Hybrid Game Tutorial Part12  Finale   Steve Acaster   Resources   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

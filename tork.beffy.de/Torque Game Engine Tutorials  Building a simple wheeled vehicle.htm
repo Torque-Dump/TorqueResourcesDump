@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://tork.beffy.de/tutorials/vehicles/wheeled.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Torque Game Engine Tutorials: Building a simple wheeled vehicle </title>
+	<link rel="STYLESHEET" type="text/css" href="./Torque Game Engine Tutorials  Building a simple wheeled vehicle_files/style.css">
+</head>
+
+<body>
+<h1>Building a simple wheeled vehicle </h1>
+<p> This tutorial is to assist developers in creating a simple wheeled vehicle, 
+  with collision information for use in the Torque Game Engine. </p>
+<ul>
+  <li><a href="http://tork.beffy.de/tutorials/vehicles/wheeled.htm#start">Getting Started</a> 
+  </li><li><a href="http://tork.beffy.de/tutorials/vehicles/wheeled.htm#required">Required objects</a> 
+  </li><li><a href="http://tork.beffy.de/tutorials/vehicles/wheeled.htm#stepbystep">Step-by-Step building the Vehicle</a> 
+  </li><li><a href="http://tork.beffy.de/tutorials/vehicles/wheeled.htm#exporting">Exporting the Vehicle</a> 
+  </li><li><a href="http://tork.beffy.de/tutorials/vehicles/wheeled.htm#final">Final comments</a>
+</li></ul>
+<h3 id="start">Getting Started</h3>
+<p>Ok, let's begin by building a simple wheeled vehicle.</p>
+<p>Our goals for this tutorial are to:
+</p><ul>
+  <li>Get an understanding of the naming and object hierarchy used by the Exporter 
+    for wheeled vehicles. 
+  </li><li>Create a wheeled vehicle, including collision information . 
+  </li><li>Export it! 
+</li></ul>
+<h3 id="required">Required objects</h3>
+<p>Care must be taken to model your shapes according to the guidelines detailed 
+  in the <a href="http://www.garagegames.com/docs/torque.sdk/tools/max2dts/">MAX2DTSExporter 
+  Documentation</a> to ensure the exporter recognizes the various components and 
+  knows how to export them. </p>
+<p> 
+<table>
+  <tbody><tr valign="top"> 
+    <td>For the model the naming and hierarchical linkage we need to use is as 
+      follows; 
+      <ul>
+        <li><strong>"bounds"</strong> a mesh object at the ROOT of the scene, 
+          encompasses the complete model and any animations performed by the model. 
+        </li><li><strong>"shape"</strong> a dummy object at the ROOT used by the exporter 
+          to identify the model, and it various levels of detail (LOD). 
+          <ul>
+            <li><strong>"collision-1"</strong> a dummy object, markers 
+              for collisions. Collision-1 thru Collision-9 
+            </li><li> <strong>"detail#"</strong> a dummy object, at least one must 
+              exist, however typically several exist to represent different LOD 
+              to be applied against a shape. 
+            </li><li><strong>"LOS-#"</strong> a dummy object, markers for 
+              "Line Of Sight" collision ("bullet collision") 
+              LOS-9 thru LOS-15 
+            </li><li><strong>"start"</strong> a dummy object, which identified the 
+              start of our model. Any name can be used. 
+              <ul>
+                <li><strong>"vehiclemesh#"</strong> a mesh object, used to make 
+                  up the model. As many mesh object can be used as long a LOD 
+                  number is appended to their name. 
+                </li><li><strong>"col-1"</strong> a mesh object, this is 
+                  the actual collision geometry for the vehicle itself. It should 
+                  be as absolutely LOW POLY as possible. Every polygon counts 
+                  and will slow the whole game down if you have too many. Also, 
+                  pay special attention to the way it is shaped to minimize collision 
+                  with small bumps/hills/slopes etc. Changing this shape will 
+                  dramatically effect whether or not the vehicle is prone to getting 
+                  stuck while driving over bumps 
+                </li><li><strong>"LOScol-#"</strong> a mesh object, Geometry 
+                  for line of sight collisions . 
+                </li><li><strong>"eye" </strong>a dummy object, this is where 
+                  the camera will be when piloting a vehicle in 1st-person mode. 
+                </li><li><strong>"cam"</strong> a dummy object, this is where 
+                  the camera will be when piloting a vehicle in 3rd-person mode. 
+                </li><li><strong>"mount#"</strong> a dummy object, these 
+                  are where the players\weapons mount. 
+                  <ul>
+                    <li>mount0 -- driver</li>
+                    <li>mount1 -- navigator\gunner</li>
+                    <li>mount2-8 -- passenger's</li>
+                    <li>mount9 -- bomb mount point on the bomber vehicle</li>
+                    <li>mount10 -- gun</li>
+                  </ul>
+                </li><li><strong>"mass"</strong> a dummy object, this is 
+                  used in the driving\flying dynamics. This should be positioned 
+                  at the center of mass for the whole shape. 
+                </li><li><strong>"hub#"</strong> a dummy object, center point 
+                  for wheels. Position these where you want the center of your 
+                  wheel to be in its top most position.
+              </li></ul>
+          </li></ul>
+      </li></ul></td>
+    <td><img src="./Torque Game Engine Tutorials  Building a simple wheeled vehicle_files/schematic.gif" alt="Hierachy" width="230" height="285" border="1"></td>
+  </tr>
+</tbody></table>
+NB: The names given to the objects in 3DS Max are not case sensitive to "MAX2DTSExporter".  
+</p>
+
+<h3 id="stepbystep">Step-by-Step building the Vehicle</h3>
+<p>In 3DS MAX start a new scene. Follow each of the following steps to create 
+  a simple wheeled vehicle.</p>
+<p>A few side notes before we begin. </p>
+<ul>
+  <li>First you want to get your grid to 1.0, so click on Customize &gt; Grids 
+    and snaps &gt; Home grid. Select all view points, change Grid spacing to 1. 
+    After that you still have to zoom in to get to grid 1, look in the bottom 
+    right to tell what your at. </li>
+  <li>To know how to scale your model basically 1 is equal to 1 meter in game. 
+    So a person is about 2.5 in 3dsmax. I usually make a temporary mesh object 
+    to judge how big to make my vehicle.</li>
+  <li>The other thing I've learned from working with 3dsmax is when you create 
+    these objects below always create them in the Top view. The reason for this 
+    is the pivot for each object needs to be correct for most objects like your 
+    mesh, mount0, mass, etc or you will get some weird effects. If you create 
+    them in top it will always be right. To check what a mesh is set to look at 
+    Command Panels -&gt; Hierarchy -&gt; Pivot -&gt; Affect Pivot Point - blue axis points 
+    towards the top of the shape, the green axis towards the front of the shape, 
+    and the red axis towards the right of the shape.</li>
+  <li>When exporting make sure you have Collapse Transforms unchecked in parameters 
+    under the DTS Exporter! I spent many hours banging my head on this one. Thanks 
+    to Vinci_Smurf for the tip!</li>
+  <li>If you would like to see this in action download my <a href="http://tork.beffy.de/tutorials/vehicles/example1.zip">example1.zip</a>. 
+    It comes with everything you need to see a working wheeled vehicle.</li>
+</ul>
+<table>
+  <tbody><tr valign="top">
+    <td> <a href="http://tork.beffy.de/tutorials/vehicles/images/wheeled/perspective.gif"><img src="./Torque Game Engine Tutorials  Building a simple wheeled vehicle_files/perspective_thumb.gif" alt="Crate" width="200" height="144" border="0"></a><br>
+      <br>
+      <a href="http://tork.beffy.de/tutorials/vehicles/images/wheeled/top.gif"><img src="./Torque Game Engine Tutorials  Building a simple wheeled vehicle_files/top_thumb.gif" alt="Crate" width="200" height="144" border="0"></a><br>
+      <br>
+      <a href="http://tork.beffy.de/tutorials/vehicles/images/wheeled/left.gif"><img src="./Torque Game Engine Tutorials  Building a simple wheeled vehicle_files/left_thumb.gif" alt="Crate" width="200" height="144" border="0"></a><br>
+      <br>
+      <a href="http://tork.beffy.de/tutorials/vehicles/images/wheeled/front.gif"><img src="./Torque Game Engine Tutorials  Building a simple wheeled vehicle_files/front_thumb.gif" alt="Crate" width="200" height="144" border="0"></a><br>
+      <br>
+	</td>
+    <td>
+		<table>
+        <tbody><tr valign="top"> 
+          <td colspan="2"><b>6 Steps to build the shape</b></td>
+        </tr>
+        <tr valign="top"> 
+          <td>1.</td>
+          <td>Create <u>dummy helper object</u> and name it "shape".</td>
+        </tr>
+        <tr valign="top"> 
+          <td>2.</td>
+          <td>Create another <u>dummy helper object</u> and name it "detail110", 
+            make it's parent the "shape" object. If you need help linking objects, 
+            refer to 3DS Max Online reference for help on the "Select and link" 
+            button or linking via the "Schematic View" option.</td>
+        </tr>
+        <tr valign="top"> 
+          <td>3.</td>
+          <td><p>Create your vehicle mesh(s)</p>
+            <ul>
+              <li>Name it "vehiclemesh110". In my example I'm going 
+                to use a very simple box. (L=6, W=4, H=1.5) make the mesh(s) parent 
+                the "start" object. **NOTE: Make sure your grid is at 
+                1**</li>
+              <li>You can use more then one mesh for your vehicle but make sure 
+                they are all appended with 110 (Whichever LOD Detail level you 
+                use).</li>
+              <li>After its created move it to 0,0,0. Do this by selecting it 
+                with the move tool and right clicking on the move button at the 
+                top.</li>
+            </ul></td>
+        </tr>
+        <tr valign="top">
+          <td>4.</td>
+          <td>Create collision information 
+            <ul>
+              <li>Create a <u>mesh object</u> whose name is "col-1", position 
+                so it surround the entire vehicle area you want to have a collision. 
+                Make it's parent the "start" object. 
+              </li><li>Create a <u>dummy helper object</u> and name it "collision-1", 
+                make it's parent the "shape" object. 
+            </li></ul></td>
+        </tr>
+        <tr valign="top">
+          <td>5.</td>
+          <td>Create Line Of Sight (LOS) collision information 
+            <ul>
+              <li>Create a <u>mesh object</u> whose name is "LOScol-9", position 
+                so it surround the entire vehicle area. You could simply "clone" 
+                the col-1 and name it "LOScol-9" to create a collision bounding 
+                box of same size, and location. 
+              </li><li>Create a <u>dummy helper object</u> and name it "LOS-9", make 
+                it's parent the "shape" object. 
+            </li></ul></td>
+        </tr>
+        <tr valign="top">
+          <td>6.</td>
+          <td><p>Create cameras</p>
+            <ul>
+              <li>Create a <u>dummy helper object</u> whose name is "eye", 
+                position it where you want your camera to be in 1st person</li>
+              <li>Create a <u>dummy helper object</u> whose name is "cam", 
+                position it where you want your camera to be in 3rd person</li>
+            </ul></td>
+        </tr>
+        <tr valign="top">
+          <td>7.</td>
+          <td><p>Create mount points (I plan to research this more and have more 
+              tutorials on weapons)</p>
+            <ul>
+              <li>Create a <u>dummy helper object</u> whose name is "mount0", 
+                position this where you want the driver to mount.</li>
+            </ul></td>
+        </tr>
+        <tr valign="top"> 
+          <td>8.</td>
+          <td><p>Create wheel hubs</p>
+            <ul>
+              <li>Create four <u>dummy helper object</u>'s and name them "hub0-3" 
+                (you can have as many wheels as you want) make their parent the 
+                "start" object.</li>
+              <li>Position these where you want the center of your wheel to be 
+                in its top most position.</li>
+            </ul></td>
+        </tr>
+        <tr valign="top"> 
+          <td>9.</td>
+          <td><p>Create the center of mass</p>
+            <ul>
+              <li>Create a <u>dummy helper object</u> whose name is "mass", 
+                position it at the very center of your vehicle.</li>
+              <li>Generally the best spot is right above the hubs. you will have 
+                to play with this to get it to feel right. I plan to research 
+                this more and figure out how to use it correctly. so check back!</li>
+            </ul></td>
+        </tr>
+        <tr valign="top"> 
+          <td>10.</td>
+          <td>Create the Bounding box
+            <ul>
+              <li>Create a <u>mesh object</u> whose name is "bounds", position 
+                so it surround the entire shape. The box must encompasses fully 
+                the model you have created otherwise you may get any error when 
+                exporting. 
+              </li><li>Set the pivot point of the bounding box (Command Panels -&gt; Hierarchy 
+                -&gt; Pivot -&gt; Affect Pivot Point) - blue axis points towards the 
+                top of the shape, the green axis towards the front of the shape, 
+                and the red axis towards the right of the shape. 
+            </li></ul></td>
+        </tr>
+      </tbody></table>
+    </td>
+  </tr>  
+</tbody></table>
+
+<h3 id="exporting">Exporting the Vehicle</h3>
+<table>
+  <tbody><tr valign="top"> 
+    <td> <p>Once your happy with the vehicle, It's time to export it and see how 
+        it looks in the Torque Game Engine.</p>
+      <ul>
+        <li>Before you start, grab this <a href="http://tork.beffy.de/tutorials/vehicles/dtsScene.cfg">file</a> (comes 
+          in <a href="http://tork.beffy.de/tutorials/vehicles/exampe1.zip">example1.zip</a>), rename it to dtsScene.cfg 
+          and put it in the same directory as your max file. (Need explanation 
+          of what this is and its settings)</li>
+        <li>From the "Command Panels -&gt; Utilities" select the "DTS Exporter Utility 
+          -&gt; Utilities".</li>
+        <li>YOU MUST Uncheck <u>Collapse Transforms</u> under parameters for the 
+          DTS Exporter. </li>
+        <li>When your ready click "Whole Shape".</li>
+        <li>When prompted for a filename to export the .DTS shape to, enter one 
+          that represents the shape. ie EXAMLPE1.dts</li>
+        <li>The exporter does not currently provide any "status" on the progress 
+          of the export, so you may think your computer has frozen, this is normal. 
+          If an error occurs it will be reported on screen via a message box (Basically: 
+          Be patient!).</li>
+      </ul>
+      <p>Once the export has completed, try out your new model using the <a href="http://www.garagegames.com/articles/dhannah/tutorials/basicmodelling.html#shape_viewing">Torque 
+        Game Engine model viewer</a> as described earlier in this guide.</p></td>
+    <td><img src="./Torque Game Engine Tutorials  Building a simple wheeled vehicle_files/DTSexporter.gif" alt="Exporter" width="177" height="415" border="1"></td>
+  </tr>
+</tbody></table>
+<h3 id="final">Final comments</h3>
+<p>Thats pretty much all there is to it. I plan to add examples of doing animations 
+  like springs, breaks, and steering wheels.</p>
+<ul>
+  <li>Next step is to head on over to the <a href="http://tork.beffy.de/tutorials/vehicles/datablock.htm">datablock example</a> 
+    to see how to actually start using your vehicle in game.</li>
+</ul>
+<br><br><hr>
+<span style="font-size: 9px; width: 100%; text-align: center;">Copyright 2002 TGEV. All rights reserved.<br>Please <a href="mailto:jwhitt@yahoo.com">notify me</a> if you plan to redistribute this article</span>
+
+
+</body></html>

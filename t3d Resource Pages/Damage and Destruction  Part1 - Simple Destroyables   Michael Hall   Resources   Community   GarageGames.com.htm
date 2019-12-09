@@ -1,0 +1,1050 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0057)http://www.garagegames.com/community/resources/view/20937 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="How to blow things up!  Creating simple destroyables using Torque&#39;s built in damageState system.  Applicable to TGE, TGEa, and Torque 3D - no source required.">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Damage and Destruction:  Part1 - Simple Destroyables | Michael Hall | Resources | Community | GarageGames.com</title>		<link href="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/20937#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/20937#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Damage and Destruction:  Part1 - Simple Destroyables</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/106163">Michael Hall</a>
+			<strong>·</strong>
+			04/05/2011 (2:10 pm)			<strong>·</strong>
+			22 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body">All ShapeBase objects in Torque can recieve damage and be destroyed.  However, only the Player class takes advantage of this built in functionality in the stock scripts.  Objects such as Vehicles, StaticShapes, RigidShapes, etc can easily use the damageState system as well.<br>
+<br>
+This is <i>(according to current plan but adjusted by available time)</i> going to be a series of Tutorials/Guides of increasing complexity starting with this basic destroyble and over time showing more advanced concepts such as enabling onDamage type impact effects (per object) as well as sounds, wreckage shapes, animated damage sequences, etc.<br>
+<br>
+<small><b>The example I am about to describe is not the physics enabled destruction allowed by Torque 3D's Physics Shapes - there is an already a guide showing how to use Physics Shapes by Joe Espinoza in <a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/119211">this</a> forum thread.</b></small><br>
+<br>
+Lets start by making the BouncingBoulder RigidShape example in the Full Template destroyable.  It will be able to recieve <i>x</i> amount of damage (set in the datablock).  Once the damage recieved exceeds that threshold we will simulate the BouncingBoulder being destroyed by using an Explosion object and associated Particle effects, and in the process deleting the boulder.dts shape from the scene.  <br>
+<br>
+These are the "damage control" properties we will make use of:<ul><li>maxDamage</li><li>disabledLevel </li><li>destroyedLevel</li><li>renderWhenDestroyed </li><li>Explosion </li><li>debrisShapeName <b>EDIT:  not used for this Resource</b></li><li>debris <b>EDIT:  not used for this Resource</b></li></ul><br>
+<b>EDIT:  There is a bug in Torque 3D having to do with the ShapeBase blowup feature.  This Resource had simply overlooked the feature.  To keep this a 'simple' Resource I will comment below at the location were the bug is encountered, but will continue to not make use of this for this Resource.  Adding the fix, an example object, and illustrating how to properly make use of the blowup-into-chunks functionality will come as another Resource</b><br>
+<br>
+All assets used herein are found stock in the Full Template.  To begin with we'll need to go ahead and setup the particle effects and explosion datablock that will be used by the BouncingBoulder.  Add the following to the top of <i>art/datablocks/rigidShapes.cs:</i><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20937#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20937#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20937#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//&nbsp;----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;BouncingBoulder&nbsp;Explosion&nbsp;and&nbsp;Debris&nbsp;Particle&nbsp;fx</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>datablock&nbsp;ParticleData(BoulderExpDustParticle)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;textureName&nbsp;=&nbsp;<span class="string">"art/shapes/particles/smoke"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;dragCoeffiecient&nbsp;=&nbsp;0;<span class="comment">//100.0;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;gravityCoefficient&nbsp;=&nbsp;-0.01;<span class="comment">//0;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;inheritedVelFactor&nbsp;=&nbsp;0.25;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;constantAcceleration&nbsp;=&nbsp;-0.80;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;lifetimeMS&nbsp;=&nbsp;600;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lifetimeVarianceMS&nbsp;=&nbsp;300;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;useInvAlpha&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;spinRandomMin&nbsp;=&nbsp;-80.0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;spinRandomMax&nbsp;=&nbsp;&nbsp;80.0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;colors[0]&nbsp;=&nbsp;<span class="string">"0.56&nbsp;0.36&nbsp;0.26&nbsp;1.0"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;colors[1]&nbsp;=&nbsp;<span class="string">"0.2&nbsp;0.2&nbsp;0.2&nbsp;1.0"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;colors[2]&nbsp;=&nbsp;<span class="string">"0.0&nbsp;0.0&nbsp;0.0&nbsp;0.0"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;sizes[0]&nbsp;=&nbsp;1.0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;sizes[1]&nbsp;=&nbsp;1.5;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;sizes[2]&nbsp;=&nbsp;2.0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;times[0]&nbsp;=&nbsp;0.0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;times[1]&nbsp;=&nbsp;0.5;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;times[2]&nbsp;=&nbsp;1.0;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>datablock&nbsp;ParticleEmitterData(BoulderExpDustEmitter)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ejectionPeriodMS&nbsp;=&nbsp;10;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;periodVarianceMS&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ejectionVelocity&nbsp;=&nbsp;4;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;velocityVariance&nbsp;=&nbsp;0.5;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;thetaMin&nbsp;=&nbsp;0.0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;thetaMax&nbsp;=&nbsp;180.0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;orientOnVelocity&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lifetimeMS&nbsp;=&nbsp;220;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;particles&nbsp;=&nbsp;<span class="string">"BoulderExpDustParticle"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>datablock&nbsp;ParticleData(BoulderExpDebrisParticle)&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;dragCoefficient&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;windCoefficient&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;gravityCoefficient&nbsp;=&nbsp;-0.01;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;inheritedVelFactor&nbsp;=&nbsp;0.2;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;constantAcceleration&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;lifetimeMS&nbsp;=&nbsp;960;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lifetimeVarianceMS&nbsp;=&nbsp;320;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;spinSpeed&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;spinRandomMin&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;spinRandomMax&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;useInvAlpha&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;textureName&nbsp;=&nbsp;<span class="string">"art/shapes/particles/dustParticle"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;colors[0]&nbsp;=&nbsp;<span class="string">"0.3&nbsp;0.4&nbsp;0.6&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;colors[1]&nbsp;=&nbsp;<span class="string">"0.3&nbsp;0.4&nbsp;0.6&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;colors[2]&nbsp;=&nbsp;<span class="string">"0.3&nbsp;0.4&nbsp;1&nbsp;0"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;colors[3]&nbsp;=&nbsp;<span class="string">"1&nbsp;1&nbsp;1&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;sizes[0]&nbsp;=&nbsp;<span class="string">"0.5"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;sizes[1]&nbsp;=&nbsp;<span class="string">"0.25"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;sizes[2]&nbsp;=&nbsp;<span class="string">"0.25"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;sizes[3]&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;times[0]&nbsp;=&nbsp;<span class="string">"0"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;times[1]&nbsp;=&nbsp;<span class="string">"0.5"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;times[2]&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;times[3]&nbsp;=&nbsp;<span class="string">"2"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>datablock&nbsp;ParticleEmitterData(BoulderExpDebrisEmitter)&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;ejectionPeriodMS&nbsp;=&nbsp;3;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;periodVarianceMS&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;ejectionVelocity&nbsp;=&nbsp;13;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;velocityVariance&nbsp;=&nbsp;6.75;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;thetaMin&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;thetaMax&nbsp;=&nbsp;180;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;phiReferenceVel&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;phiVariance&nbsp;=&nbsp;360;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;orientParticles&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;orientOnVelocity&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;particles&nbsp;=&nbsp;<span class="string">"BoulderExpDebrisParticle"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;lifetimeMS&nbsp;=&nbsp;192;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lifetimeVarianceMS&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//&nbsp;----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;BouncingBoulder&nbsp;Debris&nbsp;object</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>datablock&nbsp;DebrisData(BoulderExplosionDebris)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;shapeFile&nbsp;=&nbsp;<span class="string">"art/shapes/weapons/SwarmGun/debris.dts"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//emitters&nbsp;=&nbsp;"";</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//explosion&nbsp;=&nbsp;;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;elasticity&nbsp;=&nbsp;0.6;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;friction&nbsp;=&nbsp;0.5;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;numBounces&nbsp;=&nbsp;3;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;bounceVariance&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;explodeOnMaxBounce&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;staticOnMaxBounce&nbsp;=&nbsp;<span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;snapOnMaxBounce&nbsp;=&nbsp;<span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;minSpinSpeed&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;maxSpinSpeed&nbsp;=&nbsp;700;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;render2D&nbsp;=&nbsp;<span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lifetime&nbsp;=&nbsp;4;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;lifetimeVariance&nbsp;=&nbsp;0.4;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;velocity&nbsp;=&nbsp;5;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;velocityVariance&nbsp;=&nbsp;0.5;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;fade&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;useRadiusMass&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;baseRadius&nbsp;=&nbsp;0.3;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;gravModifier&nbsp;=&nbsp;0.5;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;terminalVelocity&nbsp;=&nbsp;6;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ignoreWater&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//&nbsp;----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;BouncingBoulder&nbsp;Explosion</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>datablock&nbsp;ExplosionData(BoulderExp)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//soundProfile&nbsp;=&nbsp;YouExplosionSoundHere;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;lifeTimeMS&nbsp;=&nbsp;1800;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Volume&nbsp;particles</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Point&nbsp;emission</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;emitter[0]&nbsp;=&nbsp;BoulderExpDustEmitter;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;emitter[1]&nbsp;=&nbsp;BoulderExpDebrisEmitter;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Sub&nbsp;explosion&nbsp;objects</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Camera&nbsp;Shaking</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;shakeCamera&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;camShakeFreq&nbsp;=&nbsp;<span class="string">"10.0&nbsp;11.0&nbsp;10.0"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;camShakeAmp&nbsp;=&nbsp;<span class="string">"1.0&nbsp;1.0&nbsp;1.0"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;camShakeDuration&nbsp;=&nbsp;0.5;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;camShakeRadius&nbsp;=&nbsp;5.0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//debris</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;debris&nbsp;=&nbsp;BoulderExplosionDebris;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;debrisThetaMin&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;debrisThetaMax&nbsp;=&nbsp;60;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;debrisPhiMin&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;debrisPhiMax&nbsp;=&nbsp;360;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;debrisNum&nbsp;=&nbsp;12;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;debrisNumVariance&nbsp;=&nbsp;4;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;debrisVelocity&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;debrisVelocityVariance&nbsp;=&nbsp;0.5;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Dynamic&nbsp;light</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lightStartRadius&nbsp;=&nbsp;3;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;lightEndRadius&nbsp;=&nbsp;0.0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lightStartColor&nbsp;=&nbsp;<span class="string">"0.5&nbsp;0.5&nbsp;0"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;lightEndColor&nbsp;=&nbsp;<span class="string">"0&nbsp;0&nbsp;0"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lightStartBrightness&nbsp;=&nbsp;0.5;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;lightEndBrightness&nbsp;=&nbsp;0.0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lightNormalOffset&nbsp;=&nbsp;1.0;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">// ----------------------------------------------------------------------------
+// BouncingBoulder Explosion and Debris Particle fx
+// ----------------------------------------------------------------------------
+
+datablock ParticleData(BoulderExpDustParticle)
+{
+   textureName = "art/shapes/particles/smoke";
+   dragCoeffiecient = 0;//100.0;
+   gravityCoefficient = -0.01;//0;
+   inheritedVelFactor = 0.25;
+   constantAcceleration = -0.80;
+   lifetimeMS = 600;
+   lifetimeVarianceMS = 300;
+   useInvAlpha = true;
+   spinRandomMin = -80.0;
+   spinRandomMax =  80.0;
+   colors[0] = "0.56 0.36 0.26 1.0";
+   colors[1] = "0.2 0.2 0.2 1.0";
+   colors[2] = "0.0 0.0 0.0 0.0";
+   sizes[0] = 1.0;
+   sizes[1] = 1.5;
+   sizes[2] = 2.0;
+   times[0] = 0.0;
+   times[1] = 0.5;
+   times[2] = 1.0;
+};
+
+datablock ParticleEmitterData(BoulderExpDustEmitter)
+{
+   ejectionPeriodMS = 10;
+   periodVarianceMS = 0;
+   ejectionVelocity = 4;
+   velocityVariance = 0.5;
+   thetaMin = 0.0;
+   thetaMax = 180.0;
+   orientOnVelocity = 1;
+   lifetimeMS = 220;
+   particles = "BoulderExpDustParticle";
+};
+
+datablock ParticleData(BoulderExpDebrisParticle) 
+{
+   dragCoefficient = 1;
+   windCoefficient = 1;
+   gravityCoefficient = -0.01;
+   inheritedVelFactor = 0.2;
+   constantAcceleration = 0;
+   lifetimeMS = 960;
+   lifetimeVarianceMS = 320;
+   spinSpeed = 0;
+   spinRandomMin = 0;
+   spinRandomMax = 0;
+   useInvAlpha = true;
+   textureName = "art/shapes/particles/dustParticle";
+   colors[0] = "0.3 0.4 0.6 1";
+   colors[1] = "0.3 0.4 0.6 1";
+   colors[2] = "0.3 0.4 1 0";
+   colors[3] = "1 1 1 1";
+   sizes[0] = "0.5";
+   sizes[1] = "0.25";
+   sizes[2] = "0.25";
+   sizes[3] = "1";
+   times[0] = "0";
+   times[1] = "0.5";
+   times[2] = "1";
+   times[3] = "2";
+};
+
+datablock ParticleEmitterData(BoulderExpDebrisEmitter) 
+{
+   ejectionPeriodMS = 3;
+   periodVarianceMS = 0;
+   ejectionVelocity = 13;
+   velocityVariance = 6.75;
+   thetaMin = 0;
+   thetaMax = 180;
+   phiReferenceVel = 0;
+   phiVariance = 360;
+   orientParticles = 1;
+   orientOnVelocity = 1;
+   particles = "BoulderExpDebrisParticle";
+   lifetimeMS = 192;
+   lifetimeVarianceMS = 0;
+};
+
+// ----------------------------------------------------------------------------
+// BouncingBoulder Debris object
+// ----------------------------------------------------------------------------
+
+datablock DebrisData(BoulderExplosionDebris)
+{
+   shapeFile = "art/shapes/weapons/SwarmGun/debris.dts";
+   //emitters = "";
+   //explosion = ;   
+   elasticity = 0.6;
+   friction = 0.5;
+   numBounces = 3;
+   bounceVariance = 1;
+   explodeOnMaxBounce = true;
+   staticOnMaxBounce = false;
+   snapOnMaxBounce = false;
+   minSpinSpeed = 0;
+   maxSpinSpeed = 700;
+   render2D = false;
+   lifetime = 4;
+   lifetimeVariance = 0.4;
+   velocity = 5;
+   velocityVariance = 0.5;
+   fade = true;
+   useRadiusMass = true;
+   baseRadius = 0.3;
+   gravModifier = 0.5;
+   terminalVelocity = 6;
+   ignoreWater = true;
+};
+
+// ----------------------------------------------------------------------------
+// BouncingBoulder Explosion
+// ----------------------------------------------------------------------------
+
+datablock ExplosionData(BoulderExp)
+{
+   //soundProfile = YouExplosionSoundHere;
+   lifeTimeMS = 1800;
+   
+   // Volume particles
+   
+   // Point emission
+   emitter[0] = BoulderExpDustEmitter;
+   emitter[1] = BoulderExpDebrisEmitter;
+   
+   // Sub explosion objects
+   
+   // Camera Shaking
+   shakeCamera = true;
+   camShakeFreq = "10.0 11.0 10.0";
+   camShakeAmp = "1.0 1.0 1.0";
+   camShakeDuration = 0.5;
+   camShakeRadius = 5.0;
+   
+   //debris
+   debris = BoulderExplosionDebris;
+   debrisThetaMin = 0;
+   debrisThetaMax = 60;
+   debrisPhiMin = 0;
+   debrisPhiMax = 360;
+   debrisNum = 12;
+   debrisNumVariance = 4;
+   debrisVelocity = 1;
+   debrisVelocityVariance = 0.5;
+   
+   // Dynamic light
+   lightStartRadius = 3;
+   lightEndRadius = 0.0;
+   lightStartColor = "0.5 0.5 0";
+   lightEndColor = "0 0 0";
+   lightStartBrightness = 0.5;
+   lightEndBrightness = 0.0;
+   lightNormalOffset = 1.0;
+};</pre><br>
+Then we need to add the shapebase damage properties to the BouncingBoulder datablock, also found in <i>art/datablocks/rigidShape.cs</i>.  Add the following to the end of BouncingBoulder datablock:<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20937#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20937#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20937#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//&nbsp;damage&nbsp;control&nbsp;properties</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>maxDamage&nbsp;=&nbsp;50.01;&nbsp;&nbsp;</span></li><li class="alt"><span>disabledLevel&nbsp;=&nbsp;45;&nbsp;&nbsp;</span></li><li class=""><span>destroyedLevel&nbsp;=&nbsp;50;&nbsp;&nbsp;</span></li><li class="alt"><span>renderWhenDestroyed&nbsp;=&nbsp;<span class="keyword">false</span><span>;&nbsp;</span><span class="comment">//&nbsp;if&nbsp;false&nbsp;then&nbsp;gets&nbsp;deleted&nbsp;after&nbsp;being&nbsp;destroyed</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>Explosion&nbsp;=&nbsp;<span class="string">"BoulderExp"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>underwaterExplosion&nbsp;=&nbsp;<span class="string">"BoulderExp"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//&nbsp;Bug&nbsp;encountered&nbsp;here.&nbsp;&nbsp;Nasty&nbsp;crashing&nbsp;kind&nbsp;of&nbsp;bug&nbsp;if&nbsp;these&nbsp;fields&nbsp;are&nbsp;used</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;correctly.&nbsp;&nbsp;Fix&nbsp;is&nbsp;located&nbsp;at:&nbsp;&nbsp;http://www.garagegames.com/community/forums/viewthread/125321</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;We're&nbsp;not&nbsp;going&nbsp;to&nbsp;include&nbsp;the&nbsp;fix&nbsp;just&nbsp;yet&nbsp;(keeping&nbsp;things&nbsp;simple),&nbsp;and</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;since&nbsp;these&nbsp;fields&nbsp;are&nbsp;being&nbsp;used&nbsp;incorrectly&nbsp;anyway&nbsp;lets&nbsp;just&nbsp;comment&nbsp;them.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//debrisShapeName&nbsp;=&nbsp;"art/shapes/weapons/SwarmGun/debris.dts";</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//debris&nbsp;=&nbsp;BoulderExplosionDebris;</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">// damage control properties
+maxDamage = 50.01;
+disabledLevel = 45;
+destroyedLevel = 50;
+renderWhenDestroyed = false; // if false then gets deleted after being destroyed
+   
+Explosion = "BoulderExp";
+underwaterExplosion = "BoulderExp";
+
+// Bug encountered here.  Nasty crashing kind of bug if these fields are used
+// correctly.  Fix is located at:  http://www.garagegames.com/community/forums/viewthread/125321
+// We're not going to include the fix just yet (keeping things simple), and
+// since these fields are being used incorrectly anyway lets just comment them.
+
+//debrisShapeName = "art/shapes/weapons/SwarmGun/debris.dts";
+//debris = BoulderExplosionDebris;</pre><b>EDIT:  notice comment at end of code block.</b><br>
+<br>
+Now we need to write the script methods that control our damage and destruction behavior.  For simplicity I'm just adding them to the end of the ridgidShapes.cs file we already have open.  You can create a new script file in your <i>scripts/server</i> directory and exec it as normal if you prefer.<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20937#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20937#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20937#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;BouncingBoulder::onAdd(%data,&nbsp;%obj)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;nothing&nbsp;for&nbsp;now...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;BouncingBoulder::onEnabled(%data,&nbsp;%obj,&nbsp;%state)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;nothing&nbsp;for&nbsp;now...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;BouncingBoulder::damage(%data,&nbsp;%obj,&nbsp;%sourceObject,&nbsp;%position,&nbsp;%amount,&nbsp;%damageType)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//echo("BouncingBoulder::damage("@&nbsp;%data.getName()&nbsp;@",&nbsp;"@&nbsp;%obj&nbsp;@",&nbsp;"@&nbsp;sourceObject&nbsp;@",&nbsp;"@&nbsp;%position&nbsp;@","@&nbsp;%amount&nbsp;@",&nbsp;"@&nbsp;%damageType@")");</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;There's&nbsp;no&nbsp;need&nbsp;to&nbsp;calculate&nbsp;damage&nbsp;for&nbsp;an&nbsp;object&nbsp;that's&nbsp;already&nbsp;destroyed,</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.isDestroyed())&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//echo("object&nbsp;already&nbsp;destroyed,&nbsp;returning");</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;We&nbsp;can&nbsp;check&nbsp;for&nbsp;certain&nbsp;damageTypes&nbsp;and/or&nbsp;scale&nbsp;the&nbsp;damage&nbsp;for&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;different&nbsp;types&nbsp;before&nbsp;applying&nbsp;damage.&nbsp;&nbsp;Another&nbsp;option&nbsp;here&nbsp;would&nbsp;be&nbsp;to</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;simply&nbsp;return&nbsp;if&nbsp;the&nbsp;%damagetype&nbsp;!$=&nbsp;"ExplosionDamage"&nbsp;or&nbsp;whatever&nbsp;type</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;of&nbsp;damage&nbsp;you&nbsp;wish&nbsp;capable&nbsp;of&nbsp;causing&nbsp;destruction.</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%obj.applyDamage(%amount);&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;BouncingBoulder::onDamage(%data,&nbsp;%obj)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//echo("BouncingBoulder::onDamage("@&nbsp;%data&nbsp;@",&nbsp;"@&nbsp;%obj&nbsp;@")");</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Set&nbsp;damage&nbsp;state&nbsp;based&nbsp;on&nbsp;current&nbsp;damage&nbsp;level.&nbsp;&nbsp;We&nbsp;are&nbsp;comparing&nbsp;amount&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;of&nbsp;damage&nbsp;sustained&nbsp;to&nbsp;the&nbsp;damage&nbsp;levels&nbsp;described&nbsp;in&nbsp;the&nbsp;datablock&nbsp;and&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;setting&nbsp;the&nbsp;approppriate&nbsp;damageState</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%damage&nbsp;=&nbsp;%obj.getDamageLevel();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%damage&nbsp;&gt;=&nbsp;%data.destroyedLevel)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.getDamageState()&nbsp;!$=&nbsp;</span><span class="string">"Destroyed"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.setDamageState(Destroyed);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.setDamageLevel(%data.maxDamage);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;</span><span class="keyword">if</span><span>(%damage&nbsp;&gt;=&nbsp;%data.disabledLevel)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.getDamageState()&nbsp;!$=&nbsp;</span><span class="string">"Disabled"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.setDamageState(Disabled);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;we're&nbsp;just&nbsp;assuming&nbsp;that&nbsp;the&nbsp;object&nbsp;is&nbsp;still&nbsp;nice&nbsp;and&nbsp;healthy</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.getDamageState()&nbsp;!$=&nbsp;</span><span class="string">"Enabled"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.setDamageState(Enabled);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;BouncingBoulder::onDisabled(%data,&nbsp;%obj,&nbsp;%state)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;nothing&nbsp;for&nbsp;now...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;BouncingBoulder::onDestroyed(%data,&nbsp;%obj,&nbsp;%prevState)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//echo("BouncingBoulder::onDestroyed("@&nbsp;%data&nbsp;@",&nbsp;"@&nbsp;%obj&nbsp;@",&nbsp;"@&nbsp;%prevState&nbsp;@")");</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;If&nbsp;this&nbsp;is&nbsp;set&nbsp;to&nbsp;false&nbsp;then&nbsp;we&nbsp;delete&nbsp;the&nbsp;object&nbsp;when&nbsp;it&nbsp;is&nbsp;destroyed,&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;we&nbsp;do&nbsp;so&nbsp;while&nbsp;it&nbsp;is&nbsp;still&nbsp;obscured&nbsp;by&nbsp;the&nbsp;explosion&nbsp;fx&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(!%data.renderWhenDestroyed)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%obj.schedule(200,&nbsp;<span class="string">"delete"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function BouncingBoulder::onAdd(%data, %obj)
+{
+   // nothing for now...
+}
+
+function BouncingBoulder::onEnabled(%data, %obj, %state)
+{
+   // nothing for now...
+}
+
+function BouncingBoulder::damage(%data, %obj, %sourceObject, %position, %amount, %damageType)
+{
+   //echo("BouncingBoulder::damage("@ %data.getName() @", "@ %obj @", "@ sourceObject @", "@ %position @","@ %amount @", "@ %damageType@")");
+   
+   // There's no need to calculate damage for an object that's already destroyed,
+   if (%obj.isDestroyed())
+   {
+      //echo("object already destroyed, returning");
+      return;
+   }
+         
+   // We can check for certain damageTypes and/or scale the damage for 
+   // different types before applying damage.  Another option here would be to
+   // simply return if the %damagetype !$= "ExplosionDamage" or whatever type
+   // of damage you wish capable of causing destruction.
+    %obj.applyDamage(%amount);
+}
+
+function BouncingBoulder::onDamage(%data, %obj)
+{
+   //echo("BouncingBoulder::onDamage("@ %data @", "@ %obj @")");
+   
+   // Set damage state based on current damage level.  We are comparing amount 
+   // of damage sustained to the damage levels described in the datablock and 
+   // setting the approppriate damageState
+   
+   %damage = %obj.getDamageLevel();
+   
+   if (%damage &gt;= %data.destroyedLevel)
+   {
+      if (%obj.getDamageState() !$= "Destroyed")
+      {
+         %obj.setDamageState(Destroyed);
+         %obj.setDamageLevel(%data.maxDamage);
+      }
+   }
+   else if(%damage &gt;= %data.disabledLevel)
+   {
+      if (%obj.getDamageState() !$= "Disabled")
+         %obj.setDamageState(Disabled);
+   }
+   else
+   {
+      // we're just assuming that the object is still nice and healthy
+      if (%obj.getDamageState() !$= "Enabled")
+         %obj.setDamageState(Enabled);
+   }
+}
+
+function BouncingBoulder::onDisabled(%data, %obj, %state)
+{
+   // nothing for now...
+}
+
+function BouncingBoulder::onDestroyed(%data, %obj, %prevState)
+{
+   //echo("BouncingBoulder::onDestroyed("@ %data @", "@ %obj @", "@ %prevState @")");
+    
+   // If this is set to false then we delete the object when it is destroyed, 
+   // we do so while it is still obscured by the explosion fx  
+   if (!%data.renderWhenDestroyed)
+      %obj.schedule(200, "delete");
+}</pre><small>Take note that even though these methods are currently set to the datablock namespace they could just as easily be used more <i>universally</i> by writing them for a class namespace.</small><br>
+<br>
+Save.  Start Game.  Litter a few BouncingBoulders around the level and go blow them up!  Example settings used here (see maxDamage, disabledLevel, and destroyedLevel in the datablock) require about 4-5 shots with the rockelauncher so adjust to taste.<br>
+<br>
+The careful observer will notice that very little actual code had to be written to enable this destructible functionality.  Most of the work is handled automatically by the engine simply by adding a few lines of logic and the requisite properties to an object's datablock.<br>
+<br>
+Next Guide (as time permits) will demonstrate how to add "onHit" effects, such as sounds and/or sparks/dustpuffs/etc) to our destroyable object as it is damaged.<br>
+</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/106163.png" alt="Michael Hall&#39;s profile picture">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name"> Big Kid Games</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+							</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21016">Damage and Destruction: Part5 - Destroyable Class Methods</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21009">Damage and Destruction: Part4 - Damage Effects (Sound). </a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21006">Damage and Destruction: Part3 - OnHit Damage Effects</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20949">Damage and Destruction: Part2 - Simple Destroyables Addendum</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20255">Improved PlayDeathAnimation</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/20947"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/20935"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.garagegames.com/community/resource/view/20937/2#comments">2</a> <a href="http://www.garagegames.com/community/resource/view/20937/2#comments" class="next">Next»</a> <div class="clear"></div></div>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/20937/2#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(20937, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/138071.gif" class="profilepic">
+			<br>
+			<a rel="deepscratch" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/138071" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	deepscratch<br>
+	<span class="studio-name">DeepScratchStudios</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174454" name="comment-174454">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/05/2011 (2:51 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			awesome resource Michael,<br>
+well done.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174455" name="comment-174455">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/05/2011 (4:46 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Cool stuff ... <br>
+<br>
+... now add it to TDN. ;)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/83642.png" class="profilepic">
+			<br>
+			<a rel="Daniel Fasel" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/83642" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Daniel Fasel
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174464" name="comment-174464">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/06/2011 (2:52 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			A nice resource. Can't wait to see the next one :) ty Michael		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/73506.jpg" class="profilepic">
+			<br>
+			<a rel="Novack" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/73506" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Novack
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174465" name="comment-174465">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/06/2011 (4:53 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Excellent Michael! 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/200921.jpg" class="profilepic">
+			<br>
+			<a rel="Robert Fritzen (Phantom139)" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/200921" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Robert Fritzen (Phantom139)
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174478" name="comment-174478">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/06/2011 (2:05 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Very impressive, nice and simple.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174479" name="comment-174479">#6</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/06/2011 (2:35 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Anyone noticed it doesn't work due to issues with partilces/debris spawning?<br>
+<br>
+I get a crash (vanilla code and custom). I can get the particles and debris to spawn ONCE by adding them in the Datablock Editor, but it's back to crashing on restart. If I disable debris by commenting out "debris" and "debrisShapeName", it doesn't crash and the destroyed object deletes but there are still no particles appearing.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/106163.png" class="profilepic">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name"> Big Kid Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174482" name="comment-174482">#7</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/06/2011 (3:20 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Steve:  I've not had any problems with crashing - but that doesn't mean anything ;)  The explosion, debris, and particle datablocks were originally created in TGE (I had actually intended to do this resource a few years ago!), so you might could try using newer freshly made datablocks.  And about the particles not appearing problem:  have you disabled the explosion fx from the projectile to verify that?<br>
+<br>
+EDIT: ... and also making sure that particles are declared before emitters before debris before explosions - and if your explosion has sound make sure that it's datablock is before it.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174483" name="comment-174483">#8</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/06/2011 (3:51 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Yeah, I disabled projectile particles and tested other particles/explosions (which work fine from a projectile/grenade) - same result.<br>
+<br>
+Best that I am seeing is no particles and the object vanishes - if I leave out the debris to avoid crash.<br>
+<br>
+Actually just noticed - this happens as soon as it get hit by a projectile regardless of MaxDamage.<br>
+<br>
+And the "Destruction" section of the datablock editor never gets filled out when loading.<br>
+<br>
+Also the same happens with StaticShape, which I just tried.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/106163.png" class="profilepic">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name"> Big Kid Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174484" name="comment-174484">#9</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/06/2011 (4:20 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Hmm, well maybe someone else can chime in with a similar problem and we can find a common point of reference for the issue.  <br>
+<br>
+Still no crashes for me after about 30 minutes of blowing up boulders (Rigid), trees (Static), turrets, vehicles, and ammo packs (Item) and I'm seeing all particles and debris as expected.  <br>
+<br>
+Been testing with a fresh Full Template (b3) and an old Kaboom! to T3D port (b1) as well.  The Resource preview shot is one I took specifically to show the particles and debris from the boulder explosion.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/108398.jpg" class="profilepic">
+			<br>
+			<a rel="x_ming_x" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/108398" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	x_ming_x
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174485" name="comment-174485">#10</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/06/2011 (4:23 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			micheal dude :) <br>
+<br>
+wow i post a question and you make a whole resource to answer it, what a saint ;) <br>
+<br>
+thanks for the awesome help<br>
+  		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174486" name="comment-174486">#11</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/06/2011 (4:45 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			<i>derrrrrrrrrrrrrrrp</i><br>
+<br>
+I must've flupped up with a typo or something in cut/paste (though nothing showed in console). Redone from scratch and yep, works as expected.<br>
+<br>
+Apologies for sending you off on a wild goose chase.<br>
+<br>
+<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/edward_derp_by_desert_ocean-d31dtt5.jpg" alt="fc09.deviantart.net/fs70/f/2010/296/e/0/edward_derp_by_desert_ocean-d31dtt5.jpg">		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/106163.png" class="profilepic">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name"> Big Kid Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174487" name="comment-174487">#12</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/06/2011 (4:50 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Lol.  Good to know it's working for you :)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174499" name="comment-174499">#13</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/07/2011 (5:30 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Maybe I wasn't mad after all - <a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/125321">linky</a>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/20871.png" class="profilepic">
+			<br>
+			<a rel="Rex" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/20871" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Rex<br>
+	<span class="studio-name">BrokeAss Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174500" name="comment-174500">#14</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/07/2011 (6:12 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Ya....finally a good explanation of the Process, Michael.  I did a bit of it for the 'Combat Starter Kit', specifically explosion and debris 'Fling'...&gt;LOL  I loved adding that to their codeBase, my first bit of 'scripting' in Torque.<br>
+<br>
+Nicely done!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/106163.png" class="profilepic">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name"> Big Kid Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174505" name="comment-174505">#15</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/07/2011 (8:51 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			<b>@Steve:</b> Suppose I should've mentioned the apparent non-workingness of the blow up into chunks feature - that's a different Resource anyway ;)  The debrisShapeName field for the boulder was simply a placeholder (for Kaboom! we used actual destroyed shapes) and the apparent debris objects here are coming from the explosion itself.<br>
+<br>
+<b>@Rex:</b>  yeah, that was a cool thing to see in the CSK.  I've been blowing things up in Torque since the Tribes days.  Worked on a mod once were everything was destroyable - even the Interiors!  Have always wanted to see more people destroying things in Torque.  Granted that the PhysicsShapes class is the obvious choice nowadays it's a shame to not make use of a capability that's always been there.<br>
+<br>
+<b>@all:</b>  Thanks for the kinds words!  I'll try and get the 'onHit' fx Resource up this weekend and then sometime over the next week give an example of destroyable vehicles and how to make use of damageEmitters.  Eventually I'll show how to swap to a damaged or wrecked shape through both substitution and animated shapes as well.  Also have this thing with fire that I've playing with off and on for a couple of years...		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/20871.png" class="profilepic">
+			<br>
+			<a rel="Rex" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/20871" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Rex<br>
+	<span class="studio-name">BrokeAss Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174507" name="comment-174507">#16</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/07/2011 (9:41 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Michael...<br>
+<br>
+Say...this tutorial is so cool...I went, 'wildcat', and made a BoulderDebris.DTS which is a shell exterior in 4 parts...perfect for the exposure this Resource needs...I'll pass it along to you if you wish.<br>
+<br>
+Let me know...haven't put all your resource into a Project...as I'd done the functions higher up straight to ShapeBase object...the damage routine, so without burning the time updating that to this...how about take this shape and add it to the Project?  It will fling the 4 parts of the boulder.dts, seamlessly.  Your approach, seems to have the boulder break apart in 'generic' shape...with only one piece of geometry in the file...m'eh, hard to tell the original object is 'tearing apart'...<br>
+<br>
+The 'key' to the art is to have several geometry groupings in the file, each an 'object', with node.  The engine takes the 'nodes'/object and does the automagic from there.<br>
+<br>
+It's kinda tricky with the naming of things...Like Static Mesh and TSStatic Shape.<br>
+<br>
+Generic explosions...like the crossbow projectile one...point to a single piece of geometry...thus each 'flung' piece[having only a single node in the DTS] will be replicated according to the explosion datablock.<br>
+<br>
+Now, with debrisShape...these are the nonGeneric pieces, looking like real destruction, what you see takes off flying from where it was exported...<br>
+<br>
+Then there's what is left over after the explosion[more Debris naming...]...so there is a lot to an 'exploding' object!!<br>
+<br>
+Took me a while to sort thru datablocks and what art is needed for what effect...;)  For Torque Art...you need to be a "Technical Artist" more than a 'line,shape,form' Artist!  A Zbrush million poly figure isn't worth much if it can't get into Torque and doing something interesting...;).		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/106163.png" class="profilepic">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name"> Big Kid Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174509" name="comment-174509">#17</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/07/2011 (10:38 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Rex:  <br>
+That would be great if you want to send your boulderDebris to me. silent.mike.hall AT gmail is were I'm usually found.  I'll certainly update this Resource with it.  I also have a couple of example objects (animated/deformable destroyable objects) I'll have to find... but if you'd be interested I could send them to you if you'd like to give a hand in helping out with a future, more advanced Damage and Destruction Resource  -- think Tribes staticshape and turret destruction.<br>
+<br>
+Your point about the 'generic' debris shape making it hard to tell that the object is breaking apart is true, and something I was wanting to address in a future Resource that would tie back into this one.  I had originally planned this Resource as a series of mini tutorials/guides starting with something as simple as take damage and make it disappear and then move upwards from there and am/was limited in actual artwork that could be shared.<br>
+<br>
+And yeah, I personally prefer the script functions being namespaced a bit higher on the hierarchy chain, but simply used them as Datablock methods for this example - keeping things simple - although at some point the plan was to consolidate the series into a master set of scripts that worked with everything.  Well almost everything.  In Kaboom! we put them at the StaticShape level... and I had passed some of that over into the FPS kit found in the earlier T3D betas, but we removed the damage methods when the Genre kit got stripped down into the FPS Example and Full Template.<br>
+<br>
+Oh, and a little teaser gif of an old deformable shape from a project started with Apparatus that later grew into Kaboom!  I'd wanted Kaboom! to have been done with animated shapes (how Tribes did it) but he eventually preferred the individual shape per damageState approach (easier on the artist).<br>
+<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/expWall.gif" alt="i167.photobucket.com/albums/u143/heretek/torque/expWall.gif?t=1302201113"><br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/20871.png" class="profilepic">
+			<br>
+			<a rel="Rex" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/20871" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Rex<br>
+	<span class="studio-name">BrokeAss Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174510" name="comment-174510">#18</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/07/2011 (11:24 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			email sent, let me know....		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/20871.png" class="profilepic">
+			<br>
+			<a rel="Rex" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/20871" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Rex<br>
+	<span class="studio-name">BrokeAss Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174521" name="comment-174521">#19</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/08/2011 (7:44 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			...comment out the path pointer in the Debris datablock and see what happens, the bug they speak of and Guy Allard's fix...<br>
+<br>
+<br>
+The debris you see is from the explosion datablock[not the exploded vehicle], comment out all the effects, remove the path in Debris datablock, then destroy the object = CTD.<br>
+<br>
+Because if you take the path pointer out of the Debris datablock, I think the engine uses the debrisShapeName....and we get the crash reported by Guy, and I just got, but by returning the path pointer to the Debris datablock...I get the 'debris' being thrown...as single mesh obejcts and no 'particles' because I commented them out[always get in the way of seeing debris process]....FIX THIS NOW, GG; please!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/106163.png" class="profilepic">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name"> Big Kid Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20937/1#comment-174528" name="comment-174528">#20</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/08/2011 (11:32 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			<center>Bug encountered, disclaimer, and goal thereof.</center>  <br>
+<br>
+I think that I should clarify in the Resource that this is only a simple example of having an object take damage and be destroyed.  The explosion, debris, and particles are simply there to obscure the fact that the original object is being deleted once it's destroyedState is reached.<br>
+<br>
+There is a problem with using a break-into-chunks debris shape.  A nasty crashing the game kind of problem if such a shape is used.  I had simply overlooked this feature.  Couldn't see the forest because of the trees, so to speak, due to explosion fx and it's accompanying debris (which is different from "debris shapes".  But there is hope.  The bug can be fixed, and object-into-chunks debris can be had for all.  Guy Allard posted a <a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/125321">bug report</a> with fix to this issue.<br>
+<br>
+<i>Just to note, that currently, the BouncingBoulder datablock is referencing the debrisShapeName and Debris object incorrectly (this is that part I overlooked).  But this should not cause any problems (hasn't for me) since this means that the "blowUp" feature simply wont' be used.  Debris seen in the preview pic is coming from the explosion itself.</i><br>
+<br>
+Here is a screenshot with Rex's boulder-into-chunks debris shape that he sent to me for testing:<br>
+<img src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/screenshot_001-00003-3.png" alt="i167.photobucket.com/albums/u143/heretek/torque/screenshot_001-00003-3.png?t=1302290790"><br>
+<br>
+To keep things simple since a source code change is necessary I'll put another Resource, with Rex's approval, showing how to properly make use of the debrisShapeName and debris fields in the BouncingBoulder datablock, once the fix is added and the engine is rebuilt.		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.garagegames.com/community/resource/view/20937/2#comments">2</a> <a href="http://www.garagegames.com/community/resource/view/20937/2#comments" class="next">Next»</a> <div class="clear"></div></div>	<div class="clear"></div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/20937');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Damage and Destruction  Part1 - Simple Destroyables   Michael Hall   Resources   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

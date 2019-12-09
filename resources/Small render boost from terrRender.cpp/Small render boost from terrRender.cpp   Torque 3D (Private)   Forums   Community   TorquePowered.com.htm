@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0063)http://www.torquepowered.com/community/forums/viewthread/123273 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.torquepowered.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.torquepowered.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="In the process of tossing together a prototype what use unusual terrain features(high plateaus and low valleys), PSSM terrain shadows provided to be undesirable (and buggy[?]).  
+
+In an ignorant preemptive first attempt to see how easy turning terrain g">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+				<title>Small render boost from terrRender.cpp | Torque 3D (Private) | Forums | Community | TorquePowered.com</title>		<link href="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.torquepowered.com/static/styles/ie.css?rev=3022" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+	function ajaxNotify(account, thread){
+		$().get('/community/notifyuser/' + account + '/' + thread);
+	}    //-->
+</script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	</head>
+<body>
+<div id="flashmessage" style="display: block; margin: 0;"><a href="http://www.torquepowered.com/community/blogs/view/20687">Important Torque News Updated: Please click here to read this urgent news update.</a></div>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.torquepowered.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.torquepowered.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.torquepowered.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.torquepowered.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.torquepowered.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.torquepowered.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.torquepowered.com/products/tge/iphone">3D Coming Soon</a></li><li><a href="http://www.torquepowered.com/products/torque-x">Torque X</a></li><li><a href="http://www.torquepowered.com/products/consoles">For Consoles</a></li><li><a href="http://www.torquepowered.com/products/education">Educational Use</a></li><li><a href="http://www.torquepowered.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.torquepowered.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.torquepowered.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.torquepowered.com/products/browse/tools">Tools</a></li><li><a href="http://www.torquepowered.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.torquepowered.com/products/browse/books">Books</a></li><li><a href="http://www.torquepowered.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.torquepowered.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.torquepowered.com/community">What's New</a></li><li><a href="http://www.torquepowered.com/community/blogs">Blogs</a></li><li><a href="http://www.torquepowered.com/community/resources">Resources</a></li><li><a href="http://www.torquepowered.com/community/forums">Forums</a></li><li><a href="http://www.torquepowered.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.torquepowered.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.torquepowered.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.torquepowered.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.torquepowered.com/company">About Torque</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.torquepowered.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.torquepowered.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.torquepowered.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.torquepowered.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.torquepowered.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.torquepowered.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.torquepowered.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+				<form action="http://www.torquepowered.com/search" method="get" id="search" name="search_form">
+					<input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+					<input type="image" id="top-submit" src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/search-bar-main-btn.png" alt="Search">
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.torquepowered.com/search/advanced" method="get">
+																<input type="hidden" name="locations[]" value="forums">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search forums" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.torquepowered.com/community">What's New</a></li>
+			<li><a class="" href="http://www.torquepowered.com/community/blogs">Blogs</a></li>
+			<li><a class="" href="http://www.torquepowered.com/community/resources">Resources</a></li>
+			<li><a class="current" href="http://www.torquepowered.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.torquepowered.com/community/forums/viewthread/123273#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+																				<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.torquepowered.com/community/forums/63/newthread">
+													Start a Thread
+						</a>
+											<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				<div>
+	<div id="thread-content">
+				<h1>Small render boost from terrRender.cpp</h1>
+		<div id="threadContent">
+			<p class="date">
+				by <a href="http://www.torquepowered.com/account/profile/57491">Caylo Gypsyblood</a>
+				<strong>·</strong>
+				in <a href="http://www.torquepowered.com/community/forums/63">Torque 3D (Private)</a>
+				<strong>·</strong>
+				12/16/2010 (7:08 pm)				<strong>·</strong>
+				5 replies
+			</p>
+			<div class="body">In the process of tossing together a prototype what use unusual terrain features(high plateaus and low valleys), PSSM terrain shadows provided to be undesirable (and buggy[?]).  <br>
+<br>
+In an ignorant preemptive first attempt to see how easy turning terrain generated terrain shadows off would be, I did the following;<br>
+ <br>
+In file <i>terrRender.cpp</i><br>
+ find <b> const bool isColorDrawPass = state-&gt;isDiffusePass() || state-&gt;isReflectPass();</b><br>
+ and directly below place <b> if ( !isColorDrawPass ) return; </b><br>
+<br>
+I assume with this modification we are skipping out on the shadow render pass? <br>
+<br>
+One side effect is a decent FPS improvement, under the right conditions, and I have yet to notice any ill effects.  </div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/57491.jpg" alt="Caylo Gypsyblood&#39;s profile picture">
+			<br>
+			<a rel="Caylo Gypsyblood" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/57491" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Caylo Gypsyblood
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+							</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Threads</h3>
+							<li><a rel="nofollow" href="http://www.torquepowered.com/community/forums/viewthread/115903">[Bug T3D 1.1 BETA 1]  Edit Mode Object Selection  Inconsistencies Bugs - LOGGED</a></li>							<li><a rel="nofollow" href="http://www.torquepowered.com/community/forums/viewthread/92095">Torque 3D Beta 1 Bug:  bool Player::pointInWater</a></li>							<li><a rel="nofollow" href="http://www.torquepowered.com/community/forums/viewthread/92065">timeManagerProcessInterval</a></li>							<li><a rel="nofollow" href="http://www.torquepowered.com/community/forums/viewthread/92007">Torque 3D Beta 1 Bug:  fogBandHeight &amp; LevelInfo</a></li>							<li><a rel="nofollow" href="http://www.torquepowered.com/community/forums/viewthread/91841">Torque 3D Beta 1 Bug: Game folder Naming Convention</a></li>					</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<div id="page-turner" class="separator-950" style="position: relative;">
+	<div class="right">
+							<a href="http://www.torquepowered.com/community/forums/viewthread/123275"><span class="right-arrow">Next</span>Next Thread</a>
+			</div>
+	<div class="left">
+							<a href="http://www.torquepowered.com/community/forums/viewthread/123269"><span class="left-arrow">Prev</span>Previous Thread</a>
+			</div>
+	<div class="center" style="text-transform: none;"><a href="http://www.torquepowered.com/community/forums/63">More from Torque 3D (Private)</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div style="text-align: center;">
+									<a href="http://www.torquepowered.com/community/forums/viewthread/123273#comment_form">+Reply to this thread</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.threadNotify(123273, 74950);">Notify me of new replies</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/11919.png" class="profilepic">
+			<br>
+			<a rel="Tom Spilman" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/11919" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Tom Spilman<br>
+	<span class="studio-name">Sickhead Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/123273/1#comment-792373" name="comment-792373">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/16/2010 (10:09 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Yea... that just removes the terrain from shadow casting.  It may work for some people and will save some draw calls and fillrate.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/57491.jpg" class="profilepic">
+			<br>
+			<a rel="Caylo Gypsyblood" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/57491" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Caylo Gypsyblood
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/123273/1#comment-792377" name="comment-792377">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/16/2010 (10:46 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Cool, thanks for confirming that Tom. 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Manoel Neto" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/36904" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Manoel Neto<br>
+	<span class="studio-name">Default Studio Name</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/123273/1#comment-792395" name="comment-792395">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/17/2010 (6:41 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Just Cause 2 also does this: the terrain itself doesn't cast shadows. It improves performance, allow a higher shadow quality (since the shadow frustum doesn't need to be big enough to fit the terrain) and avoids large shadowed areas (which would look flat).		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/5493.jpg" class="profilepic">
+			<br>
+			<a rel="Netwyrm" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/5493" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Netwyrm<br>
+	<span class="studio-name">Consequence Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/123273/1#comment-792785" name="comment-792785">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/21/2010 (2:50 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Hmmm... I'm going to try this, because depending on the time of day, performance varies wildly. Best performance is at "night" but only after the moon rises, with performance at absolute nadir in the hours between sunset and moonrise.<br>
+<br>
+Thanks for posting it as a suggestion.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/189703.jpg" class="profilepic">
+			<br>
+			<a rel="Oscar Velzi" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/189703" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Oscar Velzi
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/123273/1#comment-792977" name="comment-792977">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/24/2010 (9:45 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Cool stuff! This was really helpful for us. We are doing an isometric looking game, and the terrain is flat in most locations, and it casting shadows was a real waste of good fps! =)		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center; margin-top: 20px;">
+		<a name="comment_form" id="comment_form"></a>
+					<form enctype="application/x-www-form-urlencoded" action="http://www.torquepowered.com/community/forums/viewthread/123273/1#comment_form" method="post"><dl class="zend_form">
+<dt><label for="formBody" class="required">Add Your Reply (<a href="http://www.torquepowered.com/support/markuplite" target="_blank">MarkupLite is enabled</a>)</label></dt>
+<dd>
+<textarea name="body" id="formBody" rows="20" cols="100" class="big"></textarea></dd>
+<dt>&nbsp;</dt><dd>
+<input type="submit" name="submit" id="formSubmit" value="Post"></dd></dl></form>			</div>
+	</div>
+
+		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.torquepowered.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.torquepowered.com/community/resources/add">Add a resource</a><br>
+								<a href="http://www.torquepowered.com/community/forums/63/newthread">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.torquepowered.com/">Home</a>
+	<a href="http://www.torquepowered.com/products">Products</a>
+	<a href="http://www.torquepowered.com/community">Community</a>
+	<a href="http://www.torquepowered.com/support">Support</a>
+	<a href="http://www.torquepowered.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © TorquePowered.com 2000 - 2010 All Rights Reserved. <a href="http://www.torquepowered.com/company/tos">Terms of Service</a> - <a href="http://www.torquepowered.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.torquepowered.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Small render boost from terrRender.cpp   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/forums/63/view/123273');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

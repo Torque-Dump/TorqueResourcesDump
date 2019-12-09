@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0111)http://web.archive.org/web/20080626110934/www.garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=14558 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!--<base href="http://www.garagegames.com.wstub.archive.org/">--><base href=".">
+
+<title>Code : Flexible A* Pathfinding System :. GarageGames</title>
+<meta name="Description" content="GarageGames is a game development community changing the way games are made and played. Tips, Resources, Forums, Code and Art"><meta name="published" content="2008-04-08">
+<link rel="SHORTCUT ICON" href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/favicon.ico">
+<link rel="alternate" title="GarageGames: News Headlines" href="http://web.archive.org/web/20080626110934/http://feeds.garagegames.com/garagegames/rss/news" type="application/rss+xml">
+<link rel="alternate" title="GarageGames: Employee Blogs" href="http://web.archive.org/web/20080626110934/http://feeds.garagegames.com/garagegames/rss/blogs/garagegames" type="application/rss+xml">
+<link rel="STYLESHEET" type="text/css" href="./flexible astar_files/site8.css"><script language="JavaScript" type="text/javascript" src="./flexible astar_files/adx.js"></script><script language="JavaScript" type="text/javascript" src="./flexible astar_files/prototype.js"></script><script language="JavaScript" type="text/javascript" src="./flexible astar_files/prototype-extensions.js"></script><script language="JavaScript" type="text/javascript" src="./flexible astar_files/site7.js"></script><script language="JavaScript" type="text/javascript" src="./flexible astar_files/urchin.js"></script><script language="JavaScript" type="text/javascript">_uacct="UA-30217-1";urchinTracker();;	function rateit(){
+		var pars = Form.serialize('rate')
+		new Ajax.Updater(
+			'myrating',
+			'/mg/resource/ajax.rate.resource.php',
+			{ parameters: pars }
+		);
+	}
+	function init()
+	{
+		if ($('ratesubmit'))
+			Event.observe('ratesubmit', 'click', rateit, false);
+	}
+	Event.observe(window, 'load', init);
+;	function doWelcome(){
+		new Ajax.Request(
+			"/ajax.welcome.php",
+			{  onSuccess: function(resp) {
+				if (!resp.responseText) return;
+				$('welcome').innerHTML=resp.responseText + '- <a href="/myAccount/">My Account</a> / <a href="/shopping/cart.php">Cart <img src="/images/cart.gif"></a> / <a href="/main/login/logout.php">Logout</a>';
+			}});
+		}
+	Event.observe(window, 'load', doWelcome, false);;var now=new Date();var tzo=now.getTimezoneOffset()*60;var cv="TimezoneOffset=" + tzo;if(document.cookie.indexOf(cv)<0)document.cookie=cv+";path=/";function query(txt, url){if(confirm(txt))location.href=url;;}</script></head>
+<body>
+<div id="container">
+	<div id="content">
+		<table border="0" width="100%">
+   <tbody><tr>
+      <td width="100%" valign="top">
+      <span class="headlineLarge">Flexible A* Pathfinding System</span><br>      </td>
+      <td valign="center" class="formBody" align="center">
+         <span class="tiny">Avg.&nbsp;Rating
+            (of 8)         </span>
+      </td>
+      <td class="ratingLarge">
+         4.9      </td>
+   </tr>
+</tbody></table>
+<table width="100%" cellspacing="0" cellpadding="2" class="blockBorder">
+   <tbody><tr align="left"><td>
+      <span class="blockTitle">Basic Information</span><br>
+      <b>Author: </b><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a> <span class="tiny">(Apr&nbsp;08,&nbsp;2008)</span><br><b>Categories: </b><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/index.php?sec=mg&mod=resource&page=category&qid=2">Artificial Intelligence</a><br><b>Code File: <b> <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/uploaded/code/14558.astar.zip" target="_blank">astar.zip</a><br>   </b></b></td></tr>
+</tbody></table>
+<br>
+
+<!-- Synopsis -->
+<table width="100%" cellspacing="0" cellpadding="2" class="blockBorder">
+   <tbody><tr align="left"><td>
+      <span class="blockTitle">Synopsis:</span><br>
+      This is an implementation of the a* search algorithm for the AIPlayer class. It uses a navigation mesh made of manually placed blocks of nodes, which can go on the terrain, interiors, or any static object. There are five different pathfinding behaviors to accomplish different purposes.   </td></tr>
+</tbody></table>
+<br>
+
+   <table width="100%" cellspacing="0" cellpadding="2" class="blockBorder">
+      <tbody><tr align="left"><td>
+         <span class="blockTitle">Keywords:</span><br>
+         AI a* astar      </td></tr>
+   </tbody></table>
+   <br>
+   <table width="100%" cellspacing="0" cellpadding="2" class="blockBorder">
+   <tbody><tr align="left"><td>
+      <span class="blockTitle">Article:</span><br>
+      <b>Installation</b><br><br>Add the aStar.cc and aStar.h files to your project. Replace or merge aiPlayer.cc and .h with the files in in the zip.<br><br>In sceneState.cc, after the includes, add<br><br><div class="codeblock"><pre>#include "game/aStar.h"</pre></div><br><br>in renderCurrentImages(), around line 481, add the bold code<br><br><div class="codeblock"><pre>   for (i = 0; i &lt; mTranslucentEndImages.size(); i++)<br>      renderImage(this, mTranslucentEndImages[i]);<br><b><br>#ifdef AI_RENDER<br>   gAStar.render(this);<br>#endif<br></b><br>   glMatrixMode(GL_MODELVIEW);<br>   glPopMatrix();</pre></div><br><br>Save and compile.<br><br>In creator/editor/EditorGui.cs, at line 1306, change<br><br><div class="codeblock"><pre>   %Mission_Item[3] = "Trigger";<br>   %Mission_Item[4] = "PhysicalZone";<br>   %Mission_Item[5] = "Camera";</pre></div><br><br>to<br><br><br><div class="codeblock"><pre>   %Mission_Item[3] = "NavMesh";<br>   %Mission_Item[4] = "Trigger";<br>   %Mission_Item[5] = "PhysicalZone";<br>   %Mission_Item[6] = "Camera";</pre></div><br><br>In creator/editor/objectBuilderGui.gui, at line 643, add<br><br><div class="codeblock"><pre>function ObjectBuilderGui::buildNavMesh(%this)<br>{<br>	%this.className = "NavMesh";<br>	%this.process();<br>}</pre></div><br><br>In [game]/server/scripts/game.cs, at the end of startGame(), add<br><br><div class="codeblock"><pre>   buildPaths();<br>   readPaths();</pre></div><br>You can delete the buildPaths() command if you've cached the paths for all your missions.<br><br>At the end of endGame(), add<br><br><div class="codeblock"><pre>   deletePaths();</pre></div><br><br>before resetMission();<br><br>For an example, add aiDemo.mis.<br><br><b>Use</b><br><br>To add navigation points, open the mission editor creator. NavMesh objects are under Mission Objects / Mission. The properties are:<br><b>Interval</b> - distance between points<br><b>XSize</b> - number of points in x direction<br><b>YSize</b> - number of points in y direction<br><b>Height</b> - how far up or down the object will look to place points<br><br>There are two global preferences you can change. One is <b>$Pref::AStar::Render</b>. It controls whether or not the navigation mesh is rendered. Turn it on when editing the mesh, turn it off otherwise. The other is <b>$Pref::AStar::Clearence</b>. This controls the minimum horizontal clearance between two nodes.<br><br>There are three functions for path caching. Do not call any of these while the mission editor is running, it may get all messed up. They are<br> - <b>deletePaths</b> Deletes all NavMesh objects and all nodes.<br> - <b>writePaths</b> Writes all nodes to a file (called [mission name].as) that is loaded automatically on mission startup. This is the only function you need to call manually; call it once you're done editing the nav mesh.<br> - <b>readPaths</b> Reads nodes from file. Returns true on success, false on faliure.<br><br>There is also a compiler switch, AI_RENDER, at the top of aStar.h. Comment this out when you distribute the game to remove all the nav mesh rendering code.<br><br>There are five functions that can be called on the AIPlayer object. They will return 0 on success, -1 on failure, and 1 if the bot is already where you want it to go. They are<br>- <b>findPathTo</b> This takes either a point or an object as an argument, and simply finds a way to the point.<br>- <b>findCoverFrom</b> This also takes a point or object, and finds a place hidden from it.<br>- <b>searchCover</b> This takes no arguments, and makes the bot go to in the nearest place it can't see.<br>- <b>sneakUpOn</b> This takes either a point and a vector or an object as an argument. It finds a path to the point or the object that can't be seen by it.<br>- <b>wander</b> This takes a distance as an argument and wanders around for this distance.   </td></tr>
+</tbody></table>
+<br>
+
+<a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/index.php?sec=mg&mod=resource&page=overview">
+<img src="./flexible astar_files/go.gif" border="0" hspace="4" alt="Submit Resource">Submit your own resources!</a><br>
+<br>
+   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=1984">J.C. Smith</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;05,&nbsp;2008&nbsp;at&nbsp;02:44&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   This is pretty cool, the sneakupon, searchcover, and findcover from are all useful.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=48513">Matt Huston</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;05,&nbsp;2008&nbsp;at&nbsp;09:30&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Thank you for releasing this.  There have been other A* resources in the past but they've always been a pain to implement, this one looks easy enough and also looks like a solid base to expand on for developers.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=81331">Maddermadcat</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;05,&nbsp;2008&nbsp;at&nbsp;16:49&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   Thanks, Dan! :)<br><br>There are some kind of large problems though. Wander doesn't work for me at all, the AIPlayer just stands there spinning at a ridiculous speed. The same thing happens with some commands, at times, the player doesn't do what he's supposed to and spins instead.<br><br>It's kind of annoying how the player stops at every node before moving on to the next one, too. :\<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=97792">Stefan *Shaderman* Greven</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;05,&nbsp;2008&nbsp;at&nbsp;20:50&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Thanks a lot Dan!<br><br>I've just ported your resource to TGEA 1.0.3 but have some trouble with the commands as well (wander works for me though). I'll check that again tomorrow.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;05,&nbsp;2008&nbsp;at&nbsp;22:13&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   @Maddermadcat: ROFL!!1!!!1one!  ...   Now that I have that out of my system, what are you passing as an argument to wander?<br><br>I actually don't really like the way wander works, so I'm reworking it.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=81331">Maddermadcat</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;05,&nbsp;2008&nbsp;at&nbsp;23:31&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   Yeah, I called it through the console as bob.wander(20); .<br><br>Are you planning on smoothing out the AIPlayer's movement anytime in the future?<br><br>EDIT: Weird, wander no longer causes him to spin all the time. :P<br><br>However, all of the behaviours seem to experience this problem much more frequently than I'd like.<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;06,&nbsp;2008 01:00&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=97792">Stefan *Shaderman* Greven</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;06,&nbsp;2008&nbsp;at&nbsp;12:11&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   I think<br><br><br><div class="codeblock"><pre>if (SceneObject *obj = dynamic_cast&lt;SceneObject*&gt;(Sim::findObject(<b>end.x</b>)))</pre></div><br><br>should be<br><br><br><div class="codeblock"><pre>if (SceneObject *obj = dynamic_cast&lt;SceneObject*&gt;(Sim::findObject(<b>argv[2]</b>)))</pre></div><br><br>in the ConsoleMethods <i>findPathTo</i> and <i>findCoverFrom</i>.<br><br>This is the rendering code I use in TGEA 1.0.3, maybe somebody needs it:<br><br><br><div class="codeblock"><pre>void AStar::render(SceneState* state)<br>{<br>    if (!Con::getBoolVariable("$pref::AStar::Render", false))<br>        return;<br><br>    int i;<br><br>    for (NMPoint* tmp = list; tmp; tmp = tmp-&gt;next) //iterate thru list<br>    {<br>	  PrimBuild::begin( GFXLineList, 2 );<br>		PrimBuild::color3f( 0, 1, 0 );<br>		PrimBuild::vertex3f(tmp-&gt;loc.x, tmp-&gt;loc.y, tmp-&gt;loc.z);<br>		PrimBuild::vertex3f(tmp-&gt;loc.x, tmp-&gt;loc.y, tmp-&gt;loc.z-1);<br>	  PrimBuild::end();<br><br>      for (i=0; i&lt;8; i++)<br>	  {<br>		if (!tmp-&gt;adjs[i])<br>		  continue;<br><br>		PrimBuild::begin( GFXLineList, 2 );<br>		  PrimBuild::color3f( 0, 0, 1 );<br>		  PrimBuild::vertex3f(tmp-&gt;loc.x, tmp-&gt;loc.y, tmp-&gt;loc.z);<br>		  PrimBuild::vertex3f(tmp-&gt;adjs[i]-&gt;loc.x, tmp-&gt;adjs[i]-&gt;loc.y, tmp-&gt;adjs[i]-&gt;loc.z-1);<br>		PrimBuild::end();<br>      }<br>    }<br>}</pre></div><br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;06,&nbsp;2008 12:12&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;06,&nbsp;2008&nbsp;at&nbsp;17:55&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   @Maddermadcat -&gt; Try slowing down the AI; if your problem is the same as mine, they spin because they overshot the node.<br><br>This is awesome!  Way to go!  The only problem I'm having is that the regular path system no longer works, I could work around it, but I'd rather not.<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;06,&nbsp;2008 18:23&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=81331">Maddermadcat</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;07,&nbsp;2008&nbsp;at&nbsp;00:10&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   Er, Nathan, how?<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;07,&nbsp;2008&nbsp;at&nbsp;00:36&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   (AI id).setMoveSpeed(.5); -- Slows them down to half their regular speed.<br><br><br>Ok, I fixed my problem.  In order to get the regular AIDatablock::OnReachDestination callback, you need to make this change:<br><br><div class="codeblock"><pre>bool AIPlayer::getAIMove(Move *movePtr)<br>{<br>...<br>...<br>if (mFabs(xDiff) &lt; gAStar.clearence &amp;&amp; mFabs(yDiff) &lt; gAStar.clearence) {<br>         if (path.size())<br>         {<br>			if(mMoveDestination != path[1]) {<br>				mMoveDestination = path[1];<br>				path.pop_front();<br>			}<br>			else {<br>				stopMove();<br>				throwCallback("onReachDestination");<br>			}<br>         }<br>         else<br>         {<br>            stopMove();<br>            throwCallback("onReachDestination");<br>         }<br>      }<br>      else {<br>...<br>...<br>}</pre></div><br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;07,&nbsp;2008 11:41&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;07,&nbsp;2008&nbsp;at&nbsp;02:52&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   instead of<br><br>if (path.size() != 0.0f)<br><br>you could probably just say<br><br>if (path.size())<br><br>because the first one is comparing an int to a float.<br><br>EDIT:<br><br>@Stefan: Thanks. I'm about to switch to tgea, so that was very helpful.<br><br>@Maddermadcat: You could also try setting $Pref::AStar::Clearance higher<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;07,&nbsp;2008 03:09&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;07,&nbsp;2008&nbsp;at&nbsp;03:20&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   To smooth out the paths, add the bold code<br><br><br><div class="codeblock"><pre>   if (mMoveState == ModeMove) {<br>      F32 xDiff = mMoveDestination.x - location.x;<br>      F32 yDiff = mMoveDestination.y - location.y;<br><b><br>      F32 tol;<br><br>      if (path.size() &gt; 2 &amp;&amp; !gServerContainer.castRay(location, path[2], STATIC_COLLISION_MASK, &amp;rInfo))<br>      {<br>         tol = mDot(path[0]-path[1], path[1]-path[2])+1.05f;<br>         tol = tol &gt; 1 ? tol*gAStar.clearence : gAStar.clearence;<br>      }<br>      else<br>         tol = gAStar.clearence;<br></b><br>      // Check if we should mMove, or if we are 'close enough'<br>      // AStar clearence is used to give us enough room to get around corners<br>      if (mFabs(xDiff) &lt; <b>tol</b> &amp;&amp; mFabs(yDiff) &lt; <b>tol</b>) {</pre></div><br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;07,&nbsp;2008 03:31&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=33448">Eugene Schaeffer</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;07,&nbsp;2008&nbsp;at&nbsp;04:22&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   Has anyone tried using the a* in the new 1.7 TGEA system?<br><br>I am trying it now. If get it I will let you know but any help would be great.<br><br>Thank you<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=97792">Stefan *Shaderman* Greven</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;07,&nbsp;2008&nbsp;at&nbsp;07:50&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   @Nathan, just to be sure. The code you posted is to fix the regular path system?<br><br>@Dan, maybe you want to add the TGEA port to the zip file as well :) I could make a complete list with the needed changes. Thanks for the smoothing code, I'll try it later.<br><br>@Eugene I guess the PrimBuilder does still exist in 1.7 and the code I posted above should work (you'll need to include primBuild.h, remove dgl.h and such though).<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;07,&nbsp;2008 07:54&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;07,&nbsp;2008&nbsp;at&nbsp;11:05&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   @Stefan -&gt; No, it just fixes the "onReachDestination" callback. If you want regular path following,you'll have to do something like this:<br><br><div class="codeblock"><pre>function AIDatablock::onReachDestination(%datablock, %this)<br>{<br>   %count = %this.Path.getCount();<br>   <br>   // The number of times to go around the path<br>   %times = %this.Path.circleCount;<br>   <br>   if (%this.nodeCount &gt;= %count * %times).<br>   {                     <br>      // Gone around the path!<br>   }<br>   else {<br>      %this.nodeCount++;<br>      %this.nextNode();<br>      // Go to the next node<br>   }<br>}<br><br>function AIPlayer::nextNode(%this) {<br>   // Move to the given path node index<br>   %this.oldNode = %this.currentNode;<br>   %this.currentNode++;<br>   <br>   if (%this.currentNode &gt; %this.Path.getCount() - 1)<br>      %this.currentNode = 0;<br>   %node = %this.Path.getObject(%this.currentNode);<br>   %this.findPathTo(%node.getPosition());<br>}</pre></div><br>@Dan Keller -&gt; Under 'F32 tol;', you need to have 'RayInfo rInfo;', otherwise it won't compile.<br><br>I can't guaranty that I'll get this done, but I'll look into compiling and saving the navNet for faster load times.  Also, I think that there's a memory leak somewhere, with 15000 nodes (only 63 second load time increase!) I'm unable to exit the program.  Take out the nodes, or put in less, and it quits, otherwise I have to force quit it.<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;08,&nbsp;2008 00:46&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;07,&nbsp;2008&nbsp;at&nbsp;22:04&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Found the exiting problem.  After each navMesh was deleted, the program wanted to build the navNet again.  With over 16000 nodes (as of last count), that could be a problem!  The fix isn't all that great, and if you're deleting meshes in the editor you'll have to type buildPaths() in the console, but here it is:<br><br>Comment out the linkMesh() at the bottom of AStar::removeMesh (NavMesh *mesh), and it'll quit.<br><br><br>Saving the navNet comming soon! I would have it by now, but Torque just doesn't want to accept the standered serialization method...<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;09,&nbsp;2008 01:02&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;08,&nbsp;2008&nbsp;at&nbsp;00:55&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   I just bought tgea so i'll have a port up soon.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=38493">fireVein</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;10,&nbsp;2008&nbsp;at&nbsp;02:29&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Any word on getting this working for TGEA 1.7?<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=97792">Stefan *Shaderman* Greven</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;10,&nbsp;2008&nbsp;at&nbsp;06:09&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   fireVein I'm checking a port to 1.7 later today.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=97792">Stefan *Shaderman* Greven</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;10,&nbsp;2008&nbsp;at&nbsp;14:28&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Looks like it'll work in 1.7. The path meshes aren't rendered properly but that's only a question of time :)<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;10,&nbsp;2008&nbsp;at&nbsp;21:43&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Ok, not what I was hoping to have done with this, but another hack for editing with 10000+ nodes (I'm currently at 104,500 nodes).  If you just want to edit your navMeshes, and don't want to wait for the navNet to build after every ajustment, do this:<br><br><div class="codeblock"><pre>void AStar::linkMeshes ()<br>{<br>	if (Con::getBoolVariable("$AStar::Editing", false))<br>		return;<br>...<br>}</pre></div><br><br>Then while you're editing, set $AStar::Editing to true in the console, and you won't have to watch it build every time.<br><br><br>Still working on getting the navNet saved to a file, but it might be a while still; I don't have that much free time.<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;10,&nbsp;2008 23:25&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=97792">Stefan *Shaderman* Greven</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;11,&nbsp;2008&nbsp;at&nbsp;05:20&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Nathan, what about memory usage with so many nodes?<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;11,&nbsp;2008&nbsp;at&nbsp;11:41&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   While building, it takes up half my RAM, takes about 46 minutes to load (that's why I want to be able to save the navNet to a file, I don't think many players would wait 46 minutes for one level, especialy in an RPG), but preforms amazingly well when it comes to the path finding.  The AI can find and/or sneak up on me from the other side of my navMesh, with very little path finding time.<br><br>This should be easy, but another thing I think would make this better, is the option to limit nodes based on their verticle angle to eachother, or declare them to be one-way.  I've got a couple of really steep inclines  in my level, and the AI sometimes go down it (because I have nodes there) and try to get up, but can't.  If you could say that the nodes have to be within a 45 degree angle of eachother, then that would solve the problem.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=43676">bryce</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;13,&nbsp;2008&nbsp;at&nbsp;01:34&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   If this works I may use this for my ai resource....script is just not working out for me and I can't really grasp C++. Looks like a good resource, I'll try it out sometime. Would this work with 1.4.2?<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=97792">Stefan *Shaderman* Greven</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;13,&nbsp;2008&nbsp;at&nbsp;20:26&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   <a href="http://web.archive.org/web/20080626110934/http://www.fragstudios.com/devuploads/aStar_TGEA_170.zip" target="_blank">Here's the code to get it running in TGEA 1.7.0.</a><br><br>Using batch rendering should be the proper solution I guess but to me it seems to be tricky to convert the existing code. I'm not sure if I'll go on trying to do that job.<br><br>The files include all engine changes mentioned above.<br><br>Installation instructions:<br><br>1. Backup aiPlayer.h and aiPlayer.cpp<br><br>2. Copy all files go into engine\source\T3D<br><br>3. Add aStar.h and aStar.cpp to your VS project (engine/T3D)<br><br>4. Add #include "T3D/aStar.h" on top of sceneState.cpp<br><br>5. Add the bold part in SceneState::renderCurrentImages():<br><br><div class="codeblock"><pre>   PROFILE_START(RenderInstManagerRender);<br>   gRenderInstManager.render();<br>   PROFILE_END();<br><b><br>#ifdef AI_RENDER<br>   gAStar.render(this);<br>#endif<br></b><br>   gRenderInstManager.clear();<br><br>   mInteriorList.clear();</pre></div><br><br>6. Add this in game/tools/missionEditor/scripts/editors/creator.ed.cs line 146:<br><b>%Mission_Item[6] = "NavMesh";</b><br><br>7. Add the following function at the end of game/tools/missionEditor/gui/objectBuilderGui.ed.gui:<br><br><div class="codeblock"><pre><b><br>function ObjectBuilderGui::buildNavMesh(%this)<br>{<br>	%this.className = "NavMesh";<br>	%this.process();<br>}<br></b></pre></div><br><br>8. Add this function call at the end of startGame() in game/scriptsAndAssets/server/scripts/game.cs:<br><b>BuildPaths();</b><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=38493">fireVein</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;14,&nbsp;2008&nbsp;at&nbsp;01:54&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Stefan, you rawk!  I greatly appreciate this port to TGE 1.7.<br><br>eidt: I'm having a problem with most of the functions returning -1.  Is anyone else encountering this?  I've used Stefan's code that he posted, and made the the required changes listed on a stock install of TGEA 1.7.  I've double checked everything, and even triple checked everything to make sure I did it properly.  The nav mesh is placed and builds properly.  When I use .wander(#); the bot will start to move, or will walk a little ways and then stop.  All other functions return -1.  Anyone know what the dealio is?<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;14,&nbsp;2008 22:39&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;15,&nbsp;2008&nbsp;at&nbsp;20:47&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   @Nathan: It already does and angle check, but there is a bug. On line 332 in aStar.cc, where it says<br><br><div class="codeblock"><pre>            if (cur-&gt;adjs[direc])<br>                continue;<br><br>            if (tmp-&gt;loc.z - cur-&gt;loc.z &lt; tmp-&gt;mesh-&gt;interval &amp;&amp; tmpVec.len() &lt; cur-&gt;mesh-&gt;interval*(direc&amp;1 ? 1.5f : 1.1f))<br>            {</pre></div><br>Change to<br><br><div class="codeblock"><pre>            if (cur-&gt;adjs[direc])<br>                continue;<br><br>            if (<b>mFabs(</b>tmp-&gt;loc.z - cur-&gt;loc.z<b>)</b> &lt; tmp-&gt;mesh-&gt;interval &amp;&amp; tmpVec.len() &lt; cur-&gt;mesh-&gt;interval*(direc&amp;1 ? 1.5f : 1.1f))<br>            {</pre></div><br><br>EDIT: I was wrong. Change it back.<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;19,&nbsp;2008 13:59&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;16,&nbsp;2008&nbsp;at&nbsp;12:38&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Still need's some work, but that's an improvement!<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=38493">fireVein</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;16,&nbsp;2008&nbsp;at&nbsp;20:42&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   I found the issue to my problem that I mentioned aboved.  For some reason the navmesh isn't being built unless I set its interval to 1 first before I change it to anything else.  Thus I have to edit it in the mission editor everytime the mission loads.  I'll see if I can find whats up with this.. BuildPaths() IS being called correctly in game.cs.  I am also having an issue with the bots getting stuck near corners.  This usually happens when theres others bots that are either in the way, or headed to the same place.  If its just a bot by itself it manages to slide its way down the wall and around the corner.  I've tried all kinds of different interval settings.  It seems that sometimes the nodes are too close to a wall so the bot collides with the wall and isn't actually reaching or registering that it reached the next node.  I should also mention that I am using nothing but an interior.<br><br>Other than that this resource is really cool; thank you for all the hard work, Dan!<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;17,&nbsp;2008 01:47&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=46972">Charles Wolfsandle</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;17,&nbsp;2008&nbsp;at&nbsp;20:06&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   I know this is a dumb question but please bear with me as I am fairly new at scripting. I have implemented the code in TGEA 1.7 and load the AI demo mission. I can see the navmesh and there is a bot just standing there...how do I tell him to go forth?<br><br>Thanks,<br>Charlie<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;17,&nbsp;2008&nbsp;at&nbsp;22:24&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   @Charles: Press ~ to bring up the console, and enter the command you want (ie [id].wander(50) ) the id is the number that appears over the bot's head.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=46972">Charles Wolfsandle</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;17,&nbsp;2008&nbsp;at&nbsp;23:01&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   @Dan:<br><br>I did as you instructed and the bot does an about face...he never leaves that particular node though.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=38493">fireVein</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;18,&nbsp;2008&nbsp;at&nbsp;00:18&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Okay, I got everything sorted out that I was having problems with.  I had to re-arrange some of my AI stuff because it was causing complications with this resource.  Everything is working as intended, and it is really badass.  I have 50 bots all running around chasing me with no gag, and no lag.<br><br>Dan, brah, this is some gnarly shit.  Nothin' but kudos.<br><br><img src="./flexible astar_files/navnetworkingrd0.jpg" alt=""><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=38493">fireVein</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;18,&nbsp;2008&nbsp;at&nbsp;00:24&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Charles, try going to aiplayer.cs and removing all the code that is in AIManager::think() or just add a return; at the beginning of the function. This way you know for sure there is nothing in the scripts that is trying to do something with your bot.  You will have to manually spawn a bot with the console tho.<br><br>If your navmesh is just some green lines sticking up and there are no blue lines connecting the green lines then your navmesh has not been built, try typing in buildpaths(); into the console.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;18,&nbsp;2008&nbsp;at&nbsp;12:18&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   I have a navmesh caching system done that works fairly well. I should have that (as well as some other fixes and a TGEA version) up this afternoon.<br><br>EDIT: It's up now.<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;18,&nbsp;2008 19:20&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;18,&nbsp;2008&nbsp;at&nbsp;19:21&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   @Charles: Your bot move speed may be too high, also.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;19,&nbsp;2008&nbsp;at&nbsp;00:16&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Thanks for getting a caching system done, I've been to busy to work on it at all!  I could probably find this out just by looking through the code, but I'm to lazy (=P), so what are the other changes you made?<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;19,&nbsp;2008&nbsp;at&nbsp;01:41&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   Path smoothing, not rebuildng the mesh on exit, and a few minor cosmetic things.<br><br><br>Ok, I just realized that the "bug" I mentioned above was actually an intentional feaure that I forgot about. The idea was that bots could go down a steep slope, but not back up. So you might want to change it back to the way it was before. I'll be away from my computer for a while, so I can't upload the fix yet.<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;19,&nbsp;2008 01:52&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;20,&nbsp;2008&nbsp;at&nbsp;11:21&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   I'm getting a problem with RawData, it's an undeclared identifier.  I think you forgot to #include something, or you haven't tested it on stock torque.  I have found a RawData class, but you didn't #include the right file (core/coreRes.h), and when I do, I get a whole load of errors.<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;20,&nbsp;2008 12:51&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;20,&nbsp;2008&nbsp;at&nbsp;15:24&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   I wrote that part in tgea, then backported it, so thats probably why it didn't work.<br><br>I'll take a look at it later today when I get home.<br><br>EDIT: Ok, I fixed it.<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;20,&nbsp;2008 21:58&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;20,&nbsp;2008&nbsp;at&nbsp;23:29&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   It built, I'm going to test it tomorrow morning.  I'd rather not lock up my computer for an hour while it builds, I could do that in the morning.<br><br>Edit -&gt; Works briliantly, it turned an hour load time  back down to it's original 20 seconds! This is by far the best aStar resource on GarageGames!<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;21,&nbsp;2008 09:43&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=4835">Jason Hall</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Apr&nbsp;24,&nbsp;2008&nbsp;at&nbsp;14:59&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   I need help with this as I am fairly new at TGE.   Any clues about this error?  I get it when I try to create a NavMesh:<br><br>www.headpile.com/stuff/og.jpg<br><br>edit: disreagard.<br><span class="forumSmallBlack"><i>Edited on Apr&nbsp;24,&nbsp;2008 15:16&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=39058">Sam Redfern</a><span class="tiny">&nbsp;&nbsp;&nbsp;(May&nbsp;01,&nbsp;2008&nbsp;at&nbsp;20:35&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   <br><div class="codeblock"><pre>if (path.size() &gt; 2)<br>      {<br>         tol = mDot(path[0]-path[1], path[1]-path[2])+1.05f;<br>         tol = tol &gt; 1 ? tol*gAStar.clearence : gAStar.clearence;<br>      }</pre></div><br><br>What exactly is the above supposed to do Dan? It's giving me very large values (around 60 in my tests) which means the bot tries to run for a point way down the path which is not the correct one. Great resource BTW!<br><br>I'm also getting sporadic write problems, where all the data is messed up upon being read back. I can't see anything in the code that would do that however.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=39058">Sam Redfern</a><span class="tiny">&nbsp;&nbsp;&nbsp;(May&nbsp;02,&nbsp;2008&nbsp;at&nbsp;12:10&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   I thought you might be interested to see what I'm doing with your resource.. the plan is to implement separate A*Star paths for vehicles and pedestrians. I also have human-controlled vehicles/pedestrians drop the path points rather than manually doing it via the NavMeshes in the mission editor (that's a lot less work for me, especially as I have some really large wilderness maps). The more they play against the AI, the better it will get hehe.<br><br><img src="./flexible astar_files/pathfinding.jpg" alt=""><br><br>I'm also going to strore vehicle speeds on each path point and use this to help them decide what speed is safe plus to use it as a part of a cost-surface calculation in order to get an optimum route.<br><span class="forumSmallBlack"><i>Edited on May&nbsp;02,&nbsp;2008 12:13&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=106277">Nathan Kent</a><span class="tiny">&nbsp;&nbsp;&nbsp;(May&nbsp;05,&nbsp;2008&nbsp;at&nbsp;19:26&nbsp;GMT)</span><span class="tiny">&nbsp;&nbsp;&nbsp;Resource Rating: 5</span>   </td></tr>
+   </tbody></table>
+   Instead of separating vehicle and pedestrian navMeshes, I would do something where you can set the meshes to be in different navNets.  From there you could assign the AI to a different net (ex: %bot.setNavNet(%navNetId);) or have it be called from the find path function (%bot.findPathTo(%destination, %navNetId);).  That would allow more flexibility in your nets, hence, 'Flexible A* Pathfinding System'!<br><br>Cool work though, I like the pic!<br><br>Edit -&gt; If you have a large wilderness, won't there be a point where it takes to long to build the navMesh, and get to the point where it delays the gameplay?<br><br>Edit2 -&gt; Unless you got a system where it only compiles the new node, and the nodes that it would be connected to, then apply the changes to the navNet.<br><span class="forumSmallBlack"><i>Edited on May&nbsp;12,&nbsp;2008 00:47&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(May&nbsp;08,&nbsp;2008&nbsp;at&nbsp;02:31&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   @Sam: Good catch. Replace that code with:<br><br><div class="codeblock"><pre>      if (path.size() &gt; 2 &amp;&amp; !gServerContainer.castRay(location, path[2], STATIC_COLLISION_MASK, &amp;rInfo))<br>      {<br>         Point3F a(path[0]-path[1]);<br>         Point3F b(path[1]-path[2]);<br>         a.normalize();<br>         b.normalize();<br>         tol = mDot(a, b)+1.05f;<br>         tol = tol &gt; 1 ? tol*gAStar.clearence : gAStar.clearence;<br>      }</pre></div><br><br>EDIT: Ok, I put that change into the download.<br><span class="forumSmallBlack"><i>Edited on May&nbsp;08,&nbsp;2008 02:39&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=57073">Dan Keller</a><span class="tiny">&nbsp;&nbsp;&nbsp;(May&nbsp;08,&nbsp;2008&nbsp;at&nbsp;02:35&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   @Nathan: Compiling only the new node would be very easy to do. You could write a function using only the inner loop from linkMeshes, and run it for the new node and all its adjacent points.<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=39058">Sam Redfern</a><span class="tiny">&nbsp;&nbsp;&nbsp;(May&nbsp;12,&nbsp;2008&nbsp;at&nbsp;16:47&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   Nathan: I'm actually planning to do my mesh recalcs offline anyway, since I'm having sporadic problems where they sometimes calculate screwy. I'm setting up the live game servers to write the unprocessed info when they close down, and I will manually download the files every so often, process them at home, and re-upload the processed files to the live servers.  <br><br>(My game runs in a highly 'instanced' way, so each game server typically runs for between 30 minutes and 2 hours before closing).<br><span class="forumSmallBlack"><i>Edited on May&nbsp;12,&nbsp;2008 16:48&nbsp;GMT</i></span><br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=39058">Sam Redfern</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Jun&nbsp;04,&nbsp;2008&nbsp;at&nbsp;23:47&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   Dan, do you think there might be something untoward happening in the code used by findBasicPath() and the other functions that do the actual a*star magic?<br><br>I spent about the last 2 weeks gathering node data from my players, without any trouble. Then I deployed the actual pathfinding today. It turned out to crash all over the place, never actually in the pathfinding code itself, but many different places in the engine. In one instance, I had a bunch on console variables get messed up too. It's like the wrong data is being written to or something? Is this possible?<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=39058">Sam Redfern</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Jun&nbsp;05,&nbsp;2008&nbsp;at&nbsp;00:22&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   Hmm I think I found it actually. I removed your nav mesh objects altogether, and *ahem* forgot to resize openList when new points were dynamically added. Therefore <br><div class="codeblock"><pre>dMemset(openList, 0, sizeof(AStarPoint)*points);</pre></div> was causing mayhem..<br><br>   <table width="100%">
+   <tbody><tr><td class="sectionTitle">
+   <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/my/home/view.profile.php?qid=101767">Steve YorkshireRifles Acaster</a><span class="tiny">&nbsp;&nbsp;&nbsp;(Jun&nbsp;20,&nbsp;2008&nbsp;at&nbsp;16:04&nbsp;GMT)</span>   </td></tr>
+   </tbody></table>
+   Stefan's variant of the code fits nicely into 1.7.1. devoid of hassle.<br><br>Excellent work, Dan.<br><br>You must be a <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/main/login/redirect.php">member and be logged in</a> to either append comments or rate this resource.	</div>
+	<div id="footer">
+		<span style="font-size:9px"><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/">Home</a>&nbsp;|&nbsp;<a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/products/browse/">Products</a>&nbsp;|&nbsp;<a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/solutions/games/commercial/">Solutions</a>&nbsp;|&nbsp;<a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/demos/browse/">Downloads</a>&nbsp;|&nbsp;<a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/support/email/">Support</a>&nbsp;|&nbsp;<a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/search/">Search</a>&nbsp;|&nbsp;<a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/">About Us</a></span><br>Copyright © GarageGames.com 2000 - 2008 All Rights Reserved	</div>
+	<div id="header">
+			<a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/"><img class="left" src="./flexible astar_files/hm_left.gif" alt="GarageGames"></a>
+			<img class="right" src="./flexible astar_files/hm_right.gif" alt="">
+			<div id="navcontainer"><ul id="nav">
+	<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/">Home</a>
+		<ul style="width:10em">
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/news/">Latest News</a></li>
+		</ul>
+	</li>
+	<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/products/browse/">Products</a>
+		<ul style="width:15em">
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/demos/browse/game/">Games</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/makegames/">Developer Tools</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/developer/torque/contentpacks/">Content Packs</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/solutions/education/">Academic Resources</a></li>
+			<li><hr></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/products/torque/tge/">Torque Game Engine</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/products/torque/tgb/">Torque Game Builder</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/products/torque/tgea/">Torque Engine Advanced</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/products/torque/x/">Torque X Engine</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/products/torque/twii/">Torque Wii</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/products/torque/t360/">Torque 360</a></li>
+		</ul>
+	</li>
+	<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/demos/browse/">Downloads</a>
+		<ul>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/demos/browse/development/">Development Demos</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/demos/browse/game/">Game Demos</a></li>
+		</ul>
+	</li>
+	<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/developer/torque/">Documentation</a>
+		<ul style="width:16em">
+			<li><a href="http://web.archive.org/web/20080626110934/http://tdn.garagegames.com/" target="_blank">Torque Developer Network</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/developer/torque/t2d/">Torque Game Builder</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/developer/torque/tge/">Torque Game Engine</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/developer/torque/tse/">Torque Engine Advanced</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/developer/torque/artist/">Artists</a></li>
+		</ul>
+	</li>
+	<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/mg/whatsnew/">Community</a>
+		<ul>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/mg/whatsnew/">What's New</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/mg/forums/result.area.php?qs=1">Forums</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/index.php?sec=mg&mod=resource&page=home">Resources</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/index.php?sec=mg&mod=marketplace&page=home">Marketplace</a></li>
+			<li><hr></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/mg/snapshot/gallery.php">Snapshot Gallery</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/mg/projects/tge/gallery.php">Artist Gallery</a></li>
+		</ul>
+	</li>
+	<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/products/training/">Support</a>
+		<ul style="width:17em">
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/support/email/">Product Support</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/products/training/bootcamp/">Torque Boot Camp Seminars</a></li>
+		</ul>
+	</li>
+	<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/">Company</a>
+		<ul style="width:11em">
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/">About</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/management/">Management</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/employees/">Employees</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/associates/">Associates</a></li>
+			<li><hr></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/contact/">Contact</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/press/">Press Releases</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/rss/info.php">RSS Feeds</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/jobs/">Jobs/Internships</a></li>
+			<li><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/company/logo/">Logo Kits</a></li>
+		</ul>
+	</li>
+</ul><br></div>
+			<div id="navlogin"><span id="welcome"><a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/shopping/cart.php">Cart <img src="./flexible astar_files/cart.gif"></a> / <a href="http://web.archive.org/web/20080626110934/http://www.garagegames.com/main/login/">Login</a>&nbsp;</span>
+			<form name="gs" method="GET" action="http://web.archive.org/web/20080626110934/http://search.garagegames.com/search">
+	<input class="stext" type="text" name="q" maxlength="256" value=" Search" onfocus="this.value=&#39;&#39;;">
+	<input class="ssubmit" type="image" name="btnG" value="Go" src="./flexible astar_files/sgo.gif">
+	<input type="hidden" name="ie" value="">
+	<input type="hidden" name="site" value="GarageGames">
+	<input type="hidden" name="output" value="xml_no_dtd">
+	<input type="hidden" name="client" value="GarageGames">
+	<input type="hidden" name="lr" value="">
+	<input type="hidden" name="proxystylesheet" value="GarageGames">
+	<input type="hidden" name="oe" value="">
+</form></div>
+	</div>
+
+</div>
+
+
+<!-- SOME SCRIPT SRC'S ON THIS PAGE HAVE BEEN REWRITTEN BY THE WAYBACK MACHINE
+OF THE INTERNET ARCHIVE IN ORDER TO PRESERVE THE TEMPORAL INTEGRITY OF THE SESSION. -->
+
+
+<!-- SOME LINK HREF'S ON THIS PAGE HAVE BEEN REWRITTEN BY THE WAYBACK MACHINE
+OF THE INTERNET ARCHIVE IN ORDER TO PRESERVE THE TEMPORAL INTEGRITY OF THE SESSION. -->
+
+
+<script language="Javascript">
+<!--
+
+// FILE ARCHIVED ON 20080626110934 AND RETRIEVED FROM THE
+// INTERNET ARCHIVE ON 20110203215602.
+// JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+// ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+// SECTION 108(a)(3)).
+
+   var sWayBackCGI = "http://web.archive.org/web/20080626110934/";
+
+   function xResolveUrl(url) {
+      var image = new Image();
+      image.src = url;
+      return image.src;
+   }
+   function xLateUrl(aCollection, sProp) {
+      var i = 0;
+      for(i = 0; i < aCollection.length; i++) {
+         var url = aCollection[i][sProp];         if (typeof(url) == "string") { 
+          if (url.indexOf("mailto:") == -1 &&
+             url.indexOf("javascript:") == -1
+             && url.length > 0) {
+            if(url.indexOf("http") != 0) {
+                url = xResolveUrl(url);
+            }
+            url = url.replace('.wstub.archive.org','');
+            aCollection[i][sProp] = sWayBackCGI + url;
+         }
+         }
+      }
+   }
+
+   xLateUrl(document.getElementsByTagName("IMG"),"src");
+   xLateUrl(document.getElementsByTagName("A"),"href");
+   xLateUrl(document.getElementsByTagName("AREA"),"href");
+   xLateUrl(document.getElementsByTagName("OBJECT"),"codebase");
+   xLateUrl(document.getElementsByTagName("OBJECT"),"data");
+   xLateUrl(document.getElementsByTagName("APPLET"),"codebase");
+   xLateUrl(document.getElementsByTagName("APPLET"),"archive");
+   xLateUrl(document.getElementsByTagName("EMBED"),"src");
+   xLateUrl(document.getElementsByTagName("BODY"),"background");
+   xLateUrl(document.getElementsByTagName("TD"),"background");
+   xLateUrl(document.getElementsByTagName("INPUT"),"src");
+   var forms = document.getElementsByTagName("FORM");
+   if (forms) {
+       var j = 0;
+       for (j = 0; j < forms.length; j++) {
+              f = forms[j];
+              if (typeof(f.action)  == "string") {
+                 if(typeof(f.method)  == "string") {
+                     if(typeof(f.method) != "post") {
+                        f.action = sWayBackCGI + f.action;
+                     }
+                  }
+              }
+        }
+    }
+
+
+//-->
+</script>
+
+</body></html>

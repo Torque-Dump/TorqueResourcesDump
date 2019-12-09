@@ -1,0 +1,804 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0063)http://www.torquepowered.com/community/forums/viewthread/109335 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.torquepowered.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.torquepowered.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="Hey guys, 
+
+EDIT:  The first version has been released and is available http://torque.mythoslabs.com/static/T3DWebKitDemo.zip
+
+There are building instructions in the docs folder, please lemme know if there are any issues you run into... This version h">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+				<title>Torque 3D Embedded Browser (WebKit) | Torque 3D (Private) | Forums | Community | TorquePowered.com</title>		<link href="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.torquepowered.com/static/styles/ie.css?rev=3022" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+	function ajaxNotify(account, thread){
+		$().get('/community/notifyuser/' + account + '/' + thread);
+	}    //-->
+</script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body>
+<div id="flashmessage" style="display: block; margin: 0;"><a href="http://www.torquepowered.com/community/blogs/view/20495">Important Torque News Updated: Please click here to read this urgent news update.</a></div>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.torquepowered.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.torquepowered.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.torquepowered.com/products/torque-3d" class="">Engines</a><ul class="sub-nav" id="sub-menu-products" style="z-index: 1003; display: none; "><li><a href="http://www.torquepowered.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.torquepowered.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.torquepowered.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.torquepowered.com/products/tge/iphone">3D Coming Soon</a></li><li><a href="http://www.torquepowered.com/products/torque-x">Torque X</a></li><li><a href="http://www.torquepowered.com/products/consoles">For Consoles</a></li><li><a href="http://www.torquepowered.com/products/education">Educational Use</a></li><li><a href="http://www.torquepowered.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.torquepowered.com/products/browse" class="">Add-ons</a><ul class="sub-nav" id="sub-menu-addons" style="z-index: 1002; display: none; "><li class=""><a href="http://www.torquepowered.com/products/browse/genrekits" class="">Genre Kits</a></li><li class=""><a href="http://www.torquepowered.com/products/browse/tools" class="">Tools</a></li><li><a href="http://www.torquepowered.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.torquepowered.com/products/browse/books">Books</a></li><li><a href="http://www.torquepowered.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.torquepowered.com/community" class="">Community</a><ul class="sub-nav" id="sub-menu-community" style="z-index: 1000; display: none; "><li><a href="http://www.torquepowered.com/community">What's New</a></li><li><a href="http://www.torquepowered.com/community/blogs">Blogs</a></li><li><a href="http://www.torquepowered.com/community/resources">Resources</a></li><li><a href="http://www.torquepowered.com/community/forums">Forums</a></li><li><a href="http://www.torquepowered.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.torquepowered.com/support" class="">Support</a><ul class="sub-nav" id="sub-menu-support" style="z-index: 1005; display: none; "><li class=""><a href="http://www.torquepowered.com/documentation" class="">Documentation</a></li><li class=""><a rel="nofollow" href="http://www.torquepowered.com/support/bugs" class="">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.torquepowered.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.torquepowered.com/company">About Torque</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.torquepowered.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px" class="hover"><a rel="nofollow" href="https://www.torquepowered.com/store" id="cartLink" class="hover"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.torquepowered.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.torquepowered.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.torquepowered.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.torquepowered.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.torquepowered.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+				<form action="http://www.torquepowered.com/search" method="get" id="search" name="search_form">
+					<input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+					<input type="image" id="top-submit" src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/search-bar-main-btn.png" alt="Search">
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.torquepowered.com/search/advanced" method="get">
+																<input type="hidden" name="locations[]" value="forums">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search forums" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.torquepowered.com/community">What's New</a></li>
+			<li><a class="" href="http://www.torquepowered.com/community/blogs">Blogs</a></li>
+			<li><a class="" href="http://www.torquepowered.com/community/resources">Resources</a></li>
+			<li><a class="current" href="http://www.torquepowered.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.torquepowered.com/community/forums/viewthread/109335#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+																				<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.torquepowered.com/community/forums/63/newthread">
+													Start a Thread
+						</a>
+											<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				<div>
+	<div id="thread-content">
+				<h1>Torque 3D Embedded Browser (WebKit)</h1>
+		<div id="threadContent">
+			<p class="date">
+				by <a href="http://www.torquepowered.com/account/profile/126567">Josh Engebretson</a>
+				<strong>·</strong>
+				in <a href="http://www.torquepowered.com/community/forums/63">Torque 3D (Private)</a>
+				<strong>·</strong>
+				01/15/2010 (2:55 pm)				<strong>·</strong>
+				127 replies
+			</p>
+			<div class="body">Hey guys, <br>
+<br>
+<b>EDIT:  The first version has been released and is available <a rel="nofollow" href="http://torque.mythoslabs.com/static/T3DWebKitDemo.zip" target="_blank">HERE</a><br>
+<br>
+There are building instructions in the docs folder, please lemme know if there are any issues you run into...</b> This version has been modified/packaged to run against Beta 1.1, so it is possible issues may be present due to code/engine changes.<br>
+<br>
+Development Video<br>
+<br>
+<object width="640" height="480"><param value="http://www.youtube.com/v/FBCQQArHQ8w&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D218" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed width="640" height="480" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/FBCQQArHQ8w&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D18"></object><br>
+Here are some highlights: <br>
+<br>
+1)  It uses QtWebKit which is based off Apple's WebKit, the same HTML5/Canvas based web rendering engine from Chrome, Safari, Adobe AIR<br>
+<br>
+2)  QtWebKit is *easily* the best designed embeddable web browser I have found in exhaustive travels... (I actually compiled Chrome from source at one point, not recommended).  Qt is *extremely* well supported and owned by Nokia who recently paid $153,000,000 for it.  So, it is probably going to be around for some time.<br>
+<br>
+3)  Flash works :)<br>
+<br>
+4)  It is setup as a GuiControl so interacts perfectly with mouse events, control overlap, filters... <br>
+<br>
+There are currently 3 rendering modes:<br>
+<br>
+<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/t3d_web_rendertexture.jpg" alt="torque.mythoslabs.com/static/t3d_web_rendertexture.jpg"><br>
+1)  Render to Texture: This mode renders the web view to an offscreen buffer and then uploads it to a GFXTexHandle.  It uses the Torque GUI system input for mouse and keyboard.  As we're rendering to a texture, compositing and rendering to 3d surfaces is possible.  Flash renders as long as it is set to windowless mode in the HTML (not a big deal).  Instead of using Flash for anything other than presentation/video playback,  I would suggest looking into Canvas/HTML5/CSS animations/effects in this mode.<br>
+<br>
+<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/t3d_web_rendernative.jpg" alt="torque.mythoslabs.com/static/t3d_web_rendernative.jpg"><br>
+2)  Render Native:  This mode integrates a native child window with Gui Control, giving the best of both worlds :)  There is no need to render to texture as we're using an actual clipped child HWND which uses the Torque GUI system for position/extents and focus :)  Transparency does not currently work, however under Vista/Win7 this should be possible.  I should be able to get masking working with minimal effort, which would allow for shaped windows and transparent areas.<br>
+<br>
+<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/t3d_web_renderpopup.jpg" alt="torque.mythoslabs.com/static/t3d_web_renderpopup.jpg"><br>
+3)  Render Popup:  This mode pops up a standalone window, which is owned by the application and consistent in scripting with other modes.  This is useful for things like integrated document browsing, tutorial video watching, game doc reading, game forum reading, etc... where you don't want to crowd your game interface with browser.  However, you want CLOSE scripted integration with a standard browser (no worries of IE/Mozilla/Chrome), which isn't possible with the current "launch browser" functionality.<br>
+<br>
+<b>These modes work with HTTPS</b> adding a nice way to authenticate to servers, secure purchasing, etc.<br>
+<br>
+It is still pretty early in the development and the idea with the code release will be to get feedback on usability and features... especially WRT integration with Javascript on the page, etc.<br>
+<br>
+Regards,<br>
+- Josh Engebretson<br>
+Mythos Labs, LLC</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/126567.jpg" alt="Josh Engebretson&#39;s profile picture">
+			<br>
+			<a rel="Josh Engebretson" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/126567" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Josh Engebretson
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				http://www.MythosLabs.com			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Threads</h3>
+							<li><a rel="nofollow" href="http://www.torquepowered.com/community/forums/viewthread/109199">Torque 3D User Group</a></li>							<li><a rel="nofollow" href="http://www.torquepowered.com/community/forums/viewthread/109009">Embedded Browser Support (Associate Discussion)</a></li>							<li><a rel="nofollow" href="http://www.torquepowered.com/community/forums/viewthread/105655">Torque 3D, C# with .NET or Mono</a></li>							<li><a rel="nofollow" href="http://www.torquepowered.com/community/forums/viewthread/104769">1.0.1 Torque Toolbox crash on fresh Windows install</a></li>							<li><a rel="nofollow" href="http://www.torquepowered.com/community/forums/viewthread/102727">Thoughts on TGE moving forward...</a></li>					</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<div id="page-turner" class="separator-950" style="position: relative;">
+	<div class="right">
+							<a href="http://www.torquepowered.com/community/forums/viewthread/109345"><span class="right-arrow">Next</span>Next Thread</a>
+			</div>
+	<div class="left">
+							<a href="http://www.torquepowered.com/community/forums/viewthread/109327"><span class="left-arrow">Prev</span>Previous Thread</a>
+			</div>
+	<div class="center" style="text-transform: none;"><a href="http://www.torquepowered.com/community/forums/63">More from Torque 3D (Private)</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/2#comments">2</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/3#comments">3</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/4#comments">4</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/5#comments">5</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/6#comments">6</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/7#comments">7</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/2#comments" class="next">Next»</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/7#comments" class="last">Last »</a><div class="clear"></div></div>	<div style="text-align: center;">
+									<a href="http://www.torquepowered.com/community/forums/viewthread/109335/7#comment_form">+Reply to this thread</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.threadNotify(109335, 74950);">Notify me of new replies</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/56854.png" class="profilepic">
+			<br>
+			<a rel="Fyodor &quot;bank&quot; Osokin" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/56854" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Fyodor "bank" Osokin<br>
+	<span class="studio-name">Dedicated Logic</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-716809" name="comment-716809">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/15/2010 (3:05 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Great work Josh!<br>
+I wanted to play around with QtWebKit until I found that you are already on it :) So, thanks a lot. This all looks impressive and I'm sure it will give developers a lot of ideas on how to make the game even more exciting.<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/73506.jpg" class="profilepic">
+			<br>
+			<a rel="Novack" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/73506" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Novack
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-716829" name="comment-716829">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/15/2010 (5:38 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Holly crapolla Josh!<br>
+Impressive as usual (as awkward as that may sound).		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/11919.png" class="profilepic">
+			<br>
+			<a rel="Tom Spilman" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/11919" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Tom Spilman<br>
+	<span class="studio-name">Sickhead Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-716873" name="comment-716873">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/15/2010 (8:33 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Josh<br>
+<br>
+So i haven't looked closely at this, but it seems like the key feature is gonna be redirecting the render-to-texture method to a material texture input.<br>
+<br>
+If you've seen the PostEffect and new Material stuff Pat came up with this idea of doing a prefix of pound sign # for special textures.  So we've always supported like....  $backbuffer, $cubemap, etc.  He added the idea of like #gbuffer, #lightinfo, and others for special named texture targets that users can define.<br>
+<br>
+You could hook into the same system which allows us to do something like this...<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.torquepowered.com/community/forums/viewthread/109335#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.torquepowered.com/community/forums/viewthread/109335#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.torquepowered.com/community/forums/viewthread/109335#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>singleton&nbsp;GuiWebCtrl(MyWebControl)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;renderMode&nbsp;=&nbsp;texture;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;targetName&nbsp;=&nbsp;<span class="string">"MyWebControlTex"</span><span>;&nbsp;</span><span class="comment">//&nbsp;User&nbsp;gives&nbsp;this&nbsp;texture&nbsp;target&nbsp;a&nbsp;name.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;extents&nbsp;=&nbsp;<span class="string">"256&nbsp;256"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;url&nbsp;=&nbsp;<span class="string">"http://www.google.com"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>singleton&nbsp;Material(WebMaterial)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;diffuseMap[0]&nbsp;=&nbsp;<span class="string">"#MyWebControlTex"</span><span>;&nbsp;</span><span class="comment">//&nbsp;Reference&nbsp;the&nbsp;named&nbsp;target&nbsp;here!</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">singleton GuiWebCtrl(MyWebControl)
+{
+   renderMode = texture;
+   targetName = "MyWebControlTex"; // User gives this texture target a name.
+   extents = "256 256";
+   url = "http://www.google.com";
+};
+
+singleton Material(WebMaterial)
+{
+   diffuseMap[0] = "#MyWebControlTex"; // Reference the named target here!
+};</pre><br>
+... it won't get you any automatic mouse input interactivity, the GuiWebCtrl would never be pushed on to the canvas, and the rendering would happen on demand when the Material requests the texture on each frame.<br>
+<br>
+Look at MatTextureTarget in the codebase which currently enables this functionality if you derive from it and implement a few methods.  Hit me on IM if you need help.<br>
+<br>
+Anyway... this would allow someone to then via script control the GuiWebCtrl... navigating to local or remote pages, browser script calls, etc.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/51584.jpg" class="profilepic">
+			<br>
+			<a rel="Vincent BILLET" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/51584" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Vincent BILLET
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-716917" name="comment-716917">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/16/2010 (1:10 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Amazing ! This would be a really great key feature for Torque ! 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/32911.jpg" class="profilepic">
+			<br>
+			<a rel="Marc &#39;Dreamora&#39; Schaerer" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/32911" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Marc 'Dreamora' Schaerer<br>
+	<span class="studio-name">Gayasoft</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-716943" name="comment-716943">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/16/2010 (3:20 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Very interesting stuff :)<br>
+<br>
+While I'm likely the only one on planet not seeing a reason for a browser in a game, there are surely others that  would consider themself waiting for this nearly as much as waiting for the FK :)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/63061.png" class="profilepic">
+			<br>
+			<a rel="Mike Rowley" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/63061" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Mike Rowley
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-716947" name="comment-716947">#6</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/16/2010 (3:45 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			This looks awesome. <br>
+Let's see...uses....<br>
+<br>
+login system is the first one that comes to mind.<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/126567.jpg" class="profilepic">
+			<br>
+			<a rel="Josh Engebretson" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/126567" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Josh Engebretson
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-716953" name="comment-716953">#7</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/16/2010 (4:18 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			To rattle off a few ideas:<br>
+<br>
+In game advertising on 3d objects such as billboards, secure HTTPS microtransactions (or just purchasing the game), integrated bug tracking during development (or release), Flash video/animation/minigames/UI, HTML5/Canvas/CSS animations/transistions/UI, Community integration with forums and messaging (think Steam), integration with Facebook Connect for credentials and friends lists, context sensitive/hyperlink browsing of game/editor manuals, in game marketing with links to reviews/user comments, etc.  <br>
+<br>
+Not forcing the user to leave your game to do any of these things... or whatever else you want to do with the web with *tight* integration/interactivity.<br>
+<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/126567.jpg" class="profilepic">
+			<br>
+			<a rel="Josh Engebretson" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/126567" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Josh Engebretson
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-716955" name="comment-716955">#8</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/16/2010 (4:25 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Tom:  Thanks, I am going to be working on getting something together this weekend.  Right now, been focusing on the GuiControl stuff and making sure input/rendering is working there (and flexible).<br>
+<br>
+I'll be looking into the material stuff, definitely for an initial release... and will see about hitting you up on IM if I am having trouble (or just to say "Yay, it works!") :)<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/7680.jpg" class="profilepic">
+			<br>
+			<a rel="Weslyn &quot;DocWes&quot; Whitehead" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/7680" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Weslyn "DocWes" Whitehead
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-716973" name="comment-716973">#9</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/16/2010 (6:06 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Josh this is pretty awesome man. I would definently want to see what kinda of progress your making with this and offer any help, testing etc. This sounds like the perfect tool for a project im working on. <br>
+Look forward to hearing more.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/39986.jpg" class="profilepic">
+			<br>
+			<a rel="Henry Todd" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/39986" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Henry Todd
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-717065" name="comment-717065">#10</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/16/2010 (2:39 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			This is really great news. I knew that this was going on somewhere in the background, but had no idea we were about to get this code or anything even close. The more things players don't leave the client to do, the easier it is to develop a community that's tied directly to the game experience. I'm one of those people who actually really likes a lot of what Steam does.<br>
+<br>
+The phrase that really got my attention was "render to texture." If I'm excited about GUI web browsers, I'm literally (<i>applauding politely -ed</i>) over the ability to render a GUI element to a 3D surface.<br>
+<br>
+Any chance this code will include support for other types of GUI objects to render to texture as well? I think we can all agree this is a feature that would get a lot of use.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/11919.png" class="profilepic">
+			<br>
+			<a rel="Tom Spilman" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/11919" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Tom Spilman<br>
+	<span class="studio-name">Sickhead Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-717067" name="comment-717067">#11</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/16/2010 (2:46 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Henry - I don't think there is a current plan to make Torque GuiControls render to texture.  If you have HTML then you can do the same sorts of things and more.<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/126567.jpg" class="profilepic">
+			<br>
+			<a rel="Josh Engebretson" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/126567" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Josh Engebretson
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-717071" name="comment-717071">#12</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/16/2010 (3:12 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Thanks guys, really this was another weekend experiment that kind of took on a life of its own.  QtWebKit does all the heavy lifting and if you're interested Nokia's <a rel="nofollow" href="http://qt.nokia.com/doc/4.6/qtwebkit.html" target="_blank">documentation</a> is a pretty good read.<br>
+<br>
+One of the best features of this is the tiny amount of code that is necessary... and shipping a product with QtWebKit binaries isn't at all crazy or hard to support (compressed something like 11 megs, so not bad at all for a full featured browser!) <br>
+<br>
+The focus on the first release is good GuiControl integration for serving up the web in your Torque 3D application.  I am also working on getting pages rendered on 3d surfaces (running into a slight issue with Material on this front, thanks to Tom for the IM session).<br>
+<br>
+From there, better TorqueScript integration, picking on 3d sufaces (I actually, think this is best done in 2D and the novelty quickly wears thin, but it is probably worth having), performance tweaks (rendering on a separate thread, dirty rectangle), etc<br>
+<br>
+I have some other (technically more important) work that needs doing with Torque, but this should definitely be a good starting spot and if anyone wants to dive in and help, that could be cool and I can try and help facilitate it.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/12671.png" class="profilepic">
+			<br>
+			<a rel="Christian Weber" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/12671" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Christian Weber
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-717109" name="comment-717109">#13</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/17/2010 (2:44 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Awesome work! Will there  also be support for using webkit for the GUI? Like Overgroth is using it.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/84493.jpg" class="profilepic">
+			<br>
+			<a rel="Cai Yundong" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/84493" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Cai Yundong
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-717117" name="comment-717117">#14</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/17/2010 (4:44 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Wow ! Really cool ! Great work !		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/189213.jpg" class="profilepic">
+			<br>
+			<a rel="Daniel Goldman" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/189213" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Daniel Goldman<br>
+	<span class="studio-name">OddMobb Dev</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-717235" name="comment-717235">#15</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/17/2010 (4:39 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Very cool!<br>
+<br>
+Looking forward to replacing it with the browser you found.<br>
+<br>
+Has anyone found any real documentation on the inner workings of the texture and material systems?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/39986.jpg" class="profilepic">
+			<br>
+			<a rel="Henry Todd" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/39986" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Henry Todd
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-717303" name="comment-717303">#16</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/17/2010 (8:53 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Tom: I'm just being feature-greedy as usual. The thought of having to update my web programming skills to the 21st century to build complex displays doesn't thrill me, but I suppose you're right about the power of this kind of solution making the GUI option kind of pointless.<br>
+<br>
+Again, this is way more than expected and I'm just glad it's coming out in any form at all. So, a huge thank you to Josh for getting this out to the community.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Sei" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/70404" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Sei
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-717337" name="comment-717337">#17</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/17/2010 (11:19 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Josh<br>
+<br>
+Flash Work? <br>
+ <br>
+I know T3D web publishing enable Javascript &lt;&gt; Torquescript communication, so with your new tech, can it achieve Flash(Actionscript&gt; &lt;&gt; Torquescript communication? <br>
+<br>
+If it is possible then it would be huge imo, I always wanted to build game gui with Flash.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/126567.jpg" class="profilepic">
+			<br>
+			<a rel="Josh Engebretson" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/126567" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Josh Engebretson
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-717419" name="comment-717419">#18</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/18/2010 (4:54 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I'm currently working on the 3d rendering stuff (basic/advanced lighting).  There was some good progress on this yesterday, web content with advanced lighting is really neat :)<br>
+<br>
+It did become clear that for performance, I really need to get WebKit rendering on a separate thread... so putting that together now.<br>
+<br>
+@Sei:  Yes, Flash renders just fine.  The input also was working in RENDER_NATIVE/RENDER_POPUP modes.  I'll have to see what happens now with all the WebKit stuff on its own thread.  It should continue to work with some sweat... probably going to have to leave RENDER_TEXTURE Flash input support for another day (we'll see).<br>
+<br>
+For some ideas, you can check out a video of experimentation from last year using Awesomium...  in old school Stronghold :)<br>
+<br>
+<object width="640" height="480"><param value="http://www.youtube.com/v/ymI80FKBXfE&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D218" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed width="640" height="480" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/ymI80FKBXfE&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D18"></object>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/51584.jpg" class="profilepic">
+			<br>
+			<a rel="Vincent BILLET" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/51584" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Vincent BILLET
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-717793" name="comment-717793">#19</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/19/2010 (12:07 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Wow ! Amazing !!!!!<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/126567.jpg" class="profilepic">
+			<br>
+			<a rel="Josh Engebretson" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/126567" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Josh Engebretson
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/forums/viewthread/109335/1#comment-718033" name="comment-718033">#20</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">01/19/2010 (6:15 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			A few updates:<br>
+<br>
+1)  All web content rendering/updating is now handled on a separate thread/CPU core.  In the case of RENDER_NATIVE/RENDER_POPUP, the web stuff never touches the main thread.  For RENDER_TEXTURE there is a quick mutex lock to transfer a cached memory buffer. <br>
+<br>
+2)  I spent a day fixated on getting Flash keyboard/mouse working in RENDER_TEXTURE mode, but I believe this was worth it.  Being able to debug into Qt and WebKit is *really* nice for this low level stuff.  A couple *minor* patches are necessary to WebKit in order for it to work... needle in a haystack but easy to apply now :)<br>
+<br>
+3)  Basic "dirty rectangle" and caching support with partial texture uploads.  I also setup variable rate updates for animated content.<br>
+<br>
+4)  MatTextureTarget support for rendering web content onto 3d models using standard Material definitions and mapTo (Thanks to Tom for pointing me in the right direction)<br>
+<br>
+So, that is most of the time consuming fiddly bits... a little "behind" doing this right.  The fun stuff will be in exposing all the power of <a rel="nofollow" href="http://qt.nokia.com/doc/4.6/qtwebkit.html" target="_blank">http://qt.nokia.com/doc/4.6/qtwebkit.html</a> to Torque :)<br>
+<br>
+- Josh		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/2#comments">2</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/3#comments">3</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/4#comments">4</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/5#comments">5</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/6#comments">6</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/7#comments">7</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/2#comments" class="next">Next»</a> <a href="http://www.torquepowered.com/community/forums/viewthread/109335/7#comments" class="last">Last »</a><div class="clear"></div></div>	<div class="clear"></div>
+	</div>
+
+		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.torquepowered.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.torquepowered.com/community/resources/add">Add a resource</a><br>
+								<a href="http://www.torquepowered.com/community/forums/63/newthread">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.torquepowered.com/">Home</a>
+	<a href="http://www.torquepowered.com/products">Products</a>
+	<a href="http://www.torquepowered.com/community">Community</a>
+	<a href="http://www.torquepowered.com/support">Support</a>
+	<a href="http://www.torquepowered.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © TorquePowered.com 2000 - 2010 All Rights Reserved. <a href="http://www.torquepowered.com/company/tos">Terms of Service</a> - <a href="http://www.torquepowered.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.torquepowered.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Torque 3D Embedded Browser (WebKit)   Torque 3D (Private)   Forums   Community   TorquePowered.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/forums/63/view/109335');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

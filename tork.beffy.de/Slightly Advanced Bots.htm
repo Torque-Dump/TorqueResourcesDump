@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0053)http://tork.beffy.de/tutorials/bots/advanced_bots.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Slightly Advanced Bots</title>
+<link rel="STYLESHEET" type="text/css" href="./Slightly Advanced Bots_files/style.css"><script>
+function openPop(url, width, height, top, left, name) {
+        var trails="width=" + width + ",height=" + height + ",left=" + left + ",top=" + top + ",toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no";
+        newWindow=window.open(url,name,trails);
+}
+</script></head>
+
+<body>
+<script type="text/javascript" language="JavaScript" src="./Slightly Advanced Bots_files/nav.js"></script>
+<script>
+	header("Slightly Advanced Bots");
+</script><table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0"> 	<tbody><tr bgcolor="#e0e0e0">         <td valign="bottom" width="*"><h1><nobr>Slightly Advanced Bots</nobr></h1></td>         <td align="right"><img src="./Slightly Advanced Bots_files/header.gif" width="240" height="60" border="0"></td>     </tr>     <tr>          <td align="left" bgcolor="#0C3481">         &nbsp;<a class="bar" href="http://www.garagegames.com/" target="_blank">GarageGames.com</a>         </td>         <td align="right" bgcolor="#0C3481">         <span class="bar"><nobr>Doc Version 1.0.x&nbsp;</nobr></span>         </td>     </tr> 	<tr><td colspan="2" height="15">&nbsp;</td></tr>
+<script>
+	startBody();
+</script><tr valign="top"><td colspan="2" height="100%">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#dDdDdD"><tbody><tr><td>Author: <a href="mailto:beffy@gmx.de">beffy</a>&nbsp;(c++programmer)</td></tr></tbody></table><p><!-------------------------------------------------------->
+</p><p>So you got bots in your game running around randomly and maybe to specific locations?
+Cool! (If not, make sure you've read my <a href="http://tork.beffy.de/tutorials/bots/adding_bots.html">previous tutorial</a> on adding bots to a game ;-) ...)
+But wouldn't it be cooler to make them hunt you? Move along waypoints?
+Or search the next nearest player and hunt
+him? Well, you are pretty close... read on!
+</p>
+
+First of all, I took the test mission and added some waypoints in the world editor creator (F11 - F4)
+and put them in a seperate SimGroup to access them from script later on:
+<hr>
+<pre>   new SimGroup(BotMarkers) {
+      new WayPoint() {
+         position = "84.7609 -329.467 181.154";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "WayPointMarker";
+         name = "1";
+         team = "0";
+      };
+      new WayPoint() {
+         position = "91.9828 -332.776 184.206";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "WayPointMarker";
+         name = "2";
+         team = "0";
+      };
+      new WayPoint() {
+         position = "98.164 -330.142 187.618";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "WayPointMarker";
+         name = "3";
+         team = "0";
+      };
+      new WayPoint() {
+         position = "119.626 -343.224 208.346";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "WayPointMarker";
+         name = "4";
+         team = "0";
+      };
+      new WayPoint() {
+         position = "138.997 -327.711 225.599";
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "WayPointMarker";
+         name = "5";
+         team = "0";
+      };
+   };
+</pre>
+<hr>
+
+<p>
+For the next part we need to add a little snipit to the engine code to clear the bots aim through script.
+<br>The function itself is already in <b>aiPlayer.cc</b>, it simply sets the aim location to the
+current destination point of the AI, like this:
+</p>
+
+<hr>
+<pre>/**
+ * Clears the aim location and sets it to the bot's
+ * current destination so he looks where he's going
+ */
+void AIPlayer::clearAim() {
+   mAimLocation = Point3F( 0.0f, 0.0f, 0.0f );
+   mAimToDestination = true;
+}
+</pre>
+<hr>
+
+<p>
+It just wasn't exposed to the scripting engine, so I did it:
+</p>
+
+<hr>
+<pre>/**
+ * Clears the point the AI is aiming at
+ */
+ConsoleMethod( AIConnection, clearAim, void, 2, 2, "ai.clearAim();" ) {
+   AIPlayer *ai = static_cast&lt;AIPlayer*&gt;( object );
+   ai-&gt;clearAim();
+}
+</pre>
+<hr>
+
+<br>
+<p>Then, in <b>aiPlayer.cs</b>, I got a handy little function following any waypoints in this SimGroup and/or chasing the
+player if finished:</p>
+
+<hr>
+<pre>function AIPlayer::handleWaypointsAndChase(%this)
+{
+   // look for next "available" human player... :-)
+   %nextClient = ClientGroup.getObject(AIPlayer::getClosestHuman(%this));
+   $daPlaya = %nextClient.player;
+   if(!isObject($daPlaya) || !isObject(%this))
+   {
+      return;
+   }
+   	// get his position:
+	%playPos = $daPlaya.getPosition();
+	// but first look for some waypoints...
+	// if there are some waypoints to follow
+	if(isObject(BotMarkers))
+	{
+		%num = getNumberBotMarkers();
+		// %this.countMyMoves tracks the number of waypoints already passed by this AI
+		if(%this.countMyMoves $= "")
+		{
+			//echo number of waypoint once
+			echo(%num @ " BotMarkers found!");
+		}
+		// output player posititon
+		error("Player Position: " @ %playPos);
+		// as long as this bot hasn't completed the waypoint path:
+		if(%this.countMyMoves &lt; BotMarkers.getCount())
+		{
+			%dest = BotMarkers.getObject(%this.countMyMoves).position;
+			echo("Next destination: " @ %dest);
+			echo("The distance is: " @ getMarkerDistance(%this.countMyMoves, %this));
+			echo("myMoves along the waypoint path:" SPC %this.countMyMoves);
+			%this.setMoveDestination(%dest);
+			%this.move();
+			%this.countMyMoves++;
+		}
+		// okay, finished path, time for hunting the player...
+		else
+		{
+			AIPlayer::shootHimIfYouSeeHim(%this, %playPos);
+		}
+	}
+	// else: No waypoints, so chase the player!
+	else
+	{
+	  AIPlayer::shootHimIfYouSeeHim(%this, %playPos);
+	}
+}
+</pre>
+<hr>
+
+<br>
+This next function bascially tests if the player's position is in view and
+if it is, the AI aims and shoots at him (if a weapon and some ammo are available -
+<br>NOTE: hasInventory() is defined in inventory.cs.
+I'm using <a href="http://www.garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=1962" target="_blank">Spock's Inventory Manager</a>, though - 
+I will show you two versions of the function, hold on...).
+
+<hr>
+<pre>function AIPlayer::shootHimIfYouSeeHim(%this, %playPos)
+{
+   %this.setTargetObject($daPlaya);
+   %iSeeHim = aiPlayer::isObjectInView(%this, $daPlaya);
+   error(%this.player SPC "isObjectInView:" SPC %iSeeHim);
+   if(%iSeeHim)
+   {
+      error(%this.player @ ": I see him!!!");
+      %this.setAimLocation($daPlaya.getWorldBoxCenter());
+      // do we have a weapon?
+      error(%this.player SPC "has Weapon:" SPC %this.player.hasInventory("Crossbow"));
+      error(%this.player SPC "has Ammo:" SPC %this.player.hasInventory("CrossbowAmmo"));
+      if ( (%this.player.hasInventory("Crossbow") &amp;&amp; %this.player.hasInventory("CrossbowAmmo"))
+            || (%this.player.hasInventory("Rifle") &amp;&amp; %this.player.hasInventory("RifleAmmo")) )
+      {
+		// shoooooot
+		%this.setTrigger(0,true);
+		// UPDATE 02/10/10: the new AI player class in the HEAD uses
+		// setImageTrigger(0,true); 
+		// to make the bot shoot... thx to Sabrecyd for investigating :)
+		// haven't tried it yet, though...
+      }
+      else
+      {
+         error(%this.player SPC "has no weapon/ammo!");
+      }
+      %this.setMoveDestination(%playPos);
+      %this.move();
+   }
+   // no player in sight?
+   else
+   {
+	// clear aim
+	%this.clearAim();
+	// check for next nearest player
+	%nextClient = ClientGroup.getObject(AIPlayer::getClosestHuman(%this));
+	$daPlaya = %nextClient.player;
+	if(!isObject($daPlaya))
+	{
+		return;
+	}
+	%playPos = $daPlaya.getPosition();
+	%this.setMoveDestination(%playPos);
+	%this.setAimLocation($daPlaya.getWorldBoxCenter());
+	%this.move();
+  }
+}
+</pre>
+<hr>
+
+<br>
+so here are the functions I added in <b>inventory.cs</b> to check for available weapons,
+the first one is for the "traditional" inventory system,
+the second one is for <a href="http://www.garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=1962" target="_blank">Spock's inventory manager</a>:
+
+<hr>
+<pre>// "traditional"
+function ShapeBase::hasInventory(%this, %data) {
+    return %this.inv[%data];
+}
+// "Spock's way" ;-)
+function ShapeBase::hasInventory(%this, %data) {
+	return %this.getInvItem(%data, "amount");
+}
+</pre>
+<hr>
+
+<br>
+The next function checks if the target is in view. First it sets the sight range of the
+AI, you might want to adjust this...
+
+<hr>
+<pre>// this one's provided by Ryan Mette
+function aiPlayer::isObjectInView(%this, %object)
+{
+   %player = %this.player;
+   // default sight range of AI:
+   %this.sightRange = 70.0;
+   if (!(isObject(%player) &amp;&amp; isObject(%object))) return;
+
+   %objPos = %object.getWorldBoxCenter();
+   %eyePoint = %player.getWorldBoxCenter();
+   %distance = VectorDist(%objPos, %eyePoint);
+   
+   error("DISTANCE:" SPC %distance);
+
+   if (%distance &lt;= %this.sightRange)
+   {
+      // if the object is within 1.5 meters sometimes it can
+      // fall out of the field of view due to the eye height
+      if (%distance &gt; 2)
+      {
+      	%eyeTransform = %player.getEyeTransform();
+      	%eyePoint = firstWord(%eyeTransform)
+      	   SPC getWord(%eyeTransform, 1)
+      	   SPC getWord(%eyeTransform, 2);
+      }
+      %eyeVector = VectorNormalize(%player.getEyeVector());
+      
+    //make sure we're not looking through walls...
+    %mask = $TypeMasks::TerrainObjectType |
+           $TypeMasks::InteriorObjectType |
+           $TypeMasks::StaticShapeObjectType;
+    %losResult = containerRayCast(%objPos, %eyePoint, %mask);
+    %losObject = GetWord(%losResult, 0);
+    if (!isObject(%losObject))
+    {
+         //create the vector from this client to the client
+         %objVector = VectorNormalize(VectorSub(%objPos, %eyePoint));
+
+         // dot product to determine field of view
+         %dot = VectorDot(%objVector, %eyeVector);
+
+         // within field of view
+   	    return (%dot &gt; 0.6);
+    }
+   }
+   return false;
+}
+</pre>
+<hr>
+
+<br>
+The next piece of code searches for the closest human player.
+It simply iterates through the ClientGroup and checks the distance to
+the available clients.
+
+<hr>
+<pre>// provided by Jared Hoberock
+// I changed it to use ClientGroup instead of its own array like Jared did...
+function AIPlayer::getClosestHuman(%this) 
+{ 
+	%botpos = %this.getLocation(); // get bot position 
+	%count = ClientGroup.getCount(); // number of player 
+	%tempDist2 = 32000; // set this pretty high 
+	for(%i = 0; %i &lt; %count; %i++) // step through 
+	{ 
+		%client = ClientGroup.getObject(%i); 
+		if(isObject(%client.player)) // only if client.player is an object 
+		{ 
+			if(%client.isAIControlled())
+				continue; // we dont want to find other bots, do we...
+			%playPos = %client.player.getPosition(); // player position 
+			%tempDist = VectorDist(%playPos, %botPos); // distance player - bot 
+			if(%tempDist2 &gt; %tempDist) // if Dist2 greater Dist we take the smaller 
+			{ 
+				%tempDist2 = %tempDist; // save shortest Dist 
+				%index = %i; // set %index 
+			} 
+		} 
+	} 
+	return %index; 
+} </pre>
+<hr>
+
+<br>
+Now some little helper functions: the first returns the number of available bot waypoints,
+the second returns the distance to the next waypoint.
+
+<hr>
+<pre>function getNumberBotMarkers()
+{
+	%count = BotMarkers.getCount();
+	return %count;
+}
+function getMarkerDistance(%markernumber, %bot)
+{
+	%botPosition = %bot.getLocation();
+	%markerObject = BotMarkers.getObject(%markernumber);
+	%dist = vectorDist( %botPosition, %markerObject.position );
+	return %dist;
+}
+</pre>
+<hr>
+
+<br>Yep, that should be it...
+If I missed something, please let me know ;-)
+<br>
+<b>Have fun!</b>
+
+<!-------------------------------------------------------->
+<script>endBody();</script></td></tr>
+<script>footer("adding_bots.php", "../modelling/max_character_export.php", "beffy@gmx.de");</script><tr><td colspan="2" height="15">&nbsp;</td></tr> 	<tr><td colspan="2">  	<table width="100%" border="0" cellspacing="0" cellpadding="0"> 	<tbody><tr>         <td align="left" width="33%" bgcolor="#0C3481">         &nbsp;<a class="bar" href="http://tork.beffy.de/tutorials/bots/adding_bots.php">&lt;&lt; Previous</a>         </td>         <td align="center" width="34%" bgcolor="#0C3481">         <a class="bar" href="http://tork.zenkel.com/modules.php?op=modload&name=ToRKTutorials&file=index">Table of Contents</a>&nbsp;         </td>         <td align="center" width="16%" bgcolor="#0C3481" class="bar">         Author:<a class="bar" href="mailto:beffy@gmx.de">beffy</a>&nbsp;         </td>         <td align="right" width="17%" bgcolor="#0C3481">         <a class="bar" href="http://tork.beffy.de/tutorials/modelling/max_character_export.php">Next &gt;&gt;</a>&nbsp;         </td> 	</tr> 	</tbody></table>     </td></tr>     </tbody></table>
+
+
+
+</body></html>

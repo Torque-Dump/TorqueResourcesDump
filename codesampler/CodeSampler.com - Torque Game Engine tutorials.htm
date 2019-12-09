@@ -1,0 +1,639 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0051)http://www.codesampler.com/torque.htm#Tutorial Base -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<script language="JavaScript" src="./CodeSampler.com - Torque Game Engine tutorials_files/mouseover.js" type="text/JavaScript"></script>
+
+<title>CodeSampler.com - Torque Game Engine tutorials</title>
+<meta name="Keywords" content="Torque Game Engine, samples, tutorials, Torque tutorials, Torque samples">
+<meta http-equiv="Content-Language" content="en-us">
+
+<meta name="author" content="Kevin Harris">
+<link rel="stylesheet" type="text/css" href="./CodeSampler.com - Torque Game Engine tutorials_files/master.css">
+</head>
+<body>
+<div align="center">
+  <center>
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="740">  
+    <tbody><tr>
+        <td width="100%" class="topadrow">
+            <script type="text/javascript"><!--
+            google_ad_client = "pub-1145662078454913";
+            google_ad_width = 728;
+            google_ad_height = 90;
+            google_ad_format = "728x90_as";
+            google_ad_type = "text_image";
+            google_ad_channel ="9301112434";
+            google_color_border = "0F65B0";
+            google_color_bg = "EEEEEE";
+            google_color_link = "0000FF";
+            google_color_url = "008000";
+            google_color_text = "000000";
+            //--></script>
+            <script type="text/javascript" src="./CodeSampler.com - Torque Game Engine tutorials_files/show_ads.js">
+            </script><script src="./CodeSampler.com - Torque Game Engine tutorials_files/show_ads_impl.js"></script><script src="./CodeSampler.com - Torque Game Engine tutorials_files/expansion_embed.js"></script><script src="./CodeSampler.com - Torque Game Engine tutorials_files/test_domain.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><ins id="google_ads_frame1_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><iframe allowtransparency="true" frameborder="0" height="90" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" scrolling="no" src="./CodeSampler.com - Torque Game Engine tutorials_files/ads(2).htm" style="left:0;position:absolute;top:0" vspace="0" width="728"></iframe></ins></ins>
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" class="header"> <a href="http://www.codesampler.com/index.php"> 
+        <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/header.jpg" width="738" height="80"></a></td>
+      </tr>
+      <tr>
+        <td width="100%" class="topnav">&nbsp;</td>
+      </tr>
+    </tbody></table>
+  </center>
+</div>
+<div align="center">
+  <center>
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="740">
+      <tbody><tr>
+        <td width="180" class="leftside" style="text-align: left" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%">
+            <tbody><tr>
+              <td width="100%" class="mouseovernav"> <a onmouseover="imgOn(&#39;img1&#39;)" onmouseout="imgOff(&#39;img1&#39;)" href="http://www.codesampler.com/index.php"> 
+              <img src="./CodeSampler.com - Torque Game Engine tutorials_files/home_off.jpg" name="img1" border="0" width="100" height="30"></a></td>
+            </tr>
+            <tr>
+              <td width="100%" class="mouseovernav"> <a onmouseover="imgOn(&#39;img2&#39;)" onmouseout="imgOff(&#39;img2&#39;)" href="http://www.codesampler.com/code/"> 
+              <img src="./CodeSampler.com - Torque Game Engine tutorials_files/source_off.jpg" name="img2" border="0" width="100" height="30"></a></td>
+            </tr>
+            <tr>
+              <td width="100%" class="mouseovernav"> <a onmouseover="imgOn(&#39;img3&#39;)" onmouseout="imgOff(&#39;img3&#39;)" href="http://www.codesampler.com/tools.htm"> 
+              <img src="./CodeSampler.com - Torque Game Engine tutorials_files/tools_off.jpg" name="img3" border="0" width="100" height="30"></a></td>
+            </tr>
+			<tr> 
+              <td width="100%" class="mouseovernav"> <a onmouseover="imgOn(&#39;img5&#39;)" onmouseout="imgOff(&#39;img5&#39;)" href="http://www.codesampler.com/links.htm"> <img src="./CodeSampler.com - Torque Game Engine tutorials_files/links_off.jpg" name="img5" border="0" width="100" height="30"></a></td> 
+            </tr>
+            <tr>
+              <td width="100%" class="mouseovernav"></td>
+            </tr>
+            <tr>
+              <td width="100%">
+                <div align="center">
+                  <center>
+                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="95%">
+                      <tbody><tr>
+                        <td width="100%" class="leftadcolumn">
+                            <!-- AdSense Google -->
+                            <script type="text/javascript"><!--
+                            google_ad_client = "pub-1145662078454913";
+                            google_ad_width = 160;
+                            google_ad_height = 90;
+                            google_ad_format = "160x90_0ads_al_s";
+                            google_ad_channel ="7558450586";
+                            google_color_border = "0F65B0";
+                            google_color_bg = "FFFF99";
+                            google_color_link = "0000FF";
+                            google_color_url = "008000";
+                            google_color_text = "000000";
+                            //--></script>
+                            <script type="text/javascript" src="./CodeSampler.com - Torque Game Engine tutorials_files/show_ads.js">
+                            </script><script src="./CodeSampler.com - Torque Game Engine tutorials_files/show_ads_impl.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><iframe id="google_ads_frame2" name="google_ads_frame2" width="160" height="90" frameborder="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/ads(1).htm" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+                            <!-- AdSense Google -->
+                            <p></p>
+                            <!-- AdSense Google -->
+                            <script type="text/javascript"><!--
+                            google_ad_client = "pub-1145662078454913";
+                            google_ad_width = 160;
+                            google_ad_height = 600;
+                            google_ad_format = "160x600_as";
+                            google_ad_type = "text_image";
+                            google_ad_channel ="9418114957";
+                            google_color_border = "0F65B0";
+                            google_color_bg = "EEEEEE";
+                            google_color_link = "0000FF";
+                            google_color_url = "008000";
+                            google_color_text = "000000";
+                            //--></script>
+                            <script type="text/javascript" src="./CodeSampler.com - Torque Game Engine tutorials_files/show_ads.js">
+                            </script><script src="./CodeSampler.com - Torque Game Engine tutorials_files/show_ads_impl.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px"><ins id="google_ads_frame3_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px"><iframe allowtransparency="true" frameborder="0" height="600" hspace="0" id="google_ads_frame3" marginheight="0" marginwidth="0" name="google_ads_frame" scrolling="no" src="./CodeSampler.com - Torque Game Engine tutorials_files/ads.htm" style="left:0;position:absolute;top:0" vspace="0" width="160"></iframe></ins></ins>
+                            <!-- AdSense Google -->
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="100%" class="leftadcolumn">
+						<table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" valign="top" width="100%">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topright.gif" height="6" width="6"></td>
+							</tr>
+							<tr>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" height="1" width="6"></td>
+								<td>
+								<table style="border-collapse: collapse;" align="center" border="0" cellspacing="0" width="100%">
+									
+									<tbody><tr>
+										<td>
+                                        <p style="text-align: center">
+                                        <a href="http://www.devmaster.net/">
+                                        <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/devmaster.gif" width="88" height="31"></a></p>
+                                        </td>
+									</tr>
+								</tbody></table>
+								</td>
+								<td align="right" background="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" height="1" width="6"></td>
+							</tr>
+							<tr>
+								<td height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" valign="bottom" width="100%">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomright.gif" height="6" width="6"></td>
+							</tr>
+						</tbody></table>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </center>
+                </div>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+        <td width="550" class="maintable" valign="top">
+          <div align="center">
+            <center>
+              <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%">
+                <tbody><tr>
+                  <td width="100%" class="textarea">
+                    <h1>Torque Game Engine Tutorials</h1>
+                    <o:p> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="550" id="table5">
+							<tbody><tr>
+								<td height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" valign="top" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topright.gif" height="6" width="6"></td>
+							</tr>
+							<tr>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" height="1" width="6"></td>
+								<td>
+								<table style="border-collapse: collapse;" align="center" border="0" cellspacing="0" width="100%" id="table6">
+									<tbody><tr bgcolor="#c0d2dc">
+										<td class="White">
+										<b><a name="Tutorial Base">Tutorial Base</a></b></td>
+									</tr>
+									<tr>
+										<td>
+										&nbsp;<p>This first download is not really a tutorial. It's the 
+                    “tutorial.base” example that ships with the Torque Game 
+                    Engine (v1.3). The “tutorial.base” example acts as the 
+                    official starting place for people who wish to write 
+                    tutorials about Torque. As a base example, it doesn't do 
+                    much more than drop the player into a simple test 
+                    environment and it’s from this point that each of the 
+                    tutorials starts from.</p>
+                    <p>
+                      <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/note.gif" width="16" height="16"> <b>Note:</b> 
+                    While much can be learned from this base application, it 
+                    does not contain any of the engine's source code. To unleash 
+                    the full potential of
+                    <a href="http://www.garagegames.com/pg/product/view.php?id=1">
+                    Torque</a> I highly suggest that you purchase the full SDK 
+                    with source and samples. For both hobbyists and serious game 
+                    developers, it's quite the value.<br>
+                      </p>
+                    <p></p>
+                     
+                    <p style="text-align: center">
+                     
+                    <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/trq_tutorial_base.jpg" width="258" height="200"></p>
+                    <p></p>
+                    <ul type="disc">
+                      <li class="MsoNormal" style="color:black;"> 
+                      <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/zip.gif" v:shapes="_x0000_i1028" width="15" height="16"> 
+                      <a href="http://www.codesampler.com/source/trq_tutorial_base.zip">Download</a> (Last Updated: 01/05/05)</li>
+                    </ul>
+										</td>
+									</tr>
+								</tbody></table>
+								</td>
+								<td align="right" background="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" height="1" width="6"></td>
+							</tr>
+							<tr>
+								<td height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" valign="bottom" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomright.gif" height="6" width="6"></td>
+							</tr>
+						</tbody></table>
+					<p>&nbsp;</p>
+					</o:p>
+                    <o:p> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="550" id="table9">
+							<tbody><tr>
+								<td height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" valign="top" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topright.gif" height="6" width="6"></td>
+							</tr>
+							<tr>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" height="1" width="6"></td>
+								<td>
+								<table style="border-collapse: collapse;" align="center" border="0" cellspacing="0" width="100%" id="table10">
+									<tbody><tr bgcolor="#c0d2dc">
+										<td class="White">
+										<b><a name="Static Shapes">Static Shapes</a></b></td>
+									</tr>
+									<tr>
+										<td>
+										&nbsp;<p>This
+                      tutorial demonstrates how to use Torque's built-in Mission
+                      Editor to add a Static Shape to a mission or level. Static
+                      Shapes are basically pieces of geometry which act as obstacles
+                      in a mission like a model of a building or a large boulder.
+                      The Static Shape geometry used by this tutorial is a simple
+                      tree which has already been exported from .max to .dts
+                      for you. This tutorial uses <a href="./CodeSampler.com - Torque Game Engine tutorials_files/CodeSampler.com - Torque Game Engine tutorials.htm">Tutorial
+                      Base</a> as its starting place.</p><p></p>
+                    <p style="text-align: center"><img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/trq_static_shapes.jpg" width="258" height="200"></p>
+                    <ul type="disc">
+                      <li class="MsoNormal" style="color:black;"> 
+                      <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/zip.gif" v:shapes="_x0000_i1028" width="15" height="16"> <a href="http://www.codesampler.com/source/trq_static_shapes.zip">Download</a> 
+                      (Last Updated: 01/05/05)</li>
+                    </ul>
+										</td>
+									</tr>
+								</tbody></table>
+								</td>
+								<td align="right" background="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" height="1" width="6"></td>
+							</tr>
+							<tr>
+								<td height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" valign="bottom" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomright.gif" height="6" width="6"></td>
+							</tr>
+						</tbody></table>
+					<p>&nbsp;</p>
+					</o:p>
+                    <o:p> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="550" id="table13">
+							<tbody><tr>
+								<td height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" valign="top" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topright.gif" height="6" width="6"></td>
+							</tr>
+							<tr>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" height="1" width="6"></td>
+								<td>
+								<table style="border-collapse: collapse;" align="center" border="0" cellspacing="0" width="100%" id="table14">
+									<tbody><tr bgcolor="#c0d2dc">
+										<td class="White">
+										<b><a name="Creating Triggers">Creating Triggers</a></b></td>
+									</tr>
+									<tr>
+										<td>
+										&nbsp;<p>This
+                      tutorial demonstrates how to use the built-in Mission Editor
+                      and some scripting to create a Trigger object which can
+                      be used to notify us when the player has entered a special
+                      area. This tutorial uses <a href="./CodeSampler.com - Torque Game Engine tutorials_files/CodeSampler.com - Torque Game Engine tutorials.htm">Tutorial
+                      Base</a> as its starting place.</p>
+										<p></p>
+                    <p style="text-align: center"><img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/trq_triggers.jpg" width="258" height="200"></p>
+                    <ul type="disc">
+                      <li class="MsoNormal" style="color:black;"> 
+                      <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/zip.gif" v:shapes="_x0000_i1028" width="15" height="16"> <a href="http://www.codesampler.com/source/trq_triggers.zip">Download</a> 
+                      (Last Updated: 01/05/05)</li>
+                    </ul>
+										</td>
+									</tr>
+								</tbody></table>
+								</td>
+								<td align="right" background="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" height="1" width="6"></td>
+							</tr>
+							<tr>
+								<td height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" valign="bottom" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomright.gif" height="6" width="6"></td>
+							</tr>
+						</tbody></table>
+					<p>&nbsp;</p>
+					</o:p>
+                    <o:p> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="550" id="table17">
+							<tbody><tr>
+								<td height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" valign="top" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topright.gif" height="6" width="6"></td>
+							</tr>
+							<tr>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" height="1" width="6"></td>
+								<td>
+								<table style="border-collapse: collapse;" align="center" border="0" cellspacing="0" width="100%" id="table18">
+									<tbody><tr bgcolor="#c0d2dc">
+										<td class="White">
+										<b><a name="Shapes and Basic Collision">Shapes and Basic
+                          Collision</a></b></td>
+									</tr>
+									<tr>
+										<td>
+										&nbsp;<p>This tutorial demonstrates how to use the built-in Mission
+                      Editor and some scripting to create&nbsp; a Shape object
+                      that the player can interact with through collision events.
+                      This is typically done to create special game objects like
+                      power-ups or weapons which can be picked up or used. This
+                      tutorial uses <a href="./CodeSampler.com - Torque Game Engine tutorials_files/CodeSampler.com - Torque Game Engine tutorials.htm">Tutorial Base</a> as
+                      its starting place.</p>
+                    <p style="text-align: center"><img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/trq_shapes_collision.jpg" width="258" height="200"></p>
+                    <ul type="disc">
+                      <li class="MsoNormal" style="color:black;"> 
+                      <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/zip.gif" v:shapes="_x0000_i1028" width="15" height="16"> <a href="http://www.codesampler.com/source/trq_shapes_collision.zip">Download</a> 
+                      (Last Updated: 01/05/05)</li>
+                    </ul>
+										</td>
+									</tr>
+								</tbody></table>
+								</td>
+								<td align="right" background="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" height="1" width="6"></td>
+							</tr>
+							<tr>
+								<td height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" valign="bottom" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomright.gif" height="6" width="6"></td>
+							</tr>
+						</tbody></table>
+					<p>&nbsp;</p>
+					</o:p>
+                    <o:p> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="550" id="table21">
+							<tbody><tr>
+								<td height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" valign="top" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topright.gif" height="6" width="6"></td>
+							</tr>
+							<tr>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" height="1" width="6"></td>
+								<td>
+								<table style="border-collapse: collapse;" align="center" border="0" cellspacing="0" width="100%" id="table22">
+									<tbody><tr bgcolor="#c0d2dc">
+										<td class="White">
+										<b><a name="Scripting Particle Systems">Scripting Particle
+                          Systems</a></b></td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <!--?php include('_phpBB2/includes/prefer.php'); ?-->
+									</tr>
+									<tr>
+										<td>
+										&nbsp;<p>This tutorial demonstrates how to create particle systems
+                      through script which can then be added to a mission with
+                      the Mission Editor. The tutorial creates a camp fire using
+                      two particle systems to emit both fire and smoke. This
+                      tutorial uses <a href="./CodeSampler.com - Torque Game Engine tutorials_files/CodeSampler.com - Torque Game Engine tutorials.htm"> Tutorial Base</a> as
+                      its starting place.</p>
+                    <p style="text-align: center"><img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/trq_particle_systems.jpg" width="258" height="200"></p>
+                    <ul type="disc">
+                      <li class="MsoNormal" style="color:black;"> 
+                      <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/zip.gif" v:shapes="_x0000_i1028" width="15" height="16"> <a href="http://www.codesampler.com/source/trq_particle_systems.zip">Download</a> 
+                      (Last Updated: 01/05/05)</li>
+                    </ul>
+										</td>
+									</tr>
+								</tbody></table>
+								</td>
+								<td align="right" background="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" height="1" width="6"></td>
+							</tr>
+							<tr>
+								<td height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" valign="bottom" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomright.gif" height="6" width="6"></td>
+							</tr>
+						</tbody></table>
+					<p>&nbsp;</p>
+					</o:p>
+                    <o:p> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="550" id="table25">
+							<tbody><tr>
+								<td height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" valign="top" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topright.gif" height="6" width="6"></td>
+							</tr>
+							<tr>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" height="1" width="6"></td>
+								<td>
+								<table style="border-collapse: collapse;" align="center" border="0" cellspacing="0" width="100%" id="table26">
+									<tbody><tr bgcolor="#c0d2dc">
+										<td class="White">
+										<b><a name="Weapons">Weapons</a></b></td>
+									</tr>
+									<tr>
+										<td>
+										&nbsp;<p>This tutorial demonstrates how to add a weapon to a Torque
+                      based game by adding a rocket launcher to the tutorial
+                      base application. The shape and texture files for the rocket
+                      launcher and the rocket projectile are courtesy of <a href="mailto:chadw@walkerboystudio.com">Chad
+                      Walker</a> of <a href="http://www.walkerboystudio.com/">Walker
+                      Boy Studios</a>. This tutorial uses <a href="./CodeSampler.com - Torque Game Engine tutorials_files/CodeSampler.com - Torque Game Engine tutorials.htm">Tutorial
+                      Base</a> as its starting place.</p>
+                    <p style="text-align: center"><img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/trq_weapons.jpg" width="258" height="200"></p>
+                    <ul type="disc">
+                      <li class="MsoNormal" style="color:black;"> 
+                      <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/zip.gif" v:shapes="_x0000_i1028" width="15" height="16"> <a href="http://www.codesampler.com/source/trq_weapons.zip">Download</a> 
+                      (Last Updated: 01/05/05)</li>
+                    </ul>
+										</td>
+									</tr>
+								</tbody></table>
+								</td>
+								<td align="right" background="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" height="1" width="6"></td>
+							</tr>
+							<tr>
+								<td height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" valign="bottom" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomright.gif" height="6" width="6"></td>
+							</tr>
+						</tbody></table>
+					<p>&nbsp;</p>
+					</o:p>
+                    <o:p> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="550" id="table29">
+							<tbody><tr>
+								<td height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" valign="top" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topright.gif" height="6" width="6"></td>
+							</tr>
+							<tr>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" height="1" width="6"></td>
+								<td>
+								<table style="border-collapse: collapse;" align="center" border="0" cellspacing="0" width="100%" id="table30">
+									<tbody><tr bgcolor="#c0d2dc">
+										<td class="White">
+										<b><a name="Bot Path-Finding">Bot Path-Finding</a></b></td>
+									</tr>
+									<tr>
+										<td>
+										&nbsp;<p>This tutorial demonstrates how to create a bot or A.I.
+                      driven player, which is capable of following a Path object
+                      created via the Mission Editor. This is useful if you need
+                      a bot to patrol or guard a certain area when it's not actively
+                      attacking a human player. This tutorial uses <a href="./CodeSampler.com - Torque Game Engine tutorials_files/CodeSampler.com - Torque Game Engine tutorials.htm">Tutorial
+                      Base</a> as its starting place.</p>
+                    <p style="text-align: center"><img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/trq_bot_pathfinding.jpg" width="258" height="200"></p>
+                    <ul type="disc">
+                      <li class="MsoNormal" style="color:black;"> 
+                      <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/zip.gif" v:shapes="_x0000_i1028" width="15" height="16"> <a href="http://www.codesampler.com/source/trq_bot_pathfinding.zip">Download</a> 
+                      (Last Updated: 01/05/05)</li>
+                    </ul>
+										</td>
+									</tr>
+								</tbody></table>
+								</td>
+								<td align="right" background="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" height="1" width="6"></td>
+							</tr>
+							<tr>
+								<td height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" valign="bottom" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomright.gif" height="6" width="6"></td>
+							</tr>
+						</tbody></table>
+					<p>&nbsp;</p>
+					</o:p>
+                    <o:p> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="550" id="table33">
+							<tbody><tr>
+								<td height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" valign="top" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/top.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="top" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/topright.gif" height="6" width="6"></td>
+							</tr>
+							<tr>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/left.gif" height="1" width="6"></td>
+								<td>
+								<table style="border-collapse: collapse;" align="center" border="0" cellspacing="0" width="100%" id="table34">
+									<tbody><tr bgcolor="#c0d2dc">
+										<td class="White">
+										<b><a name="Weapons Damage">Weapons Damage</a></b>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>
+										&nbsp;<p>This tutorial demonstrates how to apply weapons damage
+                      to both players and bots when a weapon's projectile collides
+                      with them. We'll also cover how to calculate "radius
+                      damage", which will allow an exploding projectile
+                      like a rocket or a missile to damage a player even though
+                      it doesn't make direct contact.</p>
+                    <p><img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/note.gif" width="16" height="16"> <b>Note:</b> This
+                      tutorial is an advanced composite tutorial, which not only
+                      requires the <a href="./CodeSampler.com - Torque Game Engine tutorials_files/CodeSampler.com - Torque Game Engine tutorials.htm">Tutorial Base</a> application
+                      as its starting place, but also requires the addition of
+                      one or more other tutorials to build up from. This particular
+                      tutorial requires the addition of the <a href="http://www.codesampler.com/torque.htm#Weapons">Weapons</a> and <a href="http://www.codesampler.com/torque.htm#Bot Path-Finding">Bot
+                      Path-Finding</a> tutorials to be completed properly.</p>
+                    <p style="text-align: center"><img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/trq_weapons_damage.jpg" width="258" height="200"></p>
+                    <ul type="disc">
+                      <li class="MsoNormal" style="color:black;"> 
+                      <img border="0" src="./CodeSampler.com - Torque Game Engine tutorials_files/zip.gif" v:shapes="_x0000_i1028" width="15" height="16"> <a href="http://www.codesampler.com/source/trq_weapons_damage.zip">Download</a> (Last Updated: 01/06/05)</li>
+                    </ul>
+
+										</td>
+									</tr>
+								</tbody></table>
+								</td>
+								<td align="right" background="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/right.gif" height="1" width="6"></td>
+							</tr>
+							<tr>
+								<td height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomleft.gif" height="6" width="6"></td>
+								<td background="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" valign="bottom" width="528">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottom.gif" height="6" width="1"></td>
+								<td align="right" height="6" valign="bottom" width="6">
+								<img src="./CodeSampler.com - Torque Game Engine tutorials_files/bottomright.gif" height="6" width="6"></td>
+							</tr>
+						</tbody></table>
+					</o:p>
+
+                   </td>
+                </tr>
+              </tbody></table>
+            </center>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+  </center>
+</div>
+<div align="center">
+  <center>
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="740">
+      <tbody><tr>
+        <td width="100%" class="textlinks">
+        <a href="http://www.codesampler.com/index.php">Home</a> | <a href="http://www.codesampler.com/code/">Source</a> | <a href="http://www.codesampler.com/tools.htm">Tools</a> | <a href="http://www.codesampler.com/links.htm">Links</a><br>
+        <a href="http://www.codesampler.com/dx9src.htm">DirectX 9.0</a> | <a href="http://www.codesampler.com/dx8src.htm">DirectX 8.1</a> | <a href="http://www.codesampler.com/oglsrc.htm">OpenGL</a> | <a href="http://www.codesampler.com/usersrc.htm">User Samples</a><br>
+		<a href="http://www.codesampler.com/python.htm">Python</a> | <a href="http://www.codesampler.com/linuxsrc.htm">Linux</a> | <a href="http://www.codesampler.com/miscsrc.htm">Miscellaneous Code</a> | <a href="http://www.codesampler.com/torque.htm">Torque</a>
+		</td> 
+      </tr>
+      <tr> 
+        <td width="100%" class="copyright"><b><a href="http://www.codesampler.com/disclaimer.htm">Kevin R. Harris © [2010] | All Rights Reserved</a></b></td> 
+      </tr> 
+    </tbody></table>
+  </center>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+
+</body></html>
