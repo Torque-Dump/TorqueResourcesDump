@@ -1,0 +1,786 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0057)http://www.garagegames.com/community/resources/view/20989 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="In this first part, we use the classical technique of rendering forwarding, using only a light source to render the head of Gideon.">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>T3D Custom Shader [Part 1] | Alfio Saitta | Resources | Community | GarageGames.com</title>		<link href="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/20989#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/20989#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>T3D Custom Shader [Part 1]</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/154909">Alfio Saitta</a>
+			<strong>·</strong>
+			05/03/2011 (11:28 am)			<strong>·</strong>
+			13 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body">Due to the lack of documentation concerning the use of custom shaders in T3D, i thought to start a series of tutorials on how to implement a very simple Custom Shader.<br>
+<br>
+In this first part, we use the classical technique of rendering forwarding, using only a light source to render the head of Gideon.<br>
+<br>
+The use of a Custom Shader mainly requires 4 elements:<br>
+<ol><br>
+<li> Custom Shader definiton</li><li> Custom Material</li><li> Vertex Shader Program</li><li> Pixel Shader Program</li></ol><b>Custom Shader definition</b><br>
+Paste inside "scripts/client/shaders.cs" this new CustomShader definition:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>singleton&nbsp;ShaderData(&nbsp;TestShader&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;DXVertexShaderFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"shaders/common/testV.hlsl"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;DXPixelShaderFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"shaders/common/testP.hlsl"</span><span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;pixVersion&nbsp;=&nbsp;3.0;&nbsp;&nbsp;</span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">singleton ShaderData( TestShader )
+{
+   DXVertexShaderFile     = "shaders/common/testV.hlsl";
+   DXPixelShaderFile      = "shaders/common/testP.hlsl";   
+     
+   pixVersion = 3.0;
+};</pre><br>
+<b>Custom Material</b><br>
+Replace the default actor_gideon_head_material_dts material, with this CustomMateral:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>singleton&nbsp;CustomMaterial(&nbsp;actor_gideon_head_material_dts&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;mapTo&nbsp;=&nbsp;<span class="string">"head_d"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;shader&nbsp;=&nbsp;TestShader;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;version&nbsp;=&nbsp;3.0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;forwardLit&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">singleton CustomMaterial( actor_gideon_head_material_dts )
+{   
+   mapTo = "head_d";
+  
+   shader = TestShader;
+   version = 3.0;
+   
+   forwardLit = true;
+};</pre>The parameter <b>ForwardLit</b> is essential if you want to work directly with lights. So never forget to set to TRUE when you go to define the CustomMateral that will go to use a shader that makes use of the vectors relating the lights.<br>
+<br>
+<b>Vertex Shader Program</b><br>
+This is a fairly complete vertex shader to use with the technique of the Forward Rendering. Past this code inside the VertexShader program file "shaders/common/testV.hlsl":<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#include&nbsp;"shaders/common/hlslstructs.h"&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal&nbsp;&nbsp;&nbsp;:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;inColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD3;&nbsp;&nbsp;</span></li><li class="alt"><span>};&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//-----------------------------------------------------------------------------&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;Main&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//-----------------------------------------------------------------------------&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>ConnectData&nbsp;main(&nbsp;VertexIn_PNTTTB&nbsp;IN,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;modelview,&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;objTrans,&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float3&nbsp;vEye,&nbsp;<span class="comment">//&nbsp;NEW&nbsp;EYE&nbsp;VECTOR&nbsp;FROM&nbsp;T3D&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4&nbsp;inLightPos[3],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4&nbsp;inLightColor[4]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>)&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;ConnectData&nbsp;OUT;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;float3&nbsp;WorldSpacePos&nbsp;=&nbsp;mul(objTrans,&nbsp;IN.pos).xyz;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Texture&nbsp;Coordinate</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;OUT.TexCoord&nbsp;=&nbsp;IN.uv0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Calculate&nbsp;the&nbsp;Normal,&nbsp;Tangent,&nbsp;and&nbsp;Binormal</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;OUT.WorldNormal&nbsp;=&nbsp;normalize(mul(objTrans,&nbsp;IN.normal));&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;OUT.WorldTangent&nbsp;=&nbsp;normalize(mul(objTrans,&nbsp;IN.T));&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;OUT.WorldBinormal&nbsp;=&nbsp;normalize(mul(objTrans,&nbsp;IN.B));&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Vertex&nbsp;Position</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;OUT.Position&nbsp;=&nbsp;mul(modelview,&nbsp;float4(IN.pos.xyz,1));&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Eye&nbsp;Vector</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;OUT.EyeVec&nbsp;=&nbsp;-vEye;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Light&nbsp;Vector</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;float3&nbsp;LightPosition&nbsp;=&nbsp;float3(inLightPos[0].x,&nbsp;inLightPos[1].x,&nbsp;inLightPos[2].x);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;OUT.LightVec&nbsp;=&nbsp;LightPosition&nbsp;-&nbsp;WorldSpacePos;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Colour&nbsp;Light</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;OUT.inColor&nbsp;=&nbsp;inLightColor[0].rgba;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;OUT;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#include "shaders/common/hlslstructs.h"  
+  
+struct ConnectData         
+{         
+   float4 Position        : POSITION;
+   float3 WorldNormal     : NORMAL;
+   float3 WorldTangent    : TANGENT;
+   float3 WorldBinormal   : BINORMAL;
+   float2 TexCoord        : TEXCOORD0;
+   float4 inColor         : TEXCOORD1;
+   float3 LightVec        : TEXCOORD2;
+   float3 EyeVec          : TEXCOORD3;
+}; 
+ 
+//-----------------------------------------------------------------------------  
+// Main  
+//-----------------------------------------------------------------------------  
+ConnectData main( VertexIn_PNTTTB IN,     
+    uniform float4x4 modelview,
+    uniform float4x4 objTrans,
+    uniform float3 vEye, // NEW EYE VECTOR FROM T3D 
+    uniform float4 inLightPos[3],     
+    uniform float4 inLightColor[4]     
+)  
+{  
+    ConnectData OUT;
+
+    float3 WorldSpacePos = mul(objTrans, IN.pos).xyz;
+
+    // -----------------------------------------------------------------
+    // Texture Coordinate
+    // -----------------------------------------------------------------
+
+    OUT.TexCoord = IN.uv0;
+
+    // -----------------------------------------------------------------
+    // Calculate the Normal, Tangent, and Binormal
+    // -----------------------------------------------------------------
+
+    OUT.WorldNormal = normalize(mul(objTrans, IN.normal));
+    OUT.WorldTangent = normalize(mul(objTrans, IN.T));
+    OUT.WorldBinormal = normalize(mul(objTrans, IN.B));
+
+    // -----------------------------------------------------------------
+    // Vertex Position
+    // -----------------------------------------------------------------    
+
+    OUT.Position = mul(modelview, float4(IN.pos.xyz,1));  
+
+    // -----------------------------------------------------------------
+    // Eye Vector
+    // -----------------------------------------------------------------
+
+    OUT.EyeVec = -vEye;
+
+    // -----------------------------------------------------------------
+    // Light Vector
+    // -----------------------------------------------------------------  
+
+    float3 LightPosition = float3(inLightPos[0].x, inLightPos[1].x, inLightPos[2].x);
+    OUT.LightVec = LightPosition - WorldSpacePos;
+
+    // -----------------------------------------------------------------
+    // Colour Light
+    // -----------------------------------------------------------------
+
+    OUT.inColor = inLightColor[0].rgba; 
+
+    return OUT;  
+}</pre><br>
+<b>Pixel Shader program</b><br>
+Past this code inside the PixelShader program file "shaders/common/testP.hlsl":<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#include&nbsp;"torque.hlsl"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal&nbsp;&nbsp;&nbsp;:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;inColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD3;&nbsp;&nbsp;</span></li><li class="alt"><span>};&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>float4&nbsp;main(&nbsp;ConnectData&nbsp;IN&nbsp;)&nbsp;:&nbsp;COLOR&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//---------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;ONLY&nbsp;THE&nbsp;LIGHT&nbsp;COLOR</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//---------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//float4&nbsp;OutColor&nbsp;=&nbsp;IN.inColor;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//return&nbsp;hdrEncode(OutColor);</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//---------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;WITH&nbsp;THE&nbsp;LIGHTVECTOR/NORMAL&nbsp;DOTTED</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//---------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;OutColor&nbsp;=&nbsp;IN.inColor;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LV&nbsp;=&nbsp;normalize(IN.LightVec);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WN&nbsp;=&nbsp;normalize(IN.WorldNormal);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;DotLN&nbsp;=&nbsp;dot(LV,&nbsp;WN);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;hdrEncode(OutColor&nbsp;*&nbsp;DotLN);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#include "torque.hlsl"
+
+struct ConnectData         
+{         
+   float4 Position        : POSITION;
+   float3 WorldNormal     : NORMAL;
+   float3 WorldTangent    : TANGENT;
+   float3 WorldBinormal   : BINORMAL;
+   float2 TexCoord        : TEXCOORD0;
+   float4 inColor         : TEXCOORD1;
+   float3 LightVec        : TEXCOORD2;
+   float3 EyeVec          : TEXCOORD3;
+};     
+  
+float4 main( ConnectData IN ) : COLOR  
+{
+
+
+//---------------------------------------------
+// ONLY THE LIGHT COLOR
+//---------------------------------------------
+
+   //float4 OutColor = IN.inColor;
+   //return hdrEncode(OutColor);
+
+//---------------------------------------------
+// WITH THE LIGHTVECTOR/NORMAL DOTTED
+//---------------------------------------------
+
+   float4 OutColor = IN.inColor;
+   float3 LV = normalize(IN.LightVec);
+   float3 WN = normalize(IN.WorldNormal);
+
+   float4 DotLN = dot(LV, WN);
+   return hdrEncode(OutColor * DotLN);
+
+}</pre><br>
+<object width="640" height="480"><param value="http://www.youtube.com/v/UZcmCDhbfzI&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D218" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed width="640" height="480" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/UZcmCDhbfzI&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D18"></object><br>
+<br>
+<br>
+<b>On the next part... adding the Diffuse, Normal, and Specular Textures. <a rel="nofollow" href="http://www.garagegames.com/community/resources/view/20990">CHECK HERE</a></b></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/154909.png" alt="Alfio Saitta&#39;s profile picture">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+							</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20991">T3D Custom Shader [Part 3]</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20990">T3D Custom Shader [Part 2]</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/20990"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/20986"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/20989#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(20989, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/138071.gif" class="profilepic">
+			<br>
+			<a rel="deepscratch" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/138071" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	deepscratch<br>
+	<span class="studio-name">DeepScratchStudios</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-174989" name="comment-174989">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2011 (11:55 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			oh well done Alfio!!!<br>
+<br>
+this is something very much needed.<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/66216.jpg" class="profilepic">
+			<br>
+			<a rel="Kory James" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/66216" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Kory James
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-174990" name="comment-174990">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2011 (12:04 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I agree!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/72991.jpg" class="profilepic">
+			<br>
+			<a rel="Ivan Mandzhukov" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/72991" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Ivan Mandzhukov
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-174991" name="comment-174991">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2011 (12:17 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Good job,Alfio!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/149735.jpg" class="profilepic">
+			<br>
+			<a rel="Alexander Krause" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/149735" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Alexander Krause<br>
+	<span class="studio-name">Coming soon...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-174993" name="comment-174993">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2011 (12:51 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Cool, Alfio!!! You made it a resource...Nice :)<br>
+Can't wait to see more!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/200921.jpg" class="profilepic">
+			<br>
+			<a rel="Robert Fritzen (Phantom139)" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/200921" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Robert Fritzen (Phantom139)
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-175002" name="comment-175002">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2011 (4:20 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Very cool, I have a suggestion (seeing the whole "Part 1" thing), could you perhaps provide a shader tutorial on screen coloration (Night vision, ect.)? 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-175003" name="comment-175003">#6</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2011 (4:37 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Cool!<br>
+Now add it to the new T3D section of TDN ;)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/92168.jpg" class="profilepic">
+			<br>
+			<a rel="E.B." class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/92168" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	E.B.<br>
+	<span class="studio-name">G.A.S. [+others]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-175009" name="comment-175009">#7</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2011 (6:29 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			..thank you for your time on this Alfio.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Sean H." class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/49643" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Sean H.
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-175012" name="comment-175012">#8</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2011 (9:31 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Alfio, I wonder where you got the idea for this? :)<br>
+<br>
+two things:<br>
+<br>
+1. This shader still doesn't work correctly for me, it is still rendering gideon's head as completely black.  At this point, I'm considering submitting a bug report on this.  I followed your instructions and the shader is working, but the light color just isn't being set for some reason.<br>
+<br>
+2. Your shader is producing warnings:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>C:/T3D&nbsp;Beta3/Torque&nbsp;3D&nbsp;2009&nbsp;Pro&nbsp;1.1&nbsp;Beta&nbsp;3/Examples/FPS&nbsp;Example/game/shaders/testV.hlsl(40,33):&nbsp;warning&nbsp;X3206:&nbsp;</span><span class="string">'mul'</span><span>:&nbsp;implicit&nbsp;truncation&nbsp;of&nbsp;vector&nbsp;type&nbsp;&nbsp;</span></span></li><li class=""><span>C:/T3D&nbsp;Beta3/Torque&nbsp;3D&nbsp;2009&nbsp;Pro&nbsp;1.1&nbsp;Beta&nbsp;3/Examples/FPS&nbsp;Example/game/shaders/testV.hlsl(40,21):&nbsp;warning&nbsp;X3206:&nbsp;implicit&nbsp;truncation&nbsp;of&nbsp;vector&nbsp;type&nbsp;&nbsp;</span></li><li class="alt"><span>C:/T3D&nbsp;Beta3/Torque&nbsp;3D&nbsp;2009&nbsp;Pro&nbsp;1.1&nbsp;Beta&nbsp;3/Examples/FPS&nbsp;Example/game/shaders/testV.hlsl(41,34):&nbsp;warning&nbsp;X3206:&nbsp;<span class="string">'mul'</span><span>:&nbsp;implicit&nbsp;truncation&nbsp;of&nbsp;vector&nbsp;type&nbsp;&nbsp;</span></span></li><li class=""><span>C:/T3D&nbsp;Beta3/Torque&nbsp;3D&nbsp;2009&nbsp;Pro&nbsp;1.1&nbsp;Beta&nbsp;3/Examples/FPS&nbsp;Example/game/shaders/testV.hlsl(41,22):&nbsp;warning&nbsp;X3206:&nbsp;implicit&nbsp;truncation&nbsp;of&nbsp;vector&nbsp;type&nbsp;&nbsp;</span></li><li class="alt"><span>C:/T3D&nbsp;Beta3/Torque&nbsp;3D&nbsp;2009&nbsp;Pro&nbsp;1.1&nbsp;Beta&nbsp;3/Examples/FPS&nbsp;Example/game/shaders/testV.hlsl(42,35):&nbsp;warning&nbsp;X3206:&nbsp;<span class="string">'mul'</span><span>:&nbsp;implicit&nbsp;truncation&nbsp;of&nbsp;vector&nbsp;type&nbsp;&nbsp;</span></span></li><li class=""><span>C:/T3D&nbsp;Beta3/Torque&nbsp;3D&nbsp;2009&nbsp;Pro&nbsp;1.1&nbsp;Beta&nbsp;3/Examples/FPS&nbsp;Example/game/shaders/testV.hlsl(42,23):&nbsp;warning&nbsp;X3206:&nbsp;implicit&nbsp;truncation&nbsp;of&nbsp;vector&nbsp;type&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">C:/T3D Beta3/Torque 3D 2009 Pro 1.1 Beta 3/Examples/FPS Example/game/shaders/testV.hlsl(40,33): warning X3206: 'mul': implicit truncation of vector type
+C:/T3D Beta3/Torque 3D 2009 Pro 1.1 Beta 3/Examples/FPS Example/game/shaders/testV.hlsl(40,21): warning X3206: implicit truncation of vector type
+C:/T3D Beta3/Torque 3D 2009 Pro 1.1 Beta 3/Examples/FPS Example/game/shaders/testV.hlsl(41,34): warning X3206: 'mul': implicit truncation of vector type
+C:/T3D Beta3/Torque 3D 2009 Pro 1.1 Beta 3/Examples/FPS Example/game/shaders/testV.hlsl(41,22): warning X3206: implicit truncation of vector type
+C:/T3D Beta3/Torque 3D 2009 Pro 1.1 Beta 3/Examples/FPS Example/game/shaders/testV.hlsl(42,35): warning X3206: 'mul': implicit truncation of vector type
+C:/T3D Beta3/Torque 3D 2009 Pro 1.1 Beta 3/Examples/FPS Example/game/shaders/testV.hlsl(42,23): warning X3206: implicit truncation of vector type</pre><br>
+use this updated code in the vertex shader to get rid of the warnings:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>OUT.WorldNormal&nbsp;=&nbsp;normalize(mul(objTrans,&nbsp;float4(IN.normal,0))).xyz;&nbsp;&nbsp;</span></span></li><li class=""><span>OUT.WorldTangent&nbsp;=&nbsp;normalize(mul(objTrans,&nbsp;float4(IN.T,0))).xyz;&nbsp;&nbsp;</span></li><li class="alt"><span>OUT.WorldBinormal&nbsp;=&nbsp;normalize(mul(objTrans,&nbsp;float4(IN.B,0))).xyz;&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">OUT.WorldNormal = normalize(mul(objTrans, float4(IN.normal,0))).xyz;
+OUT.WorldTangent = normalize(mul(objTrans, float4(IN.T,0))).xyz;
+OUT.WorldBinormal = normalize(mul(objTrans, float4(IN.B,0))).xyz;</pre><br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/133403.jpg" class="profilepic">
+			<br>
+			<a rel="Enel" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/133403" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Enel<br>
+	<span class="studio-name">ENEL Indie studio</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-175013" name="comment-175013">#9</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/03/2011 (9:41 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			very nice start to use Custom shader		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/154909.png" class="profilepic">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-175017" name="comment-175017">#10</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/04/2011 (2:27 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			FIX:<br>
+In line 54 of the VertexShader, the eye vector was wrong. I have fixed that using the T3D <b>vEye</b> exposed vector. So i have changed the definition of the entry point from:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>ConnectData&nbsp;main(&nbsp;VertexIn_PNTTTB&nbsp;IN,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;modelview,&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;objTrans,&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float3&nbsp;eyePos,&nbsp;<span class="comment">//&nbsp;OLD&nbsp;EYE&nbsp;POSITION&nbsp;USED&nbsp;TO&nbsp;CALCULATE&nbsp;THE&nbsp;EYE&nbsp;VECTOR&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4&nbsp;inLightPos[3],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4&nbsp;inLightColor[4]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>)&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">ConnectData main( VertexIn_PNTTTB IN,     
+    uniform float4x4 modelview,
+    uniform float4x4 objTrans,
+    uniform float3 eyePos, // OLD EYE POSITION USED TO CALCULATE THE EYE VECTOR   
+    uniform float4 inLightPos[3],     
+    uniform float4 inLightColor[4]     
+)</pre><br>
+to:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>ConnectData&nbsp;main(&nbsp;VertexIn_PNTTTB&nbsp;IN,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;modelview,&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;objTrans,&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float3&nbsp;vEye,&nbsp;<span class="comment">//&nbsp;NEW&nbsp;EYE&nbsp;VECTOR&nbsp;FROM&nbsp;T3D&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4&nbsp;inLightPos[3],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4&nbsp;inLightColor[4]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>)&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">ConnectData main( VertexIn_PNTTTB IN,     
+    uniform float4x4 modelview,
+    uniform float4x4 objTrans,
+    uniform float3 vEye, // NEW EYE VECTOR FROM T3D  
+    uniform float4 inLightPos[3],     
+    uniform float4 inLightColor[4]     
+)</pre><br>
+And changed the line:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//&nbsp;-----------------------------------------------------------------&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Eye&nbsp;Vector&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;OUT.EyeVec&nbsp;=&nbsp;(IN.pos.xyz&nbsp;-&nbsp;eyePos);&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">// -----------------------------------------------------------------  
+    // Eye Vector  
+    // -----------------------------------------------------------------  
+  
+    OUT.EyeVec = (IN.pos.xyz - eyePos);</pre><br>
+to:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20989#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//&nbsp;-----------------------------------------------------------------&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Eye&nbsp;Vector&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;-----------------------------------------------------------------&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;OUT.EyeVec&nbsp;=&nbsp;-vEye;&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">// -----------------------------------------------------------------  
+    // Eye Vector  
+    // -----------------------------------------------------------------  
+  
+    OUT.EyeVec = -vEye;</pre>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/154909.png" class="profilepic">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-175018" name="comment-175018">#11</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/04/2011 (2:33 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Sean:<br>
+<br>
+The T3D exposed Tangent and Binormal does not work correctly. Then in the next part of the tutorial, where i will use the normal map, i'll include the code that corrects this defect. 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/231386.jpg" class="profilepic">
+			<br>
+			<a rel="Lunacy" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/231386" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Lunacy
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-175075" name="comment-175075">#12</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/07/2011 (1:33 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Being completely new to shaders I've started learning this stuff a few days ago, so thanks for the resource. Maybe you could have added a little explanation on how World/View/Projection matrices and their compositions are named by T3D? <a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805103">This</a> post by Ivan M. explains that, I just thought that I should mention it, since it helped me a little bit, and I haven't seen it mentionned anywhere.<br>
+<br>
+EDIT: also,I think you forgot to update the function arguments list (eyePos is still in there)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/154909.png" class="profilepic">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20989/1#comment-175083" name="comment-175083">#13</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/08/2011 (4:54 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Lunacy: You're right. Thanks.<br>
+<br>
+In the next tutorial i will explain with more detail the various vectors and how to create a template for RenderMonkey.		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/20989/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/resources/view/20989#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/resources/view/20989#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/20989');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./T3D Custom Shader [Part 1]   Alfio Saitta   Resources   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

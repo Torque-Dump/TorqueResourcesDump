@@ -1,0 +1,529 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0053)http://www.garagegames.com/community/blogs/view/16451 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="TGEA doesn&#39;t include the AIWheeledVehicle class like TGE does. This resource will help you implement it.">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+				<title>Adding the AIWheeledVehicle class to TGEA | Quentin Headen | Resources | Community | GarageGames.com</title>		<link href="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=1" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community" class="">Community</a><ul class="sub-nav" id="sub-menu-community" style="z-index: 1000; display: none; "><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                                </form>
+                                
+                                <script type="text/javascript">
+                                function searchSubmit() {
+                                	var search = $('#top-keywords').val();
+                                	window.location = '/community/search#'+search;
+                                }
+                                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Adding the AIWheeledVehicle class to TGEA</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/68726">Quentin Headen</a>
+			<strong>·</strong>
+			02/23/2009 (2:16 pm)			<strong>·</strong>
+			8 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body">I stumbled across this problem while porting my work in progress racing game from TGE to TGEA. TGEA does not have an AIWheeledVehicle class. I would like to first thank Matt Fairfax (GG Employee) for helping me with some stuff in the IRC chat.<br>
+<br>
+Here we go.<br>
+<br>
+First open up vehicle.h in folder T3D/vehicles. Right under the line of code that says void renderMountedImage(SceneState *state, RenderInst *ri);  (it should be around line 220) add this line of code:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">virtual</span><span>&nbsp;</span><span class="datatypes">bool</span><span>&nbsp;getAIMove(Move*&nbsp;move);&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">virtual bool getAIMove(Move* move);</pre><br>
+Now open vehicle.cpp in the same folder. Locate the function Vehicle::ProcessTick(const Move* move).<br>
+<br>
+At the very top of this function  add: <br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//&nbsp;if&nbsp;we're&nbsp;not&nbsp;being&nbsp;controlled&nbsp;by&nbsp;a&nbsp;client,&nbsp;let&nbsp;the&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;AI&nbsp;sub-module&nbsp;get&nbsp;a&nbsp;chance&nbsp;at&nbsp;producing&nbsp;a&nbsp;move</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;Move&nbsp;aiMove(NullMove);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isServerObject()&nbsp;&amp;&amp;&nbsp;getAIMove(&amp;aiMove))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;move&nbsp;=&nbsp;&amp;aiMove;&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">// if we're not being controlled by a client, let the 
+   // AI sub-module get a chance at producing a move
+   Move aiMove(NullMove);
+   if(isServerObject() &amp;&amp; getAIMove(&amp;aiMove))
+      move = &amp;aiMove;</pre><br>
+Now at the very bottom of this file add:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="datatypes">bool</span><span>&nbsp;Vehicle::getAIMove(Move&nbsp;*move)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">bool Vehicle::getAIMove(Move *move)
+{
+   return false;
+}</pre><br>
+Ok. Now download and extract these 2 files from <a rel="nofollow" href="http://phaseshiftsoftware.com/torque/aiWheeledVehicle_TGEA_Mod.zip" target="_blank">here</a>. They are modified versions of the aiWheeledVehicle code from TGE. They are modded to work with TGEA.<br>
+<br>
+<b>NOTE: For those using TGEA 1.7.0 (and I would guess 1.7.1 also) you have to make a couple of changes to the aiWheeledVehicle.cpp file. <br>
+<br>
+Change 1) Change the include at line 7 from #include "math/mPoint3.h" to #include "math/mPoint.h"<br>
+<br>
+Change 2) Change the line of code at line 100 from front.y=box.maxExtents.y to front.y=box.max.y;<br>
+</b><br>
+<br>
+Extract them to the TGEA source folder T3D. Now add them into the project of the engine source code. After that, recompile the engine. You will now have AIWheeledVehicle functionality with TGEA. Enjoy :)<br>
+<br>
+<br>
+</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/68726.jpg" alt="Quentin Headen&#39;s profile picture">
+			<br>
+			<a rel="Quentin Headen" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/68726" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Quentin Headen
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				Just your average teenage programmer who enjoys learning about new technology and how it works. By the way, I love Torque too! :)
+
+My website: http://phaseshiftsoftware.com			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20661">Making the HTTPObject post method work</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/19837">Path Following AI Vehicles Through TorqueScript</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/16481">Dynamic Reloading of Vehicle Datablock</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/16427">How to Put Your Game in Slow Motion</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/16423">Rotating A Wheeled Vehicle In Mid Air</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/16481"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/16427"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/16451#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(16451, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/43678.png" class="profilepic">
+			<br>
+			<a rel="Cyberkada" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/43678" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Cyberkada<br>
+	<span class="studio-name">Triluminary Design Studios</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/16451/1#comment-112459" name="comment-112459">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">02/23/2009 (5:24 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			This might help with the AIFlyingVehicle class as well (I will look at the changes)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/68816.jpg" class="profilepic">
+			<br>
+			<a rel="Adam Beer" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/68816" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Adam Beer<br>
+	<span class="studio-name">Ignition Games</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/16451/1#comment-112491" name="comment-112491">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">02/23/2009 (10:12 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			File doesnt work anymore.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/68726.jpg" class="profilepic">
+			<br>
+			<a rel="Quentin Headen" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/68726" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Quentin Headen
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/16451/1#comment-112503" name="comment-112503">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">02/24/2009 (1:48 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Ok. Sorry about the files being lost. It is fixed now. <br>
+<br>
+@ Adam Beer<br>
+<br>
+Try it again. :)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/138500.jpg" class="profilepic">
+			<br>
+			<a rel="Huan Li" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/138500" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Huan Li
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/16451/1#comment-117431" name="comment-117431">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/27/2009 (12:53 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Thanks anyway, Quentin.<br>
+But it seems that the steering is quite difficult to control when you setMoveDestination for the vehicle, I think that's why GG has removed this class from TGEA, maybe we can find another replacement in Torque 3D's racing demo. 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Steven Zhou" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/84575" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Steven Zhou<br>
+	<span class="studio-name">MXR Corporation Pte Ltd</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/16451/1#comment-130081" name="comment-130081">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">06/29/2009 (2:00 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I can not download the files anymore. thanks.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/68726.jpg" class="profilepic">
+			<br>
+			<a rel="Quentin Headen" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/68726" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Quentin Headen
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/16451/1#comment-130087" name="comment-130087">#6</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">06/29/2009 (3:33 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Steven<br>
+<br>
+Sorry about that. I switched my files over to another server and I forgot to put that file up there. It is downloadable now. <br>
+<br>
+Enjoy :)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/136787.jpg" class="profilepic">
+			<br>
+			<a rel="Squall" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/136787" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Squall
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/16451/1#comment-146883" name="comment-146883">#7</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/10/2009 (9:56 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Hi can you re-upload the files. Really need these for my transportation system .		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/68726.jpg" class="profilepic">
+			<br>
+			<a rel="Quentin Headen" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/68726" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Quentin Headen
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/16451/1#comment-146917" name="comment-146917">#8</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">12/11/2009 (10:59 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Sorry about that. Changed my domain name. Everything is fixed now.<br>
+<br>
+Enjoy :)		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/16451/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/blogs/view/16451#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/16451');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Adding the AIWheeledVehicle class to TGEA   Quentin Headen   Resources   Community   GarageGames.com_files/cf_tools_v1.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src=("https:"==document.location.protocol?"https://":"http://")+"ajax.cloudflare.com/cdn-cgi/scripts/cf_tools_v1.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

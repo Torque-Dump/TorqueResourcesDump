@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0057)http://www.garagegames.com/community/resources/view/21016 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="How to blow things up! Creating simple destroyables using Torque&#39;s built in damageState system. This time we move our damage control functions out of the BouncingBoulder prototype to that of a class namespace.">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Damage and Destruction: Part5 - Destroyable Class Methods | Michael Hall | Resources | Community | GarageGames.com</title>		<link href="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/21016#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/21016#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Damage and Destruction: Part5 - Destroyable Class Methods</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/106163">Michael Hall</a>
+			<strong>·</strong>
+			05/14/2011 (7:46 am)			<strong>·</strong>
+			1 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body">Our previous Resources dealt with damage tracking and destroying an object (<a rel="nofollow" href="http://www.garagegames.com/community/blogs/view/20949">Part1</a>), making debris chunks work (<a rel="nofollow" href="http://www.garagegames.com/community/blogs/view/20949">Part2</a>), initiating a particle effect (<a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21006">Part3</a>) and sound (<a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21009">Part4</a>) when a projectile hits something.  This time we move our damage control functions out of the BouncingBoulder prototype to that of a class namespace.  We'll also transpose the onHit-style damageFX and hitSound effects from the previous Resources to be dynamic properties of a datablock.  The purpose of this rewrite is to prevent needless duplication of code and make the damage control methods more 'universal' in usage.  <br>
+<br>
+This Resource Series has been using the RigidShape class for it's destroyable example but you could just as easily use these damage control functions with almost all shapeBase derived classes.<br>
+<br>
+If we rename all of our function names to RigidShapeData that would make every RigidShape in your game destroyable.  You may or may not want this functionality for each and every object so let's go a step further and create a new 'Script Class' for our damage control functions to work on so that only certain objects will be destroyable.  Start by adding the className property to the BouncingBoulder datablock, and set it to DestroyableRigid.<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21016#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21016#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21016#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>className&nbsp;=&nbsp;DestroyableRigid;&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">className = DestroyableRigid;</pre>Simply add this className to each RigidShape you wish to be destroyable.<br>
+<br>
+Now find and rename each of the BouncingBoulder damage control functions with DestroyableRigid so that the function namespace reflects that of the new Script Class.  The renamed list of functions will look like this:<br>
+<ul><li>DestroyableRigid::onAdd()</li><li>DestroyableRigid::onEnabled()</li><li>DestroyableRigid::damage()</li><li>DestroyableRigid::onDamage()</li><li>DestroyableRigid::onDisabled()</li><li>DestroyableRigid::onDestroyed()</li></ul>Now you can save and test these new methods in game.  Since we originally hardcoded the damageFX and damage sound in the Damage() function we now have the problem that every object that uses this class name will use the same effects when they are hit - we don't want this!  This is easily corrected by creating two dynamic properties in the BouncingBoulder datablock, let's call them damageFX &amp; damageSound.  Simply fill them in with the information we previously hardcoded:<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21016#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21016#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21016#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//&nbsp;Particle&nbsp;fx&nbsp;to&nbsp;play&nbsp;when&nbsp;hit</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>damageFX&nbsp;=&nbsp;<span class="string">"BoulderChipsEmitter"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//&nbsp;Sound&nbsp;to&nbsp;play&nbsp;when&nbsp;hit</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>damageSound&nbsp;=&nbsp;<span class="string">"HitOnStone"</span><span>;&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">// Particle fx to play when hit
+damageFX = "BoulderChipsEmitter";
+   
+// Sound to play when hit
+damageSound = "HitOnStone";</pre>On to making the damage() function read these fields:  Inside of DestroyableRigid::damage() find where we create the ParticleEmitterNode for our damage FX and change the emitter property line to read the damageFX field we just created in the datablock for the emitter name to use.  We'll also do the same for the damageSound field.  Here is the newly rewritten Damage() function:<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21016#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21016#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21016#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;DestroyableRigid::damage(%data,&nbsp;%obj,&nbsp;%sourceObject,&nbsp;%position,&nbsp;%amount,&nbsp;%damageType)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//echo("DestroyableRigid::damage("@&nbsp;%data.getName()&nbsp;@",&nbsp;"@&nbsp;%obj&nbsp;@",&nbsp;"@&nbsp;%sourceObject&nbsp;@",&nbsp;"@&nbsp;%position&nbsp;@",&nbsp;"@&nbsp;%amount&nbsp;@",&nbsp;"@&nbsp;%damageType&nbsp;@")");</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Place&nbsp;a&nbsp;new&nbsp;particleEmitter&nbsp;node&nbsp;(DamageFxNode)&nbsp;at&nbsp;the&nbsp;position&nbsp;of&nbsp;impact</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;and&nbsp;use&nbsp;the&nbsp;emitter&nbsp;defined&nbsp;for&nbsp;our&nbsp;damageFX.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%data.damageFX&nbsp;!$=&nbsp;</span><span class="string">""</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%particles&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;ParticleEmitterNode()&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position&nbsp;=&nbsp;%position;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotation&nbsp;=&nbsp;<span class="string">"1&nbsp;0&nbsp;0&nbsp;0"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scale&nbsp;=&nbsp;<span class="string">"1&nbsp;1&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dataBlock&nbsp;=&nbsp;<span class="string">"DamageFxNode"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emitter&nbsp;=&nbsp;%data.damageFX;&nbsp;<span class="comment">//"BoulderChipsEmitter";</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;velocity&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;MissionCleanup.add(%particles);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Here&nbsp;we&nbsp;check&nbsp;to&nbsp;see&nbsp;if&nbsp;a&nbsp;damageSound&nbsp;has&nbsp;been&nbsp;defined&nbsp;for&nbsp;this&nbsp;object,&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;if&nbsp;there&nbsp;is&nbsp;than&nbsp;play&nbsp;a&nbsp;damage&nbsp;sound&nbsp;when&nbsp;hit.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%data.damageSound&nbsp;!$=&nbsp;</span><span class="string">""</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ServerPlay3D(%data.damageSound,&nbsp;%obj.getTransform());&nbsp;<span class="comment">//ServerPlay3D("HitOnStone",&nbsp;%obj.getTransform());</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;There's&nbsp;no&nbsp;need&nbsp;to&nbsp;calculate&nbsp;damage&nbsp;for&nbsp;an&nbsp;object&nbsp;that's&nbsp;already&nbsp;destroyed</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%obj.isDestroyed())&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//echo("object&nbsp;already&nbsp;destroyed,&nbsp;returning");</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;We&nbsp;can&nbsp;check&nbsp;for&nbsp;certain&nbsp;damageTypes&nbsp;and/or&nbsp;scale&nbsp;the&nbsp;damage&nbsp;for&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;different&nbsp;types&nbsp;here&nbsp;before&nbsp;applying&nbsp;damage.&nbsp;&nbsp;Another&nbsp;option&nbsp;here&nbsp;would&nbsp;be&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;to&nbsp;simply&nbsp;return&nbsp;if&nbsp;the&nbsp;%damagetype&nbsp;!$=&nbsp;"ExplosionDamage")&nbsp;or&nbsp;whatever&nbsp;type</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;of&nbsp;damage&nbsp;you&nbsp;wish&nbsp;capable&nbsp;of&nbsp;causing&nbsp;destruction.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%obj.applyDamage(%amount);&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function DestroyableRigid::damage(%data, %obj, %sourceObject, %position, %amount, %damageType)
+{
+   //echo("DestroyableRigid::damage("@ %data.getName() @", "@ %obj @", "@ %sourceObject @", "@ %position @", "@ %amount @", "@ %damageType @")");
+   
+   // Place a new particleEmitter node (DamageFxNode) at the position of impact
+   // and use the emitter defined for our damageFX.
+   if(%data.damageFX !$= "")
+   {
+      %particles = new ParticleEmitterNode() 
+      {
+         position = %position;
+         rotation = "1 0 0 0";
+         scale = "1 1 1";
+         dataBlock = "DamageFxNode";
+         emitter = %data.damageFX; //"BoulderChipsEmitter";
+         velocity = "1";
+      };
+   }
+   MissionCleanup.add(%particles);
+
+   // Here we check to see if a damageSound has been defined for this object, 
+   // if there is than play a damage sound when hit.
+   if(%data.damageSound !$= "")
+      ServerPlay3D(%data.damageSound, %obj.getTransform()); //ServerPlay3D("HitOnStone", %obj.getTransform());
+      
+   // There's no need to calculate damage for an object that's already destroyed
+   if (%obj.isDestroyed())
+   {
+      //echo("object already destroyed, returning");
+      return;
+   }
+         
+   // We can check for certain damageTypes and/or scale the damage for 
+   // different types here before applying damage.  Another option here would be 
+   // to simply return if the %damagetype !$= "ExplosionDamage") or whatever type
+   // of damage you wish capable of causing destruction.
+    %obj.applyDamage(%amount);
+}</pre>Note that I wrapped the damageFX and damageSound sections within an if statement so that if these are not defined in the datablock our code will simply skip over these two sections.<br>
+<br>
+Now you have a set of DestroyableRigid damage control methods and know how to set up a datablock for a destroyable object.  An object that can play particle &amp; sound effects when damaged, and can be destroyed with a range of explosion effects that include breaking apart into debris shapes.  This ends the 'Simple Destroyables' section of this series.  Future installments will cover topics such as the damage emitter nodes of vehicles, wreckage shapes with optional smoke/sparks/fire fx, and ultimately end with animated destroyable shapes.<br>
+</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/106163.png" alt="Michael Hall&#39;s profile picture">
+			<br>
+			<a rel="Michael Hall" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/106163" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Michael Hall<br>
+	<span class="studio-name"> Big Kid Games</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+							</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21009">Damage and Destruction: Part4 - Damage Effects (Sound). </a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21006">Damage and Destruction: Part3 - OnHit Damage Effects</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20949">Damage and Destruction: Part2 - Simple Destroyables Addendum</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20937">Damage and Destruction:  Part1 - Simple Destroyables</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/20255">Improved PlayDeathAnimation</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/21019"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/21013"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/21016#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(21016, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="David Jauregui" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/7010" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	David Jauregui<br>
+	<span class="studio-name">Curiosity Killed the Cat Productions</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21016/1#comment-175307" name="comment-175307">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/16/2011 (6:34 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Amazing work Michael... Love it!		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/21016/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/resources/view/21016#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/resources/view/21016#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/21016');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Damage and Destruction  Part5 - Destroyable Class Methods   Michael Hall   Resources   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

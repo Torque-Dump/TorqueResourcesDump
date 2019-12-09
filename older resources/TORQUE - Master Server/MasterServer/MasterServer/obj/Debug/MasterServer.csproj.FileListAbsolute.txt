@@ -1,0 +1,20 @@
+C:\Projects\MasterServer\MasterServer\bin\Debug\MasterServer.exe
+C:\Projects\MasterServer\MasterServer\bin\Debug\MasterServer.pdb
+C:\Projects\MasterServer\MasterServer\bin\Debug\MSLib.dll
+C:\Projects\MasterServer\MasterServer\bin\Debug\MSLib.pdb
+C:\Projects\MasterServer\MasterServer\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\MasterServer\MasterServer\obj\Debug\MasterServer.MSMonitor.resources
+C:\Projects\MasterServer\MasterServer\obj\Debug\MasterServer.Properties.Resources.resources
+C:\Projects\MasterServer\MasterServer\obj\Debug\MasterServer.csproj.GenerateResource.Cache
+C:\Projects\MasterServer\MasterServer\obj\Debug\MasterServer.exe
+C:\Projects\MasterServer\MasterServer\obj\Debug\MasterServer.pdb
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServer\obj\Debug\MasterServer.exe
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServer\obj\Debug\MasterServer.pdb
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServer\bin\Debug\MasterServer.exe
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServer\bin\Debug\MasterServer.pdb
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServer\bin\Debug\MSLib.dll
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServer\bin\Debug\MSLib.pdb
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServer\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServer\obj\Debug\MasterServer.MSMonitor.resources
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServer\obj\Debug\MasterServer.Properties.Resources.resources
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServer\obj\Debug\MasterServer.csproj.GenerateResource.Cache

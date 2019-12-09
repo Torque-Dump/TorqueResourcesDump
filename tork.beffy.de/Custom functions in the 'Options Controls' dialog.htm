@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://tork.beffy.de/tutorials/remap/remap_functions.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Custom functions in the 'Options/Controls' dialog</title>
+	<link rel="STYLESHEET" type="text/css" href="./Custom functions in the 'Options Controls' dialog_files/style.css">
+</head>
+
+<body>
+<script language="JavaScript" src="./Custom functions in the 'Options Controls' dialog_files/nav.js"></script>
+<script>header("Custom functions in the 'Options/Controls' dialog");</script><table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0"> 	<tbody><tr bgcolor="#e0e0e0">         <td valign="bottom" width="*"><h1><nobr>Custom functions in the 'Options/Controls' dialog</nobr></h1></td>         <td align="right"><img src="./Custom functions in the 'Options Controls' dialog_files/header.gif" width="240" height="60" border="0"></td>     </tr>     <tr>          <td align="left" bgcolor="#0C3481">         &nbsp;<a class="bar" href="http://www.garagegames.com/" target="_blank">GarageGames.com</a>         </td>         <td align="right" bgcolor="#0C3481">         <span class="bar"><nobr>Doc Version 1.0.x&nbsp;</nobr></span>         </td>     </tr> 	<tr><td colspan="2" height="15">&nbsp;</td></tr>
+<script>startBody();</script><tr valign="top"><td colspan="2" height="100%">
+<!-------------------------------------------------------->
+<p>This short tutorial explains how to get some custom functions you defined in a script
+or in the engine code (e.g. toggle Night Vision Goggles, toggle a dialog, etc.) into 
+the "Options/Controls" dialog in the Torque Example application.</p>
+
+Consider you've got some code toggling NVG bitmaps while playing a mission
+(see <a href="http://www.garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=2178" target="_blank">
+http://www.garagegames.com/index.php?sec=mg&amp;mod=resource&amp;page=view&amp;qid=2178</a> for this example).
+
+
+<p>
+To get it into the re-mapping dialog, the first step is to make the function available in
+fps/client/scripts/default.bind.cs like that:
+</p>
+
+<pre>//------------------------------------------------------------------------------
+// Night Vision Goggle HUD function
+//------------------------------------------------------------------------------
+function toggleNVG( %val )
+{
+   if ( %val )
+      C3NV.toggle();
+}
+</pre>
+
+Then you map it to a default key, e.g.:
+<pre>moveMap.bind(keyboard, "alt n", toggleNVG);
+</pre>
+
+Add it to fps/client/config.cs, too (this gets overridden by the inputs you make in the "Options" dialog):
+
+<pre>moveMap.bind(keyboard, "alt n", toggleNVG);
+</pre>
+
+You could also use <b>bindCmd</b>, like that:
+<pre>moveMap.bindCmd(keyboard, "alt n", "", toggleNVG);
+</pre>
+
+... but you don't really need bindCmd here (you would use it if you had different functions for
+depressing and releasing buttons; the syntax for that function is:
+<pre>moveMap.bindCmd(device, inputName, downScript, upScript);
+</pre>
+
+
+<p>Then, in <b>/fps/client/scripts/optionsDlg.cs</b> add the new function for remapping
+and increase the remap count:
+</p><pre>$RemapName[$RemapCount] = "Toggle NVG";
+$RemapCmd[$RemapCount] = "toggleNVG";
+$RemapCount++;
+</pre>
+<p></p>
+
+<p>
+That's all - now you can change the input mappings for your custom function
+in the "Options/Controls" dialog by double clicking the new entry "Toggle NVG"!
+</p>
+
+<p align="center">
+<img src="./Custom functions in the 'Options Controls' dialog_files/remapping.jpg" width="520" height="499" alt="" border="0">
+</p>
+<!-------------------------------------------------------->
+<script>endBody();</script></td></tr>
+<script>footer("../bots/adding_bots.html", "../preview_gui/preview_gui.html", "beffy@gmx.de");</script><tr><td colspan="2" height="15">&nbsp;</td></tr> 	<tr><td colspan="2">  	<table width="100%" border="0" cellspacing="0" cellpadding="0"> 	<tbody><tr>         <td align="left" width="33%" bgcolor="#0C3481">         &nbsp;<a class="bar" href="http://tork.beffy.de/tutorials/bots/adding_bots.html">&lt;&lt; Previous</a>         </td>         <td align="center" width="34%" bgcolor="#0C3481">         <a class="bar" href="http://tork.zenkel.com/modules.php?op=modload&name=ToRKTutorials&file=index">Table of Contents</a>&nbsp;         </td>         <td align="center" width="16%" bgcolor="#0C3481" class="bar">         Author:<a class="bar" href="mailto:beffy@gmx.de">beffy</a>&nbsp;         </td>         <td align="right" width="17%" bgcolor="#0C3481">         <a class="bar" href="http://tork.beffy.de/tutorials/preview_gui/preview_gui.html">Next &gt;&gt;</a>&nbsp;         </td> 	</tr> 	</tbody></table>     </td></tr>     </tbody></table>
+
+
+
+</body></html>

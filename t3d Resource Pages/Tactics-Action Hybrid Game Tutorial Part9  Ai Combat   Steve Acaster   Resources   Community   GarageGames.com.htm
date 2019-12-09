@@ -1,0 +1,904 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0057)http://www.garagegames.com/community/resources/view/21003 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="Valkyria Chronicles style turnbased, 3rd person squad tactics-action hybrid gametype for Torque3D (singleplayer). Part Nine">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Tactics-Action Hybrid Game Tutorial Part9: Ai Combat | Steve Acaster | Resources | Community | GarageGames.com</title>		<link href="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/21003#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/21003#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Tactics-Action Hybrid Game Tutorial Part9: Ai Combat</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/101767">Steve Acaster</a>
+			<strong>·</strong>
+			05/10/2011 (7:33 am)			<strong>·</strong>
+			4 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21002">Back to Part8: Custom Ai</a><br>
+<br>
+Now we have our Allied Team members, we need an opposition. First, the theory.<br>
+<br>
+Ai will respond in 2 ways:<br>
+1: Actively - select a player and move/shoot during their team's phase of a turn (eg: the Client moves his team members during the Ally Team Phase of the Turn)<br>
+<br>
+2: Passively - it is the opposing team's Phase of the Turn, and the passive Ai team members will attempt to shoot at any moving targets. (eg: as in Valkyria Chronicles, the static Enemy Team members will shoot at active Allied Team memebers when they are moving)<br>
+<br>
+Let's deal with "passive" Ai thinking initially, as this will affect both Ally and Enemy Teams when it is not their active Phase of the Turn. Open up <i>scripts/server/aiplayer.cs</i>, we need to edit our custom spawning function. We want to make sure that the new Ai has a timer for scheduling checks during their passive Phase, and to start them off with a passive thought routine if the spawn into the applicable phase.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;AIPlayer::tacticsSpawn(%name,&nbsp;%spawnPoint,&nbsp;%team)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%player.hasFired&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%rand&nbsp;=&nbsp;GetRandom(2000,&nbsp;2500);<span class="comment">//yorks&nbsp;new</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%player.timer&nbsp;=&nbsp;%rand;<span class="comment">//yorks&nbsp;new</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//yorks&nbsp;new&nbsp;start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject($AllyList)&nbsp;&amp;&amp;&nbsp;%team&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$AllyList.add(%player,&nbsp;%playerType);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(turnManager))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(turnManager.enemyPhase&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%player.schedule(%player.timer,&nbsp;<span class="string">"passiveThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject($EnemyList)&nbsp;&amp;&amp;&nbsp;%team&nbsp;!=&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyList.add(%player,&nbsp;%playerType);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(turnManager))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(turnManager.enemyPhase&nbsp;==&nbsp;0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%player.schedule(%player.timer,&nbsp;<span class="string">"passiveThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//yorks&nbsp;end&nbsp;new!</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;%player;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function AIPlayer::tacticsSpawn(%name, %spawnPoint, %team)
+{
+//...
+
+   %player.hasFired = 0;
+   
+   %rand = GetRandom(2000, 2500);//yorks new
+   %player.timer = %rand;//yorks new
+   
+//...
+
+//yorks new start		
+	if(isObject($AllyList) &amp;&amp; %team == 1)
+	{
+		$AllyList.add(%player, %playerType);
+		
+		if(isObject(turnManager))
+			if(turnManager.enemyPhase == 1)
+				%player.schedule(%player.timer, "passiveThink");
+		
+	}
+		
+	if(isObject($EnemyList) &amp;&amp; %team != 1)
+	{
+		$EnemyList.add(%player, %playerType);
+
+		if(isObject(turnManager))
+			if(turnManager.enemyPhase == 0)
+				%player.schedule(%player.timer, "passiveThink");
+	}
+	//yorks end new!
+	
+   return %player;
+}</pre><br>
+For the Ai's passive thought routine, we want them to try and attack only the hostile team's active playerObject, and only when they are moving and not when they are shooting. The Client controlled team has action variables derived from mouse input to declare whether or not they are in "movement mode" (and thus a target for passive attack). For the Enemy ai team we will simply check the selected playerObject's velocity to determine whether or not it is moving. We also need to check to see whether the Turn/Phase has changed and thus abort the passive thinking routine.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;AIPlayer::passiveThink(%</span><span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.getState()&nbsp;$=</span><span class="string">"Dead"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;echo(%<span class="keyword">this</span><span>.getname()&nbsp;@&nbsp;</span><span class="string">"&nbsp;passiveThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.team&nbsp;!=&nbsp;1)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//must&nbsp;be&nbsp;enemy&nbsp;team&nbsp;member</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//check&nbsp;if&nbsp;the&nbsp;turn&nbsp;has&nbsp;changed</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//for&nbsp;AI&nbsp;enemy&nbsp;team&nbsp;they&nbsp;need&nbsp;to&nbsp;go&nbsp;into&nbsp;activeThink&nbsp;mode</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(turnManager.enemyPhase&nbsp;==&nbsp;</span><span class="keyword">true</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//we&nbsp;only&nbsp;attack&nbsp;the&nbsp;active&nbsp;player</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%target&nbsp;=&nbsp;localClientConnection.player;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//can&nbsp;only&nbsp;shoot&nbsp;at&nbsp;active&nbsp;hostile&nbsp;playerObject&nbsp;in&nbsp;action&nbsp;=&nbsp;move</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%target.action&nbsp;!=&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%target&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//must&nbsp;be&nbsp;an&nbsp;allied&nbsp;team&nbsp;member</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//check&nbsp;if&nbsp;the&nbsp;turn&nbsp;has&nbsp;changed</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//for&nbsp;Human&nbsp;Ally&nbsp;team&nbsp;they&nbsp;need&nbsp;to&nbsp;go&nbsp;back&nbsp;to&nbsp;being&nbsp;Client&nbsp;Controlled</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(turnManager.enemyPhase&nbsp;==&nbsp;</span><span class="keyword">false</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%target&nbsp;=&nbsp;turnManager.activeEnemy;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(%target))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%target.getVelocity()&nbsp;$=</span><span class="string">"0&nbsp;0&nbsp;0"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%target&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%target&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%target&nbsp;!=&nbsp;0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.targetClearView(%target)&nbsp;==&nbsp;</span><span class="keyword">true</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//distance&nbsp;check&nbsp;-&nbsp;Client&nbsp;can&nbsp;only&nbsp;shoot&nbsp;to&nbsp;100&nbsp;units&nbsp;so&nbsp;Enemy&nbsp;Ai&nbsp;is&nbsp;the&nbsp;same</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%dist&nbsp;=&nbsp;VectorDist(%me,&nbsp;%you);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%dist&nbsp;&lt;&nbsp;100)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setAimObject(%target,&nbsp;</span><span class="string">"0&nbsp;0&nbsp;1.5"</span><span>);</span><span class="comment">//aim&nbsp;a&nbsp;little&nbsp;up</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(200,&nbsp;</span><span class="string">"autoShoot"</span><span>);</span><span class="comment">//to&nbsp;help&nbsp;aiming&nbsp;delay</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//not&nbsp;able&nbsp;to&nbsp;shoot</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.clearAim();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//And&nbsp;loop</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(%</span><span class="keyword">this</span><span>.timer,&nbsp;</span><span class="string">"passiveThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function AIPlayer::passiveThink(%this)
+{
+	if(%this.getState() $="Dead")
+		return;
+		
+	echo(%this.getname() @ " passiveThink");
+
+	if(%this.team != 1)
+	{
+		//must be enemy team member
+		
+		//check if the turn has changed
+		//for AI enemy team they need to go into activeThink mode
+		if(turnManager.enemyPhase == true)
+			return;
+		
+		//we only attack the active player
+		%target = localClientConnection.player;
+		
+		//can only shoot at active hostile playerObject in action = move
+		if(%target.action != 1)
+			%target = 0;
+	}
+	else
+	{
+		//must be an allied team member
+		
+		//check if the turn has changed
+		//for Human Ally team they need to go back to being Client Controlled
+		if(turnManager.enemyPhase == false)
+			return;
+			
+		%target = turnManager.activeEnemy;
+		
+		if(isObject(%target))
+		{
+			if(%target.getVelocity() $="0 0 0")
+				%target = 0;
+		}
+		else
+		{
+			%target = 0;
+		}
+	}
+	
+	if(%target != 0)
+	{
+		if(%this.targetClearView(%target) == true)
+		{
+			//distance check - Client can only shoot to 100 units so Enemy Ai is the same
+			%dist = VectorDist(%me, %you);
+			
+			if(%dist &lt; 100)
+			{
+				%this.setAimObject(%target, "0 0 1.5");//aim a little up
+				%this.schedule(200, "autoShoot");//to help aiming delay
+			}
+		}
+		else
+		{
+			//not able to shoot
+			%this.clearAim();
+		}
+	}
+		
+	//And loop
+	%this.schedule(%this.timer, "passiveThink");
+}</pre><br>
+The key points to note here is a new set of functions to help with Ai automated targeting (eg: targetClearView, autoShoot) and the variable "activeEnemy" which will return the equivalent of the selected playerObject for the Ai controlled Enemy Team.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;AiPlayer::autoShoot(%</span><span class="keyword">this</span><span>)</span><span class="comment">//automated&nbsp;shooting</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.getState()&nbsp;$=</span><span class="string">"Dead"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;echo(%<span class="keyword">this</span><span>.getname()&nbsp;@&nbsp;</span><span class="string">"&nbsp;autoShoot"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Tell&nbsp;our&nbsp;passive&nbsp;AI&nbsp;object&nbsp;to&nbsp;fire&nbsp;its&nbsp;weapon</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setImageTrigger(0,&nbsp;</span><span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Stop&nbsp;firing&nbsp;in&nbsp;50&nbsp;milliseconds</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(50,&nbsp;</span><span class="string">"setImageTrigger"</span><span>,&nbsp;0,&nbsp;0);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(100,&nbsp;</span><span class="string">"clearAim"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;AIPlayer::TargetClearView(%<span class="keyword">this</span><span>,&nbsp;%target)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(!isObject(%target))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%searchMasks&nbsp;=&nbsp;&nbsp;&nbsp;$TypeMasks::VehicleObjectType&nbsp;|&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;$TypeMasks::PlayerObjectType&nbsp;|&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;$TypeMasks::TerrainObjectType&nbsp;|&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;$TypeMasks::StaticTSObjectType&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;$TypeMasks::StaticShapeObjectType;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%me&nbsp;=&nbsp;%<span class="keyword">this</span><span>.getEyePoint();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%you&nbsp;=&nbsp;%target.getEyePoint();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//check&nbsp;for&nbsp;Line&nbsp;OF&nbsp;Sight</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%clear&nbsp;=&nbsp;containerRayCast(%me,&nbsp;%you,&nbsp;%searchMasks,&nbsp;%<span class="keyword">this</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%clear&nbsp;==&nbsp;0&nbsp;||&nbsp;%clear&nbsp;==&nbsp;%target)&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">true</span><span>;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;path&nbsp;is&nbsp;clear</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function AiPlayer::autoShoot(%this)//automated shooting
+{
+	if(%this.getState() $="Dead")
+		return;
+		
+	echo(%this.getname() @ " autoShoot");
+	// Tell our passive AI object to fire its weapon
+	%this.setImageTrigger(0, true);
+			
+	// Stop firing in 50 milliseconds
+	%this.schedule(50, "setImageTrigger", 0, 0);
+	%this.schedule(100, "clearAim");
+}
+
+function AIPlayer::TargetClearView(%this, %target)
+{
+	if(!isObject(%target))
+		return false;
+   
+	%searchMasks =   $TypeMasks::VehicleObjectType | 
+	$TypeMasks::PlayerObjectType | 
+	$TypeMasks::TerrainObjectType | 
+	$TypeMasks::StaticTSObjectType |  
+	$TypeMasks::StaticShapeObjectType;
+		
+	%me = %this.getEyePoint();
+	%you = %target.getEyePoint();
+		
+	//check for Line OF Sight
+	%clear = containerRayCast(%me, %you, %searchMasks, %this);
+			
+	if(%clear == 0 || %clear == %target) 
+		return true;   // path is clear
+	else 
+		return false;
+}</pre><br>
+Now that we have both of Team's Ai capable of defending themselves when it is the opponents phase, we'll sort out the slightly trickier task of having the Ai Enemy Team act in the same way during their active Phase as the Ally Team does when it is controlled by the Client. The theory is:<br>
+<br>
+1: Each member of the Enemy Team get's a chance to be the active playerObject one after another<br>
+2: Movement first - check whether they can move (energy level) and whether they want to move (have a goal)<br>
+3: Shooting - attack the nearest target in view<br>
+4: Set the active playerObject to the next team member - if all team members have been active, end the Phase and start a new Turn.<br>
+<br>
+In <i>scripts/server/gameTorqueTactics.cs</i> we need to create this new arrayObject to manage the Enemy Phase and add a variable for the current active Enemy playerObject to "turnManager".<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;TorqueTacticsGame::startGame(%game)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(!isObject($EnemyList))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyList&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;arrayobject();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MissionCleanup.add($EnemyList);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(!isObject($EnemyManager))</span><span class="comment">//&nbsp;&lt;---&nbsp;yorks&nbsp;add&nbsp;this&nbsp;object</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyManager&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;arrayobject();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MissionCleanup.add($EnemyManager);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(!isObject(turnManager))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">new</span><span>&nbsp;ScriptObject(turnManager)&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enemyPhase&nbsp;=&nbsp;0;<span class="comment">//not&nbsp;the&nbsp;enemies&nbsp;turn</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;turnNum&nbsp;=&nbsp;0;<span class="comment">//start&nbsp;the&nbsp;game&nbsp;at&nbsp;the&nbsp;beginning!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;victory&nbsp;=&nbsp;0;<span class="comment">//victory&nbsp;not&nbsp;achieved&nbsp;-&nbsp;we've&nbsp;only&nbsp;just&nbsp;started</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;activeEnemy&nbsp;=&nbsp;0;<span class="comment">//&nbsp;&lt;---&nbsp;yorks&nbsp;new!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MissionCleanup.add(turnManager);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;TorqueTacticsGame::endGame(%game)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject($EnemyList))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyList.empty();<span class="comment">//empty&nbsp;first</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyList.<span class="keyword">delete</span><span>();</span><span class="comment">//then&nbsp;delete</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject($EnemyManager))</span><span class="comment">//&nbsp;&lt;---&nbsp;yorks&nbsp;add&nbsp;this&nbsp;cleanup</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyManager.empty();<span class="comment">//empty&nbsp;first</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyManager.<span class="keyword">delete</span><span>();</span><span class="comment">//then&nbsp;delete</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(turnManager))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TurnManager.<span class="keyword">delete</span><span>();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"Deleting&nbsp;Turn&nbsp;Management&nbsp;System"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;parent::endGame(%game);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function TorqueTacticsGame::startGame(%game)
+{
+//...
+	
+	if(!isObject($EnemyList))
+	{
+		$EnemyList = new arrayobject();
+		MissionCleanup.add($EnemyList);
+	}
+	
+	if(!isObject($EnemyManager))// &lt;--- yorks add this object
+	{
+		$EnemyManager = new arrayobject();
+		MissionCleanup.add($EnemyManager);
+	}
+	
+	if(!isObject(turnManager))
+	{
+		new ScriptObject(turnManager) 
+		{
+			enemyPhase = 0;//not the enemies turn
+			turnNum = 0;//start the game at the beginning!
+			victory = 0;//victory not achieved - we've only just started
+			activeEnemy = 0;// &lt;--- yorks new!
+		};
+		MissionCleanup.add(turnManager);
+
+//...
+
+}
+
+function TorqueTacticsGame::endGame(%game)
+{
+
+//...
+
+	if(isObject($EnemyList))
+	{
+		$EnemyList.empty();//empty first
+		$EnemyList.delete();//then delete
+	}
+	
+	if(isObject($EnemyManager))// &lt;--- yorks add this cleanup
+	{
+		$EnemyManager.empty();//empty first
+		$EnemyManager.delete();//then delete
+	}
+	
+	if(isObject(turnManager))
+	{	
+		TurnManager.delete();
+		echo("Deleting Turn Management System");
+	}
+
+   parent::endGame(%game);
+
+//...
+
+   }
+}</pre><br>
+Now we need to manage the Turns and Phases. Back in <a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21001">Part7</a> we created a new server command function to deal with starting a "NewTurn" so that the Ally Team could move and shoot again. Now we need to add the Enemy Team to this to start their "passiveThink". In <i>scripts/server/commands.cs</i> edit:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;serverCmdNewTurn(%client)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%wpn.UpdateWeaponHud(%start,&nbsp;%slot);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//and&nbsp;startup&nbsp;the&nbsp;Enemy&nbsp;Team&nbsp;Passive&nbsp;Turn&nbsp;-&nbsp;yorks&nbsp;add&nbsp;start</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%num&nbsp;=&nbsp;$EnemyList.count();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%num&nbsp;&gt;&nbsp;0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>(%x=0;&nbsp;%x&nbsp;&lt;&nbsp;%num;&nbsp;%x++)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai&nbsp;=&nbsp;$EnemyList.getkey(%x);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%ai.getVelocity()&nbsp;!$=</span><span class="string">"0&nbsp;0&nbsp;0"</span><span>)</span><span class="comment">//this&nbsp;should&nbsp;never&nbsp;happen&nbsp;but&nbsp;safety&nbsp;first&nbsp;;)</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.stop();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.schedule(%ai.timer,&nbsp;<span class="string">"passiveThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<span class="comment">//yorks&nbsp;end&nbsp;add</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MessageBoxOK(&nbsp;<span class="string">"You&nbsp;Have&nbsp;Been&nbsp;Defeated"</span><span>,&nbsp;</span><span class="string">"Game&nbsp;Over"</span><span>,&nbsp;</span><span class="string">"disconnect();"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function serverCmdNewTurn(%client)
+{
+//...
+
+		%wpn.UpdateWeaponHud(%start, %slot);
+		
+		//and startup the Enemy Team Passive Turn - yorks add start
+		%num = $EnemyList.count();
+		if(%num &gt; 0)
+		{
+			for(%x=0; %x &lt; %num; %x++)
+			{
+				%ai = $EnemyList.getkey(%x);
+			
+				if(%ai.getVelocity() !$="0 0 0")//this should never happen but safety first ;)
+					%ai.stop();
+		
+				%ai.schedule(%ai.timer, "passiveThink");
+			}
+		}//yorks end add
+	}
+	else
+	{
+	    MessageBoxOK( "You Have Been Defeated", "Game Over", "disconnect();");
+	}
+}</pre><br>
+We need to do the same for the Ally Team when it is passive and startup the Enemy Team's active Phase after the Ally Phase is over. As there is a fair bit of change, feel free to replace the whole function.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;serverCmdTurnOver(%client)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%count&nbsp;=&nbsp;$AllyList.count();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%count&nbsp;&gt;&nbsp;0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(TurnManager))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TurnManager.enemyPhase&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"Enemy&nbsp;Team&nbsp;Turn"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;messageAll(<span class="string">'MsgNewTurn'</span><span>,&nbsp;</span><span class="string">'\c4Turn&nbsp;%1&nbsp;Enemy&nbsp;Phase'</span><span>,&nbsp;TurnManager.turnNum);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(turnManager.victory&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MessageBoxOK(&nbsp;<span class="string">"You&nbsp;Have&nbsp;Defeated&nbsp;The&nbsp;Enemy"</span><span>,&nbsp;</span><span class="string">"Huzzar!&nbsp;You&nbsp;Won&nbsp;The&nbsp;Game!"</span><span>,&nbsp;</span><span class="string">"disconnect();"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"There&nbsp;is&nbsp;no&nbsp;Turn&nbsp;Management&nbsp;System&nbsp;in&nbsp;place&nbsp;-&nbsp;something&nbsp;has&nbsp;gone&nbsp;horribly&nbsp;wrong!"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MessageBoxOK(&nbsp;<span class="string">"There&nbsp;is&nbsp;no&nbsp;Turn&nbsp;Management&nbsp;System&nbsp;in&nbsp;place&nbsp;-&nbsp;something&nbsp;has&nbsp;gone&nbsp;horribly&nbsp;wrong!"</span><span>,&nbsp;</span><span class="string">"Quit"</span><span>,&nbsp;</span><span class="string">"disconnect();"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//sort&nbsp;out&nbsp;the&nbsp;player</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>(%i=0;&nbsp;%i&nbsp;&lt;&nbsp;%count;&nbsp;%i++)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%bot&nbsp;=&nbsp;$AllyList.getkey(%i);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%bot.getVelocity()&nbsp;!$=</span><span class="string">"0&nbsp;0&nbsp;0"</span><span>)</span><span class="comment">//this&nbsp;should&nbsp;never&nbsp;happen&nbsp;but&nbsp;safety&nbsp;first&nbsp;;)</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%bot.stop();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(&nbsp;%bot.decal&nbsp;&gt;&nbsp;-1&nbsp;)</span><span class="comment">//just&nbsp;checking</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalManagerRemoveDecal(&nbsp;%bot.decal&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%bot.schedule(%bot.timer,&nbsp;<span class="string">"passiveThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TacticsHud.setVisible(<span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TurnHud.setVisible(<span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//sort&nbsp;out&nbsp;the&nbsp;enemy&nbsp;turn</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%count&nbsp;=&nbsp;$EnemyList.count();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%count&nbsp;&gt;&nbsp;0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(!isObject($EnemyManager))</span><span class="comment">//this&nbsp;should&nbsp;never&nbsp;happen</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyManager&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;arrayobject();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MissionCleanup.add($EnemyManager);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>(%i=0;&nbsp;%i&nbsp;&lt;&nbsp;%count;&nbsp;%i++)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai&nbsp;=&nbsp;$EnemyList.getkey(%i);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.action&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.hasFired&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.restoreEnergy();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyManager.add(%ai,&nbsp;%ai.goal);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;schedule(2000,&nbsp;turnManager,&nbsp;<span class="string">"commandToServer"</span><span>,&nbsp;</span><span class="string">'enemyPhase'</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//make&nbsp;a&nbsp;slight&nbsp;pause&nbsp;before&nbsp;starting&nbsp;a&nbsp;fresh&nbsp;turn</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;schedule(2000,&nbsp;turnManager,&nbsp;<span class="string">"commandToServer"</span><span>,&nbsp;</span><span class="string">'NewTurn'</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MessageBoxOK(&nbsp;<span class="string">"You&nbsp;Have&nbsp;Been&nbsp;Defeated"</span><span>,&nbsp;</span><span class="string">"You&nbsp;Lost&nbsp;The&nbsp;Game"</span><span>,&nbsp;</span><span class="string">"disconnect();"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function serverCmdTurnOver(%client)
+{
+	%count = $AllyList.count();
+	if(%count &gt; 0)
+	{
+	
+		if(isObject(TurnManager))
+		{
+			TurnManager.enemyPhase = 1;
+			echo("Enemy Team Turn");
+
+			messageAll('MsgNewTurn', '\c4Turn %1 Enemy Phase', TurnManager.turnNum);
+			
+			if(turnManager.victory == 1)
+			{
+				MessageBoxOK( "You Have Defeated The Enemy", "Huzzar! You Won The Game!", "disconnect();");
+				return;
+			}
+		}
+		else
+		{
+			echo("There is no Turn Management System in place - something has gone horribly wrong!");
+			MessageBoxOK( "There is no Turn Management System in place - something has gone horribly wrong!", "Quit", "disconnect();");
+		}
+	
+		//sort out the player
+		for(%i=0; %i &lt; %count; %i++)
+		{
+			%bot = $AllyList.getkey(%i);
+			
+			if(%bot.getVelocity() !$="0 0 0")//this should never happen but safety first ;)
+				%bot.stop();
+		
+			if( %bot.decal &gt; -1 )//just checking
+				decalManagerRemoveDecal( %bot.decal );
+				
+			%bot.schedule(%bot.timer, "passiveThink");
+		}
+		
+		TacticsHud.setVisible(false);
+		TurnHud.setVisible(false);
+		
+		//sort out the enemy turn
+		%count = $EnemyList.count();
+		if(%count &gt; 0)
+		{
+			if(!isObject($EnemyManager))//this should never happen
+			{
+				$EnemyManager = new arrayobject();
+				MissionCleanup.add($EnemyManager);
+			}
+			
+			for(%i=0; %i &lt; %count; %i++)
+			{
+				%ai = $EnemyList.getkey(%i);
+	
+				%ai.action = 0;
+				%ai.hasFired = 0;
+				%ai.restoreEnergy();
+				
+				$EnemyManager.add(%ai, %ai.goal);
+			}
+
+			schedule(2000, turnManager, "commandToServer", 'enemyPhase');
+		}
+		else
+		{
+			//make a slight pause before starting a fresh turn
+			schedule(2000, turnManager, "commandToServer", 'NewTurn');
+		}
+	}
+	else
+	{
+	    MessageBoxOK( "You Have Been Defeated", "You Lost The Game", "disconnect();");
+	}
+}</pre><br>
+Finally in <i>commands.cs</i> we activate the "EnemyManager".<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;serverCmdenemyPhase(%client)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"\c2&nbsp;-&gt;&nbsp;command&nbsp;to&nbsp;server&nbsp;-&gt;&nbsp;enemyPhase"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%count&nbsp;=&nbsp;$EnemyManager.count();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%count&nbsp;&gt;&nbsp;0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%select&nbsp;=&nbsp;$EnemyManager.getKey($Enemymanager.moveFirst());&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;turnManager.activeEnemy&nbsp;=&nbsp;%select;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%select.schedule(%select.timer,&nbsp;<span class="string">"activeThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;turnManager.activeEnemy&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//make&nbsp;a&nbsp;slight&nbsp;pause&nbsp;before&nbsp;starting&nbsp;a&nbsp;fresh&nbsp;turn</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;schedule(2000,&nbsp;turnManager,&nbsp;<span class="string">"commandToServer"</span><span>,&nbsp;</span><span class="string">'NewTurn'</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function serverCmdenemyPhase(%client)
+{
+	echo("\c2 -&gt; command to server -&gt; enemyPhase");
+	%count = $EnemyManager.count();
+	if(%count &gt; 0)
+	{
+		%select = $EnemyManager.getKey($Enemymanager.moveFirst());
+		turnManager.activeEnemy = %select;
+		%select.schedule(%select.timer, "activeThink");
+	}
+	else
+	{
+		turnManager.activeEnemy = 0;
+		//make a slight pause before starting a fresh turn
+		schedule(2000, turnManager, "commandToServer", 'NewTurn');
+	}
+}</pre><br>
+The "enemyManager" works by adding all Enemy Team members to it's array (in "turnOver") and then working through the active thinking routine of the members one at a time, deleting them from the array when they are finished, before moving on to the next. When the arrayObject is empty, all Enemy Team members will have had a chance to move and shoot, and the Enemy Phase will end, and a new Turn begin with the Ally Team's Phase (and thus control for the Client is reestablished).<br>
+<br>
+Now back to <i>scripts/server/aiplayer.cs</i> to add the functions for a selected Enemy Team playerObject (activeEnemy) during their active Phase.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;AIPlayer::activeThink(%</span><span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Ai&nbsp;Enemy's&nbsp;turn&nbsp;to&nbsp;be&nbsp;active</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;echo(%<span class="keyword">this</span><span>.getname()&nbsp;@&nbsp;</span><span class="string">"&nbsp;Enemy&nbsp;activeThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//need&nbsp;to&nbsp;check&nbsp;for:</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//can&nbsp;we&nbsp;move?&nbsp;Energy&nbsp;&gt;&nbsp;0</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//do&nbsp;we&nbsp;want&nbsp;to&nbsp;move?</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//are&nbsp;we&nbsp;already&nbsp;moving?</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//can&nbsp;we&nbsp;shoot?&nbsp;hasFired&nbsp;==&nbsp;0</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//do&nbsp;we&nbsp;have&nbsp;a&nbsp;target?</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.getState()&nbsp;$=</span><span class="string">"Dead"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%k&nbsp;=&nbsp;$EnemyManager.getindexfromkey(%<span class="keyword">this</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$EnemyManager.erase(%k);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;turnManager.activeEnemy&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;schedule(1000,&nbsp;turnManager,&nbsp;<span class="string">"commandToServer"</span><span>,&nbsp;</span><span class="string">'enemyPhase'</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(turnManager.activeEnemy&nbsp;!=&nbsp;%</span><span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"\c0********&nbsp;"</span><span>&nbsp;@&nbsp;%</span><span class="keyword">this</span><span>.getname&nbsp;@&nbsp;</span><span class="string">"&nbsp;ends&nbsp;active&nbsp;turn"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;schedule(1000,&nbsp;turnManager,&nbsp;<span class="string">"commandToServer"</span><span>,&nbsp;</span><span class="string">'enemyPhase'</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%energy&nbsp;=&nbsp;%<span class="keyword">this</span><span>.getEnergyLevel();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%energy&nbsp;&gt;&nbsp;0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//we&nbsp;have&nbsp;energy&nbsp;to&nbsp;move</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//do&nbsp;we&nbsp;have&nbsp;a&nbsp;goal&nbsp;to&nbsp;move&nbsp;to?</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(%</span><span class="keyword">this</span><span>.goal))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%range&nbsp;=&nbsp;VectorDist(%<span class="keyword">this</span><span>.getPosition(),&nbsp;%</span><span class="keyword">this</span><span>.goal.getPosition());&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%range&nbsp;&gt;&nbsp;1)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(%<span class="keyword">this</span><span>.getname()&nbsp;SPC&nbsp;%</span><span class="keyword">this</span><span>.getenergyLevel());&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setmovedestination(%</span><span class="keyword">this</span><span>.goal.getposition());&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//if&nbsp;the&nbsp;client's&nbsp;playerObject&nbsp;usese&nbsp;up&nbsp;energy,&nbsp;so&nbsp;does&nbsp;the&nbsp;Ai</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.decEnergy();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(%</span><span class="keyword">this</span><span>.timer,&nbsp;</span><span class="string">"activeThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.goal&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.hasFired&nbsp;==&nbsp;0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%target&nbsp;=&nbsp;%<span class="keyword">this</span><span>.AttackTarget(%obj);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%target&nbsp;!=&nbsp;0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setAimObject(%target,&nbsp;</span><span class="string">"0&nbsp;0&nbsp;1.5"</span><span>);</span><span class="comment">//aim&nbsp;a&nbsp;little&nbsp;up</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(200,&nbsp;</span><span class="string">"autoShoot"</span><span>);</span><span class="comment">//to&nbsp;help&nbsp;aiming&nbsp;delay</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.hasFired&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//if&nbsp;we&nbsp;get&nbsp;down&nbsp;here&nbsp;we&nbsp;must&nbsp;be&nbsp;done!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//remove&nbsp;us&nbsp;from&nbsp;the&nbsp;EnemyManager&nbsp;and&nbsp;get&nbsp;the&nbsp;next&nbsp;Ai</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%k&nbsp;=&nbsp;$EnemyManager.getindexfromkey(%<span class="keyword">this</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;$EnemyManager.erase(%k);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;turnManager.activeEnemy&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(%</span><span class="keyword">this</span><span>.timer,&nbsp;</span><span class="string">"activeThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function AIPlayer::activeThink(%this)
+{
+	//Ai Enemy's turn to be active
+	echo(%this.getname() @ " Enemy activeThink");
+	
+	//need to check for:
+	//can we move? Energy &gt; 0
+	//do we want to move?
+	//are we already moving?
+	//can we shoot? hasFired == 0
+	//do we have a target?
+	
+	if(%this.getState() $="Dead")
+	{
+		%k = $EnemyManager.getindexfromkey(%this);
+   		$EnemyManager.erase(%k);
+		
+		turnManager.activeEnemy = 0;
+		schedule(1000, turnManager, "commandToServer", 'enemyPhase');
+		
+		return;
+	}
+	
+	if(turnManager.activeEnemy != %this)
+	{
+		echo("\c0******** " @ %this.getname @ " ends active turn");
+		schedule(1000, turnManager, "commandToServer", 'enemyPhase');
+		return;
+	}
+	
+	%energy = %this.getEnergyLevel();
+	
+	if(%energy &gt; 0)
+	{
+		//we have energy to move
+
+		//do we have a goal to move to?
+		if(isObject(%this.goal))
+		{
+			%range = VectorDist(%this.getPosition(), %this.goal.getPosition());
+		
+			if(%range &gt; 1)
+			{
+				echo(%this.getname() SPC %this.getenergyLevel());
+				%this.setmovedestination(%this.goal.getposition());
+				
+				//if the client's playerObject usese up energy, so does the Ai
+				%this.decEnergy();
+				
+				%this.schedule(%this.timer, "activeThink");
+				return;
+			}
+			else
+				%this.goal = 0;
+		}
+	}
+	
+	if(%this.hasFired == 0)
+	{
+		%target = %this.AttackTarget(%obj);
+		
+		if(%target != 0)
+		{
+			%this.setAimObject(%target, "0 0 1.5");//aim a little up
+			%this.schedule(200, "autoShoot");//to help aiming delay
+			%this.hasFired = 1;
+		}
+	}
+	
+	//if we get down here we must be done!
+	//remove us from the EnemyManager and get the next Ai
+	%k = $EnemyManager.getindexfromkey(%this);
+   	$EnemyManager.erase(%k);
+	turnManager.activeEnemy = 0;
+	
+	%this.schedule(%this.timer, "activeThink");
+}</pre><br>
+There's a little list of comments in the above code which explains succinctly how the theory works. You'll also notice that you need a new "targeting" and "attackTarget" function. These simply find the closest available hostile playerObject and sets it as the target to attack with the single shot that the active playerObject has that turn.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21003#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;AIPlayer::Targeting(%</span><span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%dist&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%index&nbsp;=&nbsp;-1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%mypos&nbsp;=&nbsp;%<span class="keyword">this</span><span>.getposition();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%count&nbsp;=&nbsp;$AllyList.count();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>(%i=0;&nbsp;%i&nbsp;&lt;&nbsp;%count;&nbsp;%i++)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%bot&nbsp;=&nbsp;$AllyList.getkey(%i);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(%bot))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%bot.getstate()&nbsp;!$=</span><span class="string">"Dead"</span><span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%tgtpos&nbsp;=&nbsp;%bot.getposition();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%tempdist&nbsp;=&nbsp;vectorDist(%tgtpos,&nbsp;%mypos);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%tempdist&nbsp;&lt;&nbsp;100)</span><span class="comment">//100&nbsp;is&nbsp;max&nbsp;range&nbsp;for&nbsp;Client&nbsp;so&nbsp;same&nbsp;for&nbsp;Ai</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%tempdist&nbsp;&lt;&nbsp;%dist&nbsp;||&nbsp;%dist&nbsp;==&nbsp;0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%dist&nbsp;=&nbsp;%tempdist;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%index&nbsp;=&nbsp;%i;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%index&nbsp;!=&nbsp;-1)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%tgt&nbsp;=&nbsp;$AllyList.getkey(%index);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;%tgt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;-1;&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>function&nbsp;Aiplayer::AttackTarget(%<span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%tgtid&nbsp;=&nbsp;%<span class="keyword">this</span><span>.Targeting(%obj);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%tgtid&nbsp;!=&nbsp;-1&nbsp;&amp;&amp;&nbsp;isObject(%tgtid))</span><span class="comment">//was&nbsp;tgt&nbsp;!=&nbsp;0&nbsp;but&nbsp;-1&nbsp;is&nbsp;what&nbsp;would&nbsp;get&nbsp;returned&nbsp;...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;%tgtid;&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function AIPlayer::Targeting(%this)
+{
+	%dist = 0;
+	%index = -1;
+	%mypos = %this.getposition();
+
+	%count = $AllyList.count();
+	for(%i=0; %i &lt; %count; %i++)
+	{
+		%bot = $AllyList.getkey(%i);
+		if(isObject(%bot))
+		{
+			if(%bot.getstate() !$="Dead")		
+			{
+				%tgtpos = %bot.getposition();		
+				%tempdist = vectorDist(%tgtpos, %mypos);
+
+				if(%tempdist &lt; 100)//100 is max range for Client so same for Ai
+					if(%tempdist &lt; %dist || %dist == 0)
+					{
+						%dist = %tempdist;
+						%index = %i;
+					}
+			}
+		}
+	}
+	
+	if(%index != -1)
+	{
+		%tgt = $AllyList.getkey(%index);
+	 	return %tgt;
+	}
+
+	return -1;
+}
+
+function Aiplayer::AttackTarget(%this)
+{
+	%tgtid = %this.Targeting(%obj);
+	
+	if(%tgtid != -1 &amp;&amp; isObject(%tgtid))//was tgt != 0 but -1 is what would get returned ...
+		return %tgtid;
+}</pre><br>
+<a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21005">Part Ten: GamePlay Test</a></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/101767.png" alt="Steve Acaster&#39;s profile picture">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				One Bloke ... In His Bedroom ... Trying To Make Computer Games ... eventually ...			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21015">Move Rock - Circumnavigate Rock - Go Off On Tangent</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21013">Tactics-Action Hybrid Game Tutorial Part12: Finale</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21012"> Tactics-Action Hybrid Game Tutorial Part11: Ai Paths</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21005">Tactics-Action Hybrid Game Tutorial Part10: GamePlay Test</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21002">Tactics-Action Hybrid Game Tutorial Part8: Custom Ai</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/21005"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/21002"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/21003#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(21003, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/200921.jpg" class="profilepic">
+			<br>
+			<a rel="Robert Fritzen (Phantom139)" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/200921" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Robert Fritzen (Phantom139)
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21003/1#comment-175114" name="comment-175114">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/10/2011 (8:04 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			really cool, loving it so far.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/95011.jpg" class="profilepic">
+			<br>
+			<a rel="QuintonD" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/95011" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	QuintonD
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21003/1#comment-175116" name="comment-175116">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/10/2011 (8:47 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			These tutorials are so cool Steve that I have converted one of my game concepts to use this style of game play instead ... with your permission of course.<br>
+<br>
+Love the style of play and have watched a few of the videos (not having seen this style before) ... so I am keen to make this happen.<br>
+<br>
+Thanks again for all your efforts ... very cool indeed.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21003/1#comment-175117" name="comment-175117">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/10/2011 (9:07 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			<blockquote><span>Quote:</span><br>
+I have converted one of my game concepts to use this style of game play instead ... with your permission of course.</blockquote><br>
+That's what they're there for!<br>
+<br>
+In case anyone has been following this whilst I've writing it, I've made a few alterations to some of the previous parts, mainly playGui, gameTorqueTactcs.cs, player.cs, ... maybe aiplayer.cs, commands.cs - mostly cleaning stuff up and making stuff better rather than wholesale replacements of code though.<br>
+<br>
+Edited again - guess who missed off the "attackTarget" function at the bottom of this page ... doh!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/57491.jpg" class="profilepic">
+			<br>
+			<a rel="Caylo Gypsyblood" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/57491" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Caylo Gypsyblood
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/21003/1#comment-175125" name="comment-175125">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/10/2011 (9:43 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Neat write up Steve, its always fun to read your punny typings... 		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/21003/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/resources/view/21003#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/resources/view/21003#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/21003');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Tactics-Action Hybrid Game Tutorial Part9  Ai Combat   Steve Acaster   Resources   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

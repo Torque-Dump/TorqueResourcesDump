@@ -1,0 +1,720 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0059)http://tork.beffy.de/tutorials/preview_gui/preview_gui.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+      <title>
+         Terrain and player preview gui
+      </title>
+      <link rel="STYLESHEET" type="text/css" href="./Terrain and player preview gui_files/style.css">
+   </head>
+   <body>
+<script type="text/javascript" language="JavaScript" src="./Terrain and player preview gui_files/nav.js">
+</script>
+<script type="text/javascript">
+header("Terrain and player preview gui");
+</script><table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0"> 	<tbody><tr bgcolor="#e0e0e0">         <td valign="bottom" width="*"><h1><nobr>Terrain and player preview gui</nobr></h1></td>         <td align="right"><img src="./Terrain and player preview gui_files/header.gif" width="240" height="60" border="0"></td>     </tr>     <tr>          <td align="left" bgcolor="#0C3481">         &nbsp;<a class="bar" href="http://www.garagegames.com/" target="_blank">GarageGames.com</a>         </td>         <td align="right" bgcolor="#0C3481">         <span class="bar"><nobr>Doc Version 1.0.x&nbsp;</nobr></span>         </td>     </tr> 	<tr><td colspan="2" height="15">&nbsp;</td></tr>
+<script type="text/javascript">
+startBody();
+</script><tr valign="top"><td colspan="2" height="100%">
+      <br>
+	  <font color="Red">Last UPDATED on 25/09/2002 to work with current HEAD version of Torque.</font>
+      <br>
+	  <p>
+         STEP 1:<br>
+         Download Frank Bignones zip file from <a href="http://perso.wanadoo.fr/hysteria/docs/guiCtrls.htm" target="_blank">perso.wanadoo.fr/hysteria/docs/guiCtrls.htm</a><br>
+         <br>
+         STEP 2:<br>
+         Add the additional files to your engine code:<br>
+         - guiObjectView.cc &amp; guiObjectView.h : place them in your game
+         directory (i.e, /engine/game)<br>
+         - guiTerView.cc &amp; guiTerView.h : place them in your game directory
+         (i.e, /engine/game) and <b>add them to your Visual Studio Project</b> (right-click on the folders
+		 containing the new files, "Add files to folder" - you have to change the file filter to *.* to see the .cc files!)<br>
+         <br>
+         STEP 3:<br>
+		 There is one little extra utility function we need in the <b>guiObjectView</b> class:
+		 <br>add this to <b>guiObjectView.cc</b>:
+</p><pre>void GuiObjectView::setEmpty() {
+    if ( mModel ) {
+       delete mModel;
+       mModel = NULL;
+    }
+}
+
+ConsoleMethod( GuiObjectView, setEmpty, void, 2, 2, "objectView.setEmpty( )" ) {
+    argc;
+	GuiObjectView* view = static_cast&lt;GuiObjectView*&gt;( object );
+	view-&gt;setEmpty();
+}
+</pre>
+		And, of course, the declaration in the header file, <b>guiObjectView.h</b>:
+		<br>(just put it as the last entry in the public section):
+<pre>	  void setEmpty();
+</pre>		
+				 
+		Then, add the following function to <b>core/resManager.cc</b>:<br>
+
+<pre>ResourceObject *
+ResManager::createResource (const char * fileName)
+{
+
+  StringTableEntry path, file;
+  getPaths (fileName, path, file);
+  ResourceObject *newRO = dictionary.find (path, file);
+  if (newRO)
+    return newRO;
+
+  newRO = new ResourceObject;
+  newRO-&gt;path = path;
+  newRO-&gt;name = file;
+  newRO-&gt;lockCount = 0;
+  newRO-&gt;mInstance = NULL;
+  newRO-&gt;flags = ResourceObject::Added;
+  newRO-&gt;next = newRO-&gt;prev = NULL;
+  newRO-&gt;nextResource = resourceList.nextResource;
+  resourceList.nextResource = newRO;
+  newRO-&gt;prevResource = &amp;resourceList;
+  if (newRO-&gt;nextResource)
+    newRO-&gt;nextResource-&gt;prevResource = newRO;
+  dictionary.insert (newRO, path, file);
+  newRO-&gt;fileSize = newRO-&gt;fileOffset = newRO-&gt;compressedFileSize = 0;
+  newRO-&gt;zipPath = NULL;
+  newRO-&gt;zipName = NULL;
+  newRO-&gt;crc = InvalidCRC;
+
+  return newRO;
+}
+</pre>
+
+And the function declaration to the resManager.h file, of course (as the first entry in the "public" section e.g.):
+<pre>   ResourceObject* createResource(const char *);
+</pre>		 
+
+         <br>
+         STEP 4:<br>
+         DO NOT replace your terrData.cc &amp; terrData.h files like he
+         mentioned in the tutorial - they seem to be outdated and don't work in
+         the latest HEAD!!<br>
+         Instead, add this function to terrData.cc:<br>
+         <br>
+      <p></p>
+<pre></pre>
+      <hr height="1" noshade="">
+<pre>
+bool TerrainBlock::addToClientGraph()
+{
+   setPosition(Point3F(-squareSize * (BlockSize &gt;&gt; 1), -squareSize * (BlockSize &gt;&gt; 1), 0));
+   MaterialPropertyMap* pMatMap = static_cast&lt;MaterialPropertyMap*&gt;(Sim::findObject("MaterialPropertyMap"));
+   StringTableEntry fn = mMaterialFileName[0];
+   if(!dStrncmp(fn, "terrain.", 8))
+      fn += 8;
+   char nameBuff[512];
+   dStrcpy(nameBuff, mTerrFileName);
+   char *p = dStrrchr(nameBuff, '/');
+   if (p) p++;
+   else p = nameBuff;
+   dStrcat(p,fn); 
+   mMPMIndex[0] = pMatMap-&gt;getIndexFromName(nameBuff);
+   
+   mObjBox.min.set(-1e8, -1e8, -1e8);
+   mObjBox.max.set( 1e8,  1e8,  1e8);
+   resetWorldBox();
+   setRenderTransform(mObjToWorld);
+
+      if(mDetailTextureName &amp;&amp; mDetailTextureName[0]) 
+         mDetailTextureHandle = TextureHandle(mDetailTextureName, DetailTexture);
+      
+      lightMap = new GBitmap(LightmapSize, LightmapSize, false, GBitmap::RGB5551);
+
+      if (!buildMaterialMap())
+         return false;
+
+      mTextureCallbackKey = TextureManager::registerEventCallback(terrainTextureEventCB, U32(this));
+
+      mDynLightTexture = TextureHandle("special/lightFalloffMono", BitmapTexture, true);
+
+      if (dglDoesSupportVertexBuffer())
+         mVertexBuffer = glAllocateVertexBufferEXT(VertexBufferSize,GL_V12MTVFMT_EXT,true);
+      else
+         mVertexBuffer = -1;
+
+   if(!unpackEmptySquares())
+      return(false);
+
+   return true;
+}
+</pre>
+      <hr height="1" noshade="">
+      <br>
+       <br>
+      <p>
+         I've added it just before void TerrainBlock::onRemove().<br>
+         <br>
+         STEP 5:<br>
+         Add this piece in terrData.h<br>
+         <br>
+      </p>
+<pre></pre>
+      <hr height="1" noshade="">
+<pre><br>
+ public:
+<br>
+  bool addToClientGraph();
+<br>
+</pre>
+      <hr height="1" noshade="">
+      <br>
+       <br>
+      <p>
+         e.g. right after<br>
+          void unpackUpdate(NetConnection *, BitStream *stream);<br>
+         <br>
+         STEP 6:<br>
+         <b>compile your engine</b> (<b>CLEAN</b> build would be a good thing :-) !!<br>
+         <br>
+         STEP 7:<br>
+         Now for the scripting, I've put all the script for the GUI in one file
+         named "terrainPreviewGui.gui", and added<br>
+          exec("./ui/terrainPreviewGui.gui");<br>
+         to fps/client/init.cs.<br>
+         Then I call it from mainMenuGui.cs instead of the normal
+         startMissionGui:<br>
+         <br>
+          //command = "Canvas.setContent(startMissionGui);";<br>
+          command = "Canvas.setContent(terrainPreviewGui);";<br>
+         <br>
+         STEP 8:<br>
+         In order to switch players/cars in a mod-specific way, I set a global
+         variable in this new GUI file named<br>
+         <b>"$playerCSFile"</b> and in the "game.cs" file of the actual mod I
+         call:<br>
+          //exec("./player.cs");<br>
+          exec($playerCSFile);<br>
+         <br>
+         or, for the car mod<br>
+          //exec("./car.cs");<br>
+          exec($playerCSFile);<br>
+         <br>
+         respectively.<br>
+         <br>
+         Furthermore, a variable <b>$currentUserMod</b> is set in
+         "example/main.cs", which simply saves the recent mod.<br>
+         I use it in terrainPreviewGui to set the paths to search for terrain
+         and dts files:<br>
+         (starting around line 62)<br>
+      </p>
+<pre></pre>
+      <hr height="1" noshade="">
+<pre><br>
+      case "-mod":
+<br>
+         $argUsed[$i]++;
+<br>
+         if ($hasNextArg)
+<br>
+         {
+<br>
+            // save mod for global use - beffy 03/24/02
+<br>
+            $currentUserMod = $nextArg;
+<br>
+</pre>
+      <hr height="1" noshade="">
+      <br>
+       <br>
+      <p>
+         So, now here is the complete "terrainPreviewGui.gui" code (should be
+         almost self explanatory - you can also download it <a href="http://tork.beffy.de/tutorials/preview_gui/terrainPreviewGui.gui">here</a>):<br>
+		 <b>UPDATE 25/09/02:</b> Note that the function "localConnect($pref::Player::Name);" has been replaced
+		 with
+</p><pre>   %conn = new GameConnection(ServerConnection);
+   RootGroup.add(ServerConnection);
+   %conn.setConnectArgs($pref::Player::Name);
+   %conn.setJoinPassword($Client::Password);
+   %conn.connectLocal();
+</pre>		 
+		to work with the current HEAD.<br>
+		Also, a default mod is now set in "onWake()", because otherwise the GUI crashes in the HEAD version
+		if no "mod" is set on the command line:
+<pre>   if($currentUserMod $= "")
+	   $currentUserMod = $userMods;
+</pre>		
+		Finally, the "newMission.ter" file is excluded from the terrain file loading to prevent problems:
+<pre>	  // 25/09/02: ignore "newMission.ter" also
+      if (strStr(%file, "CVS/") == -1 &amp;&amp; strStr(%file, "/newMission") == -1)
+</pre>		
+      <p></p>
+
+
+      <hr height="1" noshade="">
+<pre>//--- OBJECT WRITE BEGIN ---
+new GuiChunkedBitmapCtrl(TerrainPreviewGui) {
+   profile = "GuiDefaultProfile";
+   horizSizing = "right";
+   vertSizing = "bottom";
+   position = "0 0";
+   extent = "780 580";
+   minExtent = "8 8";
+   visible = "1";
+   helpTag = "0";
+
+   new GuiControl() {
+      profile = "GuiWindowProfile";
+      horizSizing = "center";
+      vertSizing = "center";
+      position = "60 74";
+      extent = "710 400";
+      minExtent = "8 8";
+      visible = "1";
+      helpTag = "0";
+
+
+      new GuiButtonCtrl(PrevModelButton) {
+         profile = "GuiButtonProfile";
+         horizSizing = "right";
+         vertSizing = "top";
+         position = "495 310";
+         extent = "80 23";
+         minExtent = "8 8";
+         visible = "0";
+         command = "TerrainPreviewGui::prevModel();";
+         helpTag = "1";
+         text = "&lt;&lt; Back";
+      };
+      new GuiButtonCtrl(NextModelButton) {
+         profile = "GuiButtonProfile";
+         horizSizing = "right";
+         vertSizing = "top";
+         position = "590 310";
+         extent = "80 23";
+         minExtent = "8 8";
+         visible = "1";
+         command = "TerrainPreviewGui::nextModel();";
+         helpTag = "0";
+         text = "Next &gt;&gt;";
+      };
+      new GuiTextCtrl(PlayerSelectTextCtrl) {
+         profile = "GuiTextProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "485 25";
+         extent = "88 20";
+         minExtent = "8 8";
+         visible = "1";
+         text = "Select Model:";
+         helpTag = "0";
+         maxLength = "255";
+      };
+      // place to render the selected item
+      new GuiObjectView(ToRKDisplayWindow) {
+         profile = "GuiDefaultProfile";
+         horizSizing = "relative";
+         vertSizing = "relative";
+         position = "485 64";
+         extent = "230 220";
+         minExtent = "8 8";
+         visible = "1";
+         helpTag = "0";
+      };
+
+
+      new GuiTerView(MM_ShowTerrain) {
+         profile = "GuiButtonProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "210 93";
+         extent = "240 240";
+         minExtent = "8 8";
+         visible = "1";
+         modal = "0";
+         helpTag = "0";
+      };
+
+      new GuiTextCtrl(MissionTextCtrl) {
+         profile = "GuiTextProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "210 4";
+         extent = "88 20";
+         minExtent = "8 8";
+         visible = "1";
+         helpTag = "0";
+         maxLength = "255";
+      };
+      new GuiTextCtrl(TerrainTextCtrl) {
+         profile = "GuiTextProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "210 25";
+         extent = "88 20";
+         minExtent = "8 8";
+         visible = "1";
+         helpTag = "0";
+         maxLength = "255";
+      };
+
+      new GuiButtonCtrl() {
+         profile = "GuiButtonProfile";
+         horizSizing = "right";
+         vertSizing = "top";
+         position = "10 184";
+         extent = "127 23";
+         minExtent = "8 8";
+         visible = "1";
+         command = "TerrainPreviewGui::StartMission();";
+         helpTag = "0";
+         text = "Go!";
+      };
+
+      new GuiButtonCtrl() {
+         profile = "GuiButtonProfile";
+         horizSizing = "right";
+         vertSizing = "top";
+         position = "10 212";
+         extent = "127 23";
+         minExtent = "8 8";
+         visible = "1";
+         //command = "TerrainPreviewGui::selectNextTerrain();";
+         command = "TerrainPreviewGui::previewTerrain();";
+         helpTag = "0";
+         text = "Preview";
+      };
+
+      new GuiButtonCtrl() {
+         profile = "GuiButtonProfile";
+         horizSizing = "right";
+         vertSizing = "top";
+         position = "10 240";
+         extent = "127 23";
+         minExtent = "8 8";
+         visible = "1";
+         command = "Canvas.getContent().exit();";
+         helpTag = "0";
+         text = "&lt;&lt; Back";
+      };
+      new GuiCheckBoxCtrl(ML_isMultiplayer) {
+         profile = "GuiCheckBoxProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "12 303";
+         extent = "147 23";
+         minExtent = "8 8";
+         visible = "1";
+         variable = "pref::HostMultiPlayer";
+         helpTag = "0";
+         text = "Multiplayer Mission";
+         maxLength = "255";
+      };
+      new GuiTextEditCtrl() {
+         profile = "GuiTextEditProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "12 30";
+         extent = "164 16";
+         minExtent = "8 8";
+         visible = "1";
+         variable = "pref::Player::Name";
+         helpTag = "0";
+         maxLength = "255";
+         historySize = "0";
+         password = "0";
+         tabComplete = "0";
+      };
+      new GuiTextCtrl() {
+         profile = "GuiTextProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "12 11";
+         extent = "79 20";
+         minExtent = "8 8";
+         visible = "1";
+         helpTag = "0";
+         text = "Player Name:";
+         maxLength = "255";
+      };
+
+      new GuiScrollCtrl() {
+         profile = "GuiScrollProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "12 55";
+         extent = "164 100";
+         minExtent = "8 8";
+         visible = "1";
+         helpTag = "0";
+         willFirstRespond = "1";
+         hScrollBar = "dynamic";
+         vScrollBar = "alwaysOn";
+         constantThumbHeight = "0";
+         defaultLineHeight = "15";
+         childMargin = "0 0";
+
+         new GuiTextListCtrl(ToRK_missionList) {
+            profile = "GuiTextArrayProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "0 0";
+            extent = "150 40";
+            minExtent = "8 8";
+            visible = "1";
+            helpTag = "0";
+            enumerate = "0";
+            resizeCell = "1";
+            columns = "0";
+            fitParentWidth = "1";
+            clipColumnText = "0";
+            noDuplicates = "false";
+         };
+      };
+   };
+};
+//--- OBJECT WRITE END ---
+
+//----------------------------------------
+function TerrainPreviewGui::onWake()
+{
+   //reset vars
+   $numDTS = 0;
+   $currentDTS = 0;
+   $playerCSFile = "";
+   $currTerrainId = 0;
+   $terrCounter = 0;
+   // 25/09/02: set default mod
+   if($currentUserMod $= "")
+	   $currentUserMod = $userMods;
+   // clear Gui elements
+   ToRK_missionList.clear();
+   ToRKDisplayWindow.setEmpty();
+   MM_ShowTerrain.detachTerrain();
+   // search *.ter files and init the mission list
+   TerrainPreviewGui::loadTerrains();
+   TerrainPreviewGui::loadPlayerShapes($currentUserMod);
+   // display first model in array
+   TerrainPreviewGui::displayDTSItem();
+}
+
+//----------------------------------------
+function TerrainPreviewGui::cancel(%this)
+{
+}
+
+//----------------------------------------
+function TerrainPreviewGui::exit(%this)
+{
+   // cleanup
+   MM_ShowTerrain.detachTerrain();
+   ToRKDisplayWindow.setEmpty();
+   Canvas.setContent(mainMenuGui);
+}
+
+//--------------------------------------------------------------------
+//  Search *.ter files, fill arrays and display all missions in list
+//--------------------------------------------------------------------
+function TerrainPreviewGui::loadTerrains()
+{
+   //$currentUserMod is set in "example/main.cs"...
+   %filespec = $currentUserMod @ "/data" @ "/*.ter";
+   %missionPath = $currentUserMod @ "/data/missions";
+   // a little hack to get the mod directory
+   //%delpos = strpos($Client::MissionFileSpec, "/*");
+   //%modDir = getSubStr($Client::MissionFileSpec, 0, %delpos);
+
+   for(%file = findFirstFile(%filespec); %file !$= ""; %file = findNextFile(%filespec))
+   {
+      // ignore CVS folder...
+	  // 25/09/02: ignore "newMission.ter" also
+      if (strStr(%file, "CVS/") == -1 &amp;&amp; strStr(%file, "/newMission") == -1)
+      {
+         //echo("count: " @ getFileCount("*.ter"));
+         $terrFiles[$terrCounter] = filePath(%file) @ "/" @ fileName(%file);
+         $missionFiles[$terrCounter] = %missionPath @ "/" @ fileBase(%file) @ ".mis";
+         echo("File " @ $terrCounter @ ": " @ $terrFiles[$terrCounter]);
+         ToRK_missionList.addRow($terrCounter, getMissionDisplayName($missionFiles[$terrCounter]) @ "\t" @ %file );
+         $terrCounter++;
+      }
+   }
+   ToRK_missionList.sort(0);
+   ToRK_missionList.setSelectedRow(0);
+   ToRK_missionList.scrollVisible(0);
+}
+
+//--------------------------------------------------------------------
+//  Preview selected mission terrain
+//--------------------------------------------------------------------
+function TerrainPreviewGui::previewTerrain()
+{
+   %id = ToRK_missionList.getSelectedId();
+   TerrainTextCtrl.setText("Terrain file: " @ $terrFiles[%id]);
+   MissionTextCtrl.setText("Mission: " @ getMissionDisplayName($missionFiles[%id]));
+   MM_ShowTerrain.detachTerrain();
+   MM_ShowTerrain.attachTerrain($terrFiles[%id]);
+}
+
+//--------------------------------------------------------------------
+//  Return the next terrain in cycle
+//--------------------------------------------------------------------
+function TerrainPreviewGui::cycleTerrains()
+{
+   if($currTerrainId++ == $terrCounter)
+   {
+      $currTerrainId = 0;
+   }
+   TerrainTextCtrl.setText("Terrain file: " @ $terrFiles[$currTerrainId]);
+   MissionTextCtrl.setText("Mission: " @ getMissionDisplayName($missionFiles[$currTerrainId]));
+   return $terrFiles[$currTerrainId];
+}
+//--------------------------------------------------------------------
+//  Select the next terrain in cycle
+//--------------------------------------------------------------------
+function TerrainPreviewGui::selectNextTerrain()
+{
+   MM_ShowTerrain.detachTerrain();
+   MM_ShowTerrain.attachTerrain(TerrainPreviewGui::cycleTerrains());
+}
+//--------------------------------------------------------------------
+//  Start the selected mission
+//--------------------------------------------------------------------
+function TerrainPreviewGui::StartMission()
+{
+   MM_ShowTerrain.detachTerrain();
+   %mission = $missionFiles[ToRK_missionList.getSelectedId()];
+   // used in game.cs to load the appropriate player script
+   $playerCSFile = $playerFiles[$currentDTS];
+
+   if ($pref::HostMultiPlayer)
+      %serverType = "MultiPlayer";
+   else
+      %serverType = "SinglePlayer";
+
+   createServer(%serverType, %mission);
+   // 25/09/02: changed for latest HEAD
+   %conn = new GameConnection(ServerConnection);
+   RootGroup.add(ServerConnection);
+   %conn.setConnectArgs($pref::Player::Name);
+   %conn.setJoinPassword($Client::Password);
+   %conn.connectLocal();
+}
+//--------------------------------------------------------------------
+//  Parse mission files for mission name
+//--------------------------------------------------------------------
+function getMissionDisplayName( %missionFile )
+{
+   %file = new FileObject();
+
+   %MissionInfoObject = "";
+
+   if ( %file.openForRead( %missionFile ) ) {
+		%inInfoBlock = false;
+
+		while ( !%file.isEOF() ) {
+			%line = %file.readLine();
+			%line = trim( %line );
+
+			if( %line $= "new ScriptObject(MissionInfo) {" )
+				%inInfoBlock = true;
+			else if( %inInfoBlock &amp;&amp; %line $= "};" ) {
+				%inInfoBlock = false;
+				%MissionInfoObject = %MissionInfoObject @ %line;
+				break;
+			}
+
+			if( %inInfoBlock )
+			   %MissionInfoObject = %MissionInfoObject @ %line @ " ";
+		}
+
+		%file.close();
+	}
+	%MissionInfoObject = "%MissionInfoObject = " @ %MissionInfoObject;
+	eval( %MissionInfoObject );
+
+   %file.delete();
+
+   if( %MissionInfoObject.name !$= "" )
+      return %MissionInfoObject.name;
+   else
+      return fileBase(%missionFile);
+}
+
+
+//--------------------------------------------------------------------
+//  initialize arrays with shape- and scriptpaths
+//--------------------------------------------------------------------
+function TerrainPreviewGui::loadPlayerShapes(%mod)
+{
+   if(%mod $= "fps")
+   {
+      $playerShapes[0] = %mod @ "/data/shapes/player/player.dts";
+      $playerFiles[0] = %mod @ "/server/scripts/player.cs";
+      $numDTS++;
+   }
+   else if(%mod $= "racing")
+   {
+      $playerShapes[2] = %mod @ "/data/shapes/car/car.dts";
+      $playerFiles[2] = %mod @ "/server/scripts/car.cs";
+      $numDTS++;
+   }
+   else
+   {
+   		error("Unknown mod name!");
+   }
+}
+
+//--------------------------------------------------------------------
+//  display current *.dts
+//--------------------------------------------------------------------
+function TerrainPreviewGui::displayDTSItem()
+{
+   PrevModelButton.visible = "1";
+   NextModelButton.visible = "1";
+   ToRKDisplayWindow.setEmpty();
+   %file = $playerShapes[$currentDTS];
+   echo("Loading " @ %file);
+   ToRKDisplayWindow.setModel(%file , "");
+}
+
+
+//--------------------------------------------------------------------
+//  go back one dts
+//--------------------------------------------------------------------
+function TerrainPreviewGui::prevModel()
+{
+   if($currentDTS-- &lt; 0)
+   {
+      $currentDTS = $numDTS-1;
+   }
+   echo($currentDTS);
+   TerrainPreviewGui::displayDTSItem();
+}
+
+//--------------------------------------------------------------------
+//  show next dts
+//--------------------------------------------------------------------
+function TerrainPreviewGui::nextModel()
+{
+   if($currentDTS++ &gt;= $numDTS)
+   {
+      $currentDTS = 0;
+   }
+   echo($currentDTS);
+   TerrainPreviewGui::displayDTSItem();
+}
+</pre>
+      <hr height="1" noshade="">
+      <br>
+       <br>
+      <p>
+         <a href="http://tork.zenkel.com/gallery/beffy_3d_landscape_player_prev3.jpg" target="_blank">Here</a> is a screenshot of it.<br>
+         <br>
+         STEP 9: Preview, select and enjoy! :-)<br>
+          
+<script type="text/javascript">
+endBody();
+</script></p></td></tr>
+          
+<script type="text/javascript">
+footer("../remap/remap_functions.html", "../daynight/day_and_night.html", "beffy@gmx.de");
+</script><tr><td colspan="2" height="15">&nbsp;</td></tr> 	<tr><td colspan="2">  	<table width="100%" border="0" cellspacing="0" cellpadding="0"> 	<tbody><tr>         <td align="left" width="33%" bgcolor="#0C3481">         &nbsp;<a class="bar" href="http://tork.beffy.de/tutorials/remap/remap_functions.html">&lt;&lt; Previous</a>         </td>         <td align="center" width="34%" bgcolor="#0C3481">         <a class="bar" href="http://tork.zenkel.com/modules.php?op=modload&name=ToRKTutorials&file=index">Table of Contents</a>&nbsp;         </td>         <td align="center" width="16%" bgcolor="#0C3481" class="bar">         Author:<a class="bar" href="mailto:beffy@gmx.de">beffy</a>&nbsp;         </td>         <td align="right" width="17%" bgcolor="#0C3481">         <a class="bar" href="http://tork.beffy.de/tutorials/daynight/day_and_night.html">Next &gt;&gt;</a>&nbsp;         </td> 	</tr> 	</tbody></table>     </td></tr>     </tbody></table>
+      <p></p>
+   
+
+
+</body></html>

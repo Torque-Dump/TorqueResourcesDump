@@ -1,0 +1,5 @@
+C:\Projects\MasterServer\MSLogging\bin\Debug\MSLogging.dll
+C:\Projects\MasterServer\MSLogging\bin\Debug\MSLogging.pdb
+C:\Projects\MasterServer\MSLogging\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\MasterServer\MSLogging\obj\Debug\MSLogging.dll
+C:\Projects\MasterServer\MSLogging\obj\Debug\MSLogging.pdb

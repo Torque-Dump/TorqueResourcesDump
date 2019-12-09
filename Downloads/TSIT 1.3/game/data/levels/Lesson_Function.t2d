@@ -1,0 +1,334 @@
+%levelContent = new t2dSceneGraph() {
+   canSaveDynamicFields = "1";
+   UseLayerSorting = "1";
+   layerSortMode0 = "Normal";
+   layerSortMode1 = "Normal";
+   layerSortMode2 = "Normal";
+   layerSortMode3 = "Normal";
+   layerSortMode4 = "Normal";
+   layerSortMode5 = "Normal";
+   layerSortMode6 = "Normal";
+   layerSortMode7 = "Normal";
+   layerSortMode8 = "Normal";
+   layerSortMode9 = "Normal";
+   layerSortMode10 = "Normal";
+   layerSortMode11 = "Normal";
+   layerSortMode12 = "Normal";
+   layerSortMode13 = "Normal";
+   layerSortMode14 = "Normal";
+   layerSortMode15 = "Normal";
+   layerSortMode16 = "Normal";
+   layerSortMode17 = "Normal";
+   layerSortMode18 = "Normal";
+   layerSortMode19 = "Normal";
+   layerSortMode20 = "Normal";
+   layerSortMode21 = "Normal";
+   layerSortMode22 = "Normal";
+   layerSortMode23 = "Normal";
+   layerSortMode24 = "Normal";
+   layerSortMode25 = "Normal";
+   layerSortMode26 = "Normal";
+   layerSortMode27 = "Normal";
+   layerSortMode28 = "Normal";
+   layerSortMode29 = "Normal";
+   layerSortMode30 = "Normal";
+   layerSortMode31 = "Normal";
+   DebugRendering = "0";
+      cameraPosition = "0 0";
+      cameraSize = "100 75";
+
+   new t2dStaticSprite(Block02) {
+      imageMap = "IceBoxImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      Position = "3.401 -139.596";
+      size = "10.000 9.500";
+      Layer = "2";
+      CollisionActiveSend = "1";
+      CollisionActiveReceive = "1";
+      CollisionPolyList = "-0.680 -0.710 0.680 -0.710 0.680 0.710 -0.680 0.710";
+      ConstantForce = "0.000 10.000";
+         mountID = "2";
+   };
+   new t2dStaticSprite(Block01) {
+      imageMap = "IceBoxImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      Position = "12.328 -107.850";
+      size = "10.000 9.500";
+      Layer = "2";
+      CollisionActiveSend = "1";
+      CollisionActiveReceive = "1";
+      CollisionPolyList = "-0.680 -0.710 0.680 -0.710 0.680 0.710 -0.680 0.710";
+      ConstantForce = "0.000 10.000";
+         mountID = "3";
+   };
+   new t2dStaticSprite(Nextlesson) {
+      imageMap = "Next_LessonImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      useMouseEvents = "1";
+      Position = "-15.352 35.374";
+      size = "15.375 3.500";
+         mountID = "4";
+      _behavior0 = "HideBehavior";
+      _behavior1 = "LevelButtonBehavior	level	Lesson_KeyBinds.t2d";
+   };
+   new t2dStaticSprite() {
+      imageMap = "menuImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      useMouseEvents = "1";
+      Position = "-43.363 35.124";
+      size = "8.625 4.000";
+         mountID = "5";
+      _behavior0 = "MenuButton";
+   };
+   new t2dStaticSprite() {
+      imageMap = "Console_WinterImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      useMouseEvents = "1";
+      Position = "41.408 -33.712";
+      size = "13.750 4.625";
+         mountID = "6";
+      _behavior0 = "ConsoleButtonBehavior";
+   };
+   new t2dStaticSprite() {
+      imageMap = "Next_WinterImageMap";
+      frame = "1";
+      canSaveDynamicFields = "1";
+      useMouseEvents = "1";
+      Position = "25.747 34.663";
+      size = "8.375 4.375";
+         mountID = "7";
+      _behavior0 = "BackButtonBehavior";
+   };
+   new t2dStaticSprite() {
+      imageMap = "Next_WinterImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      useMouseEvents = "1";
+      Position = "44.030 35.074";
+      size = "8.375 4.375";
+         mountID = "8";
+      _behavior0 = "NextButtonBehavior	MaxCloud	16";
+   };
+   new t2dStaticSprite(Cloud1) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      Position = "-12.361 -15.937";
+      size = "37.500 21.875";
+         mountID = "9";
+   };
+   new t2dParticleEffect() {
+      effectFile = "~/data/particles/Snow.eff";
+      useEffectCollisions = "1";
+      effectMode = "INFINITE";
+      effectTime = "0";
+      canSaveDynamicFields = "1";
+      Position = "-1.092 -43.290";
+      size = "103.913 16.000";
+      Layer = "5";
+      CollisionMaxIterations = "1";
+         mountID = "10";
+   };
+   new t2dStaticSprite() {
+      imageMap = "Background_WinterImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      size = "100.000 75.000";
+      Layer = "30";
+         mountID = "11";
+   };
+   new t2dStaticSprite() {
+      imageMap = "LevelScreens_Level1ImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      size = "100.000 75.000";
+      Layer = "31";
+         mountID = "12";
+      _behavior0 = "FadeBehavior";
+   };
+   new t2dStaticSprite() {
+      imageMap = "IceBoxImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      Position = "30.759 -21.214";
+      size = "24.985 3.254";
+      Layer = "31";
+      CollisionActiveSend = "1";
+      CollisionActiveReceive = "1";
+      Immovable = "1";
+         mountID = "13";
+   };
+   new t2dStaticSprite() {
+      imageMap = "IceBoxImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      Position = "34.079 26.631";
+      size = "31.610 3.254";
+      Layer = "31";
+      CollisionActiveSend = "1";
+      CollisionActiveReceive = "1";
+      Immovable = "1";
+         mountID = "14";
+   };
+   new t2dStaticSprite() {
+      imageMap = "IceBoxImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      Position = "-28.408 23.547";
+      size = "43.269 3.254";
+      Layer = "31";
+      CollisionActiveSend = "1";
+      CollisionActiveReceive = "1";
+      Immovable = "1";
+         mountID = "15";
+   };
+   new t2dStaticSprite() {
+      imageMap = "IceBoxImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      Position = "2.698 14.177";
+      size = "43.724 3.254";
+      Layer = "31";
+      CollisionActiveSend = "1";
+      CollisionActiveReceive = "1";
+      Immovable = "1";
+         mountID = "16";
+   };
+   new t2dStaticSprite(Cloud2) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "1";
+      canSaveDynamicFields = "1";
+      Position = "-28.750 5.938";
+      size = "37.500 21.875";
+         mountID = "17";
+   };
+   new t2dStaticSprite(Cloud3) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "2";
+      canSaveDynamicFields = "1";
+      Position = "-28.750 -20.938";
+      size = "37.500 21.875";
+         mountID = "18";
+   };
+   new t2dStaticSprite(Cloud4) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "3";
+      canSaveDynamicFields = "1";
+      Position = "31.250 -19.063";
+      size = "37.500 21.875";
+         mountID = "19";
+   };
+   new t2dStaticSprite(Cloud5) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "4";
+      canSaveDynamicFields = "1";
+      Position = "30.002 2.629";
+      size = "37.500 21.875";
+         mountID = "20";
+   };
+   new t2dStaticSprite(Cloud6) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "5";
+      canSaveDynamicFields = "1";
+      Position = "-9.793 -15.938";
+      size = "37.500 21.875";
+         mountID = "21";
+   };
+   new t2dStaticSprite(Cloud7) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "6";
+      canSaveDynamicFields = "1";
+      Position = "-30.081 2.945";
+      size = "37.500 21.875";
+         mountID = "22";
+   };
+   new t2dStaticSprite(Cloud8) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "7";
+      canSaveDynamicFields = "1";
+      Position = "-28.750 -25.938";
+      size = "37.500 21.875";
+         mountID = "23";
+   };
+   new t2dStaticSprite(Cloud9) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "8";
+      canSaveDynamicFields = "1";
+      Position = "-13.750 -7.991";
+      size = "37.500 21.875";
+         mountID = "24";
+   };
+   new t2dStaticSprite(Cloud10) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "9";
+      canSaveDynamicFields = "1";
+      Position = "-28.750 14.063";
+      size = "37.500 21.875";
+         mountID = "25";
+   };
+   new t2dStaticSprite(Cloud11) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "10";
+      canSaveDynamicFields = "1";
+      Position = "30.085 -9.063";
+      size = "37.500 21.875";
+         mountID = "26";
+   };
+   new t2dStaticSprite(Cloud12) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "11";
+      canSaveDynamicFields = "1";
+      Position = "30.085 -9.063";
+      size = "37.500 21.875";
+         mountID = "27";
+   };
+   new t2dStaticSprite(Cloud13) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "12";
+      canSaveDynamicFields = "1";
+      Position = "-6.250 -24.063";
+      size = "37.500 21.875";
+         mountID = "28";
+   };
+   new t2dStaticSprite(Cloud14) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "13";
+      canSaveDynamicFields = "1";
+      Position = "-13.750 2.155";
+      size = "37.500 21.875";
+         mountID = "29";
+   };
+   new t2dStaticSprite(Cloud15) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "14";
+      canSaveDynamicFields = "1";
+      Position = "3.750 7.204";
+      size = "37.500 21.875";
+         mountID = "30";
+   };
+   new t2dStaticSprite(Cloud16) {
+      imageMap = "Lesson_FunctionsImageMap";
+      frame = "15";
+      canSaveDynamicFields = "1";
+      Position = "-26.250 -14.063";
+      size = "37.500 21.875";
+         mountID = "31";
+   };
+   new t2dStaticSprite() {
+      imageMap = "IceBoxImageMap";
+      frame = "0";
+      canSaveDynamicFields = "1";
+      useMouseEvents = "1";
+      Position = "-26.574 14.688";
+      size = "6.112 14.375";
+      Layer = "1";
+      BlendColor = "1 1 1 0";
+         mountID = "32";
+      _behavior0 = "SnowManButton";
+   };
+};

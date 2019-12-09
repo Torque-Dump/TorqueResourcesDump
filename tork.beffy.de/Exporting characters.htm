@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0065)http://tork.beffy.de/tutorials/modelling/max_character_export.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Exporting characters</title>
+<link rel="STYLESHEET" type="text/css" href="./Exporting characters_files/style.css"><script>
+function openPop(url, width, height, top, left, name) {
+        var trails="width=" + width + ",height=" + height + ",left=" + left + ",top=" + top + ",toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no";
+        newWindow=window.open(url,name,trails);
+}
+</script></head>
+
+<body>
+<script type="text/javascript" language="JavaScript" src="./Exporting characters_files/nav.js"></script>
+<script>
+	header("Exporting characters");
+</script><table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0"> 	<tbody><tr bgcolor="#e0e0e0">         <td valign="bottom" width="*"><h1><nobr>Exporting characters</nobr></h1></td>         <td align="right"><img src="./Exporting characters_files/header.gif" width="240" height="60" border="0"></td>     </tr>     <tr>          <td align="left" bgcolor="#0C3481">         &nbsp;<a class="bar" href="http://www.garagegames.com/" target="_blank">GarageGames.com</a>         </td>         <td align="right" bgcolor="#0C3481">         <span class="bar"><nobr>Doc Version 1.0.x&nbsp;</nobr></span>         </td>     </tr> 	<tr><td colspan="2" height="15">&nbsp;</td></tr>
+<script>
+	startBody();
+</script><tr valign="top"><td colspan="2" height="100%">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#dDdDdD"><tbody><tr><td>Author: <a href="mailto:jokersgrin@telus.net">jokersgrin</a>&nbsp;(guest)</td></tr></tbody></table><p><!-------------------------------------------------------->
+<table width="90%" cellpadding="0" cellspacing="0">
+<tbody><tr><td align="left" valign="top">
+<p>OK These are the steps that I have used to get a complete character shape into the game with my own sequences .
+I have had no problems since I have started to follow these steps so I will attempt to put them down for you to
+use and maybe they will help you find out what you are missing . I have found that for most of the times that I
+had not been able to export a mesh that it was some small oversite that I didnt bother to double check hehehe
+routine checking is your best friend : ) </p>
+
+<p>Also , I got all this Info by reading and re reading Joe Marshuks ( My apologies if I spelt Joes last name wrong )
+3dsmaxdts exporter docs . They give you the 
+full meat and bones of the subject.</p>
+
+<h3>1.)ADDING THE BIPED </h3>
+
+First ,make sure your character is scaled properly { Its on the Docs } ,and centered at 0 ,0 ,0 with its feet just at 0 ,
+and that when you are viewing him/her in the front viewport , that you are seeing the characters back . 
+<br>
+Then reset x-form on your character I use the box method suggested in the docs , create a box and move it to 0,0,0 .
+Convert the box to an editable mesh 
+{{ you can make a simple max script to automate making the box ,moving it to ,0,0,0,and converting it to an editablemesh
+by using this script ---&gt; Box lengthsegs:1 widthsegs:1 heightsegs:1 length:2 width:2 height:2 
+transform:(matrix3 [-1,0,0] [0,0,1] [0,1,0] [0,0,0]) isSelected:on 
+set coordsys world 
+macros.run "Modifier Stack" "Convert_to_Mesh" }} ,
+attach the box to your character . Deselect attach , go into sub-object mode and select "element" . Select the box ,
+and delete it clicking yes when it asks you to delete isolated vertices . Leave sub-object mode and rename you mesh to
+whatever you like ( the box trick changes the name of your mesh to box : ) I use bodymesh for my character mesh names. 
+go to your Hierchy tab in the command panle , select "pivot" , Click on "affect pivot only " , and then make sure
+the characters pivot is set to have the red arrow facing RIGHT , green FORWARD and blue UP . 
+de-activate affect pivot only and your mesh is ready to add the biped .(make sure your mesh is an editable "mesh"
+not and editable"poly" if you are using max 4 or you will get an error exporting } 
+<br>
+Create a biped to fit the character and then got to figure mode { located in the command panel under "motion " when
+you have a piece of the biped selected } activate it , select Bip01 and rotate it so it is facing the same way as your mesh .
+While still in figure mode , adjust your biped till it is the way you 
+want it , then save the FIG file so you have a root back up . De-activate Figure mode , you can also save your biped now too .
+I do so I have a back up. 
+<br>
+Add a skin modifier and add the bones you want to affect your mesh ( I leave out bip01 , and any that end with nub }
+Do your weighting till you are satisfied , and make sure you have a weight assigned to all vertices , or you will get
+an error when you export. 
+
+
+<h3>2.)ADDING MULTIRES AND MULTI-RES DETAIL LEVELS</h3>
+
+OK now that your Mesh is ready , we can do a quick recap to make sure its really ready . 
+
+In the front viewport you should be looking at the backs of the mesh and the biped , and your mesh should be scaled
+if not well start over 
+
+If so , select the mesh and click on tools--&gt; snapshot make sure its set to single and mesh .
+rename it to MultiRes::(NAME OF MESH) 
+<p>ie: MultiRes::bodymesh</p>
+
+link MultiRes::bodymesh to your main mesh " bodymesh" 
+add a MultiRes Modifier to MultiRes::BodyMesh then , go to your utilities panel ,
+select maxscript and then choose open script 
+
+<br>open the <b>adjustLODs.mcr</b> that you get with the torque filepack . you need
+to install this script which you do by opening it , and selecting all the text you see in the maxscript
+listener except for the top line 
+
+<pre>" macroScript adjustLODs category:"Torque_Tools" tooltip:"Adjust LODs"" </pre>
+
+it creates an error when you do it this way , you then drag it all to your toolbar or a tab panel.
+If it works you'll see a button called <b>adjustLODs</b> or a small window with a blue top. 
+
+<br>
+With this done , you need to decide on how many detail levels you want to add. I used 8 so ..
+create 8 dummies and name them 
+<br>
+<b>detail145 , detail80 , detail60 , detail30 , detail18 , detail12 , detail6 , and detail3</b> 
+<br>
+link all 8 detail nodes to Bip01 
+<br>
+select the MultiRes::bodymesh you made and added a multires modifier to. Select the multires modifier from the stack
+and click generate 
+<br>
+Then , run the adjustLOD script you installed a window will pop up and you will see little buttons representing
+the detail nodes you created 
+<br>
+click each one on , entering these values for each 
+<pre>	145 = 1.0 
+	80 = .76 
+	60 = .64 
+	30 = .5 
+	18 = .29 
+	12 = .13 
+	6 = .07 
+	3 = .05 
+</pre>
+These values arent what you have to use they are just what I used for the mesh I made , change them as you see fit 
+<br>
+click "apply settings" 
+<br>
+right click on the MultiRes::bodymesh select "properties" Click on the USer Defined tab and you should see these values if you have done it right 
+<pre>	MULTIRES::DETAILS = 1.0,0.76,0.64,0.5,0.29,0.13,0.07,0.05 
+	MULTIRES::SIZES = 145,80,60,30,18,12,6,3 
+</pre>
+
+select those lines and copy them .Now , select your main mesh bodymesh , and right click on it and choose its properties , click on the user defined tab , and if those 2 lines arent there , paste them in . 
+
+now you have a mesh with its LOD levels and all you need are the bounds and nodes for mount , cam etc.. so .. 
+
+<h3>3.) MOUNT NODES , BOUNDING BOXES AND OTHER NODES </h3>
+
+create a box the fully encompasses your character , click on the hierarchy tab on the command panel , select "pivot" and then "affect pivot only" 
+move the pivot to the players feet at 0,0,0 and make sure you align the pivot to red arrow RIGHT , Blue Arrow UP and Green FORWARD . Name the box Bounds 
+and link it to Bip01. 
+
+In the heirarchy tab , click on "Link Info " and make sure that you uncheck z for move under the inherit heading 
+<br>
+now , create a Dummy name it Eye . Link it to Bip01 Head , and move the eye node so it is in front of the head , again , make sure Its pivot is set properly 
+<br>
+{Like the bounds etc..} 
+<br>
+Create another Dummy and name it " Unlink" , and link it to the Bip01 
+<br>
+Create another Dummy called " Cam" 
+<br>
+Make sure its pivot is set right , move it to where the eye node is and link it to the Unlink Dummy 
+<br>
+Create more Dummys for your Mount nodes name them acordingly ie: mount0 , mount01 etc... and link them to the corresponding Bip parts 
+
+IE: link mount0 to the " Bip01 R Hand " so you cab have a weapon on the right hand etc... 
+
+<br>&nbsp;<br>
+now you are about ready to export the character . You just need a cfg file in the directory where you currently open max file resides. 
+
+<h3>4.)THE CFG FILE , KNOW IT , LEARN IT , LOVE IT ! </h3>
+
+I used this in my player.cfg in regards to this demo 
+<pre>	AlwaysExport: 
+	eye 
+	cam 
+	mount0 
+	mount01 
+	Mount02 
+	
+	NeverExport: 
+	Bip01 
+	Bip01 L Finger.nub 
+	Bip01 R Finger.nub 
+	Dummy* 
+	Bip01 L Toe.nub 
+	Bip01 R Toe.nub 
+	start01 
+	mountpoint 
+	
+	
+	+Error::AllowEmptySubtrees 
+	+Error::AllowCrossedDetails 
+	+Error::AllowUnusedMeshes 
+	-Error::AllowOldSequences 
+	-Error::RequireViconNode 
+	-Param::CollapseTransforms 
+	
+	-Param::findMergeIndices 
+	-Param::computeScreenError 
+</pre>
+
+you will add and take stuff away as you learn , Ill leave that up to you : )just pass the info on for the rest of us 
+
+<h3>5.) EXPORT ME PLEASE</h3>
+
+OK , now you have a cfg file , multi res and biped , now lets export and test 
+
+select your dts exporter , and open your cfg file . now, under parameters , uncheck Collapse Transforms then export
+whole shape to wherever you want to put your new character in the game dir structure . 
+
+OK now it should load into the show tool , but you need to do one more thing before the engine will load it .
+With Multi res added , you need to run unmessdts so the game will load it . You do this various ways , heres what I do. 
+
+you place the UnMessdts.exe in the same dir as you new Player.dts you exported . 
+creat a new text doc called <b>unmessdts.bat</b> (make sure it has the *.bat extension and not *.txt ).
+Right click on the unmessdts.bat and select edit 
+
+add this line 
+
+<pre>	unMessDTS Player.dts Player.dts 
+</pre>
+and save it . double click unmessdts.bat to run it and you are done . 
+
+<br>&nbsp;<br>
+I hope this helps some people out and feel free to add to it or let me know 
+what you think . If it gets a good response Ill do one for exporting sequences 
+next. If you want to see my max file for this EMAIL ME AT <a href="mailto:jokersgrin@telus.net">jokersgrin@telus.net</a>
+or ICQ me at 42499644 
+<br>
+
+<i>have a good one : )</i></td>
+</tr>
+</tbody></table>
+<!-------------------------------------------------------->
+<script>endBody();</script></p></td></tr>
+<script>footer("../bots/advanced_bots.php", "../remap/remap_functions.html", "jokersgrin@telus.net");</script><tr><td colspan="2" height="15">&nbsp;</td></tr> 	<tr><td colspan="2">  	<table width="100%" border="0" cellspacing="0" cellpadding="0"> 	<tbody><tr>         <td align="left" width="33%" bgcolor="#0C3481">         &nbsp;<a class="bar" href="http://tork.beffy.de/tutorials/bots/advanced_bots.php">&lt;&lt; Previous</a>         </td>         <td align="center" width="34%" bgcolor="#0C3481">         <a class="bar" href="http://tork.zenkel.com/modules.php?op=modload&name=ToRKTutorials&file=index">Table of Contents</a>&nbsp;         </td>         <td align="center" width="16%" bgcolor="#0C3481" class="bar">         Author:<a class="bar" href="mailto:jokersgrin@telus.net">jokersgrin</a>&nbsp;         </td>         <td align="right" width="17%" bgcolor="#0C3481">         <a class="bar" href="http://tork.beffy.de/tutorials/remap/remap_functions.html">Next &gt;&gt;</a>&nbsp;         </td> 	</tr> 	</tbody></table>     </td></tr>     </tbody></table>
+
+
+
+</body></html>

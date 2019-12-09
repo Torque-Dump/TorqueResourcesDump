@@ -1,0 +1,1904 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>[C] Torque3D Xbox 360 Controller - Pastebin.com</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+<link href="/cache/css/c.css" rel="stylesheet" type="text/css" />		<link href="/i/main_master.css" rel="stylesheet" type="text/css" />
+				
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript" src="/js/main_v1.js"></script>
+		<meta property="fb:app_id" content="231493360234820" />
+		<meta property="og:title" content="[C] Torque3D Xbox 360 Controller - Pastebin.com" />
+		<meta property="og:type" content="article" />
+	    <meta property="og:url" content="http://pastebin.com/W9kUq1rG" />
+	    <meta property="og:image" content="http://pastebin.com/i/fb2.jpg" />
+	    <meta property="og:site_name" content="Pastebin" />
+		<meta name="google-site-verification" content="jkUAIOE8owUXu8UXIhRLB9oHJsWBfOgJbZzncqHoF4A" />
+		<link rel="canonical" href="http://pastebin.com/W9kUq1rG" />
+				<!--[if SafMob]>
+			<style>body{-webkit-text-size-adjust:none;}</style>
+		<![endif]-->
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-58643-34', 'auto');
+	 	  ga('require', 'displayfeatures');
+		  ga('send', 'pageview');
+		
+		</script>
+		<script type="text/javascript">
+		 if (top != self) 
+		 top.location.href = location.href;
+		 </script>
+	</head>
+	<body>
+	<div id="super_frame">
+		<div id="logo" onclick="location.href='/'" title="Create New Paste"></div>
+		<div id="header">
+			<div id="header_top">
+				<span class="span_left more">PASTEBIN</span><span class="span_left less"> &nbsp;|&nbsp; #1 paste tool since 2002</span><span class="min_max_span narrow_it" title="Change layout width"></span><span class="min_max_span wide_it" style="display:none" title="Change layout width"></span>				<ul class="top_menu">
+					<li class="no_border_li"><a href="/" accesskey="n">create new paste</a></li><li><a href="/tools">tools</a></li><li><a href="/api">api</a></li><li><a href="/archive">archive</a></li><li><a href="/faq">faq</a></li>
+				</ul>
+			</div>
+			<div id="header_middle">
+				<span class="span_left big"><a href="/">PASTEBIN</a></span> 
+				<a href="http://twitter.com/pastebin" target="_blank"><img src="/i/t.gif" alt="" class="i_tf" width="122" height="20" border="0" /></a>	<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpastebin&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=segoe+ui&amp;height=21&amp;appId=231493360234820" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;margin:13px 0 0 10px;vertical-align:top" allowTransparency="true"></iframe>
+				<div id="header_middle_search">
+					<form class="search_form" name="search_form" method="get" action="/search" id="cse-search-box">
+					    <input type="hidden" name="cx" value="013305635491195529773:0ufpuq-fpt0" />
+					    <input type="hidden" name="cof" value="FORID:10" />
+					    <input type="hidden" name="ie" value="UTF-8" />
+						<input class="search_input" type="text" name="q" size="5" value="" placeholder="search..." x-webkit-speech/><input name="sa" class="search_button" src="/i/t.gif" alt="Search..." type="image" value="Search" />
+					</form>
+				</div>					
+			</div>
+			<div id="header_bottom">
+				<div class="div_top_menu">
+					<img src="/i/t.gif" class="i_n" width="16" height="16" alt="" border="0" /> <a href="/">create new paste</a> 
+					&nbsp;&nbsp;&nbsp; <img src="/i/t.gif" class="i_t" width="16" height="16" alt="" border="0" /> <a href="/trends">trending pastes</a>
+				</div>
+				<ul class="top_menu">
+					<li class="no_border_li"><a href="/signup">sign up</a></li><li><a href="/login">login</a></li><li><a href="/alerts">my alerts</a></li><li><a href="/settings">my settings</a></li><li><a href="/profile">my profile</a></li>				</ul>		
+			</div>			
+		</div>
+
+			<div class="frame_spacer"><!-- --></div>
+			<div style="height:35px;line-height:35px;font-size:0.85em;"><span style="float:right;text-align:right;">Want more features on Pastebin? <a href="/signup"><b>Sign Up</b></a>, it's FREE!</span></div>
+		<div class="frame_spacer"><!-- --></div>
+		<div id="monster_frame">
+			<div id="content_frame">
+				<div id="content_right">
+										<div class="content_right_menu">
+									<div class="content_right_title"><a href="/archive">Public Pastes</a></div>	
+									<div id="menu_2">
+										<ul class="right_menu"><li><a href="/kbrxxteN">Untitled</a><span>0 sec ago</span></li><li><a href="/GiRNNYyv">html</a><span>HTML | 20 sec ago</span></li><li><a href="/m8xmJTpk">Untitled</a><span>15 sec ago</span></li><li><a href="/c0RYviKg">Funkcni</a><span>16 sec ago</span></li><li><a href="/SAwYzdph">Untitled</a><span>20 sec ago</span></li><li><a href="/B3qCxJeQ">c++Tuituion</a><span>24 sec ago</span></li><li><a href="/NM38d4Ew">Untitled</a><span>31 sec ago</span></li><li><a href="/1gaMHM5G">Untitled</a><span>36 sec ago</span></li></ul></div></div>					
+			<div style="padding: 0; width:160px;margin: 10px 0;clear:left;">
+				<script type="text/javascript"><!--
+					e9 = new Object();
+				    e9.size = "160x600,120x600";
+				//--></script>
+				<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Pastebincom/Safe/tags.js"></script>
+			</div>					<div id="steadfast" title="Pastebin is proudly hosted by Steadfast.net" onclick="location.href='http://steadfast.net/?utm_source=pastebin.com&utm_medium=referral&utm_content=hosting_by_banner&utm_campaign=referral_20140118_x_x_pastebin_partner&source=referral_20140118_x_x_pastebin_partner'"></div>
+				</div>
+				<div id="content_left">
+
+	<div class="paste_box_frame">
+		<div class="tweet">
+
+
+			<div onclick="facebookpopup('/W9kUq1rG'); return false;" id="b_facebook2"><span id="b_facebook"></span></div>
+			<div onclick="twitpopup('/W9kUq1rG'); return false;" id="b_twitter2"><span id="b_twitter"></span></div>
+
+		</div>
+		<div class="paste_box_icon">
+			<a href="/u/stacalkas"><img src="/cache/img/20/4/22/375730.jpg" class="i_gb" width="50" height="50" alt="" border="0" /></a>	
+		</div>
+		<div class="paste_box_info">
+			<div class="paste_box_line1" title="Torque3D Xbox 360 Controller"><img src="/i/t.gif"  class="i_p0" width="16" height="16" title="Public paste, everybody can see this paste." alt=""  border="0" /><h1>Torque3D Xbox 360 Controller</h1> </div>
+			<div class="paste_box_line2">By: <a href="/u/stacalkas">stacalkas</a>  <a href="/message_compose?to=stacalkas" title="Send a private message to: stacalkas"><img src="/i/t.gif" class="i_pm" alt="" border="0" /></a> on <span title="Thursday 15th of November 2012 12:15:40 PM CDT" style="cursor:help;border-bottom: 1px dotted;">Nov 15th, 2012</span> &nbsp;|&nbsp; syntax: <a href="/archive/c">C</a> &nbsp;|&nbsp; size: 22.99 KB &nbsp;|&nbsp; views: <span title="Number of unique visitors to this paste" style="cursor:help;border-bottom: 1px dotted;">101</span> &nbsp;|&nbsp; expires: Never</div>
+			<div class="paste_box_line3"><a href="/download.php?i=W9kUq1rG" rel="nofollow">download</a> &nbsp;|&nbsp; <a href="/raw.php?i=W9kUq1rG" target="_blank" rel="nofollow">raw</a> &nbsp;|&nbsp; <a href="/embed.php?i=W9kUq1rG" rel="nofollow">embed</a> &nbsp;|&nbsp; <a href="/report.php?i=W9kUq1rG" rel="nofollow">report abuse</a> &nbsp;|&nbsp; <a href="/print.php?i=W9kUq1rG" rel="nofollow">print</a></div>
+		</div>
+	</div>
+	
+			<div class="banner_728">
+				<script type="text/javascript"><!--
+					e9 = new Object();
+				    e9.size = "970x250,728x90";
+				//--></script>
+				<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Pastebincom/Safe/tags.js"></script>
+				<div id="5e2e4b27a0" class="pagefair-acceptable"></div>
+			</div>
+			<div class="layout_clear"></div><div id="code_frame2">
+	<div id="code_frame">
+		<div id="code_buttons">
+		
+		<a href="javascript:togglev();" title="Show/Hide line numbers"><img src="/i/t.gif" border="0" alt="" class="i16 line" /></a> 
+		<a href="javascript:togglew('c');" title="Toggle text wrapping"><img src="/i/t.gif" border="0" alt="" class="i16 wrap" /></a> 
+		<a href="#" class="copyme" onclick="selectText('selectable');showdiv('copied');" title="Copy text to clipboard"><img src="/i/t.gif" border="0" alt="" class="i16 clipboard" /></a> <span id="copied">Text below is selected. Please press Ctrl+C to copy to your clipboard. (&#8984;+C on Mac)</span>
+
+		</div>
+		<div id="selectable">		
+		<div class="c"><ol><li class="li1"><div class="de1"><span class="co1">//-----------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// Copyright (c) 2012 GarageGames, LLC</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// Permission is hereby granted, free of charge, to any person obtaining a copy</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// of this software and associated documentation files (the &quot;Software&quot;), to</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// deal in the Software without restriction, including without limitation the</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// sell copies of the Software, and to permit persons to whom the Software is</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// furnished to do so, subject to the following conditions:</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// The above copyright notice and this permission notice shall be included in</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// all copies or substantial portions of the Software.</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// IN THE SOFTWARE.</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//-----------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw1">if</span> <span class="br0">&#40;</span> isObject<span class="br0">&#40;</span> moveMap <span class="br0">&#41;</span> <span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;moveMap.<span class="me1">delete</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">new ActionMap<span class="br0">&#40;</span>moveMap<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// Non-remapable binds</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> escapeFromGame<span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span> $Server<span class="sy0">::</span><span class="me2">ServerType</span> $<span class="sy0">=</span> <span class="st0">&quot;SinglePlayer&quot;</span> <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; MessageBoxYesNo<span class="br0">&#40;</span> <span class="st0">&quot;Exit&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Exit from this Mission?&quot;</span><span class="sy0">,</span> <span class="st0">&quot;disconnect();&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">else</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; MessageBoxYesNo<span class="br0">&#40;</span> <span class="st0">&quot;Disconnect&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Disconnect from the server?&quot;</span><span class="sy0">,</span> <span class="st0">&quot;disconnect();&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;escape&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span> <span class="st0">&quot;handleEscape();&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> showPlayerList<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; PlayerListGui.<span class="me1">toggle</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> F2<span class="sy0">,</span> showPlayerList <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> showControlsHelp<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; ControlsHelpDlg.<span class="me1">toggle</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> h<span class="sy0">,</span> showControlsHelp<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> hideHUDs<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; HudlessPlayGui.<span class="me1">toggle</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;ctrl h&quot;</span><span class="sy0">,</span> hideHUDs<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> doScreenShotHudless<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; canvas.<span class="me1">setContent</span><span class="br0">&#40;</span>HudlessPlayGui<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="co1">//doScreenshot(%val);</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; schedule<span class="br0">&#40;</span><span class="nu0">10</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="st0">&quot;doScreenShot&quot;</span><span class="sy0">,</span> <span class="sy0">%</span>val<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">else</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; canvas.<span class="me1">setContent</span><span class="br0">&#40;</span>PlayGui<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;alt p&quot;</span><span class="sy0">,</span> doScreenShotHudless<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// Movement Keys</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">$movementSpeed <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">;</span> <span class="co1">// m/s</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> setSpeed<span class="br0">&#40;</span><span class="sy0">%</span>speed<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>speed<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $movementSpeed <span class="sy0">=</span> <span class="sy0">%</span>speed<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> moveleft<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;$mvLeftAction <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">*</span> $movementSpeed<span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> moveright<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;$mvRightAction <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">*</span> $movementSpeed<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> moveforward<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;$mvForwardAction <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">*</span> $movementSpeed<span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> movebackward<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;$mvBackwardAction <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">*</span> $movementSpeed<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> moveup<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="sy0">%</span>object <span class="sy0">=</span> ServerConnection.<span class="me1">getControlObject</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>object.<span class="me1">isInNamespaceHierarchy</span><span class="br0">&#40;</span><span class="st0">&quot;Camera&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvUpAction <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">*</span> $movementSpeed<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> movedown<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="sy0">%</span>object <span class="sy0">=</span> ServerConnection.<span class="me1">getControlObject</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>object.<span class="me1">isInNamespaceHierarchy</span><span class="br0">&#40;</span><span class="st0">&quot;Camera&quot;</span><span class="br0">&#41;</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvDownAction <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">*</span> $movementSpeed<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> turnLeft<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;$mvYawRightSpeed <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">?</span> $Pref<span class="sy0">::</span><span class="me2">Input</span><span class="sy0">::</span><span class="me2">KeyboardTurnSpeed</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> turnRight<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;$mvYawLeftSpeed <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">?</span> $Pref<span class="sy0">::</span><span class="me2">Input</span><span class="sy0">::</span><span class="me2">KeyboardTurnSpeed</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> panUp<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;$mvPitchDownSpeed <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">?</span> $Pref<span class="sy0">::</span><span class="me2">Input</span><span class="sy0">::</span><span class="me2">KeyboardTurnSpeed</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> panDown<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;$mvPitchUpSpeed <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">?</span> $Pref<span class="sy0">::</span><span class="me2">Input</span><span class="sy0">::</span><span class="me2">KeyboardTurnSpeed</span> <span class="sy0">:</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> getMouseAdjustAmount<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="co1">// based on a default camera FOV of 90'</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">return</span><span class="br0">&#40;</span><span class="sy0">%</span>val <span class="sy0">*</span> <span class="br0">&#40;</span>$cameraFov <span class="sy0">/</span> <span class="nu0">90</span><span class="br0">&#41;</span> <span class="sy0">*</span> <span class="nu16">0.01</span><span class="br0">&#41;</span> <span class="sy0">*</span> $pref<span class="sy0">::</span><span class="me2">Input</span><span class="sy0">::</span><span class="me2">LinkMouseSensitivity</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> getGamepadAdjustAmount<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="co1">// based on a default camera FOV of 90'</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">return</span><span class="br0">&#40;</span><span class="sy0">%</span>val <span class="sy0">*</span> <span class="br0">&#40;</span>$cameraFov <span class="sy0">/</span> <span class="nu0">90</span><span class="br0">&#41;</span> <span class="sy0">*</span> <span class="nu16">0.01</span><span class="br0">&#41;</span> <span class="sy0">*</span> <span class="nu16">10.0</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> yaw<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="sy0">%</span>yawAdj <span class="sy0">=</span> getMouseAdjustAmount<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span>ServerConnection.<span class="me1">isControlObjectRotDampedCamera</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="co1">// Clamp and scale</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>yawAdj <span class="sy0">=</span> mClamp<span class="br0">&#40;</span><span class="sy0">%</span>yawAdj<span class="sy0">,</span> <span class="sy0">-</span>m2Pi<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">+</span><span class="nu16">0.01</span><span class="sy0">,</span> m2Pi<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-</span><span class="nu16">0.01</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>yawAdj <span class="sy0">*=</span> <span class="nu16">0.5</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;$mvYaw <span class="sy0">+=</span> <span class="sy0">%</span>yawAdj<span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> pitch<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="sy0">%</span>pitchAdj <span class="sy0">=</span> getMouseAdjustAmount<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span>ServerConnection.<span class="me1">isControlObjectRotDampedCamera</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="co1">// Clamp and scale</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>pitchAdj <span class="sy0">=</span> mClamp<span class="br0">&#40;</span><span class="sy0">%</span>pitchAdj<span class="sy0">,</span> <span class="sy0">-</span>m2Pi<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">+</span><span class="nu16">0.01</span><span class="sy0">,</span> m2Pi<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-</span><span class="nu16">0.01</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>pitchAdj <span class="sy0">*=</span> <span class="nu16">0.5</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;$mvPitch <span class="sy0">+=</span> <span class="sy0">%</span>pitchAdj<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> jump<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;$mvTriggerCount2<span class="sy0">++;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> gamePadMoveX<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>val <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvRightAction <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">*</span> $movementSpeed<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvLeftAction <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">else</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvRightAction <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvLeftAction <span class="sy0">=</span> <span class="sy0">-%</span>val <span class="sy0">*</span> $movementSpeed<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> gamePadMoveY<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>val <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvForwardAction <span class="sy0">=</span> <span class="sy0">%</span>val <span class="sy0">*</span> $movementSpeed<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvBackwardAction <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">else</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvForwardAction <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvBackwardAction <span class="sy0">=</span> <span class="sy0">-%</span>val <span class="sy0">*</span> $movementSpeed<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> gamepadYaw<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="sy0">%</span>yawAdj <span class="sy0">=</span> getGamepadAdjustAmount<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span>ServerConnection.<span class="me1">isControlObjectRotDampedCamera</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="co1">// Clamp and scale</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>yawAdj <span class="sy0">=</span> mClamp<span class="br0">&#40;</span><span class="sy0">%</span>yawAdj<span class="sy0">,</span> <span class="sy0">-</span>m2Pi<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">+</span><span class="nu16">0.01</span><span class="sy0">,</span> m2Pi<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-</span><span class="nu16">0.01</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>yawAdj <span class="sy0">*=</span> <span class="nu16">0.5</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>yawAdj <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvYawLeftSpeed <span class="sy0">=</span> <span class="sy0">%</span>yawAdj<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvYawRightSpeed <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">else</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvYawLeftSpeed <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvYawRightSpeed <span class="sy0">=</span> <span class="sy0">-%</span>yawAdj<span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> gamepadPitch<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="sy0">%</span>pitchAdj <span class="sy0">=</span> getGamepadAdjustAmount<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span>ServerConnection.<span class="me1">isControlObjectRotDampedCamera</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="co1">// Clamp and scale</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>pitchAdj <span class="sy0">=</span> mClamp<span class="br0">&#40;</span><span class="sy0">%</span>pitchAdj<span class="sy0">,</span> <span class="sy0">-</span>m2Pi<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">+</span><span class="nu16">0.01</span><span class="sy0">,</span> m2Pi<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">-</span><span class="nu16">0.01</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>pitchAdj <span class="sy0">*=</span> <span class="nu16">0.5</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>pitchAdj <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvPitchDownSpeed <span class="sy0">=</span> <span class="sy0">-%</span>pitchAdj<span class="sy0">;</span> &nbsp; <span class="co1">//- and + swap for INVERTED look&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvPitchUpSpeed <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">else</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvPitchDownSpeed <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvPitchUpSpeed <span class="sy0">=</span> <span class="sy0">%</span>pitchAdj<span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//- and + swap for INVERTED look&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> a<span class="sy0">,</span> moveleft <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> d<span class="sy0">,</span> moveright <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> left<span class="sy0">,</span> moveleft <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> right<span class="sy0">,</span> moveright <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> w<span class="sy0">,</span> moveforward <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> s<span class="sy0">,</span> movebackward <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> up<span class="sy0">,</span> moveforward <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> down<span class="sy0">,</span> movebackward <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> e<span class="sy0">,</span> moveup <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> c<span class="sy0">,</span> movedown <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> space<span class="sy0">,</span> jump <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> mouse<span class="sy0">,</span> xaxis<span class="sy0">,</span> yaw <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> mouse<span class="sy0">,</span> yaxis<span class="sy0">,</span> pitch <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> gamepad<span class="sy0">,</span> thumbrx<span class="sy0">,</span> <span class="st0">&quot;D&quot;</span><span class="sy0">,</span> <span class="st0">&quot;-0.23 0.23&quot;</span><span class="sy0">,</span> gamepadYaw <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> gamepad<span class="sy0">,</span> thumbry<span class="sy0">,</span> <span class="st0">&quot;D&quot;</span><span class="sy0">,</span> <span class="st0">&quot;-0.23 0.23&quot;</span><span class="sy0">,</span> gamepadPitch <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> gamepad<span class="sy0">,</span> thumblx<span class="sy0">,</span> <span class="st0">&quot;D&quot;</span><span class="sy0">,</span> <span class="st0">&quot;-0.23 0.23&quot;</span><span class="sy0">,</span> gamePadMoveX <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> gamepad<span class="sy0">,</span> thumbly<span class="sy0">,</span> <span class="st0">&quot;D&quot;</span><span class="sy0">,</span> <span class="st0">&quot;-0.23 0.23&quot;</span><span class="sy0">,</span> gamePadMoveY <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> gamepad<span class="sy0">,</span> btn_a<span class="sy0">,</span> jump <span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Button_A&nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span> gamepad<span class="sy0">,</span> btn_back<span class="sy0">,</span> <span class="st0">&quot;disconnect();&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span> <span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Button_Back &nbsp; BrittEdit</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> dpadl<span class="sy0">,</span> <span class="st0">&quot;toggleLightColorViz();&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//D-Pad_LT&nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> dpadr<span class="sy0">,</span> <span class="st0">&quot;metrics(fps);&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//D-Pad_RT&nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//moveMap.bindCmd(gamepad, dpadu, toggleConsole); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></div></li>
+<li class="li1"><div class="de1">GlobalActionMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> dpadu<span class="sy0">,</span> toggleConsole<span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//D-Pad_UP&nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> dpadd<span class="sy0">,</span> <span class="st0">&quot;toggleNormalsViz();&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//D-Pad_DN&nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">// ----------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// Stance/pose</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// ----------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> doCrouch<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;$mvTriggerCount3<span class="sy0">++;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> lcontrol<span class="sy0">,</span> doCrouch<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> btn_b<span class="sy0">,</span> doCrouch<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> doSprint<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;$mvTriggerCount5<span class="sy0">++;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> lshift<span class="sy0">,</span> doSprint<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> btn_lt<span class="sy0">,</span> doSprint<span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Analog_LT Click &nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// Mouse Trigger</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> mouseFire<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;$mvTriggerCount0<span class="sy0">++;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">//function altTrigger(%val)</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//{</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="co1">//$mvTriggerCount1++;</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//}</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> mouse<span class="sy0">,</span> button0<span class="sy0">,</span> mouseFire <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//moveMap.bind( mouse, button1, altTrigger );</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// Gamepad Trigger</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> gamepadFire<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>val <span class="sy0">&gt;</span> <span class="nu16">0.1</span> <span class="sy0">&amp;&amp;</span> <span class="sy0">!</span>$gamepadFireTriggered<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $gamepadFireTriggered <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvTriggerCount0<span class="sy0">++;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; rumble<span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="nu16">0.25</span><span class="sy0">,</span> <span class="nu16">0.25</span><span class="br0">&#41;</span><span class="sy0">;</span><span class="co1">//deviceName, Left Motor(low-frequency),Right Motor(high-frequency)//Rumble Start BrittEdit</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">else</span> <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>val <span class="sy0">&lt;=</span> <span class="nu16">0.1</span> <span class="sy0">&amp;&amp;</span> $gamepadFireTriggered<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $gamepadFireTriggered <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvTriggerCount0<span class="sy0">++;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; rumble<span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Rumble Stop BrittEdit</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> gamepadAltTrigger<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>val <span class="sy0">&gt;</span> <span class="nu16">0.1</span> <span class="sy0">&amp;&amp;</span> <span class="sy0">!</span>$gamepadAltTriggerTriggered<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $gamepadAltTriggerTriggered <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $mvTriggerCount1<span class="sy0">++;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">else</span> <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>val <span class="sy0">&lt;=</span> <span class="nu16">0.1</span> <span class="sy0">&amp;&amp;</span> $gamepadAltTriggerTriggered<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $gamepadAltTriggerTriggered <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvTriggerCount1<span class="sy0">++;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> triggerr<span class="sy0">,</span> gamepadFire<span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Trigger_RT&nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> triggerl<span class="sy0">,</span> gamepadAltTrigger<span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Trigger_LT&nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// Zoom and FOV functions</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw1">if</span><span class="br0">&#40;</span>$Player<span class="sy0">::</span><span class="me2">CurrentFOV</span> $<span class="sy0">=</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;$Player<span class="sy0">::</span><span class="me2">CurrentFOV</span> <span class="sy0">=</span> $pref<span class="sy0">::</span><span class="me2">Player</span><span class="sy0">::</span><span class="me2">DefaultFOV</span> <span class="sy0">/</span> <span class="nu0">2</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">// toggleZoomFOV() works by dividing the CurrentFOV by 2. &nbsp;Each time that this</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// toggle is hit it simply divides the CurrentFOV by 2 once again. &nbsp;If the</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// FOV is reduced below a certain threshold then it resets to equal half of the</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// DefaultFOV value. &nbsp;This gives us 4 zoom levels to cycle through.</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> toggleZoomFOV<span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; $Player<span class="sy0">::</span><span class="me2">CurrentFOV</span> <span class="sy0">=</span> $Player<span class="sy0">::</span><span class="me2">CurrentFOV</span> <span class="sy0">/</span> <span class="nu0">2</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>$Player<span class="sy0">::</span><span class="me2">CurrentFOV</span> <span class="sy0">&lt;</span> <span class="nu0">5</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; resetCurrentFOV<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>ServerConnection.<span class="me1">zoomed</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; setFOV<span class="br0">&#40;</span>$Player<span class="sy0">::</span><span class="me2">CurrentFOV</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; <span class="kw1">else</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; setFov<span class="br0">&#40;</span>ServerConnection.<span class="me1">getControlCameraDefaultFov</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> resetCurrentFOV<span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;$Player<span class="sy0">::</span><span class="me2">CurrentFOV</span> <span class="sy0">=</span> ServerConnection.<span class="me1">getControlCameraDefaultFov</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">/</span> <span class="nu0">2</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> turnOffZoom<span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;ServerConnection.<span class="me1">zoomed</span> <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;setFov<span class="br0">&#40;</span>ServerConnection.<span class="me1">getControlCameraDefaultFov</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;Reticle.<span class="me1">setVisible</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;zoomReticle.<span class="me1">setVisible</span><span class="br0">&#40;</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="co1">// Rather than just disable the DOF effect, we want to set it to the level's</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="co1">// preset values.</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="co1">//DOFPostEffect.disable();</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;ppOptionsUpdateDOFSettings<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> setZoomFOV<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; toggleZoomFOV<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> toggleZoom<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; ServerConnection.<span class="me1">zoomed</span> <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; setFov<span class="br0">&#40;</span>$Player<span class="sy0">::</span><span class="me2">CurrentFOV</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; Reticle.<span class="me1">setVisible</span><span class="br0">&#40;</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; zoomReticle.<span class="me1">setVisible</span><span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; DOFPostEffect.<span class="me1">setAutoFocus</span><span class="br0">&#40;</span> <span class="kw2">true</span> <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; DOFPostEffect.<span class="me1">setFocusParams</span><span class="br0">&#40;</span> <span class="nu16">0.5</span><span class="sy0">,</span> <span class="nu16">0.5</span><span class="sy0">,</span> <span class="nu0">50</span><span class="sy0">,</span> <span class="nu0">500</span><span class="sy0">,</span> <span class="sy0">-</span><span class="nu0">5</span><span class="sy0">,</span> <span class="nu0">5</span> <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; DOFPostEffect.<span class="me1">enable</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">else</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; turnOffZoom<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> mouseButtonZoom<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;toggleZoom<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> f<span class="sy0">,</span> setZoomFOV<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// f for field of view</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> z<span class="sy0">,</span> toggleZoom<span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// z for zoom</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> mouse<span class="sy0">,</span> button1<span class="sy0">,</span> mouseButtonZoom <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> btn_rt<span class="sy0">,</span> toggleZoom<span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Analog_RT Click &nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// Camera &amp; View functions</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> toggleFreeLook<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvFreeLook <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">else</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; $mvFreeLook <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> toggleFirstPerson<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; ServerConnection.<span class="me1">setFirstPerson</span><span class="br0">&#40;</span><span class="sy0">!</span>ServerConnection.<span class="me1">isFirstPerson</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> toggleCamera<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'ToggleCamera'</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> v<span class="sy0">,</span> toggleFreeLook <span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// v for vanity</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> tab<span class="sy0">,</span> toggleFirstPerson <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;alt c&quot;</span><span class="sy0">,</span> toggleCamera<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> gamepad<span class="sy0">,</span> btn_start<span class="sy0">,</span> toggleCamera <span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Button_Start&nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> gamepad<span class="sy0">,</span> btn_y<span class="sy0">,</span> toggleFirstPerson <span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Button_Y&nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bindcmd</span><span class="br0">&#40;</span> gamepad<span class="sy0">,</span> btn_x<span class="sy0">,</span> <span class="st0">&quot;commandToServer('reloadWeapon');&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; <span class="co1">//Button_X&nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">// ----------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// Misc. Player stuff</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// ----------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">// Gideon does not have these animations, so the player does not need access to</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// them. &nbsp;Commenting instead of removing so as to retain an example for those</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// who will want to use a player model that has these animations and wishes to</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// use them.</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">//moveMap.bindCmd(keyboard, &quot;ctrl w&quot;, &quot;commandToServer('playCel',\&quot;wave\&quot;);&quot;, &quot;&quot;);</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//moveMap.bindCmd(keyboard, &quot;ctrl s&quot;, &quot;commandToServer('playCel',\&quot;salute\&quot;);&quot;, &quot;&quot;);</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;ctrl k&quot;</span><span class="sy0">,</span> <span class="st0">&quot;commandToServer('suicide');&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// Item manipulation</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;1&quot;</span><span class="sy0">,</span> <span class="st0">&quot;commandToServer('use',<span class="es1">\&quot;</span>Ryder<span class="es1">\&quot;</span>);&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;2&quot;</span><span class="sy0">,</span> <span class="st0">&quot;commandToServer('use',<span class="es1">\&quot;</span>Lurker<span class="es1">\&quot;</span>);&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;3&quot;</span><span class="sy0">,</span> <span class="st0">&quot;commandToServer('use',<span class="es1">\&quot;</span>LurkerGrenadeLauncher<span class="es1">\&quot;</span>);&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;4&quot;</span><span class="sy0">,</span> <span class="st0">&quot;commandToServer('use',<span class="es1">\&quot;</span>ProxMine<span class="es1">\&quot;</span>);&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;5&quot;</span><span class="sy0">,</span> <span class="st0">&quot;commandToServer('use',<span class="es1">\&quot;</span>DeployableTurret<span class="es1">\&quot;</span>);&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;r&quot;</span><span class="sy0">,</span> <span class="st0">&quot;commandToServer('reloadWeapon');&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> unmountWeapon<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'unmountWeapon'</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> unmountWeapon<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> throwWeapon<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'Throw'</span><span class="sy0">,</span> <span class="st0">&quot;Weapon&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> tossAmmo<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'Throw'</span><span class="sy0">,</span> <span class="st0">&quot;Ammo&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;alt w&quot;</span><span class="sy0">,</span> throwWeapon<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;alt a&quot;</span><span class="sy0">,</span> tossAmmo<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> nextWeapon<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'cycleWeapon'</span><span class="sy0">,</span> <span class="st0">&quot;next&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> prevWeapon<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'cycleWeapon'</span><span class="sy0">,</span> <span class="st0">&quot;prev&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> mouseWheelWeaponCycle<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val <span class="sy0">&lt;</span> <span class="nu0">0</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'cycleWeapon'</span><span class="sy0">,</span> <span class="st0">&quot;next&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'cycleWeapon'</span><span class="sy0">,</span> <span class="st0">&quot;next&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> q<span class="sy0">,</span> nextWeapon<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;ctrl q&quot;</span><span class="sy0">,</span> prevWeapon<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>mouse<span class="sy0">,</span> <span class="st0">&quot;zaxis&quot;</span><span class="sy0">,</span> mouseWheelWeaponCycle<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="st0">&quot;btn_l&quot;</span><span class="sy0">,</span> prevWeapon<span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Shoulder_LT &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="st0">&quot;btn_r&quot;</span><span class="sy0">,</span> nextWeapon<span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Shoulder_RT &nbsp; BrittEdit</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// Message HUD functions</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> pageMessageHudUp<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; pageUpMessageHud<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> pageMessageHudDown<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; pageDownMessageHud<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> resizeMessageHud<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; cycleMessageHudSize<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> u<span class="sy0">,</span> toggleMessageHud <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//moveMap.bind(keyboard, y, teamMessageHud );</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;pageUp&quot;</span><span class="sy0">,</span> pageMessageHudUp <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;pageDown&quot;</span><span class="sy0">,</span> pageMessageHudDown <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;p&quot;</span><span class="sy0">,</span> resizeMessageHud <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// Demo recording functions</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> startRecordingDemo<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; startDemoRecord<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> stopRecordingDemo<span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span> <span class="sy0">%</span>val <span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; stopDemoRecord<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> F3<span class="sy0">,</span> startRecordingDemo <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> F4<span class="sy0">,</span> stopRecordingDemo <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// Helper Functions</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> dropCameraAtPlayer<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'dropCameraAtPlayer'</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> dropPlayerAtCamera<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'DropPlayerAtCamera'</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;F8&quot;</span><span class="sy0">,</span> dropCameraAtPlayer<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;F7&quot;</span><span class="sy0">,</span> dropPlayerAtCamera<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> bringUpOptions<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; Canvas.<span class="me1">pushDialog</span><span class="br0">&#40;</span>OptionsDlg<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">GlobalActionMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;ctrl o&quot;</span><span class="sy0">,</span> bringUpOptions<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// Debugging Functions</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">$MFDebugRenderMode <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> cycleDebugRenderMode<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="kw1">return</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;$MFDebugRenderMode<span class="sy0">++;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span>$MFDebugRenderMode <span class="sy0">&gt;</span> <span class="nu0">16</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $MFDebugRenderMode <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span>$MFDebugRenderMode <span class="sy0">==</span> <span class="nu0">15</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; $MFDebugRenderMode <span class="sy0">=</span> <span class="nu0">16</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;setInteriorRenderMode<span class="br0">&#40;</span>$MFDebugRenderMode<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span>isObject<span class="br0">&#40;</span>ChatHud<span class="br0">&#41;</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>message <span class="sy0">=</span> <span class="st0">&quot;Setting Interior debug render mode to &quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;Unknown&quot;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="kw1">switch</span><span class="br0">&#40;</span>$MFDebugRenderMode<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">0</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;NormalRender&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">1</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;NormalRenderLines&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">2</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowDetail&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">3</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowAmbiguous&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">4</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowOrphan&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">5</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowLightmaps&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">6</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowTexturesOnly&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">7</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowPortalZones&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">8</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowOutsideVisible&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">9</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowCollisionFans&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">10</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowStrips&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">11</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowNullSurfaces&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">12</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowLargeTextures&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">13</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowHullSurfaces&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">14</span><span class="sy0">:</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowVehicleHullSurfaces&quot;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">// Depreciated</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">//case 15:</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">// &nbsp; %debugMode = &quot;ShowVertexColors&quot;;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">case</span> <span class="nu0">16</span><span class="sy0">:</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">%</span>debugMode <span class="sy0">=</span> <span class="st0">&quot;ShowDetailLevel&quot;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; ChatHud.<span class="me1">addLine</span><span class="br0">&#40;</span><span class="sy0">%</span>message @ <span class="sy0">%</span>debugMode<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">GlobalActionMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;F9&quot;</span><span class="sy0">,</span> cycleDebugRenderMode<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">//</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// Start profiler by pressing ctrl f3</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// ctrl f3 - starts profile that will dump to console and file</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//</span></div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> doProfile<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="co1">// key down -- start profile</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; echo<span class="br0">&#40;</span><span class="st0">&quot;Starting profile session...&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; profilerReset<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; profilerEnable<span class="br0">&#40;</span><span class="kw2">true</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">else</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="co1">// key up -- finish off profile</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; echo<span class="br0">&#40;</span><span class="st0">&quot;Ending profile session...&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; profilerDumpToFile<span class="br0">&#40;</span><span class="st0">&quot;profilerDumpToFile&quot;</span> @ getSimTime<span class="br0">&#40;</span><span class="br0">&#41;</span> @ <span class="st0">&quot;.txt&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; profilerEnable<span class="br0">&#40;</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">GlobalActionMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;ctrl F3&quot;</span><span class="sy0">,</span> doProfile<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// Misc.</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//------------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">GlobalActionMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;tilde&quot;</span><span class="sy0">,</span> toggleConsole<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">GlobalActionMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;alt k&quot;</span><span class="sy0">,</span> <span class="st0">&quot;cls();&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">GlobalActionMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;alt enter&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span> <span class="st0">&quot;Canvas.attemptFullscreenToggle();&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">GlobalActionMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;F1&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span> <span class="st0">&quot;contextHelp();&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;n&quot;</span><span class="sy0">,</span> <span class="st0">&quot;toggleNetGraph();&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">// ----------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// Useful vehicle stuff</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">// ----------------------------------------------------------------------------</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">// Trace a line along the direction the crosshair is pointing</span></div></li>
+<li class="li2"><div class="de2"><span class="co1">// If you find a car with a player in it...eject them</span></div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> carjack<span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="sy0">%</span>player <span class="sy0">=</span> LocalClientConnection.<span class="me1">getControlObject</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>player.<span class="me1">getClassName</span><span class="br0">&#40;</span><span class="br0">&#41;</span> $<span class="sy0">=</span> <span class="st0">&quot;Player&quot;</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>eyeVec <span class="sy0">=</span> <span class="sy0">%</span>player.<span class="me1">getEyeVector</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>startPos <span class="sy0">=</span> <span class="sy0">%</span>player.<span class="me1">getEyePoint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>endPos <span class="sy0">=</span> VectorAdd<span class="br0">&#40;</span><span class="sy0">%</span>startPos<span class="sy0">,</span> VectorScale<span class="br0">&#40;</span><span class="sy0">%</span>eyeVec<span class="sy0">,</span> <span class="nu0">1000</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="sy0">%</span>target <span class="sy0">=</span> ContainerRayCast<span class="br0">&#40;</span><span class="sy0">%</span>startPos<span class="sy0">,</span> <span class="sy0">%</span>endPos<span class="sy0">,</span> $TypeMasks<span class="sy0">::</span><span class="me2">VehicleObjectType</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>target<span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">// See if anyone is mounted in the car's driver seat</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="sy0">%</span>mount <span class="sy0">=</span> <span class="sy0">%</span>target.<span class="me1">getMountNodeObject</span><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">// Can only carjack bots</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">// remove '&amp;&amp; %mount.getClassName() $= &quot;AIPlayer&quot;' to allow you</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">// to carjack anyone/anything</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">%</span>mount <span class="sy0">&amp;&amp;</span> <span class="sy0">%</span>mount.<span class="me1">getClassName</span><span class="br0">&#40;</span><span class="br0">&#41;</span> $<span class="sy0">=</span> <span class="st0">&quot;AIPlayer&quot;</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; commandToServer<span class="br0">&#40;</span><span class="st0">'carUnmountObj'</span><span class="sy0">,</span> <span class="sy0">%</span>mount<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#125;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">// Bind the keys to the carjack command</span></div></li>
+<li class="li1"><div class="de1">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;ctrl z&quot;</span><span class="sy0">,</span> <span class="st0">&quot;carjack();&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">// Starting vehicle action map code</span></div></li>
+<li class="li1"><div class="de1"><span class="kw1">if</span> <span class="br0">&#40;</span> isObject<span class="br0">&#40;</span> vehicleMap <span class="br0">&#41;</span> <span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;vehicleMap.<span class="me1">delete</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">new ActionMap<span class="br0">&#40;</span>vehicleMap<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">// The key command for flipping the car</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;ctrl x&quot;</span><span class="sy0">,</span> <span class="st0">&quot;commandToServer(<span class="es1">\'</span>flipCar<span class="es1">\'</span>);&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="kw2">function</span> getOut<span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#123;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;vehicleMap.<span class="me1">pop</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;moveMap.<span class="me1">push</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;commandToServer<span class="br0">&#40;</span><span class="st0">'dismountVehicle'</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> brakeLights<span class="br0">&#40;</span><span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;<span class="co1">// Turn on/off the Cheetah's head lights.</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;commandToServer<span class="br0">&#40;</span><span class="st0">'toggleBrakeLights'</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="kw2">function</span> brake<span class="br0">&#40;</span><span class="sy0">%</span>val<span class="br0">&#41;</span></div></li>
+<li class="li2"><div class="de2"><span class="br0">&#123;</span></div></li>
+<li class="li1"><div class="de1">&nbsp; &nbsp;commandToServer<span class="br0">&#40;</span><span class="st0">'toggleBrakeLights'</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">&nbsp; &nbsp;$mvTriggerCount2<span class="sy0">++;</span></div></li>
+<li class="li1"><div class="de1"><span class="br0">&#125;</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> w<span class="sy0">,</span> moveforward <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> s<span class="sy0">,</span> movebackward <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> up<span class="sy0">,</span> moveforward <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> down<span class="sy0">,</span> movebackward <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span> mouse<span class="sy0">,</span> xaxis<span class="sy0">,</span> yaw <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span> mouse<span class="sy0">,</span> yaxis<span class="sy0">,</span> pitch <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span> mouse<span class="sy0">,</span> button0<span class="sy0">,</span> mouseFire <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span> mouse<span class="sy0">,</span> button1<span class="sy0">,</span> altTrigger <span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">vehicleMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;ctrl f&quot;</span><span class="sy0">,</span><span class="st0">&quot;getout();&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> space<span class="sy0">,</span> brake<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">vehicleMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;l&quot;</span><span class="sy0">,</span> <span class="st0">&quot;brakeLights();&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;escape&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="sy0">,</span> <span class="st0">&quot;handleEscape();&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> h<span class="sy0">,</span> showControlsHelp<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span> keyboard<span class="sy0">,</span> v<span class="sy0">,</span> toggleFreeLook <span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// v for vanity</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//vehicleMap.bind(keyboard, tab, toggleFirstPerson );</span></div></li>
+<li class="li2"><div class="de2">&nbsp;</div></li>
+<li class="li1"><div class="de1"><span class="co1">//Vehicle Gamepad</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span>keyboard<span class="sy0">,</span> <span class="st0">&quot;alt c&quot;</span><span class="sy0">,</span> toggleCamera<span class="br0">&#41;</span><span class="sy0">;</span></div></li>
+<li class="li1"><div class="de1">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="st0">&quot;triggerr&quot;</span><span class="sy0">,</span> moveforward<span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Trigger_RT&nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="st0">&quot;triggerl&quot;</span><span class="sy0">,</span> movebackward<span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Trigger_RT&nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li1"><div class="de1">&nbsp;</div></li>
+<li class="li2"><div class="de2"><span class="co1">//Uncomment below for right thumb, forward-backwards</span></div></li>
+<li class="li1"><div class="de1"><span class="co1">//vehicleMap.bind(gamepad, &quot;thumbry&quot;, gamePadMoveY);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //Analog_RT axis_Y&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="st0">&quot;thumblx&quot;</span><span class="sy0">,</span> gamepadYaw<span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Analog_LT axis_X&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li1"><div class="de1">vehicleMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="st0">&quot;btn_y&quot;</span><span class="sy0">,</span><span class="st0">&quot;getout();&quot;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Button_Y&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="st0">&quot;btn_b&quot;</span><span class="sy0">,</span> brake<span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Button_B&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li1"><div class="de1">vehicleMap.<span class="me1">bind</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="st0">&quot;btn_x&quot;</span><span class="sy0">,</span> mouseFire <span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//Button_X&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+<li class="li2"><div class="de2">moveMap.<span class="me1">bindCmd</span><span class="br0">&#40;</span>gamepad<span class="sy0">,</span> <span class="st0">&quot;connect&quot;</span><span class="sy0">,</span> <span class="st0">&quot;echo(<span class="es1">\&quot;</span>Pressed Xbox Button<span class="es1">\&quot;</span>);&quot;</span><span class="sy0">,</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>&nbsp; &nbsp; &nbsp; <span class="co1">//Button_Xbox &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BrittEdit</span></div></li>
+</ol></div>
+		</div>
+	</div></div>
+	<div class="content_title">
+		<span class="span_right raw_links"><a href="/index/W9kUq1rG" rel="nofollow"><u>clone</u> this paste</a></span>
+		RAW Paste Data
+	</div>
+	<form class="paste_form" id="myform" method="post" action="/post.php">
+		<div class="textarea_border">
+			<textarea id="paste_code" class="paste_code" name="paste_code" onkeydown="return catchTab(this,event)">//-----------------------------------------------------------------------------
+// Copyright (c) 2012 GarageGames, LLC
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the &quot;Software&quot;), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+// IN THE SOFTWARE.
+//-----------------------------------------------------------------------------
+
+if ( isObject( moveMap ) )
+   moveMap.delete();
+new ActionMap(moveMap);
+
+
+//------------------------------------------------------------------------------
+// Non-remapable binds
+//------------------------------------------------------------------------------
+
+function escapeFromGame()
+{
+   if ( $Server::ServerType $= &quot;SinglePlayer&quot; )
+      MessageBoxYesNo( &quot;Exit&quot;, &quot;Exit from this Mission?&quot;, &quot;disconnect();&quot;, &quot;&quot;);
+   else
+      MessageBoxYesNo( &quot;Disconnect&quot;, &quot;Disconnect from the server?&quot;, &quot;disconnect();&quot;, &quot;&quot;);
+}
+
+moveMap.bindCmd(keyboard, &quot;escape&quot;, &quot;&quot;, &quot;handleEscape();&quot;);
+
+function showPlayerList(%val)
+{
+   if (%val)
+      PlayerListGui.toggle();
+}
+
+moveMap.bind( keyboard, F2, showPlayerList );
+
+function showControlsHelp(%val)
+{
+   if (%val)
+      ControlsHelpDlg.toggle();
+}
+
+moveMap.bind(keyboard, h, showControlsHelp);
+
+function hideHUDs(%val)
+{
+   if (%val)
+      HudlessPlayGui.toggle();
+}
+
+moveMap.bind(keyboard, &quot;ctrl h&quot;, hideHUDs);
+
+function doScreenShotHudless(%val)
+{
+   if(%val)
+   {
+      canvas.setContent(HudlessPlayGui);
+      //doScreenshot(%val);
+      schedule(10, 0, &quot;doScreenShot&quot;, %val);
+   }
+   else
+      canvas.setContent(PlayGui);
+}
+
+moveMap.bind(keyboard, &quot;alt p&quot;, doScreenShotHudless);
+
+//------------------------------------------------------------------------------
+// Movement Keys
+//------------------------------------------------------------------------------
+
+$movementSpeed = 1; // m/s
+
+function setSpeed(%speed)
+{
+   if(%speed)
+      $movementSpeed = %speed;
+}
+
+function moveleft(%val)
+{
+   $mvLeftAction = %val * $movementSpeed;
+}
+
+function moveright(%val)
+{
+   $mvRightAction = %val * $movementSpeed;
+}
+
+function moveforward(%val)
+{
+   $mvForwardAction = %val * $movementSpeed;
+}
+
+function movebackward(%val)
+{
+   $mvBackwardAction = %val * $movementSpeed;
+}
+
+function moveup(%val)
+{
+   %object = ServerConnection.getControlObject();
+   
+   if(%object.isInNamespaceHierarchy(&quot;Camera&quot;))
+      $mvUpAction = %val * $movementSpeed;
+}
+
+function movedown(%val)
+{
+   %object = ServerConnection.getControlObject();
+   
+   if(%object.isInNamespaceHierarchy(&quot;Camera&quot;))
+      $mvDownAction = %val * $movementSpeed;
+}
+
+function turnLeft( %val )
+{
+   $mvYawRightSpeed = %val ? $Pref::Input::KeyboardTurnSpeed : 0;
+}
+
+function turnRight( %val )
+{
+   $mvYawLeftSpeed = %val ? $Pref::Input::KeyboardTurnSpeed : 0;
+}
+
+function panUp( %val )
+{
+   $mvPitchDownSpeed = %val ? $Pref::Input::KeyboardTurnSpeed : 0;
+}
+
+function panDown( %val )
+{
+   $mvPitchUpSpeed = %val ? $Pref::Input::KeyboardTurnSpeed : 0;
+}
+
+function getMouseAdjustAmount(%val)
+{
+   // based on a default camera FOV of 90'
+   return(%val * ($cameraFov / 90) * 0.01) * $pref::Input::LinkMouseSensitivity;
+}
+
+function getGamepadAdjustAmount(%val)
+{
+   // based on a default camera FOV of 90'
+   return(%val * ($cameraFov / 90) * 0.01) * 10.0;
+}
+
+function yaw(%val)
+{
+   %yawAdj = getMouseAdjustAmount(%val);
+   if(ServerConnection.isControlObjectRotDampedCamera())
+   {
+      // Clamp and scale
+      %yawAdj = mClamp(%yawAdj, -m2Pi()+0.01, m2Pi()-0.01);
+      %yawAdj *= 0.5;
+   }
+
+   $mvYaw += %yawAdj;
+}
+
+function pitch(%val)
+{
+   %pitchAdj = getMouseAdjustAmount(%val);
+   if(ServerConnection.isControlObjectRotDampedCamera())
+   {
+      // Clamp and scale
+      %pitchAdj = mClamp(%pitchAdj, -m2Pi()+0.01, m2Pi()-0.01);
+      %pitchAdj *= 0.5;
+   }
+
+   $mvPitch += %pitchAdj;
+}
+
+function jump(%val)
+{
+   $mvTriggerCount2++;
+}
+
+function gamePadMoveX( %val )
+{
+   if(%val &gt; 0)
+   {
+      $mvRightAction = %val * $movementSpeed;
+      $mvLeftAction = 0;
+   }
+   else
+   {
+      $mvRightAction = 0;
+      $mvLeftAction = -%val * $movementSpeed;
+   }
+}
+
+function gamePadMoveY( %val )
+{
+   if(%val &gt; 0)
+   {
+      $mvForwardAction = %val * $movementSpeed;
+      $mvBackwardAction = 0;
+   }
+   else
+   {
+      $mvForwardAction = 0;
+      $mvBackwardAction = -%val * $movementSpeed;
+   }
+}
+
+function gamepadYaw(%val)
+{
+   %yawAdj = getGamepadAdjustAmount(%val);
+   if(ServerConnection.isControlObjectRotDampedCamera())
+   {
+      // Clamp and scale
+      %yawAdj = mClamp(%yawAdj, -m2Pi()+0.01, m2Pi()-0.01);
+      %yawAdj *= 0.5;
+   }
+
+   if(%yawAdj &gt; 0)						
+   {
+      $mvYawLeftSpeed = %yawAdj;
+      $mvYawRightSpeed = 0;
+   }
+   else									
+   {
+      $mvYawLeftSpeed = 0;
+      $mvYawRightSpeed = -%yawAdj;
+   }
+}
+
+function gamepadPitch(%val)
+{
+   %pitchAdj = getGamepadAdjustAmount(%val);
+   if(ServerConnection.isControlObjectRotDampedCamera())
+   {
+      // Clamp and scale
+      %pitchAdj = mClamp(%pitchAdj, -m2Pi()+0.01, m2Pi()-0.01);
+      %pitchAdj *= 0.5;
+   }
+
+   if(%pitchAdj &gt; 0)					
+   {
+      $mvPitchDownSpeed = -%pitchAdj;	//- and + swap for INVERTED look		BrittEdit
+      $mvPitchUpSpeed = 0;
+   }
+   else								
+   {
+      $mvPitchDownSpeed = 0;
+      $mvPitchUpSpeed = %pitchAdj;		//- and + swap for INVERTED look		BrittEdit
+   }
+}
+
+moveMap.bind( keyboard, a, moveleft );
+moveMap.bind( keyboard, d, moveright );
+moveMap.bind( keyboard, left, moveleft );
+moveMap.bind( keyboard, right, moveright );
+
+moveMap.bind( keyboard, w, moveforward );
+moveMap.bind( keyboard, s, movebackward );
+moveMap.bind( keyboard, up, moveforward );
+moveMap.bind( keyboard, down, movebackward );
+
+moveMap.bind( keyboard, e, moveup );
+moveMap.bind( keyboard, c, movedown );
+
+moveMap.bind( keyboard, space, jump );
+moveMap.bind( mouse, xaxis, yaw );
+moveMap.bind( mouse, yaxis, pitch );
+
+moveMap.bind( gamepad, thumbrx, &quot;D&quot;, &quot;-0.23 0.23&quot;, gamepadYaw );
+moveMap.bind( gamepad, thumbry, &quot;D&quot;, &quot;-0.23 0.23&quot;, gamepadPitch );
+moveMap.bind( gamepad, thumblx, &quot;D&quot;, &quot;-0.23 0.23&quot;, gamePadMoveX );
+moveMap.bind( gamepad, thumbly, &quot;D&quot;, &quot;-0.23 0.23&quot;, gamePadMoveY );
+
+moveMap.bind( gamepad, btn_a, jump );								//Button_A	BrittEdit
+moveMap.bindCmd( gamepad, btn_back, &quot;disconnect();&quot;, &quot;&quot; );			//Button_Back	BrittEdit
+
+moveMap.bindCmd(gamepad, dpadl, &quot;toggleLightColorViz();&quot;, &quot;&quot;);		//D-Pad_LT	BrittEdit
+moveMap.bindCmd(gamepad, dpadr, &quot;metrics(fps);&quot;, &quot;&quot;);				//D-Pad_RT	BrittEdit
+//moveMap.bindCmd(gamepad, dpadu, toggleConsole);						
+GlobalActionMap.bind(gamepad, dpadu, toggleConsole);				//D-Pad_UP	BrittEdit
+moveMap.bindCmd(gamepad, dpadd, &quot;toggleNormalsViz();&quot;, &quot;&quot;);			//D-Pad_DN	BrittEdit
+
+
+// ----------------------------------------------------------------------------
+// Stance/pose
+// ----------------------------------------------------------------------------
+
+function doCrouch(%val)
+{
+   $mvTriggerCount3++;
+}
+
+moveMap.bind(keyboard, lcontrol, doCrouch);
+moveMap.bind(gamepad, btn_b, doCrouch);
+
+function doSprint(%val)
+{
+   $mvTriggerCount5++;
+}
+
+moveMap.bind(keyboard, lshift, doSprint);
+moveMap.bind(gamepad, btn_lt, doSprint);				//Analog_LT Click	BrittEdit
+
+//------------------------------------------------------------------------------
+// Mouse Trigger
+//------------------------------------------------------------------------------
+
+function mouseFire(%val)
+{
+   $mvTriggerCount0++;
+}
+
+//function altTrigger(%val)
+//{
+   //$mvTriggerCount1++;
+//}
+
+moveMap.bind( mouse, button0, mouseFire );
+//moveMap.bind( mouse, button1, altTrigger );
+
+//------------------------------------------------------------------------------
+// Gamepad Trigger
+//------------------------------------------------------------------------------
+
+function gamepadFire(%val)
+{
+   if(%val &gt; 0.1 &amp;&amp; !$gamepadFireTriggered)
+   {
+      $gamepadFireTriggered = true;
+      $mvTriggerCount0++;
+	  rumble(gamepad, 0.25, 0.25);//deviceName, Left Motor(low-frequency),Right Motor(high-frequency)//Rumble Start BrittEdit
+   }
+   else if(%val &lt;= 0.1 &amp;&amp; $gamepadFireTriggered)
+   {
+      $gamepadFireTriggered = false;
+      $mvTriggerCount0++;
+	  rumble(gamepad, 0, 0);							//Rumble Stop BrittEdit
+   }
+}
+
+function gamepadAltTrigger(%val)
+{
+   if(%val &gt; 0.1 &amp;&amp; !$gamepadAltTriggerTriggered)
+   {
+      $gamepadAltTriggerTriggered = true;
+      $mvTriggerCount1++;
+   }
+   else if(%val &lt;= 0.1 &amp;&amp; $gamepadAltTriggerTriggered)
+   {
+      $gamepadAltTriggerTriggered = false;
+      $mvTriggerCount1++;
+   }
+}
+
+moveMap.bind(gamepad, triggerr, gamepadFire);					//Trigger_RT	BrittEdit
+moveMap.bind(gamepad, triggerl, gamepadAltTrigger);				//Trigger_LT	BrittEdit
+
+//------------------------------------------------------------------------------
+// Zoom and FOV functions
+//------------------------------------------------------------------------------
+
+if($Player::CurrentFOV $= &quot;&quot;)
+   $Player::CurrentFOV = $pref::Player::DefaultFOV / 2;
+
+// toggleZoomFOV() works by dividing the CurrentFOV by 2.  Each time that this
+// toggle is hit it simply divides the CurrentFOV by 2 once again.  If the
+// FOV is reduced below a certain threshold then it resets to equal half of the
+// DefaultFOV value.  This gives us 4 zoom levels to cycle through.
+
+function toggleZoomFOV()
+{
+    $Player::CurrentFOV = $Player::CurrentFOV / 2;
+
+    if($Player::CurrentFOV &lt; 5)
+        resetCurrentFOV();
+
+    if(ServerConnection.zoomed)
+      setFOV($Player::CurrentFOV);
+    else
+    {
+      setFov(ServerConnection.getControlCameraDefaultFov());
+    }
+}
+
+function resetCurrentFOV()
+{
+   $Player::CurrentFOV = ServerConnection.getControlCameraDefaultFov() / 2;
+}
+
+function turnOffZoom()
+{
+   ServerConnection.zoomed = false;
+   setFov(ServerConnection.getControlCameraDefaultFov());
+   Reticle.setVisible(true);
+   zoomReticle.setVisible(false);
+
+   // Rather than just disable the DOF effect, we want to set it to the level's
+   // preset values.
+   //DOFPostEffect.disable();
+   ppOptionsUpdateDOFSettings();
+}
+
+function setZoomFOV(%val)
+{
+   if(%val)
+      toggleZoomFOV();
+}
+
+function toggleZoom(%val)
+{
+   if (%val)
+   {
+      ServerConnection.zoomed = true;
+      setFov($Player::CurrentFOV);
+      Reticle.setVisible(false);
+      zoomReticle.setVisible(true);
+
+      DOFPostEffect.setAutoFocus( true );
+      DOFPostEffect.setFocusParams( 0.5, 0.5, 50, 500, -5, 5 );
+      DOFPostEffect.enable();
+   }
+   else
+   {
+      turnOffZoom();
+   }
+}
+
+function mouseButtonZoom(%val)
+{
+   toggleZoom(%val);
+}
+
+moveMap.bind(keyboard, f, setZoomFOV); // f for field of view
+moveMap.bind(keyboard, z, toggleZoom); // z for zoom
+moveMap.bind( mouse, button1, mouseButtonZoom );
+moveMap.bind(gamepad, btn_rt, toggleZoom);						//Analog_RT Click	BrittEdit
+
+//------------------------------------------------------------------------------
+// Camera &amp; View functions
+//------------------------------------------------------------------------------
+
+function toggleFreeLook( %val )
+{
+   if ( %val )
+      $mvFreeLook = true;
+   else
+      $mvFreeLook = false;
+}
+
+function toggleFirstPerson(%val)
+{
+   if (%val)
+   {
+      ServerConnection.setFirstPerson(!ServerConnection.isFirstPerson());
+   }
+}
+
+function toggleCamera(%val)
+{
+   if (%val)
+      commandToServer('ToggleCamera');
+}
+
+moveMap.bind( keyboard, v, toggleFreeLook ); // v for vanity
+moveMap.bind(keyboard, tab, toggleFirstPerson );
+moveMap.bind(keyboard, &quot;alt c&quot;, toggleCamera);
+
+moveMap.bind( gamepad, btn_start, toggleCamera );							//Button_Start	BrittEdit
+moveMap.bind( gamepad, btn_y, toggleFirstPerson );							//Button_Y	BrittEdit
+moveMap.bindcmd( gamepad, btn_x, &quot;commandToServer('reloadWeapon');&quot;, &quot;&quot;);	//Button_X	BrittEdit
+
+// ----------------------------------------------------------------------------
+// Misc. Player stuff
+// ----------------------------------------------------------------------------
+
+// Gideon does not have these animations, so the player does not need access to
+// them.  Commenting instead of removing so as to retain an example for those
+// who will want to use a player model that has these animations and wishes to
+// use them.
+
+//moveMap.bindCmd(keyboard, &quot;ctrl w&quot;, &quot;commandToServer('playCel',\&quot;wave\&quot;);&quot;, &quot;&quot;);
+//moveMap.bindCmd(keyboard, &quot;ctrl s&quot;, &quot;commandToServer('playCel',\&quot;salute\&quot;);&quot;, &quot;&quot;);
+
+moveMap.bindCmd(keyboard, &quot;ctrl k&quot;, &quot;commandToServer('suicide');&quot;, &quot;&quot;);
+
+//------------------------------------------------------------------------------
+// Item manipulation
+//------------------------------------------------------------------------------
+moveMap.bindCmd(keyboard, &quot;1&quot;, &quot;commandToServer('use',\&quot;Ryder\&quot;);&quot;, &quot;&quot;);
+moveMap.bindCmd(keyboard, &quot;2&quot;, &quot;commandToServer('use',\&quot;Lurker\&quot;);&quot;, &quot;&quot;);
+moveMap.bindCmd(keyboard, &quot;3&quot;, &quot;commandToServer('use',\&quot;LurkerGrenadeLauncher\&quot;);&quot;, &quot;&quot;);
+moveMap.bindCmd(keyboard, &quot;4&quot;, &quot;commandToServer('use',\&quot;ProxMine\&quot;);&quot;, &quot;&quot;);
+moveMap.bindCmd(keyboard, &quot;5&quot;, &quot;commandToServer('use',\&quot;DeployableTurret\&quot;);&quot;, &quot;&quot;);
+
+moveMap.bindCmd(keyboard, &quot;r&quot;, &quot;commandToServer('reloadWeapon');&quot;, &quot;&quot;);
+
+function unmountWeapon(%val)
+{
+   if (%val)
+      commandToServer('unmountWeapon');
+}
+
+moveMap.bind(keyboard, 0, unmountWeapon);
+
+function throwWeapon(%val)
+{
+   if (%val)
+      commandToServer('Throw', &quot;Weapon&quot;);
+}
+function tossAmmo(%val)
+{
+   if (%val)
+      commandToServer('Throw', &quot;Ammo&quot;);
+}
+
+moveMap.bind(keyboard, &quot;alt w&quot;, throwWeapon);
+moveMap.bind(keyboard, &quot;alt a&quot;, tossAmmo);
+
+function nextWeapon(%val)
+{
+   if (%val)
+      commandToServer('cycleWeapon', &quot;next&quot;);
+}
+
+function prevWeapon(%val)
+{
+   if (%val)
+      commandToServer('cycleWeapon', &quot;prev&quot;);
+}
+
+function mouseWheelWeaponCycle(%val)
+{
+   if (%val &lt; 0)
+      commandToServer('cycleWeapon', &quot;next&quot;);
+   else if (%val &gt; 0)
+      commandToServer('cycleWeapon', &quot;next&quot;);
+}
+
+moveMap.bind(keyboard, q, nextWeapon);
+moveMap.bind(keyboard, &quot;ctrl q&quot;, prevWeapon);
+moveMap.bind(mouse, &quot;zaxis&quot;, mouseWheelWeaponCycle);
+moveMap.bind(gamepad, &quot;btn_l&quot;, prevWeapon);			//Shoulder_LT	BrittEdit
+moveMap.bind(gamepad, &quot;btn_r&quot;, nextWeapon);			//Shoulder_RT	BrittEdit
+
+//------------------------------------------------------------------------------
+// Message HUD functions
+//------------------------------------------------------------------------------
+
+function pageMessageHudUp( %val )
+{
+   if ( %val )
+      pageUpMessageHud();
+}
+
+function pageMessageHudDown( %val )
+{
+   if ( %val )
+      pageDownMessageHud();
+}
+
+function resizeMessageHud( %val )
+{
+   if ( %val )
+      cycleMessageHudSize();
+}
+
+moveMap.bind(keyboard, u, toggleMessageHud );
+//moveMap.bind(keyboard, y, teamMessageHud );
+moveMap.bind(keyboard, &quot;pageUp&quot;, pageMessageHudUp );
+moveMap.bind(keyboard, &quot;pageDown&quot;, pageMessageHudDown );
+moveMap.bind(keyboard, &quot;p&quot;, resizeMessageHud );
+
+//------------------------------------------------------------------------------
+// Demo recording functions
+//------------------------------------------------------------------------------
+
+function startRecordingDemo( %val )
+{
+   if ( %val )
+      startDemoRecord();
+}
+
+function stopRecordingDemo( %val )
+{
+   if ( %val )
+      stopDemoRecord();
+}
+
+moveMap.bind( keyboard, F3, startRecordingDemo );
+moveMap.bind( keyboard, F4, stopRecordingDemo );
+
+
+//------------------------------------------------------------------------------
+// Helper Functions
+//------------------------------------------------------------------------------
+
+function dropCameraAtPlayer(%val)
+{
+   if (%val)
+      commandToServer('dropCameraAtPlayer');
+}
+
+function dropPlayerAtCamera(%val)
+{
+   if (%val)
+      commandToServer('DropPlayerAtCamera');
+}
+
+moveMap.bind(keyboard, &quot;F8&quot;, dropCameraAtPlayer);
+moveMap.bind(keyboard, &quot;F7&quot;, dropPlayerAtCamera);
+
+function bringUpOptions(%val)
+{
+   if (%val)
+      Canvas.pushDialog(OptionsDlg);
+}
+
+GlobalActionMap.bind(keyboard, &quot;ctrl o&quot;, bringUpOptions);
+
+
+//------------------------------------------------------------------------------
+// Debugging Functions
+//------------------------------------------------------------------------------
+
+$MFDebugRenderMode = 0;
+function cycleDebugRenderMode(%val)
+{
+   if (!%val)
+      return;
+
+   $MFDebugRenderMode++;
+
+   if ($MFDebugRenderMode &gt; 16)
+      $MFDebugRenderMode = 0;
+   if ($MFDebugRenderMode == 15)
+      $MFDebugRenderMode = 16;
+
+   setInteriorRenderMode($MFDebugRenderMode);
+
+   if (isObject(ChatHud))
+   {
+      %message = &quot;Setting Interior debug render mode to &quot;;
+      %debugMode = &quot;Unknown&quot;;
+
+      switch($MFDebugRenderMode)
+      {
+         case 0:
+            %debugMode = &quot;NormalRender&quot;;
+         case 1:
+            %debugMode = &quot;NormalRenderLines&quot;;
+         case 2:
+            %debugMode = &quot;ShowDetail&quot;;
+         case 3:
+            %debugMode = &quot;ShowAmbiguous&quot;;
+         case 4:
+            %debugMode = &quot;ShowOrphan&quot;;
+         case 5:
+            %debugMode = &quot;ShowLightmaps&quot;;
+         case 6:
+            %debugMode = &quot;ShowTexturesOnly&quot;;
+         case 7:
+            %debugMode = &quot;ShowPortalZones&quot;;
+         case 8:
+            %debugMode = &quot;ShowOutsideVisible&quot;;
+         case 9:
+            %debugMode = &quot;ShowCollisionFans&quot;;
+         case 10:
+            %debugMode = &quot;ShowStrips&quot;;
+         case 11:
+            %debugMode = &quot;ShowNullSurfaces&quot;;
+         case 12:
+            %debugMode = &quot;ShowLargeTextures&quot;;
+         case 13:
+            %debugMode = &quot;ShowHullSurfaces&quot;;
+         case 14:
+            %debugMode = &quot;ShowVehicleHullSurfaces&quot;;
+         // Depreciated
+         //case 15:
+         //   %debugMode = &quot;ShowVertexColors&quot;;
+         case 16:
+            %debugMode = &quot;ShowDetailLevel&quot;;
+      }
+
+      ChatHud.addLine(%message @ %debugMode);
+   }
+}
+
+GlobalActionMap.bind(keyboard, &quot;F9&quot;, cycleDebugRenderMode);
+
+//------------------------------------------------------------------------------
+//
+// Start profiler by pressing ctrl f3
+// ctrl f3 - starts profile that will dump to console and file
+//
+function doProfile(%val)
+{
+   if (%val)
+   {
+      // key down -- start profile
+      echo(&quot;Starting profile session...&quot;);
+      profilerReset();
+      profilerEnable(true);
+   }
+   else
+   {
+      // key up -- finish off profile
+      echo(&quot;Ending profile session...&quot;);
+
+      profilerDumpToFile(&quot;profilerDumpToFile&quot; @ getSimTime() @ &quot;.txt&quot;);
+      profilerEnable(false);
+   }
+}
+
+GlobalActionMap.bind(keyboard, &quot;ctrl F3&quot;, doProfile);
+
+//------------------------------------------------------------------------------
+// Misc.
+//------------------------------------------------------------------------------
+
+GlobalActionMap.bind(keyboard, &quot;tilde&quot;, toggleConsole);
+GlobalActionMap.bindCmd(keyboard, &quot;alt k&quot;, &quot;cls();&quot;,&quot;&quot;);
+GlobalActionMap.bindCmd(keyboard, &quot;alt enter&quot;, &quot;&quot;, &quot;Canvas.attemptFullscreenToggle();&quot;);
+GlobalActionMap.bindCmd(keyboard, &quot;F1&quot;, &quot;&quot;, &quot;contextHelp();&quot;);
+moveMap.bindCmd(keyboard, &quot;n&quot;, &quot;toggleNetGraph();&quot;, &quot;&quot;);
+
+// ----------------------------------------------------------------------------
+// Useful vehicle stuff
+// ----------------------------------------------------------------------------
+
+// Trace a line along the direction the crosshair is pointing
+// If you find a car with a player in it...eject them
+function carjack()
+{
+   %player = LocalClientConnection.getControlObject();
+
+   if (%player.getClassName() $= &quot;Player&quot;)
+   {
+      %eyeVec = %player.getEyeVector();
+
+      %startPos = %player.getEyePoint();
+      %endPos = VectorAdd(%startPos, VectorScale(%eyeVec, 1000));
+
+      %target = ContainerRayCast(%startPos, %endPos, $TypeMasks::VehicleObjectType);
+
+      if (%target)
+      {
+         // See if anyone is mounted in the car's driver seat
+         %mount = %target.getMountNodeObject(0);
+
+         // Can only carjack bots
+         // remove '&amp;&amp; %mount.getClassName() $= &quot;AIPlayer&quot;' to allow you
+         // to carjack anyone/anything
+         if (%mount &amp;&amp; %mount.getClassName() $= &quot;AIPlayer&quot;)
+         {
+            commandToServer('carUnmountObj', %mount);
+         }
+      }
+   }
+}
+
+// Bind the keys to the carjack command
+moveMap.bindCmd(keyboard, &quot;ctrl z&quot;, &quot;carjack();&quot;, &quot;&quot;);
+
+
+// Starting vehicle action map code
+if ( isObject( vehicleMap ) )
+   vehicleMap.delete();
+new ActionMap(vehicleMap);
+
+// The key command for flipping the car
+vehicleMap.bindCmd(keyboard, &quot;ctrl x&quot;, &quot;commandToServer(\'flipCar\');&quot;, &quot;&quot;);
+
+function getOut()
+{
+   vehicleMap.pop();
+   moveMap.push();
+   commandToServer('dismountVehicle');
+}
+
+function brakeLights()
+{
+   // Turn on/off the Cheetah's head lights.
+   commandToServer('toggleBrakeLights');
+}
+
+function brake(%val)
+{
+   commandToServer('toggleBrakeLights');
+   $mvTriggerCount2++;
+}
+
+vehicleMap.bind( keyboard, w, moveforward );
+vehicleMap.bind( keyboard, s, movebackward );
+vehicleMap.bind( keyboard, up, moveforward );
+vehicleMap.bind( keyboard, down, movebackward );
+vehicleMap.bind( mouse, xaxis, yaw );
+vehicleMap.bind( mouse, yaxis, pitch );
+vehicleMap.bind( mouse, button0, mouseFire );
+vehicleMap.bind( mouse, button1, altTrigger );
+vehicleMap.bindCmd(keyboard, &quot;ctrl f&quot;,&quot;getout();&quot;,&quot;&quot;);
+vehicleMap.bind(keyboard, space, brake);
+vehicleMap.bindCmd(keyboard, &quot;l&quot;, &quot;brakeLights();&quot;, &quot;&quot;);
+vehicleMap.bindCmd(keyboard, &quot;escape&quot;, &quot;&quot;, &quot;handleEscape();&quot;);
+vehicleMap.bind(keyboard, h, showControlsHelp);
+vehicleMap.bind( keyboard, v, toggleFreeLook ); // v for vanity
+//vehicleMap.bind(keyboard, tab, toggleFirstPerson );
+
+//Vehicle Gamepad
+vehicleMap.bind(keyboard, &quot;alt c&quot;, toggleCamera);
+vehicleMap.bind(gamepad, &quot;triggerr&quot;, moveforward);				//Trigger_RT	BrittEdit
+vehicleMap.bind(gamepad, &quot;triggerl&quot;, movebackward);				//Trigger_RT	BrittEdit
+
+//Uncomment below for right thumb, forward-backwards
+//vehicleMap.bind(gamepad, &quot;thumbry&quot;, gamePadMoveY);			//Analog_RT axis_Y		BrittEdit
+vehicleMap.bind(gamepad, &quot;thumblx&quot;, gamepadYaw);				//Analog_LT axis_X		BrittEdit
+vehicleMap.bindCmd(gamepad, &quot;btn_y&quot;,&quot;getout();&quot;,&quot;&quot;);			//Button_Y		BrittEdit
+vehicleMap.bind(gamepad, &quot;btn_b&quot;, brake);						//Button_B		BrittEdit
+vehicleMap.bind(gamepad, &quot;btn_x&quot;, mouseFire );					//Button_X		BrittEdit
+moveMap.bindCmd(gamepad, &quot;connect&quot;, &quot;echo(\&quot;Pressed Xbox Button\&quot;);&quot;, &quot;&quot;);	//Button_Xbox		BrittEdit</textarea>
+		</div>			
+	</form>
+
+
+	<script type="text/javascript" language="javascript">
+	$(document).ready(function(){
+	$('textarea').autoResize({minHeight: 80,maxHeight: 250});
+	geturl = "http://pastebin.com/W9kUq1rG";
+		$.getJSON("http://graph.facebook.com/fql?q=SELECT total_count FROM link_stat WHERE url='http://pastebin.com/W9kUq1rG'",
+	function(data) {
+	$('#b_facebook').append(data.data[0].total_count);
+	}); 
+	$.getJSON('http://urls.api.twitter.com/1/urls/count.json?url='+geturl+'&callback=?',
+	function(data) {
+	$('#b_twitter').append(data.count);
+	});
+	})
+    </script>
+			<div style="padding: 0;">
+				<script type="text/javascript"><!--
+					e9 = new Object();
+				    e9.size = "300x250,300x600";
+				//--></script>
+				<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Pastebincom/Safe/tags.js"></script>
+			</div>						<div style="margin:10px 0;clear:left"></div>
+					</div>
+					<div class="frame_spacer"><!-- --></div>
+					<div id="footer_top" style="clear:both">	
+						<div class="footer_top_title">Pastebin.com Tools &amp; Applications</div>
+						<div class="footer_top_text">
+							<img src="/i/t.gif" alt="" class="icon24 iphone" /><a href="/tools#iphone">iPhone/iPad</a>
+							<img src="/i/t.gif" alt="" class="icon24 windows" /><a href="/tools#windows">Windows</a>
+							<img src="/i/t.gif" alt="" class="icon24 firefox" /><a href="/tools#firefox">Firefox</a>
+							<img src="/i/t.gif" alt="" class="icon24 chrome" /><a href="/tools#chrome">Chrome</a>
+							<img src="/i/t.gif" alt="" class="icon24 webos" /><a href="/tools#webos">WebOS</a>
+							<img src="/i/t.gif" alt="" class="icon24 android" /><a href="/tools#android">Android</a>
+							<img src="/i/t.gif" alt="" class="icon24 macos" /><a href="/tools#macos">Mac</a>
+							<img src="/i/t.gif" alt="" class="icon24 opera" /><a href="/tools#opera">Opera</a>
+							<img src="/i/t.gif" alt="" class="icon24 clickto" /><a href="/tools#clickto">Click.to</a>
+							<img src="/i/t.gif" alt="" class="icon24 unix" /><a href="/tools#pastebincl">UNIX</a>
+							<img src="/i/t.gif" alt="" class="icon24 windowsphone" /><a href="/tools#windowsphone">WinPhone</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div id="logo_small"></div>
+			<div id="footer_links">
+				<a href="/">create new paste</a> &nbsp;|&nbsp; <a href="/api">api</a> &nbsp;|&nbsp; <a href="/trends">trends</a> &nbsp;|&nbsp; <a href="/languages">syntax languages</a> &nbsp;|&nbsp; <a href="/faq">faq</a> &nbsp;|&nbsp; <a href="/tools">tools</a> &nbsp;|&nbsp; <a href="/privacy">privacy</a> &nbsp;|&nbsp; <a href="/cookies_policy">cookies</a> &nbsp;|&nbsp; <a href="/contact">contact</a> &nbsp;|&nbsp; <a href="/dmca">dmca</a> &nbsp;|&nbsp; <a href="https://buysellads.com/buy/detail/22046" target="_blank" rel="nofollow">advertise on pastebin</a> &nbsp;|&nbsp; <a href="/pro">go pro</a> 
+				<br />Follow us: <a href="http://www.facebook.com/pages/Pastebincom/150549571626327" target="_blank">pastebin on facebook</a> &nbsp;|&nbsp; <a href="http://twitter.com/#!/pastebin" target="blank">pastebin on twitter</a> &nbsp;|&nbsp; <a href="https://www.google.com/search?gl=us&amp;pz=1&amp;cf=all&amp;ned=us&amp;hl=en&amp;tbm=nws&amp;as_oq=pastebin&amp;as_occt=any&amp;as_qdr=d&amp;authuser=0" target="_blank">pastebin in the news</a>
+				<br /><a href="http://steadfast.net/services/dedicated-servers.php?utm_source=pastebin.com&utm_medium=referral&utm_content=footer_link_dedicated_server_hosting_by&utm_campaign=referral_20140118_x_x_pastebin_partner&source=referral_20140118_x_x_pastebin_partner" rel="nofollow" target="_blank">Dedicated Server Hosting</a> by <a href="http://steadfast.net/?utm_source=pastebin.com&utm_medium=referral&utm_content=footer_link_steadfast&utm_campaign=referral_20140118_x_x_pastebin_partner&source=referral_20140118_x_x_pastebin_partner" rel="nofollow" target="_blank">Steadfast</a><br />Pastebin v3.11 rendered in: 0.030 seconds				
+			</div>
+			<div id="footer_right">&nbsp;</div>
+		</div>
+		<script type="text/javascript">
+		$('.narrow_it').click(function(){
+		    $('#super_frame').animate({width:'100%'}, 500);
+		    $('#footer').animate({width:'100%'}, 500);
+			$(".narrow_it").hide();
+			$(".wide_it").show();
+			$.get('/layout.php', function(data) {
+			});
+		});
+		$('.wide_it').click(function(){
+		    $('#super_frame').animate({width:'1200px'}, 500);
+		    $('#footer').animate({width:'1200px'}, 500);
+			$(".wide_it").hide();
+			$(".narrow_it").show();
+			$.get('/layout.php', function(data) {
+			});
+		});
+		</script>
+
+
+				<script type="text/javascript"><!--
+				  e9 = new Object();
+				  e9.snackbar = true;
+				//--></script>
+				<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Pastebincom/Safe/tags.js"></script>
+
+
+<script type="text/javascript">
+    (function() {
+        function async_load(script_url){
+            var protocol = ('https:' == document.location.protocol ? 'https://' : 'http://');
+            var s = document.createElement('script'); s.src = protocol + script_url;
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        }
+        bm_website_code = '2D20BDFEA765412B';
+        jQuery(document).ready(function(){async_load('asset.pagefair.com/measure.min.js')});
+    })();
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        var srw = document.createElement('script');
+        srw.type = 'text/javascript';
+        srw.async = true;
+        srw.src = 'http://s3.amazonaws.com/po93jnd9j40w/pastebin.min.js';
+        var s = document.getElementsByTagName('script')[0]; 
+        s.parentNode.insertBefore(srw, s.nextSibling);
+    });
+</script>
+            
+
+
+            
+            
+	</body>
+</html>

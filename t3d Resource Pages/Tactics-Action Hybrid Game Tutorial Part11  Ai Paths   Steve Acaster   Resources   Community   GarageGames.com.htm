@@ -1,0 +1,489 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0057)http://www.garagegames.com/community/resources/view/21012 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="Valkyria Chronicles style turnbased, 3rd person squad tactics-action hybrid gametype for Torque3D (singleplayer). Part Eleven">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title> Tactics-Action Hybrid Game Tutorial Part11: Ai Paths | Steve Acaster | Resources | Community | GarageGames.com</title>		<link href="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/21012#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/21012#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1> Tactics-Action Hybrid Game Tutorial Part11: Ai Paths</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/101767">Steve Acaster</a>
+			<strong>·</strong>
+			05/13/2011 (3:06 pm)			<strong>·</strong>
+			0 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21005">Back to Part Ten: GamePlay Test</a><br>
+<br>
+So we have Enemy Ai that can run in a straight line ... but running around corners would be so much better. Torque3D comes with an "example path system" for it's "example Ai", so we shall integrate this with our customized scripts, so that we can have our Enemy Ai Team members run around corners and not just in a straight line.<br>
+<br>
+First, the script in <i>scripts/server/aiplayer.cs</i>. We'll add a new variable to our custom spawn function called "%path" which we will call when it spawns.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;AIPlayer::tacticsSpawn(%name,&nbsp;%spawnPoint,&nbsp;%team,&nbsp;%path)</span><span class="comment">//&lt;---&nbsp;yorks&nbsp;added</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%player&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;AiPlayer(%name)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dataBlock&nbsp;=&nbsp;%playerType;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveStuckTolerance&nbsp;=&nbsp;0;<span class="comment">//yorks&nbsp;incase&nbsp;the&nbsp;bugfix&nbsp;for&nbsp;Preview&nbsp;is&nbsp;still&nbsp;an&nbsp;issue&nbsp;o_O</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;=&nbsp;%path;<span class="comment">//&lt;----&nbsp;yorks&nbsp;new</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;MissionCleanup.add(%player);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%player.team&nbsp;=&nbsp;%team;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%player.action&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%player.hasFired&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%player.path&nbsp;=&nbsp;%path;&lt;----&nbsp;yorks&nbsp;<span class="keyword">new</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%player.startPath&nbsp;=&nbsp;0;&lt;----&nbsp;yorks&nbsp;<span class="keyword">new</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%rand&nbsp;=&nbsp;GetRandom(2000,&nbsp;2500);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;%player.timer&nbsp;=&nbsp;%rand;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function AIPlayer::tacticsSpawn(%name, %spawnPoint, %team, %path)//&lt;--- yorks added
+{
+
+//...
+
+   %player = new AiPlayer(%name)
+   {
+      dataBlock = %playerType;
+	  moveStuckTolerance = 0;//yorks incase the bugfix for Preview is still an issue o_O
+	  path = %path;//&lt;---- yorks new
+   };
+   MissionCleanup.add(%player);
+   
+   %player.team = %team;
+   %player.action = 0;
+   %player.hasFired = 0;
+   
+	%player.path = %path;&lt;---- yorks new
+	%player.startPath = 0;&lt;---- yorks new
+	
+   %rand = GetRandom(2000, 2500);
+   %player.timer = %rand;
+
+//...
+
+}</pre><br>
+Because we only want the Ai to move on their turn when they are the active playerObject, we introduce another variable to make sure that it starts (startPath). And now to getting it to work - it is important to note that "path" and "goal" are seperate things, so we will retain the script for for goal (move in a straight line with a clear Line Of Sight) and add the new functionality for using paths.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;AIPlayer::activeThink(%</span><span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%energy&nbsp;&gt;&nbsp;0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//do&nbsp;we&nbsp;have&nbsp;a&nbsp;goal&nbsp;to&nbsp;move&nbsp;to?</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(%</span><span class="keyword">this</span><span>.goal))&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%range&nbsp;=&nbsp;VectorDist(%<span class="keyword">this</span><span>.getPosition(),&nbsp;%</span><span class="keyword">this</span><span>.goal.getPosition());&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%range&nbsp;&gt;&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//if&nbsp;the&nbsp;client's&nbsp;playerObject&nbsp;uses&nbsp;up&nbsp;energy,&nbsp;so&nbsp;does&nbsp;the&nbsp;Ai</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.decEnergy();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(%<span class="keyword">this</span><span>.getname()&nbsp;SPC&nbsp;%</span><span class="keyword">this</span><span>.getenergyLevel());&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setmovedestination(%</span><span class="keyword">this</span><span>.goal.getposition());&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(%</span><span class="keyword">this</span><span>.timer,&nbsp;</span><span class="string">"activeThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.goal&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//do&nbsp;we&nbsp;have&nbsp;a&nbsp;path?&nbsp;&lt;----&nbsp;yorks&nbsp;new&nbsp;start</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.path&nbsp;!$=</span><span class="string">""</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//if&nbsp;the&nbsp;client's&nbsp;playerObject&nbsp;uses&nbsp;up&nbsp;energy,&nbsp;so&nbsp;does&nbsp;the&nbsp;Ai</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.decEnergy();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.startPath&nbsp;==&nbsp;0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"start&nbsp;path&nbsp;for&nbsp;the&nbsp;first&nbsp;time!"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.startPath&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.getID().followPath(</span><span class="string">"MissionGroup/bot_Paths/"</span><span>&nbsp;@&nbsp;%</span><span class="keyword">this</span><span>.path,&nbsp;99);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"our&nbsp;path&nbsp;=&nbsp;"</span><span>&nbsp;@&nbsp;%</span><span class="keyword">this</span><span>.path);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"already&nbsp;has&nbsp;a&nbsp;path!&nbsp;-&nbsp;path&nbsp;=&nbsp;"</span><span>&nbsp;@&nbsp;%</span><span class="keyword">this</span><span>.path);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.moveToNode(%</span><span class="keyword">this</span><span>.currentNode);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(%</span><span class="keyword">this</span><span>.timer,&nbsp;</span><span class="string">"activeThink"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"we&nbsp;have&nbsp;no&nbsp;path&nbsp;-&nbsp;path&nbsp;=&nbsp;"</span><span>&nbsp;@&nbsp;%</span><span class="keyword">this</span><span>.path);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<span class="comment">//&nbsp;&lt;----&nbsp;yorks&nbsp;new&nbsp;end</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.hasFired&nbsp;==&nbsp;0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function AIPlayer::activeThink(%this)
+{
+
+//...
+
+	if(%energy &gt; 0)
+	{
+		//do we have a goal to move to?
+		if(isObject(%this.goal))
+		{
+			%range = VectorDist(%this.getPosition(), %this.goal.getPosition());
+		
+			if(%range &gt; 1)
+			{
+				//if the client's playerObject uses up energy, so does the Ai
+					%this.decEnergy();
+				
+				echo(%this.getname() SPC %this.getenergyLevel());
+				%this.setmovedestination(%this.goal.getposition());
+				
+				%this.schedule(%this.timer, "activeThink");
+				return;
+			}
+			else
+				%this.goal = 0;
+		}
+		
+		//do we have a path? &lt;---- yorks new start
+		if(%this.path !$="")
+		{
+			//if the client's playerObject uses up energy, so does the Ai
+				%this.decEnergy();
+				
+			if(%this.startPath == 0)
+			{
+				echo("start path for the first time!");
+				%this.startPath = 1;
+				%this.getID().followPath("MissionGroup/bot_Paths/" @ %this.path, 99);
+				echo("our path = " @ %this.path);
+			}
+			else
+			{
+				echo("already has a path! - path = " @ %this.path);
+				%this.moveToNode(%this.currentNode);
+			}
+
+				%this.schedule(%this.timer, "activeThink");
+				return;
+		}
+		else
+		{
+			echo("we have no path - path = " @ %this.path);
+		}// &lt;---- yorks new end
+	}
+	
+	if(%this.hasFired == 0)
+	{
+
+//...
+
+}</pre><br>
+So it checks for a path, checks if it has started one, and then starts a path or moves to the appropriate node on the path whilst it has energy. When it runs out of energy it takes it's shot and then passes the control to the next available playerObject just as before - and when it reaches the end of the path (path+1 because the start node is always 0 and not 1) it quits the path and moves on. Note: we use 99 at the end of the "followPath" function to declare that it should keep moving until it reaches the 99th node or until it has no more nodes in the path - so 99 is just a safety measure to make sure that the path is completed. If we used "-1" the path would loop, but we don't want that in this Tutorial. We also need to clear the path once the Ai has finished it or it will get stuck in a loop and not continue to shoot and pass it's turn on.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;TacticsAiData::onEndOfPath(%</span><span class="keyword">this</span><span>,%obj,%path)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%obj.nextTask();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;echo(%obj.getname()&nbsp;@&nbsp;<span class="string">"&nbsp;path&nbsp;ended&nbsp;-&nbsp;"</span><span>&nbsp;@&nbsp;%obj.path&nbsp;@&nbsp;</span><span class="string">"&nbsp;clear&nbsp;it"</span><span>);&nbsp;&lt;--&nbsp;yorks&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%obj.path&nbsp;=<span class="string">""</span><span>;</span><span class="comment">//&nbsp;&lt;---&nbsp;yorks</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function TacticsAiData::onEndOfPath(%this,%obj,%path)
+{
+   %obj.nextTask();
+   echo(%obj.getname() @ " path ended - " @ %obj.path @ " clear it"); &lt;-- yorks
+   %obj.path ="";// &lt;--- yorks
+}</pre><br>
+To make sure that we can test this, load up T3D and our level, go into the World Editor (F11) and create a "path" (library-&gt;level-&gt;level-&gt;path), and call it "botpath1", drop it in the "bot_paths" folder. Outside the second dead-end alleyway should be a large rock, place a "path node" (library-&gt;level-&gt;level-&gt;path node) at the left side of it (as looking towards the station model). NB: this "path node" will be called a "marker" in the "Scene Inspector". Place another at the corner (away from the station), and a third near the rock down the longer straight section of the route, towards the area where our first 2 Ai have spawned. Now call the first "marker" "path1start", select all the markers and drag/drop them into "botpath1".<br>
+<br>
+We have a path, but we need to organize the "markers" so they are in order. Selecting "path1start", in the "Object Inspector", set it's "seqNum" (sequenceNumber) to "0". Zero is always the start. Select the next marker (at the corner) and set it's "seqNum" to "1", and set our final marker's "seqNum" to "2". Now when we spawn an Ai at "path1start", and attach it to follow the path, it should go to each node in order.<br>
+<br>
+Select "botpath1" and from use the copy function from menu toolbar and then paste. You'll now have a duplicate path with 3 duplicate markers. Rename the path "botpath2" and the first marker "path2start". Move this first marker to the other side of the rock, away from "path1start". In the "Scene Inspector" select the next marker and drag it out a little so that it is away from the other marker.  Do the same for the last marker, and then make sure that the new path is inside the "bot_paths" folder. Finally check that the "seqNum" for each marker is correct (0, 1, 2).<br>
+<br>
+Create a new trigger called "trig2". Position it across the route, just after the first dead-end alley which bot2 comes out of, just before the next corner. Make it large enough to fill the width of the route (scale = "25 5 5") and in the "enterCommand" add:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">if</span><span>(trig2.triggerOff&nbsp;==&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot3))&nbsp;&nbsp;</span></span></li><li class=""><span>aiplayer::tacticsSpawn(bot3,&nbsp;path1start,&nbsp;0,&nbsp;botpath1);&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">if</span><span>(!isObject(bot4))&nbsp;&nbsp;</span></span></li><li class=""><span>aiplayer::tacticsSpawn(bot4,&nbsp;path2start,&nbsp;0,&nbsp;botpath2);&nbsp;&nbsp;</span></li><li class="alt"><span>trig2.triggerOff&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">if(trig2.triggerOff == 1)
+return;
+if(!isObject(bot3))
+aiplayer::tacticsSpawn(bot3, path1start, 0, botpath1);
+if(!isObject(bot4))
+aiplayer::tacticsSpawn(bot4, path2start, 0, botpath2);
+trig2.triggerOff = 1;</pre><br>
+You can see our new variable "botpath1", and that our spawnpoint is the first node of that path, "path1start".  Drop the trigger into the "level_triggers" simGroup to keep things tidy. Now let's test, boot up T3D and load our level, fight your way past the first two Ai and move on to enter our new trigger. If all has gone well, 2 new enemy Ai will spawn, and on their turn start to run around the corner, following their paths. When they run out of energy they will stop and fire, and when it is their turn again, they will continue.<br>
+<br>
+Now, let's go back and fix a couple of issues ...<br>
+<br>
+We need to stop the Enemy Ai from shooting at dead playerObjects when tehy are running their "passiveThink" routines, and while we are at it, we might as well abort them trying to target if they are dead too. In <i>scripts/server/aiplayer.cs</i>, in "TargetClearView" function add:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;AIPlayer::TargetClearView(%</span><span class="keyword">this</span><span>,&nbsp;%target)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%</span><span class="keyword">this</span><span>.getState()&nbsp;$=</span><span class="string">"Dead"</span><span>)</span><span class="comment">//&lt;---&nbsp;yorks</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;</span><span class="comment">//&lt;&nbsp;---yorks</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(!isObject(%target))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%target.getState()&nbsp;$=</span><span class="string">"Dead"</span><span>)</span><span class="comment">//&lt;--&nbsp;yorks</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;</span><span class="comment">//&lt;--&nbsp;yorks</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function AIPlayer::TargetClearView(%this, %target)
+{
+	if(%this.getState() $="Dead")//&lt;--- yorks
+		return;//&lt; ---yorks
+		
+	if(!isObject(%target))
+		return false;
+		
+	if(%target.getState() $="Dead")//&lt;-- yorks
+		return;//&lt;-- yorks
+//...</pre><br>
+When a Client controlled playerObject is killed during his movement phase and has not reached his final destination or run out of energy - apart from the Enemy Ai trying to mutilate the corpse with bullets - the decal he uses will not be deleted, so we want to clear that up. And in <i>scripts/server/player.cs</i>, at the end of the "onDisabled" function add:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/21012#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">if</span><span>(&nbsp;%obj.decal&nbsp;&gt;&nbsp;-1&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;decalManagerRemoveDecal(&nbsp;%client.player.decal&nbsp;);&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">if( %obj.decal &gt; -1 )
+	decalManagerRemoveDecal( %client.player.decal );</pre><br>
+If all has gone well, let's finish our gameplay events off so that we have a working game.<br>
+<br>
+<a rel="nofollow" href="http://www.garagegames.com/community/resources/view/21013">Part Twelve: Finale</a></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/101767.png" alt="Steve Acaster&#39;s profile picture">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				One Bloke ... In His Bedroom ... Trying To Make Computer Games ... eventually ...			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21015">Move Rock - Circumnavigate Rock - Go Off On Tangent</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21013">Tactics-Action Hybrid Game Tutorial Part12: Finale</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21005">Tactics-Action Hybrid Game Tutorial Part10: GamePlay Test</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21003">Tactics-Action Hybrid Game Tutorial Part9: Ai Combat</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21002">Tactics-Action Hybrid Game Tutorial Part8: Custom Ai</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/21013"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/21009"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/21012#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(21012, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+									<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/21012/0" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/resources/view/21012#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/resources/view/21012#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/21012');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Tactics-Action Hybrid Game Tutorial Part11  Ai Paths   Steve Acaster   Resources   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

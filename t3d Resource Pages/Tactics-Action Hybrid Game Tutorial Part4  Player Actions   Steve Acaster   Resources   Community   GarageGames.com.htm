@@ -1,0 +1,718 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0057)http://www.garagegames.com/community/resources/view/20998 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="Valkyria Chronicles style turnbased, 3rd person squad tactics-action hybrid gametype for Torque3D (singleplayer). Part Four">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Tactics-Action Hybrid Game Tutorial Part4: Player Actions | Steve Acaster | Resources | Community | GarageGames.com</title>		<link href="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/20998#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/20998#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Tactics-Action Hybrid Game Tutorial Part4: Player Actions</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/101767">Steve Acaster</a>
+			<strong>·</strong>
+			05/08/2011 (8:52 am)			<strong>·</strong>
+			1 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><a rel="nofollow" href="http://www.garagegames.com/community/resources/view/20997">Back to Part Three: Camera System</a><br>
+<br>
+Our playerObject needs to move and shoot.<br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/G_marker.png" alt="docs.garagegames.com/torque-3d/official/content/documentation/Scripting/Advanced/images/G_marker.png"><br>
+Remember this? Save it because we'll use it as a marker for movement. Place it in <i>art/decals</i>. If you want to know the ins-and-outs of creating a new decal in the editors I suggest you read the <a rel="nofollow" href="http://docs.garagegames.com/torque-3d/official/content/documentation/Scripting/Advanced/RTSPrototype.html#Destination_Markers" target="_blank">RtsPrototype Desintation Markers Section</a>. Here, I will just be dealing with the resulting data added manually to the correct files.<br>
+<br>
+Open <i>art/decals/materials.cs</i> and add:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>singleton&nbsp;Material(gg_marker)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;mapTo&nbsp;=&nbsp;<span class="string">"G_marker"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;diffuseMap[0]&nbsp;=&nbsp;<span class="string">"art/decals/G_marker.png"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;useAnisotropic[0]&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;emissive[0]&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;castShadows&nbsp;=&nbsp;<span class="string">"0"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;alphaTest&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;showFootprints&nbsp;=&nbsp;<span class="string">"0"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;materialTag0&nbsp;=&nbsp;<span class="string">"RoadAndPath"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">singleton Material(gg_marker)
+{
+   mapTo = "G_marker";
+   diffuseMap[0] = "art/decals/G_marker.png";
+   useAnisotropic[0] = "1";
+   emissive[0] = "1";
+   castShadows = "0";
+   alphaTest = "1";
+   showFootprints = "0";
+   materialTag0 = "RoadAndPath";
+};</pre><br>
+In <i>art/decals/managedDecalData.cs</i> add:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>datablock&nbsp;DecalData(GG_decal)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;Material&nbsp;=&nbsp;<span class="string">"gg_marker"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;textureCoordCount&nbsp;=&nbsp;<span class="string">"0"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;size&nbsp;=&nbsp;<span class="string">"2"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">datablock DecalData(GG_decal)
+{
+   Material = "gg_marker";
+   textureCoordCount = "0";
+   size = "2";
+};</pre><br>
+When we click on a location for the playerObject to move to, this marker will appear there, and thus give the Client a visual reference. Before we can make the player move, we need to differentiate between the player's available actions. As we are only using the mouse for all gameplay, we need to toggle between moving and shooting with the left mouse button. Remember, mouse right button is for swapping between rotating the camera and giving us a cursor to point and click in the scene (actually to point and click at a location on the PlayGui) and "scroll button" is for zooming in and out with the camera, so we only  left mouse button available for actions.<br>
+<br>
+To create this toggle, we will create some on-screen buttons using the T3D GUI Editor. Load up T3D, get in-game and start the GUI Editor (F10). Note that we will always be working with Gui Editor on size "1024x768 (XGA, 4:3)" so all positions will reflect that.<br>
+<br>
+First create a new "library-&gt;images-&gt;GuiBitmapBorderCtrl" to keep our buttons inside. Call it "<b>tacticsHud</b>" and give it horizSizing = "left" and vertSizing = "top". Give it the <i>control-&gt;Profile</i> = "chatHudBorderProfile" and check "isContainer". Give it the <i>position</i> = "800 720" and <i>extent</i> = "216 48".<br>
+<br>
+N.B. When resizing screen, to keep position the vert/horizSizing should be the OPPOSITE of their nearest edge. We want this gui element to be at the <b>bottom right</b> of the screen so we use "top left" for their vert/horizSizing.<br>
+<br>
+Next create a background (library-&gt;Images-&gt;BitmapGuiCtrl with bitmap "core/art/gui/images/hudfill.png") for this and make sure it is a child of "tacticsHUD". Position = "8 8", extent = "200 32", sizings are "width" and "height".<br>
+<br>
+Finally we need to make 3 buttons (library-&gt;buttons-&gt;GuibuttonCtrl) and call them "tacticsMove", "tacticsShoot" and "tacticsTeam" each with the profile = "GuiButtonProfile" (this profile should be auto assigned but always check). Make them all the same size ("64 32")), and position them at "8 8", "76 8" and "144 8" respectively. Set all sizing to "width" and "height". For "Move" and "Shoot" set <i>buttonType</i> = "toggleButton", leave "Team" as "pushButton".<br>
+<br>
+Save and save often.<br>
+<br>
+Hopefully it looks like the buttons in the lower right corner.<br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/TorqueTacticsTut1.jpg" width="400" height="212" alt="yorks.deta.in/TorqueTacticsTutorial/TorqueTacticsTut1.jpg"><br>
+<br>
+Exit T3D and open up <i>art/gui/playGui.gui</i> in your prefered IDE/script/text editor.<br>
+<br>
+Find the variable <i>noCusor = "1";</i> under <i>%guiContent = new GameTSCtrl(PlayGui) {</i> and change it to:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>noCusor&nbsp;=&nbsp;</span><span class="string">"0"</span><span>;&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">noCusor = "0";</pre>Now when we start a game we will have a cursor on screen to select which actions button we want, rather than starting in camera rotation mode.<br>
+<br>
+The Client (you) selects either "Move" (action 1) or "Shoot" (action 2).<br>
+The buttons are "toggleButtons" so when selected they show a "pushed-down" button image.<br>
+If you press "Move" down (setOn), "Shoot" button must be toggled up (setOff).<br>
+<br>
+There are three states of "action":<br>
+0 = no action selected<br>
+1 = Move<br>
+2 = Shoot<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;tacticsMove::onAction(%</span><span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//move&nbsp;has&nbsp;been&nbsp;pressed</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//if&nbsp;move's&nbsp;pressed&nbsp;variable&nbsp;is&nbsp;not&nbsp;active,&nbsp;make&nbsp;it&nbsp;so&nbsp;now&nbsp;-&gt;SetActionMove</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//if&nbsp;shoot&nbsp;is&nbsp;on,&nbsp;turn&nbsp;it&nbsp;off</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//if&nbsp;move&nbsp;is&nbsp;already&nbsp;pressed&nbsp;the&nbsp;client&nbsp;must&nbsp;be&nbsp;toggling&nbsp;it&nbsp;off&nbsp;by&nbsp;pressing&nbsp;it&nbsp;again&nbsp;-&gt;&nbsp;clearActions</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(tacticsMove.pressed&nbsp;==&nbsp;0)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsMove.pressed&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsShoot.setStateOn(<span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsShoot.pressed&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToServer(<span class="string">'SetActionMove'</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsMove.pressed&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToServer(<span class="string">'ClearActions'</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;tacticsShoot::onAction(%<span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//shoot&nbsp;has&nbsp;been&nbsp;pressed</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//if&nbsp;shoot's&nbsp;pressed&nbsp;variable&nbsp;is&nbsp;not&nbsp;active,&nbsp;make&nbsp;it&nbsp;so&nbsp;now&nbsp;-&gt;SetActionShoot</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//if&nbsp;move&nbsp;is&nbsp;on,&nbsp;turn&nbsp;it&nbsp;off</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//if&nbsp;shoot&nbsp;is&nbsp;already&nbsp;pressed&nbsp;the&nbsp;client&nbsp;must&nbsp;be&nbsp;toggling&nbsp;it&nbsp;off&nbsp;by&nbsp;pressing&nbsp;it&nbsp;again&nbsp;-&gt;&nbsp;clearActions</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(tacticsShoot.pressed&nbsp;==&nbsp;0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsShoot.pressed&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsMove.setStateOn(<span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsMove.pressed&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToServer(<span class="string">'SetActionShoot'</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsShoot.pressed&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commandToServer(<span class="string">'ClearActions'</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function tacticsMove::onAction(%this)
+{
+//move has been pressed
+//if move's pressed variable is not active, make it so now -&gt;SetActionMove
+//if shoot is on, turn it off
+//if move is already pressed the client must be toggling it off by pressing it again -&gt; clearActions
+
+	if(tacticsMove.pressed == 0)
+	{
+		tacticsMove.pressed = 1;
+		
+		tacticsShoot.setStateOn(false);
+		tacticsShoot.pressed = 0;
+		
+		commandToServer('SetActionMove');
+	}
+	else
+	{
+		tacticsMove.pressed = 0;
+		commandToServer('ClearActions');
+	}
+}
+
+function tacticsShoot::onAction(%this)
+{
+//shoot has been pressed
+//if shoot's pressed variable is not active, make it so now -&gt;SetActionShoot
+//if move is on, turn it off
+//if shoot is already pressed the client must be toggling it off by pressing it again -&gt; clearActions
+
+	if(tacticsShoot.pressed == 0)
+	{
+		tacticsShoot.pressed = 1;
+		
+		tacticsMove.setStateOn(false);
+		tacticsMove.pressed = 0;
+		
+		commandToServer('SetActionShoot');
+	}
+	else
+	{
+		tacticsShoot.pressed = 0;
+		commandToServer('ClearActions');
+	}
+}</pre><br>
+We reset the functions and variables at startup. "PlayGui" has it's standard system functions in the file <i>scripts/gui/playGui.cs</i>, so edit it. Whilst we can set the states of the toggleButtons on and off - we cannot read them in stock script, so we need a new variable to read whether the button is "pressed" or not.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;PlayGui::onWake(%</span><span class="keyword">this</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//yorks</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(TacticsHud))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TacticsHud.setVisible(<span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsMove.setStateOn(<span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsMove.pressed=0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsShoot.setStateOn(<span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tacticsShoot.pressed=0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(isObject(TurnHud))&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TurnHud.setVisible(<span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function PlayGui::onWake(%this)
+{
+//...
+
+	 //yorks
+	if(isObject(TacticsHud))
+	{
+		TacticsHud.setVisible(true);
+
+		tacticsMove.setStateOn(false);
+		tacticsMove.pressed=0;
+
+		tacticsShoot.setStateOn(false);
+		tacticsShoot.pressed=0;
+		
+	}
+		
+	if(isObject(TurnHud))
+		TurnHud.setVisible(true);
+}</pre><br>
+Each button sends a command to the server to go into the selected mode (setActionMove/Shoot), or if the mode is already inuse, to disable it and reset the actions to zero (clearActions). Let's make those server functions now. In <i>scripts/server/commands.cs</i> add:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;serverCmdSetActionMove(%client)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%client.player.action&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;serverCmdSetActionShoot(%client)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%client.player.action&nbsp;=&nbsp;2;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//if&nbsp;the&nbsp;playerObject&nbsp;is&nbsp;moving&nbsp;stop&nbsp;it&nbsp;and&nbsp;remove&nbsp;any&nbsp;destination&nbsp;marker</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%client.player.getVelocity()&nbsp;!$=</span><span class="string">"0&nbsp;0&nbsp;0"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(&nbsp;%client.player.decal&nbsp;&gt;&nbsp;-1&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalManagerRemoveDecal(&nbsp;%client.player.decal&nbsp;);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%client.player.stop();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>function&nbsp;serverCmdClearActions(%client)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%client.player.action&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//if&nbsp;the&nbsp;playerObject&nbsp;is&nbsp;moving&nbsp;stop&nbsp;it&nbsp;and&nbsp;remove&nbsp;any&nbsp;destination&nbsp;marker</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%client.player.getVelocity()&nbsp;!$=</span><span class="string">"0&nbsp;0&nbsp;0"</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(&nbsp;%client.player.decal&nbsp;&gt;&nbsp;-1&nbsp;)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalManagerRemoveDecal(&nbsp;%client.player.decal&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%client.player.stop();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function serverCmdSetActionMove(%client)
+{
+	%client.player.action = 1;
+}
+
+function serverCmdSetActionShoot(%client)
+{
+
+	%client.player.action = 2;
+
+//if the playerObject is moving stop it and remove any destination marker
+	
+	if(%client.player.getVelocity() !$="0 0 0")
+	{
+		if( %client.player.decal &gt; -1 )
+			decalManagerRemoveDecal( %client.player.decal );
+			
+		%client.player.stop();
+	}
+}
+
+function serverCmdClearActions(%client)
+{
+	%client.player.action = 0;
+
+//if the playerObject is moving stop it and remove any destination marker
+	
+	if(%client.player.getVelocity() !$="0 0 0")
+	{
+		if( %client.player.decal &gt; -1 )
+			decalManagerRemoveDecal( %client.player.decal );
+			
+		%client.player.stop();
+	}
+}</pre><br>
+Now you'll have noticed a reference to "decal" there, this is the GG_decal we made early and will be the marker that is shown as a destination when we select to move. Let's go back to <i>playGui.gui</i> and make the final function for pressing the left mouse button when we have selected to move or shoot.<br>
+<br>
+N.B. As this is a "singleplayer" gametype tutorial it is envisioned that the client playing the game will be on the same computer as the game, rather than being a remote Client on another machine connected via LAN/Interweb. For this reasoning we shall use <b>localClientConnection</b> to determine the Client rather than retrieving the appropriate ClientConnection via the server's <b>ClientGroup</b>.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;PlayGui::onMouseDown(%</span><span class="keyword">this</span><span>,&nbsp;%pos,&nbsp;%start,&nbsp;%ray)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//actions</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//0&nbsp;=&nbsp;no&nbsp;action</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//1&nbsp;=&nbsp;move&nbsp;action</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//2&nbsp;=&nbsp;shoot&nbsp;action</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Get&nbsp;access&nbsp;to&nbsp;the&nbsp;AI&nbsp;player&nbsp;we&nbsp;control</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%ai&nbsp;=&nbsp;LocalClientConnection.player;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//if&nbsp;they&nbsp;are&nbsp;already&nbsp;moving,&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//interrupt&nbsp;and&nbsp;stop&nbsp;them,&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//also&nbsp;remove&nbsp;any&nbsp;marker&nbsp;they&nbsp;may&nbsp;have</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//and&nbsp;abort&nbsp;this&nbsp;action&nbsp;sequence&nbsp;as&nbsp;the&nbsp;Client&nbsp;may&nbsp;want&nbsp;to&nbsp;give&nbsp;new&nbsp;orders</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%ai.getVelocity()&nbsp;!$=</span><span class="string">"0&nbsp;0&nbsp;0"</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(&nbsp;%ai.decal&nbsp;&gt;&nbsp;-1&nbsp;)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalManagerRemoveDecal(&nbsp;%ai.decal&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.stop();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"ai&nbsp;has&nbsp;action&nbsp;=&nbsp;"</span><span>&nbsp;@&nbsp;%ai.action);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%ai.action&nbsp;==&nbsp;0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//find&nbsp;end&nbsp;of&nbsp;search&nbsp;vector&nbsp;from&nbsp;the&nbsp;cursors&nbsp;point&nbsp;on&nbsp;screen</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;make&nbsp;it&nbsp;no&nbsp;more&nbsp;100&nbsp;units&nbsp;from&nbsp;the&nbsp;camera</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//anymore&nbsp;and&nbsp;have&nbsp;it&nbsp;miss</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%ray&nbsp;=&nbsp;VectorScale(%ray,&nbsp;100);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%end&nbsp;=&nbsp;VectorAdd(%start,&nbsp;%ray);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%ai.action&nbsp;==&nbsp;1)</span><span class="comment">//1&nbsp;is&nbsp;move</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//we&nbsp;can&nbsp;only&nbsp;move&nbsp;if&nbsp;we&nbsp;have&nbsp;energy!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%ai.getEnergyLevel()&nbsp;&lt;&nbsp;1)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;messageClient(localclientconnection,&nbsp;<span class="string">'MsgPlayer'</span><span>,&nbsp;</span><span class="string">'\c0%1&nbsp;-&nbsp;Cannot&nbsp;Move&nbsp;-&nbsp;Out&nbsp;Of&nbsp;Energy!'</span><span>,&nbsp;%ai.getName());&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;only&nbsp;care&nbsp;about&nbsp;terrain&nbsp;objects&nbsp;for&nbsp;this&nbsp;tutorial</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%searchMasks&nbsp;=&nbsp;$TypeMasks::TerrainObjectType;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;search!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%scanTarg&nbsp;=&nbsp;ContainerRayCast(&nbsp;%start,&nbsp;%end,&nbsp;%searchMasks&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;If&nbsp;the&nbsp;terrain&nbsp;object&nbsp;was&nbsp;found&nbsp;in&nbsp;the&nbsp;scan</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(&nbsp;%scanTarg&nbsp;)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Get&nbsp;the&nbsp;X,Y,Z&nbsp;position&nbsp;of&nbsp;where&nbsp;we&nbsp;clicked</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%pos&nbsp;=&nbsp;getWords(%scanTarg,&nbsp;1,&nbsp;3);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Get&nbsp;the&nbsp;normal&nbsp;of&nbsp;the&nbsp;location&nbsp;we&nbsp;clicked&nbsp;on</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%norm&nbsp;=&nbsp;getWords(%scanTarg,&nbsp;4,&nbsp;6);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//if&nbsp;we&nbsp;are&nbsp;not&nbsp;moving&nbsp;already,&nbsp;start&nbsp;to&nbsp;deplete&nbsp;energy/action&nbsp;points</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%ai.getVelocity()&nbsp;$=</span><span class="string">"0&nbsp;0&nbsp;0"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.schedule(500,&nbsp;<span class="string">"decEnergy"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Set&nbsp;the&nbsp;destination&nbsp;for&nbsp;the&nbsp;AI&nbsp;player</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.setMoveDestination(&nbsp;%pos&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//clear&nbsp;his&nbsp;aim&nbsp;so&nbsp;he&nbsp;looks&nbsp;where&nbsp;he&nbsp;is&nbsp;running</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.clearAim();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;If&nbsp;the&nbsp;AI&nbsp;player&nbsp;already&nbsp;has&nbsp;a&nbsp;decal&nbsp;(0&nbsp;or&nbsp;greater)</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;tell&nbsp;the&nbsp;decal&nbsp;manager&nbsp;to&nbsp;delete&nbsp;the&nbsp;instance&nbsp;of&nbsp;the&nbsp;gg_decal</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(&nbsp;%ai.decal&nbsp;&gt;&nbsp;-1&nbsp;)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decalManagerRemoveDecal(&nbsp;%ai.decal&nbsp;);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%ai.getVelocity()&nbsp;!$=</span><span class="string">"0&nbsp;0&nbsp;0"</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.stop();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Create&nbsp;a&nbsp;new&nbsp;decal&nbsp;using&nbsp;the&nbsp;decal&nbsp;manager</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;arguments&nbsp;are&nbsp;(Position,&nbsp;Normal,&nbsp;Rotation,&nbsp;Scale,&nbsp;Datablock,&nbsp;Permanent)</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;AddDecal&nbsp;will&nbsp;return&nbsp;an&nbsp;ID&nbsp;of&nbsp;the&nbsp;new&nbsp;decal,&nbsp;which&nbsp;we&nbsp;will</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;store&nbsp;in&nbsp;the&nbsp;player</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.decal&nbsp;=&nbsp;decalManagerAddDecal(&nbsp;%pos,&nbsp;%norm,&nbsp;0,&nbsp;1,&nbsp;<span class="string">"gg_decal"</span><span>,&nbsp;</span><span class="keyword">true</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//raycast&nbsp;was&nbsp;too&nbsp;far,&nbsp;more&nbsp;than&nbsp;100&nbsp;units&nbsp;from&nbsp;the&nbsp;camera</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;messageClient(localclientconnection,&nbsp;<span class="string">'MsgPlayer'</span><span>,&nbsp;</span><span class="string">'\c0%1&nbsp;-&nbsp;Location&nbsp;Out&nbsp;Of&nbsp;Range!'</span><span>,&nbsp;%ai.getName());&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span class="comment">//action&nbsp;2&nbsp;is&nbsp;shoot</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%ai.hasFired&nbsp;==&nbsp;</span><span class="keyword">true</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//As&nbsp;in&nbsp;Valkyria&nbsp;Chronicles&nbsp;you&nbsp;can&nbsp;only&nbsp;shoot&nbsp;once&nbsp;per&nbsp;turn</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;messageClient(localclientconnection,&nbsp;<span class="string">'MsgPlayer'</span><span>,&nbsp;</span><span class="string">'\c0%1&nbsp;Has&nbsp;Already&nbsp;Fired&nbsp;This&nbsp;Turn!'</span><span>,&nbsp;%ai.getName());&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Only&nbsp;care&nbsp;about&nbsp;players&nbsp;this&nbsp;time&nbsp;-&nbsp;we&nbsp;don't&nbsp;use&nbsp;interiors&nbsp;-&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//note&nbsp;you&nbsp;might&nbsp;need&nbsp;to&nbsp;alter&nbsp;these&nbsp;depending&nbsp;on&nbsp;what&nbsp;version&nbsp;of&nbsp;T3D&nbsp;you&nbsp;are&nbsp;using</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//T3D&nbsp;1.1&nbsp;Final&nbsp;and&nbsp;beyond&nbsp;may&nbsp;use&nbsp;different&nbsp;typemasks&nbsp;from&nbsp;T3D&nbsp;1.1&nbsp;Beta&nbsp;3</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%searchMasks&nbsp;=&nbsp;&nbsp;&nbsp;$TypeMasks::VehicleObjectType&nbsp;|&nbsp;$TypeMasks::PlayerObjectType&nbsp;|&nbsp;$TypeMasks::TerrainObjectType&nbsp;|&nbsp;$TypeMasks::StaticTSObjectType&nbsp;|&nbsp;&nbsp;$TypeMasks::StaticShapeObjectType;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Search!</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%scanTarg&nbsp;=&nbsp;ContainerRayCast(&nbsp;%start,&nbsp;%end,&nbsp;%searchMasks,&nbsp;%ai&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(&nbsp;%scanTarg&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Get&nbsp;the&nbsp;enemy&nbsp;ID</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%target&nbsp;=&nbsp;firstWord(%scanTarg);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%xyz&nbsp;=&nbsp;restWords(%scanTarg);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//aim&nbsp;at&nbsp;the&nbsp;location&nbsp;we&nbsp;hit</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.setAimLocation(%xyz);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//pause&nbsp;for&nbsp;200m/s&nbsp;to&nbsp;give&nbsp;time&nbsp;to&nbsp;aim&nbsp;and&nbsp;then&nbsp;shoot</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.schedule(200,&nbsp;<span class="string">"OpenFire"</span><span>,&nbsp;%xyz);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//aimpoint&nbsp;is&nbsp;more&nbsp;than&nbsp;100&nbsp;units&nbsp;abort</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;messageClient(localclientconnection,&nbsp;<span class="string">'MsgPlayer'</span><span>,&nbsp;</span><span class="string">'\c0%1&nbsp;-&nbsp;AimPoint&nbsp;Out&nbsp;Of&nbsp;Range!'</span><span>,&nbsp;%ai.getName());&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//clear&nbsp;aim&nbsp;and&nbsp;if&nbsp;he's&nbsp;shooting&nbsp;stop&nbsp;it</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.clearAim();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%ai.setImageTrigger(0,&nbsp;0);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function PlayGui::onMouseDown(%this, %pos, %start, %ray)
+{
+	//actions
+	//0 = no action
+	//1 = move action
+	//2 = shoot action
+
+	// Get access to the AI player we control
+	%ai = LocalClientConnection.player;
+	
+	//if they are already moving, 
+	//interrupt and stop them, 
+	//also remove any marker they may have
+	//and abort this action sequence as the Client may want to give new orders
+	
+	if(%ai.getVelocity() !$="0 0 0")
+	{
+		if( %ai.decal &gt; -1 )
+			decalManagerRemoveDecal( %ai.decal );
+			
+		%ai.stop();
+		return;
+	}
+
+	echo("ai has action = " @ %ai.action);
+	
+	if(%ai.action == 0)
+		return;
+		
+	//find end of search vector from the cursors point on screen
+	// make it no more 100 units from the camera
+	//anymore and have it miss
+	%ray = VectorScale(%ray, 100);
+	%end = VectorAdd(%start, %ray);
+ 
+	if(%ai.action == 1)//1 is move
+	{
+		//we can only move if we have energy!
+		if(%ai.getEnergyLevel() &lt; 1)
+		{
+			messageClient(localclientconnection, 'MsgPlayer', '\c0%1 - Cannot Move - Out Of Energy!', %ai.getName());
+			return;
+		}
+		
+		// only care about terrain objects for this tutorial
+		%searchMasks = $TypeMasks::TerrainObjectType;
+
+		// search!
+		%scanTarg = ContainerRayCast( %start, %end, %searchMasks );
+   
+		// If the terrain object was found in the scan
+		if( %scanTarg )
+		{
+			// Get the X,Y,Z position of where we clicked
+			%pos = getWords(%scanTarg, 1, 3);
+      
+			// Get the normal of the location we clicked on
+			%norm = getWords(%scanTarg, 4, 6);
+			
+			//if we are not moving already, start to deplete energy/action points
+			if(%ai.getVelocity() $="0 0 0")
+				%ai.schedule(500, "decEnergy");
+
+			// Set the destination for the AI player
+			%ai.setMoveDestination( %pos );
+			
+			//clear his aim so he looks where he is running
+			%ai.clearAim();
+		
+			// If the AI player already has a decal (0 or greater)
+			// tell the decal manager to delete the instance of the gg_decal
+			if( %ai.decal &gt; -1 )
+			{
+				decalManagerRemoveDecal( %ai.decal );
+		
+				if(%ai.getVelocity() !$="0 0 0")
+				{
+					%ai.stop();
+					return;
+				}
+			}
+
+			// Create a new decal using the decal manager
+			// arguments are (Position, Normal, Rotation, Scale, Datablock, Permanent)
+			// AddDecal will return an ID of the new decal, which we will
+			// store in the player
+			%ai.decal = decalManagerAddDecal( %pos, %norm, 0, 1, "gg_decal", true );
+		}
+		else
+		{
+			//raycast was too far, more than 100 units from the camera
+			messageClient(localclientconnection, 'MsgPlayer', '\c0%1 - Location Out Of Range!', %ai.getName());
+		}
+   
+	}
+	else//action 2 is shoot
+	{
+		if(%ai.hasFired == true)
+		{
+			//As in Valkyria Chronicles you can only shoot once per turn
+			messageClient(localclientconnection, 'MsgPlayer', '\c0%1 Has Already Fired This Turn!', %ai.getName());
+			return;
+		}
+   
+		// Only care about players this time - we don't use interiors - 
+		//note you might need to alter these depending on what version of T3D you are using
+		//T3D 1.1 Final and beyond may use different typemasks from T3D 1.1 Beta 3
+		%searchMasks =   $TypeMasks::VehicleObjectType | $TypeMasks::PlayerObjectType | $TypeMasks::TerrainObjectType | $TypeMasks::StaticTSObjectType |  $TypeMasks::StaticShapeObjectType;
+   
+		// Search!
+		%scanTarg = ContainerRayCast( %start, %end, %searchMasks, %ai );
+   
+		if( %scanTarg )
+		{
+			// Get the enemy ID
+			%target = firstWord(%scanTarg);
+			%xyz = restWords(%scanTarg);
+			
+			//aim at the location we hit
+			%ai.setAimLocation(%xyz);
+				
+			//pause for 200m/s to give time to aim and then shoot
+			%ai.schedule(200, "OpenFire", %xyz);
+		}
+		else
+		{
+			//aimpoint is more than 100 units abort
+			messageClient(localclientconnection, 'MsgPlayer', '\c0%1 - AimPoint Out Of Range!', %ai.getName());
+			
+			//clear aim and if he's shooting stop it
+			%ai.clearAim();
+			%ai.setImageTrigger(0, 0);
+		}
+   }
+}</pre><br>
+Now there's a few things you will have noticed in there. First, Movement depends on energy/action points. Second, we can only fire once a turn. Third, we require a new function called "OpenFire". Let's make that now.<br>
+<br>
+Open <i>scripts/server/aiplayer.cs</i> and add:<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20998#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;AiPlayer::openFire(%</span><span class="keyword">this</span><span>,&nbsp;%xyz)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%muzzlePoint&nbsp;=&nbsp;%<span class="keyword">this</span><span>.getMuzzlePoint(%slot);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%searchMasks&nbsp;=&nbsp;&nbsp;&nbsp;$TypeMasks::VehicleObjectType&nbsp;|&nbsp;$TypeMasks::PlayerObjectType&nbsp;|&nbsp;$TypeMasks::TerrainObjectType&nbsp;|&nbsp;$TypeMasks::StaticTSObjectType&nbsp;|&nbsp;&nbsp;$TypeMasks::StaticShapeObjectType;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%aimpoint&nbsp;=&nbsp;VectorAdd(%muzzlePoint,&nbsp;VectorScale(%<span class="keyword">this</span><span>.getEyeVector(),&nbsp;200));&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%targetsearch&nbsp;=&nbsp;containerRayCast(%muzzlePoint,&nbsp;%aimpoint,&nbsp;%searchMasks,&nbsp;%<span class="keyword">this</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%target&nbsp;=&nbsp;restWords(%targetSearch);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%target)&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%aim&nbsp;=&nbsp;VectorDist(%target,&nbsp;%xyz);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(<span class="string">"difference&nbsp;between&nbsp;muzzleVector&nbsp;and&nbsp;targetpoint&nbsp;is&nbsp;"</span><span>&nbsp;@&nbsp;%aim);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>(%aim&nbsp;&lt;=&nbsp;5)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Tell&nbsp;our&nbsp;AI&nbsp;object&nbsp;to&nbsp;fire&nbsp;its&nbsp;weapon</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setImageTrigger(0,&nbsp;</span><span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.hasFired&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Stop&nbsp;firing&nbsp;in&nbsp;150&nbsp;milliseconds</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(50,&nbsp;</span><span class="string">"setImageTrigger"</span><span>,&nbsp;0,&nbsp;0);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.schedule(100,&nbsp;</span><span class="string">"clearAim"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;messageClient(localClientConnection,&nbsp;<span class="string">'MsgNoLOS'</span><span>,&nbsp;</span><span class="string">'%1&nbsp;-&nbsp;No&nbsp;Line&nbsp;of&nbsp;Sight&nbsp;to&nbsp;Aimpoint!'</span><span>,&nbsp;%</span><span class="keyword">this</span><span>.getName());&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.clearAim();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setImageTrigger(0,&nbsp;0);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;messageClient(localClientConnection,&nbsp;<span class="string">'MsgNoLOS'</span><span>,&nbsp;</span><span class="string">'%1&nbsp;-&nbsp;No&nbsp;Line&nbsp;of&nbsp;Sight&nbsp;to&nbsp;Aimpoint!'</span><span>,&nbsp;%</span><span class="keyword">this</span><span>.getName());&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.clearAim();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setImageTrigger(0,&nbsp;0);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function AiPlayer::openFire(%this, %xyz)
+{
+	%muzzlePoint = %this.getMuzzlePoint(%slot);
+	%searchMasks =   $TypeMasks::VehicleObjectType | $TypeMasks::PlayerObjectType | $TypeMasks::TerrainObjectType | $TypeMasks::StaticTSObjectType |  $TypeMasks::StaticShapeObjectType;
+	
+	%aimpoint = VectorAdd(%muzzlePoint, VectorScale(%this.getEyeVector(), 200));
+	%targetsearch = containerRayCast(%muzzlePoint, %aimpoint, %searchMasks, %this);
+	%target = restWords(%targetSearch);
+	
+	if(%target)
+	{
+		%aim = VectorDist(%target, %xyz);
+		echo("difference between muzzleVector and targetpoint is " @ %aim);
+		
+		if(%aim &lt;= 5)
+		{
+	
+			// Tell our AI object to fire its weapon
+			%this.setImageTrigger(0, true);
+			
+			%this.hasFired = 1;
+		 
+			// Stop firing in 150 milliseconds
+			%this.schedule(50, "setImageTrigger", 0, 0);
+			%this.schedule(100, "clearAim");
+		}
+		else
+		{
+			messageClient(localClientConnection, 'MsgNoLOS', '%1 - No Line of Sight to Aimpoint!', %this.getName());
+			%this.clearAim();
+			%this.setImageTrigger(0, 0);
+		}
+	}
+	else
+	{
+		messageClient(localClientConnection, 'MsgNoLOS', '%1 - No Line of Sight to Aimpoint!', %this.getName());
+		%this.clearAim();
+		%this.setImageTrigger(0, 0);
+	}
+}</pre><br>
+Right, if all works correctly, you should be able to press the "Move" button, press a location on screen (within 100 units), see the marker appear and the playerObject will move there. You can abort the move at anytime by pressing another button or left clicking anywhere again. You can press the "Shoot" button, aim at a location (within 100 units) and if the playerObject has a clean shot, they'll open fire.<br>
+<br>
+Notice that we have another check to see if the playerObject can shoot at the target clearly - this is because the camera is not viewed from the playerObject's eyeNode or it's weapon's muzzlePoint. This makes it easy to try and shoot something which is not in "Line Of Sight" of the playerObject, and thus it could never accurately hit.<br>
+<br>
+<a rel="nofollow" href="http://www.garagegames.com/community/resources/view/20999">Part Five: Energy and Turns</a></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/101767.png" alt="Steve Acaster&#39;s profile picture">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				One Bloke ... In His Bedroom ... Trying To Make Computer Games ... eventually ...			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21015">Move Rock - Circumnavigate Rock - Go Off On Tangent</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21013">Tactics-Action Hybrid Game Tutorial Part12: Finale</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21012"> Tactics-Action Hybrid Game Tutorial Part11: Ai Paths</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21005">Tactics-Action Hybrid Game Tutorial Part10: GamePlay Test</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21003">Tactics-Action Hybrid Game Tutorial Part9: Ai Combat</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/20999"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/20997"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/20998#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(20998, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20998/1#comment-175088" name="comment-175088">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/08/2011 (3:44 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			<b>N.B.</b> if you're using 1.1 Preview you'll want this bugfix for <a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/125544/1#comment-805007">aiPlayer movement or you won't go anywhere</a>. Expect later/earlier editions of T3D to have this issue resolved.		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/20998/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/resources/view/20998#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/resources/view/20998#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/20998');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Tactics-Action Hybrid Game Tutorial Part4  Player Actions   Steve Acaster   Resources   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

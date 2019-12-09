@@ -1,0 +1,106 @@
+body {
+	font-family: Arial, Helvetica, Univers, Verdana;
+	font-size: 12px;
+	color: black;
+}  
+.code {
+	font-family: Tahoma, Verdana, sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+p, td {
+	font-family: Arial, Helvetica, Univers, Verdana;
+	font-size: 12px;
+	color: black;
+}  
+
+h1 {
+    font-size: 20pt;
+    font-weight : bold;
+	color: #273237
+}
+
+h2 {
+    font-size: 16pt;
+    font-weight : bold;
+	color: black
+}
+
+h3 {
+    font-size: 12pt;
+    font-weight : bold;
+	color: black
+}
+
+
+.bar {
+    font-size: 10pt;
+	font-weight: bold;
+	color: white;
+}
+
+dl {
+    indent: 30;     
+    margin-left: 30; 
+    margin-top: 5; 
+    margin-bottom: 5;
+    list-style-position: inside;
+}
+ul {
+    margin-left: 30; 
+    margin-top: 5; 
+    margin-bottom: 5;
+    list-style: disc;
+}
+
+ul ul { 
+    margin-left: 30; 
+    list-style: disc; 
+}
+
+li {
+    list-style-position: outside;
+}
+
+
+a:link {
+	text-decoration: underline;
+	color: #808080;
+}
+
+a:visited {
+   	text-decoration: underline;
+	color: #808080;
+}
+
+a:hover {
+   	text-decoration: none;
+	color: #808080;
+}
+a:active {
+   	text-decoration: underline;
+	color: #C0C0C0;
+}
+
+
+
+a.bar:link {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+a.bar:visited {
+   text-decoration: none;
+	color: #FFFFFF;
+}
+
+a.bar:hover {
+   text-decoration: underline;
+	color: #FFFFFF;
+}
+
+.iko {
+	color:#fF0000;
+	font-weight:bold;
+}

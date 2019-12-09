@@ -1,0 +1,15 @@
+C:\Projects\UDPConsole\MSLib\bin\Debug\MSLib.dll
+C:\Projects\UDPConsole\MSLib\bin\Debug\MSLib.pdb
+C:\Projects\UDPConsole\MSLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\UDPConsole\MSLib\obj\Debug\MSLib.dll
+C:\Projects\UDPConsole\MSLib\obj\Debug\MSLib.pdb
+C:\Projects\MasterServer\MSLib\bin\Debug\MSLib.dll
+C:\Projects\MasterServer\MSLib\bin\Debug\MSLib.pdb
+C:\Projects\MasterServer\MSLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\MasterServer\MSLib\obj\Debug\MSLib.dll
+C:\Projects\MasterServer\MSLib\obj\Debug\MSLib.pdb
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MSLib\bin\Debug\MSLib.dll
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MSLib\bin\Debug\MSLib.pdb
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MSLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MSLib\obj\Debug\MSLib.dll
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MSLib\obj\Debug\MSLib.pdb

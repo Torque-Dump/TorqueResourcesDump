@@ -1,0 +1,20 @@
+C:\Projects\MasterServer\MasterServer\bin\Debug\MasterServer.exe
+C:\Projects\MasterServer\MasterServer\bin\Debug\MasterServer.pdb
+C:\Projects\MasterServer\MasterServer\bin\Debug\MSLib.dll
+C:\Projects\MasterServer\MasterServer\bin\Debug\MSLib.pdb
+C:\Projects\MasterServer\MasterServer\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\MasterServer\MasterServer\obj\Debug\MasterServer.MSMonitor.resources
+C:\Projects\MasterServer\MasterServer\obj\Debug\MasterServer.Properties.Resources.resources
+C:\Projects\MasterServer\MasterServer\obj\Debug\MasterServer.csproj.GenerateResource.Cache
+C:\Projects\MasterServer\MasterServer\obj\Debug\MasterServer.exe
+C:\Projects\MasterServer\MasterServer\obj\Debug\MasterServer.pdb
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServer\bin\Debug\MasterServer.exe
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServer\bin\Debug\MasterServer.pdb
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServer\bin\Debug\MSLib.dll
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServer\bin\Debug\MSLib.pdb
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServer\obj\Debug\ResolveAssemblyReference.cache
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServer\obj\Debug\MasterServer.MSMonitor.resources
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServer\obj\Debug\MasterServer.Properties.Resources.resources
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServer\obj\Debug\MasterServer.csproj.GenerateResource.Cache
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServer\obj\Debug\MasterServer.exe
+D:\Torque\Resources\C-sharp Master Server\MasterServer\MasterServer\obj\Debug\MasterServer.pdb

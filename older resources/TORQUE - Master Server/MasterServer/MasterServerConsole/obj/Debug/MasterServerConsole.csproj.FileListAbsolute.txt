@@ -1,0 +1,14 @@
+C:\Projects\MasterServer\MasterServerConsole\bin\Debug\MasterServerConsole.exe
+C:\Projects\MasterServer\MasterServerConsole\bin\Debug\MasterServerConsole.pdb
+C:\Projects\MasterServer\MasterServerConsole\bin\Debug\MSLib.dll
+C:\Projects\MasterServer\MasterServerConsole\bin\Debug\MSLib.pdb
+C:\Projects\MasterServer\MasterServerConsole\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\MasterServer\MasterServerConsole\obj\Debug\MasterServerConsole.exe
+C:\Projects\MasterServer\MasterServerConsole\obj\Debug\MasterServerConsole.pdb
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServerConsole\bin\Debug\MasterServerConsole.exe
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServerConsole\bin\Debug\MasterServerConsole.pdb
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServerConsole\bin\Debug\MSLib.dll
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServerConsole\bin\Debug\MSLib.pdb
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServerConsole\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServerConsole\obj\Debug\MasterServerConsole.exe
+C:\Users\bloodknight\Downloads\TORQUE - Master Server\MasterServer\MasterServerConsole\obj\Debug\MasterServerConsole.pdb

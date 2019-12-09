@@ -1,0 +1,5 @@
+C:\Projects\MasterServer\MSTypes\bin\Debug\MSTypes.dll
+C:\Projects\MasterServer\MSTypes\bin\Debug\MSTypes.pdb
+C:\Projects\MasterServer\MSTypes\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\MasterServer\MSTypes\obj\Debug\MSTypes.dll
+C:\Projects\MasterServer\MSTypes\obj\Debug\MSTypes.pdb

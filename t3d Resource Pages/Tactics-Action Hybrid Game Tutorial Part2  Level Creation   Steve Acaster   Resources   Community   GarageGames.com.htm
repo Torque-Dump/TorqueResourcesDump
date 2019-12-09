@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0057)http://www.garagegames.com/community/resources/view/20996 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="Valkyria Chronicles style turnbased, 3rd person squad tactics-action hybrid gametype for Torque3D (singleplayer). Part Two">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Tactics-Action Hybrid Game Tutorial Part2: Level Creation | Steve Acaster | Resources | Community | GarageGames.com</title>		<link href="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/resources/view/20996#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.garagegames.com/community/resources/view/20996#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Tactics-Action Hybrid Game Tutorial Part2: Level Creation</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.garagegames.com/account/profile/101767">Steve Acaster</a>
+			<strong>·</strong>
+			05/07/2011 (6:06 pm)			<strong>·</strong>
+			3 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><a rel="nofollow" href="http://www.garagegames.com/community/resources/view/20995">Back to Part One: Overview</a><br>
+<br>
+<h2>Part Two: Level Creation</h2><br>
+(if you've tried my <a rel="nofollow" href="http://www.garagegames.com/community/resources/view/20829">Simple FPS Tutorial</a> this part will be fairly familiar as I'm using the same level design)<br>
+<br>
+Overview:<br>
+Create The New Project<br>
+Save A New Level<br>
+Create A Terrain For A Game Area<br>
+Place Props<br>
+Ambience - Sky and Fog:<br>
+<br>
+<br>
+Create The New Project:<br>
+<br>
+This tutorial will make use of the "Full Project" project install. To create a new "Full Project" start Torque3D toolbox and click the "new Project" button. In the name for the project call it "Torque_Tactics_Tutorial" (notice the underscores - you don't need them here but you should get used to using them in general). From the Template menu select "Full Project" and press "Create".<br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/lesson1_1.jpg" width="400" height="313" alt="yorks.deta.in/SimpleFPSTutorial/Lesson1_level_design/lesson1_1.jpg"><br>
+<br>
+Once your "Torque_Tactics_Tutorial" has been created, you can find it under "My Projects". Now either shutdown Torque Toolbox and start the "Torque_Tactics_Tutorial.exe" under "My Projects/Torque_Tactics_Tutorial/game", and then select "Play" then "Empty Room", and finally press "Go", or by using Torque Toolbox, select your project, select "Empty Room" from "Project Levels" and press "Play Game". Either way, that's the last you'll see of Toolbox in these tutorials.<br>
+<br>
+<br>
+Save A New Level:<br>
+<br>
+You should now be in-game, controlling a character in first person holding a rocket launcher and an endless GroundPlane stretching out around you.<br>
+<br>
+Bring up the World Editor (F11) and from the drop down find and edit "theLevelInfo". Scroll down and change "LevelName" and "desc0". Now we can find it by name in the levels/missions menu list.<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20996#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20996#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20996#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>levelName&nbsp;---&gt;&nbsp;&nbsp;&nbsp;Torque&nbsp;Tactics&nbsp;Tutorial&nbsp;&nbsp;</span></span></li><li class=""><span>desc0&nbsp;&nbsp;&nbsp;---&gt;&nbsp;&nbsp;Valkyria&nbsp;Chronicles&nbsp;Style&nbsp;Game&nbsp;Tutorial&nbsp;For&nbsp;Torque3D&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">levelName ---&gt;   Torque Tactics Tutorial
+desc0   ---&gt;  Valkyria Chronicles Style Game Tutorial For Torque3D</pre>It's okay to use spaces in the description.<br>
+<br>
+Now "Save Level As" and name it "torqueTacticsTutorial.mis". Save it and exit (not quit). At the Main Menu screen hit "Play" and you should now see your new level available. Select it and press "Go", and you'll be back in the game area. Open up the World Editor again.<br>
+<br>
+<br>
+Create A Terrain For A Game Area:<br>
+<br>
+It's looking a little desolate, so create a new terrain. You could do this from "Scene Tree-&gt; Library-&gt; Level-&gt; Environment-&gt; Terrain Block", but let's do it the other way via the toolbar "File-&gt; Create Blank Terrain". You don't have to give it a name, but if you do don't use spaces (get used to it!) and don't use a number. For Material choose "sand", Resolution "512", and make sure "Flat" is checked rather than "Noise". And a new terrain block should be created.<br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/lesson1_2.jpg" width="400" height="212" alt="yorks.deta.in/SimpleFPSTutorial/Lesson1_level_design/lesson1_2.jpg"><br>
+<br>
+Firstly, with terrain selected look in the inspector window and find "Squaresize", this should say 1 but we want it changed to 2. Next, reposition the terrain. Make sure the terrain is selected and from the toolbar select "Object-&gt; Drop Location -&gt; Origin" and press (CTRL D) and the Terrain should now be directly positioned over the GroundPlane and "Z- fighting" it for visibility. Delete the GroundPlane ... but don't panic when your player falls through. Toggle to camera view (CTRL C) and let him go.<br>
+<br>
+Note: Your terrain should be at z 512 rather than z 0. Switch to the Terrain Editor (F2) and select the tool "Set Height". We're going to carve a simple route out the terrain which our final game will play along. With Brush Size set to 10 and set to 508, start near one edge of the terrain and carve in a dog-leg (left).<br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/lesson1_3.jpg" width="400" height="212" alt="yorks.deta.in/SimpleFPSTutorial/Lesson1_level_design/lesson1_3.jpg"><br>
+<br>
+You should have a depression 4 units/meters/yards/whatever deep. Now continue to carve a route through the terrain, ending just short of about half way. Try and make it so that from the start the path is left, right, right, left, left, right and then come to the end make a little circle. Now make 3 "alleys" using a size 4 brush and place one between right/right, one between left/left and a final one halfway down the last straight. Hopefully it'll look something like below ...<br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/lesson1_4.jpg" width="400" height="212" alt="yorks.deta.in/SimpleFPSTutorial/Lesson1_level_design/lesson1_4.jpg"><br>
+<br>
+At the end, where the little circle is, make a single, circular indentation with brush size 80, using the circle as the bottom of the now huge brush so you don't eat into the final side-alley.<br>
+<br>
+Now change "Object-&gt; Drop Location-&gt; to Terrain". Select the Player's spawnsphere (Missiongroup-&gt; PlayerDropPoints -&gt; Spawnsphere) and look at the beginning of the route you've created. Place it there (CTRL D). Now make sure that "Snap To Grid" is off (it's a button on the toolbar) and position the diamond of the spawnsphere just above the terrain. Now edit the name of this spawnsphere and call it "PlayerSpawn1". Now create 2 more side-by-side and call them "PlayerSpawn2" and "PlayerSpawn3" respectively. The idea being that when the player starts the game for real, they'll have 3 team members spawn next to each other. Make sure that the new spawnsheres are inside the PlayerDropPoints folder/simset.<br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/TorqueTacticsTut1.jpg" width="400" height="212" alt="yorks.deta.in/TorqueTacticsTutorial/TorqueTacticsTut1.jpg"><br>
+<br>
+Save! And save often!<br>
+<br>
+Place Props:<br>
+<br>
+Let's add a few simple props. Look at the big circle at the end of the terrain and in "Scene Tree-&gt; Library-&gt; Meshes-&gt; Art-&gt; Shapes-&gt; Station-&gt; Station01". A large building should appear. Select it and shuffle it around if it's not in the centre of the circle or flat to the ground. In the object inspector find "Collision Type" and select "Visible Mesh".<br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/lesson1_5.jpg" width="400" height="212" alt="yorks.deta.in/SimpleFPSTutorial/Lesson1_level_design/lesson1_5.jpg"><br>
+<br>
+The route is somewhat empty leading up to the station, so let's add some big rocks. Library-&gt; Meshes-&gt; Art-&gt; Shapes-&gt; Rocks-&gt; rock1" and place it near the corner of the first left of our route. It might look a bit odd standing up, so sink it down, maybe as much as half way. <br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/lesson1_6.jpg" width="400" height="212" alt="yorks.deta.in/SimpleFPSTutorial/Lesson1_level_design/lesson1_6.jpg"><br>
+<br>
+The "Rock1" model comes with it's own collision mesh (Station01 didn't have one) so we can leave the "collision type" as the default "Collision Mesh".<br>
+<br>
+Now let's add a few more copies of rock1. Add one smack bang in the middle of first right corner. <br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/lesson1_7.jpg" width="400" height="212" alt="yorks.deta.in/SimpleFPSTutorial/Lesson1_level_design/lesson1_7.jpg"><br>
+<br>
+Add another halfway down and to the left side between second right and second left, a third in the middle of left/left opposite side-alley 2(but not blocking it!), and a final rock in the middle of the straight between third left and final right. Hopefully it should look something like this.<br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/lesson1_8.jpg" width="400" height="212" alt="yorks.deta.in/SimpleFPSTutorial/Lesson1_level_design/lesson1_8.jpg"><br>
+<br>
+That's enough props for this tutorial, they're just there to give the player's squad members something to hide behind and walk around every now and then.<br>
+<br>
+In "Missiongroup" you'll see all these objects listed as TsStatic with no names. For this, they don't need names, but we can tidy up the Missiongroup tree a little by placing them all inside a simgroup (folder). "Library-&gt; Level-&gt; System-&gt; SimGroup". Go back to the "Scene" tab and you'll see a new folder. Double click on the name "SimGroup" and rename it "props". Now drag all 6 of your props under "Missiongroup" and drop them into this new folder. "Missiongroup" now looks a lot tidier.<br>
+<br>
+Save! And save often!<br>
+<br>
+<br>
+Ambience - Sky and Fog:<br>
+<br>
+It still looks a bit bleak with the black sky and lack of light decay in the distance. Let's improve the ambience a little with some fog and sky.<br>
+<br>
+For the fog, it's back to "Scene-&gt; Missiongroup-&gt; theLevelInfo". There are 2 parameters to change, the first is fogDensity - or how thick the fog is itself, default is 0 or fog disabled. The second parameter is fogDensityOffset - or how far away from the camera/player the fog will start, by default it's set to 700 or half a mile away ... which is quite a distance. Let's bring that closer and make the fog thicker.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20996#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20996#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20996#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>fogDensity&nbsp;---&gt;&nbsp;0.01&nbsp;&nbsp;</span></span></li><li class=""><span>fogDensityOffset&nbsp;---&gt;&nbsp;50&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">fogDensity ---&gt; 0.01
+fogDensityOffset ---&gt; 50</pre><br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/lesson1_9.jpg" width="400" height="212" alt="yorks.deta.in/SimpleFPSTutorial/Lesson1_level_design/lesson1_9.jpg"><br>
+<br>
+That's better, the terrain and models in the distance fog up, now to sort out that black, fogless sky.<br>
+<br>
+From "Missiongroup" select the Skybox which should be called "theSky". In the inspector, click on the circular Material icon. This should bring up the material Selector list. Find an appropriate sky and select it and then press select. Your black sky should now be blue, but still looking a little odd as the fog does not affect it like it does affect the props and terrain. To fix this, with the skybox selected, in the inspector find fogBandheight, default is 0. Set it to 0.5, and hopefully the fog will appear to populate the sky.<br>
+<br>
+Save! And save often.<br>
+<br>
+Exit back to the Main Menu, then hit "play", select your level and "go".<br>
+<br>
+Now if all has gone according to plan, you should have something that looks like this:<br>
+<br>
+<br>
+<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/lesson1_10.jpg" width="400" height="212" alt="yorks.deta.in/SimpleFPSTutorial/Lesson1_level_design/lesson1_10.jpg"><br>
+<br>
+Finally, let's make the lighting a little easier on the eye. In the "sun" object, change color and ambient.<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/resources/view/20996#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/resources/view/20996#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/resources/view/20996#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>color&nbsp;=&nbsp;</span><span class="string">"0.8&nbsp;0.8&nbsp;0.8&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>ambient&nbsp;=&nbsp;<span class="string">"0.3&nbsp;0.3&nbsp;0.4&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li></ol></div><pre name="code" class="cpp" style="display: none; ">color = "0.8 0.8 0.8 1";
+ambient = "0.3 0.3 0.4 1";</pre><br>
+And that's it for <i>Torque Chronicles</i>: Tactics-Action Hybrid GameType Tutorial Part Two. You now have a simple game environment in which our gameplay will occur. <br>
+<br>
+<a rel="nofollow" href="http://www.garagegames.com/community/resources/view/20997">Part Three: Custom Camera System</a></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/101767.png" alt="Steve Acaster&#39;s profile picture">
+			<br>
+			<a rel="Steve Acaster" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				One Bloke ... In His Bedroom ... Trying To Make Computer Games ... eventually ...			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21015">Move Rock - Circumnavigate Rock - Go Off On Tangent</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21013">Tactics-Action Hybrid Game Tutorial Part12: Finale</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21012"> Tactics-Action Hybrid Game Tutorial Part11: Ai Paths</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21005">Tactics-Action Hybrid Game Tutorial Part10: GamePlay Test</a><br>							•&nbsp;<a href="http://www.garagegames.com/community/blogs/view/21003">Tactics-Action Hybrid Game Tutorial Part9: Ai Combat</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/blogs/view/20997"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/blogs/view/20995"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.garagegames.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/resource/view/20996#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(20996, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/92168.jpg" class="profilepic">
+			<br>
+			<a rel="E.B." class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/92168" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	E.B.<br>
+	<span class="studio-name">G.A.S. [+others]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20996/1#comment-175079" name="comment-175079">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/07/2011 (7:05 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			ah go 'on..write a book already. :P + ;)<br>
+// it's great to see these resources, don't think I'm saying otherwise. ..I simply think you could make some extra pub money  for yourself.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/161461.png" class="profilepic">
+			<br>
+			<a rel="Richard Marrevee" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/161461" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Richard Marrevee<br>
+	<span class="studio-name">R.G.S - Richards Game Studio</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20996/1#comment-175081" name="comment-175081">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/08/2011 (1:45 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			<blockquote><span>Quote:</span>ah go 'on..write a book already. :P + ;)</blockquote><br>
+Yep, that's what I'm thinking too. Maybe a new career Steve? :)<br>
+<br>
+But all the fun on a stick <small>this is a translation of a Dutch saying, which means that I am serious now</small>, you are doing a great job Steve, with all these tuts. Thanks.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Hans Cremers" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/51465" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Hans Cremers
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/resources/view/20996/1#comment-175082" name="comment-175082">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/08/2011 (3:57 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Awesome work Steve :-)		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br>	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="http://www.garagegames.com/community/resources/view/20996/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="http://www.garagegames.com/community/resources/view/20996#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment">
+</div>
+<a href="http://www.garagegames.com/community/resources/view/20996#" onclick="$(this).closest(&#39;form&#39;).submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.garagegames.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/20996');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Tactics-Action Hybrid Game Tutorial Part2  Level Creation   Steve Acaster   Resources   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

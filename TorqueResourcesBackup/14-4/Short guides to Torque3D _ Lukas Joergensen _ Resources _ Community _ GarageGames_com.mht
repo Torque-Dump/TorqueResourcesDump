@@ -1,0 +1,501 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(e,t){return function(){o(e,[(new Date).getTime()].concat(a(arguments)),null,t)}}var o=e("handle"),i=e(2),a=e(3);"undefined"==typeof window.newrelic&&(newrelic=NREUM);var u=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit"],c=["addPageAction"],f="api-";i(u,function(e,t){newrelic[t]=r(f+t,"api")}),i(c,function(e,t){newrelic[t]=r(f+t)}),t.exports=newrelic,newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),o("err",[e,(new Date).getTime()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(0>o?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?u(e,a,i):i()}function n(n,r,o){e&&e(n,r,o);for(var i=t(o),a=l(n),u=a.length,c=0;u>c;c++)a[c].apply(i,r);var s=f[g[n]];return s&&s.push([m,n,r,i]),i}function p(e,t){w[e]=l(e).concat(t)}function l(e){return w[e]||[]}function d(e){return s[e]=s[e]||o(n)}function v(e,t){c(e,function(e,n){t=t||"feature",g[n]=t,t in f||(f[t]=[])})}var w={},g={},m={on:p,emit:n,get:d,listeners:l,context:t,buffer:v};return m}function i(){return new r}var a="nr@context",u=e("gos"),c=e(2),f={},s={},p=t.exports=o();p.backlog=f},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!w++){var e=v.info=NREUM.info,t=s.getElementsByTagName("script")[0];if(e&&e.licenseKey&&e.applicationID&&t){c(l,function(t,n){e[t]||(e[t]=n)});var n="https"===p.split(":")[0]||e.sslForHttp;v.proto=n?"https://":"http://",u("mark",["onload",a()],null,"api");var r=s.createElement("script");r.src=v.proto+e.agent,t.parentNode.insertBefore(r,t)}}}function o(){"complete"===s.readyState&&i()}function i(){u("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var u=e("handle"),c=e(2),f=window,s=f.document;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:f.XMLHttpRequest,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},e(1);var p=""+location,l={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-918.min.js"},d=window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent),v=t.exports={offset:a(),origin:p,features:{},xhrWrappable:d};s.addEventListener?(s.addEventListener("DOMContentLoaded",i,!1),f.addEventListener("load",r,!1)):(s.attachEvent("onreadystatechange",o),f.attachEvent("onload",r)),u("mark",["firstbyte",a()],null,"api");var w=0},{}]},{},["loader"]);</script>
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon" />
+		<meta name="Description" content="This is just a collection of small guides for Torque3D thats helpful for new T3D - developers.
+Taken from my guide at http://illusionalgames.com/Tutorial/Read/5">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		        
+				<title>Short guides to Torque3D | Lukas Joergensen | Resources | Community | GarageGames.com</title>		<link href="http://static.garagegames.com/static/styles/theme/ui.base.css?rev=2" media="screen" rel="stylesheet" type="text/css" >
+<link href="http://static.garagegames.com/static/styles/theme/ui.theme.css?rev=2" media="screen" rel="stylesheet" type="text/css" >
+<link href="http://static.garagegames.com/static/styles/main.css?rev=2" media="screen" rel="stylesheet" type="text/css" >
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="/static/StaticSyntaxHighlighter/scripts/shCore.js"></script>
+		<script type="text/javascript" src="/static/StaticSyntaxHighlighter/scripts/shBrushCpp.js"></script>
+		<script type="text/javascript" src="/static/StaticSyntaxHighlighter/scripts/shBrushPhp.js"></script>
+		<script type="text/javascript" src="http://static.garagegames.com/static/js/jquery.js"></script>
+<script type="text/javascript" src="http://static.garagegames.com/static/js/jquery-ui.js"></script>
+<script type="text/javascript" src="http://static.garagegames.com/static/js/plugins.js"></script>
+<script type="text/javascript" src="http://static.garagegames.com/static/js/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	timeoutID = 0;
+	
+	function filterProducts()
+	{
+		var filterArray = [];
+		
+		$('.qtip-content input.relevantProductFilter:checked').each(function(){
+			if(($(this).val() != 0))
+			{
+			    jQuery.merge(filterArray, [$(this).val()]);
+			}
+		});
+		
+		if(filterArray.length > 0)
+		{
+			window.location = "/community/resources/all/"+filterArray.join(',') + ',';
+		}
+		else
+		{
+			window.location = "/community/resources/";
+		}
+	}
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			clearTimeout(timeoutID);
+			timeoutID = setTimeout('filterProducts()',2000);
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>		<script type="text/javascript">
+		
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-6057184-2']);
+		  _gaq.push(['_setDomainName', 'garagegames.com']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
+	</head>
+    
+<body>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a  href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a  href="http://www.garagegames.com/products/torque-3d">Products</a><ul class="sub-nav" id="sub-menu-products"><li><a  href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a  href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a  href="http://www.garagegames.com/products">Store</a><ul class="sub-nav" id="sub-menu-addons"><li><a  href="http://www.garagegames.com/products">Home</a></li><li><a  href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a  href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a  href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a  href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a  href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a  href="http://www.garagegames.com/community">What's New</a></li><li><a  href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a  href="http://www.garagegames.com/community/resources">Resources</a></li><li><a  href="http://www.garagegames.com/community/forums">Forums</a></li><li><a  href="http://www.garagegames.com/best-of-torque/interviews">Dev Interviews</a></li><li><a  href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a  href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="stub" id="main-nav-services"><a  href="http://services.garagegames.com">Services</a></li><li class="stub" id="main-nav-education"><a  href="http://www.garagegames.com/education">Education</a></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About GarageGames</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="/account">My Products</a></li>
+						<li><a rel="nofollow" href="/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255" onfocus="if ( this.value=='Search site' ) { this.value = ''; }" onblur="if ( this.value=='' ) { this.value = 'Search site'; }" />
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="http://static.garagegames.com/static/images/theme/search-bar-main-btn.png" alt="Search" />
+                </form>
+                
+                <script type="text/javascript">
+				
+                function searchSubmit() {
+					var search = $('#top-keywords').val();
+					if(document.location.href.indexOf("forum")!= -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=forums&gsc.tab=0';
+					} else if(document.location.href.indexOf("blog") != -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=blogs&gsc.tab=0';
+					} else if(document.location.href.indexOf("resource") != -1){
+						window.location = '/community/search#gsc.q='+search+'&gsc.ref=resources&gsc.tab=0';
+					} else {
+						window.location = '/community/search#gsc.q='+search;
+					}
+                	
+                }
+				</script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+			
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="/community">What's New</a></li>
+			<li><a class="" href="/community/blogs">Blogs</a></li>
+			<li><a class="current" href="/community/resources">Resources</a></li>
+			<li><a class="" href="/community/forums">Forums</a></li>
+		</ul>
+											<a href="#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div style="margin: -20px -13px 10px;"><a href="http://www.gginteractive.com" alt="Learn more about The Game Development Curriculum by GGInteractive"><img src="http://www.gginteractive.com/wp-content/uploads/2014/09/devpro_ad_banner_938x62.png" alt="dev|Pro Game Development Curriculum"  title="dev|Pro Game Development Curriculum"></a></div>
+	<div id="blog-content">
+						<h1>Short guides to Torque3D</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="/account/profile/132727">Lukas Joergensen</a>
+			<strong>&middot;</strong>
+			04/22/2014 (9:48 am)			<strong>&middot;</strong>
+			2 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><h1>Shameless self-plug</h1>All these guides are taken from the tutorial at <a rel="nofollow" href="http://illusionalgames.com/Tutorial/Read/5" target=_blank>my website</a>.<br />
+On my website the syntax highlighting is better and fonts are more readable imo.<br />
+<br />
+<h2>Relative paths in TorqueScript</h2><i>&quot;./&quot;</i> refers to the location of the file calling the function.<br />
+<i>&quot;~/&quot;</i> refers to the root-child the file lives in (<i>&quot;Game/Scripts/Client/somefile.cs&quot;</i> becomes <i>&quot;Game/Scripts&quot;</i>)<br />
+<i>&quot;/&quot;</i> or nothing refers to the location of the executable.<br />
+<br />
+<h2>Variables in TorqueScript</h2>Variables should always start with either a <b>%</b> or <b>$</b>.<br />
+<b>%</b> means the variable is a local variable and cannot be referenced outside of the function which defined it.<br />
+<b>$</b> means the variable is a global variable and can be accessed from anywhere.<br />
+Globals defined on the client side is not defined on the server side. They are only accessible from the current instance!<br />
+Arrays in TorqueScript can be faked, meaning that <b>$array[0]</b> is the same as <b>$array0</b>.<br />
+If you want a true array, you should use the ArrayObject class.<br />
+<br />
+<h2>Commands between server and client</h2>The functions <i>commandToClient</i> and <i>commandtoServer</i> sends a command to the client or the server.<br />
+<i>commandToClient</i> takes 2+ parameters. The first one being the id of the client, the second is the tag of the command the client should execute. All following parameters is the arguments passed<br />
+to the command.<br />
+<i>commandToServer</i> is similar, except it doesn't need an ID so it takes 1+ parameters.<br />
+To define a function which can be called by a network command, it has to follow a special naming convention.<br />
+clientCmd<i>theCommandName</i>(args);<br />
+Example:<br />
+<pre name="code" class="cpp">// Client:
+commandToServer('Foo');
+// ..
+// Server:
+function serverCmdFoo()
+{
+   // Do something here
+}</pre><br />
+<h2>String concatenation</h2>@ - Concatenates two strings.<br />
+TAB - Concatenates two strings with a tab between them.<br />
+SPC - Concatenates two strings with a space between them.<br />
+NL - Concatenates two strings with a newline between them.<br />
+<b>Example:</b><br />
+<pre name="code" class="cpp">%concat = &quot;a&quot; @ &quot;b&quot;;
+echo(%concat); // Outputs &quot;ab&quot;
+%concat = &quot;a&quot; TAB &quot;b&quot;;
+echo(%concat); // Outputs &quot;atb&quot;
+%concat = &quot;a&quot; SPC &quot;b&quot;;
+echo(%concat); // Outputs &quot;a b&quot;
+%concat = &quot;a&quot; NL &quot;b&quot;;
+echo(%concat); // Outputs &quot;anb&quot;</pre><br />
+<h2>Folders in T3D</h2><b>Art</b><br />
+Contains all your art les (obviously), datablocks, GUI, fonts. Everything non-game logic related should be located here<br />
+<b>Core</b><br />
+Contains alot of core functionality and functions. You can look at this as a &quot;framework&quot; for your game logic.<br />
+<b>Scripts</b><br />
+Contains all of your script les in 3 specic folders. The client scripts in the client folder, the server scripts in the server folder, the GUI scripts in the GUI folder<br />
+<b>Levels</b><br />
+Contains your level les (your terrains go here when you create them)<br />
+<b>Tools</b><br />
+The world tools, this only contains the tools for editing the world and can be deleted upon release<br />
+<b>Shaders</b><br />
+Contains your shaders.<br />
+<br />
+<h2>If statements in TorqueScript</h2><b>Everything in TorqueScript is strings!</b><br />
+This is important to remember with if statements, because in if statements you can either compare by int or by string.<br />
+To compare by string you should write <b>$=</b> instead of <b>==</b>.<br />
+Example:<br />
+<pre name="code" class="cpp">if(&quot;asd&quot; == &quot;asd&quot;) // This is true
+if(&quot;asd&quot; == &quot;def&quot;) // This is true as well
+if(&quot;asd&quot; $= &quot;asd&quot;) // This is true
+if(&quot;asd&quot; $= &quot;def&quot;) // This is false</pre><br />
+<h2>Fields and words</h2>There is some pretty cool functions called <b>getWord</b>, <b>setWord</b>, <b>getField</b>, <b>setField</b>.<br />
+These functions lets you edit a string at an index based on the number of either spaces or tabs. <b>getField</b>, is based on tabs. <b>getWord</b> is based on spaces.<br />
+Examples:<br />
+<pre name="code" class="cpp">%val = &quot;1 2 3 4&quot;;
+echo(getWord(%val, 2)); //Echoes 3
+echo(getWordCount(%val)); //Echoes 4
+echo(setWord(%val, 2, &quot;10&quot;)); //Echoes &quot;1 10 3 4&quot;
+echo(%val); //Still echoes &quot;1 2 3 4&quot;
+%val = setWord(%val,2,&quot;10&quot;);
+echo(%val); //Echoes &quot;1 10 3 4&quot;
+%val = 1 TAB 2 TAB 3 TAB 4;
+echo(getField(%val, 2)); //Echoes 3</pre><br />
+<h2>DefaultDatablocks</h2>The DefaultDatablocks we inherit our datablocks from are simply some datablocks which is defined in the Core folder which allows us for fast prototyping of new emitters.<br />
+<br />
+<h2>Troubleshooting</h2><b>I just downloaded the T3D OS repo and I can't move stuff around in the WorldEditor!</b><br />
+This is probably due to the grid settings. See the magnets at the top of the window?<br />
+Try turning them on and off. This should help. Make sure they are o. Especially the magnet with a grid.</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="http://static.garagegames.com/static/images/theme/blank-user.jpg" alt="Lukas Joergensen's profile picture" />
+			<br />
+			<a rel="Lukas Joergensen" class="member button profile-link ui-state-default ui-corner-all" href="/account/miniprofile/accountID/132727" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Lukas Joergensen<br />
+	<span class="studio-name">WinterLeaf Entertainment</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				IPS Bundle available at: https://www.winterleafentertainment.com/Products/IPS.aspx			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							&bull;&nbsp;<a href="/community/blogs/view/22938">New Torque3D forums are online</a><br />							&bull;&nbsp;<a href="/community/blogs/view/22882">Blending between multiple terrain textures</a><br />							&bull;&nbsp;<a href="/community/blogs/view/22809">The future of IPS and ParticleSystem refactor </a><br />							&bull;&nbsp;<a href="/community/blogs/view/22804">Mixed-resolution particle rendering in T3D</a><br />							&bull;&nbsp;<a href="/community/blogs/view/22801">ParticleSystem refactor</a><br />					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="/community/blogs/view/22758"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="/community/blogs/view/22696"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<br />	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="/community/resource/view/22708#comment_form">+Add a comment</a></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(22708, 74950);" >Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="http://static.garagegames.com/static/upload/users/248183.jpg?v=1400956866" class="profilepic" />
+			<br />
+			<a rel="Azaezel" class="member button profile-link ui-state-default ui-corner-all" href="/account/miniprofile/accountID/248183" onclick="return false;">
+	
+	Azaezel
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="/community/resources/view/22708/1#comment-197281" name="comment-197281">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/23/2014 (1:28 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			DefaultDatablocks: To elaborate further on that, datablock definitions of the form<br />
+<br />
+<pre name="code" class="cpp">datablock XXXData(foo : bar)</pre><br />
+means take some old, already defined datablock of type <b>XXXData</b>, and copy every entry from <b>bar</b> over to <b>foo</b>, then replace any of the old data with what is enclosed in the {};. This includes script-only entries you've added on yourself to the <b>bar</b> class, callbacks, ect.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="http://static.garagegames.com/static/upload/users/244375.png?v=1420723899" class="profilepic" />
+			<br />
+			<a rel="Duion" class="member button profile-link ui-state-default ui-corner-all" href="/account/miniprofile/accountID/244375" onclick="return false;">
+	
+	Duion
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="/community/resources/view/22708/1#comment-197370" name="comment-197370">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/02/2014 (5:10 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			This sounds helpful, we need more of this. It is hard to understand for newbies how this all is setup in Torque.		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<br />	<div class="clear"></div>
+			<div id="commentForm" style="text-align: center;">
+			<a name="comment_form" id="comment_form"></a>
+							<form action="/community/resources/view/22708/1" method="post">
+					<dl>
+						
+<dt id="body-label"><label for="formBody" class="required">Add Your Comment (<a href="#" onclick="return false;" id="ml-link">MarkupLite is enabled</a>)</label></dt>
+<dd id="body-element">
+<textarea name="body" id="formBody" rows="10" cols="120" class="big"></textarea></dd>					</dl>
+					<div class="clear"></div>
+					<div style="float: left; width: auto; margin-left: 42%; margin-top: 10px;">
+						<div style="height: 0px; overflow: hidden;">
+	<input type="submit" name="Post Comment" value="Post Comment" />
+</div>
+<a href="#" onclick="$(this).closest('form').submit(); return false;" class="submit button ui-state-default ui-corner-all">Post Comment</a>					</div>
+				</form>
+				<div class="clear"></div>
+				
+					</div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="/community/blogs/add">Post a blog</a><br />
+		<a href="/community/resources/add">Add a resource</a><br />
+					<a href="/community/forums/new">Start a Thread</a><br />
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0" /> All Products<br />
+		<input type="checkbox" class="relevantProductFilter" value="other" /> 3rd Party Addons<br />
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d" /> iTorque 2D<br />
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d" /> iTorque 3D<br />
+		<input type="checkbox" class="relevantProductFilter" value="tge" /> TGE<br />
+		<input type="checkbox" class="relevantProductFilter" value="tgea" /> TGEA<br />
+		<input type="checkbox" class="relevantProductFilter" value="torque-2d" /> Torque 2D<br />
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro" /> Torque 3D Pro<br />
+		<input type="checkbox" class="relevantProductFilter" value="torquex" /> Torque X<br />
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br />
+	<div id="footer-links">
+	<a href="/">Home</a>
+	<a href="/products">Products</a>
+	<a href="/community">Community</a>
+	<a href="/support">Support</a>
+	<a href="/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright &copy; GarageGames.com 2000 - 2016 All Rights Reserved. <a href="/company/tos">Terms of Service</a> - <a href="/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	</div>
+<div id="supersecrethiddendiv"></div>
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-78WdNPl8jvIsA"
+});
+</script>
+
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-78WdNPl8jvIsA.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+<!-- Twitter JS -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"9591b99732","applicationID":"1014775","transactionName":"NlNSNUsCWEUABkdaCg8ZcQJNCllYTgFWVQQUWkROWgxbWxQLWkccTkBZBE4=","queueTime":0,"applicationTime":664,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

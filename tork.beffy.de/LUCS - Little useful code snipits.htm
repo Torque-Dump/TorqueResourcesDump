@@ -1,0 +1,1290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://tork.beffy.de/tutorials/littlehelpers/snippits.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>LUCS - Little useful code snipits</title>
+<link rel="STYLESHEET" type="text/css" href="./LUCS - Little useful code snipits_files/style.css"><script>
+function openPop(url, width, height, top, left, name) {
+        var trails="width=" + width + ",height=" + height + ",left=" + left + ",top=" + top + ",toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no";
+        newWindow=window.open(url,name,trails);
+}
+</script></head>
+
+<body>
+<script type="text/javascript" language="JavaScript" src="./LUCS - Little useful code snipits_files/nav.js"></script>
+<script>
+	header("LUCS - Little useful code snipits");
+</script><table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0"> 	<tbody><tr bgcolor="#e0e0e0">         <td valign="bottom" width="*"><h1><nobr>LUCS - Little useful code snipits</nobr></h1></td>         <td align="right"><img src="./LUCS - Little useful code snipits_files/header.gif" width="240" height="60" border="0"></td>     </tr>     <tr>          <td align="left" bgcolor="#0C3481">         &nbsp;<a class="bar" href="http://www.garagegames.com/" target="_blank">GarageGames.com</a>         </td>         <td align="right" bgcolor="#0C3481">         <span class="bar"><nobr>Doc Version 1.0.x&nbsp;</nobr></span>         </td>     </tr> 	<tr><td colspan="2" height="15">&nbsp;</td></tr>
+<script>
+	startBody();
+</script><tr valign="top"><td colspan="2" height="100%">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#dDdDdD"><tbody><tr><td>Author: <a href="mailto:beffy@gmx.de">beffy</a>&nbsp;(c++programmer)</td></tr></tbody></table><p>
+<a name="top"></a>
+<!-------------------------------------------------------->
+
+</p><p>The short snipits and examples here are just random stuff I came across while scripting, programming, browsing the GG site or 
+hanging around in the IRC... hope you'll find something useful here!
+The snipits are from various people and various sources, so please forgive me
+that I didn't include all the authors' names...
+<br>This page will be updated regularly, so make sure you come back every now and then... ;-)</p>
+
+<hr noshade="" color="#808080">
+<ul type="circle">
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#001">[01] Toggling names above players</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#002">[02] Spawning players with weapon and ammo</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#003">[03] Finding specific objects within a certain radius</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#004">[04] Finding the next available Item by name</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#005">[05] Getting rid of the console window</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#006">[06] Fundamental classes in Torque</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#007">[07] Finding specific objects in Torque (C++)</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#008">[08] Getting the posititon of an object in Torque</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#009">[09] Multipassenger vehicles</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#010">[10] Torque metrics</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#011">[11] Transform matrices</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#012">[12] addMaterialMapping details</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#013">[13] ShapeBaseImageData concepts</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#014">[14] Rendering basic 3D objects with Torque</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#015">[15] Deleting files with the engine (e.g. all *.dso or *.cs files)</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#016">[16] Reading and writing files from script</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#017">[17] Zooming / sniper rifles</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#018">[18] Fast firing weapon sound</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#019">[19] Matrix rotations in script</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#020">[20] Disabling Master Server lookups</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#021">[21] Sliding/moving gui</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#022">[22] Snow/Rain that stays outside where it belongs</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#023">[23] Con::addCommand versus ConsoleMethod</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#024">[24] Torque core game classes</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#025">[25] Debugging Torque scripts</a></li>
+<li><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#026">[26] C++ code to add an Item</a></li>
+
+
+</ul>
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="001"></a><b>[001] Toggling names above players</b>
+<p>This little function lets you turn the names above the players / bots on and off
+with a keypress... simply put it in default.bind.cs and put the "bind" command into this
+file, too AND in your "{modname}\client\config.cs" file...</p>
+<pre>function toggleNames(%val)
+{
+	if(%val)
+	{
+		for(%i = 0;%i &lt; PlayGui.getCount(); %i++)
+		{
+			%obj = PlayGui.getObject(%i);
+			if(%obj.getClassName()$="GuiShapeNameHud")
+			{
+				%obj.visible = !%obj.visible;
+				return;
+			}
+		}
+	}
+}
+
+moveMap.bind(keyboard,"ctrl n",toggleNames);
+</pre>
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="002"></a><b>[002] Spawning players with weapon and ammo</b>
+<p>This little snipit lets every player and bot spawn with a weapon at startup.
+<br>
+Put it into "\server\scripts\game.cs" -&gt; function GameConnection::createPlayer(), at the end of the function...</p>
+<pre>	%player.incInventory(Rifle,1); 
+	%player.incInventory(RifleAmmo,RifleAmmo.maxInventory); 
+	%player.use(Rifle);
+</pre>
+Or, if you're using Tim's InventoryManager, the commands look like this:
+<pre>	%player.incInvItem(Rifle,1);
+   	%player.incInvItem(RifleAmmo,RifleAmmo.maxInventory);
+   	%player.use(Rifle);
+</pre>
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="003"></a><b>[003] Finding specific objects within a certain radius</b>
+<p>This little snipit finds all vehicles within a 50m radius.
+</p><pre>function findVehicle(%obj)
+{
+	%position = %obj.getTransform();
+	%radius = 50;
+	InitContainerRadiusSearch(%position, %radius, $TypeMasks::VehicleObjectType);
+
+   	while ((%targetObject = containerSearchNext()) != 0)
+   	{
+		%dist = containerSearchCurrRadiusDist();
+		echo("found vehicle:" SPC %targetObject SPC ",distance is:" SPC %dist);
+   	}
+}
+</pre>
+Or, another example: search other players within view
+<pre>// usage: e.g. search other players: 
+// commandToServer('SearchObject', "0.1");
+
+function serverCmdSearchObject(%client, %radius)
+{
+   // example: search for other players
+   %typeMask = $TypeMasks::PlayerObjectType;
+   
+   %StartPos=%client.player.gettransform();
+   %Eye = %client.player.getEyeVector();
+   %EndPos = vectorScale(%Eye, -1);
+   %EndPos = vectorsub(%StartPos,%EndPos);
+
+   // point, radius, mask
+   InitContainerRadiusSearch(%EndPos, %radius, %typeMask);
+
+   %rayCast=ContainerSearchNext();
+   while(%rayCast != 0 )
+   {
+      // now %rayCast is the object found!
+	  if(isObject(%rayCast))
+      {
+	  	echo("Object found for typeMask:" SPC %typeMask);
+		// dump
+		%rayCast.dump();
+      }
+      // get next Object
+      %rayCast=ContainerSearchNext();
+   }
+}
+</pre>
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="004"></a><b>[004] Finding the next available Item by name</b>
+<p>This little snipit finds all Items by their name and returns the nearest to %myPos.<br>
+Call it like this: 
+</p><pre>      %nextHealthObjPos = findNearestItem(%this.player.getPosition(), "HealthPatch");
+</pre>
+<pre>function findNearestItem(%myPos, %name)
+{
+   %dataGroup = "MissionGroup";
+   for(%i = 0; %i &lt; %dataGroup.getCount(); %i++)
+   {
+      %obj = %dataGroup.getObject(%i);
+      if(%obj.getClassName() !$= "Item")
+      {
+         echo("NO ITEM!");
+         continue;
+      }
+      if(%obj.getDatablock().getName() $= %name &amp;&amp; isObject(%obj))
+      {
+         %objPos = %obj.position;
+         //%obj.dump();
+         echo(%i SPC "Found object: Datablockname is:" SPC %obj.getDatablock().getName() SPC "POSITION:"
+		 SPC %obj.position SPC "ClassName:" SPC %obj.getClassName());
+         %tempDist = VectorDist(%objPos, %myPos);
+         if(%shortestDist &gt; %tempDist || %shortestDist $= "")
+         {
+            %shortestDist = %tempDist;
+            %finalPos = %objPos;
+         }
+         echo("shortestDist:" SPC %shortestDist);
+      }
+   }
+   return %finalPos;
+}
+</pre>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="005"></a><b>[005] Getting rid of the console window</b>
+<p>Ever wondered how to disable the "dos" console that launches everytime you start the engine?
+<br>Here's how to do it...</p>
+Goto...
+<pre>project-&gt;settings 
+Select the "Torque Demo" 
+click on the "Link Tab" 
+Under project options find 
+/subsystem:console 
+and change it to 
+/subsystem:windows 
+</pre>
+then hit "Build -&gt; Clean" and "Build -&gt; Build torqueDemo.exe" and it's gone!
+<br>If you ever want to enable it again, you can simply create a shortcut to
+the exe and start it with the parameter -console like this "torqueDemo.exe -console".
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="006"></a><b>[006] Fundamental classes in Torque</b>
+<p>This is from another thread I came across in the GG forums which I found VERY useful
+for the overall understanding of the engine<br>
+So let's just cite Badguy, who wrote 
+<a href="http://www.garagegames.com/index.php?sec=mg&mod=forums&page=result.thread&qt=5193" target="_blank">this post</a>...</p>
+
+<pre>"... ShapeBase is the base class for anything that is a 3d model. 
+
+being how many of the game objects had use for these properties .. 
+they were placed in the class to reduce code im sure. 
+(energy, muzzlepoint,...) 
+
+I would say the line between using this class , 
+and using GameBase.. 
+could be drawn by stating : 
+if this object needs interaction with the player 
+ie: mounting, collecting, carrying. 
+then it should prolly be shapebase. 
+
+if this object does not need direct interaction with the player.. yet needs to be processed everytick 
+ie: an elevator, door 
+it could be GameBase. 
+
+if the object needs no processing or interacting. 
+but needs to remain in the scene to draw 
+it should be SceneObject ..."
+</pre>
+
+Some more thoughts from Phil C.:
+<pre>"...sceneobect is there for drawing but doesnt support datablocks or time based incrementation (processtick etc) 
+
+gamebase adds time based updating. 
+
+shapebase adds a few useless things AND support for image mounting (i.e. sub object mounts) 
+
+My best advice is to find something thats doing close to what you need and see what thats derived from. 
+
+Most of my stuff is gamebase derived."
+</pre>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="007"></a><b>[007] Finding specific objects in Torque (C++)</b>
+<p>To find any object, you can either use a SimSetIterator or use
+Sim::findObject(objectName) directly (if it's one specific object/group you're looking for).<br>
+The following code searches all objects of type "Interior" (this is, ".dif" objects).
+Btw., you can see all the available object types in "engine\game\objectTypes.h".</p>
+<pre>	for (SimSetIterator itr(conn); *itr; ++itr) {
+		// check if it's an interior...
+		if ((*itr)-&gt;getType() &amp; InteriorObjectType) {
+			// okay, so cast it...
+			InteriorInstance* shape = static_cast<interiorinstance*>(*itr);
+			if (shape-&gt;getType() &amp; InteriorObjectType) {
+				// now do something with the Interiors...
+				Point3F newCoord = shape-&gt;getBoxCenter();
+				Box3F shapeBox = shape-&gt;getWorldBox();
+				// ...
+			}
+		}
+	}
+</interiorinstance*></pre>
+
+<pre>	// searching the Sim for the "MissionArea" object...
+	MissionArea * mArea = dynamic_cast<missionarea*>(Sim::findObject("MissionArea"));
+	RectI mAreaRect = mArea-&gt;getArea();
+	// ...
+</missionarea*></pre>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="008"></a><b>[008] Getting the posititon of an object in Torque</b>
+<p>Well, this is an easy one...</p>
+In C++, you can first search for the object (see <a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#007">[007]</a>) and then
+use the function <b>getPosition()</b>, which will give you a Point3F ...
+<pre>	TerrainBlock * mTerr = dynamic_cast<terrainblock*>(Sim::findObject("Terrain"));
+	Point3F terrPos = mTerr-&gt;getPosition();
+	float terrX = terrPos.x;
+	...
+</terrainblock*></pre>
+In script it's even easier, you can simply do:
+<pre>	%player = %client.player;
+	%currPlayerPos = %player.getPosition();
+	// or
+	// %currPlayerPos = %player.getTransform();
+	// see numer [011] below ...
+</pre>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="009"></a><b>[009] Multipassenger vehicles</b>
+<p>By default, every player using a vehicle is mouted to mountpoint 0,
+this is done in player.cs, Armor::onCollision():</p>
+
+<pre>	// Mount vehicles
+	%this = %col.getDataBlock();
+	if ((%this.className $= WheeledVehicleData || %this.className $= WaterCraftData || %this.className $= FlyingVehicleData)
+		&amp;&amp; %obj.mountVehicle &amp;&amp; %obj.getState() $= "Move" &amp;&amp; %col.mountable) {
+		// Only mount drivers for now.
+		%node = 0;
+		...
+	}
+</pre>
+Now, instead of setting %node to 0, you could use a little function I found in the forums:
+<pre>	%node = findEmptySeat(%col, %this);
+	function findEmptySeat(%vehicle, %vehicleblock)
+	{
+		for (%i = 0; %i &lt;  %vehicleblock.numMountPoints; %i++)
+		{
+			%node = %vehicle.getMountNodeObject(%i);
+			if (%node == 0)
+			{
+				return %i;
+			}
+		}
+		return -1;
+	}
+</pre>
+<p>Just make sure your vehicle has at least mount0 and mount1, and that's it.</p>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="010"></a><b>[010] Torque metrics</b>
+<p>If you use the debug build, you can view various metrics by using the console.
+Simly turn on the console by pressing the "tilde" key (or whatever key is mapped to it),
+then type</p>
+
+<pre>	metrics(%what);
+</pre>
+where %what can be one of these values:
+<pre>	audio
+	debug
+	interior
+	fps
+	time
+	terrain
+	texture
+	video
+	vehicle
+	water
+</pre>
+<br>
+So an example would be:
+<pre>	metrics(fps);
+</pre>
+which then pops up a little text gui on your PlayGui showing the current fps value...
+
+<p>Or, use <a href="http://www.garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=2565" target="_blank">these great uitilities</a>, where you got all this (and much more) in a nice GUI...</p>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="011"></a><b>[011] Transform matrices</b>
+<p>If you do something like</p>
+
+<pre>	%t = %client.player.getTransform();
+</pre>
+you don't just get a Point3F with the position of the player (that's what %client.player.getPosition() will return),
+actually you get 7 numbers back, which are:
+<pre>1) x-axis position
+2) y-axis position
+3) z-axis position
+
+4) x-axis rotation
+5) y-axis rotation
+6) z-axis rotation
+
+These rotation numbers make up the axis of rotation of the object,
+and the 7th and final number is the ...
+
+7) rotation about that axis in radians
+</pre>
+
+So now in script you could get any of these with
+<pre>    %x = getWord(%t, 0);
+    %y = getWord(%t, 1);
+	...
+</pre>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="012"></a><b>[012] addMaterialMapping details</b>
+
+<p>The addMaterialMapping function has more components then what are listed in the documentation.</p>
+<pre>AddMaterialMapping("scorched_dk","detail: fps/data/terrains/details/detail1",
+"environment: fps/data/skies/sunset_0007 0.25", "color: color: 0.46 0.36 0.26 0.4 0.0", "sound: 0"); 
+</pre>
+
+<pre>	"scorched_dk", 
+</pre>
+Texture name without extension 
+
+<pre>	"detail: fps/data/terrains/details/detail1", 
+</pre>
+Texture to use for detail overlay, no extension. 
+<br><b>(This doesn't seem to be used at all by the engine! It seems to always use the default detail texture defined
+for the TerrainBlock...)</b>
+
+<pre>	"environment: fps/data/skies/sunset_0007 0.25", 
+</pre>
+Texture to use for environment map, Percent of reflection (?), Only usable for interior object textures. 
+
+<pre>	"color: color: 0.46 0.36 0.26 0.4 0.0", 
+</pre>
+Footpuff color, Red Green Blue Alpha1 Alpha2. 
+<br>RGBA1 is starting color, RGBA2 is ending color. 
+
+<pre>	"sound: 0" 
+</pre>
+Sound to play when player walks on this texture. 
+
+<p>Sound Chart: 
+<br>
+0 FootSoftSound <br>
+1 FootHardSound <br>
+2 FootMetalSound <br>
+3 FootSnowSound<br>
+</p>
+
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="013"></a><b>[013] ShapeBaseImageData concepts</b>
+
+<p>ShapeBaseImageData in itself is much like anyother datablock class defined the engine
+(and instantiated in scripts the same way too).</p>
+
+<p>Instead of being an entire object (it doesn't process ticks, or interpolate, moves,
+insert render images, and so forth) it only handles timed/triggered states. So in
+itself it really is a "datablock" as it just holds data for the ShapeBase class
+(and it's derivatives, your turret would probably be an example as players are).</p>
+
+<p>When you tell a ShapeBase object to mount an image to a certain slot it will add
+it into the mMountedImageList array (member of ShapeBase) referencing the image's datablock.
+I believe the index of that array is equivalent to the slot number. A slot isn't necessarily
+equivalent to a mountpoint on the ShapeBase object (you define that in the ShapeBaseImage datablock).
+The mountpoint is the node which will be used as the image's shape's origin when rendered.
+For example a player has a mount0 (that's the node's name in the dts shape) on it's hand.
+If you want to mount a weapon to that hand, you would set the mountpoint in the weapon's datablock to 0. </p>
+
+<p>Also, triggers are relative to slots. Right now, for the player, only the first two triggers
+are used and they only trigger slots 0 and 1.</p>
+
+<pre>--------------------------------------------------------------------------------
+//
+//... in player.cc Player::updateMove(...)
+    
+      setImageTriggerState(0,move-&gt;trigger[0]);
+      setImageTriggerState(1,move-&gt;trigger[1]);
+
+//...
+--------------------------------------------------------------------------------
+</pre>
+
+If you check out how ShapeBase renders, it'll render it's own image (ie: a player) and then
+render all the mounted ones (ie: packs, weapons, even body parts...). 
+
+<p>Images have a variety of other little functions like correcting the muzzle vector
+(which is on the muzzle node on the image's shape transformed relative the player/object's
+mountpoint plus image defined offset) with the eye vector (so you shoot smack on the reticle).
+In first person you can give them any offset you like, provided the shapebase object isn't set
+to render in first person otherwise it'll be relative to the mountpoint. I personally always use
+the mountpoint so you can see the weapon bob with the player as it breathes and animates.</p>
+
+So here's how it all plays out in script: 
+<br>
+
+<pre>--------------------------------------------------------------------------------
+datablock ShapeBaseImageData(RifleImage)
+{
+   // the shape and rendering settings
+   shapeFile = "~/data/shapes/rifle/weapon.dts";
+   emap = true;
+
+   // mountPoint is the mount# on the objects
+   // this will mount to
+   mountPoint = 0;
+
+   // offset is any extra displacement you want
+   // to add to the mountPoint's, for tweeking
+   // image position 
+   offset = "0 0 0";
+   
+   // offset used when in first person
+   eyeOffset = "0.1 0.2 -0.55";
+
+   // this will correct the muzzle vector to point
+   // towards the same imaginary point on the horizon
+   // as your eye vector in first person
+   correctMuzzleVector = true;
+
+   // Projectile &amp;&amp; Ammo.
+   // now the projectile data is actually stored here
+   // engine side, keep a note of that so you define
+   // your projectiles before this image
+   // you may want this if you want your turret to 
+   // estimate ahead of a moving target object...
+   // if you do you'll need the projectile's velocity
+   // and like this you'll be able to claim it engine 
+   // side
+
+   projectile = RifleProjectile;
+
+   // script use variables removed for brevity
+   // image states removed for brevity
+};
+--------------------------------------------------------------------------------
+</pre>
+
+<p>So now, this image will render relative to mountPoint 0 (attached to) with no extra offset.
+So the origin of mountPoint 0 will line up with that of the image shape (unless you define a
+mountPoint on the image shape, it should then use that instead of the origin). </p>
+
+To mount it to an object you would do: 
+<pre>	object.mountImage(RifleImage, slot); 
+</pre>
+
+<p>If you want it to be triggered by your script bound mouse fire key, it must be on slot 0.
+There are a max of 8 slots on an object and 6 triggers.</p>
+
+To remove it, either mount another image over the same slot or: 
+<pre>	object.unMountImage(slot); 
+</pre>
+
+The images all throw script side callbacks like 
+<pre>--------------------------------------------------------------------------------
+RifleImage::onmountImage(%slot);
+RifleImage::onUnmountImage(%slot);
+--------------------------------------------------------------------------------
+</pre>
+
+And you can define your own callbacks in the scripted image states (onFire being one). 
+
+
+<p>Another thing to note is that even though an image can be mounted on multiple players, you will always have
+only one shape instance for the image and that's in the image datablock.</p>
+(you can find further details in <a href="http://www.garagegames.com/index.php?sec=mg&mod=forums&page=result.thread&qt=6004" target="_blank">this thread</a>!)
+
+
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="014"></a><b>[014] Rendering basic 3D objects with Torque</b>
+
+<p>(by Melv May, found <a href="http://www.garagegames.com/index.php?sec=mg&mod=forums&page=result.thread&qt=6866" target="_blank">here</a>)
+<br>&nbsp;<br>
+
+<i>Things to check are:</i>
+<br>
+- The object should be based upon a SceneObject. <br>
+- It should override the OnAdd/OnRemove with at least... 
+
+</p><pre>bool MyConeObj::onAdd()
+{
+	if(!Parent::onAdd()) return(false);
+
+	// Set initial object-space bounding box.
+	mObjBox.min.set( -0.5f, -0.5f, -0.5f );
+	mObjBox.max.set(  0.5f,  0.5f,  0.5f );
+
+	// Reset the World Box.
+	resetWorldBox();
+
+	// Set the Render Transform.
+	setRenderTransform(mObjToWorld);
+
+	// Add to Scene.
+	addToScene();
+
+	// Return OK.
+	return(true);
+}
+
+void MyConeObj::onRemove()
+{
+	// Remove from Scene.
+	removeFromScene();
+
+	// Do Parent.
+	Parent::onRemove();
+}
+</pre>
+
+
+<i>- A minimal prepRenderImage function like... </i>
+
+<pre>bool MyConeObj::prepRenderImage(	SceneState* state, const U32 stateKey, const U32 startZone,
+								const bool modifyBaseZoneState)
+{
+	// Return if last state.
+	if (isLastState(state, stateKey)) return false;
+	// Set Last State.
+	setLastState(state, stateKey);
+
+   // Is Object Rendered?
+   if (state-&gt;isObjectRendered(this))
+   {	   
+		// Yes, so get a SceneRenderImage.
+		SceneRenderImage* image = new SceneRenderImage;
+		// Populate it.
+		image-&gt;obj = this;
+		image-&gt;isTranslucent = false;
+		image-&gt;sortType = SceneRenderImage::Normal;
+		
+		// Insert it into the scene images.
+		state-&gt;insertRenderImage(image);
+   }
+
+   return false;
+}
+</pre>
+
+<i>- Make sure you are at least passing the appropriate positional information from server to client... </i>
+
+<pre>U32 MyConeObj::packUpdate(NetConnection * con, U32 mask, BitStream * stream)
+{
+	// Pack Parent.
+	U32 retMask = Parent::packUpdate(con, mask, stream);
+
+	// Write MyConeObj Mask Flag.
+	if (stream-&gt;writeFlag(mask &amp; MyConeObjMask))
+	{
+		stream-&gt;writeAffineTransform(mObjToWorld);
+	}
+
+	// Were done ...
+	return(retMask);
+}
+
+void MyConeObj::unpackUpdate(NetConnection * con, BitStream * stream)
+{
+	// Unpack Parent.
+	Parent::unpackUpdate(con, stream);
+
+	// Read MyConeObjMask Flag.
+	if(stream-&gt;readFlag())
+	{
+		MatrixF		MyConeObjObjectMatrix;
+
+		stream-&gt;readAffineTransform(&amp;MyConeObjObjectMatrix);
+
+		// Set Transform.
+		setTransform(MyConeObjObjectMatrix);
+	}
+}
+</pre>
+
+<i>- Make sure that your object-space box (above) completely encapsulates your object otherwise it will be culled. </i>
+<p></p>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="015"></a><b>[015] Deleting files with the engine (e.g. all *.dso or *.cs files)</b>
+<p>
+Imagine you want to delete all *.dso files everytime the game exits, or you want to delete all *cs files
+before you publish a new version of the game... here is how to do it within the engine...
+<br>
+Credits go to Daniel Eden, who posted this snippit <a href="http://www.garagegames.com/index.php?sec=mg&mod=forums&page=result.thread&qt=7555" target="_blank">here</a>.
+<br>&nbsp;<br>
+</p><pre>// Adds the deleteFile function to the console
+ConsoleFunction(deleteFile, bool, 2, 2, "deleteFile(fileName)")
+{
+   argc;
+   Con::expandScriptFilename(scriptFilenameBuffer, sizeof(scriptFilenameBuffer), argv[1]);
+   return bool(ResourceManager-&gt;deleteFile(scriptFilenameBuffer));
+}
+</pre>
+
+Then, add the following function to resManager.cc:
+
+<pre>// Delete file functionality, returns 0 on fail, 1 on succeed
+bool ResManager::deleteFile (const char *fileName)
+{
+   // If there's no filename, fail out.
+   if (!fileName)
+      return 0;
+
+   // Prevent a little nastiness...
+   if(!dStrstr(fileName, ".."))
+   {
+      // Comment the Con::warnf out if you want quiet deletion (ie. no console spam)
+      Con::warnf("Deleting file '%s'.", fileName);
+
+      // Actually delete the file.
+      dFileDelete(fileName);
+   }
+
+   return 1;
+}
+</pre>
+
+Then add the following to resManager.h (at line 315 or thereabouts):
+
+<pre>bool deleteFile(const char * fileName);
+</pre>
+
+
+Finally, add the following function to your common package in the main.cs file (found in example\common\):
+
+<pre>// Quit override
+function quit() 
+{
+   echo("Deleting DSOs...");
+
+   // Create a new script object to handle the list of dso files
+   %tmp = new ScriptObject() {};
+
+   // Set the initial file count to zero
+   %num = 0;
+
+   // Search for *.dso files
+   %search = "*.dso";
+
+   // Search the directory tree for .dso files and construct a list.
+   for(%file = findFirstFile(%search); %file !$= ""; %file = findNextFile(%search)) 
+   {
+      %tmp.file[%num] = %file;
+      %num++;
+   }
+
+   // Cycle through the list and delete each file.
+   for (%i = 0; %i &lt; %num; %i++) 
+   {
+      deleteFile(%tmp.file[%i]);
+   }
+
+   // Delete the script object.
+   %tmp.delete();
+
+   // Return to the parent function.
+   return parent::quit();
+}
+</pre>
+<p></p>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="016"></a><b>[016] Reading and writing files from script</b>
+<p>
+Credits go to Harold "LabRat" Brown, 
+the original GG post can be found <a href="http://www.garagegames.com/index.php?sec=mg&mod=forums&page=result.thread&qt=7575" target="_blank">here</a>.
+</p><pre>function readfile(%filename)
+{
+   %file = new FileObject();
+   if(%file.openForRead(%filename))
+   {
+      while(!%file.isEOF())
+      {
+        %input = %file.readLine();
+        echo(%input);
+      }
+   }
+   %file.close();
+   %file.delete();
+}
+
+function write(%filename)
+{
+   %file = new FileObject();
+   %file.openforWrite(%filename);
+   %file.writeLine( "This is an output file);
+   %file.writeLine( "I can contain any plain text that the user wishes to output." );
+   %file.close();
+   %file.delete();
+}
+
+// Usage:
+//     openFile("name","fileHandle","R");
+//  Open a file named "name" assign a fileHandle ID of "fileHandle", open as Readonly.
+//  Reference in another function:
+//     fileHandle.readLine();
+//
+//     openfile("name","fileHandle","W");
+//  Open a file named "name" assign a fileHandle ID of "fileHandle", open as Writeonly.
+//  Reference in another function:
+//     fileHandle.writeLine();
+//
+//     closeFile("fileHandle");
+//  Closes the file associated with the fileHandle ID of "fileHandle"
+
+function openFile(%filename,%IDname,%rw)
+{
+   %file = new FileObject(%IDname);
+   if (%rw $= "R")
+   {
+   	if(%file.openForRead(%filename))
+   	{
+   		return 1;
+   	}
+   	else
+   	{
+   		return 0;
+   	}
+   }
+   else if (%rw $= "W")
+   {
+   	%file.openForWrite(%filename);
+   	return 1;	
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+function closeFile(%IDname)
+{
+   %IDname.close();
+   %IDname.delete();
+}
+</pre>
+
+<b>getSaveFilename()</b> is a scripted function / GUI that allows you to pick a 
+filename for the file you wish to save using file specs. <br><br>To understand 
+the function you need to know the arguements. Below is a prototype of the 
+function. 
+<br><br>
+getSaveFilename(%filespec, %functionCallback, %currentFilename); 
+<br><br>
+%filespec - The wildcard filepec for the dir listing 
+that the save dialog will show. ('~/directory/*.ext' for example) 
+<br>%functionCallback - The function that the getSaveFilename will call when a 
+filename is selected. 
+<br>%currentFilename - The "default" save filename to pass 
+to the function. 
+<br><br>So to expand on the previous file function samples. 
+
+<pre>function SaveFile()
+{
+     getSaveFilename("*.txt",saveTextFile,"default.txt");
+}
+
+function saveTextFile(%fileName)
+{
+   %file = new FileObject();
+   %file.openforWrite(%filename);
+   %file.writeLine( "This is an output file);
+   %file.writeLine( "I can contain any plain text that the user wishes to output." );
+   %file.close();
+   %file.delete();
+}
+</pre>
+
+There is also a simliar function for loading files named getLoadFilename. It 
+only uses the first two arguements though.
+
+<pre>function LoadFile()
+{
+     getLoadFilename("*.txt",loadTextFile);
+}
+
+function loadTextFile(%fileName)
+{
+   %file = new FileObject();
+   if(%file.openForRead(%filename))
+   {
+      while(!%file.isEOF())
+      {
+        %input = %file.readLine();
+        echo(%input);
+      }
+   }
+   %file.close();
+   %file.delete();
+
+}
+</pre>
+
+<p></p>
+
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="017"></a><b>[016] Zooming / sniper rifles</b>
+<p>
+Credits go to Sam Guffey and Harold "LabRat" Brown, 
+the original GG post can be found <a href="http://www.garagegames.com/index.php?sec=mg&mod=forums&page=result.thread&qt=7656" target="_blank">here</a>.
+<br>
+This will test to see if the weapon you have is able to zoom based on the images 
+datablock, if you want the gun to zoom you must put ' canZoom = true; ' in the 
+guns image. If not then it wont zoom at all.
+<br>
+</p><pre>//------------------------------------------------------------------------------
+// Zoom and FOV functions
+//------------------------------------------------------------------------------
+
+if($Pref::player::CurrentFOV $= "")
+   $Pref::player::CurrentFOV = 45;
+
+function setZoomFOV(%val)
+{
+   if(%val)
+      toggleZoomFOV();
+}
+
+function serverCmdGetCurrentWeapon(%client)
+{
+      %player = %client.player;
+      %weapon = %player.getMountedImage($WeaponSlot);
+   
+      if(%weapon)               // Testing to see if we are packing.
+         if(%weapon.canZoom)    // Testing the image to see if we can zoom
+            commandToClient(%client, 'applyZoom');   
+			// it is so we apply the zoom. If not we dont do anything.
+}
+
+function clientCmdapplyZoom()
+{
+   $ZoomOn = true;
+   setFov( $Pref::player::CurrentFOV );
+   zoomcrosshair.Visible = 1; // show crosshair for zoom.
+   playerReticle.Visible = 0; // make normal crosshair invisible.
+}
+      
+function toggleZoom( %val )
+{
+   if ( %val )
+      commandToServer('GetCurrentWeapon');
+   else
+   {
+      $ZoomOn = false;
+      setFov( $Pref::player::DefaultFov );
+      zoomcrosshair.Visible = 0; // make zoom crosshair invisible.
+      playerReticle.Visible = 1; // show the normal one again.
+   }
+}
+
+function toggleZoomFOV()
+{
+   if($pref::player::currentFOV == $pref::player::defaultFov / 2)
+      $pref::player::currentFOV = $pref::player::defaultFov / 5;
+   else
+      $pref::player::currentFOV = $pref::player::currentFOV / 2;
+
+   if($pref::player::currentFOV &lt; 4)
+      $pref::player::currentFOV = $pref::player::defaultFov / 2;
+
+   if($ZoomOn)
+      setFov( $pref::player::currentFOV );
+}
+
+moveMap.bind(keyboard, z, setZoomFOV);
+moveMap.bind(keyboard, e, toggleZoom);
+</pre>
+<p></p>
+
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="018"></a><b>[018] Fast firing weapon sound</b>
+<p>
+Credits go to Daniel Neilsen who posted this in 
+<a href="http://www.garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=3410" target="_blank">his plan</a>...</p>
+<p>
+The TGE engine uses a looped audio sound which, for fast firing weapons was causing all of the
+audio channels to fill up. I reworked this code to use one audio channel only and use singular
+(non-looped) sounds. The result is a much cleaner and clearer sounding weapon.</p>
+
+Lines at approx 1616 look like this 
+
+<pre>// Play sound
+   if (stateData.sound &amp;&amp; isGhost()) {
+      Point3F vel = getVelocity();
+      image.animSound = alxPlay(stateData.sound, &amp;getRenderTransform(), &amp;vel);
+      ALint value = 0;
+      alxGetSourcei(image.animSound, AL_LOOPING, &amp;value);
+      image.animLoopingSound = (value == AL_TRUE);
+   }
+</pre>
+
+Replace them with this 
+
+<pre>// Play sound
+   if (stateData.sound &amp;&amp; isGhost()) {
+      Point3F vel = getVelocity();
+	  if(image.animSound)
+	  {
+		  alxStop(image.animSound);
+		  image.animSound = 0;
+	  }
+      image.animSound = alxPlay(stateData.sound, &amp;getRenderTransform(), &amp;vel);
+      ALint value = 0;
+      //alxGetSourcei(image.animSound, AL_LOOPING, &amp;value);
+      image.animLoopingSound = false;//(value == AL_TRUE);
+   }
+</pre>   
+
+<p>What this does is plays a sound and, if that sound is still playign when the next firing sound is played,
+it stops it before playing the next sound. This means you can use a nice long 2 second rifle sound in an
+automatic rifle (if you wish) and the last firing sound will have that nice long fade.</p>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="019"></a><b>[019] Matrix rotations in script</b>
+
+<pre>// Get the current transform matrix 
+%matrix = %obj.getTransform(); 
+%xpos = getWord(%matrix, 0); 
+%ypos = getWord(%matrix, 1); 
+%zpos = getWord(%matrix, 2); 
+// Set the rotation matrix stuff 
+%xrot = 0; 
+%yrot = 0; 
+%zrot = 1; 
+%angle = ($SomeAngleInDegrees * 3.14) / 180.0; 
+// apply the transformation. 
+%obj.setTransform(%xpos SPC %ypos SPC %zpos SPC %xrot SPC %yrot SPC %zrot SPC %angle); 
+</pre>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="020"></a><b>[020] Disabling Master Server lookups</b>
+<p>If you set $Pref::Net::DisplayOnMaster = "Never" in fps/server/prefs.cs, then your server won't talk to the master anymore.</p>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="021"></a><b>[021] Sliding/moving gui</b>
+<pre>//if true the inventory is being hidden this is                            
+ //tru, otherwise false.                                                    
+ $isHiding=false;                                                           
+                                                                            
+                                                                            
+ //cancel whatever movement was going on and reverse direction              
+                                                                            
+ function toggleHud()                                                       
+ {                                                                          
+ cancel($hudSlider);                                                        
+ $isHiding = !$isHiding;                                                    
+ if (!$isHiding) ItemArea.setVisible(true);                                 
+ slideHud(10,$isHiding,ItemArea);                                           
+ }                                                                          
+                                                                            
+                                                                            
+ //move the obj by val amount. If shrink is true                            
+ //it moves off the screen, or else it moves back onto                      
+ //the screen                                                               
+ function slideHud(%val,%shrink,%obj)                                       
+ {                                                                          
+ %res = getResolution();                                                    
+ %pos=%obj.getPosition();                                                   
+ %size = %obj.getExtent();                                                  
+                                                                            
+                                                                            
+ if (%shrink)//move off the screen                                          
+ {                                                                          
+ if (getWord(%pos,1)&gt;getWord(%res,1))                                       
+ {                                                                          
+ %obj.setVisible(false); //off screen hide it totally                       
+ return;                                                                    
+ } %obj.resize(getWord(%pos,0),getWord(%pos,1)+2,getWord(%size,0),getWord   
+ (%size,1));                                                                
+ }                                                                          
+ else //move onto screen                                                    
+ {                                                                          
+ if (getWord(%pos,1) &lt;=435*(getWord(%res,1)/480)) return;                   
+ %obj.resize(getWord(%pos,0),getWord(%pos,1)-2,getWord(%size,0),getWord     
+ (%size,1));                                                                
+ }                                                                          
+ $hudSlider = schedule(5,0,"slideHud",%val-1,%shrink,%obj);                 
+ }                                                                          
+                                                                            
+ moveMap.bind( keyboard, i, toggleInterface );                              
+ function toggleInterface(%val)                                             
+ {                                                                          
+ if(%val)                                                                   
+ toggleHud();                                                               
+ }                           
+</pre>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="022"></a><b>[022] Snow/Rain that stays outside where it belongs</b>
+<p>Open the engine file fx/precipitation.cc, and around line 697 add only the code in bold below: </p>
+
+<pre>		mFallingObj[x].stillFalling = false;
+               }
+            }
+         //-----------------------------------------------
+         RayInfo rInfo;                                                           
+         if (gClientContainer.castRay(  mFallingObj[x].curPos, 
+                Point3F( mFallingObj[x].curPos.x,                                            
+                mFallingObj[x].curPos.y, 
+                mFallingObj[x].curPos.z + 10000 ), 
+                InteriorObjectType, &amp;rInfo) )
+                mFallingObj[x].stillFalling = false;
+         //-----------------------------------------------
+    
+            if(mFallingObj[x].stillFalling)// &amp;&amp; mBox.isContained(mFallingObj[x].curPos))
+            {
+               coordX = mTexCoord[mFallingObj[x].texIndex].x;
+
+</pre>
+
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="023"></a><b>[023] Con::addCommand versus ConsoleMethod</b>
+<p>Found <a href="http://www.garagegames.com/index.php?sec=mg&mod=forums&page=result.thread&qt=8173" target="_blank">here</a>.</p>
+<p>
+Con::addCommand creates a script function which calls a static function in C++,
+static functions are class functions and do not require an instance of the class for invocation, e.g. 
+Con::addCommand("ShapeBase", "setRepairRate", cSetRepairRate, "obj.setRepairRate(value)", 3, 3);
+a check of ShapeBase::setRepairRate will show that it is static and can be invoked as:</p>
+<pre>	ShapeBase::setRepairRate(args);
+</pre>
+ConsoleMethod creates a script function which calls a non-static function in C++,
+these can only be invoked on an object of the class.  e.g.
+<pre>	aiPlayer player = new aiPlayer();
+	player.getAimObject();
+</pre>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="024"></a><b>[024] Torque core game classes</b>
+<p>posted by Tim Gift <a href="http://www.garagegames.com/index.php?sec=mg&mod=forums&page=result.thread&qt=2157" target="_blank">here</a>.</p>
+<p>
+Well to start with, Torque is heavily scripted. Most of what you talk about; damage, weapon management, fire rates, spawning, item pickup, etc. is all scripted, so there is no avoiding the language :) At least not if you want to work within the current game structure. Besides fixing bugs, and general cleanup (and the web site), our focus has been on getting the demo done, so that it would provide a starting point for developers looking at how a game is put together.
+</p>
+<p>As a quick overview... most objects provide pretty bare bones functionality and export attributes, functions and event callbacks to the scripting language. The player is an example of this, the basic player.cc file adds movement, collision, action animation (animation based on the current move, run, jump, falling etc.) and misc. eye candy (such as foot prints and dust puffs). That´s it.. there is no weapon management, or game specific code (though there are some assumptions about what a player can do). The rest is handed off to the scripting language.
+</p>
+<p>So basically the game portion of the engine consists of a collection of objects which each provides some core functionality used by the script to implement the game.
+</p>
+
+<p>
+These are the core game classes:
+<br>
+</p><h3>GameBase</h3>
+The base class for all "game" objects, provides the move interface, game time processing, as well as support for datablocks.
+
+<h3>ShapeBase: public GameBase</h3>
+A loadable shape. Takes care of loading a rendering a .dts object. ShapeBase provides a number of common shape attributes include damage, damage detail management, destruction (exploding, debris), energy as well as features such basic collision. ShapeBase also provides a script interface for managing 4 animation threads and 4 sounds emitters per shape. Last but not least, ShapeBase allows you to mount up to 8 ShapeImages onto mount points defined on a shape.
+
+<h3>ShapeImage</h3>
+Shape Images are not sim objects in the GameBase sense, they are light weight objects which can be attached only to ShapeBase objects and are used to render, animate, and script weapons, backpacks, flags or any other attachable item. We use these instead of ShapeBase objects because they require much less network bandwidth to manage and transmit to clients. The image class provides a scriptable state machine, where states can emit particles, sounds, invoke script functions, run animation sequences, etc. This state machine is used to perform all weapon animation and firing. State data is downloaded to the client for client side state transition prediction. (ShapeImage is declared in shapeBase.h)
+
+<h3>StaticShape: public ShapeBase</h3>
+This is a terminal class for ShapeBase, since you can´t create ShapeBase objects on there own (I don´t think ShapeBase is an abstract class, but it should be). Since shape base does not provide any form of movement or physics, static shapes are static :) They can animate though, emit sounds, etc., using the scripting interface provided by ShapeBase. Just looking through the code I noticed some T2 power functions, they should not be there and will get stripped out.
+
+<h3>Item: public ShapeBase</h3>
+Items are ShapeBase objects that have some very basic physics. You can through them, they bounce, slide down hills, etc. Physical properties such as mass, drag, friction coefficient (only one) and elasticity are exported as datablock properties. Items can also emit a dynamic light (glowing flags), and optionally rotate and/or be static (for spawned rotating items). Items don´t do rigid body physics, basically just a ShapeBase object.
+
+<h3>Player: public ShapeBase</h3>
+A little different than the others since this one is directly controllable by a client. Provide basic player physics: movement, collision, etc., as well as foot puffs, foot prints, water splash and bubbles. Also provides animation based on the player´s action, as well as control of other controllable objects. This last one is so that the client can still control "his" player, while the player controls a vehicle.
+
+<h3>Camera: public ShapeBase</h3>
+A controllable flying camera. Operates in two modes: free flying, and attached to an object.
+
+<h3>Vehicle: public ShapeBase</h3>
+I´ll just mention this one quickly... vehicles are basically like the player, extends ShapeBase to be a controllable object with rigid body physics, in this case derived classes provide crude flight models and wheel/suspension physics.
+
+<h3>Projectile: public GameBase</h3>
+Doesn´t use shape base, which is a fairly heavy weight class, both in terms of memory and network bandwidth. This is your basic linear projectile, supports straight linear/ballistic, has a dynamic light, particle emitter and exposes all it´s core attributes in it´s datablock. Explosions, damage, etc. is all scripted, the projectile just provides shape rendering and physics.
+<p></p>
+
+<p>
+There are others, but these are sort of the core game classes. To read a little more about object ghost and datablocks, you might try the
+<a href="http://www.garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=331" target="_blank">tribes networking</a> article Mark and I wrote for CGDC.
+<br>
+I also posted a list of some of the script event callbacks generated by these classes in an earlier <a href="http://www.garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=1320" target="_blank">plan file</a>.
+</p>
+
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+<hr noshade="" color="#808080">
+
+<br><a name="025"></a><b>[025] Debugging Torque scripts</b>
+<p>
+Posted by Jared Schnelle <a href="http://www.garagegames.com/index.php?sec=mg&mod=forums&page=result.thread&qt=9518" target="_blank">here</a>.
+<br>
+Open up the file fps/server/scripts/game.cs
+<br>
+At the end of the createGame() function put this.
+
+</p><pre>	dbgsetparameters("4500","myPass"); //Start the Debugger!
+</pre>
+
+Then click Edit-&gt;Preferences -&gt; Debugger Icon
+<br>
+Change the IP to
+<br>
+127.0.0.1
+<br>
+
+The Port to
+<br>
+4500
+
+<br>
+The password to
+<br>
+myPass
+
+<br>&nbsp;<br>
+And that´ll automatically start the debugger every time, when the game runs, and you want to debug,
+go into the (Tribal) IDE and click the green play button.
+<p></p>
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+
+<hr noshade="" color="#808080">
+
+<br><a name="026"></a><b>[026] C++ code to add an Item (ie. Health Kit at cords 300,300,300)</b>
+<p>Posted <a href="http://www.garagegames.com/index.php?sec=mg&mod=forums&page=result.thread&qt=10131" target="_blank">here</a>.
+
+</p><pre>Item *pItem = new Item;
+ItemData *pHealthKit = dynamic_cast<itemdata*>(Sim::findObject("HealthKit"));
+pItem-&gt;onNewDataBlock( pHealthKit );
+pItem-&gt;setPosition(Point3F(300,300,300));
+if (pItem-&gt;registerObject())
+{
+	delete pItem;
+	pItem = 0;
+}
+</itemdata*></pre>
+
+Here is code to remove a Item that was created from the function above.
+
+<pre>if( pItem )
+{
+	Con::printf("Deleting object %s", pItem-&gt;getShapeName());
+	pItem-&gt;deleteObject();
+}
+</pre>
+
+Remember to add the include file "item.h"
+
+<p>Also remember to remove all the Items you created before shutting the engine down or you will get an error.</p>
+
+
+<br><p align="right"><a href="http://tork.beffy.de/tutorials/littlehelpers/snippits.php#top">top</a></p>
+
+<!-------------------------------------------------------->
+<script>endBody();</script></td></tr>
+<script>footer("http://tork.zenkel.com/modules.php?op=modload&name=ToRKTutorials&file=index", "../bots/advanced_bots.php", "beffy@gmx.de");</script><tr><td colspan="2" height="15">&nbsp;</td></tr> 	<tr><td colspan="2">  	<table width="100%" border="0" cellspacing="0" cellpadding="0"> 	<tbody><tr>         <td align="left" width="33%" bgcolor="#0C3481">         &nbsp;<a class="bar" href="http://tork.zenkel.com/modules.php?op=modload&name=ToRKTutorials&file=index">&lt;&lt; Previous</a>         </td>         <td align="center" width="34%" bgcolor="#0C3481">         <a class="bar" href="http://tork.zenkel.com/modules.php?op=modload&name=ToRKTutorials&file=index">Table of Contents</a>&nbsp;         </td>         <td align="center" width="16%" bgcolor="#0C3481" class="bar">         Author:<a class="bar" href="mailto:beffy@gmx.de">beffy</a>&nbsp;         </td>         <td align="right" width="17%" bgcolor="#0C3481">         <a class="bar" href="http://tork.beffy.de/tutorials/bots/advanced_bots.php">Next &gt;&gt;</a>&nbsp;         </td> 	</tr> 	</tbody></table>     </td></tr>     </tbody></table>
+
+
+
+</body></html>

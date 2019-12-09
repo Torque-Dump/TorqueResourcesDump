@@ -1,0 +1,1507 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0078)http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805103 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.garagegames.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="I&#39;m trying since yesterday to import a shader into the T3D. But i always get an unexpected result. The shader is maded on RenderMonkey, and edited to adapt to the T3D. But i just can not get it to work.
+
+I think the problem is relates to the matrixes. B">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+		
+        
+				<title>Custom Shader on T3D? | Torque 3D (Private) | Forums | Community | GarageGames.com</title>		<link href="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.garagegames.com/static/styles/ie.css?rev=2" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/ping"></script><script type="text/javascript" src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+	function ajaxNotify(account, thread){
+		$().get('/community/notifyuser/' + account + '/' + thread);
+	}    //-->
+</script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body><div id="WzTtDiV" style="visibility: hidden; position: absolute; overflow-x: hidden; overflow-y: hidden; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; left: 0px; top: 0px; width: 0px; "></div>
+		<script type="text/javascript" src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/wz_tooltip.js"></script>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.garagegames.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.garagegames.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.garagegames.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.garagegames.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.garagegames.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.garagegames.com/products/torque-x">Torque X</a></li><li><a href="http://www.garagegames.com/products/consoles">For Consoles</a></li><li><a href="http://www.garagegames.com/products/education">Educational Use</a></li><li><a href="http://www.garagegames.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.garagegames.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.garagegames.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.garagegames.com/products/browse/tools">Tools</a></li><li><a href="http://www.garagegames.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.garagegames.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.garagegames.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.garagegames.com/community">What's New</a></li><li><a href="http://www.garagegames.com/community/blogs">Blogs</a></li><li><a href="http://www.garagegames.com/community/resources">Resources</a></li><li><a href="http://www.garagegames.com/community/forums">Forums</a></li><li><a href="http://www.garagegames.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.garagegames.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.garagegames.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.garagegames.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.garagegames.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.garagegames.com/company">About Garage Games</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.garagegames.com/FAQ">Licensing FAQ</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.garagegames.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.garagegames.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.garagegames.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(0)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.garagegames.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.garagegames.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.garagegames.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.garagegames.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/search-bar-main-btn.png" alt="Search">
+                </form>
+                
+                <script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#top-keywords').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.garagegames.com/search/advanced" onsubmit="searchSubmit(); return false;" method="get">
+																<input type="hidden" name="locations[]" value="forums">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search forums" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+				
+				<script type="text/javascript">
+                function searchSubmit() {
+                	var search = $('#search-bar-sub-mid').val();
+                	window.location = '/community/search#'+search;
+                }
+                </script>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.garagegames.com/community">What's New</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/blogs">Blogs</a></li>
+			<li><a class="" href="http://www.garagegames.com/community/resources">Resources</a></li>
+			<li><a class="current" href="http://www.garagegames.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+																				<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.garagegames.com/community/forums/63/newthread">
+													Start a Thread
+						</a>
+											<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				<div>
+	<div id="thread-content">
+				<h1>Custom Shader on T3D?</h1>
+		<div id="threadContent">
+			<p class="date">
+				by <a href="http://www.garagegames.com/account/profile/154909">Alfio Saitta</a>
+				<strong>·</strong>
+				in <a href="http://www.garagegames.com/community/forums/63">Torque 3D (Private)</a>
+				<strong>·</strong>
+				04/19/2011 (9:02 am)				<strong>·</strong>
+				37 replies
+			</p>
+			<div class="body">I'm trying since yesterday to import a shader into the T3D. But i always get an unexpected result. The shader is maded on RenderMonkey, and edited to adapt to the T3D. But i just can not get it to work.<br>
+<br>
+I think the problem is relates to the matrixes. But i did not find documentation on how to import them.<br>
+<br>
+<b>The working shader:</b><br>
+<object width="640" height="480"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="movie" value="http://www.vimeo.com/moogaloop.swf?clip_id=22493098&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1"><embed src="http://www.vimeo.com/moogaloop.swf?clip_id=22493098&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="640" height="480"></object><br>
+<br>
+<b>The result:</b><br>
+<a rel="nofollow" href="http://img194.imageshack.us/img194/1145/screenshot00100000a.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/screenshot00100000a.th.png" alt="img194.imageshack.us/img194/1145/screenshot00100000a.th.png"></a><br>
+<br>
+<b>Material Definition:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>singleton&nbsp;CustomMaterial(&nbsp;SkinShaderMaterial&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;mapTo&nbsp;=&nbsp;<span class="string">"Skin_defaultMat_Map-COL.jp"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;sampler[<span class="string">"DiffSampler"</span><span>]&nbsp;=&nbsp;</span><span class="string">"art/shapes/SkinShader/Map-1024_COLOR"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;sampler[<span class="string">"NormalSampler"</span><span>]&nbsp;=&nbsp;</span><span class="string">"art/shapes/SkinShader/Map-1024_NRM"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;sampler[<span class="string">"SpecSampler"</span><span>]&nbsp;=&nbsp;</span><span class="string">"art/shapes/SkinShader/Map-1024_SPEC"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;sampler[<span class="string">"MicroSampler"</span><span>]&nbsp;=&nbsp;</span><span class="string">"art/shapes/SkinShader/Default_MicroDetail_NRM"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;sampler[<span class="string">"TransSampler"</span><span>]&nbsp;=&nbsp;</span><span class="string">"art/shapes/SkinShader/Map-1024_OCC"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;shader&nbsp;=&nbsp;SkinShader;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//stateBlock&nbsp;=&nbsp;SkinStateBlock;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;version&nbsp;=&nbsp;3.0;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">singleton CustomMaterial( SkinShaderMaterial )
+{   
+   mapTo = "Skin_defaultMat_Map-COL.jp";
+   
+   sampler["DiffSampler"] = "art/shapes/SkinShader/Map-1024_COLOR";
+   sampler["NormalSampler"] = "art/shapes/SkinShader/Map-1024_NRM";
+   sampler["SpecSampler"] = "art/shapes/SkinShader/Map-1024_SPEC";
+   sampler["MicroSampler"] = "art/shapes/SkinShader/Default_MicroDetail_NRM";
+   sampler["TransSampler"] = "art/shapes/SkinShader/Map-1024_OCC";
+   
+   shader = SkinShader;
+   //stateBlock = SkinStateBlock;
+   version = 3.0;
+};</pre><br>
+<b>Shader Definiton:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>singleton&nbsp;ShaderData(&nbsp;SkinShader&nbsp;)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;DXVertexShaderFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"shaders/common/SkinV.hlsl"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;DXPixelShaderFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">"shaders/common/SkinP.hlsl"</span><span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//OGLVertexShaderFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;"shaders/common/gl/SkinV.glsl";</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//OGLPixelShaderFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;"shaders/common/gl/SkinP.glsl";</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;pixVersion&nbsp;=&nbsp;3.0;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//&nbsp;DEFINED&nbsp;BUT&nbsp;DON'T&nbsp;USED&nbsp;-&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>singleton&nbsp;GFXStateBlockData(&nbsp;SkinStateBlock&nbsp;)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;samplersDefined&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;samplerStates[0]&nbsp;=&nbsp;SamplerClampLinear;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;samplerStates[1]&nbsp;=&nbsp;SamplerClampLinear;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;samplerStates[2]&nbsp;=&nbsp;SamplerClampLinear;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;samplerStates[3]&nbsp;=&nbsp;SamplerClampLinear;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;samplerStates[4]&nbsp;=&nbsp;SamplerClampLinear;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//cullDefined&nbsp;=&nbsp;true;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//cullMode&nbsp;=&nbsp;"GFXCullNone";</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">singleton ShaderData( SkinShader )
+{
+   DXVertexShaderFile     = "shaders/common/SkinV.hlsl";
+   DXPixelShaderFile      = "shaders/common/SkinP.hlsl";   
+   
+   //OGLVertexShaderFile     = "shaders/common/gl/SkinV.glsl";
+   //OGLPixelShaderFile      = "shaders/common/gl/SkinP.glsl";
+   
+   pixVersion = 3.0;
+};
+
+// DEFINED BUT DON'T USED -&gt;
+singleton GFXStateBlockData( SkinStateBlock )
+{
+   samplersDefined = true;
+   samplerStates[0] = SamplerClampLinear;
+   samplerStates[1] = SamplerClampLinear;
+   samplerStates[2] = SamplerClampLinear;
+   samplerStates[3] = SamplerClampLinear;
+   samplerStates[4] = SamplerClampLinear;
+
+   //cullDefined = true;
+   //cullMode = "GFXCullNone";
+};</pre><br>
+<b>Part of the PS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#define&nbsp;IN_HLSL</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"shdrConsts.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#include&nbsp;"shadergen:/autogenConditioners.h"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"./torque.hlsl"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;DiffSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S0&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;NormalSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S1&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;SpecSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S2&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;MicroSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S3&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;TransSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S4&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>uniform&nbsp;<span class="datatypes">int</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UseMicroDetail&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;<span class="datatypes">int</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UseSpecColour&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;MicroScale&nbsp;=&nbsp;55.0;&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;MicroFactor&nbsp;=&nbsp;5.0;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecPower&nbsp;=&nbsp;0.28;&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecGloss&nbsp;=&nbsp;4.5;&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecFresnel&nbsp;=&nbsp;3.4;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;FresnelPower&nbsp;=&nbsp;10.0;&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;FresnelGloss&nbsp;=&nbsp;2.3;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;TransMultiplier&nbsp;=&nbsp;0.9;&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;TransRampOff&nbsp;=&nbsp;0.4;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>uniform&nbsp;float4&nbsp;&nbsp;&nbsp;SpecColour&nbsp;=&nbsp;{0.45,&nbsp;0.65,&nbsp;1.00,&nbsp;1.0};&nbsp;&nbsp;</span></li><li class="alt"><span>uniform&nbsp;float4&nbsp;&nbsp;&nbsp;TransColIn&nbsp;=&nbsp;{0.81,&nbsp;0.91,&nbsp;0.96,&nbsp;1.0};&nbsp;&nbsp;</span></li><li class=""><span>uniform&nbsp;float4&nbsp;&nbsp;&nbsp;TransColOut&nbsp;=&nbsp;{1.0,&nbsp;0.71,&nbsp;0.32,&nbsp;1.0};&nbsp;&nbsp;</span></li><li class="alt"><span>uniform&nbsp;float4&nbsp;&nbsp;&nbsp;TransColBack&nbsp;=&nbsp;{0.58,&nbsp;0.20,&nbsp;0.24,&nbsp;1.0};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>uniform&nbsp;float4&nbsp;&nbsp;&nbsp;LightColour&nbsp;=&nbsp;{0.89,&nbsp;0.89,&nbsp;0.89,&nbsp;1.0};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD3;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;&nbsp;:&nbsp;TEXCOORD4;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal&nbsp;:&nbsp;TEXCOORD5;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>....&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>float4&nbsp;main(&nbsp;ConnectData&nbsp;IN&nbsp;)&nbsp;:&nbsp;COLOR&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;....&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#define IN_HLSL
+#include "shdrConsts.h"
+#include "shadergen:/autogenConditioners.h"
+#include "./torque.hlsl"
+
+uniform sampler2D DiffSampler: register( S0 );
+uniform sampler2D NormalSampler: register( S1 );
+uniform sampler2D SpecSampler: register( S2 );
+uniform sampler2D MicroSampler: register( S3 );
+uniform sampler2D TransSampler: register( S4 );
+ 
+uniform int      UseMicroDetail = 1;
+uniform int      UseSpecColour = 0;
+
+uniform float    MicroScale = 55.0;
+uniform float    MicroFactor = 5.0;
+
+uniform float    SpecPower = 0.28;
+uniform float    SpecGloss = 4.5;
+uniform float    SpecFresnel = 3.4;
+
+uniform float    FresnelPower = 10.0;
+uniform float    FresnelGloss = 2.3;
+
+uniform float    TransMultiplier = 0.9;
+uniform float    TransRampOff = 0.4;
+
+uniform float4   SpecColour = {0.45, 0.65, 1.00, 1.0};
+uniform float4   TransColIn = {0.81, 0.91, 0.96, 1.0};
+uniform float4   TransColOut = {1.0, 0.71, 0.32, 1.0};
+uniform float4   TransColBack = {0.58, 0.20, 0.24, 1.0};
+
+uniform float4   LightColour = {0.89, 0.89, 0.89, 1.0};
+
+struct ConnectData
+{
+   float4 Position      : POSITION0;
+   float2 TexCoord      : TEXCOORD0;
+   float3 WorldNormal   : TEXCOORD1;
+   float3 EyeVec        : TEXCOORD2;
+   float3 LightVec      : TEXCOORD3;
+   float3 WorldTangent  : TEXCOORD4;
+   float3 WorldBinormal : TEXCOORD5;
+};
+
+....
+
+float4 main( ConnectData IN ) : COLOR
+{
+   ....
+}</pre><br>
+<b>Part of the VS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#include&nbsp;"shdrConsts.h"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"shadergen:/autogenConditioners.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>uniform&nbsp;float4x4&nbsp;matWorld;&nbsp;&nbsp;</span></li><li class="alt"><span>uniform&nbsp;float4x4&nbsp;matWorldInverseTranspose;&nbsp;&nbsp;</span></li><li class=""><span>uniform&nbsp;float4x4&nbsp;matWorldViewProjection;&nbsp;&nbsp;</span></li><li class="alt"><span>uniform&nbsp;float4x4&nbsp;matViewInverse;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;DisplacementScale;&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;<span class="datatypes">float</span><span>&nbsp;DisplacementBias;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>uniform&nbsp;float3&nbsp;LightPosition;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">struct</span><span>&nbsp;VertData&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;:&nbsp;POSITION0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float2&nbsp;UV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;Normal&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;Tangent&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;Binormal&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;TEXCOORD3;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;TEXCOORD4;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;TEXCOORD5;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>ConnectData&nbsp;main(&nbsp;VertData&nbsp;Input&nbsp;)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ConnectData&nbsp;Output;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;....&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;Output;&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#include "shdrConsts.h"
+#include "shadergen:/autogenConditioners.h"
+
+uniform float4x4 matWorld;
+uniform float4x4 matWorldInverseTranspose;
+uniform float4x4 matWorldViewProjection;
+uniform float4x4 matViewInverse;
+
+uniform float DisplacementScale;
+uniform float DisplacementBias;
+
+uniform float3 LightPosition; 
+
+struct VertData
+{
+   float4 Position : POSITION0;
+   float2 UV      :   TEXCOORD0;
+   float3 Normal   :   NORMAL;
+   float3 Tangent   :    TANGENT;
+   float3 Binormal   :    BINORMAL;
+};
+
+struct ConnectData
+{
+   float4 Position : POSITION;
+   float2 TexCoord      :   TEXCOORD0;
+   float3 WorldNormal   :   TEXCOORD1;
+   float3 EyeVec           :   TEXCOORD2;
+   float3 LightVec      :   TEXCOORD3;
+   float3 WorldTangent   :    TEXCOORD4;
+   float3 WorldBinormal   :    TEXCOORD5;
+};
+
+ConnectData main( VertData Input )
+{
+   ConnectData Output;
+  
+   ....
+   
+   return Output;
+}</pre></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/154909.png" alt="Alfio Saitta&#39;s profile picture">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+							</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Threads</h3>
+							<li><a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/125609">T3D 1.1 Preview - Vis. mistake in the MaterialPreview - LOGGED (THREED-1743)</a></li>							<li><a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/124793">T3D 1.1 Beta 3 - Terrain Diffuse texture isse</a></li>							<li><a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/123721">External References in Collada importer is broken? - NOT A BUG</a></li>							<li><a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/119619">T3D 1.1 Beta 2 - AA with HDR cause an crash - CONFIRMED</a></li>							<li><a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/119025">T3D 1.1 Beta 2 - Material Preview with HDR - LOGGED</a></li>					</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<div id="page-turner" class="separator-950" style="position: relative;">
+	<div class="right">
+							<a href="http://www.garagegames.com/community/forums/viewthread/125569"><span class="right-arrow">Next</span>Next Thread</a>
+			</div>
+	<div class="left">
+							<a href="http://www.garagegames.com/community/forums/viewthread/125557"><span class="left-arrow">Prev</span>Previous Thread</a>
+			</div>
+	<div class="center" style="text-transform: none;"><a href="http://www.garagegames.com/community/forums/63">More from Torque 3D (Private)</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.garagegames.com/community/forums/viewthread/125562/2#comments">2</a> <a href="http://www.garagegames.com/community/forums/viewthread/125562/2#comments" class="next">Next»</a> <div class="clear"></div></div>	<div style="text-align: center;">
+									<a href="http://www.garagegames.com/community/forums/viewthread/125562/2#comment_form">+Reply to this thread</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.threadNotify(125562, 74950);">Notify me of new replies</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/149735.jpg" class="profilepic">
+			<br>
+			<a rel="Alexander Krause" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/149735" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Alexander Krause<br>
+	<span class="studio-name">Coming soon...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805099" name="comment-805099">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/19/2011 (10:29 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I would like to know that, too.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/138071.gif" class="profilepic">
+			<br>
+			<a rel="deepscratch" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/138071" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	deepscratch<br>
+	<span class="studio-name">DeepScratchStudios</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805102" name="comment-805102">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/19/2011 (10:49 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			GG devs,<br>
+are all new shaders for Torque engines written by hand only?<br>
+<br>
+if so, please could we get a few "templates"?<br>
+<br>
+but if you are using a program, like render monkey or whatever, please can we get a few video tutorials?<br>
+<br>
+shaders are one of the least understood, yet very powerful tools torque artists have to use...<br>
+<br>
+this is an official request I guess...		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/72991.jpg" class="profilepic">
+			<br>
+			<a rel="Ivan Mandzhukov" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/72991" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Ivan Mandzhukov
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com.htm" name="comment-805103">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/19/2011 (10:57 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Basically this is your transformation stuff:<br>
+<br>
+matWorldViewProjection = modelview <br>
+matView = eyeMat = eyeWorld ^ -1<br>
+matWorld = objTrans <br>
+matViewInverse = eyeMat ^ -1<br>
+matWorldInverseTranspose = (objTrans . T) ^ -1<br>
+<br>
+I think the last two transforms are not exposed (sent) to VS,you have to do it manually.<br>
+Also pay attention on InverseTranspose operations: firstly you must transpose ,then inverse the result.<br>
+<br>
+Additional notes: T3D does not send the binormal(bitangent), you have to cross T and N on the GPU.<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/154909.png" class="profilepic">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805243" name="comment-805243">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (4:46 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Ivan: Thanks for the clarification.<br>
+<br>
+I fixed a couple of arrays, but now i still can not find the vectors of the camera and lights.<br>
+<br>
+Then, surprisingly, i noticed the texture of another model has been applied to my model ingame. But this does not occurs in ShapeEditor.<br>
+<br>
+EDIT: If i remove the other objects in the scene, my model acquire the texture of the terrain.<br>
+<br>
+<a rel="nofollow" href="http://img577.imageshack.us/img577/3006/screenshot00200000.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/screenshot00200000.th.png" alt="img577.imageshack.us/img577/3006/screenshot00200000.th.png"></a> <a rel="nofollow" href="http://img836.imageshack.us/img836/1940/screenshot00200001.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/screenshot00200001.th.png" alt="img836.imageshack.us/img836/1940/screenshot00200001.th.png"></a><br>
+<br>
+<b>The new VS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#define&nbsp;IN_HLSL</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"hlslStructs.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;Structures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal&nbsp;:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;Main&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>ConnectData&nbsp;main(&nbsp;VertexIn_PNTTTB&nbsp;IN,&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;modelview&nbsp;:&nbsp;<span class="keyword">register</span><span>(C0),&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;objTrans&nbsp;:&nbsp;<span class="keyword">register</span><span>(C4)&nbsp;&nbsp;</span></span></li><li class=""><span>)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ConnectData&nbsp;OUT;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.WorldNormal&nbsp;=&nbsp;mul(&nbsp;transpose(objTrans),&nbsp;IN.normal&nbsp;).xyz;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.WorldTangent&nbsp;=&nbsp;mul(&nbsp;transpose(objTrans),&nbsp;IN.T&nbsp;).xyz;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.WorldBinormal&nbsp;=&nbsp;mul(&nbsp;transpose(objTrans),&nbsp;IN.B&nbsp;).xyz;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldSpacePos&nbsp;=&nbsp;mul(IN.pos,&nbsp;objTrans).xyz;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;WRONG&nbsp;VECTORS&nbsp;-&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.EyeVec&nbsp;=&nbsp;WorldSpacePos;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.LightVec&nbsp;=&nbsp;WorldSpacePos;&nbsp;<span class="comment">//&nbsp;inLightPos.xyz&nbsp;-&nbsp;WorldSpacePos;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&lt;-&nbsp;WRONG&nbsp;VECTORS</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.TexCoord.xy&nbsp;=&nbsp;IN.uv0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.Position&nbsp;=&nbsp;mul(modelview,&nbsp;IN.pos);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;OUT;&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#define IN_HLSL
+#include "hlslStructs.h"
+
+//-----------------------------------------------------------------------------
+// Structures                                                                  
+//-----------------------------------------------------------------------------
+struct ConnectData
+{
+   float4 Position      : POSITION;
+   float2 TexCoord      : TEXCOORD0;
+   float3 EyeVec        : TEXCOORD1;
+   float3 LightVec      : TEXCOORD2;
+   float3 WorldNormal   : NORMAL;
+   float3 WorldTangent  : TANGENT;
+   float3 WorldBinormal : BINORMAL;
+};
+
+//-----------------------------------------------------------------------------
+// Main                                                                        
+//-----------------------------------------------------------------------------
+ConnectData main( VertexIn_PNTTTB IN,
+	uniform float4x4 modelview : register(C0),
+	uniform float4x4 objTrans : register(C4)
+)
+{
+   ConnectData OUT;
+   
+
+   OUT.WorldNormal = mul( transpose(objTrans), IN.normal ).xyz;
+   OUT.WorldTangent = mul( transpose(objTrans), IN.T ).xyz;
+   OUT.WorldBinormal = mul( transpose(objTrans), IN.B ).xyz;
+
+   float3 WorldSpacePos = mul(IN.pos, objTrans).xyz;
+
+   // WRONG VECTORS -&gt;
+   OUT.EyeVec = WorldSpacePos;
+   OUT.LightVec = WorldSpacePos; // inLightPos.xyz - WorldSpacePos;
+   // &lt;- WRONG VECTORS
+
+   OUT.TexCoord.xy = IN.uv0;
+
+   OUT.Position = mul(modelview, IN.pos);
+
+   return OUT;
+}</pre><br>
+<b>Part of the new PS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>uniform&nbsp;sampler2D&nbsp;DiffSampler:&nbsp;</span><span class="keyword">register</span><span>(&nbsp;S0&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;NormalSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S1&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;SpecSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S2&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;MicroSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S3&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;TransSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S4&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">int</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UseMicroDetail&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">int</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UseSpecColour&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;MicroScale&nbsp;=&nbsp;55.0;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;MicroFactor&nbsp;=&nbsp;0.5;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecPower&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecGloss&nbsp;=&nbsp;4.5;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecFresnel&nbsp;=&nbsp;3.4;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;FresnelPower&nbsp;=&nbsp;10.0;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;FresnelGloss&nbsp;=&nbsp;2.3;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;TransMultiplier&nbsp;=&nbsp;0.9;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;TransRampOff&nbsp;=&nbsp;0.4;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;SpecColour&nbsp;=&nbsp;{0.45,&nbsp;0.65,&nbsp;1.00,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;TransColIn&nbsp;=&nbsp;{0.81,&nbsp;0.91,&nbsp;0.96,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;TransColOut&nbsp;=&nbsp;{1.0,&nbsp;0.71,&nbsp;0.32,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;TransColBack&nbsp;=&nbsp;{0.59,&nbsp;0.20,&nbsp;0.24,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;LightColour&nbsp;=&nbsp;{0.89,&nbsp;0.89,&nbsp;0.89,&nbsp;0.0};&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;Structures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;Main&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>float4&nbsp;main(&nbsp;ConnectData&nbsp;IN&nbsp;)&nbsp;:&nbsp;COLOR&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexUV&nbsp;=&nbsp;IN.TexCoord.xy;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;normal&nbsp;=&nbsp;normalize(&nbsp;tex2D(NormalSampler,&nbsp;TexUV&nbsp;).xyz&nbsp;*&nbsp;2.0&nbsp;-&nbsp;1.0&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WN&nbsp;=&nbsp;IN.WorldNormal;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;TN&nbsp;=&nbsp;IN.WorldTangent;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;BN&nbsp;=&nbsp;IN.WorldBinormal;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;N&nbsp;=&nbsp;(WN&nbsp;*&nbsp;normal.z&nbsp;*&nbsp;2)&nbsp;+&nbsp;(normal.x&nbsp;*&nbsp;BN&nbsp;+&nbsp;normal.y&nbsp;*&nbsp;-TN);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;N&nbsp;=&nbsp;normalize(N);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;WRONG&nbsp;VECTORS&nbsp;-&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EV&nbsp;=&nbsp;normalize(IN.EyeVec);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LV&nbsp;=&nbsp;normalize(IN.LightVec);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&lt;-&nbsp;WRONG&nbsp;VECTORS</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;DotLN&nbsp;=&nbsp;dot(N,&nbsp;LV);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;....&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">uniform sampler2D DiffSampler: register( S0 );
+uniform sampler2D NormalSampler: register( S1 );
+uniform sampler2D SpecSampler: register( S2 );
+uniform sampler2D MicroSampler: register( S3 );
+uniform sampler2D TransSampler: register( S4 );
+
+static const int      UseMicroDetail = 1;
+static const int      UseSpecColour = 0;
+static const float    MicroScale = 55.0;
+static const float    MicroFactor = 0.5;
+static const float    SpecPower = 1;
+static const float    SpecGloss = 4.5;
+static const float    SpecFresnel = 3.4;
+static const float    FresnelPower = 10.0;
+static const float    FresnelGloss = 2.3;
+static const float    TransMultiplier = 0.9;
+static const float    TransRampOff = 0.4;
+static const float4   SpecColour = {0.45, 0.65, 1.00, 1.0};
+static const float4   TransColIn = {0.81, 0.91, 0.96, 1.0};
+static const float4   TransColOut = {1.0, 0.71, 0.32, 1.0};
+static const float4   TransColBack = {0.59, 0.20, 0.24, 1.0};
+static const float4   LightColour = {0.89, 0.89, 0.89, 0.0};
+
+//-----------------------------------------------------------------------------  
+// Structures                                                                    
+//-----------------------------------------------------------------------------  
+struct ConnectData
+{
+   float4 Position     : POSITION;
+   float3 TexCoord     : TEXCOORD0;
+   float3 EyeVec       : TEXCOORD1;
+   float3 LightVec     : TEXCOORD2;
+   float3 WorldNormal  : NORMAL;
+   float3 WorldTangent : TANGENT;
+   float3 WorldBinormal: BINORMAL;
+};
+
+//-----------------------------------------------------------------------------
+// Main                                                                        
+//-----------------------------------------------------------------------------
+float4 main( ConnectData IN ) : COLOR
+{
+   float2 TexUV = IN.TexCoord.xy;
+               
+   float3 normal = normalize( tex2D(NormalSampler, TexUV ).xyz * 2.0 - 1.0 );
+   
+   float3 WN = IN.WorldNormal;
+   float3 TN = IN.WorldTangent;
+   float3 BN = IN.WorldBinormal;
+
+   float3 N = (WN * normal.z * 2) + (normal.x * BN + normal.y * -TN);
+   N = normalize(N);
+   
+   // WRONG VECTORS -&gt;
+   float3 EV = normalize(IN.EyeVec);
+   float3 LV = normalize(IN.LightVec);
+   // &lt;- WRONG VECTORS
+
+   float4 DotLN = dot(N, LV);
+
+   ....
+
+}</pre>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/149735.jpg" class="profilepic">
+			<br>
+			<a rel="Alexander Krause" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/149735" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Alexander Krause<br>
+	<span class="studio-name">Coming soon...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805246" name="comment-805246">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (5:59 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Alfio - The second picture with only the head in it, it looks like the head itself is projected on it. Does the material/texture move when you move the camera around it?<br>
+I have problems when using the material selector, that it doesn't get applied and sometimes another model changes the material by doing so.<br>
+<br>
+@deepscratch - Isn't the liman3D shader pack something like that?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/154909.png" class="profilepic">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805253" name="comment-805253">#6</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (7:04 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Ivan, thank for the BN tip. Now i'v crossed.<br>
+<br>
+<b>On VS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>ConnectData&nbsp;main(&nbsp;VertexIn_PNTTTB&nbsp;IN,&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;modelview&nbsp;:&nbsp;<span class="keyword">register</span><span>(C0),&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;objTrans&nbsp;:&nbsp;<span class="keyword">register</span><span>(C4)&nbsp;&nbsp;</span></span></li><li class=""><span>)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ConnectData&nbsp;OUT;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.WorldNormal&nbsp;=&nbsp;mul(&nbsp;transpose(objTrans),&nbsp;IN.normal&nbsp;).xyz;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.WorldTangent&nbsp;=&nbsp;mul(&nbsp;transpose(objTrans),&nbsp;IN.T&nbsp;).xyz;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;NEW&nbsp;CROSSED&nbsp;BN&nbsp;-&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//OUT.WorldBinormal&nbsp;=&nbsp;mul(&nbsp;transpose(objTrans),&nbsp;IN.B&nbsp;).xyz;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.WorldBinormal&nbsp;=&nbsp;cross(OUT.WorldTangent,&nbsp;OUT.WorldNormal);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&lt;-&nbsp;NEW&nbsp;CROSSED&nbsp;BN</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;....&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">ConnectData main( VertexIn_PNTTTB IN,
+	uniform float4x4 modelview : register(C0),
+	uniform float4x4 objTrans : register(C4)
+)
+{
+   ConnectData OUT;
+
+   OUT.WorldNormal = mul( transpose(objTrans), IN.normal ).xyz;
+   OUT.WorldTangent = mul( transpose(objTrans), IN.T ).xyz;
+
+   // NEW CROSSED BN -&gt;
+   //OUT.WorldBinormal = mul( transpose(objTrans), IN.B ).xyz;
+   OUT.WorldBinormal = cross(OUT.WorldTangent, OUT.WorldNormal);
+   // &lt;- NEW CROSSED BN
+
+   ....
+
+}</pre><br>
+<b>On PS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//================================Pixel&nbsp;shader&nbsp;-&nbsp;Complete================================</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>float4&nbsp;main(&nbsp;ConnectData&nbsp;IN&nbsp;)&nbsp;:&nbsp;COLOR&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexUV&nbsp;=&nbsp;IN.TexCoord.xy;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;normal&nbsp;=&nbsp;normalize(&nbsp;tex2D(NormalSampler,&nbsp;TexUV&nbsp;).xyz&nbsp;*&nbsp;2.0&nbsp;-&nbsp;1.0&nbsp;);&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WN&nbsp;=&nbsp;IN.WorldNormal;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;TN&nbsp;=&nbsp;IN.WorldTangent;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;NEW&nbsp;CROSSED&nbsp;BN&nbsp;-&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//float3&nbsp;BN&nbsp;=&nbsp;IN.WorldBinormal;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;BN&nbsp;=&nbsp;cross(IN.WorldTangent,IN.WorldNormal);&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&lt;-&nbsp;NEW&nbsp;CROSSED&nbsp;BN</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;....&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">//================================Pixel shader - Complete================================
+float4 main( ConnectData IN ) : COLOR
+{
+
+   float2 TexUV = IN.TexCoord.xy;
+               
+   float3 normal = normalize( tex2D(NormalSampler, TexUV ).xyz * 2.0 - 1.0 );  
+   
+   float3 WN = IN.WorldNormal;
+   float3 TN = IN.WorldTangent;
+
+   // NEW CROSSED BN -&gt;
+   //float3 BN = IN.WorldBinormal;
+   float3 BN = cross(IN.WorldTangent,IN.WorldNormal); 
+   // &lt;- NEW CROSSED BN
+  
+   ....
+
+}</pre>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/149735.jpg" class="profilepic">
+			<br>
+			<a rel="Alexander Krause" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/149735" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Alexander Krause<br>
+	<span class="studio-name">Coming soon...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805254" name="comment-805254">#7</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (7:06 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Does it work now?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/154909.png" class="profilepic">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805257" name="comment-805257">#8</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (8:03 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Alexander: Only in part.<br>
+When i set manually the light and cam vector, work nearly great. But unfortunately still do not understand how to have some vectors in input.<br>
+<br>
+<a rel="nofollow" href="http://img135.imageshack.us/img135/1540/screenshot00300000.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/screenshot00300000.th.png" alt="img135.imageshack.us/img135/1540/screenshot00300000.th.png"></a><br>
+<br>
+At this point, instead of writing the shader inside RenderMonkey, i'll try to write directly into T3D. At least until i understand how to make a shader portable too complex shader as this.<br>
+<br>
+<b>It would be useful if the developers of the GG, gave guidelines and a list of variables (vectors and arrays) that are exposed by the engine.</b>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/149735.jpg" class="profilepic">
+			<br>
+			<a rel="Alexander Krause" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/149735" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Alexander Krause<br>
+	<span class="studio-name">Coming soon...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805265" name="comment-805265">#9</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (8:44 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Too bad. I wanna have awsomeness in my game as well.<br>
+Looks more difficult than I thought now.<br>
+<br>
+Ivan has one shader in his pack that simulates subsurface scattering. Maybe that can be extended to a nice skin-shader?<br>
+<br>
+<blockquote><span>Quote:</span>...variables (vectors and arrays) that are exposed by the engine.</blockquote><br>
+So that's what deepscratch meant?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/92168.jpg" class="profilepic">
+			<br>
+			<a rel="E.B." class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/92168" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	E.B.<br>
+	<span class="studio-name">G.A.S. [+others]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805268" name="comment-805268">#10</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (9:02 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			- I've been complaining about the lack of Torque specific shader docs since TGEA when their Advertisement page clearly read : <br>
+<small>[Courtesy of WayBackMachine]</small><br>
+"You can modify the shaders in TGEA's system, <b>drop in shaders from 3rd party apps (e.g. FX Composer or RenderMonkey)</b> or start from scratch. With TGEA, you can do it all".<br>
+<br>
+Yeah, I know that TGEA was long ago and that was old GG 3 companies ago..and here's my point:  if o9ld GG and TP never cared to bother with this, I wonder how much of this, anyone ever understood. <br>
+- Sickhead is clearly pushing forth on the shaders end of T3D...I hope that we can get them to write out some docs on this at some point.<br>
+-&gt; Oh and BTW...Nothing EVER "dropped" into TGEA and worked. A little work was needed and that was never properly documented. You had to sort it with your own brain and fiddlestick.<br>
+---------<br>
+<i>@(New)GG; can we have someone write a few pages on it ? Pulling apart the engine to write basic shaders is a bit of a stretch.</i><br>
+P.S. @ anyone reading and wanting to learn HLSL the easiest way I know how; <a rel="nofollow" href="https://www.cg-academy.net/es_catalog/product_info.php?products_id=64" target="_blank">CG vids</a>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/149735.jpg" class="profilepic">
+			<br>
+			<a rel="Alexander Krause" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/149735" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Alexander Krause<br>
+	<span class="studio-name">Coming soon...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805273" name="comment-805273">#11</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (10:27 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			That would be like a dream to just drop FX Composer produced shader in my game. I could browse the nvidia shader library, that would be like:<br>
+.<br>
+<object width="640" height="480"><param value="http://www.youtube.com/v/Nb7YtNu35xU&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D218" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed width="640" height="480" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/Nb7YtNu35xU&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D18"></object>.<br>
+<br>
+But I hope documentation will follow the final 1.1		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/72991.jpg" class="profilepic">
+			<br>
+			<a rel="Ivan Mandzhukov" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/72991" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Ivan Mandzhukov
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805274" name="comment-805274">#12</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (10:36 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			uniform float3 eyePos;<br>
+<br>
+..<br>
+OUT.EyeVec = normalize(eyePos - IN.pos);<br>
+OUT.LightVec = normalize(sunPos - IN.pos);<br>
+<br>
+As a start use a fixed vector for LightVec in order to get some results.<br>
+I think inLightPos is the sun position in T3D, refer to ShaderGenVars.cpp<br>
+<br>
+Afaik these values are in SoA order:<br>
+<br>
+- include lighting.hlsl<br>
+<br>
+uniform float4 inLightPos[3];<br>
+..<br>
+float3 sunPos = float3(inLightPos[0].x, inLightPos[1].x, inLightPos[2].x);		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/154909.png" class="profilepic">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805281" name="comment-805281">#13</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (11:34 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			After some changes, and manually setting some vectors, i was able to render almost decently with the shader. Surely i still have not understand much, but they are on right road to understand the meanders of the hardware shaders inside the T3D.<br>
+<br>
+As you can see from the pictures, if i use IN.WorldNormal instead of IN.TexCoord, i lost the bump mapping and the smoothing.<br>
+<br>
+<a rel="nofollow" href="http://img29.imageshack.us/img29/2203/immagine001o.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/immagine001o.th.png" alt="img29.imageshack.us/img29/2203/immagine001o.th.png"></a> <a rel="nofollow" href="http://img688.imageshack.us/img688/4062/immagine002.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/immagine002.th.png" alt="img688.imageshack.us/img688/4062/immagine002.th.png"></a><br>
+<br>
+<a rel="nofollow" href="http://img856.imageshack.us/img856/4204/screenshot00400003.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/screenshot00400003.th.png" alt="img856.imageshack.us/img856/4204/screenshot00400003.th.png"></a> <a rel="nofollow" href="http://img148.imageshack.us/img148/9824/screenshot00400004.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/screenshot00400004.th.png" alt="img148.imageshack.us/img148/9824/screenshot00400004.th.png"></a><br>
+<br>
+<b>The VS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#define&nbsp;IN_HLSL</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"hlslStructs.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;Structures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal&nbsp;:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;Main&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>ConnectData&nbsp;main(&nbsp;VertexIn_PNTTTB&nbsp;IN,&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;modelview&nbsp;:&nbsp;<span class="keyword">register</span><span>(C0),&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;objTrans&nbsp;:&nbsp;<span class="keyword">register</span><span>(C4),&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float3&nbsp;sunPos,&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float3&nbsp;eyePos&nbsp;&nbsp;</span></li><li class=""><span>)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ConnectData&nbsp;OUT;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.WorldNormal&nbsp;=&nbsp;mul(&nbsp;transpose(objTrans),&nbsp;IN.normal).xyz;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.WorldTangent&nbsp;=&nbsp;mul(&nbsp;transpose(objTrans),&nbsp;IN.T&nbsp;).xyz;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//OUT.WorldBinormal&nbsp;=&nbsp;mul(&nbsp;transpose(objTrans),&nbsp;IN.B&nbsp;).xyz;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.WorldBinormal&nbsp;=&nbsp;cross(OUT.WorldTangent,&nbsp;OUT.WorldNormal);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldSpacePos&nbsp;=&nbsp;mul(modelview,&nbsp;IN.pos).xyz;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.EyeVec&nbsp;=&nbsp;WorldSpacePos;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.LightVec&nbsp;=&nbsp;WorldSpacePos;&nbsp;<span class="comment">//&nbsp;inLightPos.xyz&nbsp;-&nbsp;WorldSpacePos;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//OUT.EyeVec&nbsp;=&nbsp;normalize(eyePos&nbsp;-&nbsp;IN.pos);</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//OUT.LightVec&nbsp;=&nbsp;normalize(sunPos&nbsp;-&nbsp;IN.pos);</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.TexCoord.xy&nbsp;=&nbsp;IN.uv0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.Position&nbsp;=&nbsp;mul(modelview,&nbsp;IN.pos);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;OUT;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#define IN_HLSL
+#include "hlslStructs.h"
+
+//-----------------------------------------------------------------------------
+// Structures                                                                  
+//-----------------------------------------------------------------------------
+
+
+struct ConnectData
+{
+   float4 Position      : POSITION;
+   float2 TexCoord      : TEXCOORD0;
+   float3 EyeVec        : TEXCOORD1;
+   float3 LightVec      : TEXCOORD2;
+   float3 WorldNormal   : NORMAL;
+   float3 WorldTangent  : TANGENT;
+   float3 WorldBinormal : BINORMAL;
+};
+
+//-----------------------------------------------------------------------------
+// Main                                                                        
+//-----------------------------------------------------------------------------
+ConnectData main( VertexIn_PNTTTB IN,
+	uniform float4x4 modelview : register(C0),
+	uniform float4x4 objTrans : register(C4),
+	uniform float3 sunPos,
+	uniform float3 eyePos
+)
+{
+   ConnectData OUT;
+
+   OUT.WorldNormal = mul( transpose(objTrans), IN.normal).xyz;
+   OUT.WorldTangent = mul( transpose(objTrans), IN.T ).xyz;
+   //OUT.WorldBinormal = mul( transpose(objTrans), IN.B ).xyz;
+   OUT.WorldBinormal = cross(OUT.WorldTangent, OUT.WorldNormal);
+
+   float3 WorldSpacePos = mul(modelview, IN.pos).xyz;
+
+   OUT.EyeVec = WorldSpacePos;
+   OUT.LightVec = WorldSpacePos; // inLightPos.xyz - WorldSpacePos;
+
+   //OUT.EyeVec = normalize(eyePos - IN.pos);
+   //OUT.LightVec = normalize(sunPos - IN.pos);
+
+   OUT.TexCoord.xy = IN.uv0;
+
+   OUT.Position = mul(modelview, IN.pos);
+
+   return OUT;
+}</pre><br>
+<b>Part of the PS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>uniform&nbsp;sampler2D&nbsp;DiffSampler:&nbsp;</span><span class="keyword">register</span><span>(&nbsp;S0&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;NormalSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S1&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;SpecSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S2&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;MicroSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S3&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;TransSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S4&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">int</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UseMicroDetail&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">int</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UseSpecColour&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;MicroScale&nbsp;=&nbsp;1.0;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;MicroFactor&nbsp;=&nbsp;10;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecPower&nbsp;=&nbsp;0.8;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecGloss&nbsp;=&nbsp;4.5;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecFresnel&nbsp;=&nbsp;3.4;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;FresnelPower&nbsp;=&nbsp;10.0;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;FresnelGloss&nbsp;=&nbsp;2.3;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;TransMultiplier&nbsp;=&nbsp;0.9;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;TransRampOff&nbsp;=&nbsp;0.1;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;SpecColour&nbsp;=&nbsp;{0.45,&nbsp;0.65,&nbsp;1.00,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;TransColIn&nbsp;=&nbsp;{0.81,&nbsp;0.91,&nbsp;0.96,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;TransColOut&nbsp;=&nbsp;{1.0,&nbsp;0.71,&nbsp;0.32,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;TransColBack&nbsp;=&nbsp;{0.59,&nbsp;0.20,&nbsp;0.24,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;LightColour&nbsp;=&nbsp;{0.89,&nbsp;0.89,&nbsp;0.89,&nbsp;0.0};&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>....&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//================================Pixel&nbsp;shader&nbsp;-&nbsp;Complete================================</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>float4&nbsp;main(&nbsp;ConnectData&nbsp;IN&nbsp;)&nbsp;:&nbsp;COLOR&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexUV&nbsp;=&nbsp;IN.TexCoord.xy;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;normal&nbsp;=&nbsp;tex2D(NormalSampler,&nbsp;TexUV&nbsp;).xyz&nbsp;*&nbsp;2.0&nbsp;-&nbsp;1.0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;normal&nbsp;=&nbsp;normalize(&nbsp;normal&nbsp;);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WN&nbsp;=&nbsp;IN.TexCoord;&nbsp;<span class="comment">//IN.WorldNormal;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;TN&nbsp;=&nbsp;IN.TexCoord;&nbsp;<span class="comment">//IN.WorldTangent;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;BN&nbsp;=&nbsp;IN.WorldBinormal;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;N&nbsp;=&nbsp;(WN&nbsp;*&nbsp;normal.z&nbsp;*&nbsp;2)&nbsp;+&nbsp;(normal.x&nbsp;*&nbsp;BN&nbsp;+&nbsp;normal.y&nbsp;*&nbsp;-TN);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;N&nbsp;=&nbsp;normalize(N);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EV&nbsp;=&nbsp;normalize(IN.EyeVec);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//float3&nbsp;LV&nbsp;=&nbsp;normalize(IN.LightVec);</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;MANUALLY&nbsp;-&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LV&nbsp;=&nbsp;{1.0,&nbsp;1.0,&nbsp;1.0};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;LV&nbsp;=&nbsp;normalize(LV);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&lt;-&nbsp;MANUALLY</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;....&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">uniform sampler2D DiffSampler: register( S0 );
+uniform sampler2D NormalSampler: register( S1 );
+uniform sampler2D SpecSampler: register( S2 );
+uniform sampler2D MicroSampler: register( S3 );
+uniform sampler2D TransSampler: register( S4 );
+
+static const int      UseMicroDetail = 1;
+static const int      UseSpecColour = 0;
+static const float    MicroScale = 1.0;
+static const float    MicroFactor = 10;
+static const float    SpecPower = 0.8;
+static const float    SpecGloss = 4.5;
+static const float    SpecFresnel = 3.4;
+static const float    FresnelPower = 10.0;
+static const float    FresnelGloss = 2.3;
+static const float    TransMultiplier = 0.9;
+static const float    TransRampOff = 0.1;
+static const float4   SpecColour = {0.45, 0.65, 1.00, 1.0};
+static const float4   TransColIn = {0.81, 0.91, 0.96, 1.0};
+static const float4   TransColOut = {1.0, 0.71, 0.32, 1.0};
+static const float4   TransColBack = {0.59, 0.20, 0.24, 1.0};
+static const float4   LightColour = {0.89, 0.89, 0.89, 0.0};
+
+struct ConnectData
+{
+   float4 Position     : POSITION;
+   float3 TexCoord     : TEXCOORD0;
+   float3 EyeVec       : TEXCOORD1;
+   float3 LightVec     : TEXCOORD2;
+   float3 WorldNormal  : NORMAL;
+   float3 WorldTangent : TANGENT;
+   float3 WorldBinormal: BINORMAL;
+};
+
+....
+
+//================================Pixel shader - Complete================================
+float4 main( ConnectData IN ) : COLOR
+{
+
+   float2 TexUV = IN.TexCoord.xy;
+             
+   float3 normal = tex2D(NormalSampler, TexUV ).xyz * 2.0 - 1.0;
+   normal = normalize( normal );
+   
+   float3 WN = IN.TexCoord; //IN.WorldNormal;
+   float3 TN = IN.TexCoord; //IN.WorldTangent;
+   float3 BN = IN.WorldBinormal;
+
+   float3 N = (WN * normal.z * 2) + (normal.x * BN + normal.y * -TN);
+   N = normalize(N);
+   
+   float3 EV = normalize(IN.EyeVec);
+   //float3 LV = normalize(IN.LightVec);
+
+   // MANUALLY -&gt;
+   float3 LV = {1.0, 1.0, 1.0};
+   LV = normalize(LV);
+   // &lt;- MANUALLY
+
+   ....
+
+}</pre>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/149735.jpg" class="profilepic">
+			<br>
+			<a rel="Alexander Krause" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/149735" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Alexander Krause<br>
+	<span class="studio-name">Coming soon...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805292" name="comment-805292">#14</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (1:33 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			So the in-game lighting does not affect the model with the working method?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/154909.png" class="profilepic">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805302" name="comment-805302">#15</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (2:57 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			No. I can not find the right vectors.<br>
+<br>
+<a rel="nofollow" href="http://img829.imageshack.us/img829/9568/screenshot00500000.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/screenshot00500000.th.png" alt="img829.imageshack.us/img829/9568/screenshot00500000.th.png"></a><br>
+<br>
+<b>The new VS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#define&nbsp;IN_HLSL</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"hlslStructs.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#include&nbsp;"lighting.hlsl"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;Structures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal&nbsp;:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;Main&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>ConnectData&nbsp;main(&nbsp;VertexIn_PNTTTB&nbsp;IN,&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;modelview&nbsp;:&nbsp;<span class="keyword">register</span><span>(C0),&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;objTrans&nbsp;:&nbsp;<span class="keyword">register</span><span>(C4),&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4&nbsp;inLightPos[3],&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4&nbsp;viewToObj[3]&nbsp;&nbsp;</span></li><li class="alt"><span>)&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;ConnectData&nbsp;OUT;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4x4&nbsp;a&nbsp;=&nbsp;transpose(objTrans);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.WorldNormal&nbsp;=&nbsp;mul(IN.uv0,&nbsp;a);&nbsp;<span class="comment">//mul(&nbsp;IN.normal,&nbsp;a).xyz;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.WorldTangent&nbsp;=&nbsp;mul(&nbsp;IN.T,&nbsp;a).xyz;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.WorldBinormal&nbsp;=&nbsp;cross(OUT.WorldTangent,&nbsp;OUT.WorldNormal);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Calculate&nbsp;the&nbsp;EyeVector</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EV&nbsp;=&nbsp;float3(viewToObj[0].x,&nbsp;viewToObj[1].x,&nbsp;viewToObj[2].x);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.EyeVec&nbsp;=&nbsp;normalize(EV);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Calculate&nbsp;the&nbsp;LightVector</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;sunPos&nbsp;=&nbsp;float3(inLightPos[0].x,&nbsp;inLightPos[1].x,&nbsp;inLightPos[2].x);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.LightVec&nbsp;=&nbsp;normalize(sunPos&nbsp;-&nbsp;IN.pos);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.TexCoord.xy&nbsp;=&nbsp;IN.uv0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.Position&nbsp;=&nbsp;mul(modelview,&nbsp;IN.pos);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;OUT;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#define IN_HLSL
+#include "hlslStructs.h"
+#include "lighting.hlsl"
+
+//-----------------------------------------------------------------------------
+// Structures                                                                  
+//-----------------------------------------------------------------------------
+struct ConnectData
+{
+   float4 Position      : POSITION;
+   float2 TexCoord      : TEXCOORD0;
+   float3 EyeVec        : TEXCOORD1;
+   float3 LightVec      : TEXCOORD2;
+   float3 WorldNormal   : NORMAL;
+   float3 WorldTangent  : TANGENT;
+   float3 WorldBinormal : BINORMAL;
+};
+
+//-----------------------------------------------------------------------------
+// Main                                                                        
+//-----------------------------------------------------------------------------
+ConnectData main( VertexIn_PNTTTB IN,
+	uniform float4x4 modelview : register(C0),
+	uniform float4x4 objTrans : register(C4),
+	uniform float4 inLightPos[3],
+	uniform float4 viewToObj[3]
+)
+{
+   ConnectData OUT;
+
+   float4x4 a = transpose(objTrans);
+   
+   OUT.WorldNormal = mul(IN.uv0, a); //mul( IN.normal, a).xyz;
+   OUT.WorldTangent = mul( IN.T, a).xyz;
+   OUT.WorldBinormal = cross(OUT.WorldTangent, OUT.WorldNormal);
+
+   // Calculate the EyeVector
+   float3 EV = float3(viewToObj[0].x, viewToObj[1].x, viewToObj[2].x);
+   OUT.EyeVec = normalize(EV);
+
+   // Calculate the LightVector
+   float3 sunPos = float3(inLightPos[0].x, inLightPos[1].x, inLightPos[2].x);
+   OUT.LightVec = normalize(sunPos - IN.pos);
+
+   OUT.TexCoord.xy = IN.uv0;
+
+   OUT.Position = mul(modelview, IN.pos);
+
+   return OUT;
+}</pre><br>
+The new PS:<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#include&nbsp;"shadergen:/autogenConditioners.h"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;DiffSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S0&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;NormalSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S1&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;SpecSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S2&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;MicroSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S3&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;TransSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S4&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">int</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UseMicroDetail&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">int</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UseSpecColour&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;MicroScale&nbsp;=&nbsp;55.0;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;MicroFactor&nbsp;=&nbsp;2.0;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecPower&nbsp;=&nbsp;0.4;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecGloss&nbsp;=&nbsp;4.5;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;SpecFresnel&nbsp;=&nbsp;3.4;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;FresnelPower&nbsp;=&nbsp;1.0;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;FresnelGloss&nbsp;=&nbsp;2.3;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;TransMultiplier&nbsp;=&nbsp;1.0;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;</span><span class="datatypes">float</span><span>&nbsp;&nbsp;&nbsp;&nbsp;TransRampOff&nbsp;=&nbsp;1;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;SpecColour&nbsp;=&nbsp;{0.45,&nbsp;0.65,&nbsp;1.00,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;TransColIn&nbsp;=&nbsp;{0.81,&nbsp;0.91,&nbsp;0.96,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;TransColOut&nbsp;=&nbsp;{1.0,&nbsp;0.71,&nbsp;0.32,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;TransColBack&nbsp;=&nbsp;{0.59,&nbsp;0.20,&nbsp;0.24,&nbsp;1.0};&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">const</span><span>&nbsp;float4&nbsp;&nbsp;&nbsp;LightColour&nbsp;=&nbsp;{0.89,&nbsp;0.89,&nbsp;0.89,&nbsp;0.0};&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>....&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//================================Pixel&nbsp;shader&nbsp;-&nbsp;Complete================================</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>float4&nbsp;main(&nbsp;ConnectData&nbsp;IN&nbsp;)&nbsp;:&nbsp;COLOR&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexUV&nbsp;=&nbsp;IN.TexCoord.xy;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;normal&nbsp;=&nbsp;tex2D(NormalSampler,&nbsp;TexUV&nbsp;).xyz;<span class="comment">//&nbsp;*&nbsp;2.0&nbsp;-&nbsp;1.0;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;normal&nbsp;=&nbsp;normalize(&nbsp;normal&nbsp;);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WN&nbsp;=&nbsp;IN.WorldNormal;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;TN&nbsp;=&nbsp;IN.WorldTangent;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;BN&nbsp;=&nbsp;IN.WorldBinormal;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//float3&nbsp;N&nbsp;=&nbsp;(WN&nbsp;*&nbsp;normal.z&nbsp;*&nbsp;2)&nbsp;+&nbsp;(normal.x&nbsp;*&nbsp;BN&nbsp;+&nbsp;normal.y&nbsp;*&nbsp;-TN);</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//N&nbsp;=&nbsp;normalize(N);</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;N&nbsp;=&nbsp;normalize(&nbsp;normal&nbsp;);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EV&nbsp;=&nbsp;IN.EyeVec;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LV&nbsp;=&nbsp;IN.LightVec;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;DotLN&nbsp;=&nbsp;dot(N,&nbsp;LV);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;....&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;BaseLighting&nbsp;*&nbsp;LightColour&nbsp;+&nbsp;Spec;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#include "shadergen:/autogenConditioners.h"
+
+uniform sampler2D DiffSampler: register( S0 );
+uniform sampler2D NormalSampler: register( S1 );
+uniform sampler2D SpecSampler: register( S2 );
+uniform sampler2D MicroSampler: register( S3 );
+uniform sampler2D TransSampler: register( S4 );
+
+static const int      UseMicroDetail = 1;
+static const int      UseSpecColour = 1;
+static const float    MicroScale = 55.0;
+static const float    MicroFactor = 2.0;
+static const float    SpecPower = 0.4;
+static const float    SpecGloss = 4.5;
+static const float    SpecFresnel = 3.4;
+static const float    FresnelPower = 1.0;
+static const float    FresnelGloss = 2.3;
+static const float    TransMultiplier = 1.0;
+static const float    TransRampOff = 1;
+static const float4   SpecColour = {0.45, 0.65, 1.00, 1.0};
+static const float4   TransColIn = {0.81, 0.91, 0.96, 1.0};
+static const float4   TransColOut = {1.0, 0.71, 0.32, 1.0};
+static const float4   TransColBack = {0.59, 0.20, 0.24, 1.0};
+static const float4   LightColour = {0.89, 0.89, 0.89, 0.0};
+
+struct ConnectData
+{
+   float4 Position     : POSITION;
+   float3 TexCoord     : TEXCOORD0;
+   float3 EyeVec       : TEXCOORD1;
+   float3 LightVec     : TEXCOORD2;
+   float3 WorldNormal  : NORMAL;
+   float3 WorldTangent : TANGENT;
+   float3 WorldBinormal: BINORMAL;
+};
+
+....
+
+//================================Pixel shader - Complete================================
+float4 main( ConnectData IN ) : COLOR
+{
+
+   float2 TexUV = IN.TexCoord.xy;
+             
+   float3 normal = tex2D(NormalSampler, TexUV ).xyz;// * 2.0 - 1.0;
+   normal = normalize( normal );
+   
+   float3 WN = IN.WorldNormal;
+   float3 TN = IN.WorldTangent;
+   float3 BN = IN.WorldBinormal;
+
+   //float3 N = (WN * normal.z * 2) + (normal.x * BN + normal.y * -TN);
+   //N = normalize(N);
+   float3 N = normalize( normal );
+   
+   float3 EV = IN.EyeVec;
+   float3 LV = IN.LightVec;
+
+   float4 DotLN = dot(N, LV);
+
+   ....
+            
+   return BaseLighting * LightColour + Spec;
+}</pre>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/985.jpg" class="profilepic">
+			<br>
+			<a rel="Matt Fairfax" class="associate button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/985" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-associate">Associate</span>
+	Matt Fairfax<br>
+	<span class="studio-name">RustyCode</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805306" name="comment-805306">#16</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (3:17 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			It might be slightly out of date but here is an example of how to get Advanced Lighting working with your custom shaders:<br>
+<br>
+<a rel="nofollow" href="http://www.garagegames.com/community/forums/viewthread/101821/1#comment-677325">www.garagegames.com/community/forums/viewthread/101821/1#comment-677325</a><br>
+<br>
+<center><a rel="nofollow" href="http://www.flickr.com/photos/42770483@N03/3941899889/sizes/o/" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/3941899889_921d7fd07d.jpg" alt="farm3.static.flickr.com/2487/3941899889_921d7fd07d.jpg"></a></center>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/58475.jpg" class="profilepic">
+			<br>
+			<a rel="Brian Mayberry" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/58475" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Brian Mayberry
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805314" name="comment-805314">#17</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (5:14 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			This is the one area where T3D truly falls on its face. Nearly every other modern engine has a relatively pain free method of either importing, or directly creating complex shaders. I hope beyond hope that the next feature polish is on the material system, and getting it up to par with the competition. (Terrain still doesn't support specular! Seriously this needs to at least be integrated with the standard materials)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/154909.png" class="profilepic">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805317" name="comment-805317">#18</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2011 (6:28 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Using the #lightinfo partly solve the problem, even if i lose the smoothing and the bumping.<br>
+<br>
+<a rel="nofollow" href="http://img694.imageshack.us/img694/3923/screenshot00600000.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/screenshot00600000.th.png" alt="img694.imageshack.us/img694/3923/screenshot00600000.th.png"></a> <a rel="nofollow" href="http://img90.imageshack.us/img90/840/screenshot00600001.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/screenshot00600001.th.png" alt="img90.imageshack.us/img90/840/screenshot00600001.th.png"></a><br>
+<br>
+<b>VS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#define&nbsp;IN_HLSL</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"shdrConsts.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#include&nbsp;"hlslStructs.h"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"shadergen:/autogenConditioners.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;Structures</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;screenspacePos:&nbsp;TEXCOORD3;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal&nbsp;:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;Main</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>ConnectData&nbsp;main(&nbsp;VertexIn_PNTTTB&nbsp;IN,&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;modelview&nbsp;:&nbsp;<span class="keyword">register</span><span>(C0),&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4&nbsp;viewToObj[3],&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float3&nbsp;inLightVec&nbsp;:&nbsp;<span class="keyword">register</span><span>(VC_LIGHT_DIR1)&nbsp;&nbsp;</span></span></li><li class=""><span>)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ConnectData&nbsp;OUT;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Normal,&nbsp;BiNormal,&nbsp;and&nbsp;Tangent</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3x3&nbsp;objToTangentSpace;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.WorldTangent&nbsp;=&nbsp;objToTangentSpace[0]&nbsp;=&nbsp;IN.T;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.WorldBinormal&nbsp;=&nbsp;objToTangentSpace[1]&nbsp;=&nbsp;IN.B;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.WorldNormal&nbsp;=&nbsp;objToTangentSpace[2]&nbsp;=&nbsp;IN.normal;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Calculate&nbsp;the&nbsp;LightVector</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.LightVec.xyz&nbsp;=&nbsp;-inLightVec;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.LightVec.xyz&nbsp;=&nbsp;mul(objToTangentSpace,&nbsp;OUT.LightVec);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.LightVec&nbsp;=&nbsp;step(&nbsp;0.0,&nbsp;dot(&nbsp;-inLightVec,&nbsp;IN.normal&nbsp;)&nbsp;);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Calculate&nbsp;the&nbsp;EyeVector</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.EyeVec&nbsp;=&nbsp;float3(viewToObj[0].x,&nbsp;viewToObj[1].x,&nbsp;viewToObj[2].x);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Texture&nbsp;Coordinate</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.TexCoord.xy&nbsp;=&nbsp;IN.uv0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Vertex&nbsp;Position</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.Position&nbsp;=&nbsp;mul(modelview,&nbsp;float4(IN.pos.xyz,1));&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Deferred&nbsp;RT&nbsp;Lighting&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.screenspacePos&nbsp;=&nbsp;OUT.Position;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;OUT;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#define IN_HLSL
+#include "shdrConsts.h"
+#include "hlslStructs.h"
+#include "shadergen:/autogenConditioners.h"
+
+//-----------------------------------------------------------------------------
+// Structures
+//-----------------------------------------------------------------------------
+struct ConnectData
+{
+   float4 Position      : POSITION;
+   float2 TexCoord      : TEXCOORD0;
+   float3 EyeVec        : TEXCOORD1;
+   float3 LightVec      : TEXCOORD2;
+   float4 screenspacePos: TEXCOORD3;
+   float3 WorldNormal   : NORMAL;
+   float3 WorldTangent  : TANGENT;
+   float3 WorldBinormal : BINORMAL;
+};
+
+//-----------------------------------------------------------------------------
+// Main
+//-----------------------------------------------------------------------------
+ConnectData main( VertexIn_PNTTTB IN,
+	uniform float4x4 modelview : register(C0),
+	uniform float4 viewToObj[3],
+        uniform float3 inLightVec : register(VC_LIGHT_DIR1)
+)
+{
+   ConnectData OUT;
+
+   // Normal, BiNormal, and Tangent
+   float3x3 objToTangentSpace;
+   OUT.WorldTangent = objToTangentSpace[0] = IN.T;
+   OUT.WorldBinormal = objToTangentSpace[1] = IN.B;
+   OUT.WorldNormal = objToTangentSpace[2] = IN.normal;
+
+   // Calculate the LightVector
+   OUT.LightVec.xyz = -inLightVec;
+   OUT.LightVec.xyz = mul(objToTangentSpace, OUT.LightVec);
+   OUT.LightVec = step( 0.0, dot( -inLightVec, IN.normal ) );
+
+   // Calculate the EyeVector
+   OUT.EyeVec = float3(viewToObj[0].x, viewToObj[1].x, viewToObj[2].x);
+
+   // Texture Coordinate
+   OUT.TexCoord.xy = IN.uv0;
+
+   // Vertex Position
+   OUT.Position = mul(modelview, float4(IN.pos.xyz,1));
+
+   // Deferred RT Lighting  
+   OUT.screenspacePos = OUT.Position;
+
+   return OUT;
+}</pre><br>
+<b>PS:</b><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//&nbsp;Dependencies:&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"shadergen:/autogenConditioners.h"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#include&nbsp;"torque.hlsl"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;DiffSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S0&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;NormalSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S1&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;SpecSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S2&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;MicroSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S3&nbsp;);&nbsp;&nbsp;</span></span></li><li class="alt"><span>uniform&nbsp;sampler2D&nbsp;TransSampler:&nbsp;<span class="keyword">register</span><span>(&nbsp;S4&nbsp;);&nbsp;&nbsp;</span></span></li><li class=""><span>uniform&nbsp;sampler2D&nbsp;lightInfoBuffer&nbsp;:&nbsp;<span class="keyword">register</span><span>(S5);&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>....&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>uniform&nbsp;float4&nbsp;rtParams5&nbsp;:&nbsp;<span class="keyword">register</span><span>(C0);&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;screenspacePos:&nbsp;TEXCOORD3;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal&nbsp;:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class=""><span>};&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>....&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//================================Pixel&nbsp;shader&nbsp;-&nbsp;Complete================================</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>float4&nbsp;main(&nbsp;ConnectData&nbsp;IN&nbsp;)&nbsp;:&nbsp;COLOR&nbsp;&nbsp;</span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Deferred&nbsp;RT&nbsp;Lighting&nbsp;-&gt;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float2&nbsp;uvScene&nbsp;=&nbsp;IN.screenspacePos.xy&nbsp;/&nbsp;IN.screenspacePos.w;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;uvScene&nbsp;=&nbsp;(&nbsp;uvScene&nbsp;+&nbsp;1.0&nbsp;)&nbsp;/&nbsp;2.0;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;uvScene.y&nbsp;=&nbsp;1.0&nbsp;-&nbsp;uvScene.y;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;uvScene&nbsp;=&nbsp;(&nbsp;uvScene&nbsp;*&nbsp;rtParams5.zw&nbsp;)&nbsp;+&nbsp;rtParams5.xy;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;d_lightcolor;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="datatypes">float</span><span>&nbsp;d_NL_Att;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="datatypes">float</span><span>&nbsp;d_specular;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;lightinfoUncondition(tex2D(lightInfoBuffer,&nbsp;uvScene),&nbsp;d_lightcolor,&nbsp;d_NL_Att,&nbsp;d_specular);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&lt;-&nbsp;Deferred&nbsp;RT&nbsp;Lighting</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexUV&nbsp;=&nbsp;IN.TexCoord.xy;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;a&nbsp;=&nbsp;tex2D(DiffSampler,&nbsp;TexUV);&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Cause&nbsp;the&nbsp;loss&nbsp;of&nbsp;the&nbsp;smoothing&nbsp;-&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;a&nbsp;*=&nbsp;(float4(d_lightcolor,&nbsp;1.0)&nbsp;*&nbsp;2&nbsp;-&nbsp;1)&nbsp;*&nbsp;d_NL_Att;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&lt;-&nbsp;Cause&nbsp;the&nbsp;loss&nbsp;of&nbsp;the&nbsp;smoothing</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;normal&nbsp;=&nbsp;tex2D(NormalSampler,&nbsp;IN.TexCoord.xy&nbsp;).xyz&nbsp;*&nbsp;2.0&nbsp;-&nbsp;1.0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;normal&nbsp;=&nbsp;normalize(&nbsp;normal&nbsp;);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WN&nbsp;=&nbsp;IN.WorldNormal;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;TN&nbsp;=&nbsp;IN.WorldTangent;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;BN&nbsp;=&nbsp;IN.WorldBinormal;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;N&nbsp;=&nbsp;(WN&nbsp;*&nbsp;normal.z&nbsp;*&nbsp;2)&nbsp;+&nbsp;(normal.x&nbsp;*&nbsp;BN&nbsp;+&nbsp;normal.y&nbsp;*&nbsp;-TN);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;N&nbsp;=&nbsp;normalize(N);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//float3&nbsp;N&nbsp;=&nbsp;normalize(&nbsp;normal&nbsp;);</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EV&nbsp;=&nbsp;IN.EyeVec;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LV&nbsp;=&nbsp;IN.LightVec;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;DotLN&nbsp;=&nbsp;dot(N,&nbsp;LV);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;....&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4&nbsp;LightingOutput&nbsp;=&nbsp;BaseLighting&nbsp;+&nbsp;Spec;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;LightingOutput;&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">// Dependencies:  
+#include "shadergen:/autogenConditioners.h"
+#include "torque.hlsl"
+
+uniform sampler2D DiffSampler: register( S0 );
+uniform sampler2D NormalSampler: register( S1 );
+uniform sampler2D SpecSampler: register( S2 );
+uniform sampler2D MicroSampler: register( S3 );
+uniform sampler2D TransSampler: register( S4 );
+uniform sampler2D lightInfoBuffer : register(S5); 
+              
+....
+
+uniform float4 rtParams5 : register(C0); 
+
+struct ConnectData
+{
+   float4 Position      : POSITION;
+   float3 TexCoord      : TEXCOORD0;
+   float3 EyeVec        : TEXCOORD1;
+   float3 LightVec      : TEXCOORD2;
+   float4 screenspacePos: TEXCOORD3;
+   float3 WorldNormal   : NORMAL;
+   float3 WorldTangent  : TANGENT;
+   float3 WorldBinormal : BINORMAL;
+};
+
+....
+
+//================================Pixel shader - Complete================================
+float4 main( ConnectData IN ) : COLOR
+{
+   // Deferred RT Lighting -&gt; 
+   float2 uvScene = IN.screenspacePos.xy / IN.screenspacePos.w;  
+   uvScene = ( uvScene + 1.0 ) / 2.0;  
+   uvScene.y = 1.0 - uvScene.y;  
+   uvScene = ( uvScene * rtParams5.zw ) + rtParams5.xy;  
+   float3 d_lightcolor;  
+   float d_NL_Att;  
+   float d_specular;  
+   lightinfoUncondition(tex2D(lightInfoBuffer, uvScene), d_lightcolor, d_NL_Att, d_specular);
+   // &lt;- Deferred RT Lighting
+
+   float2 TexUV = IN.TexCoord.xy;
+   float4 a = tex2D(DiffSampler, TexUV);  
+
+   // Cause the loss of the smoothing -&gt;
+   a *= (float4(d_lightcolor, 1.0) * 2 - 1) * d_NL_Att;
+   // &lt;- Cause the loss of the smoothing
+
+   float3 normal = tex2D(NormalSampler, IN.TexCoord.xy ).xyz * 2.0 - 1.0;
+   normal = normalize( normal );
+   
+   float3 WN = IN.WorldNormal;
+   float3 TN = IN.WorldTangent;
+   float3 BN = IN.WorldBinormal;
+
+   float3 N = (WN * normal.z * 2) + (normal.x * BN + normal.y * -TN);
+   N = normalize(N);
+   //float3 N = normalize( normal );
+
+   float3 EV = IN.EyeVec;
+   float3 LV = IN.LightVec;
+   float4 DotLN = dot(N, LV);
+ 
+   ....
+
+   float4 LightingOutput = BaseLighting + Spec;         
+
+   return LightingOutput;
+}</pre>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/154909.png" class="profilepic">
+			<br>
+			<a rel="Alfio Saitta" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/154909" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Alfio Saitta
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805404" name="comment-805404">#19</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/23/2011 (4:06 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Here are the latest results. Unfortunately i still can not find the two significant vectors for me.<br>
+<br>
+<a rel="nofollow" href="http://img852.imageshack.us/img852/6628/immagine002a.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/immagine002a.th.png" alt="img852.imageshack.us/img852/6628/immagine002a.th.png"></a> <a rel="nofollow" href="http://img863.imageshack.us/img863/2355/immagine003.png" target="_blank"><img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/immagine003.th.png" alt="img863.imageshack.us/img863/2355/immagine003.th.png"></a><br>
+<br>
+EDIT: I'm not using the #lightinfo in this version of the shader<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.garagegames.com/community/forums/viewthread/125562/1#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="preprocessor">#define&nbsp;IN_HLSL&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"shdrConsts.h"&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="preprocessor">#include&nbsp;"hlslStructs.h"&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="preprocessor">#include&nbsp;"shadergen:/autogenConditioners.h"&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//&nbsp;Structures&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">struct</span><span>&nbsp;ConnectData&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float4&nbsp;Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;POSITION;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float2&nbsp;TexCoord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;EyeVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD1;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;LightVec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;TEXCOORD2;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//float4&nbsp;screenspacePos:&nbsp;TEXCOORD3;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldNormal&nbsp;&nbsp;&nbsp;:&nbsp;NORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldTangent&nbsp;&nbsp;:&nbsp;TANGENT;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldBinormal&nbsp;:&nbsp;BINORMAL;&nbsp;&nbsp;</span></li><li class="alt"><span>};&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comment">//&nbsp;Main&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//-----------------------------------------------------------------------------</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>ConnectData&nbsp;main(&nbsp;VertexIn_PNTTTB&nbsp;IN,&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;modelview,&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float4x4&nbsp;objTrans,&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;uniform&nbsp;float3&nbsp;&nbsp;&nbsp;eyePosWorld&nbsp;&nbsp;</span></li><li class=""><span>)&nbsp;&nbsp;</span></li><li class="alt"><span>{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;ConnectData&nbsp;OUT;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;float4x4&nbsp;a&nbsp;=&nbsp;transpose(objTrans);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;float3&nbsp;WorldSpacePos&nbsp;=&nbsp;mul(IN.pos,&nbsp;objTrans).xyz;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Normal,&nbsp;Tangent,&nbsp;and&nbsp;Binormal</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.WorldNormal&nbsp;=&nbsp;IN.normal;&nbsp;<span class="comment">//mul(IN.normal,&nbsp;a);</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.WorldTangent&nbsp;=&nbsp;IN.T;&nbsp;<span class="comment">//mul(IN.T,&nbsp;a);</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.WorldBinormal&nbsp;=&nbsp;cross(OUT.WorldTangent,&nbsp;OUT.WorldNormal);&nbsp;<span class="comment">//mul(cross(OUT.WorldTangent,&nbsp;OUT.WorldNormal),&nbsp;a).xyz;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;EyeVec</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.EyeVec&nbsp;=&nbsp;-normalize(IN.pos&nbsp;-&nbsp;eyePos);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;LightVector</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.LightVec&nbsp;=&nbsp;-normalize(float3(-133.69,&nbsp;88.4143,&nbsp;-0.878019));&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Texture&nbsp;Coordinate</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;OUT.TexCoord.xy&nbsp;=&nbsp;IN.uv0;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Vertex&nbsp;Position</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;OUT.Position&nbsp;=&nbsp;mul(modelview,&nbsp;float4(IN.pos.xyz,&nbsp;1));&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Deferred&nbsp;RT&nbsp;Lighting&nbsp;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//OUT.screenspacePos&nbsp;=&nbsp;OUT.Position;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;OUT;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">#define IN_HLSL  
+#include "shdrConsts.h"  
+#include "hlslStructs.h"   
+#include "shadergen:/autogenConditioners.h"  
+
+//-----------------------------------------------------------------------------
+// Structures                                                                  
+//-----------------------------------------------------------------------------
+struct ConnectData
+{
+   float4 Position      : POSITION;
+   float2 TexCoord      : TEXCOORD0;
+   float3 EyeVec        : TEXCOORD1;
+   float3 LightVec      : TEXCOORD2;
+   //float4 screenspacePos: TEXCOORD3;
+   float3 WorldNormal   : NORMAL;
+   float3 WorldTangent  : TANGENT;
+   float3 WorldBinormal : BINORMAL;
+};
+
+//-----------------------------------------------------------------------------
+// Main                                                                        
+//-----------------------------------------------------------------------------
+ConnectData main( VertexIn_PNTTTB IN,
+	uniform float4x4 modelview,
+	uniform float4x4 objTrans,
+	uniform float3   eyePosWorld
+)
+{
+   ConnectData OUT;
+
+   float4x4 a = transpose(objTrans);
+   float3 WorldSpacePos = mul(IN.pos, objTrans).xyz;
+
+   // Normal, Tangent, and Binormal
+   OUT.WorldNormal = IN.normal; //mul(IN.normal, a);
+   OUT.WorldTangent = IN.T; //mul(IN.T, a);
+   OUT.WorldBinormal = cross(OUT.WorldTangent, OUT.WorldNormal); //mul(cross(OUT.WorldTangent, OUT.WorldNormal), a).xyz;
+
+   // EyeVec
+   OUT.EyeVec = -normalize(IN.pos - eyePos);
+
+   // LightVector
+   OUT.LightVec = -normalize(float3(-133.69, 88.4143, -0.878019)); 
+
+   // Texture Coordinate
+   OUT.TexCoord.xy = IN.uv0;
+
+   // Vertex Position
+   OUT.Position = mul(modelview, float4(IN.pos.xyz, 1));
+
+   // Deferred RT Lighting  
+   //OUT.screenspacePos = OUT.Position;
+
+   return OUT;
+}</pre>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/149735.jpg" class="profilepic">
+			<br>
+			<a rel="Alexander Krause" class="member button profile-link ui-state-default ui-corner-all" href="http://www.garagegames.com/account/miniprofile/accountID/149735" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Alexander Krause<br>
+	<span class="studio-name">Coming soon...</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.garagegames.com/community/forums/viewthread/125562/1#comment-805414" name="comment-805414">#20</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/23/2011 (8:13 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			wow, but it looks way better!		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.garagegames.com/community/forums/viewthread/125562/2#comments">2</a> <a href="http://www.garagegames.com/community/forums/viewthread/125562/2#comments" class="next">Next»</a> <div class="clear"></div></div>	<div class="clear"></div>
+	</div>
+
+		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.garagegames.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.garagegames.com/community/resources/add">Add a resource</a><br>
+								<a href="http://www.garagegames.com/community/forums/63/newthread">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.garagegames.com/">Home</a>
+	<a href="http://www.garagegames.com/products">Products</a>
+	<a href="http://www.garagegames.com/community">Community</a>
+	<a href="http://www.garagegames.com/support">Support</a>
+	<a href="http://www.garagegames.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © GarageGames.com 2000 - 2011 All Rights Reserved. <a href="http://www.garagegames.com/company/tos">Terms of Service</a> - <a href="http://www.garagegames.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.garagegames.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/forums/63/view/125562');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+<script src="./Custom Shader on T3D    Torque 3D (Private)   Forums   Community   GarageGames.com_files/cf_tools.min.js" async="true"></script><script type="text/javascript">
+//<![CDATA[
+window.__CF=window.__CF||{};window.__CF.u="/cdn-cgi/async/cf/uri/";window.__CF.p="bc/0638c741769f9452bad4820a60d326";window.__CF.o=1;window.__CF.c=1;(function(){var a=document,b=a.createElement("script");b.src="//ajax.cloudflare.com/cdn-cgi/nexp/v=918368360/cf_tools.min.js";b.setAttribute("async","true");a=a.getElementsByTagName("script");a=a[a.length-1];a.parentNode.insertBefore(b,a)})();
+//]]>
+</script>
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

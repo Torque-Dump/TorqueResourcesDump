@@ -1,0 +1,856 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0055)http://www.torquepowered.com/community/blogs/view/19471 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.torquepowered.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.torquepowered.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="This is a port for the afxFPS for T3D beta, originally the work of Gibby, this is just a mod of the code to make it drag and drop for AFX for T3D beta. ">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+				<title>afxFPS - T3D Beta &amp; AFX 2.0 | Sean Rice | Resources | Community | TorquePowered.com</title>		<link href="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.torquepowered.com/static/styles/ie.css?rev=3022" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/jquery.js"></script>
+<script type="text/javascript" src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/plugins.js"></script>
+<script type="text/javascript" src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	<style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style></head>
+<body>
+<div id="flashmessage" style="display: block; margin: 0;"><a href="http://www.torquepowered.com/community/blogs/view/20687">Important Torque News Updated: Please click here to read this urgent news update.</a></div>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.torquepowered.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.torquepowered.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.torquepowered.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.torquepowered.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.torquepowered.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.torquepowered.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.torquepowered.com/products/tge/iphone">3D Coming Soon</a></li><li><a href="http://www.torquepowered.com/products/torque-x">Torque X</a></li><li><a href="http://www.torquepowered.com/products/consoles">For Consoles</a></li><li><a href="http://www.torquepowered.com/products/education">Educational Use</a></li><li><a href="http://www.torquepowered.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.torquepowered.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.torquepowered.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.torquepowered.com/products/browse/tools">Tools</a></li><li><a href="http://www.torquepowered.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.torquepowered.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.torquepowered.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.torquepowered.com/community">What's New</a></li><li><a href="http://www.torquepowered.com/community/blogs">Blogs</a></li><li><a href="http://www.torquepowered.com/community/resources">Resources</a></li><li><a href="http://www.torquepowered.com/community/forums">Forums</a></li><li><a href="http://www.torquepowered.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.torquepowered.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.torquepowered.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.torquepowered.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.torquepowered.com/company">About Torque</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout" class=""><a rel="nofollow" href="https://www.torquepowered.com/account/logout" class=""><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.torquepowered.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(1)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.torquepowered.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.torquepowered.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.torquepowered.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.torquepowered.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.torquepowered.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/search-bar-main-btn.png" alt="Search">
+                                </form>
+                                
+                                <script type="text/javascript">
+                                function searchSubmit() {
+                                	var search = $('#top-keywords').val();
+                                	window.location = '/community/search#'+search;
+                                }
+                                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.torquepowered.com/search/advanced" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.torquepowered.com/community">What's New</a></li>
+			<li><a class="" href="http://www.torquepowered.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.torquepowered.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.torquepowered.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.torquepowered.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>afxFPS - T3D Beta &amp; AFX 2.0</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.torquepowered.com/account/profile/189615">Sean Rice</a>
+			<strong>·</strong>
+			03/12/2010 (6:13 am)			<strong>·</strong>
+			21 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body"><a rel="nofollow" href="http://www.filefront.com/17287011/afxFPS-ORIG-TGEA-T3D.rar" target="_blank">www.filefront.com/17287011/afxFPS-ORIG-TGEA-T3D.rar</a><br>
+<br>
+Originally the work of Gibby at www.torquepowered.com/community/resources/view/17097 and with my first conversion for TGEA here. After a couple of people asked for updated versions, I threw one together here. <br>
+<br>
+Corrected all afxFPS paths to work with AFX 2.0 on T3D Beta 1.1 and use only AFXDemo supplied items. <br>
+Minor tweaks to the scripts, completed separation of player datablocks. <br>
+Changed Third person camera to not be glued to the players head at a specific angle. This was driving me crazy and was not allowing true 3rd person viewing. <br>
+Changed camera toggle to<br>
+Toggle 1 - Casting mode third person<br>
+Toggle 2 - Combat mode first person<br>
+Toggle 3 - Casting mode first person<br>
+Toggle 4 - Combat mode third person<br>
+<br>
+To allow only TWO camera modes (third person casting and FP combat change the following command inside of <br>
+<br>
+<br>
+To allow only two camera modes as in the previous resource, replace this function inside of game/scripts/server/afx/afxCommands.cs from this<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;serverCmdForceModaPOV(%client)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;<span class="comment">//&nbsp;get&nbsp;3rd-person&nbsp;camera&nbsp;offset&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;%cam_dist&nbsp;=&nbsp;%client.camera.getThirdPersonDistance();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;%x_pos&nbsp;=&nbsp;firstWord(%offset);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;%y_pos&nbsp;=&nbsp;getWord(%offset,1);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;%z_pos&nbsp;=&nbsp;getWord(%offset,2);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;<span class="comment">//&nbsp;store&nbsp;y-axis&nbsp;for&nbsp;later...</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;$thresh_third_person_y&nbsp;=&nbsp;%y_pos;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;echo($thresh_third_person_y);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;<span class="comment">//&nbsp;if&nbsp;in&nbsp;third&nbsp;person,&nbsp;ignore</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%y_pos&nbsp;&lt;&nbsp;-0.5)&nbsp;</span><span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;%client.camera.setThirdPersonDistance(%cam_dist);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;%client.camera.setThirdPersonSnap();&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function serverCmdForceModaPOV(%client)
+{  
+  // get 3rd-person camera offset 
+  %cam_dist = %client.camera.getThirdPersonDistance();
+  %x_pos = firstWord(%offset);
+  %y_pos = getWord(%offset,1);
+  %z_pos = getWord(%offset,2);
+
+  // store y-axis for later...
+  $thresh_third_person_y = %y_pos;
+  echo($thresh_third_person_y);
+  // if in third person, ignore
+  if (%y_pos &lt; -0.5) return;
+
+
+  %client.camera.setThirdPersonDistance(%cam_dist);
+
+  %client.camera.setThirdPersonSnap();
+}</pre><br>
+to this<br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>function&nbsp;serverCmdForceModaPOV(%client)&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;<span class="comment">//&nbsp;get&nbsp;3rd-person&nbsp;camera&nbsp;offset&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;%cam_dist&nbsp;=&nbsp;%client.camera.getThirdPersonDistance();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;<span class="comment">//&nbsp;save&nbsp;3rd-person&nbsp;distance,&nbsp;force&nbsp;first-person&nbsp;on</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(%cam_dist&nbsp;&lt;=&nbsp;1.0)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%client.save_3rdperson_dist&nbsp;=&nbsp;%cam_dist;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;%cam_dist&nbsp;=&nbsp;3.0;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;<span class="comment">//&nbsp;restore&nbsp;3rd-person&nbsp;distance,&nbsp;force&nbsp;first-person&nbsp;off</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;</span><span class="keyword">if</span><span>&nbsp;(%client.save_3rdperson_dist&nbsp;!$=&nbsp;</span><span class="string">""</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;%cam_dist&nbsp;=&nbsp;(%client.save_3rdperson_dist&nbsp;!$=&nbsp;<span class="string">""</span><span>)&nbsp;?&nbsp;%client.save_3rdperson_dist&nbsp;:&nbsp;3;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;<span class="comment">//&nbsp;set&nbsp;new&nbsp;3rd-person&nbsp;distance</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;%client.camera.setThirdPersonDistance(%cam_dist);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;%client.camera.setThirdPersonSnap();&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">function serverCmdForceModaPOV(%client)
+{
+  // get 3rd-person camera offset 
+  %cam_dist = %client.camera.getThirdPersonDistance();
+
+  // save 3rd-person distance, force first-person on
+  if (%cam_dist &lt;= 1.0)
+  {
+    %client.save_3rdperson_dist = %cam_dist;
+    %cam_dist = 3.0;
+  }
+  // restore 3rd-person distance, force first-person off
+  else if (%client.save_3rdperson_dist !$= "")
+  {
+    %cam_dist = (%client.save_3rdperson_dist !$= "") ? %client.save_3rdperson_dist : 3;
+  }
+
+  // set new 3rd-person distance
+  %client.camera.setThirdPersonDistance(%cam_dist);
+  %client.camera.setThirdPersonSnap();
+}</pre><br>
+Next, choose your default style of play and go into game/scripts/afx/afxSpawn.cs at the very end of the file. You can replace the word Play with, Spectator, Play or Psionics. Use Play for FPS mode, Psionics for AFX mode. <br>
+<br>
+replace<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>%control&nbsp;=&nbsp;%player;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setControlObject(%control);&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">%control = %player;
+      
+   %this.setControlObject(%control);
+}</pre><br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>%control&nbsp;=&nbsp;%player;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;%<span class="keyword">this</span><span>.setControlObject(%control);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;commandToClient(%client,&nbsp;clientCmdSetHudMode(<span class="string">'Play'</span><span>));&nbsp;</span><span class="comment">//&nbsp;HNG</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">%control = %player;
+      
+   %this.setControlObject(%control);
+   commandToClient(%client, clientCmdSetHudMode('Play')); // HNG
+}</pre><br>
+<br>
+To completely REMOVE the third person camera from the afxFPS and make it more like a true fps Follow these directions. First, apply the two camera mode from above, then in game/scripts/afx/afxSpawn.cs comment out the section. This will provide a first person mode for both AFX and Weapons. <br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="comment">//&nbsp;AFX&nbsp;SCRIPT&nbsp;BLOCK&nbsp;&gt;&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="comment">//&nbsp;HNG&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">/*</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;//&nbsp;Update&nbsp;the&nbsp;default&nbsp;camera&nbsp;to&nbsp;start&nbsp;with&nbsp;the&nbsp;player</span>&nbsp;</span></li><li class="alt"><span><span class="comment">&nbsp;&nbsp;&nbsp;if&nbsp;(isObject(%this.camera))</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;{</span>&nbsp;</span></li><li class="alt"><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(%player.getClassname()&nbsp;$=&nbsp;"Player")</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%this.camera.setTransform(%player.getEyeTransform());</span>&nbsp;</span></li><li class="alt"><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%this.camera.setTransform(%player.getTransform());</span>&nbsp;</span></li><li class="alt"><span><span class="comment"></span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;AFX&nbsp;SCRIPT&nbsp;BLOCK&nbsp;&lt;&lt;</span>&nbsp;</span></li><li class="alt"><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;We&nbsp;set&nbsp;the&nbsp;camera&nbsp;system&nbsp;to&nbsp;run&nbsp;in&nbsp;3rd&nbsp;person&nbsp;mode&nbsp;around&nbsp;the&nbsp;%player</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%this.camera.setCameraSubject(%player);&nbsp;&nbsp;&nbsp;</span>&nbsp;</span></li><li class="alt"><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%this.camera.setThirdPersonMode();</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%this.camera.setThirdPersonOffset("0&nbsp;0&nbsp;3");&nbsp;//&nbsp;this&nbsp;is&nbsp;default&nbsp;3rd-person&nbsp;offset</span>&nbsp;</span></li><li class="alt"><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%this.camera.setThirdPersonDistance(3);&nbsp;//&nbsp;this&nbsp;is&nbsp;default&nbsp;3rd-person&nbsp;distance</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%this.camera.setThirdPersonSnap();</span>&nbsp;</span></li><li class="alt"><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%this.setCameraObject(%this.camera);</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;AFX&nbsp;SCRIPT&nbsp;BLOCK&nbsp;&gt;&gt;</span>&nbsp;</span></li><li class="alt"><span><span class="comment">&nbsp;&nbsp;&nbsp;}</span>&nbsp;</span></li><li class=""><span><span class="comment">&nbsp;*/</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="comment">//HNG</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Add&nbsp;the&nbsp;player&nbsp;object&nbsp;to&nbsp;MissionCleanup&nbsp;so&nbsp;that&nbsp;it</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;won't&nbsp;get&nbsp;saved&nbsp;into&nbsp;the&nbsp;level&nbsp;files&nbsp;and&nbsp;will&nbsp;get</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;cleaned&nbsp;up&nbsp;properly</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;MissionCleanup.add(%player);&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">// AFX SCRIPT BLOCK &gt;&gt;
+
+
+// HNG 
+/*
+   // Update the default camera to start with the player
+   if (isObject(%this.camera))
+   {
+      if (%player.getClassname() $= "Player")
+         %this.camera.setTransform(%player.getEyeTransform());
+      else
+         %this.camera.setTransform(%player.getTransform());
+
+      // AFX SCRIPT BLOCK &lt;&lt;
+      // We set the camera system to run in 3rd person mode around the %player
+      %this.camera.setCameraSubject(%player);   
+      %this.camera.setThirdPersonMode();
+      %this.camera.setThirdPersonOffset("0 0 3"); // this is default 3rd-person offset
+      %this.camera.setThirdPersonDistance(3); // this is default 3rd-person distance
+      %this.camera.setThirdPersonSnap();
+      %this.setCameraObject(%this.camera);
+      // AFX SCRIPT BLOCK &gt;&gt;
+   }
+ */ 
+//HNG
+
+   // Add the player object to MissionCleanup so that it
+   // won't get saved into the level files and will get
+   // cleaned up properly
+   MissionCleanup.add(%player);</pre><br>
+<br>
+<object width="640" height="480"><param value="http://www.youtube.com/v/jn0F7P7c8XM&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D218" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed width="640" height="480" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/jn0F7P7c8XM&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D18"></object><br>
+<br>
+AFX without the 3rd person camera mode. <br>
+<br>
+<object width="640" height="480"><param value="http://www.youtube.com/v/DWgeKKrScwQ&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D218" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed width="640" height="480" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/DWgeKKrScwQ&amp;hl=en&amp;fs=1&amp;ap=%2526fmt%3D18"></object><br>
+<br>
+<br>
+<br>
+Current Issues: <br>
+If your holding the mouse button 0 when switching views from 3d person to first person attack and then release the button, the mouse cursor will appear and you will lose mouse control of the character. </div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/189615.jpg" alt="Sean Rice&#39;s profile picture">
+			<br>
+			<a rel="Sean Rice" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/189615" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Sean Rice<br>
+	<span class="studio-name">HNGamers</span>
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+				http://www.hngamers.com			</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.torquepowered.com/community/blogs/view/20425">HNGamers Master Server</a><br>							•&nbsp;<a href="http://www.torquepowered.com/community/blogs/view/19677">Use Your 3dConnexion Controller in T3D/GEA/GE</a><br>							•&nbsp;<a href="http://www.torquepowered.com/community/blogs/view/19569">Helicopter, Helicopter, Pilot Man....</a><br>							•&nbsp;<a href="http://www.torquepowered.com/community/blogs/view/19561">Porting Items from TGE/TGEA to T3D, a mini guide</a><br>							•&nbsp;<a href="http://www.torquepowered.com/community/blogs/view/19549">Come Fly With Me</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.torquepowered.com/community/blogs/view/19503"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.torquepowered.com/community/blogs/view/19469"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.torquepowered.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.torquepowered.com/community/resource/view/19471/2#comments">2</a> <a href="http://www.torquepowered.com/community/resource/view/19471/2#comments" class="next">Next»</a> <div class="clear"></div></div>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.torquepowered.com/community/resource/view/19471/2#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(19471, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="JulianR" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	JulianR<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153317" name="comment-153317">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (6:15 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Great work on this Sean, appreciated.  Saved me countless hours!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="JulianR" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	JulianR<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153321" name="comment-153321">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (6:54 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Hi Sean, not having much luck with the drag and drop from a fresh build.  Don't get the crosshair, and lose mouse control on mission load.  Deleted all .dso files also.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/189615.jpg" class="profilepic">
+			<br>
+			<a rel="Sean Rice" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/189615" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Sean Rice<br>
+	<span class="studio-name">HNGamers</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153323" name="comment-153323">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (6:57 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Which AFX/T3D version are you using? This one was made for AFX 2.0 Beta (T3D 1.1 Beta build). If your using Alpha or 1.01 then this may not work right. <br>
+<br>
+<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="JulianR" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	JulianR<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153327" name="comment-153327">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (7:01 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Running AFX2.0 Beta 1 for T3D 1.1 Beta 1.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/189615.jpg" class="profilepic">
+			<br>
+			<a rel="Sean Rice" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/189615" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Sean Rice<br>
+	<span class="studio-name">HNGamers</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153329" name="comment-153329">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (7:02 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I just tested this on a fresh copy of the AFXDemo, did a drag and drop. When opening the mission for the first time you do not have mouse control, you must switch modes to grab the control. I am looking into this, it has to do with AFX setting the camera control rather then the afxFPS. 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="JulianR" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	JulianR<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153331" name="comment-153331">#6</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (7:03 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Ok, cool.  Didn't see a crosshair either, so may be to do with the camera control.  Toggled with the M key, and movement restored.  Might be a flag missing, or typo at the start of loadup to toggle into the default mode.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/189615.jpg" class="profilepic">
+			<br>
+			<a rel="Sean Rice" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/189615" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Sean Rice<br>
+	<span class="studio-name">HNGamers</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153333" name="comment-153333">#7</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (7:09 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Hmm, there wasn't a cross hair supplied with the AFX for T3D so I had to add one. The crosshair should reside in and is called art/gui/crossHair.png  and is called in <br>
+<br>
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;">view plain</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;">print</a><a href="http://www.torquepowered.com/community/blogs/view/19471#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">new</span><span>&nbsp;GuiCrossHairHud(reticle)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canSaveDynamicFields&nbsp;=&nbsp;<span class="string">"0"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enabled&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isContainer&nbsp;=&nbsp;<span class="string">"0"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Profile&nbsp;=&nbsp;<span class="string">"GuiDefaultProfile"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HorizSizing&nbsp;=&nbsp;<span class="string">"center"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VertSizing&nbsp;=&nbsp;<span class="string">"center"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position&nbsp;=&nbsp;<span class="string">"304&nbsp;224"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extent&nbsp;=&nbsp;<span class="string">"32&nbsp;32"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MinExtent&nbsp;=&nbsp;<span class="string">"8&nbsp;8"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canSave&nbsp;=&nbsp;<span class="string">"1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visible&nbsp;=&nbsp;<span class="string">"0"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hovertime&nbsp;=&nbsp;<span class="string">"1000"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bitmap&nbsp;=&nbsp;<span class="string">"art/gui/crossHair"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wrap&nbsp;=&nbsp;<span class="string">"0"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;damageFillColor&nbsp;=&nbsp;<span class="string">"0&nbsp;1&nbsp;0&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;damageFrameColor&nbsp;=&nbsp;<span class="string">"1&nbsp;0.6&nbsp;0&nbsp;1"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;damageRect&nbsp;=&nbsp;<span class="string">"50&nbsp;4"</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;damageOffset&nbsp;=&nbsp;<span class="string">"0&nbsp;10"</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</span></li></ol></div><pre name="code" class="cpp" style="display: none; ">new GuiCrossHairHud(reticle) {
+      canSaveDynamicFields = "0";
+      Enabled = "1";
+      isContainer = "0";
+      Profile = "GuiDefaultProfile";
+      HorizSizing = "center";
+      VertSizing = "center";
+      position = "304 224";
+      Extent = "32 32";
+      MinExtent = "8 8";
+      canSave = "1";
+      Visible = "0";
+      hovertime = "1000";
+      bitmap = "art/gui/crossHair";
+      wrap = "0";
+      damageFillColor = "0 1 0 1";
+      damageFrameColor = "1 0.6 0 1";
+      damageRect = "50 4";
+      damageOffset = "0 10";
+   };</pre>		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="JulianR" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	JulianR<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153335" name="comment-153335">#8</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (7:13 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Yeah, it was there.. my mistake.  As above in my last post, when the game loads up does it set it to the default mode first? Seems like it's missing this bit, so by pressing the toggle, the mode is then set.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/189615.jpg" class="profilepic">
+			<br>
+			<a rel="Sean Rice" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/189615" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Sean Rice<br>
+	<span class="studio-name">HNGamers</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153337" name="comment-153337">#9</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (8:19 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I updated the top with instructions on how to set your HUD on start. You can also get rid of the third person mode from the switching by commenting out the next section. 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/8816.gif" class="profilepic">
+			<br>
+			<a rel="Gibby" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/8816" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Gibby
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153341" name="comment-153341">#10</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (9:56 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Somebody buy this guy a beer, he's on fire!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="JulianR" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	JulianR<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153379" name="comment-153379">#11</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (4:51 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Shhhmoking!!  Thanks Sean.  Top guy.  A beer, think he needs a keg. :)		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="JulianR" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	JulianR<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153395" name="comment-153395">#12</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (6:09 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Hi Sean, couldn't get the default hud to load on start.  After modifying game/scripts/server/afx/afxSpawn.cs		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="JulianR" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	JulianR<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153403" name="comment-153403">#13</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/12/2010 (8:58 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Ok, looked into why the cursor was showing and not giving you mouse control.<br>
+<br>
+Under playGui_AFX.cs<br>
+in<br>
+function PlayGui::onWake<br>
+<br>
+change line:<br>
+schedule(0, 0, "showCursor");<br>
+to comment it out:<br>
+// schedule(0, 0, "showCursor");<br>
+<br>
+When the game loads you have mouse control.  		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/189615.jpg" class="profilepic">
+			<br>
+			<a rel="Sean Rice" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/189615" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Sean Rice<br>
+	<span class="studio-name">HNGamers</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153423" name="comment-153423">#14</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/13/2010 (2:22 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Doh, I forgot to update that :p let me do that right now. That was one of the fixes as well. Thanks for pointing that out. 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="JulianR" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	JulianR<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-153425" name="comment-153425">#15</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/13/2010 (2:39 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			No worries :)  		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/69305.png" class="profilepic">
+			<br>
+			<a rel="JulianR" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/69305" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	JulianR<br>
+	<span class="studio-name">Something2Play</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-158261" name="comment-158261">#16</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">06/26/2010 (9:59 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			@Sean - any reason why spawning with a weapon doesn't work by default?  Have not looked into it in much detail yet, just wondering if you know on the off chance.  Changed the weapon spawn in gamecore.cs for Crossbow instead of Rocketlauncher, but doesn't spawn it with the player.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/8816.gif" class="profilepic">
+			<br>
+			<a rel="Gibby" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/8816" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Gibby
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-158387" name="comment-158387">#17</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">06/29/2010 (1:48 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			S2P:<br>
+<br>
+We're gonna need more info to help you, beyond 'doesn't work'.<br>
+<br>
+There are a number of ways to spawn unarmed, I don't use T3D but I'll try the obvious:<br>
+<br>
+Player inventory?<br>
+is the weapons .cs file included in the server executes?<br>
+<br>
+When modding something as complex as afx, I find adding debug messages using 'echo' functions are useful to trace the order in which things are and aren't happening. 		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/189615.jpg" class="profilepic">
+			<br>
+			<a rel="Sean Rice" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/189615" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Sean Rice<br>
+	<span class="studio-name">HNGamers</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-158391" name="comment-158391">#18</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">06/29/2010 (2:13 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			S2P I believe some of the code is removed from the AFX since there are no weapons by default. You will need to make sure your adding it to the players inventory and mounting the image. I never tried "starting" with a weapon since a new player in my world doesn't pop with one. <br>
+<br>
+		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/41799.jpg" class="profilepic">
+			<br>
+			<a rel="Steve Damsky" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/41799" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Steve Damsky<br>
+	<span class="studio-name">Young Puppy Productions</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-162665" name="comment-162665">#19</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">09/13/2010 (7:06 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			The .rar file above no longer works.  Does anyone have a copy? I am in desperate need of this resource!  Please help!		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/189615.jpg" class="profilepic">
+			<br>
+			<a rel="Sean Rice" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/189615" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Sean Rice<br>
+	<span class="studio-name">HNGamers</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/19471/1#comment-162667" name="comment-162667">#20</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">09/13/2010 (7:09 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Reupped the file to Filefront and corrected the link in the top post. 		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.torquepowered.com/community/resource/view/19471/2#comments">2</a> <a href="http://www.torquepowered.com/community/resource/view/19471/2#comments" class="next">Next»</a> <div class="clear"></div></div>	<div class="clear"></div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.torquepowered.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.torquepowered.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.torquepowered.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.torquepowered.com/">Home</a>
+	<a href="http://www.torquepowered.com/products">Products</a>
+	<a href="http://www.torquepowered.com/community">Community</a>
+	<a href="http://www.torquepowered.com/support">Support</a>
+	<a href="http://www.torquepowered.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © TorquePowered.com 2000 - 2011 All Rights Reserved. <a href="http://www.torquepowered.com/company/tos">Terms of Service</a> - <a href="http://www.torquepowered.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.torquepowered.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./afxFPS - T3D Beta & AFX 2.0   Sean Rice   Resources   Community   TorquePowered.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/19471');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>

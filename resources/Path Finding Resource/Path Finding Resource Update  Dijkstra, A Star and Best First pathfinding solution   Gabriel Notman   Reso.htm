@@ -1,0 +1,805 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0059)http://www.torquepowered.com/community/resources/view/14495 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<link rel="icon" href="http://static.torquepowered.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="http://static.torquepowered.com/static/images/theme/favicon.ico" type="image/x-icon">
+		<meta name="Description" content="An updated version of this resource:   [url]http://garagegames.com/index.php?sec=mg&amp;mod=resource&amp;page=view&amp;qid=13326[/url]  A few bugs have been fixed and some demo scripts have been added to make it easier to use.  Including integration into starter.fps (1.5.2) with a demo mission.">
+		<meta name="Keywords" content="torque powered, indie, independent game development community, marble blast, torque engine, think tanks">
+				<title>Path Finding Resource Update: Dijkstra, A Star and Best First pathfinding solution | Gabriel Notman | Resources | Community | TorquePowered.com</title>		<link href="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/ui.base.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/ui.theme.css" media="screen" rel="stylesheet" type="text/css">
+<link href="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/main.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if ie]> <link href="http://static.torquepowered.com/static/styles/ie.css?rev=3022" media="screen,print" rel="stylesheet" type="text/css" ><![endif]-->				<script type="text/javascript" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/jquery-ui.js"></script>
+<script type="text/javascript" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/plugins.js"></script>
+<script type="text/javascript" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/gg.js"></script>
+<script type="text/javascript">
+    //<!--
+
+	$().ready(initStuff);
+	
+	function initStuff() {
+		$('.relevantProductFilter').live('click', function(){
+			var slug = $(this).val();
+			if(slug != 0) {
+				if($(this).is(':checked')) {
+					window.location = "/community/resources/all/"+slug+",";
+				} else {
+					var products = "".replace(slug + ',','');
+					window.location = "/community/resources/all/" + products;
+				}
+			} else {
+				window.location = "/community/resources";
+			}
+		});
+	
+		$('#what-can-i-do-here-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#actions-list-container').html(),
+				title: {
+					text: 'Actions',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 150,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+
+		$('#filter-action-arrow').unbind('mouseup').qtip({
+			content: {
+				text: $('#filter-action-container').html(),
+				title: {
+					text: 'Filters',
+					button: 'close'
+				}
+			},
+			position: {
+				corner: {
+					target: 'bottomRight',
+					tooltip: 'topRight'
+				},
+				adjust: {
+					x: -12
+				}
+			},
+			show: 'click',
+			hide: 'unfocus',
+			style: {
+				width: 200,
+				tip: true,
+				name: 'gg'
+			},
+			api: {
+				onHide: function() {
+					this.elements.target.removeClass('ui-state-active');
+				}
+			}
+		});
+	}
+    //-->
+</script>	</head>
+<body>
+<div id="flashmessage" style="display: block; margin: 0;"><a href="http://www.torquepowered.com/community/blogs/view/20687">Important Torque News Updated: Please click here to read this urgent news update.</a></div>
+<div id="container">
+	<div id="header">
+		<div id="header-left"></div>
+		<div id="header-center">
+			<a href="http://www.torquepowered.com/" id="header-home-link">Game Development Tools and Software</a>
+			<div id="menu_bar">
+				<div id="breadcrumbs">
+	</div>
+
+<ul id="main-nav">
+	<li class="stub" id="main-nav-home"><a href="http://www.torquepowered.com/">Home</a></li><li class="main-nav" id="main-nav-products"><a href="http://www.torquepowered.com/products/torque-3d">Engines</a><ul class="sub-nav" id="sub-menu-products"><li><a href="http://www.torquepowered.com/products/torque-3d">Torque 3D</a></li><li><a href="http://www.torquepowered.com/products/torque-2d">Torque 2D</a></li><li><a href="http://www.torquepowered.com/products/torque-2d/iphone">iTorque 2D</a></li><li><a href="http://www.torquepowered.com/products/tge/iphone">3D Coming Soon</a></li><li><a href="http://www.torquepowered.com/products/torque-x">Torque X</a></li><li><a href="http://www.torquepowered.com/products/consoles">For Consoles</a></li><li><a href="http://www.torquepowered.com/products/education">Educational Use</a></li><li><a href="http://www.torquepowered.com/best-of-torque/torque-3d">Made with Torque</a></li></ul></li><li class="main-nav" id="main-nav-addons"><a href="http://www.torquepowered.com/products/browse">Add-ons</a><ul class="sub-nav" id="sub-menu-addons"><li><a href="http://www.torquepowered.com/products/browse/genrekits">Genre Kits</a></li><li><a href="http://www.torquepowered.com/products/browse/tools">Tools</a></li><li><a href="http://www.torquepowered.com/products/browse/artpacks">Art Packs</a></li><li><a href="http://www.torquepowered.com/products/browse/games">Games</a></li></ul></li><li class="main-nav" id="main-nav-community"><a href="http://www.torquepowered.com/community">Community</a><ul class="sub-nav" id="sub-menu-community"><li><a href="http://www.torquepowered.com/community">What's New</a></li><li><a href="http://www.torquepowered.com/community/blogs">Blogs</a></li><li><a href="http://www.torquepowered.com/community/resources">Resources</a></li><li><a href="http://www.torquepowered.com/community/forums">Forums</a></li><li><a href="http://www.torquepowered.com/best-of-torque/interviews">Dev&nbsp;Interviews</a></li></ul></li><li class="main-nav" id="main-nav-support"><a rel="nofollow" href="http://www.torquepowered.com/support">Support</a><ul class="sub-nav" id="sub-menu-support"><li><a href="http://www.torquepowered.com/documentation">Documentation</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/support/bugs">Submit Bugs</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/support/paid">Paid Support</a></li></ul></li><li class="main-nav" id="main-nav-company"><a rel="nofollow" href="http://www.torquepowered.com/company">Company</a><ul class="sub-nav" id="sub-menu-company"><li><a rel="nofollow" href="http://www.torquepowered.com/company">About Torque</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/employment">Employment</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/licensing">Licensing</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/feeds">RSS Feeds</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/logo-guidelines">Logo Guidelines</a></li><li><a rel="nofollow" href="http://www.torquepowered.com/company/contact">Contact Us</a></li></ul></li></ul>				<div id="traceout"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="header-right">
+							<div id="header-welcome"><span>Welcome,</span> Bloodknight</div>
+						<ul id="header-status">
+				
+		<li id="header-logout"><a rel="nofollow" href="https://www.torquepowered.com/account/logout"><span></span>Logout</a></li>
+	<li id="header-cart" style="width: 80px"><a rel="nofollow" href="https://www.torquepowered.com/store" id="cartLink"><span></span>Cart <em id="cart-count">(1)</em></a></li>
+	<li id="header-account"><a rel="nofollow" href="http://www.torquepowered.com/account"><span></span>My Account</a>
+		<ul class="myaccount-options">
+			<li><a rel="nofollow" href="http://www.torquepowered.com/account">My Products</a></li>
+						<li><a rel="nofollow" href="http://www.torquepowered.com/account/studio">My Studio</a></li>
+						<li><a rel="nofollow" href="http://www.torquepowered.com/account/profile/74950">My Profile</a></li>
+			<li><a rel="nofollow" href="http://www.torquepowered.com/account/settings">My Settings</a></li>
+					</ul>
+	</li>	
+			</ul>
+			<div id="search-container">
+                                <form action="" onsubmit="searchSubmit(); return false;" method="get" id="search" name="search_form">
+                                        <input type="text" name="q" id="top-keywords" class="formTip" value="" title="Search site" maxlength="255">
+                                        <input type="image" id="top-submit" onclick="searchSubmit(); return false;" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/search-bar-main-btn.png" alt="Search">
+                                </form>
+                                
+                                <script type="text/javascript">
+                                function searchSubmit() {
+                                	var search = $('#top-keywords').val();
+                                	window.location = '/community/search#'+search;
+                                }
+                                </script>
+			</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<div id="console"></div>
+	<div id="content">
+		<div id="maincol">
+						<!-- content --><div class="section-container ui-corner-all" id="communityshell">
+	<div class="section-header">
+		<h2 style="float: left;"><span style="display: none;">Game Development</span> Community</h2>
+		<div class="section-banner">
+			
+		</div>
+		<div class="section-buttons">
+			<div id="search-bar-sub-left">
+				<form action="http://www.torquepowered.com/search/advanced" method="get">
+																<input type="hidden" name="locations[]" value="resource">
+										<input type="text" name="search" id="search-bar-sub-mid" class="formTip" value="" title="Search resources" maxlength="255">
+					<input type="image" id="search-bar-sub-right" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/search-bar-sub-right.png" alt="Search">
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="section-tabs">
+		<ul>
+			<li><a class="" href="http://www.torquepowered.com/community">What's New</a></li>
+			<li><a class="" href="http://www.torquepowered.com/community/blogs">Blogs</a></li>
+			<li><a class="current" href="http://www.torquepowered.com/community/resources">Resources</a></li>
+			<li><a class="" href="http://www.torquepowered.com/community/forums">Forums</a></li>
+		</ul>
+											<a href="http://www.torquepowered.com/community/resources/view/14495#" onclick="return false;" rel="nofollow" id="what-can-i-do-here-arrow" class="button ui-state-default ui-corner-all">
+							<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">More actions</span>
+							More
+						</a>
+						<a rel="nofollow" id="what-can-i-do-here" class="button ui-state-default ui-corner-all" href="http://www.torquepowered.com/community/resources/add">
+							Add a Resource
+						</a>
+												<a href="http://www.torquepowered.com/community/resources/view/14495#" onclick="return false;" rel="nofollow" id="filter-action-arrow" class="button ui-state-default ui-corner-all">
+				<span style="float: right; margin-top: 2px;" class="ui-icon ui-icon-circle-triangle-s">Filter</span>
+				Filter
+			</a>
+				<div class="clear"></div>
+	</div>
+	<div class="section-content">
+				
+<div id="blog-container">
+	<div id="blog-content">
+						<h1>Path Finding Resource Update: Dijkstra, A Star and Best First pathfinding solution</h1>
+		<p class="date" style="margin-bottom: 5px;">
+			by <a href="http://www.torquepowered.com/account/profile/70569">Gabriel Notman</a>
+			<strong>·</strong>
+			04/03/2008 (3:29 am)			<strong>·</strong>
+			59 comments
+		</p>
+		<div id="blogContent" class="type-resource">
+			<div class="body">Here is an update on the resource:<br>
+<a rel="nofollow" href="http://garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=13326" target="_blank">garagegames.com/index.php?sec=mg&amp;mod=resource&amp;page=view&amp;qid=13326</a><br>
+<br>
+It has been updated so that it easy easier to integrate and use with the likes of the fps starter kit.<br>
+Also a few bugs were found in the original resource which have been fixed here.<br>
+<br>
+It does use the Script Array resource by Daniel Neilsen.<br>
+<a rel="nofollow" href="http://www.garagegames.com/index.php?sec=mg&mod=resource&page=view&qid=4711">www.garagegames.com/index.php?sec=mg&amp;mod=resource&amp;page=view&amp;qid=4711</a><br>
+However this has been included already.<br>
+<br>
+To use this resource in new missions, simply walk around the mission and press the drop node key (bound to 'x' by default). This will drop a node at your player's current position and start building the navigation graph, adjacency data and cost information. You must then save the mission before exiting. This will save the nodes as part of the mission, and will also save out the path data to file in the missions directory with the same name as the mission but with the added extension of '.dat'.<br>
+<br>
+Once you have a navigation graph with at least two nodes, you can see a visual representation in the world editor. Simply open the editor and select one of the nodes. This will show a blue line connecting each of the nodes which are adjacent, or connected.<br>
+<br>
+A modified version of the stronghold mission has been included with this resource (including the path data).<br>
+It will show up as 'AI Stronghold' in your missions list. <br>
+Here is a screen shot showing the navigation graph:<br>
+<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/sShot.jpg" alt="www.gabriel-notman.com/upload/sShot.jpg"><br>
+The AiPlayer script has been modified so that it will follow a path using this resource (if the navigation graph is available). Kork will simply pick a random location (it uses one of the graph's nodes as a target position, but it could use any coordinates), find a path to that location, and then head on his way. When he arrives he will wait one second and then repeat this process. This is not the most intelligent of behaviour, but it is there to simply demonstrate the path finding.<br>
+<br>
+If you have the world editor open and one of the nodes selected, you will see the most recent found path drawn in green instead of the standard blue.<br>
+<br>
+Unfortunately the graph data pushes this resource over the size limit.<br>
+You can download the resource here:<br>
+<a rel="nofollow" href="http://www.gabriel-notman.com/upload/PathFinding.zip" target="_blank">www.gabriel-notman.com/upload/PathFinding.zip</a><br>
+<br>
+<b>Known issues (April 12th 08):</b><br>
+1. <b>Inefficient search of the start and end nodes.</b> Currently it searches all the nodes in the graph to find the nearest nodes to both start and end positions. It uses a raycast to determine if it that node is reachable from either location. Initial testing on a ~100 node graph indicated this was taking up 90-95% of the time costs of the pathfinding. This cost will also increase with larger graphs (included demo graph has ~500 nodes). A potential fix is to add a maximum radius when searching for the start and end nodes, so reducing and limiting the raycast costs. <br>
+<br>
+2. <b>Possible bug with very short paths.</b> If the closest node to both the start and end locations is the same, it may be added to the list twice.<br>
+<br>
+3. <b>Possible problem with very long paths.</b> The full path is returned as a space separated list of node IDs in a single string. This has the potential to exceed the maximum string length, although I'm not sure what the limit is.<br>
+<br>
+4. <b>Nearest node may cause backtracking.</b> When searching for a new path, it is possible that the AIPlayer will have to turn around and walk a few steps backwards. This is because the nearest node may be behind him. A possible solution will be to add an angular limit on the nodes to search for, so that the path only looks to use nodes in front of the AIPlayer, as starting nodes for the potential path.<br>
+<br>
+I hope to work out these issues and update the resource soon.</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="background: #EEE; border: 1px solid #CCC; padding: 5px; margin-top: 15px;">
+		<div class="left" style="width: 184px; text-align: center;">
+			<img class="profilepic" src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/blank-user.jpg" alt="Gabriel Notman&#39;s profile picture">
+			<br>
+			<a rel="Gabriel Notman" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/70569" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Gabriel Notman
+</a>		</div>
+		<div class="left" style="width: 340px; margin: 0 15px;">
+			<h3 style="margin: 5px 0px;">About the author</h3>
+			<p style="text-align: left;">
+							</p>
+		</div>
+		<div class="left" style="width: 300px;">
+			<h3 style="margin: 5px 0px;">Recent Blogs</h3>
+							•&nbsp;<a href="http://www.torquepowered.com/community/blogs/view/13620">64bit math library for TorqueScript</a><br>							•&nbsp;<a href="http://www.torquepowered.com/community/blogs/view/13326">Dijkstra, A Star and Best First pathfinding solution (pre-comipled or real-time)</a><br>							•&nbsp;<a href="http://www.torquepowered.com/community/blogs/view/13081">Custom FX object</a><br>					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="page-turner" class="separator-950">
+	<div class="right">
+							<a href="http://www.torquepowered.com/community/blogs/view/14481"><span class="right-arrow">Next</span>Next resource</a>
+				
+	</div>
+	<div class="left">
+							<a href="http://www.torquepowered.com/community/blogs/view/14510"><span class="left-arrow">Prev</span>Previous resource</a>
+			</div>
+	<div class="center"><a href="http://www.torquepowered.com/community/resources">More resources</a></div>
+	<div class="clear"></div>
+</div>
+
+<div>
+	<a name="comments"></a>
+		<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.torquepowered.com/community/resource/view/14495/2#comments">2</a> <a href="http://www.torquepowered.com/community/resource/view/14495/3#comments">3</a> <a href="http://www.torquepowered.com/community/resource/view/14495/2#comments" class="next">Next»</a> <a href="http://www.torquepowered.com/community/resource/view/14495/3#comments" class="last">Last »</a><div class="clear"></div></div>	<div class="clear"></div>
+	<div style="text-align: center;">
+									<a href="http://www.torquepowered.com/community/resource/view/14495/3#comment_form">+Add a comment</a><p></p>
+				<label style="margin-left: 25px;" for="notify-me"><input type="checkbox" name="notify-me" id="notify-me" onchange="GG.blogNotify(14495, 74950);">Notify me of new comments</label>
+						</div>
+	<div class="clear" style="margin: 10px;"></div>
+	<div id="commentList">
+										<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/11127.jpg" class="profilepic">
+			<br>
+			<a rel="Cinder Games" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/11127" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Cinder Games
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-93149" name="comment-93149">#1</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/03/2008 (7:42 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Is there any checks to see if something is in between the nodes? such as another player/ai? or any other objects that may have moved?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Gabriel Notman" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/70569" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Gabriel Notman
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-93150" name="comment-93150">#2</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/03/2008 (7:50 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			No the adjacency data is static (it takes quite a long time to process).  However it wouldn't be difficult to do a raycast check to the next node, each time the bot reaches a node.<br>
+<br>
+A basic mechanism has been included so that if it gets stuck (the bot hasn't moved at all since the last think cycle), it then searches for another path.<br>
+<br>
+Gabriel		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/101767.png" class="profilepic">
+			<br>
+			<a rel="Steve Acaster" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/101767" onclick="return false;">
+	<span style="float: left; margin-right: 2px;" class="torque-icon-3d">Torque 3D Owner</span>
+	Steve Acaster<br>
+	<span class="studio-name">[YorkshireRifles]</span>
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-93398" name="comment-93398">#3</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/08/2008 (10:14 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			This is a great user-friendly update to a really good resource.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="dArchitect" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/64445" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	dArchitect
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-93895" name="comment-93895">#4</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/21/2008 (10:05 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Has anyone gotten more then one Kork running on the same or different paths? If your willing to share some the code that would be great. If not ideas/pointers will also work.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Gabriel Notman" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/70569" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Gabriel Notman
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-93912" name="comment-93912">#5</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">04/22/2008 (8:13 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Try modifying the <b>AIManager</b> script class whose functions can be found at the base of <b>AIPlayer.cs.</b> <br>
+<br>
+Currently it only spawns one bot (kork) and keeps track of that bot in a dynamic field called player <b>(AIMangager.player)</b>, this dynamic field is created in <b>AIManager::Think()</b> by making a call to <b>AIManager::Spawn</b>. It is also used in that function to determine if Kork is still alive or whether to spawn him again. Additionally I have used that dynamic field to check if Kork gets stuck.<br>
+<br>
+Gabriel		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="dArchitect" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/64445" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	dArchitect
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-94874" name="comment-94874">#6</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">05/20/2008 (4:47 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I have a new request.  I have more than 10 Korks running on the same path right now and would I would like to create multiple separate paths with Korks running on them.  If anyone is willing to share some code to get this working that would be great. If not ideas or pointers will work.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101307" name="comment-101307">#7</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/27/2008 (3:32 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I tried compiling this in VC++ 2008. <br>
+<br>
+I got the following errors: <br>
+<br>
+c:\torque\enginepathfindoct2008\engine\editor\worldeditor.cc(2530) : error C3861: 'renderAIPaths': identifier not found<br>
+<br>
+c:\torque\enginepathfindoct2008\engine\editor\worldeditor.cc(2617) : error C2039: 'renderAIPaths' : is not a member of 'WorldEditor'<br>
+<br>
+        c:\torque\enginepathfindoct2008\engine\editor\worldeditor.h(21) : see declaration of 'WorldEditor'<br>
+<br>
+c:\torque\enginepathfindoct2008\engine\editor\worldeditor.cc(2629) : error C3861: 'renderPathAdjs': identifier not found<br>
+<br>
+c:\torque\enginepathfindoct2008\engine\editor\worldeditor.cc(2634) : error C2039: 'renderPathAdjs' : is not a member of 'WorldEditor'<br>
+<br>
+        c:\torque\enginepathfindoct2008\engine\editor\worldeditor.h(21) : see declaration of 'WorldEditor'<br>
+<br>
+<br>
+<br>
+What could be causing these errors? I did add all the files to the project. And I followed all the instructions to the best of my knowledge, including all of the code changes to existing code. Still not working.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101329" name="comment-101329">#8</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/27/2008 (6:26 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Please disregard my previous post. I had missed one of the header files (duh).		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101332" name="comment-101332">#9</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/27/2008 (7:08 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Great resource. Works well in 1.5.2. Thanks for this. Very flexible and useful.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101341" name="comment-101341">#10</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/28/2008 (1:20 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I am having a problem where when I try this with a new mission, and save that mission, a "dat" file is NOT created in the missions folder. How do I resolve this?		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Gabriel Notman" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/70569" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Gabriel Notman
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101343" name="comment-101343">#11</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/28/2008 (1:33 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Have you made the changes to <b>scripts/creator/editor/EditorGui.cs</b>?<br>
+<br>
+The script changes in there are meant to save out the adjacency data when the mission is saved (using the mission's filename). It is possible that it isn't using the new filename. I will double check this.<br>
+<br>
+Alternatively you saved the data manually by typing <b>SavePaths()</b> into the console. <br>
+<br>
+Gabriel		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101344" name="comment-101344">#12</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/28/2008 (1:39 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			OK I see, yes that was the problem.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101345" name="comment-101345">#13</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/28/2008 (2:12 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Actually, no , it wasn't. <br>
+<br>
+my server/scripts/aiPaths.cs function looks like this: <br>
+<br>
+ function SavePaths()<br>
+{<br>
+  echo ("trying to save"); <br>
+  <br>
+  if (isObject(AiPaths))<br>
+      AiPaths.saveAdjs("./" @ $Server::MissionFile @ ".dat");<br>
+}<br>
+<br>
+And I am not seeing the words "trying to save" in my console.log, whether I type <br>
+SavePaths(); into the console <br>
+or <br>
+Whether I save the mission. <br>
+<br>
+I did make the changes to the creator/editor files, etc. as noted. <br>
+<br>
+I also cleaned out all of my .cs.dso files globally. I don't know why it won't save my stuff. It saves the nodes, obviously, but since the aiPaths.cs file is not active or working, then my paths are not being built between the nodes. <br>
+<br>
+I did add<br>
+exec("./nodes.cs");<br>
+exec("./aiPaths.cs");<br>
+<br>
+to my onServerCreated function in game.cs. <br>
+<br>
+What could I be doing wrong now???		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101346" name="comment-101346">#14</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/28/2008 (2:18 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Ok, new info.....<br>
+<br>
+It is getting my save information but this is what is being spit out in the console:<br>
+<br>
+==&gt;SavePaths();<br>
+trying to save<br>
+AIPathGroup::SaveAdjs - Cannot write Adjs file without first generating Adjs --see createAdjs(...)/loadAdjs(...)<br>
+AIPathGroup::findPath -- Adjaceny matrix invalid --see createAdjs(...)<br>
+390.176 388.475 223.541<br>
+459.139 256.571 219.817<br>
+AIPathGroup::findPath -- Adjaceny matrix invalid --see createAdjs(...)<br>
+390.176 388.475 223.541<br>
+459.139 256.571 219.817<br>
+AIPathGroup::findPath -- Adjaceny matrix invalid --see createAdjs(...)<br>
+390.176 388.475 223.541<br>
+<br>
+<br>
+etc..............................		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Gabriel Notman" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/70569" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Gabriel Notman
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101347" name="comment-101347">#15</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/28/2008 (2:26 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Before you can save out the adjacency data you must first generate it.<br>
+Make sure you have added at least two way point nodes then call <b>AiPaths.createAdjs(...)</b>.<br>
+See the documentation for the parameters to pass to that function.<br>
+<br>
+Gabriel		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101348" name="comment-101348">#16</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/28/2008 (2:32 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Ok, thanks Gabriel... I see you have<br>
+<br>
+createAdjs(type, <params>)<br>
+This function takes one or two parameters and generates the adjacencies based on the type specified. Valid types are defined in the enumerator ADJTYPES. With the HEURISTIC type doing both a line of sight and a distance check (distance is specified in the second parameter). <br>
+<br>
+<br>
+I  apologize for my lack of clarity on this. I still don't understand which parameter to pass to the function. Can you nudge me in the right direction?<br>
+<br>
+In  other words, I can simply do: <br>
+<br>
+AiPaths.createAdjs(HEURISTIC , 40)  and that should work?<br>
+It does not seem to be working properly. Does not seem to be generating the paths.		</params></div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101349" name="comment-101349">#17</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/28/2008 (2:52 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I need to hire you for 1/2 hour or less. I just sent an email to your gmail. <br>
+check your gmail (the one on file for your gg account).		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101350" name="comment-101350">#18</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/28/2008 (4:50 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			Nevermind, I figured it out, it was just some batty code on my end which I fixed.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/48214.jpg" class="profilepic">
+			<br>
+			<a rel="Nmuta Jones" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/48214" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Nmuta Jones
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-101351" name="comment-101351">#19</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">10/28/2008 (4:51 am)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			I cannot stress how useful this is. I was able to get pathfinding working so that the bot constantly finds the character, avoiding several complicated maze-like obstacles. This is an excellent and very valuable resource.		</div>
+		<div class="clear"></div>
+	</div>
+								<div class="comment">
+		<div class="author">
+			<img src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/blank-user.jpg" class="profilepic">
+			<br>
+			<a rel="Adithyaa Srikkanth" class="member button profile-link ui-state-default ui-corner-all" href="http://www.torquepowered.com/account/miniprofile/accountID/123380" onclick="return false;">
+	<span style="margin-right: 5px; float: left" class="torque-icon">Torque Owner</span>
+	Adithyaa Srikkanth
+</a>		</div>
+		<div class="body">
+			<a class="button ui-state-default ui-corner-all" style="padding: 2px; font-size: 10px; margin: 0 2px; height: 16px; text-align: center; float: right;" href="http://www.torquepowered.com/community/resources/view/14495/1#comment-115153" name="comment-115153">#20</a>
+									<div style="border-bottom: 1px solid #DDD; margin-top: -5px; padding-bottom: 1px; margin-bottom: 5px;">
+				<em style="padding-top: 2px; float: left;">03/15/2009 (8:21 pm)</em>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			i cannot find dgl/dgl.h file in the resources given by and also in engine to i am using tgea 1.8.0 version for windows.Help me to fix this.<br>
+Thanks in advance		</div>
+		<div class="clear"></div>
+	</div>
+							<div class="clear"></div>
+	</div>
+	<div class="paging"><span>Page</span> <span class="previous">«Previous</span> <em>1</em> <a href="http://www.torquepowered.com/community/resource/view/14495/2#comments">2</a> <a href="http://www.torquepowered.com/community/resource/view/14495/3#comments">3</a> <a href="http://www.torquepowered.com/community/resource/view/14495/2#comments" class="next">Next»</a> <a href="http://www.torquepowered.com/community/resource/view/14495/3#comments" class="last">Last »</a><div class="clear"></div></div>	<div class="clear"></div>
+		<div class="clear"></div>
+</div>		<div class="clear"></div>
+	</div>
+	<div class="section-footer"></div>
+</div>
+
+<div id="actions-list-container">
+	<span id="actions-list">
+		<a href="http://www.torquepowered.com/community/blogs/add">Post a blog</a><br>
+		<a href="http://www.torquepowered.com/community/resources/add">Add a resource</a><br>
+					<a href="http://www.torquepowered.com/community/forums/new">Start a Thread</a><br>
+			</span>
+</div>
+
+<div id="filter-action-container" style="display: none;">
+	<span id="actions-list">
+	<input type="checkbox" class="relevantProductFilter" value="0"> All Products<br>
+		<input type="checkbox" class="relevantProductFilter" value="other"> 3rd Party Addons<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque2d"> iTorque 2D<br>
+		<input type="checkbox" class="relevantProductFilter" value="itorque3d"> iTorque 3D<br>
+		<input type="checkbox" class="relevantProductFilter" value="tge"> TGE<br>
+		<input type="checkbox" class="relevantProductFilter" value="tgea"> TGEA<br>
+		<input type="checkbox" class="relevantProductFilter" value="torque3dpro"> Torque 3D Pro<br>
+		<input type="checkbox" class="relevantProductFilter" value="torquex"> Torque X<br>
+		</span>
+</div>
+
+<!-- /content -->
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="clear"></div>
+	<br>
+	<div id="footer-links">
+	<a href="http://www.torquepowered.com/">Home</a>
+	<a href="http://www.torquepowered.com/products">Products</a>
+	<a href="http://www.torquepowered.com/community">Community</a>
+	<a href="http://www.torquepowered.com/support">Support</a>
+	<a href="http://www.torquepowered.com/company">Company</a>
+</div>	<div id="footer">
+		<p>Copyright © TorquePowered.com 2000 - 2011 All Rights Reserved. <a href="http://www.torquepowered.com/company/tos">Terms of Service</a> - <a href="http://www.torquepowered.com/company/privacy">Privacy Policy</a></p>
+			</div>
+	<script type="text/javascript">
+		var STATIC_HOST = 'http://static.torquepowered.com';
+	</script>
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script src="./Path Finding Resource Update  Dijkstra, A Star and Best First pathfinding solution   Gabriel Notman   Resources   Community   TorquePowered.com_files/ga.js" type="text/javascript"></script>
+	<script type="text/javascript">
+				var pageTracker = _gat._getTracker('UA-6057184-2');
+					pageTracker._trackPageview('/community/resource/view/14495');
+				
+	</script>
+	<script type="text/javascript">
+		$().ready(getTimezoneAjax);
+		function getTimezoneAjax() {
+			var d = new Date();
+			var offset = d;
+			var params = { timezone: offset };
+			$.get('/index/settimezone', params);
+		}
+	</script>
+</div>
+<div id="supersecrethiddendiv"></div>
+
+
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div></body></html>
