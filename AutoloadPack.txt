@@ -1,0 +1,204 @@
+//==============================================================================
+// AutoloadPack -- Automatic Loading of Decal Art Pack(s) Script
+// Created by Nathan Martin / TRON   2012-01-26
+//==============================================================================
+
+// Quick Install Tip:
+//   Place this file into your <project>/game/art/decals/ directory and then
+//   place this exec() line as a the last line within managedDecalData.cs script
+//   with the leading // characters removed:
+//exec("./autoloadPack.cs");
+
+
+// This script iterates through all subdirectories that this script file
+// resides in and creates materials and associated decals for any image
+// files that are found. You can set $AutoloadPack::LoadOnlyExtension
+// global variable at the top of this script file to a file extension that
+// you only want to load, for example: GarageGames Art Packs typically come
+// with both Targa(.tga) and DirectDraw Surface(.dds) image files, and you
+// could set that variable to ".dds" to only use DirectDraw Surface images.
+//
+// This function also requires you to use the following style for file names:
+//   <imageName>_<type>.<extension>
+//
+//   <imageName> being the general image name and typically has a number on
+//				 on the end of it.
+//   <type>		 The purpose of the image file, see Image File Types.
+//   <extension> The image format or file extension, such as tga,png,dds, etc..
+//
+// Image File Types, that this script currently supports and understands are:
+//   d			 Diffuse Map
+//   n			 Normal Map
+//   s			 Specular Map
+//
+// Any files not using a supported filename style or image formats are ignored.
+
+// should we report errors, such as failed to create the material and decal of
+// a set of mapped images due to said material or decal already existing.
+$AutoloadPack::ReportErrors			= true;
+
+// should we report successful material and decal creation?
+$AutoloadPack::ReportCreated		= false;
+
+// Empty string means all supported image formats, else set it the extension
+// or extensions that you only want to load, in a space delimited format.
+// This variable just overrides the values below this one.
+$AutoloadPack::LoadOnlyExtensions 	= "";
+
+// space delimited list of image file extensions supported that can be loaded.
+$AutoloadPack::SupportedImages		= "dds tga png gif jpg jpeg";
+
+// space delimited list of image types that are supported.
+// PLEASE DO NOT touch this variable unless you update both of the functions
+// that make use of this variable, else it will break this script!
+$AutoloadPack::SupportedTypes		= "d n s";
+
+
+function genSearchExpression(%list)
+{
+	%str = "";
+	%count = getWordCount(%list);
+	
+	for(%i=0; %count; %i++)
+	{
+		%str = %str @"*."@ getWord(%list, %i);
+		
+		if(%count--)
+			%str = %str TAB "";
+	}
+	
+	return %str;
+}
+
+function getImageNameType(%file)
+{
+	// separate image namd and mapping type
+	%str = strreplace(%file, "_", "\t");
+	if(getFieldCount(%str) != 2)
+		return ""; // failed
+	
+	%count = getWordCount($AutoloadPack::SupportedTypes);
+	for(%i=0; %i<%count; %i++)
+	{
+		if(!stricmp(getWord(%str, 1), getWord($AutoloadPack::SupportedTypes, %i)))
+			return %str TAB %i;// success: <Name:String> TAB <Type:Char> TAB <TypeID:Int>
+	}
+	
+	// failed
+	return "";
+}
+
+function createMaterialWithDecal(%name, %mapping)
+{
+	%MatName	= %name @ "Mat";
+	%DecalName	= %name @ "Decal";
+	
+	if(isObject(%MatName) || isObject(%DecalName))
+	{
+		// report failure
+		if($AutoloadPack::ReportErrors)
+			error(">>> [AutoloadPack Script] ERROR: \""@ %name @"\"'s material and/or decal appears to have already been created previously.");
+		
+		// abort
+		return;
+	}
+	
+	singleton Material(%MatName)
+	{
+		mapTo = "unmapped_mat";
+		diffuseMap[0] = getField(%mapping, 0);
+		normalMap[0] = getField(%mapping, 1);
+		specularPower[0] = "1";
+		specularMap[0] = getField(%mapping, 2);
+//		alphaTest = "1";
+		translucent = "1";
+		alphaRef = "0";
+		showDust = "1";
+		translucentZWrite = "1";
+		materialTag0 = "RoadAndPath";
+	};
+	
+	datablock DecalData(%DecalName)
+	{
+		Material = %matName;
+		textureCoordCount = "0";
+	};
+	
+	// report we just created a new material and decal pair
+	if($AutoloadPack::ReportCreated)
+		echo("[AutoloadPack Script] Created material and decal for \""@ %name @"\" image(s).");
+}
+
+
+function genPackMaterialsAndDecals()
+{
+	%useImages = $AutoloadPack::LoadOnlyExtensions;
+	if(%useImages $= "")
+		%useImages = $AutoloadPack::SupportedImages;
+	
+	// get search expression from list of image extensions
+	%search = genSearchExpression(%useImages);
+	%lastName = "";
+	%lastFile = "";
+	%firstRun = true;
+	%mapping = "";
+	
+	// get our script's directory path
+	%workDir = filePath($Con::File) @ "/";
+	
+	for(%file = findFirstFileMultiExpr(%search, true);
+		%file !$= "";
+		%file = findNextFileMultiExpr(%search))
+	{
+		// skip results that aren't within this script's directory path
+		if(strpos(%file, %workDir) != 0)
+			continue;
+		
+		// process the filename for the details we need
+		%nt = getImageNameType(fileBase(%file));
+		if(%nt $= "")
+			continue;
+		
+		// parse out the necessary details
+		%name	= getField(%nt, 0);
+		%type	= getField(%nt, 1);
+		%typeID	= getField(%nt, 2);
+		
+		if(%firstRun)
+		{
+			%firstRun = false;
+			%lastName = %name;
+		}
+		
+		// is it time to generate the previous image name's material and decal?
+		if(stricmp(%lastName, %name))
+		{
+			// yes
+			createMaterialWithDecal(%lastName, %mapping);
+			
+			// reset mapping paths
+			%mapping = "";
+		}
+		
+		// set the image mapping file path
+		%mapping = setField(%mapping, %typeID, %file);
+		
+		// debug
+//		echo(">>> AutoPack[\""@ %file @"\"] Name=\""@ %name @"\", Type=\""@ %type @"\("@ %typeID @"), Seen="@ (%lastName $= %name) @" <<<");
+		
+		// remember filename
+		%lastName = %name;
+		%lastFile = %file;
+	}
+	
+	// create the last file's material and decal pair
+	if(strlen(%lastFile))
+	{
+		createMaterialWithDecal(%lastName, %mapping);
+	}
+
+	// all done :)
+}
+
+// let the magic begin!
+genPackMaterialsAndDecals();

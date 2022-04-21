@@ -1,0 +1,546 @@
+Hello, and welcome to the LONG awaited hitbox tutorial.  I think you will all agree that it was worth the wait...  :)
+
+This tutorial requires only the Torque engine, and for it to be of any use, you really should know how to program C++. It is going to be rather complex at times, but don't let that stop you.  EVERY line is commented, and hopefully that should allow even non-coders to understand what is going on.  You might want to know some math too...  :)
+
+All code should be copy-pasted into torque(so it is legible).  Then read through the comments.
+
+To start with, we need to create our hitbox structure, inside the player class definition.  So open up player.h and scroll to about line 361 (after Box3F mWorkingQueryBox;) (NOTE:  All line numbers are going to be based on a completely new 1.1, so if you changed anything, they might move a bit.   I will sometimes just say the previous line.  Just do a Find in Files to get there)  and add:
+
+//CODE BEGINS
+
+//THEORY:  READ THIS IF YOU WANT TO UNDERSTAND THE HITBOXES:
+//The whole purpose here is to create more accurate hit detection.  We do this by creating a "hitbox" for each limb.
+//This "hitbox" is simply an invisible box that encases a limb.  The hitbox always remains around the limb, despite whether it animates or not.
+//Collision detection (seeing if one object hit another) can easily be done against a box, so hitboxes make colliding with specific limbs much more accurate, and easier than any other method I could think of.
+//Hitboxes are both relatively precise, and use little processing power.
+//This tutorial also shows how to collide melee weapons against hitboxes(the theory behind it will be explained later).  
+//It DOES NOT show how to do this with projectile weapons, but if you read the whole thing and understand it, you should easily be able to figure that out.  Or maybe someone else can add on to my tutorial....
+
+   struct Hitbox{
+	   //Obviously we need a box...
+	   Box3F hitbox;
+	   //This is a string, for the name of the node (bone/limb) that the box will be centered on
+	   StringTableEntry nodeName;
+	   //We make a box to store the previous frame's box location (note:  this is stored in world space)
+	   Box3F lastLocation;
+	   //And then we create an array of ten of these hitboxes per player (one for the head, chest, left upper arm, etc...)
+		} mHitboxes[10];
+
+   //this is a structure for my melee weapons, since my game has alot of them.  They ARE necessary if you actually want to test your hitboxes.
+   struct MeleeWeapon{
+	   //the endpoints of the weapon from the previous frame
+	   Point3F lastStart;
+	   Point3F lastEnd;
+	   //the endpoints for the current frame.
+	   //Note:  all these points are in world-space
+	   Point3F Start;
+	   Point3F End;
+	   //and finally, make a melee weapon for each player.  Just one will suffice.
+   } mMeleeWeapon;
+
+   //CODE ENDS
+
+
+Now, we can't just let this stuff go uninitiated.  So enter the player constructor (player.cc about line 774) and add:
+
+   //CODE BEGINS
+   //Raistlin
+   //loop through all the hitboxes and set the default sizes.  This seems to fit most limbs perfectly.  NOTE THE HARDCODED LIMIT OF 10 HITBOXES.  This can easily be changed to fit your needs.
+   for(int i = 0; i<10; i++)
+   {
+   mHitboxes[i].hitbox.min.set(-0.1,-0.15,-0.15);
+   mHitboxes[i].hitbox.max.set(0.6,0.15,0.15);
+   //Since there obviously wasnt a previous frame yet, this is set to 0,0,0.  It is set the first time we calculate collision.
+   mHitboxes[i].lastLocation.min.set(0,0,0);
+   mHitboxes[i].lastLocation.max.set(0,0,0);
+   }
+   //See the next block for what each hitbox surrounds, and then you will understand why these two should not be shaped like the rest...  :)
+   mHitboxes[0].hitbox.min.set(-0.1,-0.22,-0.22);   
+   mHitboxes[0].hitbox.max.set(0.6,0.22,0.22);   
+   mHitboxes[1].hitbox.min.set(-0.1,-0.15,-0.15);
+   mHitboxes[1].hitbox.max.set(0.3,0.15,0.15);
+   //Set the name of each hitbox.  NOTE:  THIS IS VERY IMPORTANT!!  Each of these names is verbatem from the model names.  It is needed for getNodeTransform, an ESSENTIAL function.
+   mHitboxes[0].nodeName = "Bip01 Spine";
+   mHitboxes[1].nodeName = "Bip01 Head";
+   mHitboxes[2].nodeName = "Bip01 L Upperarm";
+   mHitboxes[3].nodeName = "Bip01 R Upperarm";
+   mHitboxes[4].nodeName = "Bip01 L ForeArm";
+   mHitboxes[5].nodeName = "Bip01 R ForeArm";
+   mHitboxes[6].nodeName = "Bip01 L Thigh";
+   mHitboxes[7].nodeName = "Bip01 R Thigh";
+   mHitboxes[8].nodeName = "Bip01 L Calf";
+   mHitboxes[9].nodeName = "Bip01 R Calf";
+   //This is a hideous hack.  The first frame needs to have a previous frame, so I just set it to this (so there isnt a collision, it seems unlikely that this point would collide)
+   mMeleeWeapon.lastStart.set(100,100,100);
+   mMeleeWeapon.lastEnd.set(100,100,100);
+   //CODE ENDS
+
+
+With that out of the way, we have real hitboxes set up.  Now, we really need to draw them so that we can have a visual representation of what we are dealing with.  Trust me, this is important.  :)  On about line 2635 of ShapeBase.cc(right before bool ShapeBase::castRay(const Point3F &start, const Point3F &end, RayInfo* info)), and add:
+
+
+//CODE BEGINS
+//Raistlin
+
+void ShapeBase::DrawCollideHitBox(Box3F& Box, MatrixF& mat)
+{
+
+//This code is old.  I used to use 8 points for the collision, and I didnt feel like changing the drawing code.  Dont worry that it is overly complex.
+
+//Make 8 points for the cube
+Point3F FUL;   //  FRONT UPPER LEFT
+Point3F FUR;   //  FRONT UPPER RIGHT
+Point3F BUL;   //  BACK UPPER LEFT
+Point3F BUR;
+Point3F FLL;   //FRONT LOWER LEFT
+Point3F FLR;
+Point3F BLL;
+Point3F BLR;
+Point3F START;
+Point3F END;
+//initialise them based on the box dimensions	
+FUL.set(Box.min.x,Box.max.y,Box.max.z);   
+FUR.set(Box.max.x,Box.max.y,Box.max.z);   
+BUL.set(Box.min.x,Box.max.y,Box.min.z);
+BUR.set(Box.max.x,Box.max.y,Box.min.z);
+FLL.set(Box.min.x,Box.min.y,Box.max.z);   
+FLR.set(Box.max.x,Box.min.y,Box.max.z);
+BLL.set(Box.min.x,Box.min.y,Box.min.z);
+BLR.set(Box.max.x,Box.min.y,Box.min.z);
+
+
+//multiply the points by the matrix we are passed.  I will explain this when we use the function.
+   mat.mulP(FUL);
+   mat.mulP(FUR);
+   mat.mulP(BUL);
+   mat.mulP(BUR);
+   mat.mulP(FLL);
+   mat.mulP(FLR);
+   mat.mulP(BLL);
+   mat.mulP(BLR);
+//Begin lines.  This is a GL command
+      glBegin(GL_LINES);
+//We have to define this function(MyLine).  I couldnt find a simple line drawing function, so I made my own.
+           MyLine(FUL, FUR);
+           MyLine(FUR, FLR);
+           MyLine(FLR, FLL);
+           MyLine(FLL, FUL);
+
+           MyLine(BUL, BUR);
+           MyLine(BUR, BLR);
+           MyLine(BLR, BLL);
+           MyLine(BLL, BUL);
+
+           MyLine(FUL, BUL);
+           MyLine(FLL, BLL);
+           MyLine(FUR, BUR);
+           MyLine(FLR, BLR);
+
+      glEnd();
+//Stop drawing lines....  :)
+
+
+}
+
+//Define the MyLine function
+//Yeah, there is probably already a function for this, but I didnt feel like finding it.
+void ShapeBase::MyLine(const Point3F& start, const Point3F& end)
+{
+   //create two vertices.  This will tell openGL to make a line.  Very simple.  :)
+   glVertex3f(start.x, start.y, start.z);
+   glVertex3f(end.x, end.y, end.z);
+
+}
+//CODE ENDS
+
+We have to declare these functions in ShapeBase.h.  Find:  virtual void calcClassRenderData(); around the bottom of the file, and right after, add:
+
+//Raistlin
+   void MyLine(const Point3F& start, const Point3F& end);
+   void DrawCollideHitBox(Box3F& Box, MatrixF& mat);
+
+Now we need to call these functions.  The most logical place is in the code that would normally draw the player-bounding box (in the editor mode.  It is just a white box around the player).  This is in player.cc on about line 3930.  You should see:
+
+   if (!mShapeInstance || gShowBoundingBox) {
+
+And obviously, an ending bracket at the end of the block.  This will draw the player-bounding box if in editor mode.  Edit out the if and its ending bracket, so that the game will always draw the box.  This is just so that we can have some proof that the line drawing code should work.
+
+Then scroll down to the line RIGHT BEFORE glEnable(GL_DEPTH_TEST); at about line 3950, and add:
+
+//CODE BEGINS
+//Raistlin's code!  :)    GameConnection
+
+//The final matrix to be applied to the points.
+MatrixF mat;
+//The transformation from player space to world space
+MatrixF renderTransform;
+
+          //draw the stuff for the ghost
+          //get the render transformation matrix
+		  renderTransform = getRenderTransform();
+          //Loop through the hitboxes (for this one client)
+          for(int i = 0; i<10; i++)
+          {
+             //Multiply the player->world transform by the bone->player matrix to get, obviously, the bone->world...  :)  (stores the matrix in mat)
+	         mat.mul(renderTransform, getNodeTransform(mHitboxes[i].nodeName));
+             //I like the color red.  :)
+             glColor3f(1, 0, 0);
+	         //call our previous function, and pass it the dimensions of our hitbox.  Those will be transformed to world coords that are centered on the limb, and drawn.  Just what we want.  :)
+	         DrawCollideHitBox(mHitboxes[i].hitbox, mat);
+		  }
+		//this code draws the "weapon" and makes it yellow
+		  glColor3f(1, 0, 0);
+		  //Tell the OpenGL wrapper that we are starting to draw lines
+		  glBegin(GL_LINES);
+		  //Draw the line....
+		  MyLine(mMeleeWeapon.Start, mMeleeWeapon.End);
+		  //Stop drawing lines
+		  glEnd();
+
+
+
+
+//get the server player....
+Player *p=NULL;
+p=dynamic_cast<Player* > ((NetObject *)mServerObject);
+//If there is a server player...
+if(p)
+{
+
+		  renderTransform = p->getRenderTransform();
+          //Loop through the hitboxes (for the server player now)
+          for(int i = 0; i<10; i++)
+          {
+             //Multiply the player->world transform by the bone->player matrix to get, obviously, the bone->world...  :)  (stores the matrix in mat)
+	         mat.mul(renderTransform, p->getNodeTransform(p->mHitboxes[i].nodeName));
+             //I like the color black.  :)
+             glColor3f(0, 0, 0);
+	         //call our previous function, and pass it the dimensions of our hitbox.  Those will be transformed to world coords that are centered on the limb, and drawn.  Just what we want.  :)
+	         DrawCollideHitBox(p->mHitboxes[i].hitbox, mat);
+		  }
+
+		  glColor3f(1, 1, 0);
+		  //Tell the OpenGL wrapper that we are starting to draw lines
+		  glBegin(GL_LINES);
+		  //Draw the line....
+		  MyLine(p->mMeleeWeapon.Start, p->mMeleeWeapon.End);
+		  //Stop drawing lines
+		  glEnd();
+
+
+//This code will draw the server info in black, and the client info in red.
+}
+
+//CODE ENDS
+
+
+There, that wasn't too bad, was it?  Now we can compile the code, and see our hitboxes.  Aren't they lovely!?  Now we need to add some real code to check for collision.  This gets a bit tricky.
+
+What I did, was add a player function to do all collision checking.  Define them in player.h at about line 399 (after void checkMissionArea(); )
+
+//Raistlin
+   void updateHits();  
+   bool CheckSwing(int Interpolations, Hitbox& Hitbox, MeleeWeapon& MeleeWeapon, MatrixF mat); 
+
+Now add these two player functions somewhere in player.cc (I suggest line 2336, right before updatePos):
+
+//CODE BEGINS
+//Raistlin
+
+//THEORY:
+//Here, we check each player's "weapon" against any player whose "bounding box" it sticks into.
+//Yes, the weapons are really lame.  But I didnt want to have to distribute a model with the tutorial.
+//Exactly how we check for collision is explained below.
+
+
+void Player::updateHits()
+{
+//same as before, the "weapon code".  It can, and SHOULD be replaced, but I didnt want to have to distribute a model for people to be able to do the tutorial.  I have no place for people to download it from.
+MatrixF mat;
+MatrixF renderTransform = getRenderTransform();
+MatrixF pointTransform = getNodeTransform("Bip01 L Forearm");
+mat.mul(renderTransform, pointTransform);
+
+Point3F handle;
+handle.set(1,0,0);
+Point3F tip;
+tip.set(5,0,0); 
+
+mat.mulP(handle);
+mat.mulP(tip);
+//set the mMeleeWeapon of the player equal to the "weapon" points
+mMeleeWeapon.Start = handle;
+mMeleeWeapon.End = tip;
+
+//start and end get manipulated, that's why I made them
+Point3F start = handle;
+Point3F end = tip;
+//This is needed when we transfer control to the console
+U32 ID = this->getId();
+//This is needed to call castRay
+RayInfo rinfo;
+//We get a group of clients.  Includes ghosts (I think)
+SimGroup *clG = Sim::getClientGroup();
+//I dont exactly understand how these lines of code work, so bear with me, and send me corrections if you understand and I make some mistakes.
+//I think this just loops through the ghosts/players, checking each of them against our weapon(s)
+for( SimGroup::iterator i = clG->begin(); i != clG->end(); i++ ) 
+{
+   //not really sure of why this is here, but it is needed
+	GameConnection *t = dynamic_cast<GameConnection *>( *i );
+   if( t ) {
+	   //makes a player.
+      Player *p = dynamic_cast<Player *>( t->getControlObject() );
+      //if there is a player...
+	  if( p ) {
+		  //if we aren't the player and the player is real (not a ghost)....
+		  if (!(p == this)&&!(p->isGhost()))
+		  {
+			  //we need to reset the start and end position since castRay actually alters the points you pass it.  Not a very nice function
+			  start = handle;
+			  end = tip;
+			  //Get the World->Player transform, so that our points will be in player space.
+			  MatrixF WorldtoPlayer = p->getWorldTransform();
+			  //Multiply the start and end points by the matrix to get them in player space
+			  WorldtoPlayer.mulP(start);
+			  WorldtoPlayer.mulP(end);
+              //do a castRay against the player (check to see if the line is capable of hitting the player, in a very efficient manner)
+			  //obviously, since we are checking against the bounding box, the player needs to be in the bounding box if he wants to be hit...  :)
+			  if(p->castRay(start, end, &rinfo))
+              {
+//Gee, this looks familiar.   Now it is the render transform for the player we might be hitting though.
+renderTransform = p->getRenderTransform();
+//This stores the place where we hit, it will be equal to the array number that the hitbox is.
+int HitLocation = -1;
+bool done = false;
+//HARDCODED:  10 hitboxes is hardcoded here.  Sorry, too lazy.  Be sure to change it if you add more.
+//Here we loop thorugh all the hitboxes
+for(int i = 0; i<10; i++)
+{
+//get the transform to move the hitbox points to worldspace.
+    MatrixF TOD = p->getNodeTransform(p->mHitboxes[i].nodeName);
+	mat.mul(renderTransform, p->getNodeTransform(p->mHitboxes[i].nodeName));
+//If we arent done (havent hit something)....
+if(done!=true)
+{
+//call our function.  Defined below.  Go look at it now
+if(p->CheckSwing(10, p->mHitboxes[i], mMeleeWeapon, mat))
+{
+//if we hit, set the hitlocation to waht array number we hit
+HitLocation = i;
+//and say that we are done (so we dont need to check the rest of the bones.  You may want to change this.
+done = true;
+}
+}
+//gives me the world coords of the old box for the next check, so we can interpolate correctly
+mat.mulP(p->mHitboxes[i].hitbox.min, &p->mHitboxes[i].lastLocation.min);
+mat.mulP(p->mHitboxes[i].hitbox.max, &p->mHitboxes[i].lastLocation.max);
+
+}
+//if we actually hit something
+if(HitLocation!=-1)
+{
+//execute this console function.  The function is pased three parameters.  
+//first:  who we hit
+//second:  who hit him
+//third:  where he was hit
+Con::evaluatef( "HitBoxes(%d, %d, %d);", p->getId(), ID, HitLocation );
+}
+
+			  }
+		  }
+	  }
+   }
+}
+
+//Update the lastStart and lastEnd positions.
+mMeleeWeapon.lastStart = mMeleeWeapon.Start;
+mMeleeWeapon.lastEnd = mMeleeWeapon.End;
+
+
+}
+
+
+//OVERVIEW:  (read this) This function interpolates the position of the weapon and the hitbox, based on the previous position and teh current position.  The more Interpolations, the more often it checks, thus the more accurate it is.  But it will also take more resources this way.
+bool Player::CheckSwing(int Interpolations, Hitbox& Hitbox, MeleeWeapon& MeleeWeapon, MatrixF mat)
+{
+	//Parameters:  
+	//Interpolations = Number of interpolations between the last frame and this frame.
+	//NOTE:  The limb CAN pass by the sword in this code.  But usually limbs don't move that fast, and they have wide enough hitboxes.
+    //Hitbox = Duh.
+	//MeleeWeapon = again, duh.
+	//mat = THIS IS IMPORTANT.  mat is actually the bone->world transform.  To check our world points against the box, we first need to get them to bone space.  So, we take the inverse of mat, thus giving us a world->bone transform.  Ingenious, eh?  :)
+    //Check to see if this is the first time this function is being run.  I highly doubt that the dimensions of a hitbox are all 0....  :)
+	//If this IS the first frame, then return, so that the "lastframe" position can be set
+	if(Hitbox.lastLocation.min.x == 0 && Hitbox.lastLocation.min.y == 0 && Hitbox.lastLocation.min.z == 0 &&
+Hitbox.lastLocation.max.x == 0 && Hitbox.lastLocation.max.y == 0 && Hitbox.lastLocation.max.z == 0)
+	return false;
+	
+    //take the inverse to get the world->bone transformation
+	mat.inverse();
+    //These points are going to be reset after this function finishes anyway, so we can afford to change the points.  They need to be converted to bone space
+	mat.mulP(Hitbox.lastLocation.max);
+	mat.mulP(Hitbox.lastLocation.min);
+	//We cant however, change the hitbox itself, so we just make a temporary one.
+	Box3F TEMP;
+	//Some temporary start and end points for teh interpolation loop
+    Point3F tempSTART;
+	Point3F tempEND;
+    //loop through the number of interpolations.
+   for(int q = 1; q<=Interpolations; q++)
+   {
+	//get the dimensions of the interpolated box.  Hopefully you understand how we are interpolating.  All I did was find the difference between this and last frame, then divide that by the number of interpolations.  That difference is multiplied by the number of the loop, then added to the beginning point, thus giving us the interpolated position.
+	TEMP.max = (((Hitbox.lastLocation.max - Hitbox.hitbox.max)/Interpolations)*q) + Hitbox.hitbox.max;
+	TEMP.min = (((Hitbox.lastLocation.min - Hitbox.hitbox.min)/Interpolations)*q) + Hitbox.hitbox.min;
+    //interpolate the melee weapon positions.
+    tempSTART = MeleeWeapon.lastStart+(((MeleeWeapon.Start - MeleeWeapon.lastStart)/Interpolations)*q);
+    tempEND = MeleeWeapon.lastEnd+(((MeleeWeapon.End - MeleeWeapon.lastEnd)/Interpolations)*q);
+   //transform the melee weapon coords into bone space.
+   mat.mulP(tempSTART);
+   mat.mulP(tempEND);
+   //and finally, collide our interpolated line and box.  If its true, we return.  Other wise, we go onto the next interpolation.
+   if(TEMP.collideLine(tempSTART, tempEND))
+   {
+	   return true;
+   }
+
+
+   }
+   
+   //if we still haven't hit, we give up.
+   return false;
+
+
+}
+
+//CODE ENDS
+
+
+
+Now we need to define the script function, and reference it in the C++ code.  I defined it in commands.cs, but I suppose it doesn't really matter.
+
+//this function can do whatever you want really.  I just have it echo the hit location to the console.  You can use:
+//%target.getDataBlock().damageObject(%target, %killer, VectorAdd(%target.getPosition(),%vec), 50, $DamageType::Ground);
+//to kill a player.  The 50 is the damage.  The player health is about 1, so this is massive overkill...  :)
+function HitBoxes(%target, %killer, %loc)
+{
+   echo("Guy that was hit:");  
+   echo(%target);  
+   echo("Guy that hit him:");
+   echo(%killer);
+   //damage is out of 1 I think
+   if(%loc==0)
+   //we hit the chest
+   echo("chest");
+   if(%loc==1)
+   //we hit the head
+   echo("head");
+   if(%loc==2)
+   //we hit the left upperarm
+   echo("left upperarm");
+   if(%loc==3)
+   //we hit the right upperarm
+   echo("right upperarm");
+   if(%loc==4)
+   //we hit the left forearm
+   echo("left forearm");
+   if(%loc==5)
+   //we hit the right forearm
+   echo("right forearm");
+   if(%loc==6)
+   //we hit the left thigh
+   echo("left thigh");
+   if(%loc==7)
+   //we hit the right thigh
+   echo("right thigh");
+   if(%loc==8)
+   //we hit the left calf
+   echo("left calf");
+   if(%loc==9)
+   //we hit the right calf
+   echo("right calf");
+}
+
+Now every function is defined.  We still need to call the updateHits function however.  This is done around line 1142 of player.cc.  The code there should look like this(put our function where the comment indicates):
+
+      if (!isGhost()) {
+         // Animations are advanced based on frame rate on the
+         // client and must be ticked on the server.
+         updateActionThread();
+         updateAnimationTree(true);
+		 updateHits();
+//LOOK!  THERE IS OUR FUNCTION!  :)
+
+      }
+
+
+We're almost done!  All we have to do now is force the server to animate (hard to have hitboxes if we don't animate on the server).  So do a search for animateOnServer.  There should be five occurrences.  Change lines 756 and 1999 (whatever ones just set the value of AnimateOnServer) so that animateOnServer is true:
+
+mActionAnimation.animateOnServer = true;   //raistlin
+
+This will cause the server player to crash, since the animation code creates particles (dont ask me why) and teh server doesnt do particles.  To prevent this, simply go to about line 2109(after if (mDataBlock->decalData != NULL) ), and add:
+
+      if(mSceneManager->getCurrentDecalManager())  //Raistlin
+
+before:
+							mSceneManager->getCurrentDecalManager()->addDecal(rInfo.point, rot, Point3F(rInfo.normal),
+                                                                      mDataBlock->decalData);
+
+
+To be able to test the hitboxes, you need to have the code to add a bot.  Here is a function that will do it.  Put this in commands.cs:
+
+function serverCmdAddBot(%client)
+{
+  $ServerGroup = new SimGroup (ServerGroup);
+  %player=aiConnect("Tod", -1, 0.5, false, "Bot1", 1.0);
+  %player=%player.getControlObject();
+  echo( "adding bot " @ %player );
+
+}
+
+Now for the big test.  Compile it (duh), and fire it up.  Pull down the console (hit the ~ key).  Type:
+
+commandtoserver('addbot');
+
+Hit tab to go to third person.  Now run through the line coming out of his arm.  Pull down the console again.  If you see head, or chest, or whatever, then someone was hit!  Hurray!
+
+
+SOME THINGS TO NOTE:  
+
+This code is based on melee weapons, but it shouldnt be hard to adapt to projectiles.
+
+You will notice that the client and server hitobxes seem to be off by alot.  This is due to the fact that the client and server run different animations.  The reason for this hasnt been explained to me, but Tim Gift mentioned that it had something to do with using motion capture, and something about the spine nodes.  If you run an animation like the waving one, you will see that the boxes line up perfectly.  So all you need to do is create a new player with a new idle anim to correct this problem  (I believe)  To wave, hit ctrl + w to wave, and watch teh pretty hitboxes line up.
+
+Known Bugs:
+
+*** The way I initiated some parts of my MeleeWeapon structure is a pretty bad hack.  It should be corrected when you really use the code
+
+
+REQUESTS:  I hope you liked the tutorial!  I must admit that it is not yet complete, and some interesting features could be added (like loading the hitboxes from the model).  I would love it if some one or two people decided to add to this, perhaps the loading thing, or perhaps an implementation with projectiles.  If you do want to add to it, just post in the thread on the forums about this (it's in the engine forum), and say what you want to do, so that five people dont work seperately on the same thing.
+
+
+QUESTIONS:  If you have any questions at all, email me at raistlin@rochester.rr.com or ICQ (my number is 85906385).  I am also in the GG IRC channel most of the time, so go in tehre for free, live tech support...  :)
+
+
+CREDITS:  
+
+Producer:  Raistlin (Josh Albrecht)
+
+Beta Testers:  Risen (J Brown)
+               Kalldrex
+
+Special Thanks:  Everyone that ever came into the IRC room, because they all helped me at least once...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
